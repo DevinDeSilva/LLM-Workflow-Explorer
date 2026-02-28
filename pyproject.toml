@@ -1,0 +1,13 @@
+[project]
+name = "llm-workflow-explorer"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "marimo>=0.20.2",
+    "pytest>=9.0.2",
+    "pyyaml>=6.0.3",
+    "rdflib>=7.6.0",
+    "tqdm>=4.67.3",
+]
