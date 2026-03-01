@@ -1,0 +1,34 @@
+file_paths:
+  schema_loc: "schema/schema.json"
+  execution_kg_loc: "usecases/chatbs/data/10_sample_graph/chatbs_sample.ttl"
+  metadata_loc: "usecases/chatbs/data/10_sample_graph/chatbs_sample_metadata.json"
+  explorer_metadata_loc: "evaluations/chatbs/exeprog_creation/exeplorer_metadata.pkl"
+  exeprog_save_loc: "evaluations/chatbs/exeprog_creation/exeplorer_metadata.pkl"
+
+
+ttl: 
+  prefixes: [
+    { name: "provone", uri: "http://purl.org/provone#" },
+    { name: "skos", uri: "http://www.w3.org/2004/02/skos/core#" },
+    { name: "prov", uri: "http://www.w3.org/ns/prov#" },
+    { name: "rdfs", uri: "http://www.w3.org/2000/01/rdf-schema#" },
+    { name: "cwfo", uri: "http://cwf.tw.rpi.edu/vocab#" },
+    { name: "dcterms", uri: "http://purl.org/dc/terms#" },
+    { name: "ChatBS-NexGen", uri: "http://testwebsite/testProgram#" },
+    { name: "user", uri: "http://testwebsite/testUser#" },
+    { name: "eo", uri: "https://purl.org/heals/eo#" },
+    { name: "ep", uri: "http://linkedu.eu/dedalo/explanationPattern.owl#" },
+    { name: "sio", uri: "http://semanticscience.org/resource/" },
+    { name: "dc", uri: "http://purl.org/dc/elements/1.1/" },
+    { name: "DFColumn", uri: "http://testwebsite/testDFColumn#" },
+    { name: "fnom", uri: "https://w3id.org/function/vocabulary/mapping#" },
+    { name: "fnoi", uri: "https://w3id.org/function/vocabulary/implementation#" },
+    { name: "fnoc", uri: "https://w3id.org/function/vocabulary/composition/0.1.0/" },
+    { name: "food", uri: "http://purl.org/heals/food/" },
+    { name: "dbo", uri: "http://dbpedia.org/ontology/" },
+    { name: "dbp", uri: "http://dbpedia.org/property/" },
+    { name: "dbt", uri: "http://dbpedia.org/resource/Template:" },
+    { name: "ques", uri: "http://atomic_questions.org/" },
+    { name: "xsd", uri: "http://www.w3.org/2001/XMLSchema#" },
+    { name: "fno", uri: "https://w3id.org/function/vocabulary/core#" }
+  ]
