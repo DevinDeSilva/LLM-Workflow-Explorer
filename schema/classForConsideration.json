@@ -1,0 +1,16 @@
+{
+  "classes": 
+    ["workflow:GenerativeTask",
+    "workflow:LLM",
+    "eo:ReasoningMode",
+    "provone:Program",
+    "provone:Port",
+    "provone:Channel",
+    "provone:Execution",
+    "provone:User",
+    "provone:Data",
+    "prov:Collection",
+    "prov:Association",
+    "prov:Usage",
+    "prov:Generation"]
+}
