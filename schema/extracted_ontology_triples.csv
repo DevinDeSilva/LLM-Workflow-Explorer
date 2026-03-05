@@ -1,0 +1,342 @@
+s,p,o
+prov:Collection,rdfs:subClassOf,prov:Entity
+prov:Generation,prov:component,entities-activities
+prov:Generation,prov:unqualifiedForm,prov:wasGeneratedBy
+eo:Reasoning_Mode,rdfs:label,Reasoning Mode
+workflow:Generative_Task,http://purl.org/dc/terms/source,"“Generative AI.” IBM Think, IBM, www.ibm.com/think/topics/generative-ai. Accessed 1 Mar. 2026."
+provone:User,prov:definition,"A User is the person responsible for the execution of a Program, which in turn can be a Workflow. Its specification serves attribution and accountability purposes."
+provone:Port,rdfs:label,Port
+prov:Usage,rdfs:label,Usage
+provone:Program,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+provone:Program,rdfs:subClassOf,prov:Plan
+workflow:Large_Language_Model_Output,http://www.w3.org/2002/07/owl#equivalentClass,ncdc5e904a47c4995a4fed41cf1af415cb1058
+prov:Collection,prov:category,expanded
+prov:Generation,prov:definition,Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.
+eo:Reasoning_Mode,dc:description,a process being executed by the system that achieves a particular goal; e.g. inference models such as treatment planning involved in medical diagnosis can be considered reasoning modes where system is executing a set of tasks
+workflow:Generative_Task,rdfs:subClassOf,ncdc5e904a47c4995a4fed41cf1af415cb1056
+provone:User,prov:category,trace-specification
+eo:Reasoning_Mode,http://purl.org/dc/terms/source,"Ramoni, M., Stefanelli, M., Magnani, L., & Barosi, G. (1992). An epistemological framework for medical knowledge-based systems. IEEE Transactions on Systems, Man, and Cybernetics, 22(6), 1361-1375."
+prov:Association,rdfs:label,Association
+prov:Generation,prov:n,http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Generation
+workflow:Large_Language_Model_Output,rdfs:isDefinedBy,Devin De SIlva (desild@rpi.edu)
+prov:Association,rdfs:subClassOf,prov:AgentInfluence
+prov:Generation,rdfs:subClassOf,prov:InstantaneousEvent
+workflow:Large_Language_Model_Output,rdfs:subClassOf,ncdc5e904a47c4995a4fed41cf1af415cb1061
+provone:Execution,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+provone:Data,rdfs:subClassOf,prov:Entity
+prov:Generation,prov:category,qualified
+workflow:Generative_Task,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+prov:Generation,prov:constraints,http://www.w3.org/TR/2013/REC-prov-constraints-20130430/#prov-dm-constraints-fig
+prov:Association,prov:n,http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Association
+provone:Program,rdfs:label,Program
+prov:Association,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+prov:Usage,prov:definition,"Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity."
+prov:Collection,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+prov:Usage,prov:dm,http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-Usage
+eo:Reasoning_Mode,rdfs:subClassOf,sio:SIO_000097
+workflow:Generative_Task,rdfs:label,Generative Task
+provone:Execution,rdfs:subClassOf,ncdc5e904a47c4995a4fed41cf1af415cb75
+provone:Port,rdfs:comment,"A Port enables a Program to send and receive Entities (Data, Visualizations, etc.).  When used in a role as an input port, default parameters may be configured for the Port."
+workflow:Generative_Task,rdfs:subClassOf,eo:AITask
+prov:Generation,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+workflow:Generative_Task,rdfs:subClassOf,ncdc5e904a47c4995a4fed41cf1af415cb1057
+provone:Program,rdfs:subClassOf,prov:Entity
+prov:Generation,rdfs:label,Generation
+provone:Data,rdfs:comment,A Data item represents the basic unit of information consumed and produced by a Program. Multiple Data items may be grouped into a Collection.
+provone:Data,rdfs:label,Data
+prov:Usage,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+workflow:Large_Language_Model_Output,rdfs:subClassOf,eo:SystemRecommendation
+provone:Execution,rdfs:subClassOf,prov:Activity
+provone:Channel,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+prov:Usage,prov:component,entities-activities
+provone:Data,prov:category,data-specification
+eo:Reasoning_Mode,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+provone:Data,http://www.w3.org/2002/07/owl#disjointWith,provone:Program
+prov:Association,prov:unqualifiedForm,prov:wasAssociatedWith
+provone:User,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+prov:Association,rdfs:comment,"An instance of prov:Association provides additional descriptions about the binary prov:wasAssociatedWith relation from an prov:Activity to some prov:Agent that had some responsiblity for it. For example, :baking prov:wasAssociatedWith :baker; prov:qualifiedAssociation [ a prov:Association; prov:agent :baker; :foo :bar ]."
+provone:Channel,rdfs:label,Channel
+provone:Program,prov:category,workflow-specification
+prov:Association,prov:category,qualified
+provone:Port,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+workflow:Large_Language_Model_Output,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+workflow:Generative_Task,dc:description,"A  task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data."
+workflow:Large_Language_Models,rdfs:subClassOf,eo:ArtificialIntelligenceMethod
+workflow:Large_Language_Models,rdfs:label,Large Language Models
+prov:Usage,prov:unqualifiedForm,prov:used
+prov:Usage,prov:category,qualified
+prov:Collection,prov:definition,"A collection is an entity that provides a structure to some constituents, which are themselves entities. These constituents are said to be member of the collections."
+prov:Usage,rdfs:subClassOf,prov:EntityInfluence
+prov:Usage,prov:n,http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Usage
+prov:Association,prov:component,agents-responsibility
+prov:Association,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+workflow:Large_Language_Models,http://purl.org/dc/terms/alternative,LLM
+provone:Execution,prov:category,trace-specification
+prov:Usage,prov:constraints,http://www.w3.org/TR/2013/REC-prov-constraints-20130430/#prov-dm-constraints-fig
+prov:Association,prov:dm,http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-Association
+provone:Program,prov:definition,"A Program represents a computational task that consumes and produces data through its input and output ports, respectively. It can be atomic or composite, the latter case represented by a possibly nested Program. It is also subject to versioning by prov:wasDerivedFrom."
+prov:Generation,rdfs:subClassOf,prov:ActivityInfluence
+prov:Collection,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+provone:User,rdfs:subClassOf,prov:Agent
+prov:Generation,prov:dm,http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-Generation
+workflow:Large_Language_Model_Output,skos:definition,An Output Artifact from a AI Task
+prov:Generation,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+prov:Collection,rdfs:label,Collection
+workflow:Large_Language_Models,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+prov:Collection,prov:component,collections
+workflow:Large_Language_Model_Output,rdfs:label,Large Language Model Output
+provone:Port,rdfs:subClassOf,prov:Entity
+prov:Usage,rdfs:subClassOf,prov:InstantaneousEvent
+provone:Channel,rdfs:comment,"A Channel provides a connection between Ports that are defined for Programs. Typically, a Program
+        with an output Port defined using the provone:hasOutPort object property connects to a Program with an input
+        Port defined using the provone:hasInPort object property. The two Ports are connected using a Channel with the
+        provone:connectsTo object property."
+prov:Association,prov:definition,"An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity. It further allows for a plan to be specified, which is the plan intended by the agent to achieve some goals in the context of this activity."
+eo:Reasoning_Mode,skos:example,"The treatment planning process proceeds in four steps. First, the play therapist must develop accurate, comprehensive treatment goals that are consistent with the case formulation and the theoretical model being used. Because these goals are formulated from a theoretical perspective, they may not fully align with the goals of the child and his or her caregivers. Therefore, in the second step, the play therapist must work with both the child client and his or her caregivers to develop a treatment contract that takes the goals created in the first step and addresses each party’s needs. This will ensure they will remain actively engaged in the treatment process over time. Third, the play therapist must organize the treatment goals and the treatment contracts into a realistic and sequential treatment plan. Finally, the play therapist must devise both experiential and cognitive/verbal interventions to move the client toward the treatment goals.
+
+Source: O'Connor, K. J., & Ammen, S. (2012). Play therapy treatment planning and interventions: The ecosystemic model and workbook. Academic Press."
+prov:Usage,rdfs:comment,"An instance of prov:Usage provides additional descriptions about the binary prov:used relation from some prov:Activity to an prov:Entity that it used. For example, :keynote prov:used :podium; prov:qualifiedUsage [ a prov:Usage; prov:entity :podium; :foo :bar ]."
+provone:Execution,rdfs:label,Execution
+provone:User,rdfs:label,User
+prov:Collection,prov:dm,http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-collection
+provone:Execution,rdfs:comment,"An Execution represents the execution of a Program. If the Program in question is a Workflow, then the Execution represents a trace of its execution."
+provone:Channel,rdfs:subClassOf,prov:Entity
+prov:Generation,rdfs:comment,"An instance of prov:Generation provides additional descriptions about the binary prov:wasGeneratedBy relation from a generated prov:Entity to the prov:Activity that generated it. For example, :cake prov:wasGeneratedBy :baking; prov:qualifiedGeneration [ a prov:Generation; prov:activity :baking; :foo :bar ]."
+prov:Usage,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+provone:Data,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#Class
+provone:Port,prov:category,workflow-specification
+prov:wasGeneratedBy,rdfs:range,provone:Execution
+prov:wasInformedBy,rdfs:domain,provone:Execution
+prov:wasGeneratedBy,rdfs:range,prov:Activity
+provone:hadOutPort,rdfs:domain,prov:Generation
+prov:wasInformedBy,rdfs:domain,prov:Activity
+prov:wasAssociatedWith,http://www.w3.org/2002/07/owl#propertyChainAxiom,ncdc5e904a47c4995a4fed41cf1af415cb36
+prov:agent,prov:editorialNote,This property behaves in spirit like rdf:object; it references the object of a prov:wasInfluencedBy triple.
+provone:hadEntity,rdfs:domain,prov:Usage
+prov:used,prov:inverse,wasUsedBy
+sio:SIO_000229,rdfs:range,workflow:Large_Language_Model_Output
+prov:hadMember,rdfs:subPropertyOf,prov:wasInfluencedBy
+provone:hadInPort,rdfs:domain,prov:Usage
+provone:hasOutPort,rdfs:domain,provone:Program
+provone:hasInPort,rdfs:comment,Enables the specification of a Port as an input port of a particular Program.
+sio:SIO_000313,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+prov:qualifiedUsage,prov:sharesDefinitionWith,prov:Usage
+prov:agent,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+sio:SIO_000313,rdfs:isDefinedBy,http://semanticscience.org/ontology/sio.owl
+sio:SIO_000230,rdfs:subPropertyOf,sio:SIO_000132
+prov:hadPlan,rdfs:label,hadPlan
+prov:agent,rdfs:comment,Enables the specification of a particular User in a particular Association. This allows for further qualification of the prov:wasAssociatedWith property in the context of an Execution.
+prov:agent,rdfs:subPropertyOf,prov:influencer
+prov:qualifiedGeneration,http://www.w3.org/2002/07/owl#inverseOf,prov:qualifiedGenerationOf
+sio:SIO_000232,dc:identifier,SIO_000232
+prov:used,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+provone:hasInPort,rdfs:label,hasInPort
+prov:used,rdfs:label,used
+sio:SIO_000369,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+prov:used,prov:qualifiedForm,prov:qualifiedUsage
+prov:wasGeneratedBy,rdfs:label,wasGeneratedBy
+sio:SIO_000369,dc:identifier,SIO_000369
+sio:SIO_000232,rdfs:domain,workflow:Large_Language_Model_Output
+prov:wasGeneratedBy,prov:inverse,generated
+prov:qualifiedAssociation,rdfs:comment,"If this Activity prov:wasAssociatedWith Agent :ag, then it can qualify the Association using prov:qualifiedAssociation [ a prov:Association;  prov:agent :ag; :foo :bar ]."
+provone:hadEntity,rdfs:comment,Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:wasGeneratedBy properties in the context of an Execution.
+provone:hadInPort,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+sio:SIO_000232,rdfs:label,is output of
+sio:SIO_000229,sio:subset,sadi
+provone:hadOutPort,prov:category,trace-specification
+prov:qualifiedGeneration,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+sio:SIO_000229,http://www.w3.org/2002/07/owl#inverseOf,sio:SIO_000232
+prov:wasInformedBy,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+prov:hadMember,prov:category,expanded
+prov:qualifiedAssociation,rdfs:subPropertyOf,prov:qualifiedInfluence
+sio:SIO_000313,http://purl.org/dc/terms/description,"is component part of is a relation between a component and a whole, where the component is instrinsic to the whole, and loss of the part would change the kind that the whole is."
+sio:SIO_000230,sio:subset,core
+prov:wasAssociatedWith,prov:qualifiedForm,prov:Association
+sio:SIO_000369,rdfs:domain,provone:Execution
+sio:SIO_000369,rdfs:subPropertyOf,sio:SIO_000273
+prov:qualifiedUsage,rdfs:range,prov:Usage
+provone:hasInPort,rdfs:range,provone:Port
+sio:SIO_000232,rdfs:subPropertyOf,sio:SIO_000062
+prov:wasGeneratedBy,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+prov:qualifiedUsage,prov:unqualifiedForm,prov:used
+prov:qualifiedUsage,rdfs:comment,Enables the specification of a particular Usage by a particular Execution. This allows for further qualification of the prov:used property in the context of an Execution.
+prov:hadPlan,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+sio:SIO_000369,skos:example,a human has blood as a component part
+sio:SIO_000230,http://www.w3.org/2002/07/owl#inverseOf,sio:SIO_000231
+prov:agent,rdfs:domain,prov:AgentInfluence
+prov:wasAssociatedWith,rdfs:domain,provone:Execution
+sio:SIO_000313,rdfs:subPropertyOf,sio:SIO_000310
+prov:wasAssociatedWith,rdfs:domain,prov:Activity
+sio:SIO_000229,rdfs:label,has output
+prov:agent,http://www.w3.org/2002/07/owl#inverseOf,prov:agentOfInfluence
+prov:qualifiedGeneration,prov:category,qualified
+prov:qualifiedGeneration,prov:category,trace-specification
+prov:qualifiedAssociation,http://www.w3.org/2002/07/owl#inverseOf,prov:qualifiedAssociationOf
+prov:hadMember,rdfs:range,prov:Entity
+prov:wasInformedBy,prov:component,entities-activities
+provone:connectsTo,rdfs:label,connectsTo
+prov:agent,rdfs:range,
+sio:SIO_000230,http://purl.org/dc/terms/description,"has input is a relation between a process and an entity, where the entity is present at the beginning of the process."
+prov:qualifiedGeneration,prov:inverse,qualifiedGenerationOf
+provone:hasOutPort,rdfs:label,hasOutPort
+provone:hasInPort,prov:category,workflow-specification
+prov:wasAssociatedWith,rdfs:range,provone:User
+provone:connectsTo,rdfs:domain,provone:Port
+sio:SIO_000230,rdfs:isDefinedBy,http://semanticscience.org/ontology/sio.owl
+prov:qualifiedGeneration,rdfs:label,qualifiedGeneration
+prov:wasInformedBy,rdfs:subPropertyOf,prov:wasInfluencedBy
+prov:qualifiedAssociation,prov:inverse,qualifiedAssociationOf
+prov:wasGeneratedBy,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o-inverses#
+prov:hadMember,rdfs:domain,prov:Collection
+prov:qualifiedAssociation,prov:component,agents-responsibility
+prov:agent,prov:editorsDefinition,"The prov:agent property references an prov:Agent which influenced a resource. This property applies to an prov:AgentInfluence, which is given by a subproperty of prov:qualifiedInfluence from the influenced prov:Entity, prov:Activity or prov:Agent."
+prov:wasAssociatedWith,rdfs:subPropertyOf,prov:wasInfluencedBy
+prov:agent,rdfs:label,hadPlan
+prov:qualifiedUsage,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+prov:hadMember,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+provone:hadEntity,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+prov:hadPlan,http://www.w3.org/2002/07/owl#inverseOf,prov:wasPlanOf
+prov:wasGeneratedBy,http://www.w3.org/2002/07/owl#propertyChainAxiom,ncdc5e904a47c4995a4fed41cf1af415cb46
+prov:wasAssociatedWith,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+sio:SIO_000230,rdfs:label,has input
+provone:hasOutPort,rdfs:range,provone:Port
+prov:hadPlan,prov:sharesDefinitionWith,prov:Plan
+prov:wasInformedBy,rdfs:label,wasInformedBy
+prov:wasInformedBy,rdfs:range,provone:Execution
+prov:wasGeneratedBy,prov:category,starting-point
+prov:wasInformedBy,rdfs:range,prov:Activity
+prov:qualifiedAssociation,rdfs:label,qualifiedAssociation
+sio:SIO_000232,rdfs:isDefinedBy,http://semanticscience.org/ontology/sio.owl
+prov:agent,rdfs:comment,Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:wasAssociatedWith property in the context of an Execution.
+prov:qualifiedGeneration,prov:sharesDefinitionWith,prov:Generation
+prov:hadMember,rdfs:label,hadMember
+prov:qualifiedGeneration,rdfs:subPropertyOf,prov:qualifiedInfluence
+prov:qualifiedUsage,prov:category,qualified
+prov:qualifiedUsage,prov:category,trace-specification
+prov:wasGeneratedBy,prov:qualifiedForm,prov:Generation
+provone:hasOutPort,prov:category,workflow-specification
+provone:hasInPort,rdfs:range,provone:Program
+sio:SIO_000313,http://www.w3.org/2002/07/owl#inverseOf,sio:SIO_000369
+prov:used,prov:category,starting-point
+prov:qualifiedAssociation,prov:sharesDefinitionWith,prov:Association
+provone:hadEntity,rdfs:range,prov:Entity
+prov:hadPlan,rdfs:range,prov:Plan
+prov:qualifiedAssociation,rdfs:comment,Enables the specification of a particular Association by a particular Execution. This allows for further qualification of the prov:wasAssociatedWith property in the context of an Execution.
+prov:qualifiedUsage,prov:inverse,qualifiedUsingActivity
+sio:SIO_000313,rdfs:range,provone:Execution
+prov:agent,rdfs:label,agent
+prov:qualifiedGeneration,rdfs:range,prov:Generation
+prov:qualifiedAssociation,rdfs:domain,provone:Execution
+prov:qualifiedAssociation,rdfs:domain,prov:Activity
+sio:SIO_000313,rdfs:domain,workflow:Generative_Task
+prov:used,http://www.w3.org/2002/07/owl#propertyChainAxiom,ncdc5e904a47c4995a4fed41cf1af415cb34
+provone:hadEntity,rdfs:domain,prov:Generation
+prov:used,rdfs:comment,"A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven ."
+sio:SIO_000229,rdfs:subPropertyOf,sio:SIO_000132
+prov:hadMember,prov:sharesDefinitionWith,prov:Collection
+prov:qualifiedAssociation,rdfs:range,prov:Association
+prov:wasAssociatedWith,prov:qualifiedForm,prov:qualifiedAssociation
+sio:SIO_000232,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+prov:wasInformedBy,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+provone:hadOutPort,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+prov:qualifiedUsage,rdfs:subPropertyOf,prov:qualifiedInfluence
+provone:connectsTo,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+prov:wasAssociatedWith,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+prov:agent,prov:inverse,agentOfInfluence
+sio:SIO_000232,skos:example,glucose-6-phosphate and ADP are outputs in the hexokinase-mediated conversion of glucose to glucose-6-phosphate.
+provone:hadInPort,rdfs:range,provone:Port
+sio:SIO_000369,http://purl.org/dc/terms/description,"has component part is a relation between a whole and a component part where the component is instrinsic to the whole, and loss of the part would change the kind that it is."
+provone:hadOutPort,rdfs:comment,Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:wasGeneratedBy property in the context of an Execution.
+sio:SIO_000229,sio:subset,core
+prov:hadPlan,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+sio:SIO_000369,rdfs:label,has component part
+prov:agent,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+prov:qualifiedGeneration,rdfs:comment,"If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualifiedGeneration [ a prov:Generation;  prov:entity :e; :foo :bar ]."
+provone:hadEntity,prov:category,trace-specification
+prov:wasGeneratedBy,prov:component,entities-activities
+prov:agent,rdfs:domain,
+sio:SIO_000230,sio:subset,sadi
+prov:wasAssociatedWith,rdfs:range,prov:Agent
+sio:SIO_000230,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+provone:hadInPort,prov:category,workflow-specification
+prov:hadMember,prov:component,expanded
+prov:used,rdfs:domain,provone:Execution
+prov:used,rdfs:domain,prov:Activity
+prov:qualifiedAssociation,prov:unqualifiedForm,prov:wasAssociatedWith
+prov:wasGeneratedBy,rdfs:isDefinedBy,prov:
+prov:wasInformedBy,prov:category,starting-point
+prov:wasGeneratedBy,rdfs:domain,prov:Entity
+sio:SIO_000229,rdfs:isDefinedBy,http://semanticscience.org/ontology/sio.owl
+prov:hadPlan,prov:category,qualified
+prov:wasInformedBy,prov:inverse,informed
+prov:wasGeneratedBy,prov:qualifiedForm,prov:qualifiedGeneration
+prov:qualifiedUsage,rdfs:label,qualifiedUsage
+prov:hadPlan,rdfs:domain,prov:Association
+prov:used,prov:component,entities-activities
+prov:wasGeneratedBy,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+sio:SIO_000232,http://purl.org/dc/terms/description,"is output of is a relation between an entity and a process, where the entity is present at the end of the process."
+sio:SIO_000313,rdfs:label,is component part of
+prov:qualifiedUsage,http://www.w3.org/2002/07/owl#inverseOf,prov:qualifiedUsingActivity
+prov:wasAssociatedWith,rdfs:label,wasAssociatedWith
+sio:SIO_000232,sio:subset,sadi
+provone:hadOutPort,rdfs:label,hadOutPort
+prov:qualifiedGeneration,prov:component,entities-activities
+prov:used,prov:qualifiedForm,prov:Usage
+prov:used,rdfs:subPropertyOf,prov:wasInfluencedBy
+prov:hadPlan,rdfs:comment,The _optional_ Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.
+prov:qualifiedGeneration,prov:unqualifiedForm,prov:wasGeneratedBy
+prov:wasAssociatedWith,prov:component,agents-responsibility
+provone:connectsTo,rdfs:range,provone:Channel
+prov:hadMember,prov:inverse,wasMemberOf
+prov:wasAssociatedWith,rdfs:comment,An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.
+prov:hadPlan,prov:component,agents-responsibility
+prov:qualifiedUsage,rdfs:comment,"If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualifiedUsage [ a prov:Usage; prov:entity :e; :foo :bar ]."
+prov:wasInformedBy,rdfs:comment,"An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2."
+prov:used,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+prov:qualifiedAssociation,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+sio:SIO_000229,rdfs:domain,workflow:Large_Language_Models
+prov:qualifiedGeneration,rdfs:domain,prov:Entity
+provone:hadOutPort,rdfs:range,provone:Port
+prov:wasInformedBy,prov:qualifiedForm,prov:Communication
+provone:hasInPort,rdfs:domain,provone:Program
+sio:SIO_000230,dc:identifier,SIO_000230
+sio:SIO_000313,dc:identifier,SIO_000313
+sio:SIO_000232,rdfs:range,workflow:Large_Language_Models
+prov:qualifiedAssociation,rdfs:isDefinedBy,http://www.w3.org/ns/prov-o#
+prov:qualifiedUsage,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+prov:qualifiedGeneration,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+provone:hasOutPort,rdfs:comment,Enables the specification of a Port as an output port of a particular Program.
+prov:hadPlan,prov:inverse,wasPlanOf
+prov:wasGeneratedBy,rdfs:subPropertyOf,prov:wasInfluencedBy
+provone:hasOutPort,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+provone:hadEntity,rdfs:label,hadEntity
+prov:hadMember,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+prov:wasInformedBy,prov:qualifiedForm,prov:qualifiedCommunication
+provone:connectsTo,prov:category,workflow-specification
+sio:SIO_000229,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+sio:SIO_000369,rdfs:isDefinedBy,http://semanticscience.org/ontology/sio.owl
+provone:connectsTo,rdfs:comment,"Specifies the Channel that the given Port connects to, 
+          typically with an output Port connected to an input Port."
+provone:hasInPort,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2002/07/owl#ObjectProperty
+prov:qualifiedGeneration,rdfs:comment,Enables the specification of a particular Generation by a particular Execution. This allows for further qualification of the prov:wasGeneratedBy property in the context of an Execution.
+sio:SIO_000229,dc:identifier,SIO_000229
+prov:agent,rdfs:range,prov:Agent
+provone:hadInPort,rdfs:label,hadInPort
+prov:agent,prov:category,qualified
+prov:wasAssociatedWith,prov:inverse,wasAssociateFor
+prov:agent,prov:category,trace-specification
+prov:used,http://www.w3.org/2002/07/owl#inverseOf,prov:wasUsedBy
+prov:qualifiedUsage,rdfs:domain,provone:Execution
+prov:wasAssociatedWith,prov:category,starting-point
+prov:qualifiedGeneration,rdfs:domain,provone:Execution
+sio:SIO_000369,rdfs:range,workflow:Generative_Task
+prov:qualifiedUsage,rdfs:domain,prov:Activity
+prov:hadMember,http://www.w3.org/2002/07/owl#inverseOf,prov:wasMemberOf
+prov:qualifiedAssociation,prov:category,qualified
+prov:qualifiedAssociation,prov:category,trace-specification
+provone:hadInPort,rdfs:comment,Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.
+sio:SIO_000313,sio:subset,core
+prov:qualifiedUsage,prov:component,entities-activities
+sio:SIO_000229,http://purl.org/dc/terms/description,"has output is a relation between an process and an entity, where the entity is present at the end of the process."
+prov:wasInformedBy,http://www.w3.org/2002/07/owl#propertyChainAxiom,ncdc5e904a47c4995a4fed41cf1af415cb58
+prov:used,rdfs:range,prov:Entity

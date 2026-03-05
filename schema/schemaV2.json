@@ -1,0 +1,196 @@
+{
+  "classes": [
+    "workflow:Generative_Task",
+    "workflow:Large_Language_Models",
+    "workflow:Large_Language_Model_Output",
+    "eo:Reasoning_Mode",
+    "provone:Program",
+    "provone:Port",
+    "provone:Channel",
+    "provone:Execution",
+    "provone:User",
+    "provone:Data",
+    "prov:Collection",
+    "prov:Association",
+    "prov:Usage",
+    "prov:Generation"
+  ],
+  "object_properties": {
+    "sio:SIO_000229": {
+      "connections":[
+        {
+          "domain": "workflow:Large_Language_Models",
+          "range": "workflow:Large_Language_Model_Output"
+        }
+      ]
+    },
+    "sio:SIO_000232": {
+      "connections":[
+        {
+          "domain": "workflow:Large_Language_Model_Output",
+          "range": "workflow:Large_Language_Models"
+        }
+      ]
+    },
+    "sio:SIO_000313": {
+      "connections":[
+        {
+          "domain": "workflow:Generative_Task",
+          "range": "provone:Execution"
+        }
+      ]
+    },
+    "sio:SIO_000369": {
+      "connections":[
+        {
+          "domain": "provone:Execution",
+          "range": "workflow:Generative_Task"
+        }
+      ]
+    },
+    "sio:SIO_000230": {
+      "connections":[
+        {
+          "domain": "provone:Data",
+          "range": "workflow:Large_Language_Models"
+        }
+      ]
+    },
+    "prov:used": {
+      "connections":[
+        {
+          "domain": "provone:Execution",
+          "range": "provone:Data"
+        },
+        {
+          "domain": "workflow:Generative_Task",
+          "range": "workflow:Large_Language_Models"
+        }
+      ]
+    },
+    "prov:agent": {
+      "connections":[
+        {
+          "domain": "prov:Association",
+          "range": "provone:User"
+        }
+      ]
+    },
+    "prov:qualifiedAssociation": {
+      "connections":[
+        {
+          "domain": "provone:Execution",
+          "range": "provone:Association"
+        }
+      ]
+    },
+    "prov:qualifiedUsage": {
+      "connections":[
+        {
+          "domain": "provone:Execution",
+          "range": "provone:Usage"
+        }
+      ]
+    },
+    "prov:qualifiedGeneration": {
+      "connections":[
+        {
+          "domain": "provone:Execution",
+          "range": "provone:Generation"
+        }
+      ]
+    },
+    "prov:hadPlan": {
+      "connections":[
+        {
+          "domain": "provone:Association",
+          "range": "provone:Program"
+        }
+      ]
+    },
+    "provone:hasOutPort": {
+      "connections":[
+        {
+          "domain": "provone:Program",
+          "range": "provone:Port"
+        }
+      ]
+    },
+    "provone:hasInPort": {
+      "connections":[
+        {
+          "domain": "provone:Program",
+          "range": "provone:Port"
+        }
+      ]
+    },
+    "provone:connectsTo": {
+      "connections":[
+        {
+          "domain": "provone:Port",
+          "range": "provone:Port"
+        }
+      ]
+    },
+    "provone:hadInPort": {
+      "connections":[
+        {
+          "domain": "provone:Usage",
+          "range": "provone:Port"
+        }
+      ]
+    },
+    "provone:hadOutPort": {
+      "connections":[
+        {
+          "domain": "provone:Generation",
+          "range": "provone:Port"
+        }
+      ]
+    },
+    "prov:hadMember": {
+      "connections":[
+        {
+          "domain": "prov:Collection",
+          "range": "provone:Data"
+        }
+      ]
+    },
+    "provone:hadEntity": {
+      "connections":[
+        {
+          "domain": "prov:Usage",
+          "range": "provone:Data"
+        },
+        {
+          "domain": "prov:Generation",
+          "range": "provone:Data"
+        }
+      ]
+    },
+    "prov:wasInformedBy": {
+      "connections":[
+        {
+          "domain": "provone:Execution",
+          "range": "provone:Execution"
+        }
+      ]
+    },
+    "prov:wasGeneratedBy": {
+      "connections":[
+        {
+          "domain": "provone:Data",
+          "range": "provone:Execution"
+        }
+      ]
+    },
+    "prov:wasAssociatedWith": {
+      "connections":[
+        {
+          "domain": "provone:Execution",
+          "range": "provone:User"
+        }
+      ]
+    }
+  }
+}

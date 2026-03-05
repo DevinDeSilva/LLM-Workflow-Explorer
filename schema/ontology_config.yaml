@@ -1,0 +1,27 @@
+ttl: 
+  prefixes: [
+    { name: "provone", uri: "http://purl.dataone.org/provone/2015/01/15/ontology#" },
+    { name: "skos", uri: "http://www.w3.org/2004/02/skos/core#" },
+    { name: "prov", uri: "http://www.w3.org/ns/prov#" },
+    { name: "rdfs", uri: "http://www.w3.org/2000/01/rdf-schema#" },
+    { name: "cwfo", uri: "http://cwf.tw.rpi.edu/vocab#" },
+    { name: "dcterms", uri: "http://purl.org/dc/terms#" },
+    { name: "ChatBS-NexGen", uri: "http://testwebsite/testProgram#" },
+    { name: "user", uri: "http://testwebsite/testUser#" },
+    { name: "eo", uri: "https://purl.org/heals/eo#" },
+    { name: "ep", uri: "http://linkedu.eu/dedalo/explanationPattern.owl#" },
+    { name: "sio", uri: "http://semanticscience.org/resource/" },
+    { name: "dc", uri: "http://purl.org/dc/elements/1.1/" },
+    { name: "DFColumn", uri: "http://testwebsite/testDFColumn#" },
+    { name: "fnom", uri: "https://w3id.org/function/vocabulary/mapping#" },
+    { name: "fnoi", uri: "https://w3id.org/function/vocabulary/implementation#" },
+    { name: "fnoc", uri: "https://w3id.org/function/vocabulary/composition/0.1.0/" },
+    { name: "food", uri: "http://purl.org/heals/food/" },
+    { name: "dbo", uri: "http://dbpedia.org/ontology/" },
+    { name: "dbp", uri: "http://dbpedia.org/property/" },
+    { name: "dbt", uri: "http://dbpedia.org/resource/Template:" },
+    { name: "ques", uri: "http://atomic_questions.org/" },
+    { name: "xsd", uri: "http://www.w3.org/2001/XMLSchema#" },
+    { name: "fno", uri: "https://w3id.org/function/vocabulary/core#" },
+    { name: "workflow", uri: "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/" }
+  ]

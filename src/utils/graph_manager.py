@@ -270,11 +270,17 @@ class GraphManager:
 
         self.reverse_curie = partial(reverse_curie, ns=self.config['namespaces'])
 
-    def query(self, sparql_query: str, **args) -> pd.DataFrame:
-        if args.get('add_header_tail', True):
+    def query(self, sparql_query: str, *args, **kwargs) -> pd.DataFrame:
+        if kwargs.get('add_header_tail', True):
             sparql_query = self.add_sparql_header_tail(sparql_query)
+        
+        results = query_func(self.graph, sparql_query, *args)
+        
+        if kwargs.get('resolve_curie', False):
+            for col in results.columns:
+                results[col] = results[col].apply(self.reverse_curie)
 
-        return query_func(self.graph, sparql_query, **args)
+        return results
     
     def add_sparql_header_tail(self, txt):
         return f"{TEMPLATE_HEADER} {txt} {TEMPLATE_TAIL}"

@@ -1264,7 +1264,7 @@ resource:SIO_000229 rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf resource:SIO_000132 ;
                     owl:inverseOf resource:SIO_000232 ;
                     rdfs:domain :Large_Language_Models ;
-                    rdfs:range :AI_Output ;
+                    rdfs:range :Large_Language_Model_Output ;
                     dc:identifier "SIO_000229" ;
                     terms:description "has output is a relation between an process and an entity, where the entity is present at the end of the process."@en ;
                     resource:subset "core" ,
@@ -1299,7 +1299,7 @@ resource:SIO_000231 rdf:type owl:ObjectProperty ;
 ###  http://semanticscience.org/resource/SIO_000232
 resource:SIO_000232 rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf resource:SIO_000062 ;
-                    rdfs:domain :AI_Output ;
+                    rdfs:domain :Large_Language_Model_Output ;
                     rdfs:range :Large_Language_Models ;
                     dc:identifier "SIO_000232" ;
                     terms:description "is output of is a relation between an entity and a process, where the entity is present at the end of the process."@en ;
@@ -22006,18 +22006,6 @@ resource:SIO_011131 rdf:type owl:Class ;
                                                                        rdfs:label "Situation" .
 
 
-###  http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/AI_Output
-:AI_Output rdf:type owl:Class ;
-           rdfs:subClassOf <https://purl.org/heals/eo#SystemRecommendation> ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty resource:SIO_000232 ;
-                             owl:someValuesFrom <https://purl.org/heals/eo#ArtificialIntelligenceMethod>
-                           ] ;
-           rdfs:isDefinedBy "Devin De SIlva (desild@rpi.edu)" ;
-           rdfs:label "AI Output" ;
-           skos:definition "An Output Artifact from a AI Task" .
-
-
 ###  http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Generative_Output
 :Generative_Output rdf:type owl:Class ;
                    owl:equivalentClass [ rdf:type owl:Class ;
@@ -22025,7 +22013,6 @@ resource:SIO_011131 rdf:type owl:Class ;
                                                        <http://purl.dataone.org/provone/2015/01/15/ontology#Program>
                                                      )
                                        ] ;
-                   rdfs:subClassOf :AI_Output ;
                    terms:description "Generated output of an AI model" ;
                    rdfs:isDefinedBy "Devin De Silva (desild@rpi.edu)" ;
                    rdfs:label "Generative Output" .
@@ -22037,10 +22024,31 @@ resource:SIO_011131 rdf:type owl:Class ;
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty resource:SIO_000313 ;
                                    owl:someValuesFrom <http://purl.dataone.org/provone/2015/01/15/ontology#Execution>
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty prov:used ;
+                                   owl:someValuesFrom :Large_Language_Models
                                  ] ;
                  dc:description "A  task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data." ;
                  terms:source "“Generative AI.” IBM Think, IBM, www.ibm.com/think/topics/generative-ai. Accessed 1 Mar. 2026." ;
                  rdfs:label "Generative Task" .
+
+
+###  http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Large_Language_Model_Output
+:Large_Language_Model_Output rdf:type owl:Class ;
+                             owl:equivalentClass [ rdf:type owl:Class ;
+                                                   owl:unionOf ( <http://purl.dataone.org/provone/2015/01/15/ontology#Data>
+                                                                 <http://purl.dataone.org/provone/2015/01/15/ontology#Program>
+                                                               )
+                                                 ] ;
+                             rdfs:subClassOf <https://purl.org/heals/eo#SystemRecommendation> ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty resource:SIO_000232 ;
+                                               owl:someValuesFrom :Large_Language_Models
+                                             ] ;
+                             rdfs:isDefinedBy "Devin De SIlva (desild@rpi.edu)" ;
+                             rdfs:label "Large Language Model Output" ;
+                             skos:definition "An Output Artifact from a AI Task" .
 
 
 ###  http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Large_Language_Models
@@ -22729,7 +22737,7 @@ prov:Usage rdf:type owl:Class ;
                                                                          ] ,
                                                                          [ rdf:type owl:Restriction ;
                                                                            owl:onProperty resource:SIO_000229 ;
-                                                                           owl:someValuesFrom :AI_Output
+                                                                           owl:someValuesFrom :Large_Language_Model_Output
                                                                          ] ;
                                                          dc:description "a subroutine that implements a single family of AI models and takes as input certain inputs and outputs a value" ;
                                                          rdfs:label "AI Method" .
