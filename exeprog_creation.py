@@ -1,19 +1,20 @@
 import marimo
 
-__generated_with = "0.20.2"
+__generated_with = "0.20.4"
 app = marimo.App()
 
 
 @app.cell
 def _():
     import logging
+    import pandas as pd
     from src.explorer.bfs_explorer import BFSExplorer
     from src.utils.graph_manager import GraphManager
     from src.utils.utils import load_config
 
     logger = logging.getLogger(__name__)
-    CONFIG_PATH = "evaluations/chatbs/exeprog_creation/config.yaml"
-    return BFSExplorer, CONFIG_PATH, GraphManager, load_config, logging
+    CONFIG_PATH = "evaluations/chatbs/config.yaml"
+    return BFSExplorer, CONFIG_PATH, GraphManager, load_config, logging, pd
 
 
 @app.cell
@@ -30,22 +31,43 @@ def _(config):
 
 
 @app.cell
-def _(GraphManager, config):
+def _(GraphManager, config, pd):
     graph_manager = GraphManager(
             config, 
             config.file_paths.execution_kg_loc
         )
-    return (graph_manager,)
+
+    ontology_triples_df = pd.read_csv(config.explorer_config.ontology_triples_path)
+    return graph_manager, ontology_triples_df
 
 
 @app.cell
-def _(BFSExplorer, config, graph_manager):
-    workflow_explorer = BFSExplorer(kg_name="workflow", graph_manager=graph_manager)
+def _(graph_manager):
+    triples = graph_manager.query("SELECT ?s ?p ?o WHERE { ?s ?p ?o }", add_header_tail=False)
+    triples.head(5)
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _(BFSExplorer, config, graph_manager, ontology_triples_df):
+    workflow_explorer = BFSExplorer(
+        kg_name="workflow", 
+        graph_manager=graph_manager,
+        ontology_info_triples=ontology_triples_df,
+        parallel_execution=config.explorer_config.parallel,
+        temp_folder=config.explorer_config.temp_folder
+        )
+
     workflow_explorer.load_graph_and_schema(
         schema_fpath=config.file_paths.schema_loc,
         rdf_fpath=config.file_paths.execution_kg_loc,
         metadata_path=config.file_paths.explorer_metadata_loc,
-        use_cache=True,
+        use_cache=config.explorer_config.use_cache,
     )
     return (workflow_explorer,)
 
