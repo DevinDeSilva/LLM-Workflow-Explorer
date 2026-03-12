@@ -5,6 +5,7 @@ from rdflib.namespace import RDF
 import pandas as pd
 from functools import partial
 from src.utils.utils import regex_add_strings
+from src.config.experiment import TTLConfig
 
 logger = logging.getLogger(__name__)
 
@@ -120,7 +121,7 @@ def make_ttl_namespace(yaml_config: dict) -> dict:
     R: make_ttl_namespace
     """
     namespaces = {}
-    for item in yaml_config.get('ttl', {}).get('prefixes', []):
+    for item in yaml_config.get('prefixes', []):
         namespaces[item['name']] = item['uri']
     validate_namespaces(namespaces)
     return namespaces
@@ -252,9 +253,9 @@ class GraphManager:
     A class to hold graph state, config, and helper functions,
     replacing the R environment `graph_func`.
     """
-    def __init__(self, config: dict, graph_file: Optional[str] = None):
+    def __init__(self, config: TTLConfig, graph_file: Optional[str] = None):
         logger.info("Initializing GraphManager...")
-        self.config = config
+        self.config = config.model_dump()
         self.graph = Graph()
         if graph_file:
             self.graph.parse(graph_file, format="turtle")

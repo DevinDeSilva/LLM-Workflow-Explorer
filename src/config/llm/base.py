@@ -1,5 +1,4 @@
-from typing import Optional
-from pydantic import BaseModel
+from src.config.base import BaseConfig
 
-class BaseLlmConfig(BaseModel):
+class BaseLlmConfig(BaseConfig):
     model:str
