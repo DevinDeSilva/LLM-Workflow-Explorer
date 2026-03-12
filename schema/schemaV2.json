@@ -10,12 +10,24 @@
     "provone:Execution",
     "provone:User",
     "provone:Data",
-    "prov:Collection",
+    "provone:Collection",
     "prov:Association",
     "prov:Usage",
     "prov:Generation"
   ],
   "object_properties": {
+    "sio:SIO_000202": {
+      "connections": [
+        {
+          "domain": "workflow:Large_Language_Model_Output",
+          "range": "provone:Program"
+        },
+        {
+          "domain": "workflow:Large_Language_Model_Output",
+          "range": "provone:Data"
+        }
+      ]
+    },
     "sio:SIO_000229": {
       "connections":[
         {
@@ -151,7 +163,7 @@
     "prov:hadMember": {
       "connections":[
         {
-          "domain": "prov:Collection",
+          "domain": "provone:Collection",
           "range": "provone:Data"
         }
       ]

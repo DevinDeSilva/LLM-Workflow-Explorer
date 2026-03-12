@@ -1,14 +1,23 @@
 file_paths:
-  schema_loc: "schema/schema.json"
+  schema_loc: "schema/schemaV2.json"
   execution_kg_loc: "usecases/chatbs/data/10_sample_graph/chatbs_sample.ttl"
   metadata_loc: "usecases/chatbs/data/10_sample_graph/chatbs_sample_metadata.json"
   explorer_metadata_loc: "evaluations/chatbs/exeprog_creation/exeplorer_metadata.pkl"
-  exeprog_save_loc: "evaluations/chatbs/exeprog_creation/exeplorer_metadata.pkl"
+  exeprog_save_loc: "evaluations/chatbs/exeprog_creation/exeplored_programs.pkl"
 
+explorer_config:
+  kg_name: "ChatBS-NexGen"
+  ontology_triples_path: "schema/extracted_ontology_triples.csv"
+  parallel: True
+  temp_folder: "evaluations/chatbs/exeprog_creation/tmp/programs"
+  use_cache: False
+
+question_config:
+  save_questions: "evaluations/chatbs/ques_creation/SyntheticQuestionKG.ttl"
 
 ttl: 
   prefixes: [
-    { name: "provone", uri: "http://purl.org/provone#" },
+    { name: "provone", uri: "http://purl.dataone.org/provone/2015/01/15/ontology#" },
     { name: "skos", uri: "http://www.w3.org/2004/02/skos/core#" },
     { name: "prov", uri: "http://www.w3.org/ns/prov#" },
     { name: "rdfs", uri: "http://www.w3.org/2000/01/rdf-schema#" },
@@ -30,5 +39,6 @@ ttl:
     { name: "dbt", uri: "http://dbpedia.org/resource/Template:" },
     { name: "ques", uri: "http://atomic_questions.org/" },
     { name: "xsd", uri: "http://www.w3.org/2001/XMLSchema#" },
-    { name: "fno", uri: "https://w3id.org/function/vocabulary/core#" }
+    { name: "fno", uri: "https://w3id.org/function/vocabulary/core#" },
+    { name: "workflow", uri: "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/" }
   ]

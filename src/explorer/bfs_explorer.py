@@ -1,4 +1,6 @@
-from src.utils.utils import time_wrapper, regex_add_strings
+import pandas as pd
+
+from src.utils.utils import time_wrapper, regex_add_strings, generate_hashed_filename
 from src.explorer.executable_program import ExecutableProgram
 from src.utils.graph_manager import GraphManager
 from rdflib import Graph, URIRef, Literal, RDF, RDFS
@@ -8,6 +10,7 @@ import os
 import pickle
 import random
 import logging
+from icecream import ic
 from typing import DefaultDict, List, Dict, Any, Optional, Set, Tuple
 from tqdm import tqdm
 import time
@@ -56,94 +59,302 @@ SPARQL_FIND_BY_PROP_VAL_TEMPLATE = """SELECT DISTINCT ?value WHERE {
     FILTER(CONTAINS(STR(?prop), "{prop_value}"))
 }"""
 
+
+def start_to_end_path_processing(
+    path: List[str], 
+    graph_manager: GraphManager,
+    str_representation: str,
+    temp_folder: str = "tmp/programs"
+    ) -> ExecutableProgram:
+    
+    logger.debug(f"Converting path to graph: {str_representation}")
+
+    # Create nodes
+    str_query = "SELECT distinct ?value where {\n" 
+    for i in range(1, len(path) -1, 2):
+        # Resolve CURIE to get full URI for class lookup
+        pred = path[i] 
+        obj = path[i + 1]
+        
+        if len(path) == 3:
+            str_query += "  <{obj}>"+f" {pred} "+" ?value  .\n"
+            break
+        
+        if i == 1:
+            str_query += "  <{obj}>"+f" {pred} "+f"?a{i}  .\n"
+        elif i == len(path) - 2:
+            str_query += f"  ?a{i-2}"+f" {pred} "+" ?value  .\n"
+        else:
+            str_query += f"  ?a{i-2}"+f" {pred} "+f"?a{i}  .\n"
+    str_query += "}"
+
+    #get objects for the class path
+    query_df = graph_manager.query(
+        regex_add_strings(
+            SPARQL_OBJ_OF_CLASS_TEMPLATE,
+            class_uri=graph_manager.resolve_curie(path[0])
+        )
+    )
+
+    objs = list(set(query_df['value'].to_list()))
+    if len(objs) == 0:
+        logger.debug(f"No objects found for class: {path[0]} in path: {str_representation}")
+        return None
+    
+    example_output = None
+    example_query = None
+    for obj in random.sample(objs, len(objs) ):
+        example_query = regex_add_strings(
+            str_query,
+            obj=obj
+        )
+
+        #print(example_query)
+        print("Executing example query...")
+        start_t = time.time()
+        example_output = graph_manager.query(example_query)
+        end_t = time.time()
+        print("end execution.")
+        print(f"Query took {end_t - start_t} seconds")
+        if not example_output.empty:
+            break
+        
+    if example_output is None or example_output.empty or example_query is None:
+        logger.debug(f"No results for path: {str_representation}")
+        return None
+
+    question = f"What are the values obtained by traversing the path: {str_representation}?"
+
+    return ExecutableProgram(
+        program_id=f"explore_path_{str_representation}",
+        name=f"Explore Path {str_representation}",
+        description=question,
+        input_spec={"obj": "The URI of the starting object."},
+        output_spec={"value": "The resulting values from the path traversal."},
+        code=graph_manager.add_sparql_header_tail(
+            str_query
+        ),
+        solves=f"What are the values obtained by traversing the path: {str_representation}?",
+        example_usage=example_query,
+        example_output=example_output.head(10),
+        tags=["path-level", *path],
+        metadata={
+            "path": path
+            }
+    )
+    
+def end_to_start_path_processing(
+    path: List[str], 
+    graph_manager: GraphManager,
+    str_representation: str,
+    temp_folder: str = "tmp/programs"
+    ) -> ExecutableProgram:
+    
+    logger.debug(f"Converting path to graph reversal: {str_representation}")
+
+    # Create nodes
+    str_query = "SELECT distinct ?value where {\n" 
+    for i in range(1, len(path) -1, 2):
+        # Resolve CURIE to get full URI for class lookup
+        pred = path[i] 
+        obj = path[i + 1]
+        
+        if len(path) == 3:
+            str_query += "  ?value"+f" {pred} "+"  <{obj}> .\n"
+            break
+        
+        if i == 1:
+            str_query += "  ?value"+f" {pred} "+f"?a{i}  .\n"
+        elif i == len(path) - 2:
+            str_query += f"  ?a{i-2}"+f" {pred} "+" <{obj}>  .\n"
+        else:
+            str_query += f"  ?a{i-2}"+f" {pred} "+f"?a{i}  .\n"
+    str_query += "}"
+
+    #get objects for the class path
+    query_df = graph_manager.query(
+        regex_add_strings(
+            SPARQL_OBJ_OF_CLASS_TEMPLATE,
+            class_uri=graph_manager.resolve_curie(path[-1])
+        )
+    )
+
+    objs = list(set(query_df['value'].to_list()))
+    if len(objs) == 0:
+        logger.debug(f"No objects found for class: {path[-1]} in path: {str_representation}")
+        return None
+    
+    example_output = None
+    example_query = None
+    for obj in random.sample(objs, len(objs) ):
+        example_query = regex_add_strings(
+            str_query,
+            obj=obj
+        )
+
+        #print(example_query)
+        print("Executing example query...")
+        start_t = time.time()
+        example_output = graph_manager.query(example_query)
+        end_t = time.time()
+        print("end execution.")
+        print(f"Query took {end_t - start_t} seconds")
+        if not example_output.empty:
+            break
+        
+    if example_output is None or example_output.empty or example_query is None:
+        logger.debug(f"No results for path: {str_representation}")
+        return None
+
+    question = f"What objects leads to this path: {str_representation}?"
+
+    return ExecutableProgram(
+        program_id=f"explore_path_{str_representation}_reversed",
+        name=f"Explore Path {str_representation} reversed",
+        description=question,
+        input_spec={"obj": "The URI of the ending object."},
+        output_spec={"value": "The resulting values from the path traversal."},
+        code=graph_manager.add_sparql_header_tail(
+            str_query
+        ),
+        solves=f"What are the values obtained by traversing the path reversed: {str_representation}?",
+        example_usage=example_query,
+        example_output=example_output.head(10),
+        tags=["path-level", *path],
+        metadata={
+            "path": path
+            }
+    )
+    
+def function_path_processing(
+    path: List[str], 
+    graph_manager: GraphManager,
+    str_representation: str,
+    function:str,
+    temp_folder: str = "tmp/programs"
+    ) -> ExecutableProgram:
+    
+    logger.debug(f"Converting path to graph reversal: {str_representation}")
+
+    # Create nodes
+    str_query = "SELECT distinct ?value where {\n" 
+    for i in range(1, len(path) -1, 2):
+        # Resolve CURIE to get full URI for class lookup
+        pred = path[i] 
+        obj = path[i + 1]
+        
+        if len(path) == 3:
+            str_query += "  ?value"+f" {pred} "+"  <{obj}> .\n"
+            break
+        
+        if i == 1:
+            str_query += "  ?value"+f" {pred} "+f"?a{i}  .\n"
+        elif i == len(path) - 2:
+            str_query += f"  ?a{i-2}"+f" {pred} "+" <{obj}>  .\n"
+        else:
+            str_query += f"  ?a{i-2}"+f" {pred} "+f"?a{i}  .\n"
+    str_query += "}"
+
+    #get objects for the class path
+    query_df = graph_manager.query(
+        regex_add_strings(
+            SPARQL_OBJ_OF_CLASS_TEMPLATE,
+            class_uri=graph_manager.resolve_curie(path[-1])
+        )
+    )
+
+    objs = list(set(query_df['value'].to_list()))
+    if len(objs) == 0:
+        logger.debug(f"No objects found for class: {path[-1]} in path: {str_representation}")
+        return None
+    
+    example_output = None
+    example_query = None
+    for obj in random.sample(objs, len(objs) ):
+        example_query = regex_add_strings(
+            str_query,
+            obj=obj
+        )
+
+        #print(example_query)
+        print("Executing example query...")
+        start_t = time.time()
+        example_output = graph_manager.query(example_query)
+        end_t = time.time()
+        print("end execution.")
+        print(f"Query took {end_t - start_t} seconds")
+        if not example_output.empty:
+            break
+        
+    if example_output is None or example_output.empty or example_query is None:
+        logger.debug(f"No results for path: {str_representation}")
+        return None
+
+    question = f"What objects leads to this path: {str_representation}?"
+
+    return ExecutableProgram(
+        program_id=f"explore_path_{str_representation}_reversed",
+        name=f"Explore Path {str_representation} reversed",
+        description=question,
+        input_spec={"obj": "The URI of the ending object."},
+        output_spec={"value": "The resulting values from the path traversal."},
+        code=graph_manager.add_sparql_header_tail(
+            str_query
+        ),
+        solves=f"What are the values obtained by traversing the path reversed: {str_representation}?",
+        example_usage=example_query,
+        example_output=example_output.head(10),
+        tags=["path-level", *path],
+        metadata={
+            "path": path
+            }
+    )
+
+
 @time_wrapper
-def path_to_graph(path: List[str], graph_manager: GraphManager) -> Optional[ExecutableProgram]:
+def path_to_graph(
+    path: List[str], 
+    graph_manager: GraphManager,
+    temp_folder: str = "tmp/programs"
+    ) -> List[ExecutableProgram]:
         """
         Converts a single path (a list of node URIs) into a graph structure.
         """
+        
         str_representation = "->".join(path)
-        if os.path.exists(os.path.join("tmp/programs", str_representation)):
-            return common_utils.serialization.load_pickle(os.path.join("tmp/programs", str_representation))
-        
-        logger.debug(f"Converting path to graph: {str_representation}")
-
-        # Create nodes
-        str_query = "SELECT distinct ?value where {\n" 
-        for i in range(1, len(path) -1, 2):
-            # Resolve CURIE to get full URI for class lookup
-            pred = path[i] 
-            obj = path[i + 1]
-            
-            if len(path) == 3:
-                str_query += "  <{obj}>"+f" {pred} "+" ?value  .\n"
-                break
-            
-            if i == 1:
-                str_query += "  <{obj}>"+f" {pred} "+f"?a{i}  .\n"
-            elif i == len(path) - 2:
-                str_query += f"  ?a{i-2}"+f" {pred} "+" ?value  .\n"
-            else:
-                str_query += f"  ?a{i-2}"+f" {pred} "+f"?a{i}  .\n"
-        str_query += "}"
-
-        #get objects for the class path
-        query_df = graph_manager.query(
-            regex_add_strings(
-                SPARQL_OBJ_OF_CLASS_TEMPLATE,
-                class_uri=path[0]
+        file_path:str = os.path.join(
+            temp_folder, 
+            generate_hashed_filename(
+                str_representation,
+                ".pkl"
+                )
             )
-        )
-
-        objs = list(set(query_df['value'].to_list()))
-        print(len(objs))
-        
-        example_output = None
-        example_query = None
-        for obj in random.sample(objs, len(objs) ):
-            example_query = regex_add_strings(
-                str_query,
-                obj=obj
-            )
-
-            #print(example_query)
-            print("Executing example query...")
-            start_t = time.time()
-            example_output = graph_manager.query(example_query)
-            end_t = time.time()
-            print("end execution.")
-            print(f"Query took {end_t - start_t} seconds")
-            if not example_output.empty:
-                break
-            
-        if example_output is None or example_output.empty or example_query is None:
-            logger.debug(f"No results for path: {str_representation}")
-            return None
-
-        question = f"What are the values obtained by traversing the path: {str_representation}?"
-
-        p = ExecutableProgram(
-            program_id=f"explore_path_{str_representation}",
-            name=f"Explore Path {str_representation}",
-            description=question,
-            input_spec={"obj": "The URI of the starting object."},
-            output_spec={"value": "The resulting values from the path traversal."},
-            code=graph_manager.add_sparql_header_tail(
-                str_query
-            ),
-            solves=f"What are the values obtained by traversing the path: {str_representation}?",
-            example_usage=example_query,
-            example_output=example_output.head(10),
-            tags=["path-level", *path],
-            metadata={
-                "path": path
-                }
-        )
-        
-        common_utils.serialization.save_pickle(p, os.path.join("tmp/programs", str_representation))
-        return p
+        if os.path.exists(file_path):
+            return common_utils.serialization.load_pickle(file_path)
     
-def process_path(path: List[str], graph:GraphManager):# Only consider paths with at least one edge
-    query_graph = path_to_graph(path, graph)
+        prog1 = start_to_end_path_processing(
+                path=path,
+                graph_manager=graph_manager,
+                str_representation=str_representation,
+                temp_folder=temp_folder
+            )
+        
+        prog2 = end_to_start_path_processing(
+                path=path,
+                graph_manager=graph_manager,
+                str_representation=str_representation,
+                temp_folder=temp_folder
+            )
+        
+        progs = [prog1, prog2]
+        common_utils.serialization.save_pickle(
+            progs, 
+            file_path
+            )
+        return progs
+    
+def process_path(path: List[str], graph:GraphManager, temp_folder):# Only consider paths with at least one edge
+    query_graph = path_to_graph(path, graph, temp_folder)
     if query_graph is not None:
         return query_graph, ' -> '.join(path)
     return None, None
@@ -156,10 +367,18 @@ class BFSExplorer:
     """
 
 
-    def __init__(self, kg_name: str, graph_manager: GraphManager, parallel_exeution: bool = False):
+    def __init__(self, 
+                 kg_name: str, 
+                 graph_manager: GraphManager, 
+                 ontology_info_triples: pd.DataFrame,
+                 parallel_execution: bool = False,
+                 temp_folder: str = "tmp/programs"
+                 ):
         self.kg_name: str = kg_name
         self.graph_manager: GraphManager = graph_manager
-        self.parallel_exeution: bool = parallel_exeution
+        self.parallel_execution: bool = parallel_execution
+        self.ontology_info_triples: pd.DataFrame = ontology_info_triples
+        self.temp_folder: str = temp_folder
         self.schema: Optional[Dict[str, Any]] = None
         self.schema_dr: Dict[str, Tuple[str, str]] = {}
         self.classes: Set[str] = set()
@@ -172,6 +391,8 @@ class BFSExplorer:
         self.literals_by_cls_rel: DefaultDict[Tuple[str, str], set] = defaultdict(set)
         
         self.all_program_Obj = []
+        if not os.path.exists(self.temp_folder):
+            os.makedirs(self.temp_folder)
 
     def load_graph_and_schema(
         self,
@@ -214,17 +435,17 @@ class BFSExplorer:
         if not self.schema:
             raise ValueError("Schema could not be loaded or is empty.")
 
-        self.classes = set(self.schema.get("classes", {}).keys())
+        self.classes = set(self.schema.get("classes", []))
 
-        for rel, rel_obj in self.schema.get("relations", {}).items():
-            domain = rel_obj["domain"]
-            range_ = rel_obj["range"]
+        for rel, rel_obj in self.schema.get("object_properties", {}).items():
+            connections = rel_obj.get("connections", [])
+            for conn in connections:
+                domain = conn["domain"]
+                range_ = conn["range"]
 
-            for dom in domain:
-                for ran in range_:
-                    self.schema_dr[rel] = (dom, ran)
-                    self.out_relations_cls[dom].add(rel)
-                    self.in_relations_cls[ran].add(rel)
+                self.schema_dr[rel] = (domain, range_)
+                self.out_relations_cls[domain].add(rel)
+                self.in_relations_cls[range_].add(rel)
 
         logger.info(f"Loading RDF graph from {rdf_fpath}...")
 
@@ -552,12 +773,12 @@ class BFSExplorer:
             # We can start BFS from the class URI itself to find paths in the schema
             paths = self.breadth_first_search(c)
             
-            params = {k:[v, self.graph_manager] for k,v in enumerate(paths)}
+            params = {k:[v, self.graph_manager, self.temp_folder] for k,v in enumerate(paths)}
             
             if len(params) == 0:
                 continue
                 
-            if  self.parallel_exeution:
+            if  self.parallel_execution:
                 for _,v in common_utils.concurrancy.concurrent_dict_execution(
                     process_path,
                     params= params,
@@ -568,7 +789,11 @@ class BFSExplorer:
                             collected_graphs[v[1]] = v[0]
             else:
                 for _, path in params.items():
-                    query_graph, path_str = process_path(path[0], self.graph_manager)
+                    query_graph, path_str = process_path(
+                        path[0], 
+                        self.graph_manager,
+                        self.temp_folder
+                        )
                     if query_graph is not None and path_str is not None:
                         if path_str not in collected_graphs:
                             collected_graphs[path_str] = query_graph

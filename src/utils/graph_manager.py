@@ -18,18 +18,18 @@ LITERAL_MAP: Dict[str, str] = {
     "type.boolean": "http://www.w3.org/2001/XMLSchema#boolean",
 }
 
-TEMPLATE_HEADER = """
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX owl: <http://www.w3.org/2002/07/owl#>
-        PREFIX ep: <http://linkedu.eu/dedalo/explanationPattern.owl#>
-        PREFIX eo: <https://purl.org/heals/eo#>
-        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-        PREFIX dc: <http://purl.org/dc/elements/1.1/>
-        PREFIX food: <http://purl.org/heals/food/>
-        PREFIX prov: <http://www.w3.org/ns/prov#>
-        PREFIX provone: <http://purl.org/provone#>
-        PREFIX sio:<http://semanticscience.org/resource/>
-        """
+# TEMPLATE_HEADER = """
+#         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#         PREFIX owl: <http://www.w3.org/2002/07/owl#>
+#         PREFIX ep: <http://linkedu.eu/dedalo/explanationPattern.owl#>
+#         PREFIX eo: <https://purl.org/heals/eo#>
+#         PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+#         PREFIX dc: <http://purl.org/dc/elements/1.1/>
+#         PREFIX food: <http://purl.org/heals/food/>
+#         PREFIX prov: <http://www.w3.org/ns/prov#>
+#         PREFIX provone: <http://purl.org/provone#>
+#         PREFIX sio:<http://semanticscience.org/resource/>
+#         """
         
 TEMPLATE_TAIL = """
         \n 
@@ -283,7 +283,12 @@ class GraphManager:
         return results
     
     def add_sparql_header_tail(self, txt):
-        return f"{TEMPLATE_HEADER} {txt} {TEMPLATE_TAIL}"
+        header = ""
+        for item_name, item_uri in self.config['namespaces'].items():
+            header += f"PREFIX {item_name}: <{item_uri}> \n"
+            
+        header += "\n"
+        return f"{header} {txt} {TEMPLATE_TAIL}"
     
     @staticmethod
     def legal_class(_class: str) -> bool:
