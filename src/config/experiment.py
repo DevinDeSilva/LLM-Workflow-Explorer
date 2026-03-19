@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Dict
+from typing import List, Dict, Union
 
 from src.config.base import BaseConfig
 
@@ -20,6 +20,9 @@ class ExplorerConfig(BaseModel):
 
 class QuestionCreationConfig(BaseModel):
     save_questions:str
+    llm_type:str
+    model:str
+    llm_config:Dict[str, Union[str, int, float]] = {}
     
 class TTLConfig(BaseModel):
     prefixes:List[Dict[str,str]]

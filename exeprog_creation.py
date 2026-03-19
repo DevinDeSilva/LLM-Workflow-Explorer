@@ -14,11 +14,12 @@ def _():
     from src.utils.graph_manager import GraphManager
     from src.utils.utils import load_config
     from src.config.experiment import ExperimentConfig
+    from src.explorer.bfs_explorer import BFSExplorer
 
-    logger = logging.getLogger(__name__)
     load_dotenv()
     CONFIG_PATH = "evaluations/chatbs/config.yaml"
     return (
+        BFSExplorer,
         CONFIG_PATH,
         ExperimentConfig,
         GraphManager,
@@ -30,6 +31,15 @@ def _():
 
 @app.cell
 def _(CONFIG_PATH, load_config, logging):
+    logging.basicConfig(
+        filename='evaluations/chatbs/exeprog_creation/exe.log',               # Log to this file
+        filemode='a',                     # 'a' for append, 'w' to overwrite each time
+        level=logging.INFO,               # Capture INFO and above
+        format='%(asctime)s - %(levelname)s - %(message)s', # Custom format
+        datefmt='%Y-%m-%d %H:%M:%S'       # Custom date format
+    )
+
+    logger = logging.getLogger(__name__)  
     logging.info(f"Loading config: {CONFIG_PATH}")
     lconfig = load_config(CONFIG_PATH)
     return (lconfig,)
@@ -57,11 +67,6 @@ def _(GraphManager, config, pd):
 def _(graph_manager):
     triples = graph_manager.query("SELECT ?s ?p ?o WHERE { ?s ?p ?o }", add_header_tail=False)
     triples.head(5)
-    return
-
-
-@app.cell
-def _():
     return
 
 

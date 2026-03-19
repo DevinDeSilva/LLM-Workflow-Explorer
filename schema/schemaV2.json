@@ -92,7 +92,7 @@
       "connections":[
         {
           "domain": "provone:Execution",
-          "range": "provone:Association"
+          "range": "prov:Association"
         }
       ]
     },
@@ -100,7 +100,7 @@
       "connections":[
         {
           "domain": "provone:Execution",
-          "range": "provone:Usage"
+          "range": "prov:Usage"
         }
       ]
     },
@@ -108,14 +108,14 @@
       "connections":[
         {
           "domain": "provone:Execution",
-          "range": "provone:Generation"
+          "range": "prov:Generation"
         }
       ]
     },
     "prov:hadPlan": {
       "connections":[
         {
-          "domain": "provone:Association",
+          "domain": "prov:Association",
           "range": "provone:Program"
         }
       ]
@@ -147,7 +147,7 @@
     "provone:hadInPort": {
       "connections":[
         {
-          "domain": "provone:Usage",
+          "domain": "prov:Usage",
           "range": "provone:Port"
         }
       ]
@@ -155,7 +155,7 @@
     "provone:hadOutPort": {
       "connections":[
         {
-          "domain": "provone:Generation",
+          "domain": "prov:Generation",
           "range": "provone:Port"
         }
       ]

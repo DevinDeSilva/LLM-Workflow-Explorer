@@ -3,8 +3,9 @@ from pydantic import BaseModel
 from langchain_core.messages import SystemMessage, HumanMessage
 
 class BaseLlm:
-    def __init__(self, config):
+    def __init__(self, config, library:str):
         self.config = config
+        self.library = library
         self.llm = self._create_client()
         
     def _create_client(self):

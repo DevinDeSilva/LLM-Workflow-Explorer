@@ -18,6 +18,7 @@ import yaml
 import dycomutils as common_utils
 
 logger = logging.getLogger(__name__)
+ic.configureOutput(outputFunction=logger.info)
 
 # Get all objects of a class
 SPARQL_OBJ_OF_CLASS_TEMPLATE = """SELECT DISTINCT ?value WHERE {
@@ -110,12 +111,12 @@ def start_to_end_path_processing(
         )
 
         #print(example_query)
-        print("Executing example query...")
-        start_t = time.time()
+        #print("Executing example query...")
+        #start_t = time.time()
         example_output = graph_manager.query(example_query)
-        end_t = time.time()
-        print("end execution.")
-        print(f"Query took {end_t - start_t} seconds")
+        #end_t = time.time()
+        #print("end execution.")
+        #print(f"Query took {end_t - start_t} seconds")
         if not example_output.empty:
             break
         
@@ -139,7 +140,8 @@ def start_to_end_path_processing(
         example_output=example_output.head(10),
         tags=["path-level", *path],
         metadata={
-            "path": path
+            "path": path,
+            "func":"start_to_end"
             }
     )
     
@@ -193,12 +195,12 @@ def end_to_start_path_processing(
         )
 
         #print(example_query)
-        print("Executing example query...")
-        start_t = time.time()
+        #print("Executing example query...")
+        #start_t = time.time()
         example_output = graph_manager.query(example_query)
-        end_t = time.time()
-        print("end execution.")
-        print(f"Query took {end_t - start_t} seconds")
+        #end_t = time.time()
+        #print("end execution.")
+        #print(f"Query took {end_t - start_t} seconds")
         if not example_output.empty:
             break
         
@@ -222,7 +224,8 @@ def end_to_start_path_processing(
         example_output=example_output.head(10),
         tags=["path-level", *path],
         metadata={
-            "path": path
+            "path": path,
+            "func":"end_to_start"
             }
     )
     
@@ -277,12 +280,12 @@ def function_path_processing(
         )
 
         #print(example_query)
-        print("Executing example query...")
-        start_t = time.time()
+        #print("Executing example query...")
+        #start_t = time.time()
         example_output = graph_manager.query(example_query)
-        end_t = time.time()
-        print("end execution.")
-        print(f"Query took {end_t - start_t} seconds")
+        #end_t = time.time()
+        #print("end execution.")
+        #print(f"Query took {end_t - start_t} seconds")
         if not example_output.empty:
             break
         
@@ -306,7 +309,8 @@ def function_path_processing(
         example_output=example_output.head(10),
         tags=["path-level", *path],
         metadata={
-            "path": path
+            "path": path,
+            "func":f"function_path_{function}"
             }
     )
 
@@ -347,8 +351,12 @@ def path_to_graph(
             )
         
         progs = [prog1, prog2]
+        
+        if prog1 is None or prog2 is None:
+            ic(str_representation)
+            
         common_utils.serialization.save_pickle(
-            progs, 
+            progs,
             file_path
             )
         return progs
@@ -559,7 +567,7 @@ class BFSExplorer:
         run_query = regex_add_strings(SPARQL_PROP_OF_OBJ_TEMPLATE, obj_uri=obj_Name)
         
         question_df = self.graph_manager.query(run_query)
-        print(question_df.head(10))
+        logger.info(question_df.head(10))
         
         exe2 = ExecutableProgram(
             program_id="explore_attr_of_object",
@@ -641,7 +649,14 @@ class BFSExplorer:
                     solves="What are all the objects of a given class?",
                     example_usage=example_query,
                     example_output=example_output.head(10),
-                    tags=["object-level", "from-object"]
+                    tags=[
+                        "object-level", 
+                        "from-object", 
+                        self.graph_manager.reverse_curie(c)
+                        ],
+                    metadata={
+                        "relation":self.graph_manager.reverse_curie(relations)
+                    }
                 )
 
                 programs.append(p)
@@ -685,7 +700,10 @@ class BFSExplorer:
                     solves="What are all the objects of a given class?",
                     example_usage=example_query,
                     example_output=example_output,
-                    tags=["object-level", 'from-prop']
+                    tags=["object-level", 'from-prop', self.graph_manager.reverse_curie(c)],
+                    metadata={
+                        "relation":self.graph_manager.reverse_curie(relations)
+                    }
                 )
 
                 programs.append(p)
@@ -696,15 +714,15 @@ class BFSExplorer:
 
         # All object of class
         self.all_program_Obj.extend(self.explore_object_of_class())
-        print(f"Total programs after object of class: {len(self.all_program_Obj)}")
+        logger.info(f"Total programs after object of class: {len(self.all_program_Obj)}")
 
         # Explore class methods
         self.all_program_Obj.extend(self.explore_literal_paths())
-        print(f"Total programs after literal paths: {len(self.all_program_Obj)}")
+        logger.info(f"Total programs after literal paths: {len(self.all_program_Obj)}")
         
         # Methods to object
         self.all_program_Obj.extend(self.generate_queries_from_paths())
-        print(f"Total programs after generating queries from paths: {len(self.all_program_Obj)}")
+        logger.info(f"Total programs after generating queries from paths: {len(self.all_program_Obj)}")
         
         common_utils.serialization.save_pickle(
             self.all_program_Obj,
@@ -799,5 +817,6 @@ class BFSExplorer:
                             collected_graphs[path_str] = query_graph
 
         logger.info(f"Generated {len(collected_graphs)} query graphs from all class paths.")
-        return list(collected_graphs.values())
+        all_progs = [item for sublist in collected_graphs.values() for item in sublist if item]
+        return all_progs
     

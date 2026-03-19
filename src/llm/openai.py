@@ -1,6 +1,7 @@
 from src.llm.base import BaseLlm
 from src.config.llm.openai import OpenAILlmConfig
 from icecream import ic
+import dspy
 
 try:
     from langchain_openai import ChatOpenAI
@@ -8,8 +9,8 @@ except ModuleNotFoundError:
     raise ModuleNotFoundError("Please install langchain_openai")
 
 class OpenAILlm(BaseLlm):
-    def __init__(self, config:OpenAILlmConfig):
-        super().__init__(config)
+    def __init__(self, config:OpenAILlmConfig, library:str = "langchain"):
+        super().__init__(config, library)
 
     def _create_client(self):
         kwargs = {
@@ -21,8 +22,20 @@ class OpenAILlm(BaseLlm):
         }
         if self.config.top_p: # XXX: need to update
             kwargs["model_kwargs"]["top_p"] = self.config.top_p
+        
+        if self.library == "langchain":
+            return ChatOpenAI(**kwargs)
+        elif self.library == "dspy":
+            # Create OpenAI LLM wrapper
+            lm: dspy.LM = dspy.LM(
+                **kwargs
+            )
 
-        return ChatOpenAI(**kwargs)
+            # Register it globally
+            dspy.settings.configure(lm=lm, trace=[])
+            return lm
+        else:
+            raise ValueError("Not the correct {}".format(self.library))
 
 
     
