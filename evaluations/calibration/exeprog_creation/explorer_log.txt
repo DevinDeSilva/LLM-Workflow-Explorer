@@ -1,0 +1,376 @@
+2026-03-24 19:10:26 - INFO - Initializing GraphManager...
+2026-03-24 19:10:27 - INFO - Graph loaded with 2337 triples.
+2026-03-24 19:10:27 - INFO - Processing schema from schema/schemaV2.json
+2026-03-24 19:10:27 - INFO - Loading RDF graph from usecases/chatbs/data/1_sample_graph/chatbs_sample.ttl...
+2026-03-24 19:10:27 - INFO - Graph loaded with 2337 triples. Indexing entities...
+2026-03-24 19:10:27 - INFO - Finished processing graph and schema.
+2026-03-24 19:10:27 - INFO - Empty DataFrame
+Columns: [p, o, pe, po]
+Index: []
+2026-03-24 19:10:27 - INFO - Total programs after object of class: 2
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/elements/1.1/description> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/2000/01/rdf-schema#label> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/elements/1.1/description> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/2000/01/rdf-schema#label> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/elements/1.1/description> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/llm_model> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://testwebsite/testDFColumn#ingredientCat> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://testwebsite/testDFColumn#ingredientName> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://testwebsite/testDFColumn#sugarG> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/ns/prov#value> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/terms#identifier> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/ns/prov#endedAt> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/ns/prov#startedAt> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/elements/1.1/description> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/elements/1.1/description> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/llm_model> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/elements/1.1/description> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/terms#identifier> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/2000/01/rdf-schema#label> ?value .
+    }
+2026-03-24 19:10:27 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/ns/prov#atTime> ?value .
+    }
+2026-03-24 19:10:27 - INFO - Total programs after literal paths: 42
+2026-03-24 19:10:27 - INFO - BFS from 'provone:Channel' found 0 simple schema paths.
+2026-03-24 19:10:27 - INFO - Function breadth_first_search Took 0.0000 seconds
+2026-03-24 19:10:27 - INFO - BFS from 'provone:Collection' found 17 simple schema paths.
+2026-03-24 19:10:27 - INFO - Function breadth_first_search Took 0.0000 seconds
+2026-03-24 19:10:32 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->sio:SIO_000369->workflow:Generative_Task->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output'
+2026-03-24 19:10:32 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->sio:SIO_000369->workflow:Generative_Task->prov:used->workflow:Large_Language_Models'
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 4.4566 seconds
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedUsage->prov:Usage->provone:hadInPort->provone:Port'
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association'
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 4.7389 seconds
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedUsage->prov:Usage'
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:hadPlan->provone:Program->provone:hasOutPort->provone:Port'
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 4.9364 seconds
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution'
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 5.1790 seconds
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output'
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:hadPlan->provone:Program'
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:wasAssociatedWith->provone:User'
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedGeneration->prov:Generation'
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:agent->provone:User'
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 5.4512 seconds
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->sio:SIO_000369->workflow:Generative_Task'
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:hadPlan->provone:Program->provone:hasInPort->provone:Port'
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedGeneration->prov:Generation->provone:hadOutPort->provone:Port'
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:used->workflow:Large_Language_Models'
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 5.9897 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 4.3761 seconds
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'provone:Collection->prov:hadMember->provone:Data'
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 4.8351 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 5.0044 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 5.9874 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 4.8410 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 5.9776 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 5.9421 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 4.6868 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 5.0808 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 5.5352 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 5.9949 seconds
+2026-03-24 19:10:33 - INFO - BFS from 'prov:Association' found 4 simple schema paths.
+2026-03-24 19:10:33 - INFO - Function breadth_first_search Took 0.0001 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 0.0596 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 0.0486 seconds
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'prov:Association->prov:agent->provone:User'
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 0.0516 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 0.0760 seconds
+2026-03-24 19:10:33 - INFO - BFS from 'eo:Reasoning_Mode' found 0 simple schema paths.
+2026-03-24 19:10:33 - INFO - Function breadth_first_search Took 0.0001 seconds
+2026-03-24 19:10:33 - INFO - BFS from 'prov:Usage' found 16 simple schema paths.
+2026-03-24 19:10:33 - INFO - Function breadth_first_search Took 0.0000 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 0.0233 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 0.0180 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 0.1254 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 0.1181 seconds
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'prov:Usage->provone:hadEntity->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:used->workflow:Large_Language_Models'
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 0.2954 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 0.1159 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 0.3359 seconds
+2026-03-24 19:10:33 - INFO - Function path_to_graph Took 0.4967 seconds
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'prov:Usage->provone:hadEntity->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:wasAssociatedWith->provone:User'
+2026-03-24 19:10:33 - INFO - ic| str_representation: 'prov:Usage->provone:hadEntity->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:agent->provone:User'
+2026-03-24 19:10:34 - INFO - ic| str_representation: 'prov:Usage->provone:hadEntity->provone:Data->prov:wasGeneratedBy->provone:Execution->sio:SIO_000369->workflow:Generative_Task->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output'
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.3758 seconds
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.3600 seconds
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.5961 seconds
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.6418 seconds
+2026-03-24 19:10:34 - INFO - ic| str_representation: 'prov:Usage->provone:hadEntity->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output'
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.5923 seconds
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.9665 seconds
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.6166 seconds
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.7075 seconds
+2026-03-24 19:10:34 - INFO - BFS from 'prov:Generation' found 16 simple schema paths.
+2026-03-24 19:10:34 - INFO - Function breadth_first_search Took 0.0001 seconds
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.0240 seconds
+2026-03-24 19:10:34 - INFO - ic| str_representation: 'prov:Generation->provone:hadEntity->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:wasAssociatedWith->provone:User'
+2026-03-24 19:10:34 - INFO - ic| str_representation: 'prov:Generation->provone:hadEntity->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:used->workflow:Large_Language_Models'
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.0934 seconds
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.1291 seconds
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.1433 seconds
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.0192 seconds
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.1581 seconds
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.1193 seconds
+2026-03-24 19:10:34 - INFO - Function path_to_graph Took 0.2367 seconds
+2026-03-24 19:10:34 - INFO - ic| str_representation: 'prov:Generation->provone:hadEntity->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output'
+2026-03-24 19:10:34 - INFO - ic| str_representation: 'prov:Generation->provone:hadEntity->provone:Data->prov:wasGeneratedBy->provone:Execution->sio:SIO_000369->workflow:Generative_Task->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output'
+2026-03-24 19:10:34 - INFO - ic| str_representation: 'prov:Generation->provone:hadEntity->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:agent->provone:User'
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.3562 seconds
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.3499 seconds
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.2227 seconds
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.3723 seconds
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.2454 seconds
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.1732 seconds
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.0697 seconds
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.2815 seconds
+2026-03-24 19:10:35 - INFO - BFS from 'provone:Port' found 0 simple schema paths.
+2026-03-24 19:10:35 - INFO - Function breadth_first_search Took 0.0001 seconds
+2026-03-24 19:10:35 - INFO - BFS from 'workflow:Large_Language_Model_Output' found 29 simple schema paths.
+2026-03-24 19:10:35 - INFO - Function breadth_first_search Took 0.0001 seconds
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data'
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models->sio:SIO_000230->provone:Data'
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution'
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models'
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.1885 seconds
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution'
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:used->workflow:Large_Language_Models'
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.2025 seconds
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.3316 seconds
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.4635 seconds
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->sio:SIO_000369->workflow:Generative_Task'
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.3370 seconds
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.4676 seconds
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedGeneration->prov:Generation'
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:wasAssociatedWith->provone:User'
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:wasAssociatedWith->provone:User'
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedGeneration->prov:Generation'
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedUsage->prov:Usage'
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association'
+2026-03-24 19:10:35 - INFO - Function path_to_graph Took 0.6563 seconds
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedUsage->prov:Usage->provone:hadInPort->provone:Port'
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->sio:SIO_000369->workflow:Generative_Task'
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:agent->provone:User'
+2026-03-24 19:10:35 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedUsage->prov:Usage'
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.5803 seconds
+2026-03-24 19:10:36 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedGeneration->prov:Generation->provone:hadOutPort->provone:Port'
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.6115 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.8043 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.8420 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.1981 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.6884 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.6967 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.3576 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.2715 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.9666 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.8306 seconds
+2026-03-24 19:10:36 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->sio:SIO_000369->workflow:Generative_Task->prov:used->workflow:Large_Language_Models'
+2026-03-24 19:10:36 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:agent->provone:User'
+2026-03-24 19:10:36 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedUsage->prov:Usage->provone:hadInPort->provone:Port'
+2026-03-24 19:10:36 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:hadPlan->provone:Program->provone:hasOutPort->provone:Port'
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.9879 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.5438 seconds
+2026-03-24 19:10:36 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:hadPlan->provone:Program'
+2026-03-24 19:10:36 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedGeneration->prov:Generation->provone:hadOutPort->provone:Port'
+2026-03-24 19:10:36 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:hadPlan->provone:Program'
+2026-03-24 19:10:36 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association'
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.6071 seconds
+2026-03-24 19:10:36 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:hadPlan->provone:Program->provone:hasInPort->provone:Port'
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.7671 seconds
+2026-03-24 19:10:36 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000232->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:hadPlan->provone:Program->provone:hasOutPort->provone:Port'
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.6444 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 1.1173 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.8313 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 1.1093 seconds
+2026-03-24 19:10:36 - INFO - ic| str_representation: 'workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:hadPlan->provone:Program->provone:hasInPort->provone:Port'
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.5843 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.6879 seconds
+2026-03-24 19:10:36 - INFO - Function path_to_graph Took 0.7382 seconds
+2026-03-24 19:10:36 - INFO - BFS from 'provone:User' found 0 simple schema paths.
+2026-03-24 19:10:36 - INFO - Function breadth_first_search Took 0.0001 seconds
+2026-03-24 19:10:36 - INFO - BFS from 'provone:Data' found 16 simple schema paths.
+2026-03-24 19:10:36 - INFO - Function breadth_first_search Took 0.0001 seconds
+2026-03-24 19:10:37 - INFO - ic| str_representation: 'provone:Data->prov:wasGeneratedBy->provone:Execution->prov:wasAssociatedWith->provone:User'
+2026-03-24 19:10:37 - INFO - ic| str_representation: 'provone:Data->prov:wasGeneratedBy->provone:Execution->prov:used->workflow:Large_Language_Models'
+2026-03-24 19:10:37 - INFO - Function path_to_graph Took 0.1890 seconds
+2026-03-24 19:10:37 - INFO - Function path_to_graph Took 0.3195 seconds
+2026-03-24 19:10:37 - INFO - Function path_to_graph Took 0.3534 seconds
+2026-03-24 19:10:37 - INFO - ic| str_representation: 'provone:Data->prov:wasGeneratedBy->provone:Execution->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output'
+2026-03-24 19:10:37 - INFO - Function path_to_graph Took 0.4497 seconds
+2026-03-24 19:10:37 - INFO - Function path_to_graph Took 0.6913 seconds
+2026-03-24 19:10:37 - INFO - ic| str_representation: 'provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:agent->provone:User'
+2026-03-24 19:10:37 - INFO - Function path_to_graph Took 0.7565 seconds
+2026-03-24 19:10:37 - INFO - Function path_to_graph Took 0.6113 seconds
+2026-03-24 19:10:37 - INFO - Function path_to_graph Took 0.9122 seconds
+2026-03-24 19:10:37 - INFO - ic| str_representation: 'provone:Data->prov:wasGeneratedBy->provone:Execution->sio:SIO_000369->workflow:Generative_Task->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output'
+2026-03-24 19:10:37 - INFO - Function path_to_graph Took 0.7904 seconds
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 1.0159 seconds
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 0.3008 seconds
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 0.4730 seconds
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 1.1006 seconds
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 0.6860 seconds
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 1.0039 seconds
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 0.5483 seconds
+2026-03-24 19:10:38 - INFO - BFS from 'provone:Execution' found 21 simple schema paths.
+2026-03-24 19:10:38 - INFO - Function breadth_first_search Took 0.0001 seconds
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 0.0979 seconds
+2026-03-24 19:10:38 - INFO - ic| str_representation: 'provone:Execution->prov:wasAssociatedWith->provone:User'
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 0.1944 seconds
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 0.3032 seconds
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 0.3324 seconds
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 0.2674 seconds
+2026-03-24 19:10:38 - INFO - ic| str_representation: 'provone:Execution->prov:used->workflow:Large_Language_Models->sio:SIO_000230->provone:Data'
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 0.3442 seconds
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 0.3573 seconds
+2026-03-24 19:10:38 - INFO - ic| str_representation: 'provone:Execution->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output'
+2026-03-24 19:10:38 - INFO - Function path_to_graph Took 0.6083 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.5962 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.1466 seconds
+2026-03-24 19:10:39 - INFO - ic| str_representation: 'provone:Execution->sio:SIO_000369->workflow:Generative_Task->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output'
+2026-03-24 19:10:39 - INFO - ic| str_representation: 'provone:Execution->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data'
+2026-03-24 19:10:39 - INFO - ic| str_representation: 'provone:Execution->prov:qualifiedAssociation->prov:Association->prov:agent->provone:User'
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.0665 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.0634 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.8335 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.4571 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.3592 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.6342 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.6291 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.4774 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.4226 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.4170 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.4316 seconds
+2026-03-24 19:10:39 - INFO - BFS from 'workflow:Generative_Task' found 43 simple schema paths.
+2026-03-24 19:10:39 - INFO - Function breadth_first_search Took 0.0002 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.0644 seconds
+2026-03-24 19:10:39 - INFO - ic| str_representation: 'workflow:Generative_Task->sio:SIO_000313->provone:Execution->prov:wasAssociatedWith->provone:User'
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.0749 seconds
+2026-03-24 19:10:39 - INFO - ic| str_representation: 'workflow:Generative_Task->sio:SIO_000313->provone:Execution->prov:used->workflow:Large_Language_Models'
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.1261 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.0985 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.1657 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.1544 seconds
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.1801 seconds
+2026-03-24 19:10:39 - INFO - ic| str_representation: 'workflow:Generative_Task->sio:SIO_000313->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:agent->provone:User'
+2026-03-24 19:10:39 - INFO - Function path_to_graph Took 0.2730 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.3487 seconds
+2026-03-24 19:10:40 - INFO - ic| str_representation: 'workflow:Generative_Task->prov:used->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:wasAssociatedWith->provone:User'
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.4269 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.4029 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.4207 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.4267 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.6178 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.5857 seconds
+2026-03-24 19:10:40 - INFO - ic| str_representation: 'workflow:Generative_Task->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output'
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.5166 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.5427 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.7673 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.6118 seconds
+2026-03-24 19:10:40 - INFO - ic| str_representation: 'workflow:Generative_Task->prov:used->workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:agent->provone:User'
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.2470 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.6755 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.8334 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.8101 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.2948 seconds
+2026-03-24 19:10:40 - INFO - ic| str_representation: 'workflow:Generative_Task->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:wasAssociatedWith->provone:User'
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.4314 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.5085 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.6871 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.6393 seconds
+2026-03-24 19:10:40 - INFO - ic| str_representation: 'workflow:Generative_Task->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:agent->provone:User'
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.4602 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 1.1763 seconds
+2026-03-24 19:10:40 - INFO - ic| str_representation: 'workflow:Generative_Task->sio:SIO_000313->provone:Execution->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output'
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.5730 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 1.2622 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.6178 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.7239 seconds
+2026-03-24 19:10:40 - INFO - Function path_to_graph Took 0.5703 seconds
+2026-03-24 19:10:41 - INFO - Function path_to_graph Took 1.1034 seconds
+2026-03-24 19:10:41 - INFO - Function path_to_graph Took 0.6475 seconds
+2026-03-24 19:10:41 - INFO - Function path_to_graph Took 1.6132 seconds
+2026-03-24 19:10:41 - INFO - Function path_to_graph Took 1.1468 seconds
+2026-03-24 19:10:41 - INFO - Function path_to_graph Took 1.1954 seconds
+2026-03-24 19:10:41 - INFO - Function path_to_graph Took 1.4553 seconds
+2026-03-24 19:10:41 - INFO - ic| str_representation: 'workflow:Generative_Task->sio:SIO_000313->provone:Execution->prov:used->workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data'
+2026-03-24 19:10:41 - INFO - ic| str_representation: 'workflow:Generative_Task->sio:SIO_000313->provone:Execution->prov:used->workflow:Large_Language_Models->sio:SIO_000230->provone:Data'
+2026-03-24 19:10:41 - INFO - Function path_to_graph Took 2.3058 seconds
+2026-03-24 19:10:41 - INFO - Function path_to_graph Took 2.3504 seconds
+2026-03-24 19:10:41 - INFO - BFS from 'workflow:Large_Language_Models' found 27 simple schema paths.
+2026-03-24 19:10:41 - INFO - Function breadth_first_search Took 0.0002 seconds
+2026-03-24 19:10:42 - INFO - ic| str_representation: 'workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:wasAssociatedWith->provone:User'
+2026-03-24 19:10:42 - INFO - ic| str_representation: 'workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output'
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.0141 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.0361 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.1287 seconds
+2026-03-24 19:10:42 - INFO - ic| str_representation: 'workflow:Large_Language_Models->sio:SIO_000230->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:agent->provone:User'
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.2899 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.3388 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.3388 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.1772 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.4125 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.3457 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.2792 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.4701 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.4261 seconds
+2026-03-24 19:10:42 - INFO - ic| str_representation: 'workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:wasAssociatedWith->provone:User'
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.3177 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.6026 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.0627 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.3459 seconds
+2026-03-24 19:10:42 - INFO - ic| str_representation: 'workflow:Large_Language_Models->sio:SIO_000229->workflow:Large_Language_Model_Output->sio:SIO_000202->provone:Data->prov:wasGeneratedBy->provone:Execution->prov:qualifiedAssociation->prov:Association->prov:agent->provone:User'
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.2293 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.4411 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.4017 seconds
+2026-03-24 19:10:42 - INFO - Function path_to_graph Took 0.3411 seconds
+2026-03-24 19:10:43 - INFO - Function path_to_graph Took 0.2514 seconds
+2026-03-24 19:10:43 - INFO - Function path_to_graph Took 0.3586 seconds
+2026-03-24 19:10:43 - INFO - Function path_to_graph Took 0.5818 seconds
+2026-03-24 19:10:43 - INFO - Function path_to_graph Took 0.5819 seconds
+2026-03-24 19:10:43 - INFO - Function path_to_graph Took 0.6235 seconds
+2026-03-24 19:10:43 - INFO - Function path_to_graph Took 0.4004 seconds
+2026-03-24 19:10:43 - INFO - Function path_to_graph Took 0.3783 seconds
+2026-03-24 19:10:43 - INFO - BFS from 'provone:Program' found 2 simple schema paths.
+2026-03-24 19:10:43 - INFO - Function breadth_first_search Took 0.0001 seconds
+2026-03-24 19:10:43 - INFO - Function path_to_graph Took 0.0215 seconds
+2026-03-24 19:10:43 - INFO - Function path_to_graph Took 0.0194 seconds
+2026-03-24 19:10:43 - INFO - Generated 191 query graphs from all class paths.
+2026-03-24 19:10:43 - INFO - Total programs after generating queries from paths: 311

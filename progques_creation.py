@@ -24,46 +24,39 @@ def _():
     from src.llm import LLM
 
     load_dotenv()
-    CONFIG_PATH = "evaluations/chatbs/config.yaml"
+    CONFIG_PATH = "evaluations/calibration/config.yaml"
+    logging.info(f"Loading config: {CONFIG_PATH}")
+    lconfig = load_config(CONFIG_PATH)
+    config = ExperimentConfig.model_validate(lconfig)
+    config
     return (
-        CONFIG_PATH,
         Dict,
         ExecutableProgram,
-        ExperimentConfig,
         GraphManager,
         LLM,
         List,
         OntologyInfoRetriever,
         common_utils,
+        config,
         dspy,
-        ic,
-        load_config,
         logging,
+        os,
         pd,
         tqdm,
     )
 
 
 @app.cell
-def _(CONFIG_PATH, load_config, logging):
+def _(config, logging):
     logging.basicConfig(
-        filename='evaluations/chatbs/ques_creation/exe.log',               # Log to this file
+        filename=config.question_creation_config.log_file,               # Log to this file
         filemode='a',                     # 'a' for append, 'w' to overwrite each time
         level=logging.INFO,               # Capture INFO and above
         format='%(asctime)s - %(levelname)s - %(message)s', # Custom format
         datefmt='%Y-%m-%d %H:%M:%S'       # Custom date format
     )
     logger = logging.getLogger(__name__)
-    logging.info(f"Loading config: {CONFIG_PATH}")
-    lconfig = load_config(CONFIG_PATH)
-    return lconfig, logger
-
-
-@app.cell
-def _(ExperimentConfig, lconfig):
-    config = ExperimentConfig.model_validate(lconfig)
-    config
-    return (config,)
+    return (logger,)
 
 
 @app.cell
@@ -82,9 +75,7 @@ def _(GraphManager, OntologyInfoRetriever, config):
 
 
 @app.cell
-def _(dspy, ic):
-    from polars.selectors import by_index
-    from sqlalchemy.sql.base import _exclusive_against
+def _(dspy):
     class QuestionCreationFromPath(dspy.Signature):
         """
         Given a path in the ontology and SPARQL Query, what question is answered and information is retrived
@@ -129,9 +120,6 @@ def _(dspy, ic):
             sparql_query:str
         ) -> dspy.Prediction:
             """Executes the prediction logic."""
-            ic(entity_info_triples,
-                path,
-                sparql_query)
             return self.generate_question(
                 entity_info_triples=entity_info_triples,
                 path=path,
@@ -321,8 +309,9 @@ def _(
 
 
 @app.cell
-def _(config, exp_list, pd):
+def _(config, exp_list, os, pd):
     exp_df = pd.DataFrame.from_records(exp_list)
+    os.makedirs(os.path.dirname(config.question_creation_config.save_questions), exist_ok=True)
     exp_df.to_csv(config.question_creation_config.save_questions, index=False)
     return
 

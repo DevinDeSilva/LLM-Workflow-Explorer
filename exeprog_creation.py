@@ -10,6 +10,7 @@ def _():
     import pandas as pd
     import os
     import dycomutils as common_utils
+    from icecream import ic
     from dotenv import load_dotenv
     from src.utils.graph_manager import GraphManager
     from src.utils.utils import load_config
@@ -17,22 +18,20 @@ def _():
     from src.explorer.bfs_explorer import BFSExplorer
 
     load_dotenv()
-    CONFIG_PATH = "evaluations/chatbs/config.yaml"
-    return (
-        BFSExplorer,
-        CONFIG_PATH,
-        ExperimentConfig,
-        GraphManager,
-        load_config,
-        logging,
-        pd,
-    )
+    CONFIG_PATH = "evaluations/calibration/config.yaml"
+    ic(f"Loading config: {CONFIG_PATH}")
+    lconfig = load_config(CONFIG_PATH)
+    config = ExperimentConfig.model_validate(lconfig)
+    config
+    return BFSExplorer, GraphManager, config, ic, logging, os, pd
 
 
 @app.cell
-def _(CONFIG_PATH, load_config, logging):
+def _(config, ic, logging, os):
+    os.makedirs(os.path.dirname(config.explorer_config.log_file), exist_ok=True)
+    ic(config.explorer_config.log_file)
     logging.basicConfig(
-        filename='evaluations/chatbs/exeprog_creation/exe.log',               # Log to this file
+        filename=config.explorer_config.log_file,               # Log to this file
         filemode='a',                     # 'a' for append, 'w' to overwrite each time
         level=logging.INFO,               # Capture INFO and above
         format='%(asctime)s - %(levelname)s - %(message)s', # Custom format
@@ -40,23 +39,14 @@ def _(CONFIG_PATH, load_config, logging):
     )
 
     logger = logging.getLogger(__name__)  
-    logging.info(f"Loading config: {CONFIG_PATH}")
-    lconfig = load_config(CONFIG_PATH)
-    return (lconfig,)
-
-
-@app.cell
-def _(ExperimentConfig, lconfig):
-    config = ExperimentConfig.model_validate(lconfig)
-    config
-    return (config,)
+    return
 
 
 @app.cell
 def _(GraphManager, config, pd):
     graph_manager = GraphManager(
             config.ttl, 
-            config.file_paths.execution_kg_loc
+            config.file_paths.execution_kg_loc 
         )
 
     ontology_triples_df = pd.read_csv(config.explorer_config.ontology_triples_path)

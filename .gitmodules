@@ -1,0 +1,4 @@
+[submodule "usecases/chatbs/ChatBS-NexGen"]
+	path = usecases/chatbs/ChatBS-NexGen
+	url = https://github.rpi.edu/TetherlessWorld/ChatBS-NexGen.git
+	branch = main
