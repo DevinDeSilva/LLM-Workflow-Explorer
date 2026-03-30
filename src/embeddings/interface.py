@@ -5,16 +5,16 @@ from src.embeddings.base import BaseEmbeddings
 
 
 class Embeddings:
-    def __new__(cls, embedding_type: str, library: str = "langchain", **kwargs):
-        return cls.__create_concrete__(embedding_type, library, **kwargs)
+    def __new__(cls, embedding_type: str, **kwargs):
+        return cls.__create_concrete__(embedding_type, **kwargs)
 
     @classmethod
     def __create_concrete__(
         cls,
         embedding_type: str,
-        library: str = "langchain",
         **kwargs,
-    ) -> Optional[BaseEmbeddings]:
+    ) -> BaseEmbeddings:
+        library: str = kwargs.get("library", "langchain")
         if embedding_type == "openai":
             from src.config.embeddings.openai import OpenAIEmbeddingsConfig
             from src.embeddings.openai import OpenAIEmbeddingsModel

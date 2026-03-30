@@ -5,36 +5,26 @@ from typing import Any, Dict, List, Optional
 from rdflib.namespace import RDF
 
 from src.config.object_search import ObjectSearchConfig
-from src.embeddings import Embeddings
+from src.embeddings.base import BaseEmbeddings
 from src.utils.graph_manager import GraphManager
-from src.vector_db import VectorDB
+from src.vector_db.base import BaseVectorDB
 
 
 class ObjectSearch:
     def __init__(
         self,
         graph_manager: GraphManager,
-        config: Optional[ObjectSearchConfig] = None,
-        embeddings_model: Optional[Any] = None,
-        vector_db: Optional[Any] = None,
+        embeddings_model: BaseEmbeddings,
+        vector_db: BaseVectorDB,
+        config: ObjectSearchConfig
     ) -> None:
         self.graph_manager = graph_manager
         self.config = config or ObjectSearchConfig()
         self.collection_name = self.config.collection_name
-
-        resolved_embedding_kwargs = dict(self.config.embedding_config)
-        self.embeddings_model = embeddings_model or Embeddings(
-            self.config.embedding_type,
-            library=self.config.embedding_library,
-            **resolved_embedding_kwargs,
-        )
-
-        resolved_vector_db_kwargs = dict(self.config.vector_db_config)
-        resolved_vector_db_kwargs.setdefault("collection_name", self.collection_name)
-        self.vector_db = vector_db or VectorDB(
-            self.config.vector_db_type,
-            **resolved_vector_db_kwargs,
-        )
+        self.embeddings_model = embeddings_model
+        self.vector_db = vector_db
+        
+        self.index_objects()
 
     def get_all_objects(self) -> List[str]:
         query_df = self.graph_manager.query(self.config.all_objects_query)
@@ -118,17 +108,17 @@ class ObjectSearch:
             )
         ]
 
-    def index_objects(self, overwrite: bool = False) -> Any:
+    def index_objects(self) -> Any:
         records = self.build_index_records()
         if not records:
             return []
 
-        if overwrite:
+        if self.config.overwrite_db_collection:
             self.vector_db.build_db(overwrite=True)
 
         return self.vector_db.insert(
             records=records,
-            build_if_missing=not overwrite,
+            build_if_missing=not self.config.overwrite_db_collection,
         )
 
     def vector_search(

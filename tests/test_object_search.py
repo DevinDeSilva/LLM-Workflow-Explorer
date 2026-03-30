@@ -217,9 +217,9 @@ def test_search_uses_default_limit_from_config():
 
     object_search = ObjectSearch(
         graph_manager=graph_manager,
-        config=config,
         embeddings_model=embeddings_model,
         vector_db=vector_db,
+        config=config,
     )
 
     results = object_search.search("primary widget")
@@ -243,9 +243,9 @@ def test_queries_are_read_from_config():
 
     object_search = ObjectSearch(
         graph_manager=graph_manager,
-        config=config,
         embeddings_model=embeddings_model,
         vector_db=vector_db,
+        config=config,
     )
 
     records = object_search.build_index_records()

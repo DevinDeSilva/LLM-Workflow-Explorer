@@ -3,34 +3,46 @@ import re
 from typing import Any, Dict, List, Optional
 
 import dspy
+from pydantic import BaseModel
 
-from src.llm import LLM
+from config.object_search import ObjectSearchConfig
+from embeddings.base import BaseEmbeddings
+from explainer.object_search import ObjectSearch
+from src.llm.base import BaseLLM
 from src.utils.graph_manager import GraphManager
 from src.config.experiment import TTLConfig
+from vector_db.base import BaseVectorDB
+
+class QuestionNode(BaseModel):
+    pass
 
 class DependancyGraphCreation:
     def __init__(  
         self, 
-        llm_type: str, 
-        model: str, 
-        llm_config: Dict[str, Any],
         graph_loc:str,
+        llm: BaseLLM,
+        embedder:BaseEmbeddings,
+        vector_db:BaseVectorDB,
+        object_search_config:ObjectSearchConfig,
         ttl_config:TTLConfig
         
     ) -> None:
-        self.llm = LLM(
-            llm_type,
-            "dspy",
-            model=model,
-            **llm_config,
-        )
         
         self.graph_manager = GraphManager(
             graph_file=graph_loc,
             config=ttl_config
         )
         
-        object_db = 
+        self.llm = llm
+        self.embedder = embedder
+        self.vector_db = vector_db
+        
+        self.object_db = ObjectSearch(
+            self.graph_manager,
+            self.embedder,
+            self.vector_db,
+            object_search_config
+        )
 
     def user_query_to_requirements(
         self, query: str, schema_context: str = ""

@@ -1,4 +1,4 @@
-from src.llm.base import BaseLlm
+from src.llm.base import BaseLLM
 from src.config.llm.openai import OpenAILlmConfig
 from icecream import ic
 import dspy
@@ -8,7 +8,7 @@ try:
 except ModuleNotFoundError:
     raise ModuleNotFoundError("Please install langchain_openai")
 
-class OpenAILlm(BaseLlm):
+class OpenAILlm(BaseLLM):
     def __init__(self, config:OpenAILlmConfig, library:str = "langchain"):
         super().__init__(config, library)
 

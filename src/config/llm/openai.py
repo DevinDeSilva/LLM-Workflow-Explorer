@@ -1,8 +1,8 @@
 import os
 from pydantic import Field
-from src.config.llm.base import BaseLlmConfig
+from src.config.llm.base import BaseLLMConfig
 
-class OpenAILlmConfig(BaseLlmConfig):
+class OpenAILlmConfig(BaseLLMConfig):
     api_key: str = Field(
         default_factory=lambda: os.getenv("OPENAI_API_KEY")
         ) # type: ignore

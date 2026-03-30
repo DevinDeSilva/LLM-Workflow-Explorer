@@ -1,4 +1,4 @@
 from src.config.base import BaseConfig
 
-class BaseLlmConfig(BaseConfig):
+class BaseLLMConfig(BaseConfig):
     model:str

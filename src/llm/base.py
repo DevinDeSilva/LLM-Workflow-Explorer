@@ -2,7 +2,7 @@ from typing import Optional, Type,  Dict, Any, List
 from pydantic import BaseModel
 from langchain_core.messages import SystemMessage, HumanMessage
 
-class BaseLlm:
+class BaseLLM:
     def __init__(self, config, library:str):
         self.config = config
         self.library = library

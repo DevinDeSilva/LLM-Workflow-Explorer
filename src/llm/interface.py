@@ -1,19 +1,18 @@
 from icecream import ic 
-from typing import Optional
-from src.llm.base import BaseLlm
+from src.llm.base import BaseLLM
 
 class LLM:
     def __new__(cls, llm_type, library="dspy", **kwargs):
         """Initialize a base LLM class
 
         :param config: LLM configuration option class, defaults to None
-        :type config: Optional[BaseLlmConfig], optional
+        :type config: Optional[BaseLLMConfig], optional
         """
         
         return cls.__create_concrete__(llm_type, library, **kwargs)
         
     @classmethod
-    def __create_concrete__(cls, llm_type, library,**kwargs)  -> Optional[BaseLlm]:
+    def __create_concrete__(cls, llm_type, library,**kwargs)  -> BaseLLM:
         if llm_type == "openai":
             from src.llm.openai import OpenAILlm
             from src.config.llm.openai import OpenAILlmConfig

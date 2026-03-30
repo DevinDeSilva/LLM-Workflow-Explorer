@@ -1,4 +1,4 @@
-from src.llm.base import BaseLlm
+from src.llm.base import BaseLLM
 from src.config.llm.lmstudio import LMStudioConfig
 from icecream import ic
 import dspy
@@ -9,7 +9,7 @@ try:
 except ModuleNotFoundError:
     raise ModuleNotFoundError("Please install langchain_openai")
 
-class LMStudio(BaseLlm):
+class LMStudio(BaseLLM):
     def __init__(self, config:LMStudioConfig, library:str):
         super().__init__(config, library)
         

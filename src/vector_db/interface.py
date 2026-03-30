@@ -13,7 +13,7 @@ class VectorDB:
         cls,
         vector_db_type: str,
         **kwargs,
-    ) -> Optional[BaseVectorDB]:
+    ) -> BaseVectorDB:
         if vector_db_type == "milvus":
             from src.config.vector_db.milvus import MilvusVectorDBConfig
             from src.vector_db.milvus import MilvusVectorDB

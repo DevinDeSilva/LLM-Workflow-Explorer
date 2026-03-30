@@ -1,9 +1,9 @@
 import os
 from pydantic import Field
-from src.config.llm.base import BaseLlmConfig
+from src.config.llm.base import BaseLLMConfig
 
-class LMStudioConfig(BaseLlmConfig):
-    model: str = 'llama-3.3-70b-instruct'  
+class LMStudioConfig(BaseLLMConfig):
+    model: str = 'openai/qwen3-30b-a3b-2507'  
     temperature: float = 0.7  
     max_tokens: int = 8192  
     top_p: float = 0.9
