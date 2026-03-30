@@ -10,4 +10,5 @@ class Explainer:
         )
     
     def request(self, user_query:str):
-        pass
+        user_query = user_query.strip()
+        print("fuck", user_query)

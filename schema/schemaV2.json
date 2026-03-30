@@ -63,8 +63,8 @@
     "sio:SIO_000230": {
       "connections":[
         {
-          "domain": "provone:Data",
-          "range": "workflow:Large_Language_Models"
+          "domain": "workflow:Large_Language_Models",
+          "range": "provone:Data"
         }
       ]
     },
@@ -192,6 +192,10 @@
       "connections":[
         {
           "domain": "provone:Data",
+          "range": "provone:Execution"
+        },
+        {
+          "domain": "provone:Collection",
           "range": "provone:Execution"
         }
       ]

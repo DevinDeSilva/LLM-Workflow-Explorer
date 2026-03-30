@@ -37,26 +37,14 @@ def _():
     from src.utils.graph_manager import GraphManager  # noqa: E402
     from src.utils.utils import load_config # noqa: E402
     from src.config.experiment import ExperimentConfig # noqa: E402
-
-    # add two paths up to the sys.path
-
-    class SPARQLTemplate(BaseModel):
-        template: str
-        description: str
-        inputs: Optional[Dict[str, str]] = None
-
-    class GT(BaseModel):
-        question: str
-        answer: str
-        entities: Union[List[Dict], List]
-        sparql_querys: List[SPARQLTemplate]
+    from src.experiment.ground_truth import GT # noqa: E402
 
     CONFIG_PATH = "evaluations/calibration/config.yaml"
     logging.info(f"Loading config: {CONFIG_PATH}")
     lconfig = load_config(CONFIG_PATH)
     config = ExperimentConfig.model_validate(lconfig)
     config
-    return GT, GraphManager, List, SPARQLTemplate, common_utils, config, os
+    return GT, GraphManager, List, common_utils, config, os
 
 
 @app.cell
@@ -86,7 +74,6 @@ def _(graph_manager):
 
     entities1 = graph_manager.query(question_sparql1)
     entities1
-
     return entities1, question1, question_sparql1
 
 
@@ -251,6 +238,7 @@ def _(
 def _(graph_manager):
 
     # Question 4
+
 
     question4 = """
     What are the extracted KG entities for the execution with id 1_1 

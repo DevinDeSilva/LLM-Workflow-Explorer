@@ -4,8 +4,8 @@ __generated_with = "0.20.4"
 app = marimo.App()
 
 
-app._unparsable_cell(
-    r"""
+@app.cell
+def _():
     import logging
     import pandas as pd
     from icecream import ic
@@ -15,13 +15,10 @@ app._unparsable_cell(
     from tqdm import tqdm
     import dycomutils as common_utils
     from dotenv import load_dotenv
-    from src.utils.graph_manager import GraphManager
     from src.utils.utils import load_config
     from src.config.experiment import ExperimentConfig
-    from src.explainer
-
-    from src.question_creation.ontology_info_retriever import OntologyInfoRetriever
-    from src.llm import LLM
+    from src.explainer.explainer import Explainer
+    from src.experiment.ground_truth import GTInfo
 
     load_dotenv()
     CONFIG_PATH = "evaluations/calibration/config.yaml"
@@ -29,15 +26,13 @@ app._unparsable_cell(
     lconfig = load_config(CONFIG_PATH)
     config = ExperimentConfig.model_validate(lconfig)
     config
-    """,
-    name="_"
-)
+    return Explainer, GTInfo, config, logging, tqdm
 
 
 @app.cell
 def _(config, logging):
     logging.basicConfig(
-        filename=config.question_creation_config.log_file,               # Log to this file
+        filename=config.explainer_config.log_file,               # Log to this file
         filemode='a',                     # 'a' for append, 'w' to overwrite each time
         level=logging.INFO,               # Capture INFO and above
         format='%(asctime)s - %(levelname)s - %(message)s', # Custom format
@@ -47,12 +42,24 @@ def _(config, logging):
     return
 
 
-app._unparsable_cell(
-    r"""
-    explainer = 
-    """,
-    name="_"
-)
+@app.cell
+def _(Explainer, GTInfo, config):
+    ground_truth = GTInfo(config.gt.save_loc)
+    explainer = Explainer(config.explainer_config)
+    return explainer, ground_truth
+
+
+@app.cell
+def _(explainer, ground_truth, tqdm):
+    for qinfo in tqdm(ground_truth.gt_info):
+        pred = explainer.request(qinfo.question)
+        break
+    return
+
+
+@app.cell
+def _():
+    return
 
 
 if __name__ == "__main__":
