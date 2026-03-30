@@ -42,3 +42,14 @@ class BaseVectorDB(ABC):
         search_params: Optional[Dict[str, Any]] = None,
     ) -> List[Dict[str, Any]]:
         raise NotImplementedError
+
+    @abstractmethod
+    def bm25_search(
+        self,
+        query_text: str,
+        limit: int = 10,
+        filter: str = "",
+        output_fields: Optional[List[str]] = None,
+        search_params: Optional[Dict[str, Any]] = None,
+    ) -> List[Dict[str, Any]]:
+        raise NotImplementedError

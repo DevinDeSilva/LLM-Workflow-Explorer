@@ -6,9 +6,11 @@ from src.config.vector_db.milvus import MilvusVectorDBConfig
 from src.vector_db.base import BaseVectorDB
 
 try:
-    from pymilvus import DataType, MilvusClient
-except ModuleNotFoundError:
+    from pymilvus import DataType, Function, FunctionType, MilvusClient
+except (ImportError, ModuleNotFoundError):
     DataType = None
+    Function = None
+    FunctionType = None
     MilvusClient = None
 
 
@@ -36,6 +38,10 @@ class MilvusVectorDB(BaseVectorDB):
         vector_dim = self.config.vector_dim
         if not vector_dim:
             raise ValueError("`vector_dim` must be provided before the collection can be created.")
+        if self.config.enable_bm25 and (Function is None or FunctionType is None):
+            raise ModuleNotFoundError(
+                "BM25 full-text search requires a pymilvus version with Function and FunctionType support."
+            )
 
         if self._collection_exists():
             if not overwrite:
@@ -61,11 +67,30 @@ class MilvusVectorDB(BaseVectorDB):
             field_name="metadata",
             datatype=DataType.JSON,
         )
-        schema.add_field(
-            field_name="object_description",
-            datatype=DataType.VARCHAR,
-            max_length=self.config.object_description_max_length,
-        )
+        object_description_field: Dict[str, Any] = {
+            "field_name": "object_description",
+            "datatype": DataType.VARCHAR,
+            "max_length": self.config.object_description_max_length,
+        }
+        if self.config.enable_bm25:
+            object_description_field["enable_analyzer"] = self.config.description_enable_analyzer
+            object_description_field["enable_match"] = self.config.description_enable_match
+            object_description_field["analyzer_params"] = self.config.description_analyzer_params
+        schema.add_field(**object_description_field)
+
+        if self.config.enable_bm25:
+            schema.add_field(
+                field_name=self.config.bm25_sparse_field_name,
+                datatype=DataType.SPARSE_FLOAT_VECTOR,
+            )
+            schema.add_function(
+                Function(
+                    name=self.config.bm25_function_name,
+                    function_type=FunctionType.BM25,
+                    input_field_names=["object_description"],
+                    output_field_names=[self.config.bm25_sparse_field_name],
+                )
+            )
 
         index_params = self.client.prepare_index_params()
         index_params.add_index(
@@ -74,6 +99,13 @@ class MilvusVectorDB(BaseVectorDB):
             metric_type=self.config.metric_type,
             params=self.config.index_params,
         )
+        if self.config.enable_bm25:
+            index_params.add_index(
+                field_name=self.config.bm25_sparse_field_name,
+                index_type=self.config.bm25_index_type,
+                metric_type=self.config.bm25_metric_type,
+                params=self.config.bm25_index_params,
+            )
 
         self.client.create_collection(
             collection_name=self.collection_name,
@@ -146,6 +178,45 @@ class MilvusVectorDB(BaseVectorDB):
             collection_name=self.collection_name,
             data=[query],
             anns_field="object_vector",
+            filter=filter or None,
+            limit=limit,
+            output_fields=resolved_output_fields,
+            search_params=resolved_search_params,
+        )
+
+        return self._format_search_results(results[0] if results else [])
+
+    def bm25_search(
+        self,
+        query_text: str,
+        limit: int = 10,
+        filter: str = "",
+        output_fields: Optional[List[str]] = None,
+        search_params: Optional[Dict[str, Any]] = None,
+    ) -> List[Dict[str, Any]]:
+        if not self.config.enable_bm25:
+            raise ValueError("BM25 full-text search is disabled for this collection.")
+        if not self._collection_exists():
+            raise ValueError(f"Collection `{self.collection_name}` does not exist. Run `build_db()` first.")
+
+        normalized_query = query_text.strip()
+        if not normalized_query:
+            raise ValueError("`query_text` must not be empty.")
+
+        resolved_output_fields = output_fields or [
+            "object_name",
+            "metadata",
+            "object_description",
+        ]
+        resolved_search_params = search_params or {
+            "metric_type": self.config.bm25_metric_type,
+            "params": self.config.bm25_search_params,
+        }
+
+        results = self.client.search(
+            collection_name=self.collection_name,
+            data=[normalized_query],
+            anns_field=self.config.bm25_sparse_field_name,
             filter=filter or None,
             limit=limit,
             output_fields=resolved_output_fields,

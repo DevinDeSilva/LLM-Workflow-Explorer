@@ -15,7 +15,26 @@ import src.vector_db.milvus as milvus_module
 class FakeDataType:
     VARCHAR = "VARCHAR"
     FLOAT_VECTOR = "FLOAT_VECTOR"
+    SPARSE_FLOAT_VECTOR = "SPARSE_FLOAT_VECTOR"
     JSON = "JSON"
+
+
+class FakeFunctionType:
+    BM25 = "BM25"
+
+
+class FakeFunction:
+    def __init__(
+        self,
+        name: str,
+        function_type: str,
+        input_field_names,
+        output_field_names,
+    ):
+        self.name = name
+        self.function_type = function_type
+        self.input_field_names = input_field_names
+        self.output_field_names = output_field_names
 
 
 class FakeSchema:
@@ -23,9 +42,13 @@ class FakeSchema:
         self.auto_id = auto_id
         self.enable_dynamic_field = enable_dynamic_field
         self.fields = []
+        self.functions = []
 
     def add_field(self, **kwargs):
         self.fields.append(kwargs)
+
+    def add_function(self, function):
+        self.functions.append(function)
 
 
 class FakeIndexParams:
@@ -111,6 +134,8 @@ class FakeMilvusClient:
 def build_milvus_db(monkeypatch):
     monkeypatch.setattr(milvus_module, "MilvusClient", FakeMilvusClient)
     monkeypatch.setattr(milvus_module, "DataType", FakeDataType)
+    monkeypatch.setattr(milvus_module, "Function", FakeFunction)
+    monkeypatch.setattr(milvus_module, "FunctionType", FakeFunctionType)
 
     def _build(**kwargs):
         config = MilvusVectorDBConfig(
@@ -172,14 +197,35 @@ def test_build_db_creates_expected_schema(build_milvus_db):
             "field_name": "object_description",
             "datatype": "VARCHAR",
             "max_length": db.config.object_description_max_length,
+            "enable_analyzer": True,
+            "enable_match": True,
+            "analyzer_params": {
+                "tokenizer": "standard",
+                "filter": ["lowercase"],
+            },
+        },
+        {
+            "field_name": "object_description_sparse",
+            "datatype": "SPARSE_FLOAT_VECTOR",
         },
     ]
+    assert len(schema.functions) == 1
+    assert schema.functions[0].name == "object_description_bm25"
+    assert schema.functions[0].function_type == "BM25"
+    assert schema.functions[0].input_field_names == ["object_description"]
+    assert schema.functions[0].output_field_names == ["object_description_sparse"]
     assert index_params.indexes == [
         {
             "field_name": "object_vector",
             "index_type": "AUTOINDEX",
             "metric_type": "COSINE",
             "params": {},
+        },
+        {
+            "field_name": "object_description_sparse",
+            "index_type": "SPARSE_INVERTED_INDEX",
+            "metric_type": "BM25",
+            "params": {"inverted_index_algo": "DAAT_MAXSCORE"},
         }
     ]
 
@@ -343,3 +389,51 @@ def test_search_raises_when_collection_is_missing(build_milvus_db):
 
     with pytest.raises(ValueError, match="does not exist. Run `build_db\\(\\)` first"):
         db.search(query_vector=[1, 0, 0, 0])
+
+
+def test_bm25_search_uses_description_sparse_index(build_milvus_db):
+    db = build_milvus_db(vector_dim=4)
+    db.client.collections.add(db.collection_name)
+    db.client.search_response = [
+        [
+            {
+                "id": "object_alpha",
+                "distance": 0.2,
+                "entity": {
+                    "metadata": {"category": "alpha"},
+                    "object_description": "Alpha keyword-rich document.",
+                },
+            }
+        ]
+    ]
+
+    results = db.bm25_search(query_text="alpha keyword", limit=3)
+
+    assert results == [
+        {
+            "score": 0.2,
+            "object_name": "object_alpha",
+            "metadata": {"category": "alpha"},
+            "object_description": "Alpha keyword-rich document.",
+        }
+    ]
+    assert db.client.search_calls[0] == {
+        "collection_name": "unit_test_collection",
+        "data": ["alpha keyword"],
+        "anns_field": "object_description_sparse",
+        "filter": None,
+        "limit": 3,
+        "output_fields": ["object_name", "metadata", "object_description"],
+        "search_params": {
+            "metric_type": "BM25",
+            "params": {"drop_ratio_search": 0.0},
+        },
+    }
+
+
+def test_bm25_search_rejects_empty_query(build_milvus_db):
+    db = build_milvus_db(vector_dim=4)
+    db.client.collections.add(db.collection_name)
+
+    with pytest.raises(ValueError, match="`query_text` must not be empty"):
+        db.bm25_search(query_text="   ")

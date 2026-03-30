@@ -54,13 +54,13 @@ def _sample_records():
             "object_name": "object_alpha",
             "object_vector": [1.0, 0.0, 0.0, 0.0],
             "metadata": {"category": "alpha", "rank": 1},
-            "object_description": "Primary alpha test object.",
+            "object_description": "Primary alpha test object with orchard banana keyword.",
         },
         {
             "object_name": "object_beta",
             "object_vector": [0.0, 1.0, 0.0, 0.0],
             "metadata": {"category": "beta", "rank": 2},
-            "object_description": "Secondary beta test object.",
+            "object_description": "Secondary beta test object with nebula cactus keyword.",
         },
     ]
 
@@ -100,5 +100,33 @@ def test_milvus_search_integration(milvus_db):
     assert top_result["object_name"] == "object_alpha"
     assert top_result["metadata"]["category"] == "alpha"
     assert top_result["metadata"]["rank"] == 1
-    assert top_result["object_description"] == "Primary alpha test object."
+    assert top_result["object_description"] == "Primary alpha test object with orchard banana keyword."
+    assert "score" in top_result
+
+
+def test_milvus_bm25_search_integration(milvus_db):
+    milvus_db.build_db(overwrite=True)
+    milvus_db.insert(records=_sample_records())
+
+    # This flush is kept in the test only so BM25 results are deterministic immediately after setup.
+    if hasattr(milvus_db.client, "flush"):
+        milvus_db.client.flush(collection_name=milvus_db.collection_name)
+
+    search_results = []
+    for _ in range(6):
+        search_results = milvus_db.bm25_search(
+            query_text="orchard banana",
+            limit=2,
+        )
+        if search_results:
+            break
+        sleep(0.5)
+
+    assert len(search_results) >= 1
+
+    top_result = search_results[0]
+    assert top_result["object_name"] == "object_alpha"
+    assert top_result["metadata"]["category"] == "alpha"
+    assert top_result["metadata"]["rank"] == 1
+    assert "orchard banana" in top_result["object_description"]
     assert "score" in top_result

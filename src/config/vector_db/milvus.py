@@ -26,3 +26,26 @@ class MilvusVectorDBConfig(BaseVectorDBConfig):
     object_name_max_length: int = 512
     object_description_max_length: int = 8192
     enable_dynamic_field: bool = False
+    enable_bm25: bool = True
+    description_enable_analyzer: bool = True
+    description_enable_match: bool = True
+    description_analyzer_params: Dict[str, Any] = Field(
+        default_factory=lambda: {
+            "tokenizer": "standard",
+            "filter": ["lowercase"],
+        }
+    )
+    bm25_function_name: str = "object_description_bm25"
+    bm25_sparse_field_name: str = "object_description_sparse"
+    bm25_index_type: str = "SPARSE_INVERTED_INDEX"
+    bm25_metric_type: str = "BM25"
+    bm25_index_params: Dict[str, Any] = Field(
+        default_factory=lambda: {
+            "inverted_index_algo": "DAAT_MAXSCORE",
+        }
+    )
+    bm25_search_params: Dict[str, Any] = Field(
+        default_factory=lambda: {
+            "drop_ratio_search": 0.0,
+        }
+    )
