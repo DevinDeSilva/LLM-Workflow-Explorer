@@ -120,16 +120,23 @@ class FakeVectorDB:
         return [{"object_name": "ex:Object2", "score": 0.85}]
 
 
+def make_object_search_config(**kwargs):
+    return ObjectSearchConfig(**kwargs)
+
+
 def test_build_index_records_creates_descriptions_and_vectors():
     graph_manager = FakeGraphManager()
     embeddings_model = FakeEmbeddingsModel()
     vector_db = FakeVectorDB()
+    config = make_object_search_config()
 
     object_search = ObjectSearch(
         graph_manager=graph_manager,
         embeddings_model=embeddings_model,
         vector_db=vector_db,
+        config=config,
     )
+    embeddings_model.document_inputs.clear()
 
     records = object_search.build_index_records()
 
@@ -160,14 +167,18 @@ def test_index_objects_overwrite_rebuilds_collection_before_insert():
     graph_manager = FakeGraphManager()
     embeddings_model = FakeEmbeddingsModel()
     vector_db = FakeVectorDB()
+    config = make_object_search_config(overwrite_db_collection=True)
 
     object_search = ObjectSearch(
         graph_manager=graph_manager,
         embeddings_model=embeddings_model,
         vector_db=vector_db,
+        config=config,
     )
+    vector_db.build_db_calls.clear()
+    vector_db.insert_calls.clear()
 
-    result = object_search.index_objects(overwrite=True)
+    result = object_search.index_objects()
 
     assert result == {"insert_count": 2}
     assert vector_db.build_db_calls == [True]
@@ -179,11 +190,13 @@ def test_search_returns_vector_and_bm25_results():
     graph_manager = FakeGraphManager()
     embeddings_model = FakeEmbeddingsModel()
     vector_db = FakeVectorDB()
+    config = make_object_search_config()
 
     object_search = ObjectSearch(
         graph_manager=graph_manager,
         embeddings_model=embeddings_model,
         vector_db=vector_db,
+        config=config,
     )
 
     results = object_search.search("primary widget", limit=5)
@@ -213,7 +226,7 @@ def test_search_uses_default_limit_from_config():
     graph_manager = FakeGraphManager()
     embeddings_model = FakeEmbeddingsModel()
     vector_db = FakeVectorDB()
-    config = ObjectSearchConfig(search_limit=3)
+    config = make_object_search_config(search_limit=3)
 
     object_search = ObjectSearch(
         graph_manager=graph_manager,
@@ -236,7 +249,7 @@ def test_queries_are_read_from_config():
     graph_manager = FakeGraphManager()
     embeddings_model = FakeEmbeddingsModel()
     vector_db = FakeVectorDB()
-    config = ObjectSearchConfig(
+    config = make_object_search_config(
         all_objects_query="ALL_OBJECTS_QUERY",
         object_properties_query="OBJECT_PROPERTIES_QUERY <{object_uri}>",
     )
@@ -247,6 +260,7 @@ def test_queries_are_read_from_config():
         vector_db=vector_db,
         config=config,
     )
+    graph_manager.query_calls.clear()
 
     records = object_search.build_index_records()
 

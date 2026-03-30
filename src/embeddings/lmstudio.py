@@ -16,6 +16,9 @@ class LMStudioEmbeddingsModel(BaseEmbeddings):
             "api_key": "dummy_key",
             "base_url": self.config.base_url,
             "model": self.config.model,
+            # LM Studio's embeddings endpoint expects raw strings and rejects
+            # the token-array payloads that LangChain's length-safe path can emit.
+            "check_embedding_ctx_length": False,
         }
         if self.config.dimensions is not None:
             kwargs["dimensions"] = self.config.dimensions

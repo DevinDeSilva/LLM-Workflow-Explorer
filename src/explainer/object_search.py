@@ -19,8 +19,7 @@ class ObjectSearch:
         config: ObjectSearchConfig
     ) -> None:
         self.graph_manager = graph_manager
-        self.config = config or ObjectSearchConfig()
-        self.collection_name = self.config.collection_name
+        self.config = config
         self.embeddings_model = embeddings_model
         self.vector_db = vector_db
         

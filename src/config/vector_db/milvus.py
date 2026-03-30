@@ -17,7 +17,7 @@ class MilvusVectorDBConfig(BaseVectorDBConfig):
         default_factory=lambda: os.getenv("MILVUS_DB_NAME", "default")
     )
     collection_name: str = "object_store"
-    vector_dim: int | None = None
+    vector_dim: int | None = 1024
     metric_type: str = "COSINE"
     index_type: str = "AUTOINDEX"
     index_params: Dict[str, Any] = Field(default_factory=dict)

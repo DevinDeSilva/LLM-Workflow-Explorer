@@ -99,6 +99,7 @@ def test_lmstudio_embeddings_create_client_uses_config_values(patch_embedding_cl
         "api_key": "dummy_key",
         "base_url": "http://localhost:1234/v1",
         "model": "nomic-embed-text",
+        "check_embedding_ctx_length": False,
         "dimensions": 768,
     }
 

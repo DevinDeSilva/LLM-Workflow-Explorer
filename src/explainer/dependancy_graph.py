@@ -4,14 +4,15 @@ from typing import Any, Dict, List, Optional
 
 import dspy
 from pydantic import BaseModel
+from icecream import ic
 
-from config.object_search import ObjectSearchConfig
-from embeddings.base import BaseEmbeddings
-from explainer.object_search import ObjectSearch
+from src.config.object_search import ObjectSearchConfig
+from src.embeddings.base import BaseEmbeddings
+from src.explainer.object_search import ObjectSearch
 from src.llm.base import BaseLLM
 from src.utils.graph_manager import GraphManager
 from src.config.experiment import TTLConfig
-from vector_db.base import BaseVectorDB
+from src.vector_db.base import BaseVectorDB
 
 class QuestionNode(BaseModel):
     pass
@@ -25,7 +26,6 @@ class DependancyGraphCreation:
         vector_db:BaseVectorDB,
         object_search_config:ObjectSearchConfig,
         ttl_config:TTLConfig
-        
     ) -> None:
         
         self.graph_manager = GraphManager(
@@ -47,7 +47,9 @@ class DependancyGraphCreation:
     def user_query_to_requirements(
         self, query: str, schema_context: str = ""
     ) -> Dict[str, Any]:
-        pass
+        ic(query)
+        ic(schema_context)
+        return {}
     
     def ambiguity_removal(self, query: str, schema_context: str = "") -> Dict[str, Any]:
         pass

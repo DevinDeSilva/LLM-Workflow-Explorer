@@ -1,7 +1,5 @@
 from pydantic import BaseModel
 from typing import Dict, Union
-from src.config.object_search import ObjectSearchConfig
-from src.embeddings.base import 
 
 class ExplainerConfig(BaseModel):
     llm_type:str
@@ -10,5 +8,5 @@ class ExplainerConfig(BaseModel):
     llm_config:Dict[str, Union[str, int, float]] = {}
     embedding_config:Dict[str, Union[str, int, float]] = {}
     vectordb_config:Dict[str, Union[str, int, float]] = {}
-    object_search_config:ObjectSearchConfig = ObjectSearchConfig()
+    object_search_config:Dict[str, Union[str, int, float]] = {}
     log_file: str

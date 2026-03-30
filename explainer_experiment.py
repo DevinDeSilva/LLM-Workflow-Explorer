@@ -45,7 +45,12 @@ def _(config, logging):
 @app.cell
 def _(Explainer, GTInfo, config):
     ground_truth = GTInfo(config.gt.save_loc)
-    explainer = Explainer(config.explainer_config)
+    explainer = Explainer(
+        config.file_paths.execution_kg_loc,
+        config.file_paths.schema_loc,
+        config.explainer_config,
+        config.ttl
+        )
     return explainer, ground_truth
 
 

@@ -30,11 +30,19 @@ explainer_config:
   llm_type: "lmstudio"
   embedding_type: "lmstudio"
   vectordb_type: "milvus"
+  
   llm_config:
     model: "openai/qwen3-30b-a3b-2507"
     api_base: "http://169.254.217.32:1234/v1"
-  object_search_config:
+  
+  vectordb_config:
+    vector_dim: 1024
     collection_name: "calibration"
+  
+  embedding_config:
+    model: 'text-embedding-bge-large-en-v1.5'
+
+  object_search_config:
     search_limit: 3
   log_file: "evaluations/calibration/execution_planning/execution_planning_log.txt"
   

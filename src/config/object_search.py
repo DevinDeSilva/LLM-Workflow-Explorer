@@ -19,7 +19,6 @@ ORDER BY ?predicate ?value
 
 
 class ObjectSearchConfig(BaseModel):
-    collection_name: str = "calibration"
     search_limit: int = 5
     all_objects_query: str = SPARQL_ALL_OBJECTS_TEMPLATE
     object_properties_query: str = SPARQL_OBJECT_PROPERTIES_TEMPLATE
