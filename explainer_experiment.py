@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.20.4"
+__generated_with = "0.22.0"
 app = marimo.App()
 
 
@@ -26,11 +26,14 @@ def _():
     lconfig = load_config(CONFIG_PATH)
     config = ExperimentConfig.model_validate(lconfig)
     config
-    return Explainer, GTInfo, config, logging, tqdm
+    return Explainer, GTInfo, config, ic, logging, os, tqdm
 
 
 @app.cell
-def _(config, logging):
+def _(config, ic, logging, os):
+    os.makedirs(os.path.dirname(config.explorer_config.log_file), exist_ok=True)
+    ic(config.explainer_config.log_file)
+
     logging.basicConfig(
         filename=config.explainer_config.log_file,               # Log to this file
         filemode='a',                     # 'a' for append, 'w' to overwrite each time
@@ -48,9 +51,11 @@ def _(Explainer, GTInfo, config):
     explainer = Explainer(
         config.file_paths.execution_kg_loc,
         config.file_paths.schema_loc,
+        config.explorer_config.ontology_triples_path,
         config.explainer_config,
-        config.ttl
-        )
+        config.application,
+        config.ttl,
+    )
     return explainer, ground_truth
 
 
@@ -58,7 +63,6 @@ def _(Explainer, GTInfo, config):
 def _(explainer, ground_truth, tqdm):
     for qinfo in tqdm(ground_truth.gt_info):
         pred = explainer.request(qinfo.question)
-        break
     return
 
 

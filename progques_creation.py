@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.20.4"
+__generated_with = "0.22.0"
 app = marimo.App()
 
 
@@ -20,7 +20,7 @@ def _():
     from src.config.experiment import ExperimentConfig
     from src.explorer.executable_program import ExecutableProgram
 
-    from src.question_creation.ontology_info_retriever import OntologyInfoRetriever
+    from src.utils.ontology_info_retriever import OntologyInfoRetriever
     from src.llm import LLM
 
     load_dotenv()
@@ -39,15 +39,17 @@ def _():
         common_utils,
         config,
         dspy,
-        logging,
         os,
         pd,
         tqdm,
     )
 
 
-@app.cell
-def _(config, logging):
+app._unparsable_cell(
+    r"""
+    os.makedirs(os.path.dirname(config.explorer_config.log_file), exist_ok=True)_ok=True)
+    ic(config.explorer_config.log_file)
+
     logging.basicConfig(
         filename=config.question_creation_config.log_file,               # Log to this file
         filemode='a',                     # 'a' for append, 'w' to overwrite each time
@@ -56,7 +58,9 @@ def _(config, logging):
         datefmt='%Y-%m-%d %H:%M:%S'       # Custom date format
     )
     logger = logging.getLogger(__name__)
-    return (logger,)
+    """,
+    name="_"
+)
 
 
 @app.cell

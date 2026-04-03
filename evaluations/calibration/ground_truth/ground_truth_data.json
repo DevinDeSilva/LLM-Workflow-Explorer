@@ -1,6 +1,6 @@
 {
     "gt_0": {
-        "question": "\nHow many unique experimental are there in this, this accounts to the number of unique identifies in the executions ?\n",
+        "question": "\nHow many unique experiment are there in this workflow ?\n",
         "answer": "The answer to the question is 10 unique executions.",
         "entities": [
             {
@@ -64,19 +64,19 @@
         "question": "\nWhat are the extracted KG entities for the execution with id 1_1 \n",
         "answer": "\nThe retrieved entities from the knowledge graph includes the following ingredients,\n\n1. Yogurt\n2. Berry\n3. Cheese\n4. Carrot\n5. Turkey\n6. Bell pepper\n7. Hummus\n8. Almond\n9. Avocado\n10. Pumpkin seed\n11. Water\n12. Pineapple\n13. Cottage cheese\n",
         "entities": [
-            "Pineapple",
-            "Berry",
-            "Pumpkin seed",
-            "Yogurt",
+            "Almond",
             "Water",
-            "Cottage cheese",
-            "Carrot",
-            "Cheese",
-            "Avocado",
-            "Bell pepper",
+            "Berry",
+            "Yogurt",
             "Turkey",
+            "Bell pepper",
+            "Carrot",
             "Hummus",
-            "Almond"
+            "Cottage cheese",
+            "Pineapple",
+            "Cheese",
+            "Pumpkin seed",
+            "Avocado"
         ],
         "sparql_querys": [
             {
@@ -90,12 +90,12 @@
         "question": "\nwhy did some ingredients have missing values for `sugarG` and `ingredientCat` columns in the final output of the workflow?\n",
         "answer": "\nDue to the fact that some information is not available in the knowledge graph for ingredients such as \n'Turkey', 'Hummus', 'Cheese', 'Cottage cheese', 'Berry', 'Water' the sugarG and ingredientCat is not available.\n",
         "entities": [
+            "Water",
             "Berry",
             "Cottage cheese",
-            "Cheese",
             "Hummus",
             "Turkey",
-            "Water"
+            "Cheese"
         ],
         "sparql_querys": [
             {

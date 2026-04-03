@@ -3,11 +3,20 @@ import re
 import yaml
 import logging
 import hashlib
-from typing import Optional
+from typing import Optional, List, Any
 
 import dycomutils as common_utils
 
 logger = logging.getLogger(__name__)
+
+def clean_string_list(items: List[Any]) -> List[str]:
+        cleaned_items: List[str] = []
+        for item in items:
+            cleaned_item = " ".join(str(item).split()).strip().strip("\"'")
+            if cleaned_item and cleaned_item not in cleaned_items:
+                cleaned_items.append(cleaned_item)
+
+        return cleaned_items
 
 def create_timestamp_id(prefix:str):
     """

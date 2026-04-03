@@ -37,14 +37,14 @@ def _():
     from src.utils.graph_manager import GraphManager  # noqa: E402
     from src.utils.utils import load_config # noqa: E402
     from src.config.experiment import ExperimentConfig # noqa: E402
-    from src.experiment.ground_truth import GT # noqa: E402
+    from src.experiment.ground_truth import GT, SPARQLTemplate # noqa: E402
 
     CONFIG_PATH = "evaluations/calibration/config.yaml"
     logging.info(f"Loading config: {CONFIG_PATH}")
     lconfig = load_config(CONFIG_PATH)
     config = ExperimentConfig.model_validate(lconfig)
     config
-    return GT, GraphManager, List, common_utils, config, os
+    return GT, GraphManager, List, SPARQLTemplate, common_utils, config, os
 
 
 @app.cell
@@ -62,7 +62,7 @@ def _(GT, GraphManager, List, config):
 def _(graph_manager):
     # Question 1
     question1 = """
-    How many unique experimental are there in this, this accounts to the number of unique identifies in the executions ?
+    How many unique experiment are there in this workflow ?
     """
     question_sparql1 = """
     SELECT (count(distinct ?ids) AS ?obj_count)
