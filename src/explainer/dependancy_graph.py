@@ -30,6 +30,24 @@ class QuestionNode(BaseModel):
     question:str
     node_type:Optional[str] = None
     
+    def solve(self, 
+              schema_info, predecessor_info, max_tries = 5
+              ) -> Dict[str, Any]:
+        # use the provided information to solve the question at this node and return the answer.
+        tries = 0
+        answered = False
+        
+        while tries < max_tries:
+            # use predecessor_info to create a prompt for solving the node.
+            # the prompt should include the original question, the schema information, and the information from the predecessor nodes.
+            # the model should then output the answer to the question at the node, as well as any relevant schema information used, any objects retrieved from the graph, any synthetic questions created, and any intermediary results.
+            
+            # if the model fails to answer the question or if we determine that the answer is incorrect, we can try again by providing feedback to the model and asking it to revise its answer.
+            
+            break
+        
+        return {}
+    
 
 T = TypeVar("T")
 Edge = Tuple[T, T]
@@ -188,7 +206,8 @@ class DependancyGraph:
         adj_matrix, 
         node_id, 
         schema_info,
-        max_tries = 5
+        node_map:Dict[str, QuestionNode],
+        max_tries = 5,
         ) -> Dict[str, Any]:
         in_nodes = incoming_edges(adj_matrix, node_id)
         
@@ -197,7 +216,9 @@ class DependancyGraph:
             predecessor_info[in_node] = DependancyGraph.solve_node(
                 adj_matrix, 
                 in_node, 
-                schema_info
+                schema_info,
+                node_map,
+                max_tries
                 )
             
         # solve the node using predecessor_info
@@ -210,15 +231,12 @@ class DependancyGraph:
             "answer": None,
         }
         
-        tries = 0
-        while tries < max_tries:
-            # use predecessor_info to create a prompt for solving the node.
-            # the prompt should include the original question, the schema information, and the information from the predecessor nodes.
-            # the model should then output the answer to the question at the node, as well as any relevant schema information used, any objects retrieved from the graph, any synthetic questions created, and any intermediary results.
-            
-            # if the model fails to answer the question or if we determine that the answer is incorrect, we can try again by providing feedback to the model and asking it to revise its answer.
-            
-            break
+        node_data = node_map[node_id].solve(
+            schema_info,
+            predecessor_info
+        )
+        
+        node_info['answer'] = node_data.get("answer")
         
         return node_info
         

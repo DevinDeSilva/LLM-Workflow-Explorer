@@ -13,7 +13,7 @@ class SchemaInfoSignature(dspy.Signature):
     question: str = dspy.InputField(
         desc="Natural language question."
     )
-    need_schema_info: bool = dspy.InputField(
+    need_schema_info: bool = dspy.OutputField(
         desc="Boolean indicating if schema information is needed."
     )
     relevant_schema_info: List[str] = dspy.OutputField(
@@ -34,7 +34,7 @@ class IRRequirmeenteSignature(dspy.Signature):
         desc="Ontology schema information."
     )
     
-    need_retrival: bool = dspy.InputField(
+    need_retrival: bool = dspy.OutputField(
         desc="Boolean indicating if information retrieval is needed."
     )
     
