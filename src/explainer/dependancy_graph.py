@@ -30,8 +30,6 @@ class QuestionNode(BaseModel):
     question:str
     node_type:Optional[str] = None
     
-    def solve
-    
 
 T = TypeVar("T")
 Edge = Tuple[T, T]
@@ -238,7 +236,7 @@ class DependancyGraph:
         # for each leaf node, we perform object search to retreive relevant information from the graph.
         # we then use the retreived information to answer the question at the node.
         # we then propagate the answer to the parent nodes and repeat the process until we reach the root node.
-        
+        pass
         
         
     

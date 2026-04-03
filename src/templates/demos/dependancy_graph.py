@@ -1,3 +1,5 @@
+from typing import List
+
 import dspy
 
 def build_information_required_fewshot_examples() -> List[dspy.Example]:
