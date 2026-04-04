@@ -63,6 +63,14 @@ class FakeGraphManager:
         }
         return mapping.get(value, value)
 
+    def resolve_curie(self, value: str, default_prefix=None, allow_bare: bool = False) -> str:
+        mapping = {
+            "ex:Object1": "http://example.org/Object1",
+            "ex:Object2": "http://example.org/Object2",
+            "ex:Widget": "http://example.org/Widget",
+        }
+        return mapping.get(value, value)
+
 
 class FakeEmbeddingsModel:
     def __init__(self):
@@ -218,6 +226,57 @@ def test_search_returns_vector_and_bm25_results():
             "query_text": "primary widget",
             "limit": 5,
             "kwargs": {},
+        }
+    ]
+
+
+def test_link_entities_combines_unique_results_and_resolves_uris():
+    graph_manager = FakeGraphManager()
+    embeddings_model = FakeEmbeddingsModel()
+    vector_db = FakeVectorDB()
+    config = make_object_search_config()
+
+    object_search = ObjectSearch(
+        graph_manager=graph_manager,
+        embeddings_model=embeddings_model,
+        vector_db=vector_db,
+        config=config,
+    )
+
+    object_search.search = lambda phrase, limit=None: {
+        "vector_results": [
+            {
+                "object_name": "ex:Object1",
+                "score": 0.99,
+                "object_description": "Object: ex:Object1. Types: ex:Widget.",
+            }
+        ],
+        "bm25_results": [
+            {
+                "object_name": "ex:Object1",
+                "score": 0.85,
+                "object_description": "Object: ex:Object1. Types: ex:Widget.",
+            },
+            {
+                "object_name": "ex:Object2",
+                "score": 0.75,
+                "object_description": "Object: ex:Object2.",
+            },
+        ],
+    }
+
+    results = object_search.link_entities(
+        "primary widget",
+        class_hints=["ex:Widget"],
+    )
+
+    assert results == [
+        {
+            "object_name": "ex:Object1",
+            "score": 0.99,
+            "object_description": "Object: ex:Object1. Types: ex:Widget.",
+            "object_uri": "http://example.org/Object1",
+            "source": "vector_results",
         }
     ]
 

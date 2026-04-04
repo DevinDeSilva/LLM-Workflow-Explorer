@@ -58,8 +58,6 @@ class Explainer:
             schema_context=self.format_schema()
             )
         
-        self.dependancy_graph.process_dependancy_graph(
-                schema_context=self.format_schema()
+        return self.dependancy_graph.process_dependancy_graph(
+            schema_context=self.format_schema()
         )
-        
-        return "Waiting for response from explainer..."

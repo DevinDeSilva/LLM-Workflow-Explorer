@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from typing import Any, Dict, List, Optional
 
 from rdflib.namespace import RDF
@@ -156,6 +157,76 @@ class ObjectSearch:
             "vector_results": self.vector_search(normalized_phrase, limit=limit),
             "bm25_results": self.bm25_search(normalized_phrase, limit=limit),
         }
+
+    def link_entities(
+        self,
+        phrase: str,
+        class_hints: Optional[List[str]] = None,
+        limit: Optional[int] = None,
+    ) -> List[Dict[str, Any]]:
+        normalized_phrase = phrase.strip()
+        if not normalized_phrase:
+            return []
+
+        resolved_limit = self.config.search_limit if limit is None else limit
+        search_results = self.search(normalized_phrase, limit=resolved_limit)
+
+        combined_results: List[Dict[str, Any]] = []
+        seen_objects = set()
+
+        for source_name in ("vector_results", "bm25_results"):
+            for result in search_results.get(source_name, []):
+                object_name = str(result.get("object_name", "")).strip()
+                if not object_name or object_name in seen_objects:
+                    continue
+
+                if not self._result_matches_class_hints(result, class_hints):
+                    continue
+
+                linked_result = dict(result)
+                linked_result["object_uri"] = self._resolve_object_uri(object_name)
+                linked_result["source"] = source_name
+                combined_results.append(linked_result)
+                seen_objects.add(object_name)
+
+        return combined_results
+
+    def _resolve_object_uri(self, object_name: str) -> str:
+        resolve_curie = getattr(self.graph_manager, "resolve_curie", None)
+        if callable(resolve_curie):
+            try:
+                return str(resolve_curie(object_name, allow_bare=True))
+            except Exception:
+                return object_name
+
+        return object_name
+
+    def _result_matches_class_hints(
+        self,
+        result: Dict[str, Any],
+        class_hints: Optional[List[str]] = None,
+    ) -> bool:
+        normalized_hints = [
+            hint.strip().lower()
+            for hint in class_hints or []
+            if isinstance(hint, str) and hint.strip()
+        ]
+        if not normalized_hints:
+            return True
+
+        haystack_parts = [
+            str(result.get("object_name", "")),
+            str(result.get("object_description", "")),
+            json.dumps(result.get("metadata", {}), sort_keys=True),
+        ]
+        haystack = " ".join(haystack_parts).lower()
+
+        for hint in normalized_hints:
+            formatted_hint = self._format_term(hint).lower()
+            if hint in haystack or formatted_hint in haystack:
+                return True
+
+        return False
 
     def _format_term(self, value: str) -> str:
         if not value:

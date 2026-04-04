@@ -1,5 +1,4 @@
 import dspy
-from icecream import List
 
 class AnsweredSignature(dspy.Signature):
     """
