@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.20.4"
+__generated_with = "0.22.4"
 app = marimo.App()
 
 
@@ -62,7 +62,7 @@ def _(GT, GraphManager, List, config):
 def _(graph_manager):
     # Question 1
     question1 = """
-    How many unique experiment are there in this workflow ?
+    How many unique "experiment execution" are there in this?
     """
     question_sparql1 = """
     SELECT (count(distinct ?ids) AS ?obj_count)
@@ -79,7 +79,7 @@ def _(graph_manager):
 
 @app.cell
 def _():
-    answer1 = "The answer to the question is 10 unique executions."
+    answer1 = "The answer to the question is 1 unique executions."
     return (answer1,)
 
 
@@ -95,6 +95,7 @@ def _(
 ):
     gt_list.append(
         GT(
+
             question=question1,
             answer=answer1,
             sparql_querys=[
@@ -422,9 +423,11 @@ def _(
 @app.cell
 def _(common_utils, config, gt_list: "List[GT]", os):
     os.makedirs(os.path.dirname(config.gt.save_loc), exist_ok=True)
+    for i, gt in enumerate(gt_list):
+        gt.id = f"gt_{i}"
+
     common_utils.serialization.save_json(
-        {f"gt_{i}": gt.model_dump() for i, gt in enumerate(gt_list)},
-        config.gt.save_loc
+        {gt.id: gt.model_dump() for gt in gt_list}, config.gt.save_loc
     )
     return
 

@@ -74,6 +74,7 @@ def test_information_required_uses_dspy_predict_and_returns_list(monkeypatch):
     }
     assert captured["filter_inputs"] == {
         "original_question": "Which model handled the prompt?",
+        "application_context": "An application for testing LLM prompt workflows.",
         "sub_questions": [
             "0). the relevant workflow task",
             "1). the model used by that task",
@@ -113,8 +114,11 @@ def test_clean_string_list_normalizes_and_deduplicates_items():
 
 
 def test_plan_synthetic_question_execution_uses_sqretriever_rows_and_filters_invalid_programs(monkeypatch):
+    captured = {}
+
     class FakeGroundingPredictor:
         def __call__(self, **kwargs):
+            captured["grounding_inputs"] = kwargs
             return SimpleNamespace(
                 candidate_classes=["provone:Execution"],
                 candidate_relations=["dcterms:identifier"],
@@ -123,6 +127,7 @@ def test_plan_synthetic_question_execution_uses_sqretriever_rows_and_filters_inv
 
     class FakePlanPredictor:
         def __call__(self, **kwargs):
+            captured["plan_inputs"] = kwargs
             return SimpleNamespace(
                 execution_plan_json="""
                 [
@@ -195,6 +200,7 @@ def test_plan_synthetic_question_execution_uses_sqretriever_rows_and_filters_inv
     monkeypatch.setattr(dependency_graph_module.dspy, "context", lambda **kwargs: DummyContext(**kwargs))
 
     graph = DependancyGraph.__new__(DependancyGraph)
+    graph.app_info = ApplicationInfo(description="An application for testing LLM prompt workflows.")
     graph.llm = SimpleNamespace(llm="fake-dspy-lm")
     graph.synthetic_question_retriever = FakeSQRetriever()
     graph.synthetic_questions_by_program_id = {
@@ -223,10 +229,49 @@ def test_plan_synthetic_question_execution_uses_sqretriever_rows_and_filters_inv
             "expected_classes": ["provone:Execution"],
         }
     ]
+    assert captured["grounding_inputs"]["application_context"] == (
+        "An application for testing LLM prompt workflows."
+    )
+    assert captured["plan_inputs"]["application_context"] == (
+        "An application for testing LLM prompt workflows."
+    )
+
+
+def test_build_toplevel_dependancy_graph_passes_application_context(monkeypatch):
+    captured = {}
+
+    class FakeTopologyPredictor:
+        def __call__(self, **kwargs):
+            captured["topology_inputs"] = kwargs
+            return SimpleNamespace(topology_graph="1 -> Q")
+
+    monkeypatch.setattr(
+        dependency_graph_module.dspy,
+        "context",
+        lambda **kwargs: DummyContext(**kwargs),
+    )
+
+    graph = DependancyGraph.__new__(DependancyGraph)
+    graph.app_info = ApplicationInfo(description="Application workflow description.")
+    graph.llm = SimpleNamespace(llm="fake-dspy-lm")
+    graph.vertices = {}
+    graph.build_topology_graph_predictor = FakeTopologyPredictor()
+
+    graph.build_toplevel_dependancy_graph(
+        "Which model handled the prompt?",
+        [dependency_graph_module.QuestionNode(id="1", question="Find the execution")],
+    )
+
+    assert captured["topology_inputs"] == {
+        "original_question": "Which model handled the prompt?",
+        "application_context": "Application workflow description.",
+        "sub_questions": ["1. Find the execution"],
+    }
 
 
 def test_process_dependancy_graph_solves_root_node():
     graph = DependancyGraph.__new__(DependancyGraph)
+    graph.app_info = ApplicationInfo(description="Workflow application description.")
     graph.vertices = {
         "0": dependency_graph_module.QuestionNode(
             id="0",
@@ -236,8 +281,18 @@ def test_process_dependancy_graph_solves_root_node():
     graph.adjacency_matrix = [[0]]
 
     graph.format_predecessor_context = MethodType(lambda self, predecessor_info: "", graph)
+    graph.answer_question_from_schema = MethodType(
+        lambda self, question, schema_context, max_tries=2, application_context=None: {
+            "answer": "",
+            "answered": False,
+            "draft_answer": "",
+            "history": [],
+            "relevant_schema_info": [],
+        },
+        graph,
+    )
     graph.plan_synthetic_question_execution = MethodType(
-        lambda self, question, schema_context, predecessor_context="": {
+        lambda self, question, schema_context, predecessor_context="", application_context=None: {
             "grounding": {"candidate_classes": ["workflow:Large_Language_Model_Output"]},
             "candidate_synthetic_questions": [{"program_id": "valid-program"}],
             "plan": [
@@ -253,7 +308,7 @@ def test_process_dependancy_graph_solves_root_node():
         graph,
     )
     graph.execute_synthetic_question_plan = MethodType(
-        lambda self, question, predecessor_context, plan: {
+        lambda self, question, predecessor_context, plan, application_context=None: {
             "steps": [
                 {
                     "step_id": "step1",
@@ -270,7 +325,7 @@ def test_process_dependancy_graph_solves_root_node():
     )
     graph.format_step_results = MethodType(lambda self, steps: "step results", graph)
     graph.ensure_answer_quality = MethodType(
-        lambda self, question, answer, evidence_context, max_tries=2: {
+        lambda self, question, answer, evidence_context, max_tries=2, application_context=None: {
             "answer": answer,
             "answered": True,
             "history": [{"answered": True, "feedback": "", "answer": answer}],

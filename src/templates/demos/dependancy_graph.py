@@ -5,12 +5,12 @@ import dspy
 def build_information_required_fewshot_examples() -> List[dspy.Example]:
         return [
             dspy.Example(
-                user_query="<ADD_USER_QUERY_EXAMPLE_1>",
+                user_query="what are the unique executions that ran",
                 schema_context="Schema context will be supplied at runtime.",
                 application_context="Application context will be supplied at runtime.",
                 information_required=[
-                    "<ADD_INFORMATION_REQUIRED_ITEM_1>",
-                    "<ADD_INFORMATION_REQUIRED_ITEM_2>",
+                    "How is a 'unique experiment execution' defined in the context of the application and schema",
+                    "what are the unique provone:Execution insances",
                 ],
             ).with_inputs(
                 "user_query",
@@ -18,13 +18,13 @@ def build_information_required_fewshot_examples() -> List[dspy.Example]:
                 "application_context",
             ),
             dspy.Example(
-                user_query="<ADD_USER_QUERY_EXAMPLE_2>",
+                user_query="what are the inputs used by LLMs to generate the function 'information extraction'",
                 schema_context="Schema context will be supplied at runtime.",
                 application_context="Application context will be supplied at runtime.",
                 information_required=[
-                    "<ADD_INFORMATION_REQUIRED_ITEM_1>",
-                    "<ADD_INFORMATION_REQUIRED_ITEM_2>",
-                    "<ADD_INFORMATION_REQUIRED_ITEM_3>",
+                    "what is the entity in the kg related to the function [provone:Program] 'information extraction'",
+                    "what is the input LLM Method used to generate the function",
+                    "what are the inputs input entities used"
                 ],
             ).with_inputs(
                 "user_query",

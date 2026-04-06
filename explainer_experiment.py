@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.22.0"
+__generated_with = "0.22.4"
 app = marimo.App()
 
 
@@ -9,7 +9,7 @@ def _():
     import logging
     import pandas as pd
     from icecream import ic
-    from typing import List, Optional, Dict
+    from typing import Any, Dict
     import os
     import dspy
     from tqdm import tqdm
@@ -26,12 +26,23 @@ def _():
     lconfig = load_config(CONFIG_PATH)
     config = ExperimentConfig.model_validate(lconfig)
     config
-    return Explainer, GTInfo, config, ic, logging, os, tqdm
+    return (
+        Any,
+        Dict,
+        Explainer,
+        GTInfo,
+        common_utils,
+        config,
+        ic,
+        logging,
+        os,
+        tqdm,
+    )
 
 
 @app.cell
 def _(config, ic, logging, os):
-    os.makedirs(os.path.dirname(config.explorer_config.log_file), exist_ok=True)
+    os.makedirs(os.path.dirname(config.explainer_config.log_file), exist_ok=True)
     ic(config.explainer_config.log_file)
 
     logging.basicConfig(
@@ -60,14 +71,20 @@ def _(Explainer, GTInfo, config):
 
 
 @app.cell
-def _(explainer, ground_truth, tqdm):
+def _(Any, Dict, explainer, ground_truth, tqdm):
+    raw_outputs:Dict[str, Any] = {}
     for qinfo in tqdm(ground_truth.gt_info):
         pred = explainer.request(qinfo.question)
-    return
+        raw_outputs[qinfo.id] = pred
+    return (raw_outputs,)
 
 
 @app.cell
-def _():
+def _(common_utils, config, raw_outputs: "Dict[str, Any]"):
+    common_utils.serialization.save_json(
+        raw_outputs,
+        config.explainer_config.save_answer_loc
+    )
     return
 
 

@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional, Dict, Union, List
+import uuid
 import dycomutils as common_utils
 
 class SPARQLTemplate(BaseModel):
@@ -8,6 +9,7 @@ class SPARQLTemplate(BaseModel):
     inputs: Optional[Dict[str, str]] = None
 
 class GT(BaseModel):
+    id:str = str(uuid.uuid4())
     question: str
     answer: str
     entities: Union[List[Dict], List]

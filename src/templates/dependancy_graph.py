@@ -6,7 +6,10 @@ import dspy
 class SubQuestionSignature(dspy.Signature):
     """
     Decompose the original user question into 2 to 4 logically connected smaller sub questions 
-    that must be answered to answer the user question.
+    that must be answered to answer the user question. Ensure that each question leads to a next question
+    while ensuring that no semantically similar questions. You may denotes questions that are answered by
+    context (previous question answer context or application context) or retrieve information
+    from the execution KG.
 
     Return only list of concise strings. Each string should describe
     one information need, not a search strategy or an answer.
@@ -37,6 +40,9 @@ class BuildTopologyGraphSignature(dspy.Signature):
     original_question: str = dspy.InputField(
         desc="The main question represented as Q in the final graph."
     )
+    application_context: str = dspy.InputField(
+        desc="Description of the application and its functional scope."
+    )
     sub_questions: List[str] = dspy.InputField(
         desc="Ordered sub-questions to connect in the reasoning topology."
     )
@@ -56,6 +62,9 @@ class SubQuestionVerificationSignature(dspy.Signature):
     original_question: str = dspy.InputField(
         desc="The original question the sub-questions should support."
     )
+    application_context: str = dspy.InputField(
+        desc="Description of the application and its functional scope."
+    )
     sub_questions: List[str] = dspy.InputField(
         desc="Candidate sub-questions to evaluate."
     )
@@ -71,6 +80,12 @@ class SummarySignature(dspy.Signature):
 
     qa_dialog: str = dspy.InputField(
         desc="Relevant information or QA dialogue gathered during reasoning."
+    )
+    schema_context: str = dspy.InputField(
+        desc="Compact ontology and schema summary relevant to the question."
+    )
+    application_context: str = dspy.InputField(
+        desc="Description of the application and its functional scope."
     )
     original_question: str = dspy.InputField(
         desc="The question that should be answered."
@@ -91,6 +106,9 @@ class SyntheticQuestionGroundingSignature(dspy.Signature):
 
     question: str = dspy.InputField(
         desc="The question that should be answered."
+    )
+    application_context: str = dspy.InputField(
+        desc="Description of the application and its functional scope."
     )
     schema_context: str = dspy.InputField(
         desc="Compact ontology and schema summary."
@@ -136,6 +154,9 @@ class SyntheticQuestionPlanningSignature(dspy.Signature):
     question: str = dspy.InputField(
         desc="The question being answered."
     )
+    application_context: str = dspy.InputField(
+        desc="Description of the application and its functional scope."
+    )
     schema_context: str = dspy.InputField(
         desc="Compact ontology and schema summary."
     )
@@ -160,6 +181,9 @@ class SyntheticQuestionParameterSignature(dspy.Signature):
 
     question: str = dspy.InputField(
         desc="The question being answered."
+    )
+    application_context: str = dspy.InputField(
+        desc="Description of the application and its functional scope."
     )
     predecessor_context: str = dspy.InputField(
         desc="Answers or evidence already available."
@@ -186,6 +210,9 @@ class SyntheticQuestionResultSignature(dspy.Signature):
 
     question: str = dspy.InputField(
         desc="The original question being answered."
+    )
+    application_context: str = dspy.InputField(
+        desc="Description of the application and its functional scope."
     )
     predecessor_context: str = dspy.InputField(
         desc="Answers or evidence already available before this step."
@@ -215,6 +242,12 @@ class AnswerRevisionSignature(dspy.Signature):
 
     question: str = dspy.InputField(
         desc="The question that should be answered."
+    )
+    application_context: str = dspy.InputField(
+        desc="Description of the application and its functional scope."
+    )
+    predecessor_context: str = dspy.InputField(
+        desc="Answers or evidence already gathered from predecessor nodes."
     )
     answer: str = dspy.InputField(
         desc="The current draft answer."

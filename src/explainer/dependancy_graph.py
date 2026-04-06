@@ -8,6 +8,7 @@ from typing import Any, Dict, List, Optional, TypeVar, Tuple
 
 import dspy
 from pydantic import BaseModel
+from icecream import ic
 
 from src.config.experiment import ApplicationInfo, TTLConfig
 from src.config.object_search import ObjectSearchConfig
@@ -16,6 +17,9 @@ from src.explainer.object_search import ObjectSearch
 from src.judge.node_processing import AnsweredSignature
 from src.llm.base import BaseLLM
 from src.synthetic_questions.SQRetriver import SQRetriver
+from src.templates.demos.dependancy_graph import (
+    build_information_required_fewshot_examples,
+)
 from src.templates.dependancy_graph import (
     AnswerRevisionSignature,
     BuildTopologyGraphSignature,
@@ -26,6 +30,10 @@ from src.templates.dependancy_graph import (
     SyntheticQuestionParameterSignature,
     SyntheticQuestionPlanningSignature,
     SyntheticQuestionResultSignature,
+)
+from src.templates.node_processing import (
+    SchemaAnswerSignature,
+    SchemaAnswerabilitySignature,
 )
 from src.utils.adjacency_matrix import build_adjacency_matrix, incoming_edges
 from src.utils.graph_manager import GraphManager
@@ -48,6 +56,7 @@ class QuestionNode(BaseModel):
         predecessor_info: Dict[str, Any],
         runtime: Optional["DependancyGraph"] = None,  
         max_tries: int = 5,
+        application_context: Optional[str] = None,
     ) -> Dict[str, Any]:
         if runtime is None:
             return {
@@ -55,14 +64,26 @@ class QuestionNode(BaseModel):
                 "plan": [],
                 "execution": [],
                 "judge": [],
-            }
-
+             }
+        
+        logger.info("Processing Question Node {}, Question: {}".format(
+            self.id, self.question
+        ))
+        
+        resolved_application_context = runtime.resolve_application_context(
+            application_context
+        )
         predecessor_context = runtime.format_predecessor_context(predecessor_info)
         solution: Dict[str, Any] = {
             "question": self.question,
             "predecessor_context": predecessor_context,
             "draft_answer": "",
             "draft_judge": [],
+            "schema_reasoning": {
+                "relevant_schema_info": [],
+                "draft_answer": "",
+                "judge": [],
+            },
             "plan": [],
             "grounding": {},
             "candidate_synthetic_questions": [],
@@ -70,32 +91,54 @@ class QuestionNode(BaseModel):
             "judge": [],
         }
 
-        if predecessor_context:
-            with dspy.context(lm=runtime.llm.llm):
-                summary_prediction = runtime.summary_predictor(
-                    qa_dialog=predecessor_context,
-                    original_question=self.question,
-                )
-            draft_answer = str(getattr(summary_prediction, "answer", "")).strip()
-            solution["draft_answer"] = draft_answer
-            if draft_answer:
-                draft_judge = runtime.ensure_answer_quality(
-                    question=self.question,
-                    answer=draft_answer,
-                    evidence_context=predecessor_context,
-                    max_tries=max_tries,
-                )
-                solution["draft_judge"] = draft_judge["history"]
-                if draft_judge["answered"]:
-                    solution["answer"] = draft_judge["answer"]
-                    return solution
-                
+        # if predecessor_context:
+        #     with dspy.context(lm=runtime.llm.llm):
+        #         summary_prediction = runtime.summary_predictor(
+        #             qa_dialog=predecessor_context,
+        #             schema_context=schema_info,
+        #             application_context=resolved_application_context,
+        #             original_question=self.question,
+        #         )
+        #     draft_answer = str(getattr(summary_prediction, "answer", "")).strip()
+        #     solution["draft_answer"] = draft_answer
+        #     if draft_answer:
+        #         draft_judge = runtime.ensure_answer_quality(
+        #             question=self.question,
+        #             answer=draft_answer,
+        #             evidence_context=predecessor_context,
+        #             max_tries=max_tries,
+        #             application_context=resolved_application_context,
+        #         )
+        #         solution["draft_judge"] = draft_judge["history"]
+        #         if draft_judge["answered"]:
+        #             solution["answer"] = draft_judge["answer"]
+        #             return solution
         
+        if not predecessor_context:
+            predecessor_context = ""
+
+        schema_answer = runtime.answer_question_from_schema(
+            question=self.question,
+            schema_context=schema_info,
+            max_tries=max_tries,
+            predecessor_context = predecessor_context,
+            application_context=resolved_application_context,
+        )
+        solution["schema_reasoning"] = {
+            "relevant_schema_info": schema_answer["relevant_schema_info"],
+            "draft_answer": schema_answer["draft_answer"],
+            "judge": schema_answer["history"],
+        }
+        if schema_answer["answered"]:
+            solution["judge"] = schema_answer["history"]
+            solution["answer"] = schema_answer["answer"]
+            return solution
 
         plan_bundle = runtime.plan_synthetic_question_execution(
             question=self.question,
             schema_context=schema_info,
             predecessor_context=predecessor_context,
+            application_context=resolved_application_context,
         )
         solution["grounding"] = plan_bundle["grounding"]
         solution["candidate_synthetic_questions"] = plan_bundle["candidate_synthetic_questions"]
@@ -103,13 +146,15 @@ class QuestionNode(BaseModel):
 
         execution_bundle = runtime.execute_synthetic_question_plan(
             question=self.question,
+            schema_context=schema_info,
             predecessor_context=predecessor_context,
             plan=plan_bundle["plan"],
+            application_context=resolved_application_context,
         )
         solution["execution"] = execution_bundle["steps"]
 
         evidence_blocks = [
-            predecessor_context.strip(),
+            runtime.format_schema_reasoning(solution["schema_reasoning"]),
             runtime.format_step_results(execution_bundle["steps"]),
         ]
         evidence_context = "\n\n".join(
@@ -119,12 +164,18 @@ class QuestionNode(BaseModel):
         final_answer = execution_bundle["answer"].strip()
         if not final_answer and predecessor_context:
             final_answer = solution["draft_answer"]
+        if not final_answer:
+            final_answer = str(
+                solution["schema_reasoning"].get("draft_answer", "")
+            ).strip()
 
         judged_answer = runtime.ensure_answer_quality(
             question=self.question,
             answer=final_answer,
             evidence_context=evidence_context,
             max_tries=max_tries,
+            application_context=resolved_application_context,
+            predecessor_context=predecessor_context,
         )
         solution["judge"] = judged_answer["history"]
         solution["answer"] = judged_answer["answer"]
@@ -173,6 +224,9 @@ class DependancyGraph:
         }
 
         self.information_required_predictor = dspy.Predict(SubQuestionSignature)
+        self.information_required_predictor.demos = (
+            self._build_information_required_demos()
+        )
         self.filter_sub_question_predictor = dspy.Predict(
             SubQuestionVerificationSignature
         )
@@ -192,21 +246,68 @@ class DependancyGraph:
         self.synthetic_question_result_predictor = dspy.Predict(
             SyntheticQuestionResultSignature
         )
+        self.schema_answerability_predictor = dspy.Predict(
+            SchemaAnswerabilitySignature
+        )
+        self.schema_answer_predictor = dspy.Predict(SchemaAnswerSignature)
         self.answer_revision_predictor = dspy.Predict(AnswerRevisionSignature)
         self.answer_judge_predictor = dspy.Predict(AnsweredSignature)
+
+    def resolve_application_context(
+        self,
+        application_context: Optional[str] = None,
+    ) -> str:
+        if application_context is not None:
+            return str(application_context).strip()
+
+        app_info = getattr(self, "app_info", None)
+        if app_info is None:
+            return ""
+
+        return str(getattr(app_info, "description", "") or "").strip()
+
+    def _build_information_required_demos(self) -> List[dspy.Example]:
+        demos: List[dspy.Example] = []
+
+        for example in build_information_required_fewshot_examples():
+            sub_questions = getattr(example, "sub_questions", None)
+            if sub_questions is None:
+                sub_questions = getattr(example, "information_required", [])
+
+            demos.append(
+                dspy.Example(
+                    user_query=getattr(example, "user_query", ""),
+                    schema_context=getattr(example, "schema_context", ""),
+                    application_context=getattr(
+                        example,
+                        "application_context",
+                        "",
+                    ),
+                    sub_questions=list(sub_questions),
+                ).with_inputs(
+                    "user_query",
+                    "schema_context",
+                    "application_context",
+                )
+            )
+
+        return demos
 
     def information_required(
         self,
         query: str,
         schema_context: str,
+        application_context: Optional[str] = None,
     ) -> List[str]:
-        application_context = (self.app_info.description or "").strip()
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
 
         with dspy.context(lm=self.llm.llm):
             prediction = self.information_required_predictor(
                 user_query=query.strip(),
                 schema_context=schema_context.strip(),
-                application_context=application_context,
+                application_context=resolved_application_context,
             )
 
             clean_sub_questions = clean_string_list(
@@ -218,6 +319,7 @@ class DependancyGraph:
 
             prediction = self.filter_sub_question_predictor(
                 original_question=query,
+                application_context=resolved_application_context,
                 sub_questions=[
                     f"{i}). {q}" for i, q in enumerate(clean_sub_questions)
                 ],
@@ -239,15 +341,18 @@ class DependancyGraph:
         self,
         user_query: str,
         info_req: List[QuestionNode],
+        application_context: Optional[str] = None,
     ) -> None:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
         self.vertices.update({vertex.id: vertex for vertex in info_req})
         self.vertices["0"] = QuestionNode(id="0", question=user_query)
-        self.in_degree = [0] * len(self.vertices)
-        self.out_degree = [0] * len(self.vertices)
 
         with dspy.context(lm=self.llm.llm):
             graph_content = self.build_topology_graph_predictor(
                 original_question=user_query.strip(),
+                application_context=resolved_application_context,
                 sub_questions=[
                     "{}. {}".format(vertex.id, vertex.question)
                     for vertex in info_req
@@ -259,6 +364,8 @@ class DependancyGraph:
             raise ValueError("Failed to build topology graph.")
 
         self.adjacency_matrix, self.edges = build_adjacency_matrix(topo_graph_rep)
+        self.in_degree = [0] * len(self.adjacency_matrix)
+        self.out_degree = [0] * len(self.adjacency_matrix)
 
         for source_node, row in enumerate(self.adjacency_matrix):
             for dest_node, has_edge in enumerate(row):
@@ -280,8 +387,18 @@ class DependancyGraph:
         self,
         query: str,
         schema_context: str = "",
+        application_context: Optional[str] = None,
     ) -> Dict[str, Any]:
-        info_req = self.information_required(query, schema_context)
+        ic(query)
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
+        info_req = self.information_required(
+            query,
+            schema_context,
+            application_context=resolved_application_context,
+        )
+        ic(info_req)
         self.build_toplevel_dependancy_graph(
             query,
             [
@@ -291,6 +408,7 @@ class DependancyGraph:
                 )
                 for index, sub_question in enumerate(info_req)
             ],
+            application_context=resolved_application_context,
         )
 
         return {
@@ -303,11 +421,16 @@ class DependancyGraph:
         question: str,
         schema_context: str,
         predecessor_context: str = "",
+        application_context: Optional[str] = None,
     ) -> Dict[str, Any]:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
         grounding = self.ground_synthetic_questions(
             question=question,
             schema_context=schema_context,
             predecessor_context=predecessor_context,
+            application_context=resolved_application_context,
         )
         candidate_rows = self.collect_candidate_synthetic_questions(
             question=question,
@@ -325,6 +448,7 @@ class DependancyGraph:
         with dspy.context(lm=self.llm.llm):
             prediction = self.synthetic_question_plan_predictor(
                 question=question,
+                application_context=resolved_application_context,
                 schema_context=schema_context,
                 predecessor_context=predecessor_context,
                 candidate_synthetic_questions=self.format_candidate_synthetic_questions(
@@ -392,9 +516,14 @@ class DependancyGraph:
     def execute_synthetic_question_plan(
         self,
         question: str,
+        schema_context: str,
         predecessor_context: str,
         plan: List[Dict[str, Any]],
+        application_context: Optional[str] = None,
     ) -> Dict[str, Any]:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
         executed_steps: List[Dict[str, Any]] = []
 
         for step in plan:
@@ -403,6 +532,7 @@ class DependancyGraph:
                 predecessor_context=predecessor_context,
                 step=step,
                 previous_steps=executed_steps,
+                application_context=resolved_application_context,
             )
             executed_steps.append(executed_step)
 
@@ -420,6 +550,8 @@ class DependancyGraph:
             with dspy.context(lm=self.llm.llm):
                 prediction = self.summary_predictor(
                     qa_dialog=summary_context,
+                    schema_context=schema_context,
+                    application_context=resolved_application_context,
                     original_question=question,
                 )
             final_answer = str(getattr(prediction, "answer", "")).strip()
@@ -435,7 +567,11 @@ class DependancyGraph:
         predecessor_context: str,
         step: Dict[str, Any],
         previous_steps: List[Dict[str, Any]],
+        application_context: Optional[str] = None,
     ) -> Dict[str, Any]:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
         row = self.synthetic_questions_by_program_id.get(step["program_id"])
         if row is None:
             return {
@@ -454,6 +590,7 @@ class DependancyGraph:
             step=step,
             row=row,
             previous_steps=previous_steps,
+            application_context=resolved_application_context,
         )
         query_results: Dict[str, List[Dict[str, Any]]] = {}
 
@@ -472,6 +609,7 @@ class DependancyGraph:
         with dspy.context(lm=self.llm.llm):
             prediction = self.synthetic_question_result_predictor(
                 question=question,
+                application_context=resolved_application_context,
                 predecessor_context=predecessor_context,
                 previous_step_results=self.format_step_results(previous_steps),
                 step_spec=self.format_step_spec(step, row),
@@ -501,18 +639,104 @@ class DependancyGraph:
             "important_entities": important_entities,
         }
 
+    def answer_question_from_schema(
+        self,
+        question: str,
+        schema_context: str,
+        max_tries: int = 2,
+        predecessor_context: Optional[str] = None,
+        application_context: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
+        normalized_predecessor_context = predecessor_context or ""
+        normalized_schema_context = schema_context.strip()
+        empty_response = {
+            "answer": "",
+            "answered": False,
+            "draft_answer": "",
+            "history": [],
+            "relevant_schema_info": [],
+        }
+
+        if not normalized_schema_context:
+            return empty_response
+
+        with dspy.context(lm=self.llm.llm):
+            prediction = self.schema_answerability_predictor(
+                question=question,
+                application_context=resolved_application_context,
+                schema_context=normalized_schema_context,
+                predecessor_context=normalized_predecessor_context,
+            )
+
+        answerable_from_schema = bool(
+            getattr(prediction, "answerable_from_schema", False)
+        )
+        relevant_schema_info = clean_string_list(
+            getattr(prediction, "relevant_schema_info", [])
+        )
+
+        if not answerable_from_schema:
+            return {
+                **empty_response,
+                "relevant_schema_info": relevant_schema_info,
+            }
+
+        schema_evidence_context = "\n".join(
+            f"- {schema_fact}" for schema_fact in relevant_schema_info
+        ).strip() or normalized_schema_context
+
+        with dspy.context(lm=self.llm.llm):
+            answer_prediction = self.schema_answer_predictor(
+                question=question,
+                application_context=resolved_application_context,
+                predecessor_context=normalized_predecessor_context,
+                relevant_schema_info=schema_evidence_context,
+            )
+
+        draft_answer = str(getattr(answer_prediction, "answer", "")).strip()
+        if not draft_answer:
+            return {
+                **empty_response,
+                "relevant_schema_info": relevant_schema_info,
+            }
+
+        judged_answer = self.ensure_answer_quality(
+            question=question,
+            answer=draft_answer,
+            evidence_context=schema_evidence_context,
+            max_tries=max_tries,
+            application_context=resolved_application_context,
+            predecessor_context=normalized_predecessor_context,
+        )
+
+        return {
+            "answer": judged_answer["answer"],
+            "answered": judged_answer["answered"],
+            "draft_answer": draft_answer,
+            "history": judged_answer["history"],
+            "relevant_schema_info": relevant_schema_info,
+        }
+
     def ground_synthetic_questions(
         self,
         question: str,
         schema_context: str,
         predecessor_context: str = "",
+        application_context: Optional[str] = None,
     ) -> Dict[str, Any]:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
         available_classes = self.get_available_synthetic_question_classes()
         available_relations = self.get_available_synthetic_question_relations()
 
         with dspy.context(lm=self.llm.llm):
             prediction = self.synthetic_question_grounding_predictor(
                 question=question,
+                application_context=resolved_application_context,
                 schema_context=schema_context,
                 predecessor_context=predecessor_context,
                 available_classes=available_classes,
@@ -648,7 +872,11 @@ class DependancyGraph:
         step: Dict[str, Any],
         row: Dict[str, Optional[str]],
         previous_steps: List[Dict[str, Any]],
+        application_context: Optional[str] = None,
     ) -> List[Dict[str, str]]:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
         placeholders = self.extract_query_placeholders(row["code"] or "")
         if not placeholders:
             placeholders = list(self.parse_serialized_dict(row.get("input_spec")).keys())
@@ -674,6 +902,7 @@ class DependancyGraph:
         with dspy.context(lm=self.llm.llm):
             prediction = self.synthetic_question_parameter_predictor(
                 question=question,
+                application_context=resolved_application_context,
                 predecessor_context=predecessor_context,
                 previous_step_results=self.format_step_results(previous_steps),
                 step_spec=self.format_step_spec(step, row),
@@ -814,14 +1043,22 @@ class DependancyGraph:
         answer: str,
         evidence_context: str,
         max_tries: int = 2,
+        application_context: Optional[str] = None,
+        predecessor_context: str = "",
     ) -> Dict[str, Any]:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
         current_answer = answer.strip()
+        normalized_predecessor_context = predecessor_context or ""
         history = []
 
         for _ in range(max(max_tries, 1)):
             with dspy.context(lm=self.llm.llm):
                 prediction = self.answer_judge_predictor(
                     question=question,
+                    application_context=resolved_application_context,
+                    predecessor_context=normalized_predecessor_context,
                     answer=current_answer,
                 )
 
@@ -844,6 +1081,8 @@ class DependancyGraph:
             with dspy.context(lm=self.llm.llm):
                 revision = self.answer_revision_predictor(
                     question=question,
+                    application_context=resolved_application_context,
+                    predecessor_context=normalized_predecessor_context,
                     answer=current_answer,
                     feedback=feedback,
                     evidence_context=evidence_context,
@@ -870,11 +1109,13 @@ class DependancyGraph:
         runtime: "DependancyGraph",
         max_tries: int = 5,
         cache: Optional[Dict[str, Dict[str, Any]]] = None,
+        application_context: Optional[str] = None,
     ) -> Dict[str, Any]:
         if cache is None:
             cache = {}
-
+            
         node_key = str(node_id)
+        
         if node_key in cache:
             return cache[node_key]
 
@@ -890,6 +1131,7 @@ class DependancyGraph:
                 runtime=runtime,
                 max_tries=max_tries,
                 cache=cache,
+                application_context=application_context,
             )
 
         node_data = node_map[node_key].solve(
@@ -897,11 +1139,13 @@ class DependancyGraph:
             predecessor_info,
             runtime=runtime,
             max_tries=max_tries,
+            application_context=application_context,
         )
         node_info = {
             "id": node_key,
             "question": node_map[node_key].question,
             "schema_info_used": schema_info,
+            "schema_reasoning": node_data.get("schema_reasoning", {}),
             "retrieved_objects": [
                 entity
                 for execution_step in node_data.get("execution", [])
@@ -919,18 +1163,23 @@ class DependancyGraph:
     def process_dependancy_graph(
         self,
         schema_context: str,
+        application_context: Optional[str] = None,
     ) -> Dict[str, Any]:
         if not hasattr(self, "adjacency_matrix"):
             raise ValueError(
                 "Dependency graph has not been built. Run `user_query_to_requirements` first."
             )
 
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
         solved = DependancyGraph.solve_node(
             self.adjacency_matrix,
             0,
             schema_context,
             self.vertices,
             runtime=self,
+            application_context=resolved_application_context,
         )
         self.last_result = solved
         return solved
@@ -1115,6 +1364,20 @@ class DependancyGraph:
                         if step.get("program_id")
                     )
                 )
+        return "\n".join(lines)
+
+    def format_schema_reasoning(
+        self,
+        schema_reasoning: Dict[str, Any],
+    ) -> str:
+        relevant_schema_info = clean_string_list(
+            schema_reasoning.get("relevant_schema_info", [])
+        )
+        if not relevant_schema_info:
+            return ""
+
+        lines = ["Schema details:"]
+        lines.extend(f"- {schema_fact}" for schema_fact in relevant_schema_info)
         return "\n".join(lines)
 
     def extract_entities_from_records(

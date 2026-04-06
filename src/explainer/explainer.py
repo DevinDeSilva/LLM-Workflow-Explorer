@@ -16,6 +16,7 @@ class Explainer:
                  ttl_config:TTLConfig,
                  ) -> None:
         self.config:ExplainerConfig = config
+        self.app_info = app_info
         
         self.llm = LLM(
             self.config.llm_type,
@@ -53,11 +54,14 @@ class Explainer:
     
     def request(self, user_query:str):
         user_query = user_query.strip()
+        application_context = (self.app_info.description or "").strip()
         self.dependancy_graph.user_query_to_requirements(
             user_query,
-            schema_context=self.format_schema()
+            schema_context=self.format_schema(),
+            application_context=application_context,
             )
         
         return self.dependancy_graph.process_dependancy_graph(
-            schema_context=self.format_schema()
+            schema_context=self.format_schema(),
+            application_context=application_context,
         )
