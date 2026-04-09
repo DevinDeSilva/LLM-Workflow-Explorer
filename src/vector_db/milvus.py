@@ -59,6 +59,10 @@ class MilvusVectorDB(BaseVectorDB):
             max_length=self.config.object_name_max_length,
         )
         schema.add_field(
+            field_name="object_class",
+            datatype=DataType.JSON,
+        )
+        schema.add_field(
             field_name="object_vector",
             datatype=DataType.FLOAT_VECTOR,
             dim=vector_dim,
@@ -118,6 +122,7 @@ class MilvusVectorDB(BaseVectorDB):
     def insert(
         self,
         object_name: Optional[str] = None,
+        object_class: Optional[Sequence[str] | str] = None,
         object_vector: Optional[Sequence[float]] = None,
         metadata: Optional[Dict[str, Any]] = None,
         object_description: str = "",
@@ -126,6 +131,7 @@ class MilvusVectorDB(BaseVectorDB):
     ) -> List[Any]:
         normalized_records = self._normalize_records(
             object_name=object_name,
+            object_class=object_class,
             object_vector=object_vector,
             metadata=metadata,
             object_description=object_description,
@@ -166,6 +172,7 @@ class MilvusVectorDB(BaseVectorDB):
 
         resolved_output_fields = output_fields or [
             "object_name",
+            "object_class",
             "metadata",
             "object_description",
         ]
@@ -205,6 +212,7 @@ class MilvusVectorDB(BaseVectorDB):
 
         resolved_output_fields = output_fields or [
             "object_name",
+            "object_class",
             "metadata",
             "object_description",
         ]
@@ -231,6 +239,7 @@ class MilvusVectorDB(BaseVectorDB):
     def _normalize_records(
         self,
         object_name: Optional[str],
+        object_class: Optional[Sequence[str] | str],
         object_vector: Optional[Sequence[float]],
         metadata: Optional[Dict[str, Any]],
         object_description: str,
@@ -240,6 +249,7 @@ class MilvusVectorDB(BaseVectorDB):
             return [
                 {
                     "object_name": record["object_name"],
+                    "object_class": self._normalize_object_class(record.get("object_class")),
                     "object_vector": self._normalize_vector(record["object_vector"]),
                     "metadata": record.get("metadata", {}),
                     "object_description": record.get("object_description", ""),
@@ -255,11 +265,36 @@ class MilvusVectorDB(BaseVectorDB):
         return [
             {
                 "object_name": object_name,
+                "object_class": self._normalize_object_class(object_class),
                 "object_vector": self._normalize_vector(object_vector),
                 "metadata": metadata or {},
                 "object_description": object_description,
             }
         ]
+
+    def _normalize_object_class(
+        self,
+        object_class: Optional[Sequence[str] | str],
+    ) -> List[str]:
+        if object_class is None:
+            return []
+
+        if isinstance(object_class, str):
+            candidate_values = [object_class]
+        else:
+            candidate_values = [str(value) for value in object_class]
+
+        normalized_values: List[str] = []
+        seen_values = set()
+        for value in candidate_values:
+            stripped_value = value.strip()
+            if not stripped_value or stripped_value in seen_values:
+                continue
+
+            seen_values.add(stripped_value)
+            normalized_values.append(stripped_value)
+
+        return normalized_values
 
     def _normalize_vector(self, vector: Sequence[float]) -> List[float]:
         if len(vector) == 0:
@@ -297,11 +332,16 @@ class MilvusVectorDB(BaseVectorDB):
 
             if "object_name" not in result and "object_name" in hit:
                 result["object_name"] = hit["object_name"]
+            if "object_class" not in result and "object_class" in hit:
+                result["object_class"] = hit["object_class"]
             if "metadata" not in result and "metadata" in hit:
                 result["metadata"] = hit["metadata"]
             if "object_description" not in result and "object_description" in hit:
                 result["object_description"] = hit["object_description"]
 
+            result["object_class"] = self._normalize_object_class(
+                result.get("object_class")
+            )
             formatted_results.append(result)
 
         return formatted_results

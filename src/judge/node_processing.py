@@ -15,6 +15,9 @@ class AnsweredSignature(dspy.Signature):
     predecessor_context: str = dspy.InputField(
         desc="Answers or evidence already gathered from predecessor nodes."
     )
+    evidence_context: str = dspy.InputField(
+        desc="Grounded schema details and execution evidence collected so far."
+    )
     answer: str = dspy.InputField(
         desc="Natural language question."
     )

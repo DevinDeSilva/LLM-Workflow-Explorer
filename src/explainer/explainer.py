@@ -1,10 +1,12 @@
-from src.config.object_search import ObjectSearchConfig
-from src.llm import LLM
-from src.embeddings import Embeddings
-from src.vector_db import VectorDB
-from src.explainer.dependancy_graph import DependancyGraph
 from src.config.experiment import ApplicationInfo, ExplainerConfig, TTLConfig
+from src.config.object_search import ObjectSearchConfig
+from src.embeddings import Embeddings
+from src.explainer.dependancy_graph import DependencyGraphRuntime
+from src.llm import LLM
 from src.utils.ontology_info_retriever import OntologyInfoRetriever
+from src.vector_db import VectorDB
+
+from src.utils.utils import time_wrapper
 
 class Explainer:
     def __init__(self, 
@@ -39,7 +41,7 @@ class Explainer:
             schema_path = schema_loc
         )
         
-        self.dependancy_graph = DependancyGraph(
+        self.dependancy_graph = DependencyGraphRuntime(
             kg_loc,
             app_info, 
             self.llm,
@@ -52,6 +54,7 @@ class Explainer:
     def format_schema(self) -> str: 
         return self.ontology_info.format_schema_prompt()
     
+    @time_wrapper
     def request(self, user_query:str):
         user_query = user_query.strip()
         application_context = (self.app_info.description or "").strip()

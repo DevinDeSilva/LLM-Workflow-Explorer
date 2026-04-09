@@ -43,14 +43,20 @@ class FakeGraphManager:
             ],
         }
 
-    def query(self, sparql_query: str):
+    def query(self, sparql_query: str, *args, **kwargs):
         self.query_calls.append(sparql_query)
 
         if "?object" in sparql_query or "ALL_OBJECTS_QUERY" in sparql_query:
-            return pd.DataFrame(self.objects)
+            frame = pd.DataFrame(self.objects)
+            if kwargs.get("resolve_curie", False):
+                return frame.applymap(self.reverse_curie)
+            return frame
 
         object_uri = sparql_query.split("<", 1)[1].split(">", 1)[0]
-        return pd.DataFrame(self.properties.get(object_uri, []))
+        frame = pd.DataFrame(self.properties.get(object_uri, []))
+        if kwargs.get("resolve_curie", False):
+            return frame.applymap(self.reverse_curie)
+        return frame
 
     def reverse_curie(self, value: str) -> str:
         mapping = {
@@ -115,7 +121,7 @@ class FakeVectorDB:
                 "kwargs": kwargs,
             }
         )
-        return [{"object_name": "ex:Object1", "score": 0.99}]
+        return [{"object_name": "ex:Object1", "object_class": ["ex:Widget"], "score": 0.99}]
 
     def bm25_search(self, query_text: str, limit: int = 10, **kwargs):
         self.bm25_search_calls.append(
@@ -125,7 +131,7 @@ class FakeVectorDB:
                 "kwargs": kwargs,
             }
         )
-        return [{"object_name": "ex:Object2", "score": 0.85}]
+        return [{"object_name": "ex:Object2", "object_class": [], "score": 0.85}]
 
 
 def make_object_search_config(**kwargs):
@@ -152,6 +158,8 @@ def test_build_index_records_creates_descriptions_and_vectors():
         "ex:Object1",
         "ex:Object2",
     ]
+    assert records[0]["object_class"] == ["ex:Widget"]
+    assert records[1]["object_class"] == []
     assert records[0]["metadata"] == {}
     assert records[0]["object_vector"] == [1.0, 1.5]
     assert records[0]["object_description"] == (
@@ -210,8 +218,8 @@ def test_search_returns_vector_and_bm25_results():
     results = object_search.search("primary widget", limit=5)
 
     assert results == {
-        "vector_results": [{"object_name": "ex:Object1", "score": 0.99}],
-        "bm25_results": [{"object_name": "ex:Object2", "score": 0.85}],
+        "vector_results": [{"object_name": "ex:Object1", "object_class": ["ex:Widget"], "score": 0.99}],
+        "bm25_results": [{"object_name": "ex:Object2", "object_class": [], "score": 0.85}],
     }
     assert embeddings_model.query_inputs == ["primary widget"]
     assert vector_db.search_calls == [
@@ -247,18 +255,21 @@ def test_link_entities_combines_unique_results_and_resolves_uris():
         "vector_results": [
             {
                 "object_name": "ex:Object1",
+                "object_class": ["ex:Widget"],
                 "score": 0.99,
-                "object_description": "Object: ex:Object1. Types: ex:Widget.",
+                "object_description": "Object: ex:Object1.",
             }
         ],
         "bm25_results": [
             {
                 "object_name": "ex:Object1",
+                "object_class": ["ex:Widget"],
                 "score": 0.85,
-                "object_description": "Object: ex:Object1. Types: ex:Widget.",
+                "object_description": "Object: ex:Object1.",
             },
             {
                 "object_name": "ex:Object2",
+                "object_class": [],
                 "score": 0.75,
                 "object_description": "Object: ex:Object2.",
             },
@@ -273,8 +284,9 @@ def test_link_entities_combines_unique_results_and_resolves_uris():
     assert results == [
         {
             "object_name": "ex:Object1",
+            "object_class": ["ex:Widget"],
             "score": 0.99,
-            "object_description": "Object: ex:Object1. Types: ex:Widget.",
+            "object_description": "Object: ex:Object1.",
             "object_uri": "http://example.org/Object1",
             "source": "vector_results",
         }
@@ -297,8 +309,8 @@ def test_search_uses_default_limit_from_config():
     results = object_search.search("primary widget")
 
     assert results == {
-        "vector_results": [{"object_name": "ex:Object1", "score": 0.99}],
-        "bm25_results": [{"object_name": "ex:Object2", "score": 0.85}],
+        "vector_results": [{"object_name": "ex:Object1", "object_class": ["ex:Widget"], "score": 0.99}],
+        "bm25_results": [{"object_name": "ex:Object2", "object_class": [], "score": 0.85}],
     }
     assert vector_db.search_calls[0]["limit"] == 3
     assert vector_db.bm25_search_calls[0]["limit"] == 3
@@ -327,3 +339,83 @@ def test_queries_are_read_from_config():
     assert graph_manager.query_calls[0] == "ALL_OBJECTS_QUERY"
     assert graph_manager.query_calls[1] == "OBJECT_PROPERTIES_QUERY <http://example.org/Object1>"
     assert graph_manager.query_calls[2] == "OBJECT_PROPERTIES_QUERY <http://example.org/Object2>"
+
+
+def test_link_entities_from_phrases_deduplicates_across_queries():
+    graph_manager = FakeGraphManager()
+    embeddings_model = FakeEmbeddingsModel()
+    vector_db = FakeVectorDB()
+    config = make_object_search_config()
+
+    object_search = ObjectSearch(
+        graph_manager=graph_manager,
+        embeddings_model=embeddings_model,
+        vector_db=vector_db,
+        config=config,
+    )
+
+    object_search.link_entities = lambda phrase, class_hints=None, limit=None: [
+        {
+            "object_name": "ex:Object1",
+            "object_uri": "http://example.org/Object1",
+            "object_class": ["ex:Widget"],
+            "source": phrase,
+        },
+        {
+            "object_name": "ex:Object2",
+            "object_uri": "http://example.org/Object2",
+            "object_class": [],
+            "source": phrase,
+        },
+    ]
+
+    results = object_search.link_entities_from_phrases(
+        ["primary widget", "secondary widget"],
+        class_hints=["ex:Widget"],
+        limit=2,
+    )
+
+    assert results == [
+        {
+            "object_name": "ex:Object1",
+            "object_uri": "http://example.org/Object1",
+            "object_class": ["ex:Widget"],
+            "source": "primary widget",
+        },
+        {
+            "object_name": "ex:Object2",
+            "object_uri": "http://example.org/Object2",
+            "object_class": [],
+            "source": "primary widget",
+        },
+    ]
+
+
+def test_get_objects_of_class_returns_descriptions():
+    graph_manager = FakeGraphManager()
+    embeddings_model = FakeEmbeddingsModel()
+    vector_db = FakeVectorDB()
+    config = make_object_search_config()
+
+    object_search = ObjectSearch(
+        graph_manager=graph_manager,
+        embeddings_model=embeddings_model,
+        vector_db=vector_db,
+        config=config,
+    )
+
+    results = object_search.get_objects_of_class("ex:Widget", limit=1)
+
+    assert results == [
+        {
+            "object_uri": "http://example.org/Object1",
+            "object_name": "ex:Object1",
+            "object_class": ["ex:Widget"],
+            "object_description": (
+                "Object: ex:Object1. "
+                "Types: ex:Widget. "
+                "Properties: ex:connectedTo: ex:Object2; ex:hasLabel: Primary widget."
+            ),
+            "source": "class-query",
+        }
+    ]

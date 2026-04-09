@@ -21,11 +21,11 @@ explorer_config:
 
 question_creation_config:
   save_questions: "evaluations/calibration/ques_creation/SyntheticQuestionKG.csv"
-  llm_type: "lmstudio"
-  model: "openai/gemma-4-31b"
   log_file: "evaluations/calibration/ques_creation/question_creation_log.txt"
+  llm_type: "lmstudio"
   llm_config:
-    api_base: "http://169.254.217.32:1234/v1"
+    model: "lm_studio/google/gemma-4-31b"
+    base_url: "http://localhost:1234/v1"
 
 explainer_config:
   llm_type: "lmstudio"
@@ -34,8 +34,8 @@ explainer_config:
   save_answer_loc: "evaluations/calibration/explainer/results.json"
 
   llm_config:
-    model: "openai/gemma-4-31b"
-    api_base: "http://169.254.217.32:1234/v1"
+    model: "lm_studio/google/gemma-4-31b"
+    base_url: "http://localhost:1234/v1"
   
   vectordb_config:
     vector_dim: 1024

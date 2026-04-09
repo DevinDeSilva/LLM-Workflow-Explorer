@@ -5,19 +5,6 @@ app = marimo.App()
 
 
 @app.cell
-def _(mo):
-    mo.md(r"""
-    ### The Notebook contains the Ground truth created.
-
-    This Contains
-    1. Question.
-    2. Sparql Query to retrieve answers.
-    3. Natural Language Answer.
-    """)
-    return
-
-
-@app.cell
 def _():
     import sys
     import logging
@@ -429,6 +416,11 @@ def _(common_utils, config, gt_list: "List[GT]", os):
     common_utils.serialization.save_json(
         {gt.id: gt.model_dump() for gt in gt_list}, config.gt.save_loc
     )
+    return
+
+
+@app.cell
+def _():
     return
 
 

@@ -1,28 +1,72 @@
 from __future__ import annotations
 
 import csv
+from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, Optional
+
+
+class SyntheticQuestionCategory(str, Enum):
+    OBJECT_LEVEL_FROM_OBJECT = "object-level|from-object"
+    OBJECT_LEVEL_FROM_PROP = "object-level|from-prop"
+    PATH_LEVEL = "path-level"
+
+    @property
+    def description(self) -> str:
+        descriptions = {
+            self.OBJECT_LEVEL_FROM_OBJECT: (
+                "Questions about a single ontology object and the facts, attributes, "
+                "or directly connected entities that can be retrieved from that object."
+            ),
+            self.OBJECT_LEVEL_FROM_PROP: (
+                "Questions centered on a relation or property and the ontology objects "
+                "that should be found by filtering or traversing through that property."
+            ),
+            self.PATH_LEVEL: (
+                "Questions about chains, routes, or multi-hop connections between "
+                "classes or entities in the workflow graph."
+            ),
+        }
+        return descriptions[self]
+
+    @classmethod
+    def values(cls) -> tuple[str, ...]:
+        return tuple(category.value for category in cls)
 
 
 class SQRetriver:
     DEFAULT_LOCATION = "evaluations/calibration/ques_creation/SyntheticQuestionKG.csv"
     CATEGORY_ALIASES = {
-        "path-level": "path-level",
-        "path_level": "path-level",
-        "path": "path-level",
-        "object-level|from-object": "object-level|from-object",
-        "object_level_from_object": "object-level|from-object",
-        "from_object": "object-level|from-object",
-        "object-level|from-prop": "object-level|from-prop",
-        "object_level_from_prop": "object-level|from-prop",
-        "from_prop": "object-level|from-prop",
+        SyntheticQuestionCategory.PATH_LEVEL.value: (
+            SyntheticQuestionCategory.PATH_LEVEL.value
+        ),
+        "path_level": SyntheticQuestionCategory.PATH_LEVEL.value,
+        "path": SyntheticQuestionCategory.PATH_LEVEL.value,
+        SyntheticQuestionCategory.OBJECT_LEVEL_FROM_OBJECT.value: (
+            SyntheticQuestionCategory.OBJECT_LEVEL_FROM_OBJECT.value
+        ),
+        "object_level_from_object": (
+            SyntheticQuestionCategory.OBJECT_LEVEL_FROM_OBJECT.value
+        ),
+        "from_object": SyntheticQuestionCategory.OBJECT_LEVEL_FROM_OBJECT.value,
+        SyntheticQuestionCategory.OBJECT_LEVEL_FROM_PROP.value: (
+            SyntheticQuestionCategory.OBJECT_LEVEL_FROM_PROP.value
+        ),
+        "object_level_from_prop": (
+            SyntheticQuestionCategory.OBJECT_LEVEL_FROM_PROP.value
+        ),
+        "from_prop": SyntheticQuestionCategory.OBJECT_LEVEL_FROM_PROP.value,
     }
 
     def __init__(self, location: Optional[str | Path] = None) -> None:
         self.repo_root = Path(__file__).resolve().parents[2]
         self.file_path = self._resolve_location(location or self.DEFAULT_LOCATION)
         self.rows = self._load_rows(self.file_path)
+        self.rows_by_program_id = {
+            row["program_id"]: row
+            for row in self.rows
+            if row.get("program_id")
+        }
         self.columns = tuple(self.rows[0].keys()) if self.rows else tuple()
         category_values = [
             category
@@ -85,6 +129,38 @@ class SQRetriver:
     def get_category_specific_filters(self, category: str) -> tuple[str, ...]:
         normalized_category = self._normalize_category(category)
         return self.category_specific_filters.get(normalized_category, tuple())
+
+    def get_available_categories(self) -> tuple[str, ...]:
+        known_categories = [
+            category
+            for category in SyntheticQuestionCategory.values()
+            if category in self.categories
+        ]
+        if known_categories:
+            return tuple(known_categories)
+        return self.categories
+
+    def get_category_description(self, category: str) -> str:
+        normalized_category = self._normalize_category(category)
+        try:
+            return SyntheticQuestionCategory(normalized_category).description
+        except ValueError:
+            return normalized_category
+
+    def normalize_category(self, category: str) -> str:
+        return self._normalize_category(category)
+
+    def get_program_row(
+        self,
+        program_id: str,
+    ) -> Optional[dict[str, Optional[str]]]:
+        return self.rows_by_program_id.get(program_id)
+
+    def get_generic_class_explorer(self) -> Optional[dict[str, Optional[str]]]:
+        return self.get_program_row("explore_object_of_class")
+
+    def get_generic_object_explorer(self) -> Optional[dict[str, Optional[str]]]:
+        return self.get_program_row("explore_attr_of_object")
 
     def _filter_category(
         self,

@@ -24,6 +24,7 @@ class BaseVectorDB(ABC):
     def insert(
         self,
         object_name: Optional[str] = None,
+        object_class: Optional[Sequence[str] | str] = None,
         object_vector: Optional[Sequence[float]] = None,
         metadata: Optional[Dict[str, Any]] = None,
         object_description: str = "",

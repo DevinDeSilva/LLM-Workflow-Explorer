@@ -133,6 +133,42 @@ class SyntheticQuestionGroundingSignature(dspy.Signature):
     )
 
 
+class SyntheticQuestionCategorySelectionSignature(dspy.Signature):
+    """
+    Decide which synthetic-question retrieval categories are plausible for the
+    current question.
+
+    Select one or more category ids from the provided options. Multiple
+    categories are allowed when the question could reasonably require different
+    retrieval strategies. Never invent new category ids.
+    """
+
+    question: str = dspy.InputField(
+        desc="The question that should be answered."
+    )
+    application_context: str = dspy.InputField(
+        desc="Description of the application and its functional scope."
+    )
+    schema_context: str = dspy.InputField(
+        desc="Compact ontology and schema summary."
+    )
+    predecessor_context: str = dspy.InputField(
+        desc="Answers or evidence already available."
+    )
+    candidate_classes: List[str] = dspy.InputField(
+        desc="Likely ontology classes relevant to the question."
+    )
+    candidate_relations: List[str] = dspy.InputField(
+        desc="Likely ontology relations relevant to the question."
+    )
+    category_options: str = dspy.InputField(
+        desc="Available retrieval category ids and short usage guidance."
+    )
+    plausible_categories: List[str] = dspy.OutputField(
+        desc="One or more category ids selected from the provided options."
+    )
+
+
 class SyntheticQuestionPlanningSignature(dspy.Signature):
     """
     Build a short ordered execution plan using the provided synthetic questions.
@@ -231,6 +267,47 @@ class SyntheticQuestionResultSignature(dspy.Signature):
     )
     important_entities: List[str] = dspy.OutputField(
         desc="Entities or values from the current step that should be considered by later steps."
+    )
+
+
+class SyntheticQuestionNextStepSignature(dspy.Signature):
+    """
+    Decide the next single question to execute in the traversal.
+
+    Use the original question as the overall objective. Ground the next
+    question in the latest retrieved evidence and the judge feedback. Return
+    one concise question that should move the reasoning forward.
+    """
+
+    original_question: str = dspy.InputField(
+        desc="The overall question that the traversal is trying to answer."
+    )
+    current_question: str = dspy.InputField(
+        desc="The question used in the current traversal round."
+    )
+    application_context: str = dspy.InputField(
+        desc="Description of the application and its functional scope."
+    )
+    schema_context: str = dspy.InputField(
+        desc="Compact ontology and schema summary."
+    )
+    predecessor_context: str = dspy.InputField(
+        desc="Answers or evidence already available before the current node."
+    )
+    step_context: str = dspy.InputField(
+        desc="Accumulated traversal context from previous rounds."
+    )
+    latest_step_results: str = dspy.InputField(
+        desc="Natural-language summary of the latest executed step."
+    )
+    partial_answer: str = dspy.InputField(
+        desc="The current best grounded answer after the latest step."
+    )
+    judge_feedback: str = dspy.InputField(
+        desc="What is still missing according to the judge."
+    )
+    next_question: str = dspy.OutputField(
+        desc="The next concise question that should be executed to move closer to answering the original question."
     )
 
 

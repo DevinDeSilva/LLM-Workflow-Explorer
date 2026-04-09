@@ -2,21 +2,20 @@ from __future__ import annotations
 
 import ast
 import json
-import logging
 import re
-from typing import Any, Dict, List, Optional, TypeVar, Tuple
+from typing import Any, Dict, List, Optional
 
 import dspy
-from pydantic import BaseModel
 from icecream import ic
 
 from src.config.experiment import ApplicationInfo, TTLConfig
 from src.config.object_search import ObjectSearchConfig
 from src.embeddings.base import BaseEmbeddings
+from src.explainer.dependancy_graph_node import QuestionNode
 from src.explainer.object_search import ObjectSearch
 from src.judge.node_processing import AnsweredSignature
 from src.llm.base import BaseLLM
-from src.synthetic_questions.SQRetriver import SQRetriver
+from src.synthetic_questions.SQRetriver import SQRetriver, SyntheticQuestionCategory
 from src.templates.demos.dependancy_graph import (
     build_information_required_fewshot_examples,
 )
@@ -26,7 +25,9 @@ from src.templates.dependancy_graph import (
     SubQuestionSignature,
     SubQuestionVerificationSignature,
     SummarySignature,
+    SyntheticQuestionCategorySelectionSignature,
     SyntheticQuestionGroundingSignature,
+    SyntheticQuestionNextStepSignature,
     SyntheticQuestionParameterSignature,
     SyntheticQuestionPlanningSignature,
     SyntheticQuestionResultSignature,
@@ -40,153 +41,16 @@ from src.utils.graph_manager import GraphManager
 from src.utils.utils import clean_string_list, regex_add_strings
 from src.vector_db.base import BaseVectorDB
 
-logger = logging.getLogger(__name__)
-
 PLACEHOLDER_PATTERN = re.compile(r"\{([a-zA-Z_][a-zA-Z0-9_]*)\}")
 
 
-class QuestionNode(BaseModel):
-    id: str
-    question: str
-    node_type: Optional[str] = None
+class DependencyGraphRuntime:
+    """Unified dependency-graph runtime.
 
-    def solve(
-        self,
-        schema_info: str,
-        predecessor_info: Dict[str, Any],
-        runtime: Optional["DependancyGraph"] = None,  
-        max_tries: int = 5,
-        application_context: Optional[str] = None,
-    ) -> Dict[str, Any]:
-        if runtime is None:
-            return {
-                "answer": "",
-                "plan": [],
-                "execution": [],
-                "judge": [],
-             }
-        
-        logger.info("Processing Question Node {}, Question: {}".format(
-            self.id, self.question
-        ))
-        
-        resolved_application_context = runtime.resolve_application_context(
-            application_context
-        )
-        predecessor_context = runtime.format_predecessor_context(predecessor_info)
-        solution: Dict[str, Any] = {
-            "question": self.question,
-            "predecessor_context": predecessor_context,
-            "draft_answer": "",
-            "draft_judge": [],
-            "schema_reasoning": {
-                "relevant_schema_info": [],
-                "draft_answer": "",
-                "judge": [],
-            },
-            "plan": [],
-            "grounding": {},
-            "candidate_synthetic_questions": [],
-            "execution": [],
-            "judge": [],
-        }
+    The previous mixin-based split made behavior hard to trace. This class keeps
+    the same public API while putting the runtime logic back in one place.
+    """
 
-        # if predecessor_context:
-        #     with dspy.context(lm=runtime.llm.llm):
-        #         summary_prediction = runtime.summary_predictor(
-        #             qa_dialog=predecessor_context,
-        #             schema_context=schema_info,
-        #             application_context=resolved_application_context,
-        #             original_question=self.question,
-        #         )
-        #     draft_answer = str(getattr(summary_prediction, "answer", "")).strip()
-        #     solution["draft_answer"] = draft_answer
-        #     if draft_answer:
-        #         draft_judge = runtime.ensure_answer_quality(
-        #             question=self.question,
-        #             answer=draft_answer,
-        #             evidence_context=predecessor_context,
-        #             max_tries=max_tries,
-        #             application_context=resolved_application_context,
-        #         )
-        #         solution["draft_judge"] = draft_judge["history"]
-        #         if draft_judge["answered"]:
-        #             solution["answer"] = draft_judge["answer"]
-        #             return solution
-        
-        if not predecessor_context:
-            predecessor_context = ""
-
-        schema_answer = runtime.answer_question_from_schema(
-            question=self.question,
-            schema_context=schema_info,
-            max_tries=max_tries,
-            predecessor_context = predecessor_context,
-            application_context=resolved_application_context,
-        )
-        solution["schema_reasoning"] = {
-            "relevant_schema_info": schema_answer["relevant_schema_info"],
-            "draft_answer": schema_answer["draft_answer"],
-            "judge": schema_answer["history"],
-        }
-        if schema_answer["answered"]:
-            solution["judge"] = schema_answer["history"]
-            solution["answer"] = schema_answer["answer"]
-            return solution
-
-        plan_bundle = runtime.plan_synthetic_question_execution(
-            question=self.question,
-            schema_context=schema_info,
-            predecessor_context=predecessor_context,
-            application_context=resolved_application_context,
-        )
-        solution["grounding"] = plan_bundle["grounding"]
-        solution["candidate_synthetic_questions"] = plan_bundle["candidate_synthetic_questions"]
-        solution["plan"] = plan_bundle["plan"]
-
-        execution_bundle = runtime.execute_synthetic_question_plan(
-            question=self.question,
-            schema_context=schema_info,
-            predecessor_context=predecessor_context,
-            plan=plan_bundle["plan"],
-            application_context=resolved_application_context,
-        )
-        solution["execution"] = execution_bundle["steps"]
-
-        evidence_blocks = [
-            runtime.format_schema_reasoning(solution["schema_reasoning"]),
-            runtime.format_step_results(execution_bundle["steps"]),
-        ]
-        evidence_context = "\n\n".join(
-            block for block in evidence_blocks if block
-        ).strip()
-
-        final_answer = execution_bundle["answer"].strip()
-        if not final_answer and predecessor_context:
-            final_answer = solution["draft_answer"]
-        if not final_answer:
-            final_answer = str(
-                solution["schema_reasoning"].get("draft_answer", "")
-            ).strip()
-
-        judged_answer = runtime.ensure_answer_quality(
-            question=self.question,
-            answer=final_answer,
-            evidence_context=evidence_context,
-            max_tries=max_tries,
-            application_context=resolved_application_context,
-            predecessor_context=predecessor_context,
-        )
-        solution["judge"] = judged_answer["history"]
-        solution["answer"] = judged_answer["answer"]
-        return solution
-
-
-T = TypeVar("T")
-Edge = Tuple[T, T]
-
-
-class DependancyGraph:
     def __init__(
         self,
         graph_loc: str,
@@ -200,16 +64,14 @@ class DependancyGraph:
         self.vertices: Dict[str, QuestionNode] = {}
 
         self.app_info = app_info
+        self.llm = llm
+        self.embedder = embedder
+        self.vector_db = vector_db
 
         self.graph_manager = GraphManager(
             graph_file=graph_loc,
             config=ttl_config,
         )
-
-        self.llm = llm
-        self.embedder = embedder
-        self.vector_db = vector_db
-
         self.object_db = ObjectSearch(
             self.graph_manager,
             self.embedder,
@@ -237,6 +99,9 @@ class DependancyGraph:
         self.synthetic_question_grounding_predictor = dspy.Predict(
             SyntheticQuestionGroundingSignature
         )
+        self.synthetic_question_category_predictor = dspy.Predict(
+            SyntheticQuestionCategorySelectionSignature
+        )
         self.synthetic_question_plan_predictor = dspy.Predict(
             SyntheticQuestionPlanningSignature
         )
@@ -245,6 +110,9 @@ class DependancyGraph:
         )
         self.synthetic_question_result_predictor = dspy.Predict(
             SyntheticQuestionResultSignature
+        )
+        self.synthetic_question_next_step_predictor = dspy.Predict(
+            SyntheticQuestionNextStepSignature
         )
         self.schema_answerability_predictor = dspy.Predict(
             SchemaAnswerabilitySignature
@@ -416,6 +284,791 @@ class DependancyGraph:
             "information_required": info_req,
         }
 
+    @staticmethod
+    def solve_node(
+        adj_matrix: List[List[int]],
+        node_id: int,
+        schema_info: str,
+        node_map: Dict[str, QuestionNode],
+        runtime: "DependencyGraphRuntime",
+        max_tries: int = 5,
+        cache: Optional[Dict[str, Dict[str, Any]]] = None,
+        application_context: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        if cache is None:
+            cache = {}
+
+        node_key = str(node_id)
+
+        if node_key in cache:
+            return cache[node_key]
+
+        predecessor_nodes = incoming_edges(adj_matrix, node_id)
+        predecessor_info: Dict[str, Dict[str, Any]] = {}
+        for predecessor_node in predecessor_nodes:
+            predecessor_key = str(predecessor_node)
+            predecessor_info[predecessor_key] = type(runtime).solve_node(
+                adj_matrix,
+                predecessor_node,
+                schema_info,
+                node_map,
+                runtime=runtime,
+                max_tries=max_tries,
+                cache=cache,
+                application_context=application_context,
+            )
+
+        node_data = node_map[node_key].solve(
+            schema_info,
+            predecessor_info,
+            runtime=runtime,
+            max_tries=max_tries,
+            application_context=application_context,
+        )
+        node_info = {
+            "id": node_key,
+            "question": node_map[node_key].question,
+            "schema_info_used": schema_info,
+            "schema_reasoning": node_data.get("schema_reasoning", {}),
+            "retrieved_objects": [
+                entity
+                for execution_step in node_data.get("execution", [])
+                for entity in execution_step.get("important_entities", [])
+            ],
+            "synthetic_questions_plan": node_data.get("plan"),
+            "intermediary_results": node_data.get("execution"),
+            "answer": node_data.get("answer", ""),
+            "judge": node_data.get("judge", []),
+            "grounding": node_data.get("grounding", {}),
+        }
+        cache[node_key] = node_info
+        return node_info
+
+    def process_dependancy_graph(
+        self,
+        schema_context: str,
+        application_context: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        if not hasattr(self, "adjacency_matrix"):
+            raise ValueError(
+                "Dependency graph has not been built. Run `user_query_to_requirements` first."
+            )
+
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
+        solved = type(self).solve_node(
+            self.adjacency_matrix,
+            0,
+            schema_context,
+            self.vertices,
+            runtime=self,
+            application_context=resolved_application_context,
+        )
+        self.last_result = solved
+        ic(solved)
+        return solved
+
+    def get_available_synthetic_question_classes(self) -> List[str]:
+        classes = {
+            row.get(key)
+            for row in self.synthetic_question_retriever.rows
+            for key in ("focal_node", "start_node", "end_node")
+            if row.get(key)
+        }
+        return sorted(str(value) for value in classes if value)
+
+    def get_available_synthetic_question_relations(self) -> List[str]:
+        relations = {
+            row.get("focal_relation")
+            for row in self.synthetic_question_retriever.rows
+            if row.get("focal_relation")
+        }
+        return sorted(str(value) for value in relations if value)
+
+    def lexical_match_terms(
+        self,
+        question: str,
+        terms: List[str],
+        limit: int = 3,
+    ) -> List[str]:
+        question_terms = {
+            token
+            for token in re.split(r"[^a-zA-Z0-9]+", question.lower())
+            if token
+        }
+        ranked_terms = []
+        for term in terms:
+            alias = term.split(":")[-1].replace("_", " ").replace("-", " ")
+            alias_terms = {
+                token
+                for token in re.split(r"[^a-zA-Z0-9]+", alias.lower())
+                if token
+            }
+            overlap = len(question_terms.intersection(alias_terms))
+            if overlap:
+                ranked_terms.append((overlap, term))
+
+        ranked_terms.sort(key=lambda item: (-item[0], item[1]))
+        return [term for _, term in ranked_terms[:limit]]
+
+    def rank_synthetic_question_row(
+        self,
+        row: Dict[str, Optional[str]],
+        question: str,
+        candidate_classes: List[str],
+        candidate_relations: List[str],
+    ) -> int:
+        score = 0
+        question_terms = {
+            token
+            for token in re.split(r"[^a-zA-Z0-9]+", question.lower())
+            if token
+        }
+
+        row_text = " ".join(
+            str(row.get(key, ""))
+            for key in (
+                "program_id",
+                "statement",
+                "focal_node",
+                "start_node",
+                "end_node",
+                "focal_relation",
+            )
+        ).lower()
+
+        for candidate_class in candidate_classes:
+            if candidate_class == row.get("focal_node"):
+                score += 6
+            if (
+                candidate_class == row.get("start_node")
+                or candidate_class == row.get("end_node")
+            ):
+                score += 5
+            if candidate_class.lower() in row_text:
+                score += 2
+
+        for candidate_relation in candidate_relations:
+            if candidate_relation == row.get("focal_relation"):
+                score += 6
+            if candidate_relation.lower() in row_text:
+                score += 2
+
+        score += sum(1 for token in question_terms if token in row_text)
+        if row.get("category") == "path-level":
+            score += 1
+        return score
+
+    def format_candidate_synthetic_questions(
+        self,
+        rows: List[Dict[str, Optional[str]]],
+    ) -> str:
+        formatted_rows = []
+        for row in rows:
+            placeholders = self.extract_query_placeholders(row.get("code") or "")
+            formatted_rows.append(
+                "program_id={program_id} | category={category} | statement={statement} | "
+                "start_node={start_node} | end_node={end_node} | focal_node={focal_node} | "
+                "focal_relation={focal_relation} | placeholders={placeholders}".format(
+                    program_id=row.get("program_id", ""),
+                    category=row.get("category", ""),
+                    statement=row.get("statement", ""),
+                    start_node=row.get("start_node", ""),
+                    end_node=row.get("end_node", ""),
+                    focal_node=row.get("focal_node", ""),
+                    focal_relation=row.get("focal_relation", ""),
+                    placeholders=",".join(placeholders),
+                )
+            )
+        return "\n".join(formatted_rows)
+
+    def format_step_spec(
+        self,
+        step: Dict[str, Any],
+        row: Dict[str, Optional[str]],
+    ) -> str:
+        return json.dumps(
+            {
+                "step_id": step.get("step_id"),
+                "sub_question": step.get("sub_question"),
+                "program_id": step.get("program_id"),
+                "category": row.get("category"),
+                "statement": row.get("statement"),
+                "expected_classes": step.get("expected_classes", []),
+                "input_bindings": step.get("input_bindings", {}),
+                "placeholders": self.extract_query_placeholders(row.get("code") or ""),
+            },
+            indent=2,
+        )
+
+    def format_query_results(
+        self,
+        query_results: Dict[str, List[Dict[str, Any]]],
+    ) -> str:
+        return json.dumps(query_results, indent=2)
+
+    def format_step_results(
+        self,
+        steps: List[Dict[str, Any]],
+    ) -> str:
+        if not steps:
+            return ""
+
+        lines = []
+        for step in steps:
+            lines.append(f"Step {step.get('step_id', '')}: {step.get('sub_question', '')}")
+            lines.append(f"Program: {step.get('program_id', '')}")
+            lines.append(f"Answer: {step.get('answer', '')}")
+            lines.append(
+                "Important entities: "
+                + ", ".join(step.get("important_entities", []))
+            )
+            lines.append(
+                "Results: " + json.dumps(step.get("results", {}), indent=2)
+            )
+        return "\n".join(lines)
+
+    def format_predecessor_context(
+        self,
+        predecessor_info: Dict[str, Any],
+    ) -> str:
+        if not predecessor_info:
+            return ""
+
+        lines = []
+        for predecessor_key, predecessor_value in sorted(predecessor_info.items()):
+            lines.append(
+                f"Node {predecessor_key}: {predecessor_value.get('question', '')}"
+            )
+            lines.append(f"Answer: {predecessor_value.get('answer', '')}")
+            synthetic_plan = predecessor_value.get("synthetic_questions_plan", [])
+            if synthetic_plan:
+                lines.append(
+                    "Plan steps: "
+                    + ", ".join(
+                        step.get("program_id", "")
+                        for step in synthetic_plan
+                        if step.get("program_id")
+                    )
+                )
+        return "\n".join(lines)
+
+    def format_schema_reasoning(
+        self,
+        schema_reasoning: Dict[str, Any],
+    ) -> str:
+        relevant_schema_info = clean_string_list(
+            schema_reasoning.get("relevant_schema_info", [])
+        )
+        if not relevant_schema_info:
+            return ""
+
+        lines = ["Schema details:"]
+        lines.extend(f"- {schema_fact}" for schema_fact in relevant_schema_info)
+        return "\n".join(lines)
+
+    def extract_entities_from_records(
+        self,
+        query_results: Dict[str, List[Dict[str, Any]]],
+    ) -> List[str]:
+        collected_values = []
+        for records in query_results.values():
+            for record in records:
+                for value in record.values():
+                    text_value = str(value).strip()
+                    if not text_value:
+                        continue
+                    if ":" in text_value or text_value.startswith("http"):
+                        collected_values.append(text_value)
+        return clean_string_list(collected_values)
+
+    @staticmethod
+    def parse_serialized_dict(raw_value: Optional[str]) -> Dict[str, Any]:
+        if not raw_value:
+            return {}
+
+        try:
+            parsed = ast.literal_eval(raw_value)
+        except Exception:
+            return {}
+        return parsed if isinstance(parsed, dict) else {}
+
+    @staticmethod
+    def parse_plan_json(raw_plan: str) -> List[Dict[str, Any]]:
+        payload = DependencyGraphRuntime.extract_json_payload(raw_plan)
+        if payload is None:
+            return []
+
+        try:
+            parsed = json.loads(payload)
+        except json.JSONDecodeError:
+            return []
+
+        if isinstance(parsed, dict):
+            parsed = [parsed]
+        return [item for item in parsed if isinstance(item, dict)]
+
+    @staticmethod
+    def parse_parameter_values_json(raw_json: str) -> List[Dict[str, Any]]:
+        payload = DependencyGraphRuntime.extract_json_payload(raw_json)
+        if payload is None:
+            return []
+
+        try:
+            parsed = json.loads(payload)
+        except json.JSONDecodeError:
+            return []
+
+        if isinstance(parsed, dict):
+            parsed = [parsed]
+        return [item for item in parsed if isinstance(item, dict)]
+
+    @staticmethod
+    def extract_json_payload(raw_text: str) -> Optional[str]:
+        stripped_text = raw_text.strip()
+        if not stripped_text:
+            return None
+
+        if stripped_text.startswith("{") or stripped_text.startswith("["):
+            return stripped_text
+
+        match = re.search(r"```json\s*([\s\S]*?)\s*```", stripped_text)
+        if match:
+            return match.group(1).strip()
+
+        return None
+
+    @staticmethod
+    def extract_query_placeholders(query_text: str) -> List[str]:
+        return clean_string_list(PLACEHOLDER_PATTERN.findall(query_text))
+
+    @staticmethod
+    def normalize_bindings(bindings: Any) -> Dict[str, Any]:
+        if not isinstance(bindings, dict):
+            return {}
+        return {
+            str(key).strip(): value
+            for key, value in bindings.items()
+            if str(key).strip()
+        }
+
+    def normalize_parameter_sets(
+        self,
+        parameter_sets: List[Dict[str, Any]],
+        placeholders: List[str],
+    ) -> List[Dict[str, str]]:
+        normalized_sets = []
+        for parameter_set in parameter_sets:
+            normalized_set: Dict[str, str] = {}
+            for placeholder in placeholders:
+                if placeholder not in parameter_set:
+                    continue
+
+                value = parameter_set[placeholder]
+                if value is None:
+                    continue
+
+                text_value = str(value).strip()
+                if not text_value:
+                    continue
+
+                if placeholder == "class_uri":
+                    text_value = self.graph_manager.resolve_curie(
+                        text_value,
+                        allow_bare=True,
+                    )
+                elif placeholder in {"obj", "obj_uri"}:
+                    text_value = self.graph_manager.resolve_curie(
+                        text_value,
+                        allow_bare=True,
+                    )
+                normalized_set[placeholder] = text_value
+
+            if normalized_set:
+                normalized_sets.append(normalized_set)
+
+        return normalized_sets
+
+    @staticmethod
+    def query_needs_header(query_text: str) -> bool:
+        return "PREFIX " not in query_text.upper()
+
+    @staticmethod
+    def extract_literal_phrases(question: str) -> List[str]:
+        quoted_fragments = re.findall(r'"([^"]+)"', question)
+        identifier_like = re.findall(
+            r"\b[A-Za-z0-9_:-]{3,}\b",
+            question,
+        )
+        return clean_string_list(quoted_fragments + identifier_like[:5])
+
+    def select_synthetic_question_execution(
+        self,
+        question: str,
+        schema_context: str,
+        step_count: int,
+        predecessor_context: str = "",
+        step_context: str = "",
+        application_context: Optional[str] = None,
+        previous_steps: Optional[List[Dict[str, Any]]] = None,
+        original_question: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        return self.select_synthetic_question_to_execute(
+            question=question,
+            original_question=original_question or question,
+            schema_context=schema_context,
+            step_count=step_count,
+            predecessor_context=predecessor_context,
+            step_context=step_context,
+            previous_steps=previous_steps,
+            application_context=application_context,
+        )
+
+    def select_synthetic_question_to_execute(
+        self,
+        question: str,
+        schema_context: str,
+        step_count: int,
+        predecessor_context: str = "",
+        step_context: str = "",
+        previous_steps: Optional[List[Dict[str, Any]]] = None,
+        original_question: Optional[str] = None,
+        application_context: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
+        previous_steps = previous_steps or []
+        overarching_question = str(original_question or question).strip() or question
+        normalized_question = question.strip() or overarching_question
+        grounding = self.ground_synthetic_questions(
+            question=normalized_question,
+            schema_context=schema_context,
+            predecessor_context=predecessor_context,
+            application_context=resolved_application_context,
+        )
+        candidate_rows = self.collect_candidate_synthetic_questions(
+            question=normalized_question,
+            candidate_classes=grounding["candidate_classes"],
+            candidate_relations=grounding["candidate_relations"],
+            schema_context=schema_context,
+            predecessor_context="\n\n".join(
+                block for block in [predecessor_context, step_context] if block
+            ),
+            application_context=resolved_application_context,
+        )
+        
+        linked_entities = []
+        object_db = getattr(self, "object_db", None)
+        if object_db is not None and hasattr(object_db, "link_entities_from_phrases"):
+            linked_entities = object_db.link_entities_from_phrases(
+                phrases=clean_string_list(
+                    grounding["entity_phrases"] + [normalized_question]
+                ),
+                class_hints=grounding["candidate_classes"],
+                limit=5,
+            )
+        
+        # elif object_db is not None and hasattr(object_db, "link_entities"):
+        #     linked_entities = object_db.link_entities(
+        #         normalized_question,
+        #         class_hints=grounding["candidate_classes"],
+        #     )
+        
+        # add an LLM call to analyse a question question: str,schema_context: str,
+        # and to choose between linking an entity from the object store or using the 
+        # the explore_object_of_class if we use explore_object_of_class it will retrive all object
+        # of that class do we need that here or just the linked ojects
+
+        selected_step: Dict[str, Any]
+        if step_count == 0 and linked_use:
+            
+            selected_step = {
+                "step_id": f"step{step_count + 1}",
+                "sub_question": normalized_question,
+                "program_id": "retrieval::linked-entities",
+                "execution_mode": "retrieval",
+                "retrieval_mode": "linked-entities",
+                "input_bindings": {
+                    "lookup_phrases": grounding["entity_phrases"],
+                },
+                "expected_classes": grounding["candidate_classes"],
+                "important_entities": [
+                    str(
+                        entity.get("object_uri")
+                        or entity.get("object_name")
+                        or ""
+                    )
+                    for entity in linked_entities
+                ],
+            }
+        elif (
+            step_count == 0
+            and not linked_use
+        ):
+            
+            selected_step = {
+                "step_id": f"step{step_count + 1}",
+                "sub_question": normalized_question,
+                "program_id": "explore_object_of_class",
+                "execution_mode": "retrieval",
+                "retrieval_mode": "class-members",
+                "input_bindings": {
+                    "class_uri": grounding["candidate_classes"][0],
+                },
+                "expected_classes": grounding["candidate_classes"][:1],
+            }
+        else:
+            candidate_row = self.choose_candidate_synthetic_question_row(
+                candidate_rows=candidate_rows,
+                previous_steps=previous_steps,
+            )
+            if candidate_row is None:
+                get_generic_object_explorer = getattr(
+                    self.synthetic_question_retriever,
+                    "get_generic_object_explorer",
+                    None,
+                )
+                generic_object_explorer = (
+                    get_generic_object_explorer()
+                    if callable(get_generic_object_explorer)
+                    else None
+                )
+                candidate_row = generic_object_explorer
+
+            selected_step = self.build_selected_step_from_row(
+                row=candidate_row,
+                question=normalized_question,
+                step_count=step_count,
+                candidate_classes=grounding["candidate_classes"],
+                candidate_relations=grounding["candidate_relations"],
+                previous_steps=previous_steps,
+            )
+
+        return {
+            "question": normalized_question,
+            "original_question": overarching_question,
+            "grounding": grounding,
+            "candidate_synthetic_questions": candidate_rows,
+            "selected_step": selected_step,
+            "linked_entities": linked_entities,
+        }
+
+    def execute_synthetic_question(
+        self,
+        question: str,
+        schema_context: str,
+        predecessor_context: str,
+        step_question: Dict[str, Any],
+        previous_steps: Optional[List[Dict[str, Any]]] = None,
+        original_question: Optional[str] = None,
+        application_context: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
+        previous_steps = previous_steps or []
+        selected_step = dict(step_question.get("selected_step") or {})
+        if not selected_step:
+            return {"steps": [], "answer": ""}
+
+        if selected_step.get("execution_mode") == "retrieval":
+            executed_step = self.execute_retrieval_step(
+                question=question,
+                step=selected_step,
+                step_question=step_question,
+            )
+        else:
+            executed_step = self.execute_synthetic_question_step(
+                question=str(original_question or question).strip() or question,
+                predecessor_context=predecessor_context,
+                step=selected_step,
+                previous_steps=previous_steps,
+                application_context=resolved_application_context,
+            )
+
+        summarized_answer = self.summarize_answer_from_execution(
+            original_question=str(original_question or question).strip() or question,
+            current_question=question,
+            schema_context=schema_context,
+            predecessor_context=predecessor_context,
+            steps=previous_steps + [executed_step],
+            application_context=resolved_application_context,
+        )
+
+        return {
+            "steps": [executed_step],
+            "answer": summarized_answer or str(executed_step.get("answer", "")).strip(),
+        }
+
+    def execute_retrieval_step(
+        self,
+        question: str,
+        step: Dict[str, Any],
+        step_question: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        retrieval_mode = str(step.get("retrieval_mode", "")).strip()
+        raw_results: List[Dict[str, Any]] = []
+        important_entities: List[str] = []
+
+        if retrieval_mode == "linked-entities":
+            raw_results = list(step_question.get("linked_entities") or [])
+            important_entities = clean_string_list(
+                [
+                    entity.get("object_uri") or entity.get("object_name")
+                    for entity in raw_results
+                ]
+            )
+        elif retrieval_mode == "class-members":
+            class_uri = str(
+                step.get("input_bindings", {}).get("class_uri", "")
+            ).strip()
+            raw_results = self.object_db.get_objects_of_class(
+                class_uri,
+                limit=10,
+            )
+            important_entities = clean_string_list(
+                [
+                    entity.get("object_uri") or entity.get("object_name")
+                    for entity in raw_results
+                ]
+            )
+
+        answer = (
+            f"Retrieved {len(important_entities)} candidate object(s) relevant to "
+            f"the question: {question}"
+        )
+        if not important_entities:
+            answer = (
+                "No candidate objects were retrieved for the current traversal step."
+            )
+
+        return {
+            "step_id": step.get("step_id", ""),
+            "sub_question": step.get("sub_question", question),
+            "program_id": step.get("program_id", ""),
+            "execution_mode": "retrieval",
+            "parameter_values": [step.get("input_bindings", {})],
+            "results": {"set_1": raw_results},
+            "answer": answer,
+            "important_entities": important_entities,
+        }
+
+    def summarize_answer_from_execution(
+        self,
+        original_question: str,
+        current_question: str,
+        schema_context: str,
+        predecessor_context: str,
+        steps: List[Dict[str, Any]],
+        schema_reasoning: Optional[Dict[str, Any]] = None,
+        step_context: str = "",
+        application_context: Optional[str] = None,
+    ) -> str:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
+        evidence_blocks = [
+            predecessor_context.strip(),
+            self.format_schema_reasoning(schema_reasoning or {}),
+            self.format_step_results(steps),
+            step_context.strip(),
+        ]
+        summary_context = "\n\n".join(
+            block for block in evidence_blocks if block
+        ).strip()
+        if not summary_context:
+            return ""
+
+        with dspy.context(lm=self.llm.llm):
+            prediction = self.summary_predictor(
+                qa_dialog=summary_context,
+                schema_context=schema_context,
+                application_context=resolved_application_context,
+                original_question=original_question,
+            )
+
+        return str(getattr(prediction, "answer", "")).strip()
+
+    def rewrite_question_for_next_step(
+        self,
+        original_question: str,
+        current_question: str,
+        schema_context: str,
+        predecessor_context: str,
+        step_context: str,
+        latest_step_results: str,
+        partial_answer: str,
+        judge_feedback: str,
+        application_context: Optional[str] = None,
+    ) -> Dict[str, str]:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
+        next_question = ""
+
+        with dspy.context(lm=self.llm.llm):
+            prediction = self.synthetic_question_next_step_predictor(
+                original_question=original_question,
+                current_question=current_question,
+                application_context=resolved_application_context,
+                schema_context=schema_context,
+                predecessor_context=predecessor_context,
+                step_context=step_context,
+                latest_step_results=latest_step_results,
+                partial_answer=partial_answer,
+                judge_feedback=judge_feedback,
+            )
+        next_question = str(getattr(prediction, "next_question", "")).strip()
+
+        if not next_question:
+            latest_focus = judge_feedback.strip() or latest_step_results.strip()
+            if latest_focus:
+                next_question = (
+                    f"Given the current evidence, what should be retrieved next to answer "
+                    f"'{original_question}'? Focus on: {latest_focus}"
+                )
+            else:
+                next_question = original_question
+
+        return {"next_question": next_question}
+
+    def build_step_context(
+        self,
+        original_question: str,
+        current_question: str,
+        selected_step: Dict[str, Any],
+        latest_steps: List[Dict[str, Any]],
+        execution_history: List[Dict[str, Any]],
+        partial_answer: str,
+        judge_feedback: str,
+        existing_step_context: str = "",
+        next_question: str = "",
+    ) -> str:
+        latest_step_summary = self.format_step_results(latest_steps)
+        lines = []
+        if existing_step_context.strip():
+            lines.append(existing_step_context.strip())
+            lines.append("")
+        lines.append(f"Original question: {original_question}")
+        lines.append(f"Current traversal question: {current_question}")
+        lines.append(f"Selected program: {selected_step.get('program_id', '')}")
+        lines.append(
+            f"Execution mode: {selected_step.get('execution_mode', 'synthetic')}"
+        )
+        if latest_step_summary:
+            lines.append(latest_step_summary)
+        if partial_answer:
+            lines.append(f"Current answer: {partial_answer}")
+        if judge_feedback:
+            lines.append(f"Judge feedback: {judge_feedback}")
+        if next_question:
+            lines.append(f"Next question: {next_question}")
+        if execution_history and not latest_step_summary:
+            lines.append(self.format_step_results(execution_history))
+        return "\n".join(lines).strip()
+
     def plan_synthetic_question_execution(
         self,
         question: str,
@@ -436,6 +1089,9 @@ class DependancyGraph:
             question=question,
             candidate_classes=grounding["candidate_classes"],
             candidate_relations=grounding["candidate_relations"],
+            schema_context=schema_context,
+            predecessor_context=predecessor_context,
+            application_context=resolved_application_context,
         )
 
         if not candidate_rows:
@@ -650,7 +1306,6 @@ class DependancyGraph:
         resolved_application_context = self.resolve_application_context(
             application_context
         )
-        normalized_predecessor_context = predecessor_context or ""
         normalized_schema_context = schema_context.strip()
         empty_response = {
             "answer": "",
@@ -668,7 +1323,7 @@ class DependancyGraph:
                 question=question,
                 application_context=resolved_application_context,
                 schema_context=normalized_schema_context,
-                predecessor_context=normalized_predecessor_context,
+                predecessor_context=predecessor_context,
             )
 
         answerable_from_schema = bool(
@@ -692,7 +1347,7 @@ class DependancyGraph:
             answer_prediction = self.schema_answer_predictor(
                 question=question,
                 application_context=resolved_application_context,
-                predecessor_context=normalized_predecessor_context,
+                predecessor_context=predecessor_context,
                 relevant_schema_info=schema_evidence_context,
             )
 
@@ -707,9 +1362,9 @@ class DependancyGraph:
             question=question,
             answer=draft_answer,
             evidence_context=schema_evidence_context,
+            predecessor_context=predecessor_context,
             max_tries=max_tries,
             application_context=resolved_application_context,
-            predecessor_context=normalized_predecessor_context,
         )
 
         return {
@@ -792,9 +1447,24 @@ class DependancyGraph:
         question: str,
         candidate_classes: List[str],
         candidate_relations: List[str],
+        schema_context: str = "",
+        predecessor_context: str = "",
+        application_context: Optional[str] = None,
         limit: int = 25,
     ) -> List[Dict[str, Optional[str]]]:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
         collected_rows: Dict[str, Dict[str, Optional[str]]] = {}
+        selected_categories = self.select_plausible_synthetic_question_categories(
+            question=question,
+            candidate_classes=candidate_classes,
+            candidate_relations=candidate_relations,
+            schema_context=schema_context,
+            predecessor_context=predecessor_context,
+            application_context=resolved_application_context,
+        )
+        selected_category_set = set(selected_categories)
 
         def add_rows(rows: List[Dict[str, Optional[str]]]) -> None:
             for row in rows:
@@ -803,24 +1473,47 @@ class DependancyGraph:
                     continue
                 collected_rows[program_id] = row
 
-        for candidate_class in candidate_classes:
-            add_rows(
-                self.synthetic_question_retriever.retrieve_object_level_from_object(
-                    focal_node=candidate_class
+        if (
+            SyntheticQuestionCategory.OBJECT_LEVEL_FROM_OBJECT.value
+            in selected_category_set
+        ):
+            for candidate_class in candidate_classes:
+                add_rows(
+                    self.synthetic_question_retriever.retrieve_object_level_from_object(
+                        focal_node=candidate_class
+                    )
                 )
-            )
-            add_rows(
-                self.synthetic_question_retriever.retrieve_object_level_from_prop(
-                    focal_node=candidate_class
-                )
-            )
 
+        if (
+            SyntheticQuestionCategory.OBJECT_LEVEL_FROM_PROP.value
+            in selected_category_set
+        ):
+            for candidate_class in candidate_classes:
+                add_rows(
+                    self.synthetic_question_retriever.retrieve_object_level_from_prop(
+                        focal_node=candidate_class
+                    )
+                )
+
+        object_level_categories = {
+            SyntheticQuestionCategory.OBJECT_LEVEL_FROM_OBJECT.value,
+            SyntheticQuestionCategory.OBJECT_LEVEL_FROM_PROP.value,
+        }.intersection(selected_category_set)
         for candidate_relation in candidate_relations:
-            relation_rows = [
-                row
-                for row in self.synthetic_question_retriever.rows
-                if row.get("focal_relation") == candidate_relation
-            ]
+            relation_rows = []
+            for category in object_level_categories:
+                if category == SyntheticQuestionCategory.OBJECT_LEVEL_FROM_OBJECT.value:
+                    relation_rows.extend(
+                        self.synthetic_question_retriever.retrieve_object_level_from_object(
+                            focal_relation=candidate_relation,
+                        )
+                    )
+                elif category == SyntheticQuestionCategory.OBJECT_LEVEL_FROM_PROP.value:
+                    relation_rows.extend(
+                        self.synthetic_question_retriever.retrieve_object_level_from_prop(
+                            focal_relation=candidate_relation,
+                        )
+                    )
             if candidate_classes:
                 relation_rows = [
                     row
@@ -829,27 +1522,36 @@ class DependancyGraph:
                 ]
             add_rows(relation_rows)
 
-        for start_class in candidate_classes:
-            for end_class in candidate_classes:
+        if SyntheticQuestionCategory.PATH_LEVEL.value in selected_category_set:
+            for start_class in candidate_classes:
+                for end_class in candidate_classes:
+                    add_rows(
+                        self.synthetic_question_retriever.retrieve_path_level(
+                            start_node=start_class,
+                            end_node=end_class,
+                        )
+                    )
                 add_rows(
-                    self.synthetic_question_retriever.retrieve_path_level(
-                        start_node=start_class,
-                        end_node=end_class,
-                    )
+                    [
+                        row
+                        for row in self.synthetic_question_retriever.rows
+                        if row.get("category")
+                        == SyntheticQuestionCategory.PATH_LEVEL.value
+                        and (
+                            row.get("start_node") == start_class
+                            or row.get("end_node") == start_class
+                        )
+                    ]
                 )
-            add_rows(
-                [
-                    row
-                    for row in self.synthetic_question_retriever.rows
-                    if row.get("category") == "path-level"
-                    and (
-                        row.get("start_node") == start_class
-                        or row.get("end_node") == start_class
-                    )
-                ]
-            )
 
         candidate_rows = list(collected_rows.values())
+        if not candidate_rows and selected_category_set:
+            candidate_rows = [
+                row
+                for row in self.synthetic_question_retriever.rows
+                if row.get("category") in selected_category_set
+            ]
+
         if not candidate_rows:
             candidate_rows = list(self.synthetic_question_retriever.rows)
 
@@ -864,6 +1566,279 @@ class DependancyGraph:
             reverse=True,
         )
         return ranked_rows[:limit]
+
+    def select_candidate_synthetic_question(
+        self,
+        question: str,
+        candidate_classes: List[str],
+        candidate_relations: List[str],
+        schema_context: str = "",
+        predecessor_context: str = "",
+        application_context: Optional[str] = None,
+        limit: int = 25,
+    ) -> List[Dict[str, Optional[str]]]:
+        return self.collect_candidate_synthetic_questions(
+            question=question,
+            candidate_classes=candidate_classes,
+            candidate_relations=candidate_relations,
+            schema_context=schema_context,
+            predecessor_context=predecessor_context,
+            application_context=application_context,
+            limit=limit,
+        )
+
+    def choose_candidate_synthetic_question_row(
+        self,
+        candidate_rows: List[Dict[str, Optional[str]]],
+        previous_steps: List[Dict[str, Any]],
+    ) -> Optional[Dict[str, Optional[str]]]:
+        if not candidate_rows:
+            return None
+
+        executed_program_ids = {
+            str(step.get("program_id", "")).strip()
+            for step in previous_steps
+            if step.get("program_id")
+        }
+        unseen_rows = [
+            row
+            for row in candidate_rows
+            if str(row.get("program_id", "")).strip() not in executed_program_ids
+        ]
+        ranked_pool = unseen_rows or candidate_rows
+
+        if previous_steps:
+            for row in ranked_pool:
+                placeholders = self.extract_query_placeholders(row.get("code") or "")
+                if any(
+                    placeholder in {"obj", "obj_uri"}
+                    for placeholder in placeholders
+                ):
+                    return row
+
+        return ranked_pool[0]
+
+    def build_selected_step_from_row(
+        self,
+        row: Optional[Dict[str, Optional[str]]],
+        question: str,
+        step_count: int,
+        candidate_classes: List[str],
+        candidate_relations: List[str],
+        previous_steps: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        if row is None:
+            return {}
+
+        placeholders = self.extract_query_placeholders(row.get("code") or "")
+        if not placeholders:
+            placeholders = list(
+                self.parse_serialized_dict(row.get("input_spec")).keys()
+            )
+
+        input_bindings: Dict[str, Any] = {}
+        latest_step_id = ""
+        if previous_steps:
+            latest_step_id = str(
+                previous_steps[-1].get("step_id", "")
+            ).strip()
+
+        for placeholder in placeholders:
+            if placeholder == "class_uri" and candidate_classes:
+                input_bindings[placeholder] = candidate_classes[0]
+            elif placeholder in {"obj", "obj_uri"}:
+                if latest_step_id:
+                    input_bindings[placeholder] = f"STEP:{latest_step_id}"
+                elif candidate_classes:
+                    input_bindings[placeholder] = candidate_classes[0]
+            elif placeholder == "prop_uri":
+                if row.get("focal_relation"):
+                    input_bindings[placeholder] = row.get("focal_relation")
+                elif candidate_relations:
+                    input_bindings[placeholder] = candidate_relations[0]
+
+        return {
+            "step_id": f"step{step_count + 1}",
+            "sub_question": question,
+            "program_id": str(row.get("program_id", "")).strip(),
+            "execution_mode": "synthetic",
+            "input_bindings": input_bindings,
+            "expected_classes": clean_string_list(
+                [
+                    row.get("focal_node") or "",
+                    row.get("start_node") or "",
+                    row.get("end_node") or "",
+                ]
+            )
+            or candidate_classes[:2],
+        }
+
+    def get_available_synthetic_question_categories(self) -> List[str]:
+        retriever = getattr(self, "synthetic_question_retriever", None)
+        if retriever is None:
+            return []
+
+        if hasattr(retriever, "get_available_categories"):
+            categories = retriever.get_available_categories()
+            return [str(category) for category in categories if category]
+
+        categories = {
+            row.get("category")
+            for row in getattr(retriever, "rows", [])
+            if row.get("category")
+        }
+        known_categories = [
+            category
+            for category in SyntheticQuestionCategory.values()
+            if category in categories
+        ]
+        if known_categories:
+            return known_categories
+        return sorted(str(category) for category in categories if category)
+
+    def format_synthetic_question_category_options(
+        self,
+        categories: List[str],
+    ) -> str:
+        lines = []
+        for category in categories:
+            description = category
+            retriever = getattr(self, "synthetic_question_retriever", None)
+            if retriever is not None and hasattr(retriever, "get_category_description"):
+                description = retriever.get_category_description(category)
+            else:
+                try:
+                    description = SyntheticQuestionCategory(category).description
+                except ValueError:
+                    description = category
+            lines.append(f"- {category}: {description}")
+        return "\n".join(lines)
+
+    def normalize_synthetic_question_categories(
+        self,
+        raw_categories: Any,
+        available_categories: List[str],
+    ) -> List[str]:
+        if raw_categories is None:
+            return []
+
+        if isinstance(raw_categories, str):
+            normalized_text = raw_categories.strip()
+            if not normalized_text:
+                raw_categories = []
+            else:
+                try:
+                    parsed_categories = json.loads(normalized_text)
+                except json.JSONDecodeError:
+                    parsed_categories = re.split(r"[\n,]+", normalized_text)
+                raw_categories = parsed_categories
+
+        if not isinstance(raw_categories, (list, tuple, set, frozenset)):
+            raw_categories = [raw_categories]
+
+        available_category_set = set(available_categories)
+        normalized_categories: List[str] = []
+        retriever = getattr(self, "synthetic_question_retriever", None)
+        for raw_category in raw_categories:
+            category_text = str(raw_category).strip()
+            if not category_text:
+                continue
+
+            normalized_category = category_text
+            if retriever is not None and hasattr(retriever, "normalize_category"):
+                try:
+                    normalized_category = retriever.normalize_category(category_text)
+                except ValueError:
+                    continue
+
+            if (
+                normalized_category in available_category_set
+                and normalized_category not in normalized_categories
+            ):
+                normalized_categories.append(normalized_category)
+
+        return normalized_categories
+
+    def infer_synthetic_question_categories(
+        self,
+        candidate_classes: List[str],
+        candidate_relations: List[str],
+        available_categories: List[str],
+    ) -> List[str]:
+        available_category_set = set(available_categories)
+        inferred_categories: List[str] = []
+
+        if candidate_classes:
+            for category in (
+                SyntheticQuestionCategory.OBJECT_LEVEL_FROM_OBJECT.value,
+                SyntheticQuestionCategory.OBJECT_LEVEL_FROM_PROP.value,
+                SyntheticQuestionCategory.PATH_LEVEL.value,
+            ):
+                if (
+                    category in available_category_set
+                    and category not in inferred_categories
+                ):
+                    inferred_categories.append(category)
+
+        if candidate_relations:
+            for category in (
+                SyntheticQuestionCategory.OBJECT_LEVEL_FROM_PROP.value,
+                SyntheticQuestionCategory.OBJECT_LEVEL_FROM_OBJECT.value,
+            ):
+                if (
+                    category in available_category_set
+                    and category not in inferred_categories
+                ):
+                    inferred_categories.append(category)
+
+        if inferred_categories:
+            return inferred_categories
+        return list(available_categories)
+
+    def select_plausible_synthetic_question_categories(
+        self,
+        question: str,
+        candidate_classes: List[str],
+        candidate_relations: List[str],
+        schema_context: str = "",
+        predecessor_context: str = "",
+        application_context: Optional[str] = None,
+    ) -> List[str]:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
+        available_categories = self.get_available_synthetic_question_categories()
+        if len(available_categories) <= 1:
+            return available_categories
+
+        prediction = None
+        predictor = getattr(self, "synthetic_question_category_predictor", None)
+        if predictor is not None and getattr(self, "llm", None) is not None:
+            with dspy.context(lm=self.llm.llm):
+                prediction = predictor(
+                    question=question,
+                    application_context=resolved_application_context,
+                    schema_context=schema_context,
+                    predecessor_context=predecessor_context,
+                    candidate_classes=candidate_classes,
+                    candidate_relations=candidate_relations,
+                    category_options=self.format_synthetic_question_category_options(
+                        available_categories
+                    ),
+                )
+
+        selected_categories = self.normalize_synthetic_question_categories(
+            getattr(prediction, "plausible_categories", None),
+            available_categories,
+        )
+        if selected_categories:
+            return selected_categories
+
+        return self.infer_synthetic_question_categories(
+            candidate_classes=candidate_classes,
+            candidate_relations=candidate_relations,
+            available_categories=available_categories,
+        )
 
     def resolve_step_parameters(
         self,
@@ -1042,15 +2017,14 @@ class DependancyGraph:
         question: str,
         answer: str,
         evidence_context: str,
+        predecessor_context: str = "",
         max_tries: int = 2,
         application_context: Optional[str] = None,
-        predecessor_context: str = "",
     ) -> Dict[str, Any]:
         resolved_application_context = self.resolve_application_context(
             application_context
         )
         current_answer = answer.strip()
-        normalized_predecessor_context = predecessor_context or ""
         history = []
 
         for _ in range(max(max_tries, 1)):
@@ -1058,7 +2032,8 @@ class DependancyGraph:
                 prediction = self.answer_judge_predictor(
                     question=question,
                     application_context=resolved_application_context,
-                    predecessor_context=normalized_predecessor_context,
+                    predecessor_context=predecessor_context,
+                    evidence_context=evidence_context,
                     answer=current_answer,
                 )
 
@@ -1082,7 +2057,7 @@ class DependancyGraph:
                 revision = self.answer_revision_predictor(
                     question=question,
                     application_context=resolved_application_context,
-                    predecessor_context=normalized_predecessor_context,
+                    predecessor_context=predecessor_context,
                     answer=current_answer,
                     feedback=feedback,
                     evidence_context=evidence_context,
@@ -1100,417 +2075,20 @@ class DependancyGraph:
             "history": history,
         }
 
-    @staticmethod
-    def solve_node(
-        adj_matrix: List[List[int]],
-        node_id: int,
-        schema_info: str,
-        node_map: Dict[str, QuestionNode],
-        runtime: "DependancyGraph",
-        max_tries: int = 5,
-        cache: Optional[Dict[str, Dict[str, Any]]] = None,
-        application_context: Optional[str] = None,
-    ) -> Dict[str, Any]:
-        if cache is None:
-            cache = {}
-            
-        node_key = str(node_id)
-        
-        if node_key in cache:
-            return cache[node_key]
 
-        predecessor_nodes = incoming_edges(adj_matrix, node_id)
-        predecessor_info: Dict[str, Dict[str, Any]] = {}
-        for predecessor_node in predecessor_nodes:
-            predecessor_key = str(predecessor_node)
-            predecessor_info[predecessor_key] = DependancyGraph.solve_node(
-                adj_matrix,
-                predecessor_node,
-                schema_info,
-                node_map,
-                runtime=runtime,
-                max_tries=max_tries,
-                cache=cache,
-                application_context=application_context,
-            )
+DependencyGraphRuntimeBase = DependencyGraphRuntime
+DependencyGraphRequirements = DependencyGraphRuntime
+DependencyGraphSupport = DependencyGraphRuntime
+DependencyGraphTraversal = DependencyGraphRuntime
+SyntheticQuestionWorkflow = DependencyGraphRuntime
+DependancyGraph = DependencyGraphRuntime
 
-        node_data = node_map[node_key].solve(
-            schema_info,
-            predecessor_info,
-            runtime=runtime,
-            max_tries=max_tries,
-            application_context=application_context,
-        )
-        node_info = {
-            "id": node_key,
-            "question": node_map[node_key].question,
-            "schema_info_used": schema_info,
-            "schema_reasoning": node_data.get("schema_reasoning", {}),
-            "retrieved_objects": [
-                entity
-                for execution_step in node_data.get("execution", [])
-                for entity in execution_step.get("important_entities", [])
-            ],
-            "synthetic_questions_plan": node_data.get("plan"),
-            "intermediary_results": node_data.get("execution"),
-            "answer": node_data.get("answer", ""),
-            "judge": node_data.get("judge", []),
-            "grounding": node_data.get("grounding", {}),
-        }
-        cache[node_key] = node_info
-        return node_info
-
-    def process_dependancy_graph(
-        self,
-        schema_context: str,
-        application_context: Optional[str] = None,
-    ) -> Dict[str, Any]:
-        if not hasattr(self, "adjacency_matrix"):
-            raise ValueError(
-                "Dependency graph has not been built. Run `user_query_to_requirements` first."
-            )
-
-        resolved_application_context = self.resolve_application_context(
-            application_context
-        )
-        solved = DependancyGraph.solve_node(
-            self.adjacency_matrix,
-            0,
-            schema_context,
-            self.vertices,
-            runtime=self,
-            application_context=resolved_application_context,
-        )
-        self.last_result = solved
-        return solved
-
-    def get_available_synthetic_question_classes(self) -> List[str]:
-        classes = {
-            row.get(key)
-            for row in self.synthetic_question_retriever.rows
-            for key in ("focal_node", "start_node", "end_node")
-            if row.get(key)
-        }
-        return sorted(str(value) for value in classes if value)
-
-    def get_available_synthetic_question_relations(self) -> List[str]:
-        relations = {
-            row.get("focal_relation")
-            for row in self.synthetic_question_retriever.rows
-            if row.get("focal_relation")
-        }
-        return sorted(str(value) for value in relations if value)
-
-    def lexical_match_terms(
-        self,
-        question: str,
-        terms: List[str],
-        limit: int = 3,
-    ) -> List[str]:
-        question_terms = {
-            token
-            for token in re.split(r"[^a-zA-Z0-9]+", question.lower())
-            if token
-        }
-        ranked_terms = []
-        for term in terms:
-            alias = term.split(":")[-1].replace("_", " ").replace("-", " ")
-            alias_terms = {
-                token
-                for token in re.split(r"[^a-zA-Z0-9]+", alias.lower())
-                if token
-            }
-            overlap = len(question_terms.intersection(alias_terms))
-            if overlap:
-                ranked_terms.append((overlap, term))
-
-        ranked_terms.sort(key=lambda item: (-item[0], item[1]))
-        return [term for _, term in ranked_terms[:limit]]
-
-    def rank_synthetic_question_row(
-        self,
-        row: Dict[str, Optional[str]],
-        question: str,
-        candidate_classes: List[str],
-        candidate_relations: List[str],
-    ) -> int:
-        score = 0
-        question_terms = {
-            token
-            for token in re.split(r"[^a-zA-Z0-9]+", question.lower())
-            if token
-        }
-
-        row_text = " ".join(
-            str(row.get(key, ""))
-            for key in (
-                "program_id",
-                "statement",
-                "focal_node",
-                "start_node",
-                "end_node",
-                "focal_relation",
-            )
-        ).lower()
-
-        for candidate_class in candidate_classes:
-            if candidate_class == row.get("focal_node"):
-                score += 6
-            if candidate_class == row.get("start_node") or candidate_class == row.get("end_node"):
-                score += 5
-            if candidate_class.lower() in row_text:
-                score += 2
-
-        for candidate_relation in candidate_relations:
-            if candidate_relation == row.get("focal_relation"):
-                score += 6
-            if candidate_relation.lower() in row_text:
-                score += 2
-
-        score += sum(1 for token in question_terms if token in row_text)
-        if row.get("category") == "path-level":
-            score += 1
-        return score
-
-    def format_candidate_synthetic_questions(
-        self,
-        rows: List[Dict[str, Optional[str]]],
-    ) -> str:
-        formatted_rows = []
-        for row in rows:
-            placeholders = self.extract_query_placeholders(row.get("code") or "")
-            formatted_rows.append(
-                "program_id={program_id} | category={category} | statement={statement} | "
-                "start_node={start_node} | end_node={end_node} | focal_node={focal_node} | "
-                "focal_relation={focal_relation} | placeholders={placeholders}".format(
-                    program_id=row.get("program_id", ""),
-                    category=row.get("category", ""),
-                    statement=row.get("statement", ""),
-                    start_node=row.get("start_node", ""),
-                    end_node=row.get("end_node", ""),
-                    focal_node=row.get("focal_node", ""),
-                    focal_relation=row.get("focal_relation", ""),
-                    placeholders=",".join(placeholders),
-                )
-            )
-        return "\n".join(formatted_rows)
-
-    def format_step_spec(
-        self,
-        step: Dict[str, Any],
-        row: Dict[str, Optional[str]],
-    ) -> str:
-        return json.dumps(
-            {
-                "step_id": step.get("step_id"),
-                "sub_question": step.get("sub_question"),
-                "program_id": step.get("program_id"),
-                "category": row.get("category"),
-                "statement": row.get("statement"),
-                "expected_classes": step.get("expected_classes", []),
-                "input_bindings": step.get("input_bindings", {}),
-                "placeholders": self.extract_query_placeholders(row.get("code") or ""),
-            },
-            indent=2,
-        )
-
-    def format_query_results(
-        self,
-        query_results: Dict[str, List[Dict[str, Any]]],
-    ) -> str:
-        return json.dumps(query_results, indent=2)
-
-    def format_step_results(
-        self,
-        steps: List[Dict[str, Any]],
-    ) -> str:
-        if not steps:
-            return ""
-
-        lines = []
-        for step in steps:
-            lines.append(f"Step {step.get('step_id', '')}: {step.get('sub_question', '')}")
-            lines.append(f"Program: {step.get('program_id', '')}")
-            lines.append(f"Answer: {step.get('answer', '')}")
-            lines.append(
-                "Important entities: "
-                + ", ".join(step.get("important_entities", []))
-            )
-            lines.append(
-                "Results: " + json.dumps(step.get("results", {}), indent=2)
-            )
-        return "\n".join(lines)
-
-    def format_predecessor_context(
-        self,
-        predecessor_info: Dict[str, Any],
-    ) -> str:
-        if not predecessor_info:
-            return ""
-
-        lines = []
-        for predecessor_key, predecessor_value in sorted(predecessor_info.items()):
-            lines.append(
-                f"Node {predecessor_key}: {predecessor_value.get('question', '')}"
-            )
-            lines.append(f"Answer: {predecessor_value.get('answer', '')}")
-            synthetic_plan = predecessor_value.get("synthetic_questions_plan", [])
-            if synthetic_plan:
-                lines.append(
-                    "Plan steps: "
-                    + ", ".join(
-                        step.get("program_id", "")
-                        for step in synthetic_plan
-                        if step.get("program_id")
-                    )
-                )
-        return "\n".join(lines)
-
-    def format_schema_reasoning(
-        self,
-        schema_reasoning: Dict[str, Any],
-    ) -> str:
-        relevant_schema_info = clean_string_list(
-            schema_reasoning.get("relevant_schema_info", [])
-        )
-        if not relevant_schema_info:
-            return ""
-
-        lines = ["Schema details:"]
-        lines.extend(f"- {schema_fact}" for schema_fact in relevant_schema_info)
-        return "\n".join(lines)
-
-    def extract_entities_from_records(
-        self,
-        query_results: Dict[str, List[Dict[str, Any]]],
-    ) -> List[str]:
-        collected_values = []
-        for records in query_results.values():
-            for record in records:
-                for value in record.values():
-                    text_value = str(value).strip()
-                    if not text_value:
-                        continue
-                    if ":" in text_value or text_value.startswith("http"):
-                        collected_values.append(text_value)
-        return clean_string_list(collected_values)
-
-    @staticmethod
-    def parse_serialized_dict(raw_value: Optional[str]) -> Dict[str, Any]:
-        if not raw_value:
-            return {}
-
-        try:
-            parsed = ast.literal_eval(raw_value)
-        except Exception:
-            return {}
-        return parsed if isinstance(parsed, dict) else {}
-
-    @staticmethod
-    def parse_plan_json(raw_plan: str) -> List[Dict[str, Any]]:
-        payload = DependancyGraph.extract_json_payload(raw_plan)
-        if payload is None:
-            return []
-
-        try:
-            parsed = json.loads(payload)
-        except json.JSONDecodeError:
-            return []
-
-        if isinstance(parsed, dict):
-            parsed = [parsed]
-        return [item for item in parsed if isinstance(item, dict)]
-
-    @staticmethod
-    def parse_parameter_values_json(raw_json: str) -> List[Dict[str, Any]]:
-        payload = DependancyGraph.extract_json_payload(raw_json)
-        if payload is None:
-            return []
-
-        try:
-            parsed = json.loads(payload)
-        except json.JSONDecodeError:
-            return []
-
-        if isinstance(parsed, dict):
-            parsed = [parsed]
-        return [item for item in parsed if isinstance(item, dict)]
-
-    @staticmethod
-    def extract_json_payload(raw_text: str) -> Optional[str]:
-        stripped_text = raw_text.strip()
-        if not stripped_text:
-            return None
-
-        if stripped_text.startswith("{") or stripped_text.startswith("["):
-            return stripped_text
-
-        match = re.search(r"```json\s*([\s\S]*?)\s*```", stripped_text)
-        if match:
-            return match.group(1).strip()
-
-        return None
-
-    @staticmethod
-    def extract_query_placeholders(query_text: str) -> List[str]:
-        return clean_string_list(PLACEHOLDER_PATTERN.findall(query_text))
-
-    @staticmethod
-    def normalize_bindings(bindings: Any) -> Dict[str, Any]:
-        if not isinstance(bindings, dict):
-            return {}
-        return {
-            str(key).strip(): value
-            for key, value in bindings.items()
-            if str(key).strip()
-        }
-
-    def normalize_parameter_sets(
-        self,
-        parameter_sets: List[Dict[str, Any]],
-        placeholders: List[str],
-    ) -> List[Dict[str, str]]:
-        normalized_sets = []
-        for parameter_set in parameter_sets:
-            normalized_set: Dict[str, str] = {}
-            for placeholder in placeholders:
-                if placeholder not in parameter_set:
-                    continue
-
-                value = parameter_set[placeholder]
-                if value is None:
-                    continue
-
-                text_value = str(value).strip()
-                if not text_value:
-                    continue
-
-                if placeholder == "class_uri":
-                    text_value = self.graph_manager.resolve_curie(
-                        text_value,
-                        allow_bare=True,
-                    )
-                elif placeholder in {"obj", "obj_uri"}:
-                    text_value = self.graph_manager.resolve_curie(
-                        text_value,
-                        allow_bare=True,
-                    )
-                normalized_set[placeholder] = text_value
-
-            if normalized_set:
-                normalized_sets.append(normalized_set)
-
-        return normalized_sets
-
-    @staticmethod
-    def query_needs_header(query_text: str) -> bool:
-        return "PREFIX " not in query_text.upper()
-
-    @staticmethod
-    def extract_literal_phrases(question: str) -> List[str]:
-        quoted_fragments = re.findall(r'"([^"]+)"', question)
-        identifier_like = re.findall(
-            r"\b[A-Za-z0-9_:-]{3,}\b",
-            question,
-        )
-        return clean_string_list(quoted_fragments + identifier_like[:5])
+__all__ = [
+    "DependencyGraphRuntime",
+    "DependencyGraphRuntimeBase",
+    "DependencyGraphRequirements",
+    "DependencyGraphSupport",
+    "DependencyGraphTraversal",
+    "SyntheticQuestionWorkflow",
+    "DependancyGraph",
+]

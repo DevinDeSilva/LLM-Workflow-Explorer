@@ -52,12 +52,14 @@ def _sample_records():
     return [
         {
             "object_name": "object_alpha",
+            "object_class": ["alpha"],
             "object_vector": [1.0, 0.0, 0.0, 0.0],
             "metadata": {"category": "alpha", "rank": 1},
             "object_description": "Primary alpha test object with orchard banana keyword.",
         },
         {
             "object_name": "object_beta",
+            "object_class": ["beta"],
             "object_vector": [0.0, 1.0, 0.0, 0.0],
             "metadata": {"category": "beta", "rank": 2},
             "object_description": "Secondary beta test object with nebula cactus keyword.",
@@ -98,6 +100,7 @@ def test_milvus_search_integration(milvus_db):
 
     top_result = search_results[0]
     assert top_result["object_name"] == "object_alpha"
+    assert top_result["object_class"] == ["alpha"]
     assert top_result["metadata"]["category"] == "alpha"
     assert top_result["metadata"]["rank"] == 1
     assert top_result["object_description"] == "Primary alpha test object with orchard banana keyword."
@@ -126,6 +129,7 @@ def test_milvus_bm25_search_integration(milvus_db):
 
     top_result = search_results[0]
     assert top_result["object_name"] == "object_alpha"
+    assert top_result["object_class"] == ["alpha"]
     assert top_result["metadata"]["category"] == "alpha"
     assert top_result["metadata"]["rank"] == 1
     assert "orchard banana" in top_result["object_description"]

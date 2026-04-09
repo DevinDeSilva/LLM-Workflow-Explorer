@@ -8,7 +8,7 @@ if str(src_path) not in sys.path:
     sys.path.insert(0, str(src_path))
 
 
-from src.explainer.dependancy_graph import QuestionNode  # noqa: E402
+from src.explainer.dependancy_graph_node import QuestionNode  # noqa: E402
 
 
 class SchemaOnlyRuntime:

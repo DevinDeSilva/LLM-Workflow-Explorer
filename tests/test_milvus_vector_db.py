@@ -185,6 +185,10 @@ def test_build_db_creates_expected_schema(build_milvus_db):
             "max_length": db.config.object_name_max_length,
         },
         {
+            "field_name": "object_class",
+            "datatype": "JSON",
+        },
+        {
             "field_name": "object_vector",
             "datatype": "FLOAT_VECTOR",
             "dim": 4,
@@ -248,6 +252,7 @@ def test_normalize_records_supports_single_record_input(build_milvus_db):
 
     records = db._normalize_records(
         object_name="object_alpha",
+        object_class="alpha",
         object_vector=[1, 0, 0, 0],
         metadata={"kind": "alpha"},
         object_description="Alpha object.",
@@ -257,6 +262,7 @@ def test_normalize_records_supports_single_record_input(build_milvus_db):
     assert records == [
         {
             "object_name": "object_alpha",
+            "object_class": ["alpha"],
             "object_vector": [1.0, 0.0, 0.0, 0.0],
             "metadata": {"kind": "alpha"},
             "object_description": "Alpha object.",
@@ -269,16 +275,19 @@ def test_normalize_records_supports_batch_input(build_milvus_db):
 
     records = db._normalize_records(
         object_name=None,
+        object_class=None,
         object_vector=None,
         metadata=None,
         object_description="",
         records=[
             {
                 "object_name": "object_alpha",
+                "object_class": ["alpha", "shared"],
                 "object_vector": [1, 0],
             },
             {
                 "object_name": "object_beta",
+                "object_class": "beta",
                 "object_vector": [0, 1],
                 "metadata": {"kind": "beta"},
                 "object_description": "Beta object.",
@@ -289,12 +298,14 @@ def test_normalize_records_supports_batch_input(build_milvus_db):
     assert records == [
         {
             "object_name": "object_alpha",
+            "object_class": ["alpha", "shared"],
             "object_vector": [1.0, 0.0],
             "metadata": {},
             "object_description": "",
         },
         {
             "object_name": "object_beta",
+            "object_class": ["beta"],
             "object_vector": [0.0, 1.0],
             "metadata": {"kind": "beta"},
             "object_description": "Beta object.",
@@ -314,6 +325,7 @@ def test_insert_auto_builds_collection_and_sets_vector_dim(build_milvus_db):
 
     result = db.insert(
         object_name="object_alpha",
+        object_class=["alpha"],
         object_vector=[1, 0, 0, 0],
         metadata={"kind": "alpha"},
         object_description="Alpha object.",
@@ -326,6 +338,7 @@ def test_insert_auto_builds_collection_and_sets_vector_dim(build_milvus_db):
     assert db.client.insert_calls[0]["data"] == [
         {
             "object_name": "object_alpha",
+            "object_class": ["alpha"],
             "object_vector": [1.0, 0.0, 0.0, 0.0],
             "metadata": {"kind": "alpha"},
             "object_description": "Alpha object.",
@@ -353,6 +366,7 @@ def test_search_uses_defaults_and_formats_results(build_milvus_db):
                 "id": "object_alpha",
                 "distance": 0.01,
                 "entity": {
+                    "object_class": ["alpha"],
                     "metadata": {"category": "alpha"},
                     "object_description": "Alpha object.",
                 },
@@ -366,6 +380,7 @@ def test_search_uses_defaults_and_formats_results(build_milvus_db):
         {
             "score": 0.01,
             "object_name": "object_alpha",
+            "object_class": ["alpha"],
             "metadata": {"category": "alpha"},
             "object_description": "Alpha object.",
         }
@@ -376,7 +391,7 @@ def test_search_uses_defaults_and_formats_results(build_milvus_db):
         "anns_field": "object_vector",
         "filter": None,
         "limit": 2,
-        "output_fields": ["object_name", "metadata", "object_description"],
+        "output_fields": ["object_name", "object_class", "metadata", "object_description"],
         "search_params": {
             "metric_type": "COSINE",
             "params": {},
@@ -400,6 +415,7 @@ def test_bm25_search_uses_description_sparse_index(build_milvus_db):
                 "id": "object_alpha",
                 "distance": 0.2,
                 "entity": {
+                    "object_class": ["alpha"],
                     "metadata": {"category": "alpha"},
                     "object_description": "Alpha keyword-rich document.",
                 },
@@ -413,6 +429,7 @@ def test_bm25_search_uses_description_sparse_index(build_milvus_db):
         {
             "score": 0.2,
             "object_name": "object_alpha",
+            "object_class": ["alpha"],
             "metadata": {"category": "alpha"},
             "object_description": "Alpha keyword-rich document.",
         }
@@ -423,7 +440,7 @@ def test_bm25_search_uses_description_sparse_index(build_milvus_db):
         "anns_field": "object_description_sparse",
         "filter": None,
         "limit": 3,
-        "output_fields": ["object_name", "metadata", "object_description"],
+        "output_fields": ["object_name", "object_class", "metadata", "object_description"],
         "search_params": {
             "metric_type": "BM25",
             "params": {"drop_ratio_search": 0.0},

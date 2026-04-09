@@ -6,7 +6,7 @@ src_path = Path(__file__).resolve().parent.parent
 if str(src_path) not in sys.path:
     sys.path.insert(0, str(src_path))
 
-from src.synthetic_questions.SQRetriver import SQRetriver
+from src.synthetic_questions.SQRetriver import SQRetriver, SyntheticQuestionCategory
 
 CSV_PATH = "evaluations/calibration/ques_creation/SyntheticQuestionKG.csv"
 
@@ -116,3 +116,38 @@ def test_retrieve_uses_category_aliases():
 
     assert result
     assert {row["category"] for row in result} == {"object-level|from-prop"}
+
+
+def test_get_available_categories_returns_known_category_order():
+    retriever = SQRetriver(CSV_PATH)
+
+    assert retriever.get_available_categories() == (
+        SyntheticQuestionCategory.OBJECT_LEVEL_FROM_OBJECT.value,
+        SyntheticQuestionCategory.OBJECT_LEVEL_FROM_PROP.value,
+        SyntheticQuestionCategory.PATH_LEVEL.value,
+    )
+
+
+def test_get_category_description_returns_category_guidance():
+    retriever = SQRetriver(CSV_PATH)
+
+    description = retriever.get_category_description("path-level")
+
+    assert "multi-hop connections" in description
+
+
+def test_get_program_row_returns_specific_program():
+    retriever = SQRetriver(CSV_PATH)
+
+    row = retriever.get_program_row("explore_object_of_class")
+
+    assert row is not None
+    assert row["program_id"] == "explore_object_of_class"
+    assert row["category"] == SyntheticQuestionCategory.OBJECT_LEVEL_FROM_OBJECT.value
+
+
+def test_generic_explorer_helpers_return_seed_programs():
+    retriever = SQRetriver(CSV_PATH)
+
+    assert retriever.get_generic_class_explorer()["program_id"] == "explore_object_of_class"
+    assert retriever.get_generic_object_explorer()["program_id"] == "explore_attr_of_object"
