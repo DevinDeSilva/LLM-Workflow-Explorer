@@ -6,8 +6,48 @@ import hashlib
 from typing import Optional, List, Any
 
 import dycomutils as common_utils
+import pandas as pd
 
 logger = logging.getLogger(__name__)
+
+def format_dataframe_to_string(
+    dataframe,  # The pandas DataFrame to convert into a string.
+    header_map: Optional[dict] = None,  # Optional mapping from original column names to display names.
+    include_headers: bool = True,  # Whether to include the header row in the output.
+    column_separator: str = " | ",  # Text placed between values in the same row.
+    row_separator: str = "\n",  # Text placed between rows.
+    na_rep: str = "",  # Replacement text for missing values such as NaN or None.
+) -> str:
+    """
+    Formats a pandas DataFrame into a readable string with optional header remapping.
+    """
+    if dataframe is None:
+        return ""
+
+    header_map = header_map or {}
+    columns = list(dataframe.columns)
+    lines: List[str] = []
+
+    if include_headers and columns:
+        lines.append(
+            column_separator.join(str(header_map.get(column, column)) for column in columns)
+        )
+
+    if dataframe.empty:
+        return row_separator.join(lines)
+
+    append_line = lines.append
+    is_missing = pd.isna
+
+    for row in dataframe.itertuples(index=False, name=None):
+        append_line(
+            column_separator.join(
+                na_rep if is_missing(value) else str(value)
+                for value in row
+            )
+        )
+
+    return row_separator.join(lines)
 
 def clean_string_list(items: List[Any]) -> List[str]:
         cleaned_items: List[str] = []

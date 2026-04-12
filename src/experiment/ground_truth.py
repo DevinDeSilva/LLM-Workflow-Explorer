@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional, Dict, Union, List
 import uuid
 import dycomutils as common_utils
@@ -9,11 +9,40 @@ class SPARQLTemplate(BaseModel):
     inputs: Optional[Dict[str, str]] = None
 
 class GT(BaseModel):
-    id:str = str(uuid.uuid4())
+    id:str = Field(default_factory=lambda: str(uuid.uuid4()))
     question: str
     answer: str
     entities: Union[List[Dict], List]
     sparql_querys: List[SPARQLTemplate]
+    tags:Dict[str,List[str]] = Field(default={})
+
+    def __str__(self) -> str:
+        lines = [
+            f"GT(id={self.id})",
+            f"question: {self.question}",
+            f"answer: {self.answer}",
+            f"entities ({len(self.entities)}):",
+        ]
+
+        if self.entities:
+            lines.extend(f"  - {entity}" for entity in self.entities)
+        else:
+            lines.append("  - None")
+
+        lines.append(f"sparql_querys ({len(self.sparql_querys)}):")
+        if self.sparql_querys:
+            for sparql in self.sparql_querys:
+                lines.append(f"  - template: {sparql.template}")
+                lines.append(f"    description: {sparql.description}")
+                lines.append(f"    inputs: {sparql.inputs if sparql.inputs is not None else {}}")
+        else:
+            lines.append("  - None")
+
+        return "\n".join(lines)
+    
+class GTAnswer(BaseModel):
+    answer_nlp:str
+    entities: Union[List[Dict], List]
     
 class GTInfo:
     def __init__(self, path_to_file:str) -> None:

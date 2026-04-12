@@ -76,6 +76,7 @@ class SubQuestionVerificationSignature(dspy.Signature):
 class SummarySignature(dspy.Signature):
     """
     Answer the original question using the provided relevant information.
+    Be explanatory in your answer and use explicit.
     """
 
     qa_dialog: str = dspy.InputField(
@@ -91,7 +92,10 @@ class SummarySignature(dspy.Signature):
         desc="The question that should be answered."
     )
     answer: str = dspy.OutputField(
-        desc="A direct answer to the original question."
+        desc="A verbose answer to the original question."
+    )
+    important_entities:str = dspy.OutputField(
+        desc = "What are the KG entities used to come to this conclusion"
     )
 
 
@@ -130,6 +134,49 @@ class SyntheticQuestionGroundingSignature(dspy.Signature):
     )
     entity_phrases: List[str] = dspy.OutputField(
         desc="Short free-text entity mentions or lookup phrases from the question that should be linked into the KG."
+    )
+
+
+class SyntheticQuestionInitialRetrievalDecisionSignature(dspy.Signature):
+    """
+    Choose how the first retrieval step should start.
+
+    Use `linked-entities` when the question is about a specific named object or
+    a small set of concrete objects that can be linked directly. Use
+    `class-members` when the question needs a broader set of objects from a
+    class before narrowing further.
+
+    If `retrieval_mode` is `class-members`, `class_member_scope` must be one of:
+    - `linked-only`: only use class members already linked to the question
+    - `all`: explore class members broadly
+    """
+
+    question: str = dspy.InputField(
+        desc="The question that should be answered."
+    )
+    application_context: str = dspy.InputField(
+        desc="Description of the application and its functional scope."
+    )
+    schema_context: str = dspy.InputField(
+        desc="Compact ontology and schema summary."
+    )
+    candidate_classes: List[str] = dspy.InputField(
+        desc="Likely ontology classes relevant to the question."
+    )
+    entity_phrases: List[str] = dspy.InputField(
+        desc="Entity mentions or lookup phrases extracted from the question."
+    )
+    linked_entity_candidates: str = dspy.InputField(
+        desc="Short preview of candidate objects linked from the object store."
+    )
+    retrieval_mode: str = dspy.OutputField(
+        desc="Either `linked-entities` or `class-members`."
+    )
+    class_member_scope: str = dspy.OutputField(
+        desc="Either `linked-only` or `all`. Use `linked-only` when retrieval_mode is `linked-entities`."
+    )
+    decision_reasoning: str = dspy.OutputField(
+        desc="Brief reason for the chosen retrieval mode."
     )
 
 

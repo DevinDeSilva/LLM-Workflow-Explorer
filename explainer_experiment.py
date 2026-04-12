@@ -19,6 +19,7 @@ def _():
     from src.config.experiment import ExperimentConfig
     from src.explainer.explainer import Explainer
     from src.experiment.ground_truth import GTInfo
+    from src.utils.utils import create_timestamp_id
 
     load_dotenv()
     CONFIG_PATH = "evaluations/calibration/config.yaml"
@@ -27,12 +28,11 @@ def _():
     config = ExperimentConfig.model_validate(lconfig)
     config
     return (
-        Any,
-        Dict,
         Explainer,
         GTInfo,
         common_utils,
         config,
+        create_timestamp_id,
         ic,
         logging,
         os,
@@ -57,7 +57,7 @@ def _(config, ic, logging, os):
 
 
 @app.cell
-def _(Explainer, GTInfo, config):
+def _(Explainer, GTInfo, config, create_timestamp_id, os):
     ground_truth = GTInfo(config.gt.save_loc)
     explainer = Explainer(
         config.file_paths.execution_kg_loc,
@@ -67,24 +67,21 @@ def _(Explainer, GTInfo, config):
         config.application,
         config.ttl,
     )
-    return explainer, ground_truth
+
+    os.makedirs(config.explainer_config.save_answer_loc, exist_ok=True)
+    timestamp_exp = create_timestamp_id("exp_")
+
+    return explainer, ground_truth, timestamp_exp
 
 
 @app.cell
-def _(Any, Dict, explainer, ground_truth, tqdm):
-    raw_outputs:Dict[str, Any] = {}
+def _(common_utils, config, explainer, ground_truth, os, timestamp_exp, tqdm):
     for qinfo in tqdm(ground_truth.gt_info):
         pred = explainer.request(qinfo.question)
-        raw_outputs[qinfo.id] = pred
-    return (raw_outputs,)
-
-
-@app.cell
-def _(common_utils, config, raw_outputs: "Dict[str, Any]"):
-    common_utils.serialization.save_json(
-        raw_outputs,
-        config.explainer_config.save_answer_loc
-    )
+        common_utils.serialization.save_jsonl_append(
+            os.path.join(config.explainer_config.save_answer_loc, f"{timestamp_exp}.jsonl"),
+            pred
+        )
     return
 
 

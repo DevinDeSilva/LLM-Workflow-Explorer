@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.22.4"
+__generated_with = "0.23.0"
 app = marimo.App()
 
 
@@ -102,14 +102,15 @@ def _(graph_manager):
     # Question 2
 
     question2 = """
-    what are the instructions/inputs used in the generate the sparql query post processing function step pipeline?
+    what are the instructions used by the LLM to generate the sparql query post processing function step in the pipeline?
     """
     question_sparql2 = """
     SELECT distinct ?obj ?llm ?inpd
     WHERE {
          ?obj dc:description ?desc .
          ?obj a ?class . 
-         FILTER(REGEX(?desc, "Post-processes the query results "i"))
+         FILTER(REGEX(?desc, "Post-processes the query results","i"))
+
          ?llm_out sio:SIO_000202 ?obj .
          ?llm_out sio:SIO_000232 ?llm .
          ?llm sio:SIO_000230 ?inp .
