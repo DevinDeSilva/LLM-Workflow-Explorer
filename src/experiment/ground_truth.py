@@ -16,6 +16,7 @@ class GT(BaseModel):
     sparql_querys: List[SPARQLTemplate]
     qtype: Optional[List[str]] = Field(default=None)
     decision: Optional[bool] = Field(default=None)
+    count: Optional[int] = Field(default=None)
     tags:Dict[str,List[str]] = Field(default={})
 
     def __str__(self) -> str:
