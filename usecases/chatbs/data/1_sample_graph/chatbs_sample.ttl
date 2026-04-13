@@ -1414,5 +1414,6 @@ using: gpt-4o@en^^<xsd:string>""" .
     <http://www.w3.org/2000/01/rdf-schema#label> "Input port for weight@en^^<xsd:string>" .
 
 <http://testwebsite/testProgram#test_user>
-    a <http://www.w3.org/ns/prov#Agent> .
+    a <http://www.w3.org/ns/prov#Agent> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "test_user@en^^<xsd:string>" .
 
