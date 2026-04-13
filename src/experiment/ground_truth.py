@@ -14,6 +14,8 @@ class GT(BaseModel):
     answer: str
     entities: Union[List[Dict], List]
     sparql_querys: List[SPARQLTemplate]
+    qtype: Optional[List[str]] = Field(default=None)
+    decision: Optional[bool] = Field(default=None)
     tags:Dict[str,List[str]] = Field(default={})
 
     def __str__(self) -> str:
