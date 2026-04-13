@@ -1,165 +1,175 @@
 @base <localhost://> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:information_extractor-Association-id_20260412200742_397>
+<http://testwebsite/testProgram#ChatBS-NexGen:information_extractor-Association-id_20260413053513_620>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#information_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:llm_chat-Association-id_20260412200740_99>
+<http://testwebsite/testProgram#ChatBS-NexGen:llm_chat-Association-id_20260413053510_114>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#llm_chat> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:query_result_post_processor-Association-id_20260412200745_507>
+<http://testwebsite/testProgram#ChatBS-NexGen:query_result_post_processor-Association-id_20260413053539_359>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#query_result_post_processor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200743_103>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053516_230>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200743_290>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053516_919>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200743_818>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053517_517>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200743_952>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053517_9>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_221>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053521_282>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_387>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053528_218>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_460>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053529_836>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_624>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053530_1000>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_720>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053530_913>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_854>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053534_815>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_909>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053538_112>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200745_467>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053538_218>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200745_473>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053538_250>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
 
-<http://testwebsite/testProgram#ChatBS-NexGen:system_prompt_generator-Association-id_20260412200734_778>
+<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053538_36>
+    a <http://www.w3.org/ns/prov#Association> ;
+    <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
+    <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#sparql_query_extractor> .
+
+<http://testwebsite/testProgram#ChatBS-NexGen:system_prompt_generator-Association-id_20260413053504_806>
     a <http://www.w3.org/ns/prov#Association> ;
     <http://www.w3.org/ns/prov#agent> <http://testwebsite/testProgram#test_user> ;
     <http://www.w3.org/ns/prov#hadPlan> <http://testwebsite/testProgram#system_prompt_generator> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200742_828-extracts>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200742_128-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_131-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_26-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_308-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_324-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_489-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_523-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_653-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_679-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_835-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_85-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_916-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_983-extracts> ;
+<http://testwebsite/testProgram#Collection-id_20260413053513_572-extracts>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053513_174-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_187-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_223-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_332-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_353-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_372-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_487-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_488-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_523-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_571-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_669-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_701-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_82-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_954-extracts> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200743_372-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200743_489-kg_info> ;
+<http://testwebsite/testProgram#Collection-id_20260413053516_225-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053516_235-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200743_818> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053516_230> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200743_756-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200743_406-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200743_720-kg_info> ;
+<http://testwebsite/testProgram#Collection-id_20260413053516_93-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053516_521-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200743_103> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053516_919> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200743_855-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200743_967-kg_info> ;
+<http://testwebsite/testProgram#Collection-id_20260413053517_601-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053517_927-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200743_952> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053517_517> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200743_90-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200743_917-kg_info> ;
+<http://testwebsite/testProgram#Collection-id_20260413053517_751-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053517_834-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053517_895-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200743_290> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053517_9> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200744_293-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200744_8-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_983-kg_info> ;
+<http://testwebsite/testProgram#Collection-id_20260413053521_752-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053521_417-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_221> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053521_282> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200744_38-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200744_787-kg_info> ;
+<http://testwebsite/testProgram#Collection-id_20260413053528_473-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053528_554-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_854> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053528_218> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200744_518-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200744_950-kg_info> ;
+<http://testwebsite/testProgram#Collection-id_20260413053529_289-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053529_151-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053529_770-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_720> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053529_836> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200744_542-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200744_435-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_935-kg_info> ;
+<http://testwebsite/testProgram#Collection-id_20260413053530_255-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053530_362-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053530_977-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_624> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053530_1000> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200744_549-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200744_511-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_941-kg_info> ;
+<http://testwebsite/testProgram#Collection-id_20260413053530_257-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053530_585-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_387> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053530_913> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200744_632-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200744_773-kg_info> ;
+<http://testwebsite/testProgram#Collection-id_20260413053534_959-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053534_133-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_460> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053534_815> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200744_734-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200744_331-kg_info> ;
+<http://testwebsite/testProgram#Collection-id_20260413053538_117-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053538_504-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_740-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_909> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053538_36> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200745_128-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200745_496-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200745_516-kg_info> ;
+<http://testwebsite/testProgram#Collection-id_20260413053538_53-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053538_547-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_650-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200745_467> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053538_250> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200745_701-post_processed_output>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200745_176-post_processed_output> ;
+<http://testwebsite/testProgram#Collection-id_20260413053538_555-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053538_933-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_951-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053538_112> .
 
-<http://testwebsite/testProgram#Collection-id_20260412200745_954-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200745_116-kg_info> ;
+<http://testwebsite/testProgram#Collection-id_20260413053538_973-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053539_701-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200745_473> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053538_218> .
+
+<http://testwebsite/testProgram#Collection-id_20260413053539_667-post_processed_output>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053539_346-post_processed_output> ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
 
 <http://testwebsite/testProgram#DF_combine>
     <http://purl.dataone.org/provone/2015/01/15/ontology#hasInPort> <http://testwebsite/testProgram#DF_combine-kg_queries> ;
@@ -179,402 +189,439 @@
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Port> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "Input port for kg_queries@en^^<xsd:string>" .
 
-<http://testwebsite/testProgram#Data-id_20260412200734_145-gender>
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "gender@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "Male@en^^<xsd:string>" .
-
-<http://testwebsite/testProgram#Data-id_20260412200734_18-height>
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "height@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "182.3@en^^<xsd:string>" .
-
-<http://testwebsite/testProgram#Data-id_20260412200734_188-allergies>
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "allergies@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "None@en^^<xsd:string>" .
-
-<http://testwebsite/testProgram#Data-id_20260412200734_34-foodPreferences>
+<http://testwebsite/testProgram#Data-id_20260413053504_428-foodPreferences>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "foodPreferences@en^^<xsd:string>" ;
     <http://www.w3.org/ns/prov#value> "Carnivore@en^^<xsd:string>" .
 
-<http://testwebsite/testProgram#Data-id_20260412200734_410-system_prompt>
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "system_prompt@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200734_778>, <http://testwebsite/testProgram#id_20260412200740_99> .
-
-<http://testwebsite/testProgram#Data-id_20260412200734_726-bodyMassIndex>
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "bodyMassIndex@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "28.6@en^^<xsd:string>" .
-
-<http://testwebsite/testProgram#Data-id_20260412200734_736-age>
+<http://testwebsite/testProgram#Data-id_20260413053504_482-age>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "age@en^^<xsd:string>" ;
     <http://www.w3.org/ns/prov#value> "30@en^^<xsd:string>" .
 
-<http://testwebsite/testProgram#Data-id_20260412200734_862-weight>
+<http://testwebsite/testProgram#Data-id_20260413053504_560-bodyMassIndex>
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "bodyMassIndex@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#value> "28.6@en^^<xsd:string>" .
+
+<http://testwebsite/testProgram#Data-id_20260413053504_593-system_prompt>
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "system_prompt@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#value> "You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053504_806>, <http://testwebsite/testProgram#id_20260413053510_114> .
+
+<http://testwebsite/testProgram#Data-id_20260413053504_619-height>
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "height@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#value> "182.3@en^^<xsd:string>" .
+
+<http://testwebsite/testProgram#Data-id_20260413053504_802-allergies>
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "allergies@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#value> "None@en^^<xsd:string>" .
+
+<http://testwebsite/testProgram#Data-id_20260413053504_891-weight>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "weight@en^^<xsd:string>" ;
     <http://www.w3.org/ns/prov#value> "95.2@en^^<xsd:string>" .
 
-<http://testwebsite/testProgram#Data-id_20260412200734_929-diagnosis>
+<http://testwebsite/testProgram#Data-id_20260413053504_921-gender>
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "gender@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#value> "Male@en^^<xsd:string>" .
+
+<http://testwebsite/testProgram#Data-id_20260413053504_964-diagnosis>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "diagnosis@en^^<xsd:string>" ;
     <http://www.w3.org/ns/prov#value> "Diabetic@en^^<xsd:string>" .
 
-<http://testwebsite/testProgram#Data-id_20260412200740_557-generated_answer>
+<http://testwebsite/testProgram#Data-id_20260413053510_702-generated_answer>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "generated_answer@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> """Before your workout, it's essential to eat foods that provide a quick energy boost while being mindful of your diabetes management. Since your diet preference is carnivorous, let's focus on protein-rich and low-carb options that are also easy on your blood sugar levels.
+    <http://www.w3.org/ns/prov#value> """As a 30-year-old male with diabetes and a preference for a carnivorous diet, selecting the right foods before your gym workout is crucial for maintaining steady energy levels and optimizing your exercise performance. Here are some light and energy-boosting food suggestions to consider:
 
-1. **Chicken or Turkey Breast**: Lean poultry is an excellent source of protein and can provide sustained energy. Consider having a small portion, like a grilled chicken/turkey slice, about an hour before your workout.
+1. **Lean Protein**: 
+   - Grilled chicken or turkey slices can provide a good source of protein without making you feel too full.
+   - Consider lean cuts of beef, such as sirloin, if you have time to prepare them.
 
-2. **Greek Yogurt with Berries**: While fruits are generally high in carbohydrates, a small handful of berries like blueberries combined with unsweetened Greek yogurt can provide an antioxidant boost and moderate carbs. The protein from the yogurt will help sustain energy.
+2. **Healthy Fats**:
+   - Nuts like almonds or walnuts can offer quick energy and can be eaten conveniently.
+   - Avocados can be a great addition to a pre-workout meal or snack; consider making a small portion of chicken or turkey avocado salad.
 
-3. **Hard-Boiled Eggs**: Eggs are a compact protein source. Consuming a couple of hard-boiled eggs can help keep your energy levels up without spiking your blood sugar.
+3. **Lean Sandwiches or Wraps**:
+   - Whole-grain wraps with turkey or chicken and a sprinkle of cheese can provide a balanced source of energy.
+   - Consider using low-carb wraps if you're managing carbohydrate intake closely.
 
-4. **Nuts or Nut Butter**: Small amounts of nuts, like almonds or walnuts, or a spoonful of nut butter can provide healthy fats and protein. They're also convenient and easy to carry.
+4. **Eggs**:
+   - Boiled or scrambled eggs can give a quick source of protein. Preparing an egg white omelet with some vegetables can be a good choice.
 
-5. **Cheese Sticks or Slices**: Cheese is low in carbohydrates and a good protein source. Opt for low-fat cheese if you're concerned about saturated fats.
+5. **Greek Yogurt**:
+   - Although not carnivorous, if you're open to it, plain or Greek yogurt with a handful of nuts can be easy to digest and filled with protein.
 
-6. **Tuna Salad**: A small portion of tuna mixed with a bit of olive oil or mayonnaise can provide a good mix of protein and healthy fats. You can have it on a slice of cucumber or lettuce wrap.
+6. **Low-Carb Salad**:
+   - A small salad with greens, lean meat, and a light olive oil dressing is a good pre-workout boost.
 
-7. **Beef Jerky**: Look for a low-sodium, low-sugar variety. It’s high in protein and can be an excellent pre-workout snack.
+7. **Protein Shake**: 
+   - Consider a protein shake made with water or unsweetened almond milk, and a scoop of quality protein powder. This is light and can be consumed easily before workouts.
 
-Remember to monitor your blood sugar levels before and after your workout to ensure they stay within your target range. Drink plenty of water to stay hydrated, especially during workouts. Adjust portions according to your specific energy needs and preferences. Always consult with your healthcare provider or a dietitian when making significant changes to your diet, especially with a condition like diabetes.@en^^<xsd:string>""" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200740_99>, <http://testwebsite/testProgram#id_20260412200742_397> .
+It's essential to consume your pre-workout meal or snack about 30 minutes to an hour before hitting the gym, giving your body time to digest and start converting food into usable energy. Also, don't forget to stay hydrated by drinking water before and during your workout. If you are on a specific diabetes management plan, ensure you are checking your blood sugar levels and adjusting your intake accordingly.@en^^<xsd:string>""" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053510_114>, <http://testwebsite/testProgram#id_20260413053513_620> .
 
-<http://testwebsite/testProgram#Data-id_20260412200740_707-user_prompt>
+<http://testwebsite/testProgram#Data-id_20260413053510_961-user_prompt>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "user_prompt@en^^<xsd:string>" ;
     <http://www.w3.org/ns/prov#value> "I need suggestions for light and energy-boosting foods to eat before my gym workout.@en^^<xsd:string>" .
 
-<http://testwebsite/testProgram#Data-id_20260412200742_128-extracts>
+<http://testwebsite/testProgram#Data-id_20260413053513_174-extracts>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "Berry@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397>, <http://testwebsite/testProgram#id_20260412200743_952> .
+    <http://www.w3.org/ns/prov#value> "Meat@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053538_250> .
 
-<http://testwebsite/testProgram#Data-id_20260412200742_131-extracts>
+<http://testwebsite/testProgram#Data-id_20260413053513_187-extracts>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "Chicken@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397>, <http://testwebsite/testProgram#id_20260412200743_290> .
+    <http://www.w3.org/ns/prov#value> "Wrap@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053529_836> .
 
-<http://testwebsite/testProgram#Data-id_20260412200742_26-extracts>
+<http://testwebsite/testProgram#Data-id_20260413053513_223-extracts>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "Mayonnaise@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397>, <http://testwebsite/testProgram#id_20260412200744_909> .
+    <http://www.w3.org/ns/prov#value> "Walnut@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053521_282> .
 
-<http://testwebsite/testProgram#Data-id_20260412200742_308-extracts>
+<http://testwebsite/testProgram#Data-id_20260413053513_332-extracts>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "Cheese@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397>, <http://testwebsite/testProgram#id_20260412200744_460> .
+    <http://www.w3.org/ns/prov#value> "Water@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053538_218> .
 
-<http://testwebsite/testProgram#Data-id_20260412200742_324-extracts>
+<http://testwebsite/testProgram#Data-id_20260413053513_353-extracts>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "Lettuce@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397>, <http://testwebsite/testProgram#id_20260412200745_473> .
+    <http://www.w3.org/ns/prov#value> "Yogurt@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053534_815> .
 
-<http://testwebsite/testProgram#Data-id_20260412200742_489-extracts>
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "Turkey@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397>, <http://testwebsite/testProgram#id_20260412200743_818> .
-
-<http://testwebsite/testProgram#Data-id_20260412200742_523-extracts>
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "Olive oil@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397>, <http://testwebsite/testProgram#id_20260412200744_720> .
-
-<http://testwebsite/testProgram#Data-id_20260412200742_653-extracts>
+<http://testwebsite/testProgram#Data-id_20260413053513_372-extracts>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
     <http://www.w3.org/ns/prov#value> "Egg@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397>, <http://testwebsite/testProgram#id_20260412200744_221> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053530_1000> .
 
-<http://testwebsite/testProgram#Data-id_20260412200742_679-extracts>
+<http://testwebsite/testProgram#Data-id_20260413053513_487-extracts>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "Cucumber@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397>, <http://testwebsite/testProgram#id_20260412200744_387> .
+    <http://www.w3.org/ns/prov#value> "Cheese@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053530_913> .
 
-<http://testwebsite/testProgram#Data-id_20260412200742_835-extracts>
+<http://testwebsite/testProgram#Data-id_20260413053513_488-extracts>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "Greek yogurt@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397>, <http://testwebsite/testProgram#id_20260412200743_103> .
+    <http://www.w3.org/ns/prov#value> "Chicken@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053516_919> .
 
-<http://testwebsite/testProgram#Data-id_20260412200742_85-extracts>
+<http://testwebsite/testProgram#Data-id_20260413053513_523-extracts>
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#value> "Turkey@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053516_230> .
+
+<http://testwebsite/testProgram#Data-id_20260413053513_571-extracts>
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#value> "Salad@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053538_112> .
+
+<http://testwebsite/testProgram#Data-id_20260413053513_669-extracts>
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#value> "Beef@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053517_9> .
+
+<http://testwebsite/testProgram#Data-id_20260413053513_701-extracts>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
     <http://www.w3.org/ns/prov#value> "Nut@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397>, <http://testwebsite/testProgram#id_20260412200744_624> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053538_36> .
 
-<http://testwebsite/testProgram#Data-id_20260412200742_916-extracts>
+<http://testwebsite/testProgram#Data-id_20260413053513_82-extracts>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "Beef jerky@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397>, <http://testwebsite/testProgram#id_20260412200745_467> .
+    <http://www.w3.org/ns/prov#value> "Avocado@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053528_218> .
 
-<http://testwebsite/testProgram#Data-id_20260412200742_983-extracts>
+<http://testwebsite/testProgram#Data-id_20260413053513_954-extracts>
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "extracts@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#value> "Tuna@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200742_397>, <http://testwebsite/testProgram#id_20260412200744_854> .
+    <http://www.w3.org/ns/prov#value> "Almond@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053513_620>, <http://testwebsite/testProgram#id_20260413053517_517> .
 
-<http://testwebsite/testProgram#Data-id_20260412200743_406-kg_info>
-    <http://testwebsite/testDFColumn#ingredientCat> "NA@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#ingredientName> "NA@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200743_103> .
-
-<http://testwebsite/testProgram#Data-id_20260412200743_489-kg_info>
+<http://testwebsite/testProgram#Data-id_20260413053516_235-kg_info>
     <http://testwebsite/testDFColumn#ingredientCat> "Republics@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#ingredientName> "Turkey@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200743_818> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053516_230> .
 
-<http://testwebsite/testProgram#Data-id_20260412200743_720-kg_info>
-    <http://testwebsite/testDFColumn#ingredientCat> "@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#ingredientName> "@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#sugarG> "@en^^<xsd:string>" ;
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "row_0@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200743_103> .
-
-<http://testwebsite/testProgram#Data-id_20260412200743_917-kg_info>
+<http://testwebsite/testProgram#Data-id_20260413053516_521-kg_info>
     <http://testwebsite/testDFColumn#ingredientCat> "Animal taxa named by Carl Linnaeus@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#ingredientName> "Chicken@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200743_290> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053516_919> .
 
-<http://testwebsite/testProgram#Data-id_20260412200743_967-kg_info>
-    <http://testwebsite/testDFColumn#ingredientCat> "Berries@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#ingredientName> "Berry@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200743_952> .
-
-<http://testwebsite/testProgram#Data-id_20260412200744_331-kg_info>
-    <http://testwebsite/testDFColumn#ingredientCat> "Condiments@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#ingredientName> "Mayonnaise@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_909> .
-
-<http://testwebsite/testProgram#Data-id_20260412200744_435-kg_info>
+<http://testwebsite/testProgram#Data-id_20260413053517_834-kg_info>
     <http://testwebsite/testDFColumn#ingredientCat> "@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#ingredientName> "@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#sugarG> "@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "row_0@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_624> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053517_9> .
 
-<http://testwebsite/testProgram#Data-id_20260412200744_511-kg_info>
+<http://testwebsite/testProgram#Data-id_20260413053517_895-kg_info>
     <http://testwebsite/testDFColumn#ingredientCat> "NA@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#ingredientName> "NA@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_387> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053517_9> .
 
-<http://testwebsite/testProgram#Data-id_20260412200744_773-kg_info>
+<http://testwebsite/testProgram#Data-id_20260413053517_927-kg_info>
+    <http://testwebsite/testDFColumn#ingredientCat> "Drought-tolerant trees@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#ingredientName> "Almond@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#sugarG> "4.4@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053517_517> .
+
+<http://testwebsite/testProgram#Data-id_20260413053521_417-kg_info>
+    <http://testwebsite/testDFColumn#ingredientCat> "Walnut@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#ingredientName> "Walnut@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#sugarG> "2.61@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053521_282> .
+
+<http://testwebsite/testProgram#Data-id_20260413053528_554-kg_info>
+    <http://testwebsite/testDFColumn#ingredientCat> "Tropical fruit@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#ingredientName> "Avocado@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#sugarG> "0.66@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053528_218> .
+
+<http://testwebsite/testProgram#Data-id_20260413053529_151-kg_info>
+    <http://testwebsite/testDFColumn#ingredientCat> "@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#ingredientName> "@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#sugarG> "@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "row_0@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053529_836> .
+
+<http://testwebsite/testProgram#Data-id_20260413053529_770-kg_info>
+    <http://testwebsite/testDFColumn#ingredientCat> "NA@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#ingredientName> "NA@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053529_836> .
+
+<http://testwebsite/testProgram#Data-id_20260413053530_362-kg_info>
+    <http://testwebsite/testDFColumn#ingredientCat> "@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#ingredientName> "@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#sugarG> "@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "row_0@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053530_1000> .
+
+<http://testwebsite/testProgram#Data-id_20260413053530_585-kg_info>
     <http://testwebsite/testDFColumn#ingredientCat> "Articles containing video clips@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#ingredientName> "Cheese@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_460> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053530_913> .
 
-<http://testwebsite/testProgram#Data-id_20260412200744_787-kg_info>
-    <http://testwebsite/testDFColumn#ingredientCat> "Commercial fish@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#ingredientName> "Tuna@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_854> .
-
-<http://testwebsite/testProgram#Data-id_20260412200744_8-kg_info>
+<http://testwebsite/testProgram#Data-id_20260413053530_977-kg_info>
     <http://testwebsite/testDFColumn#ingredientCat> "NA@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#ingredientName> "NA@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_221> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053530_1000> .
 
-<http://testwebsite/testProgram#Data-id_20260412200744_935-kg_info>
+<http://testwebsite/testProgram#Data-id_20260413053534_133-kg_info>
+    <http://testwebsite/testDFColumn#ingredientCat> "Desserts@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#ingredientName> "Yogurt@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#sugarG> "4@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053534_815> .
+
+<http://testwebsite/testProgram#Data-id_20260413053538_504-kg_info>
+    <http://testwebsite/testDFColumn#ingredientCat> "@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#ingredientName> "@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#sugarG> "@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "row_0@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053538_36> .
+
+<http://testwebsite/testProgram#Data-id_20260413053538_547-kg_info>
     <http://testwebsite/testDFColumn#ingredientCat> "NA@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#ingredientName> "NA@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_624> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053538_250> .
 
-<http://testwebsite/testProgram#Data-id_20260412200744_941-kg_info>
+<http://testwebsite/testProgram#Data-id_20260413053538_650-kg_info>
     <http://testwebsite/testDFColumn#ingredientCat> "@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#ingredientName> "@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#sugarG> "@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "row_0@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_387> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053538_250> .
 
-<http://testwebsite/testProgram#Data-id_20260412200744_950-kg_info>
-    <http://testwebsite/testDFColumn#ingredientCat> "Vegetable oils@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#ingredientName> "Olive oil@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_720> .
-
-<http://testwebsite/testProgram#Data-id_20260412200744_983-kg_info>
-    <http://testwebsite/testDFColumn#ingredientCat> "@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#ingredientName> "@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#sugarG> "@en^^<xsd:string>" ;
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "row_0@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200744_221> .
-
-<http://testwebsite/testProgram#Data-id_20260412200745_116-kg_info>
-    <http://testwebsite/testDFColumn#ingredientCat> "Crops@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#ingredientName> "Lettuce@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#sugarG> "2@en^^<xsd:string>" ;
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200745_473> .
-
-<http://testwebsite/testProgram#Data-id_20260412200745_176-post_processed_output>
-    <http://testwebsite/testDFColumn#ingredientCat> "Berries|Articles containing video clips|Animal taxa named by Carl Linnaeus|Crops|Condiments|Vegetable oils|Commercial fish|Republics@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#ingredientName> "Berry|Cheese|Chicken|Lettuce|Mayonnaise|Olive oil|Tuna|Turkey@en^^<xsd:string>" ;
-    <http://testwebsite/testDFColumn#sugarG> "0|0|0|2|0|0|0|0@en^^<xsd:string>" ;
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
-
-<http://testwebsite/testProgram#Data-id_20260412200745_496-kg_info>
+<http://testwebsite/testProgram#Data-id_20260413053538_740-kg_info>
     <http://testwebsite/testDFColumn#ingredientCat> "NA@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#ingredientName> "NA@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200745_467> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053538_36> .
 
-<http://testwebsite/testProgram#Data-id_20260412200745_516-kg_info>
+<http://testwebsite/testProgram#Data-id_20260413053538_933-kg_info>
     <http://testwebsite/testDFColumn#ingredientCat> "@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#ingredientName> "@en^^<xsd:string>" ;
     <http://testwebsite/testDFColumn#sugarG> "@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "row_0@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200745_467> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053538_112> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200734_537-system_prompt>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200734_410-system_prompt> ;
+<http://testwebsite/testProgram#Data-id_20260413053538_951-kg_info>
+    <http://testwebsite/testDFColumn#ingredientCat> "NA@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#ingredientName> "NA@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053538_112> .
+
+<http://testwebsite/testProgram#Data-id_20260413053539_346-post_processed_output>
+    <http://testwebsite/testDFColumn#ingredientCat> "Drought-tolerant trees|Tropical fruit|Articles containing video clips|Animal taxa named by Carl Linnaeus|Republics|Walnut|Oxides|Desserts@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#ingredientName> "Almond|Avocado|Cheese|Chicken|Turkey|Walnut|Water|Yogurt@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#sugarG> "4.4|0.66|0|0|0|2.61|0|4@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
+
+<http://testwebsite/testProgram#Data-id_20260413053539_701-kg_info>
+    <http://testwebsite/testDFColumn#ingredientCat> "Oxides@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#ingredientName> "Water@en^^<xsd:string>" ;
+    <http://testwebsite/testDFColumn#sugarG> "NA@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "row_1@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053538_218> .
+
+<http://testwebsite/testProgram#Generation-id_20260413053504_988-system_prompt>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053504_593-system_prompt> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#system_prompt_generator-system_prompt> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200740_864-generated_answer>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200740_557-generated_answer> ;
+<http://testwebsite/testProgram#Generation-id_20260413053510_2-generated_answer>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053510_702-generated_answer> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#llm_chat-generated_answer> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200742_15-extracts>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200742_828-extracts> ;
+<http://testwebsite/testProgram#Generation-id_20260413053513_136-extracts>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_174-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_187-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_223-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_332-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_353-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_372-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_487-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_488-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_523-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_571-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_669-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_701-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_82-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_954-extracts> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#information_extractor-extracts> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200743_243-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200743_756-kg_info> ;
+<http://testwebsite/testProgram#Generation-id_20260413053516_229-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053516_521-kg_info> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200743_274-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200743_855-kg_info> ;
+<http://testwebsite/testProgram#Generation-id_20260413053516_96-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053516_235-kg_info> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200743_350-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200743_372-kg_info> ;
+<http://testwebsite/testProgram#Generation-id_20260413053517_445-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053517_834-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053517_895-kg_info> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200743_40-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200743_90-kg_info> ;
+<http://testwebsite/testProgram#Generation-id_20260413053517_805-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053517_927-kg_info> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200744_273-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200744_38-kg_info> ;
+<http://testwebsite/testProgram#Generation-id_20260413053521_235-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053521_417-kg_info> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200744_3-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200744_734-kg_info> ;
+<http://testwebsite/testProgram#Generation-id_20260413053528_853-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053528_554-kg_info> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200744_374-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200744_293-kg_info> ;
+<http://testwebsite/testProgram#Generation-id_20260413053529_924-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053529_151-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053529_770-kg_info> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200744_817-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200744_632-kg_info> ;
+<http://testwebsite/testProgram#Generation-id_20260413053530_201-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053530_585-kg_info> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200744_867-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200744_542-kg_info> ;
+<http://testwebsite/testProgram#Generation-id_20260413053530_713-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053530_362-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053530_977-kg_info> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200744_992-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200744_549-kg_info> ;
+<http://testwebsite/testProgram#Generation-id_20260413053534_186-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053534_133-kg_info> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200744_997-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200744_518-kg_info> ;
+<http://testwebsite/testProgram#Generation-id_20260413053538_698-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053538_504-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_740-kg_info> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200745_568-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200745_128-kg_info> ;
+<http://testwebsite/testProgram#Generation-id_20260413053538_911-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053538_933-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_951-kg_info> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200745_89-kg_info>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200745_954-kg_info> ;
+<http://testwebsite/testProgram#Generation-id_20260413053538_977-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053539_701-kg_info> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generation-id_20260412200745_978-post_processed_output>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Collection-id_20260412200745_701-post_processed_output> ;
+<http://testwebsite/testProgram#Generation-id_20260413053538_997-kg_info>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053538_547-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_650-kg_info> ;
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#sparql_query_extractor-kg_info> ;
+    a <http://www.w3.org/ns/prov#Generation> .
+
+<http://testwebsite/testProgram#Generation-id_20260413053539_337-post_processed_output>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053539_346-post_processed_output> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> <http://testwebsite/testProgram#query_result_post_processor-post_processed_output> ;
     a <http://www.w3.org/ns/prov#Generation> .
 
-<http://testwebsite/testProgram#Generative_Task-id_20260412200740_99>
+<http://testwebsite/testProgram#Generative_Task-id_20260413053510_114>
     <http://purl.org/dc/elements/1.1/description> """LLM Generates an text for 
 system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. 
 
 user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. 
 
 using: gpt-4o@en^^<xsd:string>""" ;
-    <http://semanticscience.org/resource/SIO_000313> <http://testwebsite/testProgram#id_20260412200740_99> ;
+    <http://semanticscience.org/resource/SIO_000313> <http://testwebsite/testProgram#id_20260413053510_114> ;
     a <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Generative_Task> ;
     <http://www.w3.org/2000/01/rdf-schema#label> """LLM Generates an text for 
 system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. 
@@ -582,52 +629,72 @@ system prompt: You are a health care assistant and you will respond to the user 
 user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. 
 
 using: gpt-4o@en^^<xsd:string>""" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#LLM-id_20260412200740_99> .
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#LLM-id_20260413053510_114> .
 
-<http://testwebsite/testProgram#Generative_Task-id_20260412200742_397>
+<http://testwebsite/testProgram#Generative_Task-id_20260413053513_620>
     <http://purl.org/dc/elements/1.1/description> """Extracts important entities for 
-text: Before your workout, it's essential to eat foods that provide a quick energy boost while being mindful of your diabetes management. Since your diet preference is carnivorous, let's focus on protein-rich and low-carb options that are also easy on your blood sugar levels.
+text: As a 30-year-old male with diabetes and a preference for a carnivorous diet, selecting the right foods before your gym workout is crucial for maintaining steady energy levels and optimizing your exercise performance. Here are some light and energy-boosting food suggestions to consider:
 
-1. **Chicken or Turkey Breast**: Lean poultry is an excellent source of protein and can provide sustained energy. Consider having a small portion, like a grilled chicken/turkey slice, about an hour before your workout.
+1. **Lean Protein**: 
+   - Grilled chicken or turkey slices can provide a good source of protein without making you feel too full.
+   - Consider lean cuts of beef, such as sirloin, if you have time to prepare them.
 
-2. **Greek Yogurt with Berries**: While fruits are generally high in carbohydrates, a small handful of berries like blueberries combined with unsweetened Greek yogurt can provide an antioxidant boost and moderate carbs. The protein from the yogurt will help sustain energy.
+2. **Healthy Fats**:
+   - Nuts like almonds or walnuts can offer quick energy and can be eaten conveniently.
+   - Avocados can be a great addition to a pre-workout meal or snack; consider making a small portion of chicken or turkey avocado salad.
 
-3. **Hard-Boiled Eggs**: Eggs are a compact protein source. Consuming a couple of hard-boiled eggs can help keep your energy levels up without spiking your blood sugar.
+3. **Lean Sandwiches or Wraps**:
+   - Whole-grain wraps with turkey or chicken and a sprinkle of cheese can provide a balanced source of energy.
+   - Consider using low-carb wraps if you're managing carbohydrate intake closely.
 
-4. **Nuts or Nut Butter**: Small amounts of nuts, like almonds or walnuts, or a spoonful of nut butter can provide healthy fats and protein. They're also convenient and easy to carry.
+4. **Eggs**:
+   - Boiled or scrambled eggs can give a quick source of protein. Preparing an egg white omelet with some vegetables can be a good choice.
 
-5. **Cheese Sticks or Slices**: Cheese is low in carbohydrates and a good protein source. Opt for low-fat cheese if you're concerned about saturated fats.
+5. **Greek Yogurt**:
+   - Although not carnivorous, if you're open to it, plain or Greek yogurt with a handful of nuts can be easy to digest and filled with protein.
 
-6. **Tuna Salad**: A small portion of tuna mixed with a bit of olive oil or mayonnaise can provide a good mix of protein and healthy fats. You can have it on a slice of cucumber or lettuce wrap.
+6. **Low-Carb Salad**:
+   - A small salad with greens, lean meat, and a light olive oil dressing is a good pre-workout boost.
 
-7. **Beef Jerky**: Look for a low-sodium, low-sugar variety. It’s high in protein and can be an excellent pre-workout snack.
+7. **Protein Shake**: 
+   - Consider a protein shake made with water or unsweetened almond milk, and a scoop of quality protein powder. This is light and can be consumed easily before workouts.
 
-Remember to monitor your blood sugar levels before and after your workout to ensure they stay within your target range. Drink plenty of water to stay hydrated, especially during workouts. Adjust portions according to your specific energy needs and preferences. Always consult with your healthcare provider or a dietitian when making significant changes to your diet, especially with a condition like diabetes. 
+It's essential to consume your pre-workout meal or snack about 30 minutes to an hour before hitting the gym, giving your body time to digest and start converting food into usable energy. Also, don't forget to stay hydrated by drinking water before and during your workout. If you are on a specific diabetes management plan, ensure you are checking your blood sugar levels and adjusting your intake accordingly. 
 
 using: gpt-4o@en^^<xsd:string>""" ;
-    <http://semanticscience.org/resource/SIO_000313> <http://testwebsite/testProgram#id_20260412200742_397> ;
+    <http://semanticscience.org/resource/SIO_000313> <http://testwebsite/testProgram#id_20260413053513_620> ;
     a <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Generative_Task> ;
     <http://www.w3.org/2000/01/rdf-schema#label> """Extracts important entities for 
-text: Before your workout, it's essential to eat foods that provide a quick energy boost while being mindful of your diabetes management. Since your diet preference is carnivorous, let's focus on protein-rich and low-carb options that are also easy on your blood sugar levels.
+text: As a 30-year-old male with diabetes and a preference for a carnivorous diet, selecting the right foods before your gym workout is crucial for maintaining steady energy levels and optimizing your exercise performance. Here are some light and energy-boosting food suggestions to consider:
 
-1. **Chicken or Turkey Breast**: Lean poultry is an excellent source of protein and can provide sustained energy. Consider having a small portion, like a grilled chicken/turkey slice, about an hour before your workout.
+1. **Lean Protein**: 
+   - Grilled chicken or turkey slices can provide a good source of protein without making you feel too full.
+   - Consider lean cuts of beef, such as sirloin, if you have time to prepare them.
 
-2. **Greek Yogurt with Berries**: While fruits are generally high in carbohydrates, a small handful of berries like blueberries combined with unsweetened Greek yogurt can provide an antioxidant boost and moderate carbs. The protein from the yogurt will help sustain energy.
+2. **Healthy Fats**:
+   - Nuts like almonds or walnuts can offer quick energy and can be eaten conveniently.
+   - Avocados can be a great addition to a pre-workout meal or snack; consider making a small portion of chicken or turkey avocado salad.
 
-3. **Hard-Boiled Eggs**: Eggs are a compact protein source. Consuming a couple of hard-boiled eggs can help keep your energy levels up without spiking your blood sugar.
+3. **Lean Sandwiches or Wraps**:
+   - Whole-grain wraps with turkey or chicken and a sprinkle of cheese can provide a balanced source of energy.
+   - Consider using low-carb wraps if you're managing carbohydrate intake closely.
 
-4. **Nuts or Nut Butter**: Small amounts of nuts, like almonds or walnuts, or a spoonful of nut butter can provide healthy fats and protein. They're also convenient and easy to carry.
+4. **Eggs**:
+   - Boiled or scrambled eggs can give a quick source of protein. Preparing an egg white omelet with some vegetables can be a good choice.
 
-5. **Cheese Sticks or Slices**: Cheese is low in carbohydrates and a good protein source. Opt for low-fat cheese if you're concerned about saturated fats.
+5. **Greek Yogurt**:
+   - Although not carnivorous, if you're open to it, plain or Greek yogurt with a handful of nuts can be easy to digest and filled with protein.
 
-6. **Tuna Salad**: A small portion of tuna mixed with a bit of olive oil or mayonnaise can provide a good mix of protein and healthy fats. You can have it on a slice of cucumber or lettuce wrap.
+6. **Low-Carb Salad**:
+   - A small salad with greens, lean meat, and a light olive oil dressing is a good pre-workout boost.
 
-7. **Beef Jerky**: Look for a low-sodium, low-sugar variety. It’s high in protein and can be an excellent pre-workout snack.
+7. **Protein Shake**: 
+   - Consider a protein shake made with water or unsweetened almond milk, and a scoop of quality protein powder. This is light and can be consumed easily before workouts.
 
-Remember to monitor your blood sugar levels before and after your workout to ensure they stay within your target range. Drink plenty of water to stay hydrated, especially during workouts. Adjust portions according to your specific energy needs and preferences. Always consult with your healthcare provider or a dietitian when making significant changes to your diet, especially with a condition like diabetes. 
+It's essential to consume your pre-workout meal or snack about 30 minutes to an hour before hitting the gym, giving your body time to digest and start converting food into usable energy. Also, don't forget to stay hydrated by drinking water before and during your workout. If you are on a specific diabetes management plan, ensure you are checking your blood sugar levels and adjusting your intake accordingly. 
 
 using: gpt-4o@en^^<xsd:string>""" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#LLM-id_20260412200742_397> .
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#LLM-id_20260413053513_620> .
 
 <http://testwebsite/testProgram#Generative_Task-information_extractor>
     <http://purl.org/dc/elements/1.1/description> "Generates the Information Extractor Function using Large language models@en^^<xsd:string>" ;
@@ -650,15 +717,15 @@ using: gpt-4o@en^^<xsd:string>""" ;
     <http://www.w3.org/ns/prov#atTime> "2026-03-05 19:21:32@en^^<xsd:string>" ;
     <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#LLM-system_prompt_generator> .
 
-<http://testwebsite/testProgram#LLM-id_20260412200740_99>
+<http://testwebsite/testProgram#LLM-id_20260413053510_114>
     <http://purl.org/dc/elements/1.1/description> """LLM Generates an text for 
 system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. 
 
 user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. 
 
 using: gpt-4o@en^^<xsd:string>""" ;
-    <http://semanticscience.org/resource/SIO_000229> <http://testwebsite/testProgram#LLM_Output-id_20260412200740_99> ;
-    <http://semanticscience.org/resource/SIO_000230> <http://testwebsite/testProgram#Data-id_20260412200734_410-system_prompt>, <http://testwebsite/testProgram#Data-id_20260412200740_707-user_prompt> ;
+    <http://semanticscience.org/resource/SIO_000229> <http://testwebsite/testProgram#LLM_Output-id_20260413053510_114> ;
+    <http://semanticscience.org/resource/SIO_000230> <http://testwebsite/testProgram#Data-id_20260413053504_593-system_prompt>, <http://testwebsite/testProgram#Data-id_20260413053510_961-user_prompt> ;
     <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/llm_model> "gpt-4o@en^^<xsd:string>" ;
     a <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Large_Language_Model_Output>, <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Large_Language_Models> ;
     <http://www.w3.org/2000/01/rdf-schema#label> """LLM Generates an text for 
@@ -668,49 +735,69 @@ user prompt: I need suggestions for light and energy-boosting foods to eat befor
 
 using: gpt-4o@en^^<xsd:string>""" .
 
-<http://testwebsite/testProgram#LLM-id_20260412200742_397>
+<http://testwebsite/testProgram#LLM-id_20260413053513_620>
     <http://purl.org/dc/elements/1.1/description> """Extracts important entities for 
-text: Before your workout, it's essential to eat foods that provide a quick energy boost while being mindful of your diabetes management. Since your diet preference is carnivorous, let's focus on protein-rich and low-carb options that are also easy on your blood sugar levels.
+text: As a 30-year-old male with diabetes and a preference for a carnivorous diet, selecting the right foods before your gym workout is crucial for maintaining steady energy levels and optimizing your exercise performance. Here are some light and energy-boosting food suggestions to consider:
 
-1. **Chicken or Turkey Breast**: Lean poultry is an excellent source of protein and can provide sustained energy. Consider having a small portion, like a grilled chicken/turkey slice, about an hour before your workout.
+1. **Lean Protein**: 
+   - Grilled chicken or turkey slices can provide a good source of protein without making you feel too full.
+   - Consider lean cuts of beef, such as sirloin, if you have time to prepare them.
 
-2. **Greek Yogurt with Berries**: While fruits are generally high in carbohydrates, a small handful of berries like blueberries combined with unsweetened Greek yogurt can provide an antioxidant boost and moderate carbs. The protein from the yogurt will help sustain energy.
+2. **Healthy Fats**:
+   - Nuts like almonds or walnuts can offer quick energy and can be eaten conveniently.
+   - Avocados can be a great addition to a pre-workout meal or snack; consider making a small portion of chicken or turkey avocado salad.
 
-3. **Hard-Boiled Eggs**: Eggs are a compact protein source. Consuming a couple of hard-boiled eggs can help keep your energy levels up without spiking your blood sugar.
+3. **Lean Sandwiches or Wraps**:
+   - Whole-grain wraps with turkey or chicken and a sprinkle of cheese can provide a balanced source of energy.
+   - Consider using low-carb wraps if you're managing carbohydrate intake closely.
 
-4. **Nuts or Nut Butter**: Small amounts of nuts, like almonds or walnuts, or a spoonful of nut butter can provide healthy fats and protein. They're also convenient and easy to carry.
+4. **Eggs**:
+   - Boiled or scrambled eggs can give a quick source of protein. Preparing an egg white omelet with some vegetables can be a good choice.
 
-5. **Cheese Sticks or Slices**: Cheese is low in carbohydrates and a good protein source. Opt for low-fat cheese if you're concerned about saturated fats.
+5. **Greek Yogurt**:
+   - Although not carnivorous, if you're open to it, plain or Greek yogurt with a handful of nuts can be easy to digest and filled with protein.
 
-6. **Tuna Salad**: A small portion of tuna mixed with a bit of olive oil or mayonnaise can provide a good mix of protein and healthy fats. You can have it on a slice of cucumber or lettuce wrap.
+6. **Low-Carb Salad**:
+   - A small salad with greens, lean meat, and a light olive oil dressing is a good pre-workout boost.
 
-7. **Beef Jerky**: Look for a low-sodium, low-sugar variety. It’s high in protein and can be an excellent pre-workout snack.
+7. **Protein Shake**: 
+   - Consider a protein shake made with water or unsweetened almond milk, and a scoop of quality protein powder. This is light and can be consumed easily before workouts.
 
-Remember to monitor your blood sugar levels before and after your workout to ensure they stay within your target range. Drink plenty of water to stay hydrated, especially during workouts. Adjust portions according to your specific energy needs and preferences. Always consult with your healthcare provider or a dietitian when making significant changes to your diet, especially with a condition like diabetes. 
+It's essential to consume your pre-workout meal or snack about 30 minutes to an hour before hitting the gym, giving your body time to digest and start converting food into usable energy. Also, don't forget to stay hydrated by drinking water before and during your workout. If you are on a specific diabetes management plan, ensure you are checking your blood sugar levels and adjusting your intake accordingly. 
 
 using: gpt-4o@en^^<xsd:string>""" ;
-    <http://semanticscience.org/resource/SIO_000229> <http://testwebsite/testProgram#LLM_Output-id_20260412200742_397> ;
-    <http://semanticscience.org/resource/SIO_000230> <http://testwebsite/testProgram#Data-id_20260412200740_557-generated_answer> ;
+    <http://semanticscience.org/resource/SIO_000229> <http://testwebsite/testProgram#LLM_Output-id_20260413053513_620> ;
+    <http://semanticscience.org/resource/SIO_000230> <http://testwebsite/testProgram#Data-id_20260413053510_702-generated_answer> ;
     <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/llm_model> "gpt-4o@en^^<xsd:string>" ;
     a <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Large_Language_Model_Output>, <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Large_Language_Models> ;
     <http://www.w3.org/2000/01/rdf-schema#label> """Extracts important entities for 
-text: Before your workout, it's essential to eat foods that provide a quick energy boost while being mindful of your diabetes management. Since your diet preference is carnivorous, let's focus on protein-rich and low-carb options that are also easy on your blood sugar levels.
+text: As a 30-year-old male with diabetes and a preference for a carnivorous diet, selecting the right foods before your gym workout is crucial for maintaining steady energy levels and optimizing your exercise performance. Here are some light and energy-boosting food suggestions to consider:
 
-1. **Chicken or Turkey Breast**: Lean poultry is an excellent source of protein and can provide sustained energy. Consider having a small portion, like a grilled chicken/turkey slice, about an hour before your workout.
+1. **Lean Protein**: 
+   - Grilled chicken or turkey slices can provide a good source of protein without making you feel too full.
+   - Consider lean cuts of beef, such as sirloin, if you have time to prepare them.
 
-2. **Greek Yogurt with Berries**: While fruits are generally high in carbohydrates, a small handful of berries like blueberries combined with unsweetened Greek yogurt can provide an antioxidant boost and moderate carbs. The protein from the yogurt will help sustain energy.
+2. **Healthy Fats**:
+   - Nuts like almonds or walnuts can offer quick energy and can be eaten conveniently.
+   - Avocados can be a great addition to a pre-workout meal or snack; consider making a small portion of chicken or turkey avocado salad.
 
-3. **Hard-Boiled Eggs**: Eggs are a compact protein source. Consuming a couple of hard-boiled eggs can help keep your energy levels up without spiking your blood sugar.
+3. **Lean Sandwiches or Wraps**:
+   - Whole-grain wraps with turkey or chicken and a sprinkle of cheese can provide a balanced source of energy.
+   - Consider using low-carb wraps if you're managing carbohydrate intake closely.
 
-4. **Nuts or Nut Butter**: Small amounts of nuts, like almonds or walnuts, or a spoonful of nut butter can provide healthy fats and protein. They're also convenient and easy to carry.
+4. **Eggs**:
+   - Boiled or scrambled eggs can give a quick source of protein. Preparing an egg white omelet with some vegetables can be a good choice.
 
-5. **Cheese Sticks or Slices**: Cheese is low in carbohydrates and a good protein source. Opt for low-fat cheese if you're concerned about saturated fats.
+5. **Greek Yogurt**:
+   - Although not carnivorous, if you're open to it, plain or Greek yogurt with a handful of nuts can be easy to digest and filled with protein.
 
-6. **Tuna Salad**: A small portion of tuna mixed with a bit of olive oil or mayonnaise can provide a good mix of protein and healthy fats. You can have it on a slice of cucumber or lettuce wrap.
+6. **Low-Carb Salad**:
+   - A small salad with greens, lean meat, and a light olive oil dressing is a good pre-workout boost.
 
-7. **Beef Jerky**: Look for a low-sodium, low-sugar variety. It’s high in protein and can be an excellent pre-workout snack.
+7. **Protein Shake**: 
+   - Consider a protein shake made with water or unsweetened almond milk, and a scoop of quality protein powder. This is light and can be consumed easily before workouts.
 
-Remember to monitor your blood sugar levels before and after your workout to ensure they stay within your target range. Drink plenty of water to stay hydrated, especially during workouts. Adjust portions according to your specific energy needs and preferences. Always consult with your healthcare provider or a dietitian when making significant changes to your diet, especially with a condition like diabetes. 
+It's essential to consume your pre-workout meal or snack about 30 minutes to an hour before hitting the gym, giving your body time to digest and start converting food into usable energy. Also, don't forget to stay hydrated by drinking water before and during your workout. If you are on a specific diabetes management plan, ensure you are checking your blood sugar levels and adjusting your intake accordingly. 
 
 using: gpt-4o@en^^<xsd:string>""" .
 
@@ -765,13 +852,13 @@ using: gpt-4o@en^^<xsd:string>""" .
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Data> ;
     <http://www.w3.org/ns/prov#value> "gpt-4o@en^^<xsd:string>" .
 
-<http://testwebsite/testProgram#LLM_Output-id_20260412200740_99>
-    <http://semanticscience.org/resource/SIO_000202> <http://testwebsite/testProgram#Data-id_20260412200740_557-generated_answer> ;
-    <http://semanticscience.org/resource/SIO_000232> <http://testwebsite/testProgram#LLM-id_20260412200740_99> .
+<http://testwebsite/testProgram#LLM_Output-id_20260413053510_114>
+    <http://semanticscience.org/resource/SIO_000202> <http://testwebsite/testProgram#Data-id_20260413053510_702-generated_answer> ;
+    <http://semanticscience.org/resource/SIO_000232> <http://testwebsite/testProgram#LLM-id_20260413053510_114> .
 
-<http://testwebsite/testProgram#LLM_Output-id_20260412200742_397>
-    <http://semanticscience.org/resource/SIO_000202> <http://testwebsite/testProgram#Data-id_20260412200742_128-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_131-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_26-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_308-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_324-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_489-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_523-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_653-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_679-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_835-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_85-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_916-extracts>, <http://testwebsite/testProgram#Data-id_20260412200742_983-extracts> ;
-    <http://semanticscience.org/resource/SIO_000232> <http://testwebsite/testProgram#LLM-id_20260412200742_397> .
+<http://testwebsite/testProgram#LLM_Output-id_20260413053513_620>
+    <http://semanticscience.org/resource/SIO_000202> <http://testwebsite/testProgram#Data-id_20260413053513_174-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_187-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_223-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_332-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_353-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_372-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_487-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_488-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_523-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_571-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_669-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_701-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_82-extracts>, <http://testwebsite/testProgram#Data-id_20260413053513_954-extracts> ;
+    <http://semanticscience.org/resource/SIO_000232> <http://testwebsite/testProgram#LLM-id_20260413053513_620> .
 
 <http://testwebsite/testProgram#LLM_Output-information_extractor>
     <http://semanticscience.org/resource/SIO_000202> <http://testwebsite/testProgram#information_extractor> ;
@@ -788,129 +875,134 @@ using: gpt-4o@en^^<xsd:string>""" .
     <http://semanticscience.org/resource/SIO_000232> <http://testwebsite/testProgram#LLM-system_prompt_generator> ;
     a <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Large_Language_Model_Output> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200734_145-gender>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200734_145-gender> ;
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#system_prompt_generator-gender> ;
-    a <http://www.w3.org/ns/prov#Usage> .
-
-<http://testwebsite/testProgram#Usage-id_20260412200734_18-height>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200734_18-height> ;
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#system_prompt_generator-height> ;
-    a <http://www.w3.org/ns/prov#Usage> .
-
-<http://testwebsite/testProgram#Usage-id_20260412200734_188-allergies>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200734_188-allergies> ;
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#system_prompt_generator-allergies> ;
-    a <http://www.w3.org/ns/prov#Usage> .
-
-<http://testwebsite/testProgram#Usage-id_20260412200734_34-foodPreferences>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200734_34-foodPreferences> ;
+<http://testwebsite/testProgram#Usage-id_20260413053504_428-foodPreferences>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053504_428-foodPreferences> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#system_prompt_generator-foodPreferences> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200734_726-bodyMassIndex>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200734_726-bodyMassIndex> ;
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#system_prompt_generator-bodyMassIndex> ;
-    a <http://www.w3.org/ns/prov#Usage> .
-
-<http://testwebsite/testProgram#Usage-id_20260412200734_736-age>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200734_736-age> ;
+<http://testwebsite/testProgram#Usage-id_20260413053504_482-age>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053504_482-age> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#system_prompt_generator-age> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200734_862-weight>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200734_862-weight> ;
+<http://testwebsite/testProgram#Usage-id_20260413053504_560-bodyMassIndex>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053504_560-bodyMassIndex> ;
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#system_prompt_generator-bodyMassIndex> ;
+    a <http://www.w3.org/ns/prov#Usage> .
+
+<http://testwebsite/testProgram#Usage-id_20260413053504_619-height>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053504_619-height> ;
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#system_prompt_generator-height> ;
+    a <http://www.w3.org/ns/prov#Usage> .
+
+<http://testwebsite/testProgram#Usage-id_20260413053504_802-allergies>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053504_802-allergies> ;
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#system_prompt_generator-allergies> ;
+    a <http://www.w3.org/ns/prov#Usage> .
+
+<http://testwebsite/testProgram#Usage-id_20260413053504_891-weight>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053504_891-weight> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#system_prompt_generator-weight> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200734_929-diagnosis>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200734_929-diagnosis> ;
+<http://testwebsite/testProgram#Usage-id_20260413053504_921-gender>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053504_921-gender> ;
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#system_prompt_generator-gender> ;
+    a <http://www.w3.org/ns/prov#Usage> .
+
+<http://testwebsite/testProgram#Usage-id_20260413053504_964-diagnosis>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053504_964-diagnosis> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#system_prompt_generator-diagnosis> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200740_301-system_prompt>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200734_410-system_prompt> ;
+<http://testwebsite/testProgram#Usage-id_20260413053510_779-system_prompt>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053504_593-system_prompt> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#llm_chat-system_prompt> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200740_707-user_prompt>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200740_707-user_prompt> ;
+<http://testwebsite/testProgram#Usage-id_20260413053510_961-user_prompt>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053510_961-user_prompt> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#llm_chat-user_prompt> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200742_412-text>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200740_557-generated_answer> ;
+<http://testwebsite/testProgram#Usage-id_20260413053513_300-text>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053510_702-generated_answer> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#information_extractor-text> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200743_186-entity>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200742_835-extracts> ;
+<http://testwebsite/testProgram#Usage-id_20260413053516_240-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_488-extracts> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200743_614-entity>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200742_131-extracts> ;
+<http://testwebsite/testProgram#Usage-id_20260413053516_881-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_523-extracts> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200743_751-entity>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200742_128-extracts> ;
+<http://testwebsite/testProgram#Usage-id_20260413053517_244-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_954-extracts> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200743_898-entity>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200742_489-extracts> ;
+<http://testwebsite/testProgram#Usage-id_20260413053517_987-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_669-extracts> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200744_101-entity>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200742_26-extracts> ;
+<http://testwebsite/testProgram#Usage-id_20260413053521_431-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_223-extracts> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200744_233-entity>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200742_523-extracts> ;
+<http://testwebsite/testProgram#Usage-id_20260413053528_469-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_82-extracts> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200744_299-entity>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200742_653-extracts> ;
+<http://testwebsite/testProgram#Usage-id_20260413053529_556-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_187-extracts> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200744_448-entity>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200742_679-extracts> ;
+<http://testwebsite/testProgram#Usage-id_20260413053530_240-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_487-extracts> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200744_625-entity>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200742_85-extracts> ;
+<http://testwebsite/testProgram#Usage-id_20260413053530_599-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_372-extracts> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200744_761-entity>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200742_983-extracts> ;
+<http://testwebsite/testProgram#Usage-id_20260413053534_973-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_353-extracts> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200744_838-entity>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200742_308-extracts> ;
+<http://testwebsite/testProgram#Usage-id_20260413053538_125-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_332-extracts> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
-<http://testwebsite/testProgram#Usage-id_20260412200745_823-kg_knowledge>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#id_20260412200745_192> ;
+<http://testwebsite/testProgram#Usage-id_20260413053538_347-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_571-extracts> ;
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
+    a <http://www.w3.org/ns/prov#Usage> .
+
+<http://testwebsite/testProgram#Usage-id_20260413053538_408-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_701-extracts> ;
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
+    a <http://www.w3.org/ns/prov#Usage> .
+
+<http://testwebsite/testProgram#Usage-id_20260413053538_913-entity>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260413053513_174-extracts> ;
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
+    a <http://www.w3.org/ns/prov#Usage> .
+
+<http://testwebsite/testProgram#Usage-id_20260413053539_947-kg_knowledge>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#id_20260413053539_141> ;
     <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#query_result_post_processor-kg_knowledge> ;
-    a <http://www.w3.org/ns/prov#Usage> .
-
-<http://testwebsite/testProgram#Usage-id_20260412200745_832-entity>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200742_916-extracts> ;
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
-    a <http://www.w3.org/ns/prov#Usage> .
-
-<http://testwebsite/testProgram#Usage-id_20260412200745_995-entity>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity> <http://testwebsite/testProgram#Data-id_20260412200742_324-extracts> ;
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadInPort> <http://testwebsite/testProgram#sparql_query_extractor-entity> ;
     a <http://www.w3.org/ns/prov#Usage> .
 
 <http://testwebsite/testProgram#batch_sparql_query_extractor>
@@ -960,214 +1052,226 @@ using: gpt-4o@en^^<xsd:string>""" .
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Channel> ;
     <http://www.w3.org/2000/01/rdf-schema#label> "Channel for the system prompt@en^^<xsd:string>" .
 
-<http://testwebsite/testProgram#id_20260412200734_778>
+<http://testwebsite/testProgram#id_20260413053504_806>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:34@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:system_prompt_generator-Association-id_20260412200734_778> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200734_537-system_prompt> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200734_145-gender>, <http://testwebsite/testProgram#Usage-id_20260412200734_18-height>, <http://testwebsite/testProgram#Usage-id_20260412200734_188-allergies>, <http://testwebsite/testProgram#Usage-id_20260412200734_34-foodPreferences>, <http://testwebsite/testProgram#Usage-id_20260412200734_726-bodyMassIndex>, <http://testwebsite/testProgram#Usage-id_20260412200734_736-age>, <http://testwebsite/testProgram#Usage-id_20260412200734_862-weight>, <http://testwebsite/testProgram#Usage-id_20260412200734_929-diagnosis> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:34@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200734_145-gender>, <http://testwebsite/testProgram#Data-id_20260412200734_18-height>, <http://testwebsite/testProgram#Data-id_20260412200734_188-allergies>, <http://testwebsite/testProgram#Data-id_20260412200734_34-foodPreferences>, <http://testwebsite/testProgram#Data-id_20260412200734_726-bodyMassIndex>, <http://testwebsite/testProgram#Data-id_20260412200734_736-age>, <http://testwebsite/testProgram#Data-id_20260412200734_862-weight>, <http://testwebsite/testProgram#Data-id_20260412200734_929-diagnosis> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:03@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:system_prompt_generator-Association-id_20260413053504_806> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053504_988-system_prompt> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053504_428-foodPreferences>, <http://testwebsite/testProgram#Usage-id_20260413053504_482-age>, <http://testwebsite/testProgram#Usage-id_20260413053504_560-bodyMassIndex>, <http://testwebsite/testProgram#Usage-id_20260413053504_619-height>, <http://testwebsite/testProgram#Usage-id_20260413053504_802-allergies>, <http://testwebsite/testProgram#Usage-id_20260413053504_891-weight>, <http://testwebsite/testProgram#Usage-id_20260413053504_921-gender>, <http://testwebsite/testProgram#Usage-id_20260413053504_964-diagnosis> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:03@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053504_428-foodPreferences>, <http://testwebsite/testProgram#Data-id_20260413053504_482-age>, <http://testwebsite/testProgram#Data-id_20260413053504_560-bodyMassIndex>, <http://testwebsite/testProgram#Data-id_20260413053504_619-height>, <http://testwebsite/testProgram#Data-id_20260413053504_802-allergies>, <http://testwebsite/testProgram#Data-id_20260413053504_891-weight>, <http://testwebsite/testProgram#Data-id_20260413053504_921-gender>, <http://testwebsite/testProgram#Data-id_20260413053504_964-diagnosis> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200740_99> .
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053510_114> .
 
-<http://testwebsite/testProgram#id_20260412200740_99>
+<http://testwebsite/testProgram#id_20260413053510_114>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
-    <http://semanticscience.org/resource/SIO_000369> <http://testwebsite/testProgram#Generative_Task-id_20260412200740_99> ;
+    <http://semanticscience.org/resource/SIO_000369> <http://testwebsite/testProgram#Generative_Task-id_20260413053510_114> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:40@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:llm_chat-Association-id_20260412200740_99> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200740_864-generated_answer> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200740_301-system_prompt>, <http://testwebsite/testProgram#Usage-id_20260412200740_707-user_prompt> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:34@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200734_410-system_prompt>, <http://testwebsite/testProgram#Data-id_20260412200740_707-user_prompt> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:10@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:llm_chat-Association-id_20260413053510_114> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053510_2-generated_answer> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053510_779-system_prompt>, <http://testwebsite/testProgram#Usage-id_20260413053510_961-user_prompt> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:04@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053504_593-system_prompt>, <http://testwebsite/testProgram#Data-id_20260413053510_961-user_prompt> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200742_397> .
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053513_620> .
 
-<http://testwebsite/testProgram#id_20260412200742_397>
+<http://testwebsite/testProgram#id_20260413053513_620>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
-    <http://semanticscience.org/resource/SIO_000369> <http://testwebsite/testProgram#Generative_Task-id_20260412200742_397> ;
+    <http://semanticscience.org/resource/SIO_000369> <http://testwebsite/testProgram#Generative_Task-id_20260413053513_620> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:42@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:information_extractor-Association-id_20260412200742_397> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200742_15-extracts> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200742_412-text> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:40@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200740_557-generated_answer> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:13@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:information_extractor-Association-id_20260413053513_620> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053513_136-extracts> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053513_300-text> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:10@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053510_702-generated_answer> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200743_103>, <http://testwebsite/testProgram#id_20260412200743_290>, <http://testwebsite/testProgram#id_20260412200743_818>, <http://testwebsite/testProgram#id_20260412200743_952>, <http://testwebsite/testProgram#id_20260412200744_221>, <http://testwebsite/testProgram#id_20260412200744_387>, <http://testwebsite/testProgram#id_20260412200744_460>, <http://testwebsite/testProgram#id_20260412200744_624>, <http://testwebsite/testProgram#id_20260412200744_720>, <http://testwebsite/testProgram#id_20260412200744_854>, <http://testwebsite/testProgram#id_20260412200744_909>, <http://testwebsite/testProgram#id_20260412200745_467>, <http://testwebsite/testProgram#id_20260412200745_473> .
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053516_230>, <http://testwebsite/testProgram#id_20260413053516_919>, <http://testwebsite/testProgram#id_20260413053517_517>, <http://testwebsite/testProgram#id_20260413053517_9>, <http://testwebsite/testProgram#id_20260413053521_282>, <http://testwebsite/testProgram#id_20260413053528_218>, <http://testwebsite/testProgram#id_20260413053529_836>, <http://testwebsite/testProgram#id_20260413053530_1000>, <http://testwebsite/testProgram#id_20260413053530_913>, <http://testwebsite/testProgram#id_20260413053534_815>, <http://testwebsite/testProgram#id_20260413053538_112>, <http://testwebsite/testProgram#id_20260413053538_218>, <http://testwebsite/testProgram#id_20260413053538_250>, <http://testwebsite/testProgram#id_20260413053538_36> .
 
-<http://testwebsite/testProgram#id_20260412200743_103>
-    <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:43@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200743_103> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200743_243-kg_info> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200743_186-entity> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:43@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200742_835-extracts>, <http://testwebsite/testProgram#Data-id_20260412200743_406-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200743_720-kg_info> ;
-    <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
-
-<http://testwebsite/testProgram#id_20260412200743_290>
+<http://testwebsite/testProgram#id_20260413053516_230>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:42@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200743_290> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200743_40-kg_info> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200743_614-entity> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:42@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200742_131-extracts>, <http://testwebsite/testProgram#Data-id_20260412200743_917-kg_info> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:16@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053516_230> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053516_96-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053516_881-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:16@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_523-extracts>, <http://testwebsite/testProgram#Data-id_20260413053516_235-kg_info> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
 
-<http://testwebsite/testProgram#id_20260412200743_818>
+<http://testwebsite/testProgram#id_20260413053516_919>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:43@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200743_818> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200743_350-kg_info> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200743_898-entity> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:43@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200742_489-extracts>, <http://testwebsite/testProgram#Data-id_20260412200743_489-kg_info> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:16@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053516_919> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053516_229-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053516_240-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:13@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_488-extracts>, <http://testwebsite/testProgram#Data-id_20260413053516_521-kg_info> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
 
-<http://testwebsite/testProgram#id_20260412200743_952>
+<http://testwebsite/testProgram#id_20260413053517_517>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:43@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200743_952> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200743_274-kg_info> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200743_751-entity> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:43@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200742_128-extracts>, <http://testwebsite/testProgram#Data-id_20260412200743_967-kg_info> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:17@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053517_517> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053517_805-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053517_244-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:17@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_954-extracts>, <http://testwebsite/testProgram#Data-id_20260413053517_927-kg_info> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
 
-<http://testwebsite/testProgram#id_20260412200744_221>
+<http://testwebsite/testProgram#id_20260413053517_9>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_221> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200744_374-kg_info> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200744_299-entity> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:43@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200742_653-extracts>, <http://testwebsite/testProgram#Data-id_20260412200744_8-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_983-kg_info> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:17@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053517_9> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053517_445-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053517_987-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:16@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_669-extracts>, <http://testwebsite/testProgram#Data-id_20260413053517_834-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053517_895-kg_info> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
 
-<http://testwebsite/testProgram#id_20260412200744_387>
+<http://testwebsite/testProgram#id_20260413053521_282>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_387> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200744_992-kg_info> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200744_448-entity> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200742_679-extracts>, <http://testwebsite/testProgram#Data-id_20260412200744_511-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_941-kg_info> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:21@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053521_282> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053521_235-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053521_431-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:17@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_223-extracts>, <http://testwebsite/testProgram#Data-id_20260413053521_417-kg_info> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
 
-<http://testwebsite/testProgram#id_20260412200744_460>
+<http://testwebsite/testProgram#id_20260413053528_218>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_460> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200744_817-kg_info> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200744_838-entity> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200742_308-extracts>, <http://testwebsite/testProgram#Data-id_20260412200744_773-kg_info> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:28@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053528_218> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053528_853-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053528_469-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:21@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_82-extracts>, <http://testwebsite/testProgram#Data-id_20260413053528_554-kg_info> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
 
-<http://testwebsite/testProgram#id_20260412200744_624>
+<http://testwebsite/testProgram#id_20260413053529_836>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_624> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200744_867-kg_info> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200744_625-entity> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200742_85-extracts>, <http://testwebsite/testProgram#Data-id_20260412200744_435-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_935-kg_info> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:29@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053529_836> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053529_924-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053529_556-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:28@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_187-extracts>, <http://testwebsite/testProgram#Data-id_20260413053529_151-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053529_770-kg_info> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
 
-<http://testwebsite/testProgram#id_20260412200744_720>
+<http://testwebsite/testProgram#id_20260413053530_1000>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_720> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200744_997-kg_info> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200744_233-entity> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200742_523-extracts>, <http://testwebsite/testProgram#Data-id_20260412200744_950-kg_info> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:30@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053530_1000> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053530_713-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053530_599-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:30@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_372-extracts>, <http://testwebsite/testProgram#Data-id_20260413053530_362-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053530_977-kg_info> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
 
-<http://testwebsite/testProgram#id_20260412200744_854>
+<http://testwebsite/testProgram#id_20260413053530_913>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_854> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200744_273-kg_info> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200744_761-entity> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200742_983-extracts>, <http://testwebsite/testProgram#Data-id_20260412200744_787-kg_info> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:30@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053530_913> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053530_201-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053530_240-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:29@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_487-extracts>, <http://testwebsite/testProgram#Data-id_20260413053530_585-kg_info> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
 
-<http://testwebsite/testProgram#id_20260412200744_909>
+<http://testwebsite/testProgram#id_20260413053534_815>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200744_909> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200744_3-kg_info> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200744_101-entity> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200742_26-extracts>, <http://testwebsite/testProgram#Data-id_20260412200744_331-kg_info> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:34@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053534_815> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053534_186-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053534_973-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:30@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_353-extracts>, <http://testwebsite/testProgram#Data-id_20260413053534_133-kg_info> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
 
-<http://testwebsite/testProgram#id_20260412200745_192>
-    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260412200743_406-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200743_489-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200743_720-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200743_917-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200743_967-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_331-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_435-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_511-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_773-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_787-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_8-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_935-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_941-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_950-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200744_983-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200745_116-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200745_496-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200745_516-kg_info> ;
+<http://testwebsite/testProgram#id_20260413053538_112>
+    <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:38@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053538_112> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053538_911-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053538_347-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:38@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_571-extracts>, <http://testwebsite/testProgram#Data-id_20260413053538_933-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_951-kg_info> ;
+    <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
+
+<http://testwebsite/testProgram#id_20260413053538_218>
+    <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:38@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053538_218> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053538_977-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053538_125-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:38@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_332-extracts>, <http://testwebsite/testProgram#Data-id_20260413053539_701-kg_info> ;
+    <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
+
+<http://testwebsite/testProgram#id_20260413053538_250>
+    <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:38@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053538_250> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053538_997-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053538_913-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:38@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_174-extracts>, <http://testwebsite/testProgram#Data-id_20260413053538_547-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_650-kg_info> ;
+    <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
+
+<http://testwebsite/testProgram#id_20260413053538_36>
+    <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
+    a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:38@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260413053538_36> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053538_698-kg_info> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053538_408-entity> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:34@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053513_701-extracts>, <http://testwebsite/testProgram#Data-id_20260413053538_504-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_740-kg_info> ;
+    <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
+    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
+
+<http://testwebsite/testProgram#id_20260413053539_141>
+    <http://purl.dataone.org/provone/2015/01/15/ontology#hadMember> <http://testwebsite/testProgram#Data-id_20260413053516_235-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053516_521-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053517_834-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053517_895-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053517_927-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053521_417-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053528_554-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053529_151-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053529_770-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053530_362-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053530_585-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053530_977-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053534_133-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_504-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_547-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_650-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_740-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_933-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053538_951-kg_info>, <http://testwebsite/testProgram#Data-id_20260413053539_701-kg_info> ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Collection> ;
-    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
+    <http://www.w3.org/ns/prov#wasGeneratedBy> <http://testwebsite/testProgram#id_20260413053539_359> .
 
-<http://testwebsite/testProgram#id_20260412200745_467>
+<http://testwebsite/testProgram#id_20260413053539_359>
     <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
     a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:45@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200745_467> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200745_568-kg_info> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200745_832-entity> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:45@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200742_916-extracts>, <http://testwebsite/testProgram#Data-id_20260412200745_496-kg_info>, <http://testwebsite/testProgram#Data-id_20260412200745_516-kg_info> ;
-    <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
-
-<http://testwebsite/testProgram#id_20260412200745_473>
-    <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:45@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260412200745_473> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200745_89-kg_info> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200745_995-entity> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:44@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200742_324-extracts>, <http://testwebsite/testProgram#Data-id_20260412200745_116-kg_info> ;
-    <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> ;
-    <http://www.w3.org/ns/prov#wasInformedBy> <http://testwebsite/testProgram#id_20260412200745_507> .
-
-<http://testwebsite/testProgram#id_20260412200745_507>
-    <http://purl.org/dc/terms#identifier> "1_1@en^^<xsd:string>" ;
-    a <http://purl.dataone.org/provone/2015/01/15/ontology#Execution> ;
-    <http://www.w3.org/ns/prov#endedAt> "2026-04-12 20:07:45@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:query_result_post_processor-Association-id_20260412200745_507> ;
-    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260412200745_978-post_processed_output> ;
-    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260412200745_823-kg_knowledge> ;
-    <http://www.w3.org/ns/prov#startedAt> "2026-04-12 20:07:45@en^^<xsd:string>" ;
-    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260412200745_176-post_processed_output>, <http://testwebsite/testProgram#id_20260412200745_192> ;
+    <http://www.w3.org/ns/prov#endedAt> "2026-04-13 05:35:39@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#qualifiedAssociation> <http://testwebsite/testProgram#ChatBS-NexGen:query_result_post_processor-Association-id_20260413053539_359> ;
+    <http://www.w3.org/ns/prov#qualifiedGeneration> <http://testwebsite/testProgram#Generation-id_20260413053539_337-post_processed_output> ;
+    <http://www.w3.org/ns/prov#qualifiedUsage> <http://testwebsite/testProgram#Usage-id_20260413053539_947-kg_knowledge> ;
+    <http://www.w3.org/ns/prov#startedAt> "2026-04-13 05:35:39@en^^<xsd:string>" ;
+    <http://www.w3.org/ns/prov#used> <http://testwebsite/testProgram#Data-id_20260413053539_346-post_processed_output>, <http://testwebsite/testProgram#id_20260413053539_141> ;
     <http://www.w3.org/ns/prov#wasAssociatedWith> <http://testwebsite/testProgram#test_user> .
 
 <http://testwebsite/testProgram#information_extractor>
@@ -1310,6 +1414,5 @@ using: gpt-4o@en^^<xsd:string>""" .
     <http://www.w3.org/2000/01/rdf-schema#label> "Input port for weight@en^^<xsd:string>" .
 
 <http://testwebsite/testProgram#test_user>
-    a <http://www.w3.org/ns/prov#Agent> ;
-    <http://www.w3.org/2000/01/rdf-schema#label> "Test User" .
+    a <http://www.w3.org/ns/prov#Agent> .
 
