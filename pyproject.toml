@@ -12,6 +12,7 @@ dependencies = [
     "langchain-community>=0.4.1",
     "langchain-openai>=1.1.10",
     "marimo[recommended]>=0.22.0",
+    "notebook>=7.5.5",
     "pandas>=3.0.1",
     "pymilvus>=2.5.0",
     "pytest>=9.0.2",
