@@ -2,3 +2,12 @@
 	path = usecases/chatbs/ChatBS-NexGen
 	url = https://github.rpi.edu/TetherlessWorld/ChatBS-NexGen.git
 	branch = main
+[submodule "baselines/MindMAP"]
+	path = baselines/MindMAP
+	url = https://github.com/wyl-willing/MindMap.git
+[submodule "baselines/Search-in-the-Chain"]
+	path = baselines/Search-in-the-Chain
+	url = https://github.com/xsc1234/Search-in-the-Chain.git
+[submodule "baselines/ToQD"]
+	path = baselines/ToQD
+	url = https://github.com/DCVDB/ToQD.git

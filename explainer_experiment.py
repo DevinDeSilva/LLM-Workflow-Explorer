@@ -1,7 +1,36 @@
+import argparse
+from pathlib import Path
+import sys
+
 import marimo
 
 __generated_with = "0.23.0"
 app = marimo.App()
+
+
+def _get_evaluation_choices() -> list[str]:
+    evaluations_dir = Path(__file__).resolve().parent / "evaluations"
+    return sorted(
+        path.name
+        for path in evaluations_dir.iterdir()
+        if path.is_dir() and path.name != "test_questions"
+    )
+
+
+def _parse_config_path() -> str:
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument(
+        "--evaluation",
+        choices=_get_evaluation_choices(),
+        default="calibration",
+        help="Evaluation folder under evaluations/ to load config from.",
+    )
+    args, remaining = parser.parse_known_args()
+    sys.argv = [sys.argv[0], *remaining]
+    return str(Path("evaluations") / args.evaluation / "config.yaml")
+
+
+CONFIG_PATH = _parse_config_path()
 
 
 @app.cell
@@ -22,7 +51,6 @@ def _():
     from src.utils.utils import create_timestamp_id
 
     load_dotenv()
-    CONFIG_PATH = "evaluations/calibration/config.yaml"
     logging.info(f"Loading config: {CONFIG_PATH}")
     lconfig = load_config(CONFIG_PATH)
     config = ExperimentConfig.model_validate(lconfig)

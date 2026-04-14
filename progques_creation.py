@@ -1,7 +1,36 @@
+import argparse
+from pathlib import Path
+import sys
+
 import marimo
 
 __generated_with = "0.22.0"
 app = marimo.App()
+
+
+def _get_evaluation_choices() -> list[str]:
+    evaluations_dir = Path(__file__).resolve().parent / "evaluations"
+    return sorted(
+        path.name
+        for path in evaluations_dir.iterdir()
+        if path.is_dir() and path.name != "test_questions"
+    )
+
+
+def _parse_config_path() -> str:
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument(
+        "--evaluation",
+        choices=_get_evaluation_choices(),
+        default="calibration",
+        help="Evaluation folder under evaluations/ to load config from.",
+    )
+    args, remaining = parser.parse_known_args()
+    sys.argv = [sys.argv[0], *remaining]
+    return str(Path("evaluations") / args.evaluation / "config.yaml")
+
+
+CONFIG_PATH = _parse_config_path()
 
 
 @app.cell
@@ -24,7 +53,6 @@ def _():
     from src.llm import LLM
 
     load_dotenv()
-    CONFIG_PATH = "evaluations/calibration/config.yaml"
     logging.info(f"Loading config: {CONFIG_PATH}")
     lconfig = load_config(CONFIG_PATH)
     config = ExperimentConfig.model_validate(lconfig)
@@ -41,26 +69,26 @@ def _():
         dspy,
         os,
         pd,
+        ic,
+        logging,
         tqdm,
     )
 
 
-app._unparsable_cell(
-    r"""
-    os.makedirs(os.path.dirname(config.explorer_config.log_file), exist_ok=True)_ok=True)
-    ic(config.explorer_config.log_file)
+@app.cell
+def _(config, ic, logging, os):
+    os.makedirs(os.path.dirname(config.question_creation_config.log_file), exist_ok=True)
+    ic(config.question_creation_config.log_file)
 
     logging.basicConfig(
-        filename=config.question_creation_config.log_file,               # Log to this file
-        filemode='a',                     # 'a' for append, 'w' to overwrite each time
-        level=logging.INFO,               # Capture INFO and above
-        format='%(asctime)s - %(levelname)s - %(message)s', # Custom format
-        datefmt='%Y-%m-%d %H:%M:%S'       # Custom date format
+        filename=config.question_creation_config.log_file,
+        filemode='a',
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
     )
     logger = logging.getLogger(__name__)
-    """,
-    name="_"
-)
+    return (logger,)
 
 
 @app.cell
