@@ -9,20 +9,21 @@ file_paths:
   schema_loc: "schema/schemaV2.json"
   execution_kg_loc: "usecases/chatbs/data/1_sample_graph/chatbs_sample.ttl"
   metadata_loc: "usecases/chatbs/data/1_sample_graph/chatbs_sample_metadata.json"
-
+  ontology_path: "schema/WorkFlow.ttl"
+  
 explorer_config:
   kg_name: "ChatBS-NexGen"
   ontology_triples_path: "schema/extracted_ontology_triples.csv"
   parallel: True
-  temp_folder: "evaluations/calibration/exeprog_creation/tmp/programs"
+  temp_folder: "evaluations/calibration-base/exeprog_creation/tmp/programs"
   use_cache: False
-  explorer_metadata_loc: "evaluations/calibration/exeprog_creation/exeplorer_metadata.pkl"
-  exeprog_save_loc: "evaluations/calibration/exeprog_creation/exeplored_programs.pkl"
-  log_file: "evaluations/calibration/exeprog_creation/explorer_log.txt"
+  explorer_metadata_loc: "evaluations/calibration-base/exeprog_creation/exeplorer_metadata.pkl"
+  exeprog_save_loc: "evaluations/calibration-base/exeprog_creation/exeplored_programs.pkl"
+  log_file: "evaluations/calibration-base/exeprog_creation/explorer_log.txt"
 
 question_creation_config:
-  save_questions: "evaluations/calibration/ques_creation/SyntheticQuestionKG.csv"
-  log_file: "evaluations/calibration/ques_creation/question_creation_log.txt"
+  save_questions: "evaluations/calibration-base/ques_creation/SyntheticQuestionKG.csv"
+  log_file: "evaluations/calibration-base/ques_creation/question_creation_log.txt"
   llm_type: "lmstudio"
   llm_config:
     model: "lm_studio/qwen/qwen3.5-4b"
@@ -32,7 +33,7 @@ explainer_config:
   llm_type: "lmstudio"
   embedding_type: "lmstudio"
   vectordb_type: "milvus"
-  save_answer_loc: "evaluations/calibration/explainer/results"
+  save_answer_loc: "evaluations/calibration-base/explainer/LMWE"
 
   llm_config:
     model: "lm_studio/qwen/qwen3.5-4b"
@@ -40,20 +41,20 @@ explainer_config:
   
   vectordb_config:
     vector_dim: 1024
-    collection_name: "calibration"
+    collection_name: "calibration-base"
   
   embedding_config:
     model: 'text-embedding-bge-large-en-v1.5'
 
   object_search_config:
     search_limit: 3
-  log_file: "evaluations/calibration/explainer/explainer_log.txt"
+  log_file: "evaluations/calibration-base/explainer/explainer_log.txt"
   
   
 
 gt:
-  log_file: "evaluations/calibration/ground_truth/ground_truth_log.txt"
-  save_loc: "evaluations/calibration/ground_truth/ground_truth_data.json"
+  log_file: "evaluations/calibration-base/ground_truth/ground_truth_log.txt"
+  save_loc: "evaluations/calibration-base/ground_truth/ground_truth_data.json"
 
 ttl: 
   prefixes: [
