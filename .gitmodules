@@ -11,3 +11,6 @@
 [submodule "baselines/ToQD"]
 	path = baselines/ToQD
 	url = https://github.com/DCVDB/ToQD.git
+[submodule "baselines/grasp"]
+	path = baselines/grasp
+	url = https://github.com/ad-freiburg/grasp

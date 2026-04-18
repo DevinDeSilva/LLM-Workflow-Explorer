@@ -1,12 +1,14 @@
 from __future__ import annotations
 
+import asyncio
 import json
 import re
-from collections import defaultdict, deque
+from collections import defaultdict
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
-from typing import Any, Iterable, Optional, Sequence
+from typing import Any, Optional
 
+from pydantic import BaseModel, Field
 from rdflib import Graph, Literal, URIRef
 from rdflib.namespace import RDF, RDFS, SKOS
 
@@ -41,126 +43,112 @@ IDENTIFIER_PREDICATES = {
 MODEL_PREDICATES = {
     "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/llm_model",
 }
-IMPORTANT_PREDICATES = {
-    "prov:used",
-    "prov:wasGeneratedBy",
-    "prov:wasInformedBy",
-    "prov:qualifiedAssociation",
-    "prov:qualifiedUsage",
-    "prov:qualifiedGeneration",
-    "prov:wasAssociatedWith",
-    "prov:hadPlan",
-    "provone:hadEntity",
-    "provone:hadMember",
-    "provone:hadInPort",
-    "provone:hadOutPort",
-    "provone:hasInPort",
-    "provone:hasOutPort",
-    "sio:SIO_000229",
-    "sio:SIO_000230",
-    "sio:SIO_000232",
-    "sio:SIO_000313",
-    "sio:SIO_000369",
-    "workflow:llm_model",
-}
-STRUCTURAL_TYPES = {
-    "prov:Association",
-    "prov:Generation",
-    "prov:Usage",
-    "provone:Port",
-}
+PROV_VALUE = "http://www.w3.org/ns/prov#value"
+PROV_USED = "http://www.w3.org/ns/prov#used"
+PROV_WAS_GENERATED_BY = "http://www.w3.org/ns/prov#wasGeneratedBy"
+PROV_QUALIFIED_ASSOCIATION = "http://www.w3.org/ns/prov#qualifiedAssociation"
+PROV_QUALIFIED_GENERATION = "http://www.w3.org/ns/prov#qualifiedGeneration"
+PROV_HAD_PLAN = "http://www.w3.org/ns/prov#hadPlan"
+PROVONE_HAD_ENTITY = "http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity"
+WORKFLOW_EXECUTES_TASK = "http://semanticscience.org/resource/SIO_000369"
+WORKFLOW_LLM_INPUT = "http://semanticscience.org/resource/SIO_000230"
+
 STOPWORDS = {
     "a",
     "an",
     "and",
     "are",
-    "as",
-    "at",
-    "be",
-    "by",
     "did",
-    "do",
     "does",
+    "execution",
     "for",
     "from",
-    "had",
-    "has",
-    "have",
+    "given",
+    "happen",
+    "happened",
+    "handled",
     "how",
-    "i",
     "in",
     "is",
     "it",
-    "its",
+    "method",
     "of",
-    "on",
-    "or",
-    "that",
+    "program",
+    "prompt",
+    "request",
     "the",
     "their",
-    "this",
     "to",
+    "used",
+    "using",
     "was",
+    "were",
     "what",
-    "when",
-    "where",
     "which",
     "who",
     "why",
-    "with",
 }
-INTENT_KEYWORDS: dict[str, set[str]] = {
-    "model": {"model"},
-    "program": {"program", "plan", "function", "step"},
-    "execution": {"execution", "run", "ran"},
-    "input": {"input", "inputs", "used", "use", "prompt", "context"},
-    "output": {"output", "outputs", "generated", "generate", "produced", "result", "answer"},
-    "agent": {"agent", "user", "responsible", "who"},
-    "time": {"time", "when", "start", "started", "end", "ended"},
-    "explanation": {"happened", "explain", "summary", "trace", "workflow"},
-}
-TYPE_INTENT_BONUS: dict[str, dict[str, float]] = {
-    "model": {
-        "workflow:Large_Language_Models": 5.0,
-        "workflow:Large_Language_Model_Output": 3.0,
-        "workflow:Generative_Task": 2.0,
-    },
-    "program": {
-        "provone:Program": 5.0,
-        "provone:Execution": 2.0,
-    },
-    "execution": {
-        "provone:Execution": 5.0,
-        "workflow:Generative_Task": 2.5,
-    },
-    "input": {
-        "provone:Data": 2.5,
-        "provone:Collection": 2.5,
-        "provone:Port": 2.0,
-        "provone:Execution": 1.0,
-    },
-    "output": {
-        "provone:Data": 3.0,
-        "provone:Collection": 3.0,
-        "workflow:Large_Language_Model_Output": 3.0,
-        "provone:Execution": 1.0,
-    },
-    "agent": {
-        "provone:User": 4.0,
-        "prov:Agent": 4.0,
-        "provone:Execution": 1.0,
-    },
-    "time": {
-        "provone:Execution": 3.0,
-        "workflow:Large_Language_Models": 1.5,
-    },
-    "explanation": {
-        "provone:Execution": 3.0,
-        "provone:Program": 2.0,
-        "provone:Data": 2.0,
-        "workflow:Large_Language_Models": 2.0,
-    },
-}
+
+
+def _unique(items: list[Any]) -> list[Any]:
+    seen: set[Any] = set()
+    result: list[Any] = []
+    for item in items:
+        try:
+            key: Any = item if hash(item) is not None else repr(item)
+        except Exception:
+            key = repr(item)
+        if key in seen:
+            continue
+        seen.add(key)
+        result.append(item)
+    return result
+
+
+def _clean_literal_text(text: str) -> str:
+    cleaned = " ".join(text.split()).strip()
+    cleaned = re.sub(r"@[A-Za-z-]+(?:\^\^<[^>]+>)?$", "", cleaned)
+    cleaned = re.sub(r"\^\^<[^>]+>$", "", cleaned)
+    return cleaned.strip()
+
+
+def _normalize_text(text: str) -> str:
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9]+", " ", text.lower())).strip()
+
+
+def _humanize_identifier(value: str) -> str:
+    text = value.replace("_", " ").replace("-", " ")
+    text = re.sub(r"([a-z0-9])([A-Z])", r"\1 \2", text)
+    text = re.sub(r"\bid\b\s+\d+(?:\s+\d+)*", "", text, flags=re.IGNORECASE)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _local_name(iri: str) -> str:
+    if "#" in iri:
+        return iri.rsplit("#", 1)[1]
+    if "/" in iri:
+        return iri.rstrip("/").rsplit("/", 1)[1]
+    return iri
+
+
+def _run_async(coro: Any) -> Any:
+    try:
+        asyncio.get_running_loop()
+    except RuntimeError:
+        return asyncio.run(coro)
+
+    loop = asyncio.new_event_loop()
+    try:
+        return loop.run_until_complete(coro)
+    finally:
+        loop.close()
+
+
+def _tokens(text: str) -> set[str]:
+    normalized = _normalize_text(text)
+    if not normalized:
+        return set()
+    return {token for token in normalized.split() if token and token not in STOPWORDS}
 
 
 @dataclass(slots=True)
@@ -207,19 +195,49 @@ class EntityRecord:
     aliases: list[str] = field(default_factory=list)
     descriptions: list[str] = field(default_factory=list)
     identifiers: list[str] = field(default_factory=list)
-    literal_facts: list[tuple[str, str]] = field(default_factory=list)
     normalized_label: str = ""
-    label_tokens: set[str] = field(default_factory=set)
-    search_tokens: set[str] = field(default_factory=set)
-    search_text: str = ""
+    lexical_tokens: set[str] = field(default_factory=set)
+    model_name: str = ""
+
+
+@dataclass(slots=True)
+class TripleRecord:
+    subject_iri: str
+    subject_id: str
+    subject_label: str
+    predicate_iri: str
+    predicate_id: str
+    predicate_label: str
+    object_iri: Optional[str]
+    object_id: Optional[str]
+    object_label: str
+    object_is_literal: bool
+    context_line: str
+
+
+@dataclass(slots=True)
+class ExecutionRecord:
+    iri: str
+    id: str
+    label: str
+    program_iri: Optional[str]
+    program_label: str
+    used_entities: list[str]
+    generated_entities: list[str]
+    llm_entities: list[str]
+
+
+class LLMRewritePayload(BaseModel):
+    answer: str = Field(default="")
 
 
 class GroundedWorkflowBaseline:
     """
-    A deterministic baseline for workflow explanation over a provenance KG.
+    Grounding-first workflow explanation baseline.
 
-    The baseline loads the execution KG together with the workflow ontology and
-    returns grounded natural-language answers plus the KG entities used.
+    The baseline builds a local index over the KG and answers questions from
+    retrieved entities and provenance relations. If an LLM is supplied, it is
+    only used to rewrite the already-grounded summary.
     """
 
     def __init__(
@@ -229,16 +247,20 @@ class GroundedWorkflowBaseline:
         schema_json_path: str | Path,
         metadata_path: str | Path | None = None,
         *,
-        max_hops: int = 2,
-        max_grounded_entities: int = 6,
+        application_description: str = "",
+        llm: Any | None = None,
+        llm_type: str = "openai",
+        llm_library: str = "langchain",
+        llm_config: Optional[dict[str, Any]] = None,
+        max_relevant_entities: int = 6,
         max_evidence: int = 8,
     ) -> None:
         self.kg_path = Path(kg_path)
         self.ontology_path = Path(ontology_path)
         self.schema_json_path = Path(schema_json_path)
         self.metadata_path = Path(metadata_path) if metadata_path else None
-        self.max_hops = max_hops
-        self.max_grounded_entities = max_grounded_entities
+        self.application_description = application_description.strip()
+        self.max_relevant_entities = max_relevant_entities
         self.max_evidence = max_evidence
 
         self.kg = Graph()
@@ -249,44 +271,556 @@ class GroundedWorkflowBaseline:
 
         self.namespaces = self._load_namespaces()
         self.schema = self._load_schema()
-        self.schema_metadata = self._build_schema_metadata()
         self.entities = self._build_entity_index()
+        self.predicates = self._build_predicate_index()
+        self.triples = self._build_triples()
+        self.outgoing_triples = self._build_triple_adjacency(direction="outgoing")
+        self.incoming_triples = self._build_triple_adjacency(direction="incoming")
+        self.execution_records = self._build_execution_records()
+
+        self.llm = llm
+        if self.llm is None and llm_config is not None:
+            from src.llm import LLM
+
+            self.llm = LLM(llm_type, llm_library, **llm_config)
 
     def request(self, user_query: str) -> dict[str, Any]:
-        response = self.answer(user_query)
-        return response.to_dict()
+        return self.answer(user_query).to_dict()
 
     def answer(self, user_query: str) -> ExplanationResponse:
-        query = user_query.strip()
-        if not query:
+        question = user_query.strip()
+        if not question:
             return ExplanationResponse(
-                answer="The question is empty, so there is no grounded explanation to return.",
+                answer="The question is empty, so there is no answer to return.",
                 relevant_entities=[],
                 evidence=[],
             )
 
-        query_tokens = set(_tokenize(query))
-        intents = self._detect_intents(query_tokens)
-        anchors = self._ground_entities(query, query_tokens, intents)
-
-        if not anchors:
-            return ExplanationResponse(
-                answer=(
-                    "I could not ground the question to any entity in the knowledge graph. "
-                    "Try mentioning a workflow step, execution, prompt, output, or model name."
-                ),
-                relevant_entities=[],
-                evidence=[],
+        answer_text, relevant_entities, evidence = self._answer_grounded(question)
+        if self.llm is not None:
+            answer_text = self._rewrite_with_llm(
+                question=question,
+                answer_text=answer_text,
+                relevant_entities=relevant_entities,
+                evidence=evidence,
             )
+        relevant_entities = relevant_entities[: self.max_relevant_entities]
+        answer_text = self._attach_entity_citations(answer_text, relevant_entities)
 
-        entity_scores, evidence = self._collect_neighborhood(anchors, query_tokens, intents)
-        relevant_entities = self._build_relevant_entities(entity_scores, intents)
-        answer = self._compose_answer(query, relevant_entities, evidence, intents)
         return ExplanationResponse(
-            answer=answer,
+            answer=answer_text,
             relevant_entities=relevant_entities,
             evidence=evidence[: self.max_evidence],
         )
+
+    def _attach_entity_citations(
+        self,
+        answer: str,
+        relevant_entities: list[RelevantEntity],
+    ) -> str:
+        cleaned_answer = re.sub(r"\s*<cite,\s*id=\d+>.*?</cite>", "", answer).strip()
+        if not relevant_entities:
+            return cleaned_answer
+
+        citations = " ".join(
+            f"<cite, id={index}>{entity.label}</cite>"
+            for index, entity in enumerate(relevant_entities)
+        )
+        if not cleaned_answer:
+            return citations
+        return f"{cleaned_answer} {citations}"
+
+    def _answer_grounded(
+        self, question: str
+    ) -> tuple[str, list[RelevantEntity], list[EvidenceTriple]]:
+        intent = self._detect_intent(question)
+
+        if intent == "model":
+            result = self._answer_model_question(question)
+            if result is not None:
+                return result
+
+        if intent == "inputs":
+            result = self._answer_inputs_question(question)
+            if result is not None:
+                return result
+
+        result = self._answer_data_lineage_question(question)
+        if result is not None:
+            return result
+
+        return self._answer_generic_question(question)
+
+    def _answer_model_question(
+        self, question: str
+    ) -> tuple[str, list[RelevantEntity], list[EvidenceTriple]] | None:
+        execution = self._find_best_execution(question)
+        if "prompt" in _normalize_text(question):
+            prompt_execution = self._best_prompt_execution()
+            if prompt_execution is not None:
+                execution = prompt_execution
+        if execution is None:
+            return None
+
+        llm_entity = self._pick_execution_llm(execution)
+        model_name = llm_entity.model_name if llm_entity else ""
+        if not model_name:
+            task_triple = self._find_first_triple(
+                execution.iri,
+                predicate_iri=WORKFLOW_EXECUTES_TASK,
+            )
+            if task_triple:
+                match = re.search(r"using:\s*([A-Za-z0-9._-]+)", task_triple.object_label)
+                if match:
+                    model_name = match.group(1)
+
+        if not model_name:
+            return None
+
+        input_labels = self._ordered_labels(execution.used_entities)
+        input_phrase = ", ".join(input_labels[:2]) if input_labels else "the available inputs"
+        answer = (
+            f"The {execution.program_label} execution used the {model_name} model to handle "
+            f"the prompt with inputs {input_phrase}."
+        )
+
+        relevant = self._build_relevant_entities(
+            [
+                execution.program_iri,
+                execution.iri,
+                llm_entity.iri if llm_entity else None,
+                *execution.used_entities[:2],
+            ]
+        )
+        evidence = self._build_evidence(
+            [
+                self._find_model_triple(llm_entity.iri) if llm_entity else None,
+                *self._usage_triples(execution.iri),
+            ]
+        )
+        return answer, relevant, evidence
+
+    def _answer_inputs_question(
+        self, question: str
+    ) -> tuple[str, list[RelevantEntity], list[EvidenceTriple]] | None:
+        execution = self._find_best_execution(question)
+        if execution is None:
+            return None
+
+        input_labels = self._ordered_labels(execution.used_entities)
+        if not input_labels:
+            return None
+
+        input_phrase = ", ".join(input_labels)
+        output_labels = self._ordered_labels(execution.generated_entities)
+        output_phrase = f" and produced {', '.join(output_labels)}" if output_labels else ""
+        answer = (
+            f"The {execution.program_label} execution ({execution.label}) ran with inputs "
+            f"{input_phrase}{output_phrase}."
+        )
+
+        relevant = self._build_relevant_entities(
+            [execution.iri, execution.program_iri, *execution.used_entities, *execution.generated_entities]
+        )
+        evidence = self._build_evidence(
+            [
+                *self._usage_triples(execution.iri),
+                *self._generation_triples(execution.iri),
+            ]
+        )
+        return answer, relevant, evidence
+
+    def _answer_data_lineage_question(
+        self, question: str
+    ) -> tuple[str, list[RelevantEntity], list[EvidenceTriple]] | None:
+        target_entity = self._find_best_entity(question)
+        if target_entity is None:
+            return None
+
+        generation_triples = self._outgoing_matching(target_entity.iri, PROV_WAS_GENERATED_BY)
+        usage_triples = self._incoming_matching(target_entity.iri, PROV_USED)
+
+        if not generation_triples and not usage_triples:
+            return None
+
+        primary_generation = self._prefer_execution_with_program(generation_triples)
+        generated_by_execution = (
+            self.execution_records.get(primary_generation.object_iri) if primary_generation and primary_generation.object_iri else None
+        )
+
+        usage_execution_records = [
+            self.execution_records[triple.subject_iri]
+            for triple in usage_triples
+            if triple.subject_iri in self.execution_records
+        ]
+        usage_execution_records = _unique(usage_execution_records)
+
+        answer_parts = [f"The {target_entity.label}"]
+        if generated_by_execution is not None:
+            answer_parts.append(
+                f"was produced by the {generated_by_execution.program_label} execution"
+            )
+        elif primary_generation is not None:
+            answer_parts.append(
+                f"was generated by {primary_generation.object_label}"
+            )
+
+        if usage_execution_records:
+            used_by_labels = ", ".join(record.program_label for record in usage_execution_records[:3])
+            connector = " and then" if len(answer_parts) > 1 else " was"
+            answer_parts.append(f"{connector} used by {used_by_labels}")
+
+        generated_outputs: list[str] = []
+        for record in usage_execution_records[:1]:
+            generated_outputs.extend(
+                label
+                for label in self._ordered_labels(record.generated_entities)
+                if label.lower() != target_entity.label.lower()
+            )
+        if generated_outputs:
+            answer_parts.append(f"to produce {', '.join(generated_outputs[:4])}")
+
+        answer = " ".join(part.strip() for part in answer_parts if part.strip()) + "."
+
+        relevant = self._build_relevant_entities(
+            [
+                target_entity.iri,
+                generated_by_execution.program_iri if generated_by_execution else None,
+                generated_by_execution.iri if generated_by_execution else None,
+                *[record.program_iri for record in usage_execution_records],
+                *[record.iri for record in usage_execution_records],
+            ]
+        )
+        evidence = self._build_evidence([primary_generation, *usage_triples])
+        return answer, relevant, evidence
+
+    def _answer_generic_question(
+        self, question: str
+    ) -> tuple[str, list[RelevantEntity], list[EvidenceTriple]]:
+        entity = self._find_best_entity(question)
+        execution = self._find_best_execution(question)
+
+        if execution is not None:
+            input_labels = self._ordered_labels(execution.used_entities)
+            output_labels = self._ordered_labels(execution.generated_entities)
+            summary_bits = [f"{execution.program_label} ({execution.label})"]
+            if input_labels:
+                summary_bits.append(f"used {', '.join(input_labels)}")
+            if output_labels:
+                summary_bits.append(f"generated {', '.join(output_labels)}")
+            answer = "The closest grounded workflow step is " + "; ".join(summary_bits) + "."
+            relevant = self._build_relevant_entities(
+                [execution.iri, execution.program_iri, *execution.used_entities, *execution.generated_entities]
+            )
+            evidence = self._build_evidence(
+                [
+                    *self._usage_triples(execution.iri),
+                    *self._generation_triples(execution.iri),
+                ]
+            )
+            return answer, relevant, evidence
+
+        if entity is not None:
+            triple_pool = self.outgoing_triples.get(entity.iri, [])[:3] + self.incoming_triples.get(entity.iri, [])[:3]
+            evidence = self._build_evidence(triple_pool)
+            answer = f"The closest grounded entity is {entity.label}."
+            relevant = self._build_relevant_entities([entity.iri])
+            return answer, relevant, evidence
+
+        return (
+            "I could not find enough grounded workflow evidence in the knowledge graph to answer that question.",
+            [],
+            [],
+        )
+
+    def _rewrite_with_llm(
+        self,
+        *,
+        question: str,
+        answer_text: str,
+        relevant_entities: list[RelevantEntity],
+        evidence: list[EvidenceTriple],
+    ) -> str:
+        entity_lines = "\n".join(
+            f"- {entity.id} [{entity.label}]"
+            for entity in relevant_entities
+        )
+        evidence_lines = "\n".join(
+            f"- {triple.subject_id} [{triple.subject_label}] {triple.predicate_id} "
+            f"[{triple.predicate_label}] {triple.object_id or json.dumps(triple.object_label, ensure_ascii=False)} "
+            f"[{triple.object_label}]"
+            for triple in evidence
+        )
+        prompt = (
+            "Rewrite the grounded answer so it reads naturally but stays fully faithful to the evidence.\n\n"
+            f"Question:\n{question}\n\n"
+            f"Grounded draft answer:\n{answer_text}\n\n"
+            f"Relevant entities:\n{entity_lines or '- none'}\n\n"
+            f"Evidence triples:\n{evidence_lines or '- none'}\n\n"
+            "Return JSON with one field:\n"
+            "- answer: a concise natural-language answer grounded only in the evidence"
+        )
+        system_prompt = (
+            "You rewrite grounded provenance answers. Do not add facts beyond the supplied evidence."
+        )
+
+        try:
+            if hasattr(self.llm, "structured_generate"):
+                response = _run_async(
+                    self.llm.structured_generate(
+                        prompt=prompt,
+                        structure=LLMRewritePayload,
+                        system_prompt=system_prompt,
+                    )
+                )
+                rewritten = LLMRewritePayload.model_validate(response).answer.strip()
+                if rewritten:
+                    return rewritten
+            if hasattr(self.llm, "generate"):
+                raw = _run_async(self.llm.generate(prompt=prompt, system_prompt=system_prompt)).strip()
+                if raw:
+                    return raw
+        except Exception:
+            return answer_text
+
+        return answer_text
+
+    def _detect_intent(self, question: str) -> str:
+        normalized = _normalize_text(question)
+        if "model" in normalized and any(term in normalized for term in {"handle", "handled", "using", "used"}):
+            return "model"
+        if "input" in normalized or "inputs" in normalized:
+            return "inputs"
+        if any(term in normalized for term in {"what happened", "happened to", "lineage", "trace"}):
+            return "lineage"
+        return "generic"
+
+    def _find_best_execution(self, question: str) -> ExecutionRecord | None:
+        entity = self._find_best_entity(question, prefer_execution_related=True)
+        if entity is not None:
+            if entity.iri in self.execution_records:
+                return self.execution_records[entity.iri]
+            execution = self._execution_from_neighbor(entity.iri)
+            if execution is not None:
+                return execution
+
+        scored: list[tuple[float, ExecutionRecord]] = []
+        question_tokens = _tokens(question)
+        for record in self.execution_records.values():
+            score = 0.0
+            label_tokens = _tokens(record.label) | _tokens(record.program_label)
+            overlap = question_tokens & label_tokens
+            if overlap:
+                score += 2.5 * len(overlap)
+            if "llm" in question_tokens and "llm" in label_tokens:
+                score += 1.5
+            if "chat" in question_tokens and "chat" in label_tokens:
+                score += 1.5
+            if "prompt" in question_tokens:
+                input_labels = " ".join(self._ordered_labels(record.used_entities))
+                if "prompt" in _normalize_text(input_labels):
+                    score += 1.5
+                if self._execution_has_prompt_inputs(record):
+                    score += 2.5
+            if score > 0:
+                scored.append((score, record))
+
+        if not scored:
+            return None
+
+        scored.sort(key=lambda item: (item[0], item[1].program_label == "LLM Chat"), reverse=True)
+        return scored[0][1]
+
+    def _find_best_entity(
+        self, question: str, *, prefer_execution_related: bool = False
+    ) -> EntityRecord | None:
+        question_tokens = _tokens(question)
+        normalized_question = _normalize_text(question)
+        best_score = 0.0
+        best_record: EntityRecord | None = None
+
+        for record in self.entities.values():
+            score = 0.0
+            overlap = question_tokens & record.lexical_tokens
+            if overlap:
+                score += 2.0 * len(overlap)
+
+            if record.normalized_label and record.normalized_label in normalized_question:
+                score += 3.0
+
+            if any(alias and _normalize_text(alias) in normalized_question for alias in record.aliases):
+                score += 2.0
+
+            if "generated answer" in normalized_question and record.normalized_label == "generated answer":
+                score += 4.0
+            if "user prompt" in normalized_question and record.normalized_label == "user prompt":
+                score += 4.0
+            if "system prompt" in normalized_question and record.normalized_label == "system prompt":
+                score += 4.0
+            if "llm chat" in normalized_question and record.normalized_label == "llm chat":
+                score += 4.0
+
+            if prefer_execution_related and self._execution_from_neighbor(record.iri) is not None:
+                score += 0.5
+
+            if score > best_score:
+                best_score = score
+                best_record = record
+
+        return best_record if best_score > 0 else None
+
+    def _execution_from_neighbor(self, entity_iri: str) -> ExecutionRecord | None:
+        if entity_iri in self.execution_records:
+            return self.execution_records[entity_iri]
+
+        for triple in self.incoming_triples.get(entity_iri, []):
+            if triple.subject_iri in self.execution_records and triple.predicate_iri in {PROV_USED}:
+                return self.execution_records[triple.subject_iri]
+        for triple in self.outgoing_triples.get(entity_iri, []):
+            if triple.object_iri in self.execution_records and triple.predicate_iri == PROV_WAS_GENERATED_BY:
+                return self.execution_records[triple.object_iri]
+        for execution in self.execution_records.values():
+            if entity_iri == execution.program_iri or entity_iri in execution.llm_entities:
+                return execution
+        return None
+
+    def _pick_execution_llm(self, execution: ExecutionRecord) -> EntityRecord | None:
+        for llm_iri in execution.llm_entities:
+            if llm_iri in self.entities:
+                return self.entities[llm_iri]
+        return None
+
+    def _ordered_labels(self, entity_iris: list[str]) -> list[str]:
+        labels = [
+            self.entities[iri].label
+            for iri in entity_iris
+            if iri in self.entities and self.entities[iri].label
+        ]
+        if not labels:
+            return []
+
+        priority = {
+            "user prompt": 0,
+            "system prompt": 1,
+            "generated answer": 2,
+        }
+        return sorted(
+            _unique(labels),
+            key=lambda label: (priority.get(label.lower(), 50), label.lower()),
+        )
+
+    def _execution_has_prompt_inputs(self, execution: ExecutionRecord) -> bool:
+        labels = {label.lower() for label in self._ordered_labels(execution.used_entities)}
+        return {"user prompt", "system prompt"} <= labels
+
+    def _best_prompt_execution(self) -> ExecutionRecord | None:
+        candidates = [
+            execution
+            for execution in self.execution_records.values()
+            if self._execution_has_prompt_inputs(execution)
+        ]
+        if not candidates:
+            return None
+        candidates.sort(key=lambda execution: execution.program_label == "LLM Chat", reverse=True)
+        return candidates[0]
+
+    def _find_model_triple(self, entity_iri: str) -> TripleRecord | None:
+        return self._find_first_triple(entity_iri, predicate_iri=next(iter(MODEL_PREDICATES)))
+
+    def _usage_triples(self, execution_iri: str) -> list[TripleRecord]:
+        return [
+            triple
+            for triple in self.outgoing_triples.get(execution_iri, [])
+            if triple.predicate_iri == PROV_USED
+        ]
+
+    def _generation_triples(self, execution_iri: str) -> list[TripleRecord]:
+        triples: list[TripleRecord] = []
+        for candidate in self.triples:
+            if candidate.predicate_iri == PROV_WAS_GENERATED_BY and candidate.object_iri == execution_iri:
+                triples.append(candidate)
+        return triples
+
+    def _incoming_matching(self, entity_iri: str, predicate_iri: str) -> list[TripleRecord]:
+        return [
+            triple
+            for triple in self.incoming_triples.get(entity_iri, [])
+            if triple.predicate_iri == predicate_iri
+        ]
+
+    def _outgoing_matching(self, entity_iri: str, predicate_iri: str) -> list[TripleRecord]:
+        return [
+            triple
+            for triple in self.outgoing_triples.get(entity_iri, [])
+            if triple.predicate_iri == predicate_iri
+        ]
+
+    def _prefer_execution_with_program(self, triples: list[TripleRecord]) -> TripleRecord | None:
+        if not triples:
+            return None
+
+        def sort_key(triple: TripleRecord) -> tuple[int, int]:
+            execution = self.execution_records.get(triple.object_iri or "")
+            if execution is None:
+                return (0, 0)
+            if execution.program_label == "LLM Chat":
+                return (3, 0)
+            if execution.program_label:
+                return (2, 0)
+            return (1, 0)
+
+        return max(triples, key=sort_key)
+
+    def _build_relevant_entities(self, entity_iris: list[Optional[str]]) -> list[RelevantEntity]:
+        relevant: list[RelevantEntity] = []
+        seen: set[str] = set()
+
+        for index, iri in enumerate(entity_iris):
+            if not iri or iri not in self.entities:
+                continue
+            record = self.entities[iri]
+            if record.curie in seen:
+                continue
+            seen.add(record.curie)
+            relevant.append(
+                RelevantEntity(
+                    id=record.curie,
+                    label=record.label,
+                    types=record.types,
+                    score=max(0.0, 1.0 - (index * 0.1)),
+                )
+            )
+        return relevant
+
+    def _build_evidence(self, triples: list[TripleRecord | None]) -> list[EvidenceTriple]:
+        evidence: list[EvidenceTriple] = []
+        seen: set[tuple[str, str, Optional[str], str]] = set()
+
+        for index, triple in enumerate(triple for triple in triples if triple is not None):
+            key = (triple.subject_id, triple.predicate_id, triple.object_id, triple.object_label)
+            if key in seen:
+                continue
+            seen.add(key)
+            evidence.append(
+                EvidenceTriple(
+                    subject_id=triple.subject_id,
+                    subject_label=triple.subject_label,
+                    predicate_id=triple.predicate_id,
+                    predicate_label=triple.predicate_label,
+                    object_id=triple.object_id,
+                    object_label=triple.object_label,
+                    object_is_literal=triple.object_is_literal,
+                    direction="outgoing",
+                    score=max(0.0, 1.0 - (index * 0.1)),
+                )
+            )
+        return evidence
+
+    def _find_first_triple(self, subject_iri: str, *, predicate_iri: str) -> TripleRecord | None:
+        for triple in self.outgoing_triples.get(subject_iri, []):
+            if triple.predicate_iri == predicate_iri:
+                return triple
+        return None
 
     def _load_namespaces(self) -> dict[str, str]:
         namespaces = dict(DEFAULT_NAMESPACES)
@@ -309,23 +843,6 @@ class GroundedWorkflowBaseline:
     def _load_schema(self) -> dict[str, Any]:
         return json.loads(self.schema_json_path.read_text(encoding="utf-8"))
 
-    def _build_schema_metadata(self) -> dict[str, dict[str, Any]]:
-        metadata: dict[str, dict[str, Any]] = {}
-        terms = list(self.schema.get("classes", []))
-        terms.extend(self.schema.get("object_properties", {}).keys())
-
-        for term in terms:
-            iri = self.expand_curie(term)
-            label = self._first_literal(self.ontology, iri, LABEL_PREDICATES)
-            description = self._first_literal(self.ontology, iri, DESCRIPTION_PREDICATES)
-            metadata[term] = {
-                "iri": iri,
-                "label": label or _humanize_identifier(_local_name(iri)),
-                "description": description or "",
-                "connections": self.schema.get("object_properties", {}).get(term, {}).get("connections", []),
-            }
-        return metadata
-
     def _build_entity_index(self) -> dict[str, EntityRecord]:
         entities: dict[str, EntityRecord] = {}
         for subject, predicate, obj in self.kg:
@@ -339,8 +856,6 @@ class GroundedWorkflowBaseline:
                     ),
                 )
                 predicate_iri = str(predicate)
-                predicate_curie = self.to_curie(predicate_iri)
-
                 if predicate_iri == str(RDF.type) and isinstance(obj, URIRef):
                     subject_record.types.append(self.to_curie(str(obj)))
                 elif isinstance(obj, Literal):
@@ -353,8 +868,8 @@ class GroundedWorkflowBaseline:
                         subject_record.descriptions.append(cleaned_literal)
                     elif predicate_iri in IDENTIFIER_PREDICATES:
                         subject_record.identifiers.append(cleaned_literal)
-                    else:
-                        subject_record.literal_facts.append((predicate_curie, cleaned_literal))
+                    elif predicate_iri in MODEL_PREDICATES:
+                        subject_record.model_name = cleaned_literal
 
             if isinstance(obj, URIRef):
                 entities.setdefault(
@@ -371,34 +886,203 @@ class GroundedWorkflowBaseline:
             record.aliases = _unique(record.aliases)
             record.descriptions = _unique(record.descriptions)
             record.identifiers = _unique(record.identifiers)
-            record.literal_facts = _unique(record.literal_facts)
             record.label = self._derive_entity_label(record)
             record.normalized_label = _normalize_text(record.label)
-
-            search_parts = [record.label, record.curie]
-            search_parts.extend(record.aliases)
-            search_parts.extend(record.descriptions[:2])
-            search_parts.extend(record.identifiers)
-            search_parts.extend(record.types)
-            search_parts.extend(
-                text for predicate, text in record.literal_facts if predicate in IMPORTANT_PREDICATES or len(text) < 200
+            record.lexical_tokens = _tokens(
+                " ".join(
+                    [
+                        record.label,
+                        record.curie,
+                        *record.aliases,
+                        *record.descriptions[:1],
+                        *record.identifiers,
+                    ]
+                )
             )
-
-            record.label_tokens = set(_tokenize(record.label))
-            record.search_tokens = set()
-            for part in search_parts:
-                record.search_tokens.update(_tokenize(part))
-            record.search_text = " ".join(_normalize_text(part) for part in search_parts if part)
         return entities
 
+    def _build_predicate_index(self) -> dict[str, dict[str, str]]:
+        predicates: dict[str, dict[str, str]] = {}
+        predicate_terms = set(self.schema.get("object_properties", {}).keys())
+        predicate_terms.update(self.to_curie(str(predicate)) for _, predicate, _ in self.kg)
+
+        for predicate_id in predicate_terms:
+            predicate_iri = self.expand_curie(predicate_id)
+            label = self._first_literal(self.ontology, predicate_iri, LABEL_PREDICATES)
+            description = self._first_literal(self.ontology, predicate_iri, DESCRIPTION_PREDICATES)
+            predicates[predicate_iri] = {
+                "id": self.to_curie(predicate_iri),
+                "label": label or _humanize_identifier(_local_name(predicate_iri)),
+                "description": description or "",
+            }
+        return predicates
+
+    def _build_triples(self) -> list[TripleRecord]:
+        records: list[TripleRecord] = []
+        for subject, predicate, obj in self.kg:
+            if not isinstance(subject, URIRef):
+                continue
+
+            subject_iri = str(subject)
+            predicate_iri = str(predicate)
+            subject_id = self.to_curie(subject_iri)
+            predicate_id = self.to_curie(predicate_iri)
+            subject_label = self.entities.get(subject_iri, EntityRecord(subject_iri, subject_id, subject_id)).label
+            predicate_label = self.predicates.get(
+                predicate_iri,
+                {"label": _humanize_identifier(_local_name(predicate_iri)) or predicate_id},
+            )["label"]
+
+            object_iri: Optional[str] = None
+            object_id: Optional[str] = None
+            object_is_literal = isinstance(obj, Literal)
+            if isinstance(obj, URIRef):
+                object_iri = str(obj)
+                object_id = self.to_curie(object_iri)
+                object_label = self.entities.get(object_iri, EntityRecord(object_iri, object_id, object_id)).label
+            else:
+                object_label = _clean_literal_text(str(obj))
+
+            context_line = (
+                f"{subject_id} [{subject_label}] "
+                f"{predicate_id} [{predicate_label}] "
+                f"{object_id if object_id else json.dumps(object_label, ensure_ascii=False)}"
+            )
+            if object_id:
+                context_line += f" [{object_label}]"
+
+            records.append(
+                TripleRecord(
+                    subject_iri=subject_iri,
+                    subject_id=subject_id,
+                    subject_label=subject_label,
+                    predicate_iri=predicate_iri,
+                    predicate_id=predicate_id,
+                    predicate_label=predicate_label,
+                    object_iri=object_iri,
+                    object_id=object_id,
+                    object_label=object_label,
+                    object_is_literal=object_is_literal,
+                    context_line=context_line,
+                )
+            )
+
+        records.sort(key=lambda record: record.context_line)
+        return records
+
+    def _build_triple_adjacency(self, *, direction: str) -> dict[str, list[TripleRecord]]:
+        adjacency: dict[str, list[TripleRecord]] = defaultdict(list)
+        if direction == "outgoing":
+            for triple in self.triples:
+                adjacency[triple.subject_iri].append(triple)
+            return adjacency
+
+        for triple in self.triples:
+            if triple.object_iri:
+                adjacency[triple.object_iri].append(triple)
+        return adjacency
+
+    def _build_execution_records(self) -> dict[str, ExecutionRecord]:
+        executions: dict[str, ExecutionRecord] = {}
+        execution_type_iri = self.expand_curie("provone:Execution")
+        for iri, record in self.entities.items():
+            if self.expand_curie("provone:Execution") not in {self.expand_curie(t) for t in record.types}:
+                continue
+
+            program_iri: Optional[str] = None
+            program_label = ""
+            for assoc in self.kg.objects(URIRef(iri), URIRef(PROV_QUALIFIED_ASSOCIATION)):
+                for plan in self.kg.objects(assoc, URIRef(PROV_HAD_PLAN)):
+                    program_iri = str(plan)
+                    if program_iri in self.entities:
+                        program_label = self.entities[program_iri].label
+                        break
+                if program_iri:
+                    break
+
+            used_entities = [
+                str(obj)
+                for obj in self.kg.objects(URIRef(iri), URIRef(PROV_USED))
+                if isinstance(obj, URIRef)
+            ]
+            generated_entities = [
+                triple.subject_iri
+                for triple in self.triples
+                if triple.predicate_iri == PROV_WAS_GENERATED_BY and triple.object_iri == iri
+            ]
+            llm_entities = self._llm_entities_for_execution(iri)
+            executions[iri] = ExecutionRecord(
+                iri=iri,
+                id=record.curie,
+                label=record.label,
+                program_iri=program_iri,
+                program_label=program_label or record.label,
+                used_entities=used_entities,
+                generated_entities=generated_entities,
+                llm_entities=llm_entities,
+            )
+
+        return executions
+
+    def _llm_entities_for_execution(self, execution_iri: str) -> list[str]:
+        execution_key = _local_name(execution_iri)
+        llm_candidates: list[str] = []
+        for iri, record in self.entities.items():
+            if not any(entity_type.startswith("workflow:Large_Language_Models") for entity_type in record.types):
+                continue
+            local_name = _local_name(iri)
+            if execution_key and execution_key in local_name:
+                llm_candidates.append(iri)
+
+        if llm_candidates:
+            return _unique(llm_candidates)
+
+        used_inputs = {
+            triple.object_iri
+            for triple in self.outgoing_triples.get(execution_iri, [])
+            if triple.predicate_iri == PROV_USED and triple.object_iri
+        }
+        for iri, record in self.entities.items():
+            if not record.model_name:
+                continue
+            llm_inputs = {
+                triple.object_iri
+                for triple in self.outgoing_triples.get(iri, [])
+                if triple.predicate_iri == WORKFLOW_LLM_INPUT and triple.object_iri
+            }
+            if used_inputs and used_inputs <= llm_inputs:
+                llm_candidates.append(iri)
+        return _unique(llm_candidates)
+
+    def to_curie(self, iri: str) -> str:
+        for prefix, namespace in sorted(self.namespaces.items(), key=lambda item: len(item[1]), reverse=True):
+            if iri.startswith(namespace):
+                return f"{prefix}:{iri[len(namespace):]}"
+        return iri
+
+    def expand_curie(self, value: str) -> str:
+        if "://" in value:
+            return value
+        if ":" not in value:
+            return value
+        prefix, local_name = value.split(":", 1)
+        namespace = self.namespaces.get(prefix)
+        return f"{namespace}{local_name}" if namespace else value
+
     def _derive_entity_label(self, record: EntityRecord) -> str:
+        if record.model_name:
+            return f"{record.model_name} model"
+
         if record.aliases:
-            return record.aliases[0]
+            alias = record.aliases[0]
+            if " " not in alias and any(char in alias for char in {"_", "-"}):
+                humanized_alias = _humanize_identifier(alias)
+                if humanized_alias:
+                    return humanized_alias
+            return alias
+
         if record.identifiers and any(entity_type == "provone:Execution" for entity_type in record.types):
             return f"execution {record.identifiers[0]}"
-        model_name = self._literal_for_predicate(record.iri, MODEL_PREDICATES)
-        if model_name:
-            return f"{model_name} model"
 
         local_name = _local_name(record.iri)
         cleaned_local_name = re.sub(r"^[A-Za-z_]+-id_[0-9_]+-", "", local_name)
@@ -407,742 +1091,12 @@ class GroundedWorkflowBaseline:
         humanized = _humanize_identifier(cleaned_local_name)
         return humanized or record.curie
 
-    def _detect_intents(self, query_tokens: set[str]) -> set[str]:
-        intents = {
-            intent
-            for intent, keywords in INTENT_KEYWORDS.items()
-            if query_tokens.intersection(keywords)
-        }
-        return intents or {"explanation"}
-
-    def _ground_entities(
-        self,
-        query: str,
-        query_tokens: set[str],
-        intents: set[str],
-    ) -> list[tuple[str, float]]:
-        normalized_query = _normalize_text(query)
-        scored_entities: list[tuple[str, float]] = []
-        for iri, record in self.entities.items():
-            score = self._score_entity(record, normalized_query, query_tokens, intents)
-            if score > 0:
-                scored_entities.append((iri, score))
-        scored_entities.sort(key=lambda item: item[1], reverse=True)
-        return scored_entities[: self.max_grounded_entities]
-
-    def _score_entity(
-        self,
-        record: EntityRecord,
-        normalized_query: str,
-        query_tokens: set[str],
-        intents: set[str],
-    ) -> float:
-        score = 0.0
-        overlap = query_tokens.intersection(record.search_tokens)
-        score += 2.0 * len(overlap)
-
-        label_overlap = query_tokens.intersection(record.label_tokens)
-        score += 1.5 * len(label_overlap)
-
-        if record.normalized_label and record.normalized_label in normalized_query:
-            score += 6.0
-
-        if record.curie.lower() in normalized_query:
-            score += 6.0
-
-        for predicate, literal_value in record.literal_facts[:8]:
-            literal_norm = _normalize_text(literal_value)
-            if literal_norm and literal_norm in normalized_query and len(literal_norm) > 8:
-                score += 3.0
-            literal_tokens = set(_tokenize(literal_value))
-            score += 0.3 * len(query_tokens.intersection(literal_tokens))
-            if predicate == "workflow:llm_model" and query_tokens.intersection({"model", "llm"}):
-                score += 4.0
-
-        for intent in intents:
-            for entity_type in record.types:
-                score += TYPE_INTENT_BONUS.get(intent, {}).get(entity_type, 0.0)
-
-        if "provone:Execution" in record.types:
-            program_iri = self._program_for_execution(record.iri)
-            if program_iri and program_iri in self.entities:
-                program_label = self.entities[program_iri].normalized_label
-                if program_label and program_label in normalized_query:
-                    score += 6.0
-
-        if "workflow:Large_Language_Models" in record.types:
-            connected_execution_labels = [
-                self.entities[program_iri].normalized_label
-                for execution_iri in self._executions_for_llm(record.iri)
-                for program_iri in [self._program_for_execution(execution_iri)]
-                if program_iri and program_iri in self.entities
-            ]
-            for execution_label in connected_execution_labels:
-                if execution_label and execution_label in normalized_query:
-                    score += 5.0
-
-            if "prompt" in query_tokens:
-                input_labels = [
-                    self.entities[data_iri].normalized_label
-                    for data_iri in self._objects(record.iri, "sio:SIO_000230")
-                    if data_iri in self.entities
-                ]
-                if any("user prompt" in label for label in input_labels):
-                    score += 3.0
-                if any("system prompt" in label for label in input_labels):
-                    score += 2.0
-
-        if any(entity_type in STRUCTURAL_TYPES for entity_type in record.types):
-            score -= 0.6
-
-        return score
-
-    def _collect_neighborhood(
-        self,
-        anchors: Sequence[tuple[str, float]],
-        query_tokens: set[str],
-        intents: set[str],
-    ) -> tuple[dict[str, float], list[EvidenceTriple]]:
-        entity_scores = {iri: score for iri, score in anchors}
-        evidence_by_key: dict[tuple[str, str, Optional[str], str], EvidenceTriple] = {}
-        queue = deque((iri, 0, score) for iri, score in anchors)
-        seen_best_depth = {iri: 0 for iri, _ in anchors}
-        anchor_ids = {iri for iri, _ in anchors}
-
-        while queue:
-            iri, depth, path_score = queue.popleft()
-            for evidence in self._iter_evidence_for_entity(iri):
-                evidence.score = self._score_evidence(evidence, query_tokens, intents, anchor_ids)
-                if evidence.score <= 0:
-                    continue
-
-                evidence_key = (
-                    evidence.subject_id,
-                    evidence.predicate_id,
-                    evidence.object_id,
-                    evidence.direction,
-                )
-                previous = evidence_by_key.get(evidence_key)
-                if previous is None or evidence.score > previous.score:
-                    evidence_by_key[evidence_key] = evidence
-
-                next_entity_id = evidence.object_id if evidence.direction == "outgoing" else evidence.subject_id
-                if evidence.object_is_literal or not next_entity_id:
-                    continue
-
-                next_iri = self.expand_curie(next_entity_id)
-                next_score = path_score * 0.45 + evidence.score
-                if next_score > entity_scores.get(next_iri, 0):
-                    entity_scores[next_iri] = next_score
-
-                if depth + 1 > self.max_hops:
-                    continue
-                best_depth = seen_best_depth.get(next_iri)
-                if best_depth is None or depth + 1 < best_depth or next_score > entity_scores.get(next_iri, 0):
-                    seen_best_depth[next_iri] = depth + 1
-                    queue.append((next_iri, depth + 1, next_score))
-
-        ranked_evidence = sorted(evidence_by_key.values(), key=lambda item: item.score, reverse=True)
-        return entity_scores, ranked_evidence[: self.max_evidence]
-
-    def _iter_evidence_for_entity(self, iri: str) -> Iterable[EvidenceTriple]:
-        node = URIRef(iri)
-        subject_record = self.entities.get(iri)
-        if subject_record is None:
-            return []
-
-        for predicate, obj in self.kg.predicate_objects(node):
-            predicate_curie = self.to_curie(str(predicate))
-            yield EvidenceTriple(
-                subject_id=subject_record.curie,
-                subject_label=subject_record.label,
-                predicate_id=predicate_curie,
-                predicate_label=self._predicate_label(predicate_curie),
-                object_id=self.to_curie(str(obj)) if isinstance(obj, URIRef) else None,
-                object_label=self._object_label(obj),
-                object_is_literal=not isinstance(obj, URIRef),
-                direction="outgoing",
-            )
-
-        for subject, predicate in self.kg.subject_predicates(node):
-            other_record = self.entities.get(str(subject))
-            if other_record is None:
-                continue
-            predicate_curie = self.to_curie(str(predicate))
-            yield EvidenceTriple(
-                subject_id=other_record.curie,
-                subject_label=other_record.label,
-                predicate_id=predicate_curie,
-                predicate_label=self._predicate_label(predicate_curie),
-                object_id=subject_record.curie,
-                object_label=subject_record.label,
-                object_is_literal=False,
-                direction="incoming",
-            )
-
-    def _score_evidence(
-        self,
-        evidence: EvidenceTriple,
-        query_tokens: set[str],
-        intents: set[str],
-        anchor_ids: set[str],
-    ) -> float:
-        score = 0.2
-        predicate_tokens = set(_tokenize(evidence.predicate_label))
-        subject_tokens = set(_tokenize(evidence.subject_label))
-        object_tokens = set(_tokenize(evidence.object_label))
-
-        score += 1.2 * len(query_tokens.intersection(predicate_tokens))
-        score += 1.0 * len(query_tokens.intersection(subject_tokens))
-        score += 1.0 * len(query_tokens.intersection(object_tokens))
-
-        if evidence.predicate_id in IMPORTANT_PREDICATES:
-            score += 1.2
-
-        if evidence.subject_id in anchor_ids or evidence.object_id in anchor_ids:
-            score += 1.5
-
-        if evidence.predicate_id == "workflow:llm_model" and "model" in intents:
-            score += 4.0
-        if evidence.predicate_id in {"prov:used", "provone:hadEntity"} and "input" in intents:
-            score += 2.0
-        if evidence.predicate_id in {"prov:qualifiedGeneration", "prov:wasGeneratedBy"} and "output" in intents:
-            score += 2.0
-        if evidence.predicate_id in {"prov:wasAssociatedWith", "prov:agent"} and "agent" in intents:
-            score += 2.0
-        if evidence.predicate_id in {"prov:startedAt", "prov:endedAt", "prov:atTime"} and "time" in intents:
-            score += 2.0
-
-        return score
-
-    def _build_relevant_entities(
-        self,
-        entity_scores: dict[str, float],
-        intents: set[str],
-    ) -> list[RelevantEntity]:
-        ranked_entities = sorted(entity_scores.items(), key=lambda item: item[1], reverse=True)
-        results: list[RelevantEntity] = []
-        seen_labels: set[str] = set()
-        for iri, score in ranked_entities:
-            record = self.entities.get(iri)
-            if record is None:
-                continue
-            if not record.types and not record.aliases and not record.literal_facts:
-                continue
-            adjusted_score = score
-            if any(entity_type in STRUCTURAL_TYPES for entity_type in record.types):
-                adjusted_score -= 1.0
-            if adjusted_score <= 0:
-                continue
-
-            normalized_label = record.normalized_label or record.curie.lower()
-            if normalized_label in seen_labels:
-                continue
-            seen_labels.add(normalized_label)
-
-            results.append(
-                RelevantEntity(
-                    id=record.curie,
-                    label=record.label,
-                    types=record.types,
-                    score=round(adjusted_score, 2),
-                )
-            )
-            if len(results) >= self.max_grounded_entities:
-                break
-
-        results.sort(
-            key=lambda entity: self._entity_priority(entity, intents),
-            reverse=True,
-        )
-        return results[: self.max_grounded_entities]
-
-    def _entity_priority(self, entity: RelevantEntity, intents: set[str]) -> float:
-        priority = entity.score
-        for intent in intents:
-            for entity_type in entity.types:
-                priority += TYPE_INTENT_BONUS.get(intent, {}).get(entity_type, 0.0)
-        if any(entity_type in STRUCTURAL_TYPES for entity_type in entity.types):
-            priority -= 0.75
-        return priority
-
-    def _compose_answer(
-        self,
-        query: str,
-        relevant_entities: list[RelevantEntity],
-        evidence: list[EvidenceTriple],
-        intents: set[str],
-    ) -> str:
-        answer_parts: list[str] = []
-        primary_entity = self._select_focus_entity(relevant_entities, intents)
-        if primary_entity:
-            primary_iri = self.expand_curie(primary_entity.id)
-            primary_description = self._describe_entity(primary_iri, intents)
-            if primary_description:
-                answer_parts.append(primary_description)
-
-            if "output" in intents or "explanation" in intents:
-                support_iri = self._support_entity_for(primary_iri, relevant_entities, {"provone:Execution", "workflow:Large_Language_Models"})
-                if support_iri and support_iri != primary_iri:
-                    support_description = self._describe_entity(support_iri, intents)
-                    if support_description and support_description not in answer_parts:
-                        answer_parts.append(support_description)
-            elif "model" in intents:
-                support_iri = self._support_entity_for(primary_iri, relevant_entities, {"provone:Execution"})
-                if support_iri and support_iri != primary_iri:
-                    support_description = self._describe_entity(support_iri, {"execution"})
-                    if support_description and support_description not in answer_parts:
-                        answer_parts.append(support_description)
-
-        if not answer_parts:
-            for entity in relevant_entities:
-                iri = self.expand_curie(entity.id)
-                description = self._describe_entity(iri, intents)
-                if description:
-                    answer_parts.append(description)
-                    break
-
-        if not answer_parts and evidence:
-            answer_parts.append(self._fallback_from_evidence(evidence[:3]))
-
-        if not answer_parts:
-            answer_parts.append(
-                "The graph contains related entities, but I could not assemble a grounded explanation from the matched neighborhood."
-            )
-
-        answer = " ".join(answer_parts)
-        if relevant_entities:
-            entity_names = ", ".join(entity.label for entity in relevant_entities[:4])
-            answer = f"{answer} Relevant KG entities: {entity_names}."
-        return answer
-
-    def _select_focus_entity(
-        self,
-        relevant_entities: Sequence[RelevantEntity],
-        intents: set[str],
-    ) -> Optional[RelevantEntity]:
-        type_priority = {
-            "model": ["workflow:Large_Language_Models", "provone:Execution", "provone:Data"],
-            "input": ["provone:Execution", "provone:Program", "workflow:Large_Language_Models", "provone:Data"],
-            "output": ["provone:Data", "provone:Execution", "workflow:Large_Language_Models", "provone:Program"],
-            "program": ["provone:Program", "provone:Execution"],
-            "execution": ["provone:Execution", "provone:Program"],
-            "agent": ["provone:User", "prov:Agent", "provone:Execution"],
-            "time": ["provone:Execution", "workflow:Large_Language_Models"],
-            "explanation": ["provone:Data", "provone:Execution", "provone:Program", "workflow:Large_Language_Models"],
-        }
-        ordered_types: list[str] = []
-        for intent in intents:
-            ordered_types.extend(type_priority.get(intent, []))
-        ordered_types.extend(type_priority["explanation"])
-
-        for preferred_type in ordered_types:
-            matching_entities = [
-                entity
-                for entity in relevant_entities
-                if preferred_type in entity.types
-            ]
-            if matching_entities:
-                return max(matching_entities, key=lambda entity: entity.score)
-
-        return relevant_entities[0] if relevant_entities else None
-
-    def _support_entity_for(
-        self,
-        primary_iri: str,
-        relevant_entities: Sequence[RelevantEntity],
-        preferred_types: set[str],
-    ) -> Optional[str]:
-        for entity in relevant_entities:
-            candidate_iri = self.expand_curie(entity.id)
-            if candidate_iri == primary_iri:
-                continue
-            if preferred_types.intersection(entity.types):
-                return candidate_iri
-        return None
-
-    def _describe_entity(self, iri: str, intents: set[str]) -> str:
-        record = self.entities.get(iri)
-        if record is None:
-            return ""
-
-        type_set = set(record.types)
-        if "workflow:Large_Language_Models" in type_set:
-            return self._describe_llm(iri, intents)
-        if "provone:Execution" in type_set:
-            return self._describe_execution(iri, intents)
-        if "provone:Program" in type_set:
-            return self._describe_program(iri, intents)
-        if type_set.intersection({"provone:Data", "provone:Collection", "workflow:Large_Language_Model_Output"}):
-            return self._describe_data_like_entity(iri, intents)
-        if type_set.intersection({"provone:User", "prov:Agent"}):
-            return self._describe_agent(iri, intents)
-
-        if "explanation" in intents:
-            return self._describe_generic_entity(iri)
+    def _first_literal(self, graph: Graph, subject_iri: str, predicate_iris: set[str]) -> str:
+        subject = URIRef(subject_iri)
+        for predicate_iri in predicate_iris:
+            for literal in graph.objects(subject, URIRef(predicate_iri)):
+                if isinstance(literal, Literal):
+                    cleaned = _clean_literal_text(str(literal))
+                    if cleaned:
+                        return cleaned
         return ""
-
-    def _describe_execution(self, iri: str, intents: Optional[set[str]] = None) -> str:
-        intents = intents or set()
-        record = self.entities[iri]
-        identifier = self._literal_for_predicate(iri, IDENTIFIER_PREDICATES)
-        label = f"execution {identifier}" if identifier else record.label
-        program_iri = self._program_for_execution(iri)
-        program_label = self.entities[program_iri].label if program_iri in self.entities else "an unknown program"
-        user_iri = self._first_object(iri, "prov:wasAssociatedWith")
-        user_label = self.entities[user_iri].label if user_iri in self.entities else None
-        start_time = self._literal_for_predicate(iri, {"prov:startedAt"})
-        end_time = self._literal_for_predicate(iri, {"prov:endedAt"})
-        input_labels = [self.entities[data_iri].label for data_iri in self._usage_entities_for_execution(iri) if data_iri in self.entities]
-        output_labels = [self.entities[data_iri].label for data_iri in self._generated_entities_for_execution(iri) if data_iri in self.entities]
-        model_names = self._models_for_execution(iri)
-        upstream_programs = [
-            self.entities[upstream_program].label
-            for upstream_program in self._upstream_programs_for_execution(iri)
-            if upstream_program in self.entities
-        ]
-
-        sentence = f"{label.capitalize()} ran {program_label}"
-        details: list[str] = []
-        if model_names:
-            details.append(f"using model {', '.join(model_names)}")
-        if user_label:
-            details.append(f"for {user_label}")
-        if start_time and end_time:
-            details.append(f"from {start_time} to {end_time}")
-        elif start_time:
-            details.append(f"starting at {start_time}")
-        if input_labels and (
-            not intents.intersection({"output", "time"})
-            or "input" in intents
-            or "execution" in intents
-        ):
-            details.append(f"with inputs {', '.join(_unique(input_labels[:4]))}")
-        if output_labels and ("input" not in intents or intents.intersection({"output", "explanation"})):
-            details.append(f"and produced {', '.join(_unique(output_labels[:4]))}")
-        if details:
-            sentence = f"{sentence} " + ", ".join(details)
-        sentence += "."
-        return sentence
-
-    def _describe_program(self, iri: str, intents: Optional[set[str]] = None) -> str:
-        record = self.entities[iri]
-        input_ports = [self.entities[port_iri].label for port_iri in self._objects(iri, "provone:hasInPort") if port_iri in self.entities]
-        output_ports = [self.entities[port_iri].label for port_iri in self._objects(iri, "provone:hasOutPort") if port_iri in self.entities]
-        execution_ids = []
-        for execution_iri in self._executions_for_program(iri):
-            identifier = self._literal_for_predicate(execution_iri, IDENTIFIER_PREDICATES)
-            execution_ids.append(identifier or self.entities[execution_iri].label)
-        description = record.descriptions[0] if record.descriptions else ""
-        parts = [f"{record.label} is a workflow program"]
-        if description:
-            parts.append(f"described as {description}")
-        if input_ports:
-            parts.append(f"with input ports {', '.join(_unique(input_ports[:4]))}")
-        if output_ports:
-            parts.append(f"and output ports {', '.join(_unique(output_ports[:4]))}")
-        if execution_ids:
-            parts.append(f"linked to executions {', '.join(_unique(execution_ids[:4]))}")
-        return ", ".join(parts) + "."
-
-    def _describe_llm(self, iri: str, intents: Optional[set[str]] = None) -> str:
-        intents = intents or set()
-        record = self.entities[iri]
-        model_name = self._literal_for_predicate(iri, MODEL_PREDICATES) or record.label
-        input_labels = [self.entities[data_iri].label for data_iri in self._objects(iri, "sio:SIO_000230") if data_iri in self.entities]
-        output_labels = []
-        for llm_output_iri in self._objects(iri, "sio:SIO_000229"):
-            output_labels.extend(
-                self.entities[target_iri].label
-                for target_iri in self._objects(llm_output_iri, "sio:SIO_000202")
-                if target_iri in self.entities
-            )
-        execution_labels = []
-        for execution_iri in self._executions_for_llm(iri):
-            identifier = self._literal_for_predicate(execution_iri, IDENTIFIER_PREDICATES)
-            execution_labels.append(identifier or self.entities[execution_iri].label)
-        sentence = f"The model node {record.label} uses {model_name}"
-        details: list[str] = []
-        if input_labels and (
-            not intents.intersection({"output", "time"})
-            or "input" in intents
-            or "model" in intents
-        ):
-            details.append(f"and consumes {', '.join(_unique(input_labels[:4]))}")
-        if output_labels and ("input" not in intents or intents.intersection({"output", "explanation", "model"})):
-            details.append(f"while producing {', '.join(_unique(output_labels[:4]))}")
-        if execution_labels:
-            details.append(f"during executions {', '.join(_unique(execution_labels[:4]))}")
-        if details:
-            sentence = f"{sentence} " + ", ".join(details)
-        return sentence + "."
-
-    def _describe_data_like_entity(self, iri: str, intents: Optional[set[str]] = None) -> str:
-        intents = intents or set()
-        record = self.entities[iri]
-        preview = self._literal_for_predicate(iri, {"prov:value"})
-        producer_execution = self._first_object(iri, "prov:wasGeneratedBy")
-        consumer_executions = list(self._subjects("prov:used", iri))
-        consumer_programs = [
-            self.entities[program_iri].label
-            for execution_iri in consumer_executions
-            for program_iri in [self._program_for_execution(execution_iri)]
-            if program_iri and program_iri in self.entities
-        ]
-
-        parts = [f"{record.label.capitalize()} is a data entity"]
-        if preview and not intents.intersection({"input", "time"}):
-            parts.append(f"with value \"{_truncate(preview, 160)}\"")
-        if producer_execution:
-            execution_label = self._execution_summary_label(producer_execution)
-            program_iri = self._program_for_execution(producer_execution)
-            if program_iri and program_iri in self.entities:
-                parts.append(
-                    f"produced by {execution_label} of {self.entities[program_iri].label}"
-                )
-            else:
-                parts.append(f"produced by {execution_label}")
-        if consumer_programs:
-            parts.append(f"used by {', '.join(_unique(consumer_programs[:4]))}")
-        elif consumer_executions:
-            consumer_labels = [self._execution_summary_label(execution_iri) for execution_iri in consumer_executions]
-            parts.append(f"used by {', '.join(_unique(consumer_labels[:4]))}")
-        return ", ".join(parts) + "."
-
-    def _describe_agent(self, iri: str, intents: Optional[set[str]] = None) -> str:
-        record = self.entities[iri]
-        execution_labels = [
-            self._execution_summary_label(execution_iri)
-            for execution_iri in self._subjects("prov:wasAssociatedWith", iri)
-        ]
-        if execution_labels:
-            return f"{record.label.capitalize()} is associated with executions {', '.join(_unique(execution_labels[:5]))}."
-        return f"{record.label.capitalize()} is an agent node in the workflow graph."
-
-    def _describe_generic_entity(self, iri: str) -> str:
-        record = self.entities[iri]
-        facts = [
-            f"{predicate} -> {text}"
-            for predicate, text in record.literal_facts[:3]
-        ]
-        if facts:
-            return f"{record.label.capitalize()} is connected to the following facts: {'; '.join(facts)}."
-        return f"{record.label.capitalize()} is a relevant entity in the workflow graph."
-
-    def _fallback_from_evidence(self, evidence: Sequence[EvidenceTriple]) -> str:
-        statements = []
-        for triple in evidence:
-            object_text = triple.object_label if triple.object_is_literal else triple.object_label
-            statements.append(
-                f"{triple.subject_label} {triple.predicate_label} {object_text}"
-            )
-        return "The most relevant graph facts are: " + "; ".join(statements) + "."
-
-    def _program_for_execution(self, execution_iri: str) -> Optional[str]:
-        association_iri = self._first_object(execution_iri, "prov:qualifiedAssociation")
-        if not association_iri:
-            return None
-        return self._first_object(association_iri, "prov:hadPlan")
-
-    def _usage_entities_for_execution(self, execution_iri: str) -> list[str]:
-        entities: list[str] = []
-        for usage_iri in self._objects(execution_iri, "prov:qualifiedUsage"):
-            entities.extend(self._objects(usage_iri, "provone:hadEntity"))
-        return _unique(entities)
-
-    def _generated_entities_for_execution(self, execution_iri: str) -> list[str]:
-        entities: list[str] = []
-        for generation_iri in self._objects(execution_iri, "prov:qualifiedGeneration"):
-            entities.extend(self._objects(generation_iri, "provone:hadEntity"))
-        return _unique(entities)
-
-    def _executions_for_program(self, program_iri: str) -> list[str]:
-        executions: list[str] = []
-        for association_iri in self._subjects("prov:hadPlan", program_iri):
-            executions.extend(self._subjects("prov:qualifiedAssociation", association_iri))
-        return _unique(executions)
-
-    def _executions_for_llm(self, llm_iri: str) -> list[str]:
-        executions: list[str] = []
-        for task_iri in self._subjects("prov:used", llm_iri):
-            executions.extend(self._objects(task_iri, "sio:SIO_000313"))
-            executions.extend(self._subjects("sio:SIO_000369", task_iri))
-        return _unique(executions)
-
-    def _models_for_execution(self, execution_iri: str) -> list[str]:
-        models: list[str] = []
-        task_iris = self._objects(execution_iri, "sio:SIO_000369")
-        task_iris.extend(self._subjects("sio:SIO_000313", execution_iri))
-        for task_iri in _unique(task_iris):
-            for llm_iri in self._objects(task_iri, "prov:used"):
-                model_name = self._literal_for_predicate(llm_iri, MODEL_PREDICATES)
-                if model_name:
-                    models.append(model_name)
-        return _unique(models)
-
-    def _upstream_programs_for_execution(self, execution_iri: str) -> list[str]:
-        programs: list[str] = []
-        for upstream_execution in self._objects(execution_iri, "prov:wasInformedBy"):
-            program_iri = self._program_for_execution(upstream_execution)
-            if program_iri:
-                programs.append(program_iri)
-        return _unique(programs)
-
-    def _execution_summary_label(self, execution_iri: str) -> str:
-        identifier = self._literal_for_predicate(execution_iri, IDENTIFIER_PREDICATES)
-        if identifier:
-            return f"execution {identifier}"
-        record = self.entities.get(execution_iri)
-        return record.label if record else self.to_curie(execution_iri)
-
-    def _first_object(self, subject_iri: str, predicate_curie: str) -> Optional[str]:
-        objects = self._objects(subject_iri, predicate_curie)
-        return objects[0] if objects else None
-
-    def _objects(self, subject_iri: str, predicate_curie: str) -> list[str]:
-        predicate_iri = self.expand_curie(predicate_curie)
-        values = [
-            str(obj)
-            for obj in self.kg.objects(URIRef(subject_iri), URIRef(predicate_iri))
-            if isinstance(obj, URIRef)
-        ]
-        return _unique(values)
-
-    def _subjects(self, predicate_curie: str, object_iri: str) -> list[str]:
-        predicate_iri = self.expand_curie(predicate_curie)
-        values = [
-            str(subject)
-            for subject in self.kg.subjects(URIRef(predicate_iri), URIRef(object_iri))
-            if isinstance(subject, URIRef)
-        ]
-        return _unique(values)
-
-    def _literal_for_predicate(self, subject_iri: str, predicate_ids: Iterable[str]) -> Optional[str]:
-        for predicate_id in predicate_ids:
-            predicate_iri = self.expand_curie(predicate_id) if ":" in predicate_id else predicate_id
-            for literal in self.kg.objects(URIRef(subject_iri), URIRef(predicate_iri)):
-                if isinstance(literal, Literal):
-                    cleaned = _clean_literal_text(str(literal))
-                    if cleaned:
-                        return cleaned
-        return None
-
-    def _predicate_label(self, predicate_curie: str) -> str:
-        schema_info = self.schema_metadata.get(predicate_curie)
-        if schema_info:
-            return schema_info.get("label", predicate_curie)
-        if predicate_curie == "workflow:llm_model":
-            return "uses model"
-        if predicate_curie in {"prov:startedAt", "prov:endedAt", "prov:atTime"}:
-            return _humanize_identifier(predicate_curie.split(":", 1)[1])
-        return _humanize_identifier(predicate_curie.split(":", 1)[-1])
-
-    def _object_label(self, obj: URIRef | Literal) -> str:
-        if isinstance(obj, Literal):
-            return _clean_literal_text(str(obj))
-        record = self.entities.get(str(obj))
-        if record:
-            return record.label
-        return self.to_curie(str(obj))
-
-    def _first_literal(
-        self,
-        graph: Graph,
-        subject_iri: str,
-        predicate_ids: Iterable[str],
-    ) -> Optional[str]:
-        for predicate_id in predicate_ids:
-            for literal in graph.objects(URIRef(subject_iri), URIRef(predicate_id)):
-                if isinstance(literal, Literal):
-                    cleaned = _clean_literal_text(str(literal))
-                    if cleaned:
-                        return cleaned
-        return None
-
-    def expand_curie(self, value: str) -> str:
-        if value.startswith(("http://", "https://", "urn:")):
-            return value
-        if ":" not in value:
-            return value
-        prefix, local = value.split(":", 1)
-        namespace = self.namespaces.get(prefix)
-        if namespace:
-            return f"{namespace}{local}"
-        return value
-
-    def to_curie(self, iri: str) -> str:
-        best_match: Optional[tuple[str, str]] = None
-        for prefix, namespace in self.namespaces.items():
-            if iri.startswith(namespace):
-                if best_match is None or len(namespace) > len(best_match[1]):
-                    best_match = (prefix, namespace)
-        if best_match is None:
-            return iri
-        prefix, namespace = best_match
-        return f"{prefix}:{iri[len(namespace):]}"
-
-
-def _clean_literal_text(value: str) -> str:
-    cleaned = value.strip()
-    cleaned = re.sub(r"@[\w-]+\^\^<[^>]+>$", "", cleaned)
-    cleaned = re.sub(r"\^\^<[^>]+>$", "", cleaned)
-    return cleaned.strip()
-
-
-def _local_name(value: str) -> str:
-    if "#" in value:
-        return value.rsplit("#", 1)[1]
-    if "/" in value:
-        return value.rstrip("/").rsplit("/", 1)[1]
-    return value
-
-
-def _humanize_identifier(value: str) -> str:
-    text = value.replace("_", " ").replace("-", " ")
-    text = re.sub(r"([a-z0-9])([A-Z])", r"\1 \2", text)
-    text = re.sub(r"\s+", " ", text)
-    return text.strip()
-
-
-def _normalize_text(value: str) -> str:
-    normalized = _humanize_identifier(_clean_literal_text(value)).lower()
-    normalized = re.sub(r"[^a-z0-9\s]", " ", normalized)
-    normalized = re.sub(r"\s+", " ", normalized)
-    return normalized.strip()
-
-
-def _normalize_token(token: str) -> str:
-    token = token.lower().strip()
-    for suffix in ("ing", "ed", "es", "s"):
-        if token.endswith(suffix) and len(token) > len(suffix) + 2:
-            return token[: -len(suffix)]
-    return token
-
-
-def _tokenize(value: str) -> list[str]:
-    tokens = []
-    for token in _normalize_text(value).split():
-        normalized = _normalize_token(token)
-        if normalized and normalized not in STOPWORDS:
-            tokens.append(normalized)
-    return tokens
-
-
-def _truncate(value: str, limit: int) -> str:
-    if len(value) <= limit:
-        return value
-    trimmed = value[:limit].rstrip()
-    if " " in trimmed:
-        trimmed = trimmed.rsplit(" ", 1)[0]
-    return f"{trimmed}..."
-
-
-def _unique[T](items: Iterable[T]) -> list[T]:
-    seen: set[Any] = set()
-    unique_items: list[T] = []
-    for item in items:
-        if item in seen:
-            continue
-        seen.add(item)
-        unique_items.append(item)
-    return unique_items
