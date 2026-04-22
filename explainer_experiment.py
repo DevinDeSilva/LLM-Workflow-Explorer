@@ -1,44 +1,48 @@
-import argparse
-from pathlib import Path
-import sys
-
 import marimo
 
-__generated_with = "0.23.0"
+__generated_with = "0.23.1"
 app = marimo.App()
-
-
-def _get_evaluation_choices() -> list[str]:
-    evaluations_dir = Path(__file__).resolve().parent / "evaluations"
-    return sorted(
-        path.name
-        for path in evaluations_dir.iterdir()
-        if path.is_dir() and path.name != "test_questions"
-    )
-
-
-def _parse_config_path() -> str:
-    parser = argparse.ArgumentParser(add_help=False)
-    parser.add_argument(
-        "--evaluation",
-        choices=_get_evaluation_choices(),
-        default="calibration",
-        help="Evaluation folder under evaluations/ to load config from.",
-    )
-    args, remaining = parser.parse_known_args()
-    sys.argv = [sys.argv[0], *remaining]
-    return str(Path("evaluations") / args.evaluation / "config.yaml")
-
-
-CONFIG_PATH = _parse_config_path()
 
 
 @app.cell
 def _():
+    import argparse
+    from pathlib import Path
+    import sys
+
+    def _get_evaluation_choices() -> list[str]:
+        evaluations_dir = Path(__file__).resolve().parent / "evaluations"
+        return sorted(
+            path.name
+            for path in evaluations_dir.iterdir()
+            if path.is_dir() and path.name != "test_questions"
+        )
+
+
+    def _parse_config_path() -> str:
+        parser = argparse.ArgumentParser(add_help=False)
+        parser.add_argument(
+            "--evaluation",
+            choices=_get_evaluation_choices(),
+            default="calibration-base",
+            help="Evaluation folder under evaluations/ to load config from.",
+        )
+        args, remaining = parser.parse_known_args()
+        sys.argv = [sys.argv[0], *remaining]
+        return str(Path("evaluations") / args.evaluation / "config.yaml")
+
+
+    CONFIG_PATH = _parse_config_path()
+    return (CONFIG_PATH,)
+
+
+@app.cell
+def _(CONFIG_PATH):
     import logging
     import pandas as pd
     from icecream import ic
     from typing import Any, Dict
+    import time
     import os
     import dspy
     from tqdm import tqdm
@@ -54,7 +58,6 @@ def _():
     logging.info(f"Loading config: {CONFIG_PATH}")
     lconfig = load_config(CONFIG_PATH)
     config = ExperimentConfig.model_validate(lconfig)
-    config
     return (
         Explainer,
         GTInfo,
@@ -64,6 +67,7 @@ def _():
         ic,
         logging,
         os,
+        time,
         tqdm,
     )
 
@@ -94,22 +98,50 @@ def _(Explainer, GTInfo, config, create_timestamp_id, os):
         config.explainer_config,
         config.application,
         config.ttl,
+        config.question_creation_config.save_questions
     )
 
     os.makedirs(config.explainer_config.save_answer_loc, exist_ok=True)
     timestamp_exp = create_timestamp_id("exp_")
-
+    os.makedirs(
+        os.path.join(config.explainer_config.save_answer_loc, timestamp_exp),
+        exist_ok=True
+        )
     return explainer, ground_truth, timestamp_exp
 
 
 @app.cell
-def _(common_utils, config, explainer, ground_truth, os, timestamp_exp, tqdm):
+def _(
+    common_utils,
+    config,
+    explainer,
+    ground_truth,
+    os,
+    time,
+    timestamp_exp,
+    tqdm,
+):
     for qinfo in tqdm(ground_truth.gt_info):
+        start_time = time.perf_counter()
         pred = explainer.request(qinfo.question)
+        report = explainer.request_to_report(pred)
+        end_time = time.perf_counter()
+
+        pred["question"] = qinfo.question
+        pred["id"] = qinfo.id
+        pred["report"] = report
+        pred["time_taken"] = end_time - start_time
         common_utils.serialization.save_jsonl_append(
-            os.path.join(config.explainer_config.save_answer_loc, f"{timestamp_exp}.jsonl"),
-            pred
+            os.path.join(
+                config.explainer_config.save_answer_loc, timestamp_exp, "RESULTS.jsonl"
+            ),
+            pred,
         )
+
+    common_utils.serialization.save_json(
+        config.model_dump(),
+        os.path.join(config.explainer_config.save_answer_loc, timestamp_exp, "config.json"),
+    )
     return
 
 

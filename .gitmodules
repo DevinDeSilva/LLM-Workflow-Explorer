@@ -8,9 +8,6 @@
 [submodule "baselines/Search-in-the-Chain"]
 	path = baselines/Search-in-the-Chain
 	url = https://github.com/xsc1234/Search-in-the-Chain.git
-[submodule "baselines/ToQD"]
-	path = baselines/ToQD
-	url = https://github.com/DCVDB/ToQD.git
 [submodule "baselines/grasp"]
 	path = baselines/grasp
 	url = https://github.com/ad-freiburg/grasp

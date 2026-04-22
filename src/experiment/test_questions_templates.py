@@ -37,7 +37,7 @@ def build_gt_from_template(
                 question = rquestion,
                 answer=answer.answer_nlp,
                 entities=answer.entities,
-                sparql_querys=[SPARQLTemplate(template=query, description="")],
+                sparql=[SPARQLTemplate(template=query, description="")],
             )
         )
     return gt_instances

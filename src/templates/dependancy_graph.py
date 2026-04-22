@@ -34,7 +34,8 @@ class BuildTopologyGraphSignature(dspy.Signature):
     Build a topology graph over the sub-questions and the main question.
 
     Represent the main question as Q, label each sub-question by number,
-    and use '->' to show reasoning dependencies.
+    and use '->' to show reasoning dependencies. Use ; to denote the 
+    seperation
     """
 
     original_question: str = dspy.InputField(

@@ -1,0 +1,4 @@
+run,evaluated_examples,matched_ground_truth,avg_prediction_time_taken,answer_token_precision_mean,answer_token_precision_std,answer_token_recall_mean,answer_token_recall_std,answer_token_f1_mean,answer_token_f1_std,gt_entity_total_mean,gt_entity_total_std,gt_entity_covered_mean,gt_entity_covered_std,gt_entity_coverage_mean,gt_entity_coverage_std
+fullcontext,12,12,45.95363860166981,0.7240639350381456,0.11943089040063283,0.09043176281552895,0.0423353077858023,0.15608067021837116,0.05795481933788087,1.0,0.0,0.16666666666666666,0.3892494720807615,0.16666666666666666,0.3892494720807615
+grasp,12,12,211.65572600109348,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0
+llmbased,12,12,0.4554204445060653,0.918546365914787,0.24309485018510557,0.8470481521795471,0.1540737882107348,0.8768104575163399,0.21062067146394306,1.0,0.0,0.0,0.0,0.0,0.0

@@ -6,7 +6,7 @@ def build_adjacency_matrix(graph_content):
    
 
     # Split input into individual sections
-    sections = graph_content.strip().split('\n\n')
+    sections = graph_content.strip().split(';')
     
     # Initialize adjacency matrix
     size = 10  # Including 'Q' (0) and sub-questions 1-9

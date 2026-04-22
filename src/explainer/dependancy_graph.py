@@ -365,6 +365,7 @@ class DependencyGraphRuntime:
         vector_db: BaseVectorDB,
         object_search_config: ObjectSearchConfig,
         ttl_config: TTLConfig,
+        synthetic_questions: str,
     ) -> None:
         self.vertices: Dict[str, QuestionNode] = {}
 
@@ -383,7 +384,9 @@ class DependencyGraphRuntime:
             self.vector_db,
             object_search_config,
         )
-        self.synthetic_question_retriever = SQRetriver()
+        self.synthetic_question_retriever = SQRetriver(
+            synthetic_questions
+        )
         self.synthetic_questions_by_program_id = {
             row["program_id"]: row
             for row in self.synthetic_question_retriever.rows
@@ -442,6 +445,71 @@ class DependencyGraphRuntime:
 
         return str(getattr(app_info, "description", "") or "").strip()
 
+    @staticmethod
+    def strip_entity_citations(text: str) -> str:
+        return re.sub(
+            r"\s*<cite,\s*id=\d+>.*?</cite>",
+            "",
+            str(text or ""),
+            flags=re.DOTALL,
+        ).strip()
+
+    def normalize_citation_entities(
+        self,
+        entities: List[Any],
+    ) -> List[str]:
+        normalized_entities: List[str] = []
+        for entity in entities:
+            if isinstance(entity, dict):
+                text = str(
+                    entity.get("object_name")
+                    or entity.get("object_uri")
+                    or entity.get("name")
+                    or entity.get("id")
+                    or ""
+                ).strip()
+            else:
+                text = str(entity or "").strip()
+
+            if text:
+                normalized_entities.append(text)
+
+        return clean_string_list(normalized_entities)
+
+    def attach_entity_citations(
+        self,
+        answer: str,
+        entities: List[Any],
+        limit: int = 6,
+    ) -> str:
+        cleaned_answer = self.strip_entity_citations(answer)
+        citation_entities = self.normalize_citation_entities(entities)[:limit]
+        if not citation_entities:
+            return cleaned_answer
+
+        citations = " ".join(
+            f"<cite, id={index}>{entity}</cite>"
+            for index, entity in enumerate(citation_entities)
+        )
+        if not cleaned_answer:
+            return citations
+        return f"{cleaned_answer} {citations}"
+
+    def format_step_output_with_citations(
+        self,
+        step: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        formatted_step = dict(step)
+        important_entities = self.normalize_citation_entities(
+            formatted_step.get("important_entities", [])
+        )
+        formatted_step["important_entities"] = important_entities
+        formatted_step["answer"] = self.attach_entity_citations(
+            str(formatted_step.get("answer", "")).strip(),
+            important_entities,
+        )
+        return formatted_step
+
     def _build_information_required_demos(self) -> List[dspy.Example]:
         demos: List[dspy.Example] = []
 
@@ -469,6 +537,151 @@ class DependencyGraphRuntime:
 
         return demos
 
+    @staticmethod
+    def normalize_filtered_sub_question_indices(
+        raw_indices: Any,
+        question_count: int,
+    ) -> List[int]:
+        if raw_indices is None:
+            return []
+
+        if not isinstance(raw_indices, (list, tuple, set, frozenset)):
+            raw_indices = [raw_indices]
+
+        normalized_indices: List[int] = []
+        for raw_index in raw_indices:
+            if isinstance(raw_index, bool):
+                continue
+
+            index_text = str(raw_index).strip()
+            if not index_text:
+                continue
+
+            try:
+                index = int(index_text)
+            except ValueError:
+                match = re.search(r"-?\d+", index_text)
+                if match is None:
+                    continue
+                index = int(match.group())
+
+            if 0 <= index < question_count and index not in normalized_indices:
+                normalized_indices.append(index)
+
+        return normalized_indices
+
+    def format_dependency_node(
+        self,
+        node_id: int,
+        node_map: Optional[Dict[str, QuestionNode]] = None,
+    ) -> str:
+        resolved_node_map = node_map if node_map is not None else self.vertices
+        node_label = "Q" if node_id == 0 else str(node_id)
+        node = resolved_node_map.get(str(node_id))
+        if node is None:
+            return node_label
+
+        question = " ".join(str(node.question).strip().split())
+        if not question:
+            return node_label
+        if len(question) > 80:
+            question = question[:77].rstrip() + "..."
+        return f"{node_label} [{question}]"
+
+    def format_dependency_path(
+        self,
+        node_ids: List[int],
+        node_map: Optional[Dict[str, QuestionNode]] = None,
+    ) -> str:
+        return " -> ".join(
+            self.format_dependency_node(node_id, node_map=node_map)
+            for node_id in node_ids
+        )
+
+    @staticmethod
+    def outgoing_edges(
+        adj_matrix: List[List[int]],
+        node_id: int,
+    ) -> List[int]:
+        return [
+            dest_node
+            for dest_node, has_edge in enumerate(adj_matrix[node_id])
+            if has_edge
+        ]
+
+    def find_dependency_cycle(
+        self,
+        adj_matrix: List[List[int]],
+        valid_node_ids: List[int],
+    ) -> Optional[List[int]]:
+        valid_node_set = set(valid_node_ids)
+        visited: set[int] = set()
+        active_path: List[int] = []
+        active_set: set[int] = set()
+
+        def dfs(node_id: int) -> Optional[List[int]]:
+            visited.add(node_id)
+            active_path.append(node_id)
+            active_set.add(node_id)
+
+            for next_node in self.outgoing_edges(adj_matrix, node_id):
+                if next_node not in valid_node_set:
+                    continue
+                if next_node in active_set:
+                    cycle_start_index = active_path.index(next_node)
+                    return active_path[cycle_start_index:] + [next_node]
+                if next_node in visited:
+                    continue
+                detected_cycle = dfs(next_node)
+                if detected_cycle is not None:
+                    return detected_cycle
+
+            active_path.pop()
+            active_set.remove(node_id)
+            return None
+
+        for node_id in sorted(valid_node_set):
+            if node_id in visited:
+                continue
+            detected_cycle = dfs(node_id)
+            if detected_cycle is not None:
+                return detected_cycle
+
+        return None
+
+    def validate_dependency_graph(
+        self,
+        adj_matrix: List[List[int]],
+        topology_graph: str,
+    ) -> None:
+        valid_node_ids = {int(node_id) for node_id in self.vertices}
+        invalid_edges: List[tuple[int, int]] = []
+
+        for source_node, row in enumerate(adj_matrix):
+            for dest_node, has_edge in enumerate(row):
+                if not has_edge:
+                    continue
+                if source_node not in valid_node_ids or dest_node not in valid_node_ids:
+                    invalid_edges.append((source_node, dest_node))
+
+        if invalid_edges:
+            invalid_edge_text = ", ".join(
+                f"{source}->{dest}"
+                for source, dest in invalid_edges[:5]
+            )
+            raise ValueError(
+                "Dependency graph references unknown node ids "
+                f"({invalid_edge_text}). Topology graph:\n{topology_graph}"
+            )
+
+
+        detected_cycle = self.find_dependency_cycle(
+            adj_matrix,
+            list(valid_node_ids),
+        )
+        if detected_cycle is not None:
+            print("detected_cycles")
+
     def information_required(
         self,
         query: str,
@@ -493,7 +706,35 @@ class DependencyGraphRuntime:
             if not clean_sub_questions:
                 return []
 
-        return clean_sub_questions
+            filter_prediction = self.filter_sub_question_predictor(
+                original_question=query.strip(),
+                application_context=resolved_application_context,
+                sub_questions=[
+                    f"{index}). {sub_question}"
+                    for index, sub_question in enumerate(clean_sub_questions)
+                ],
+            )
+
+        filtered_indices = set(
+            self.normalize_filtered_sub_question_indices(
+                getattr(filter_prediction, "filtered_sub_question", []),
+                len(clean_sub_questions),
+            )
+        )
+        if not filtered_indices:
+            return clean_sub_questions
+
+        filtered_sub_questions = [
+            sub_question
+            for index, sub_question in enumerate(clean_sub_questions)
+            if index not in filtered_indices
+        ]
+        logger.info(
+            "Filtered sub-questions: kept %s of %s",
+            len(filtered_sub_questions),
+            len(clean_sub_questions),
+        )
+        return filtered_sub_questions
 
     def build_toplevel_dependancy_graph(
         self,
@@ -504,7 +745,7 @@ class DependencyGraphRuntime:
         resolved_application_context = self.resolve_application_context(
             application_context
         )
-        self.vertices.update({vertex.id: vertex for vertex in info_req})
+        self.vertices = {vertex.id: vertex for vertex in info_req}
         self.vertices["0"] = QuestionNode(id="0", question=user_query)
 
         with dspy.context(lm=self.llm.llm):
@@ -521,7 +762,12 @@ class DependencyGraphRuntime:
         if not topo_graph_rep:
             raise ValueError("Failed to build topology graph.")
 
+        self.topology_graph_rep = str(topo_graph_rep).strip()
         self.adjacency_matrix, self.edges = build_adjacency_matrix(topo_graph_rep)
+        self.validate_dependency_graph(
+            self.adjacency_matrix,
+            self.topology_graph_rep,
+        )
         self.in_degree = [0] * len(self.adjacency_matrix)
         self.out_degree = [0] * len(self.adjacency_matrix)
 
@@ -584,14 +830,23 @@ class DependencyGraphRuntime:
         max_tries: int = 5,
         cache: Optional[Dict[str, Dict[str, Any]]] = None,
         application_context: Optional[str] = None,
+        active_path: Optional[List[str]] = None,
     ) -> Dict[str, Any]:
         if cache is None:
             cache = {}
+        if active_path is None:
+            active_path = []
 
         node_key = str(node_id)
 
         if node_key in cache:
             return cache[node_key]
+        if node_key in active_path:
+            cycle_path = active_path[active_path.index(node_key):] + [node_key]
+            raise ValueError(
+                "Dependency graph cycle encountered during solve: "
+                f"{runtime.format_dependency_path([int(value) for value in cycle_path], node_map=node_map)}"
+            )
 
         predecessor_nodes = incoming_edges(adj_matrix, node_id)
         predecessor_info: Dict[str, Dict[str, Any]] = {}
@@ -606,6 +861,7 @@ class DependencyGraphRuntime:
                 max_tries=max_tries,
                 cache=cache,
                 application_context=application_context,
+                active_path=active_path + [node_key],
             )
 
         node_data = node_map[node_key].solve(
@@ -615,6 +871,35 @@ class DependencyGraphRuntime:
             max_tries=max_tries,
             application_context=application_context,
         )
+        current_retrieved_objects = clean_string_list(
+            [
+                entity
+                for execution_step in node_data.get("execution", [])
+                for entity in execution_step.get("important_entities", [])
+            ]
+        )
+        predecessor_retrieved_objects = clean_string_list(
+            [
+                entity
+                for predecessor_value in predecessor_info.values()
+                if isinstance(predecessor_value, dict)
+                for entity in predecessor_value.get("retrieved_objects", [])
+            ]
+        )
+        retrieved_objects = clean_string_list(
+            current_retrieved_objects + predecessor_retrieved_objects
+        )
+        answer_entities = (
+            current_retrieved_objects
+            if current_retrieved_objects
+            else predecessor_retrieved_objects
+        )
+        intermediary_results = [
+            runtime.format_step_output_with_citations(step)
+            if isinstance(step, dict)
+            else step
+            for step in node_data.get("execution", [])
+        ]
         node_info = {
             "id": node_key,
             "question": node_map[node_key].question,
@@ -623,14 +908,13 @@ class DependencyGraphRuntime:
             "step_context": node_data.get("step_context", ""),
             "schema_info_used": schema_info,
             "schema_reasoning": node_data.get("schema_reasoning", {}),
-            "retrieved_objects": [
-                entity
-                for execution_step in node_data.get("execution", [])
-                for entity in execution_step.get("important_entities", [])
-            ],
+            "retrieved_objects": retrieved_objects,
             "synthetic_questions_plan": node_data.get("plan"),
-            "intermediary_results": node_data.get("execution"),
-            "answer": node_data.get("answer", ""),
+            "intermediary_results": intermediary_results,
+            "answer": runtime.attach_entity_citations(
+                str(node_data.get("answer", "")).strip(),
+                answer_entities,
+            ),
             "judge": node_data.get("judge", []),
             "grounding": node_data.get("grounding", {}),
         }

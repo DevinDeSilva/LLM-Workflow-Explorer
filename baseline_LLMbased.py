@@ -127,12 +127,12 @@ def _(
         pred = explainer.request(qinfo.question)
         end_time = time.perf_counter()
 
+        pred["question"] = qinfo.question
+        pred["id"] = qinfo.id
         pred["time_taken"] = end_time - start_time
         common_utils.serialization.save_jsonl_append(
             os.path.join(
-                config.explainer_config.save_answer_loc,
-                timestamp_exp,
-                "RESULTS.jsonl",
+                config.explainer_config.save_answer_loc, timestamp_exp, "RESULTS.jsonl"
             ),
             pred,
         )

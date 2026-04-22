@@ -19,6 +19,7 @@ class Explainer:
                  config:ExplainerConfig,
                  app_info:ApplicationInfo,
                  ttl_config:TTLConfig,
+                 synthetic_question_loc:str,
                  ) -> None:
         self.config:ExplainerConfig = config
         self.app_info = app_info
@@ -51,26 +52,30 @@ class Explainer:
             self.embedding,
             self.db,
             ObjectSearchConfig(**self.config.object_search_config),
-            ttl_config
+            ttl_config,
+            synthetic_question_loc
         )
         
     def format_schema(self) -> str: 
         return self.ontology_info.format_schema_prompt()
     
-    @time_wrapper
     def request(self, user_query:str):
         user_query = user_query.strip()
         application_context = (self.app_info.description or "").strip()
-        self.dependancy_graph.user_query_to_requirements(
-            user_query,
-            schema_context=self.format_schema(),
-            application_context=application_context,
-            )
         
-        return self.dependancy_graph.process_dependancy_graph(
-            schema_context=self.format_schema(),
-            application_context=application_context,
-        )
+        try:
+            self.dependancy_graph.user_query_to_requirements(
+                user_query,
+                schema_context=self.format_schema(),
+                application_context=application_context,
+                )
+            
+            return self.dependancy_graph.process_dependancy_graph(
+                schema_context=self.format_schema(),
+                application_context=application_context,
+            )
+        except ValueError as e:
+            return {"error": str(e)}
         
     def request_to_report(self, data:Dict[str, Any]):
         def truncate_text(value: Any, limit: int = 1200) -> str:

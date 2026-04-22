@@ -35,7 +35,6 @@ class SyntheticQuestionCategory(str, Enum):
 
 
 class SQRetriver:
-    DEFAULT_LOCATION = "evaluations/calibration/ques_creation/SyntheticQuestionKG.csv"
     CATEGORY_ALIASES = {
         SyntheticQuestionCategory.PATH_LEVEL.value: (
             SyntheticQuestionCategory.PATH_LEVEL.value
@@ -58,9 +57,9 @@ class SQRetriver:
         "from_prop": SyntheticQuestionCategory.OBJECT_LEVEL_FROM_PROP.value,
     }
 
-    def __init__(self, location: Optional[str | Path] = None) -> None:
+    def __init__(self, location: str | Path) -> None:
         self.repo_root = Path(__file__).resolve().parents[2]
-        self.file_path = self._resolve_location(location or self.DEFAULT_LOCATION)
+        self.file_path = self._resolve_location(location)
         self.rows = self._load_rows(self.file_path)
         self.rows_by_program_id = {
             row["program_id"]: row

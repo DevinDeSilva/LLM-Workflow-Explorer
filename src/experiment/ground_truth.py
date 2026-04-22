@@ -13,7 +13,7 @@ class GT(BaseModel):
     question: str
     answer: str
     entities: Union[List[Dict], List]
-    sparql_querys: List[SPARQLTemplate]
+    sparql: List[SPARQLTemplate]
     qtype: Optional[List[str]] = Field(default=None)
     decision: Optional[bool] = Field(default=None)
     count: Optional[int] = Field(default=None)
@@ -32,9 +32,9 @@ class GT(BaseModel):
         else:
             lines.append("  - None")
 
-        lines.append(f"sparql_querys ({len(self.sparql_querys)}):")
-        if self.sparql_querys:
-            for sparql in self.sparql_querys:
+        lines.append(f"sparql_querys ({len(self.sparql)}):")
+        if self.sparql:
+            for sparql in self.sparql:
                 lines.append(f"  - template: {sparql.template}")
                 lines.append(f"    description: {sparql.description}")
                 lines.append(f"    inputs: {sparql.inputs if sparql.inputs is not None else {}}")
@@ -53,6 +53,11 @@ class GTInfo:
         self.gt_info = self.load_data_from_file()
         
     def load_data_from_file(self) -> List[GT]: 
-        gt_file = common_utils.serialization.load_json(self.path_to_file)
-        gts = [GT(**v) for v in gt_file.values()]
-        return gts
+        if ".jsonl" in self.path_to_file:
+            gt_file = common_utils.serialization.load_jsonl(self.path_to_file)
+            gts = [GT(**v) for v in gt_file]
+            return gts
+        else:
+            gt_file = common_utils.serialization.load_json(self.path_to_file)
+            gts = [GT(**v) for v in gt_file.values()]
+            return gts

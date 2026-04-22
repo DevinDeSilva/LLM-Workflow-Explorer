@@ -24,7 +24,7 @@ explainer_config:
 
 gt:
   log_file: "evaluations/chatbs-base/ground_truth/ground_truth_log.txt"
-  save_loc: "evaluations/chatbs-base/ground_truth/ground_truth_data.json"
+  save_loc: "evaluations/chatbs-base/ground_truth/ground_truth_data.jsonl"
 
 ttl: 
   prefixes: [

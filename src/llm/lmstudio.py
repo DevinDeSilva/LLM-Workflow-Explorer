@@ -21,11 +21,10 @@ class LMStudio(BaseLLM):
             "model": self.config.model,
             "temperature": self.config.temperature,
             "max_tokens": self.config.max_tokens,
-            "model_kwargs": {},
         }
         
         if self.config.top_p:
-            kwargs["model_kwargs"]["top_p"] = self.config.top_p
+            kwargs["top_p"] = self.config.top_p
         
         if self.library == "langchain":
             return ChatOpenAI(**kwargs)

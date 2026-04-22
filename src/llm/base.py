@@ -42,8 +42,12 @@ class BaseLLM:
             
         messages.append(HumanMessage(content=prompt))
         
-        # Bind the Pydantic schema directly to the model
-        structured_llm = self.llm.with_structured_output(structure)
+        # Prefer function-calling here to avoid the Responses API structured-output
+        # serialization path that can emit spurious Pydantic warnings for `parsed`.
+        structured_llm = self.llm.with_structured_output(
+            structure,
+            method="function_calling",
+        )
         
         # The result will be a fully validated instance of your Pydantic model
         result = await structured_llm.ainvoke(messages)
