@@ -1,0 +1,666 @@
+Original Question
+Does any of the executions of the information extraction function made has a Generative Task as a component within?
+
+Sub Questions
+[1] Which executions pertain to the 'information extraction' function?
+[2] For those executions, which components are part of the 'Generative Task' workflow?
+
+Topology Graph
+Nodes:
+[1] Which executions pertain to the 'information extraction' function?
+[2] For those executions, which components are part of the 'Generative Task' workflow?
+[0] Does any of the executions of the information extraction function made has a Generative Task as a component within?
+
+Edges:
+1 -> 2
+2 -> 0
+
+Adjacency:
+1: 2
+2: 0
+
+Details Of Each Sub Question Solving
+
+
+Sub Question [1]
+Question: Which executions pertain to the 'information extraction' function?
+Depends on: None
+
+Grounding:
+{
+  "candidate_classes": [
+    "provone:Execution"
+  ],
+  "candidate_relations": [
+    "dc:description"
+  ],
+  "entity_phrases": [
+    "information extraction"
+  ]
+}
+
+Synthetic Question Plan:
+1. step1
+   Sub question: Which executions pertain to the 'information extraction' function?
+   Program: explore_object_of_class
+   Extra:
+   {
+     "class_member_scope": "all",
+     "decision_reasoning": "No concrete entity candidates were linked, so the step should explore the grounded class directly.",
+     "execution_mode": "retrieval",
+     "expected_classes": [
+       "provone:Execution"
+     ],
+     "input_bindings": {
+       "class_uri": "provone:Execution"
+     },
+     "retrieval_mode": "class-members"
+   }
+
+Intermediary Results:
+Step 1: step1
+Sub question: Which executions pertain to the 'information extraction' function?
+Program: explore_object_of_class
+Answer:
+Retrieved 10 candidate object(s) relevant to the question: Which executions pertain to the 'information extraction' function? <cite, id=0>http://testwebsite/testProgram#id_20260420105652_650</cite> <cite, id=1>http://testwebsite/testProgram#id_20260420105659_302</cite> <cite, id=2>http://testwebsite/testProgram#id_20260420105703_307</cite> <cite, id=3>http://testwebsite/testProgram#id_20260420105705_598</cite> <cite, id=4>http://testwebsite/testProgram#id_20260420105705_972</cite> <cite, id=5>http://testwebsite/testProgram#id_20260420105710_61</cite>
+Important entities:
+- http://testwebsite/testProgram#id_20260420105652_650
+- http://testwebsite/testProgram#id_20260420105659_302
+- http://testwebsite/testProgram#id_20260420105703_307
+- http://testwebsite/testProgram#id_20260420105705_598
+- http://testwebsite/testProgram#id_20260420105705_972
+- http://testwebsite/testProgram#id_20260420105710_61
+- http://testwebsite/testProgram#id_20260420105711_320
+- http://testwebsite/testProgram#id_20260420105711_662
+- http://testwebsite/testProgram#id_20260420105711_772
+- http://testwebsite/testProgram#id_20260420105717_370
+Results:
+{
+  "set_1": [
+    {
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105652_650. Types: provone:Execution. Properties: dcterms:identifier: system_prompt_execution_1_1@en^^<xsd:string>; rdfs:label: system_prompt_execution_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:56:51@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_112-foodPreferences; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_420-weight; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_470-bodyMassIndex; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_604-allergies; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_753-diagnosis; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_79-age; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_838-height; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_904-gender; prov:startedAt: 2026-04-20 10:56:51@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105652_112-foodPreferences; prov:used: ChatBS-NexGen:Data-id_20260420105652_420-weight; prov:used: ChatBS-NexGen:Data-id_20260420105652_470-bodyMassIndex; prov:used: ChatBS-NexGen:Data-id_20260420105652_604-allergies; prov:used: ChatBS-NexGen:Data-id_20260420105652_753-diagnosis; prov:used: ChatBS-NexGen:Data-id_20260420105652_79-age; prov:used: ChatBS-NexGen:Data-id_20260420105652_838-height; prov:used: ChatBS-NexGen:Data-id_20260420105652_904-gender; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105659_302.",
+      "object_name": "ChatBS-NexGen:id_20260420105652_650",
+      "object_uri": "http://testwebsite/testProgram#id_20260420105652_650",
+      "source": "class-query"
+    },
+    {
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105659_302. Types: provone:Execution. Properties: dcterms:identifier: llm_chat_1_1@en^^<xsd:string>; sio:SIO_000369: ChatBS-NexGen:Generative_Task-id_20260420105659_302; rdfs:label: llm_chat_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:56:59@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:llm_chat-Association-id_20260420105659_302; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105659_282-generated_answer; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105659_579-system_prompt; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105659_811-user_prompt; prov:startedAt: 2026-04-20 10:56:52@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105652_456-system_prompt; prov:used: ChatBS-NexGen:Data-id_20260420105659_811-user_prompt; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105703_307.",
+      "object_name": "ChatBS-NexGen:id_20260420105659_302",
+      "object_uri": "http://testwebsite/testProgram#id_20260420105659_302",
+      "source": "class-query"
+    },
+    {
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105703_307. Types: provone:Execution. Properties: dcterms:identifier: information_extraction_1_1@en^^<xsd:string>; sio:SIO_000369: ChatBS-NexGen:Generative_Task-id_20260420105703_307; rdfs:label: information_extraction_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:03@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:information_extractor-Association-id_20260420105703_307; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105703_814-extracts; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105703_331-text; prov:startedAt: 2026-04-20 10:56:59@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105659_338-generated_answer; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105705_598; prov:wasInformedBy: ChatBS-NexGen:id_20260420105705_972; prov:wasInformedBy: ChatBS-NexGen:id_20260420105710_61; prov:wasInformedBy: ChatBS-NexGen:id_20260420105711_320; prov:wasInformedBy: ChatBS-NexGen:id_20260420105711_662; prov:wasInformedBy: ChatBS-NexGen:id_20260420105711_772; prov:wasInformedBy: ChatBS-NexGen:id_20260420105717_370; prov:wasInformedBy: ChatBS-NexGen:id_20260420105719_327; prov:wasInformedBy: ChatBS-NexGen:id_20260420105722_117; prov:wasInformedBy: ChatBS-NexGen:id_20260420105723_114; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_300.",
+      "object_name": "ChatBS-NexGen:id_20260420105703_307",
+      "object_uri": "http://testwebsite/testProgram#id_20260420105703_307",
+      "source": "class-query"
+    },
+    {
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105705_598. Types: provone:Execution. Properties: dcterms:identifier: 1_1_2@en^^<xsd:string>; rdfs:label: sparql_query_1_1_2@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:05@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_598; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105705_633-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105705_924-entity; prov:startedAt: 2026-04-20 10:57:05@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_661-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105705_232-kg_info; prov:used: ChatBS-NexGen:Data-id_20260420105705_670-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "object_name": "ChatBS-NexGen:id_20260420105705_598",
+      "object_uri": "http://testwebsite/testProgram#id_20260420105705_598",
+      "source": "class-query"
+    },
+    {
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105705_972. Types: provone:Execution. Properties: dcterms:identifier: 1_1_1@en^^<xsd:string>; rdfs:label: sparql_query_1_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:04@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_972; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105705_591-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105705_106-entity; prov:startedAt: 2026-04-20 10:57:04@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_757-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105705_668-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "object_name": "ChatBS-NexGen:id_20260420105705_972",
+      "object_uri": "http://testwebsite/testProgram#id_20260420105705_972",
+      "source": "class-query"
+    },
+    {
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105710_61. Types: provone:Execution. Properties: dcterms:identifier: 1_1_3@en^^<xsd:string>; rdfs:label: sparql_query_1_1_3@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:10@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105710_61; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105710_897-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105710_626-entity; prov:startedAt: 2026-04-20 10:57:05@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_678-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105710_564-kg_info; prov:used: ChatBS-NexGen:Data-id_20260420105711_94-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "object_name": "ChatBS-NexGen:id_20260420105710_61",
+      "object_uri": "http://testwebsite/testProgram#id_20260420105710_61",
+      "source": "class-query"
+    },
+    {
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105711_320. Types: provone:Execution. Properties: dcterms:identifier: 1_1_4@en^^<xsd:string>; rdfs:label: sparql_query_1_1_4@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_320; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105711_508-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105711_611-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_51-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105711_658-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "object_name": "ChatBS-NexGen:id_20260420105711_320",
+      "object_uri": "http://testwebsite/testProgram#id_20260420105711_320",
+      "source": "class-query"
+    },
+    {
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105711_662. Types: provone:Execution. Properties: dcterms:identifier: 1_1_5@en^^<xsd:string>; rdfs:label: sparql_query_1_1_5@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_662; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105711_758-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105711_768-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_198-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105711_45-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "object_name": "ChatBS-NexGen:id_20260420105711_662",
+      "object_uri": "http://testwebsite/testProgram#id_20260420105711_662",
+      "source": "class-query"
+    },
+    {
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105711_772. Types: provone:Execution. Properties: dcterms:identifier: 1_1_6@en^^<xsd:string>; rdfs:label: sparql_query_1_1_6@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_772; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105711_565-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105711_726-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_218-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105711_547-kg_info; prov:used: ChatBS-NexGen:Data-id_20260420105711_637-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "object_name": "ChatBS-NexGen:id_20260420105711_772",
+      "object_uri": "http://testwebsite/testProgram#id_20260420105711_772",
+      "source": "class-query"
+    },
+    {
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105717_370. Types: provone:Execution. Properties: dcterms:identifier: 1_1_7@en^^<xsd:string>; rdfs:label: sparql_query_1_1_7@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:17@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105717_370; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105717_107-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105717_534-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_886-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105717_899-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "object_name": "ChatBS-NexGen:id_20260420105717_370",
+      "object_uri": "http://testwebsite/testProgram#id_20260420105717_370",
+      "source": "class-query"
+    }
+  ]
+}
+Extra:
+{
+  "execution_mode": "retrieval",
+  "parameter_values": [
+    {
+      "class_uri": "provone:Execution"
+    }
+  ]
+}
+
+Predecessor Context:
+None
+
+Step Context:
+Original question: Which executions pertain to the 'information extraction' function?
+Current traversal question: Which executions pertain to the 'information extraction' function?
+Selected program: explore_object_of_class
+Execution mode: retrieval
+Step step1: Which executions pertain to the 'information extraction' function?
+Program: explore_object_of_class
+Answer: Retrieved 10 candidate object(s) relevant to the question: Which executions pertain to the 'information extraction' function?
+Important entities: http://testwebsite/testProgram#id_20260420105652_650, http://testwebsite/testProgram#id_20260420105659_302, http://testwebsite/testProgram#id_20260420105703_307, http://testwebsite/testProgram#id_20260420105705_598, http://testwebsite/testProgram#id_20260420105705_972, http://testwebsite/testProgram#id_20260420105710_61, http://testwebsite/testProgram#id_20260420105711_320, http://testwebsite/testProgram#id_20260420105711_662, http://testwebsite/testProgram#id_20260420105711_772, http://testwebsite/testProgram#id_20260420105717_370
+Results: {
+  "set_1": [
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105652_650",
+      "object_name": "ChatBS-NexGen:id_20260420105652_650",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105652_650. Types: provone:Execution. Properties: dcterms:identifier: system_prompt_execution_1_1@en^^<xsd:string>; rdfs:label: system_prompt_execution_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:56:51@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_112-foodPreferences; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_420-weight; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_470-bodyMassIndex; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_604-allergies; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_753-diagnosis; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_79-age; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_838-height; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_904-gender; prov:startedAt: 2026-04-20 10:56:51@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105652_112-foodPreferences; prov:used: ChatBS-NexGen:Data-id_20260420105652_420-weight; prov:used: ChatBS-NexGen:Data-id_20260420105652_470-bodyMassIndex; prov:used: ChatBS-NexGen:Data-id_20260420105652_604-allergies; prov:used: ChatBS-NexGen:Data-id_20260420105652_753-diagnosis; prov:used: ChatBS-NexGen:Data-id_20260420105652_79-age; prov:used: ChatBS-NexGen:Data-id_20260420105652_838-height; prov:used: ChatBS-NexGen:Data-id_20260420105652_904-gender; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105659_302.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105659_302",
+      "object_name": "ChatBS-NexGen:id_20260420105659_302",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105659_302. Types: provone:Execution. Properties: dcterms:identifier: llm_chat_1_1@en^^<xsd:string>; sio:SIO_000369: ChatBS-NexGen:Generative_Task-id_20260420105659_302; rdfs:label: llm_chat_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:56:59@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:llm_chat-Association-id_20260420105659_302; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105659_282-generated_answer; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105659_579-system_prompt; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105659_811-user_prompt; prov:startedAt: 2026-04-20 10:56:52@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105652_456-system_prompt; prov:used: ChatBS-NexGen:Data-id_20260420105659_811-user_prompt; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105703_307.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105703_307",
+      "object_name": "ChatBS-NexGen:id_20260420105703_307",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105703_307. Types: provone:Execution. Properties: dcterms:identifier: information_extraction_1_1@en^^<xsd:string>; sio:SIO_000369: ChatBS-NexGen:Generative_Task-id_20260420105703_307; rdfs:label: information_extraction_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:03@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:information_extractor-Association-id_20260420105703_307; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105703_814-extracts; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105703_331-text; prov:startedAt: 2026-04-20 10:56:59@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105659_338-generated_answer; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105705_598; prov:wasInformedBy: ChatBS-NexGen:id_20260420105705_972; prov:wasInformedBy: ChatBS-NexGen:id_20260420105710_61; prov:wasInformedBy: ChatBS-NexGen:id_20260420105711_320; prov:wasInformedBy: ChatBS-NexGen:id_20260420105711_662; prov:wasInformedBy: ChatBS-NexGen:id_20260420105711_772; prov:wasInformedBy: ChatBS-NexGen:id_20260420105717_370; prov:wasInformedBy: ChatBS-NexGen:id_20260420105719_327; prov:wasInformedBy: ChatBS-NexGen:id_20260420105722_117; prov:wasInformedBy: ChatBS-NexGen:id_20260420105723_114; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_300.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105705_598",
+      "object_name": "ChatBS-NexGen:id_20260420105705_598",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105705_598. Types: provone:Execution. Properties: dcterms:identifier: 1_1_2@en^^<xsd:string>; rdfs:label: sparql_query_1_1_2@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:05@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_598; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105705_633-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105705_924-entity; prov:startedAt: 2026-04-20 10:57:05@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_661-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105705_232-kg_info; prov:used: ChatBS-NexGen:Data-id_20260420105705_670-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105705_972",
+      "object_name": "ChatBS-NexGen:id_20260420105705_972",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105705_972. Types: provone:Execution. Properties: dcterms:identifier: 1_1_1@en^^<xsd:string>; rdfs:label: sparql_query_1_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:04@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_972; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105705_591-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105705_106-entity; prov:startedAt: 2026-04-20 10:57:04@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_757-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105705_668-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105710_61",
+      "object_name": "ChatBS-NexGen:id_20260420105710_61",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105710_61. Types: provone:Execution. Properties: dcterms:identifier: 1_1_3@en^^<xsd:string>; rdfs:label: sparql_query_1_1_3@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:10@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105710_61; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105710_897-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105710_626-entity; prov:startedAt: 2026-04-20 10:57:05@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_678-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105710_564-kg_info; prov:used: ChatBS-NexGen:Data-id_20260420105711_94-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105711_320",
+      "object_name": "ChatBS-NexGen:id_20260420105711_320",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105711_320. Types: provone:Execution. Properties: dcterms:identifier: 1_1_4@en^^<xsd:string>; rdfs:label: sparql_query_1_1_4@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_320; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105711_508-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105711_611-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_51-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105711_658-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105711_662",
+      "object_name": "ChatBS-NexGen:id_20260420105711_662",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105711_662. Types: provone:Execution. Properties: dcterms:identifier: 1_1_5@en^^<xsd:string>; rdfs:label: sparql_query_1_1_5@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_662; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105711_758-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105711_768-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_198-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105711_45-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105711_772",
+      "object_name": "ChatBS-NexGen:id_20260420105711_772",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105711_772. Types: provone:Execution. Properties: dcterms:identifier: 1_1_6@en^^<xsd:string>; rdfs:label: sparql_query_1_1_6@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_772; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105711_565-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105711_726-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_218-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105711_547-kg_info; prov:used: ChatBS-NexGen:Data-id_20260420105711_637-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105717_370",
+      "object_name": "ChatBS-NexGen:id_20260420105717_370",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105717_370. Types: provone:Execution. Properties: dcterms:identifier: 1_1_7@en^^<xsd:string>; rdfs:label: sparql_query_1_1_7@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:17@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105717_370; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105717_107-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105717_534-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_886-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105717_899-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    }
+  ]
+}
+Current answer: The execution that pertains to the 'information extraction' function is http://testwebsite/testProgram#id_20260420105703_307. This is evidenced by its `object_description` which includes the identifier and label "information_extraction_1_1@en^^<xsd:string>" and association with an 'information_extractor'.
+Judge feedback: The answer is correct and well-supported by the evidence found in the object description for the specified URI. No changes are needed.
+Next question: Which executions pertain to the 'information extraction' function?
+
+Schema Reasoning:
+{
+  "draft_answer": "",
+  "judge": [],
+  "relevant_schema_info": []
+}
+
+Validation / Judge:
+[
+  {
+    "answer": "Retrieved 10 candidate object(s) relevant to the question: Which executions pertain to the 'information extraction' function?",
+    "answered": false,
+    "feedback": "The provided answer merely repeats the structure of the query results (\"Retrieved 10 candidate object(s) relevant to the question...\"). You must extract the actual result from the `evidence_context`. Based on the evidence, the execution that pertains to 'information extraction' is clearly identifiable by its URI and label. Please provide the specific execution object (URI or name) found in the results whose description matches 'information extraction'."
+  },
+  {
+    "answer": "The execution that pertains to the 'information extraction' function is http://testwebsite/testProgram#id_20260420105703_307. This is evidenced by its `object_description` which includes the identifier and label \"information_extraction_1_1@en^^<xsd:string>\" and association with an 'information_extractor'.",
+    "answered": true,
+    "feedback": "The answer is correct and well-supported by the evidence found in the object description for the specified URI. No changes are needed."
+  }
+]
+
+Answer:
+The execution that pertains to the 'information extraction' function is http://testwebsite/testProgram#id_20260420105703_307. This is evidenced by its `object_description` which includes the identifier and label "information_extraction_1_1@en^^<xsd:string>" and association with an 'information_extractor'. <cite, id=0>http://testwebsite/testProgram#id_20260420105652_650</cite> <cite, id=1>http://testwebsite/testProgram#id_20260420105659_302</cite> <cite, id=2>http://testwebsite/testProgram#id_20260420105703_307</cite> <cite, id=3>http://testwebsite/testProgram#id_20260420105705_598</cite> <cite, id=4>http://testwebsite/testProgram#id_20260420105705_972</cite> <cite, id=5>http://testwebsite/testProgram#id_20260420105710_61</cite>
+
+Sub Question [2]
+Question: For those executions, which components are part of the 'Generative Task' workflow?
+Depends on: 1
+
+Grounding:
+{}
+
+Synthetic Question Plan:
+None
+
+Intermediary Results:
+None
+
+Predecessor Context:
+Predecessor context:
+Node 1: Which executions pertain to the 'information extraction' function?
+Answer: The execution that pertains to the 'information extraction' function is http://testwebsite/testProgram#id_20260420105703_307. This is evidenced by its `object_description` which includes the identifier and label "information_extraction_1_1@en^^<xsd:string>" and association with an 'information_extractor'. <cite, id=0>http://testwebsite/testProgram#id_20260420105652_650</cite> <cite, id=1>http://testwebsite/testProgram#id_20260420105659_302</cite> <cite, id=2>http://testwebsite/testProgram#id_20260420105703_307</cite> <cite, id=3>http://testwebsite/testProgram#id_20260420105705_598</cite> <cite, id=4>http://testwebsite/testProgram#id_20260420105705_972</cite> <cite, id=5>http://testwebsite/testProgram#id_20260420105710_61</cite>
+Schema context:
+Workflow schema
+Classes:
+- workflow:Generative_Task (Generative Task): A task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data.
+- workflow:Large_Language_Models (Large Language Models; alias=LLM)
+- workflow:Large_Language_Model_Output (Large Language Model Output): An Output Artifact from a AI Task
+- eo:Reasoning_Mode (Reasoning Mode): a process being executed by the system that achieves a particular goal; e.g. inference models such as treatment planning involved in medical diagnosis can be considered...
+- provone:Program (Program): A Program represents a computational task that consumes and produces data through its input and output ports, respectively. It can be atomic or composite, the latter case...
+- provone:Port (Port): A Port enables a Program to send and receive Entities (Data, Visualizations, etc.). When used in a role as an input port, default parameters may be configured for the Port.
+- provone:Channel (Channel): A Channel provides a connection between Ports that are defined for Programs. Typically, a Program with an output Port defined using the provone:hasOutPort object property...
+- provone:Execution (Execution): An Execution represents the execution of a Program. If the Program in question is a Workflow, then the Execution represents a trace of its execution.
+- provone:User (User): A User is the person responsible for the execution of a Program, which in turn can be a Workflow. Its specification serves attribution and accountability purposes.
+- provone:Data (Data): A Data item represents the basic unit of information consumed and produced by a Program. Multiple Data items may be grouped into a Collection.
+- provone:Collection
+- prov:Association (Association): An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity. It further allows for a plan to...
+- prov:Usage (Usage): Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity.
+- prov:Generation (Generation): Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.
+Object properties:
+- sio:SIO_000202; links workflow:Large_Language_Model_Output -> provone:Program, workflow:Large_Language_Model_Output -> provone:Data
+- sio:SIO_000229 (has output); links workflow:Large_Language_Models -> workflow:Large_Language_Model_Output
+- sio:SIO_000232 (is output of); links workflow:Large_Language_Model_Output -> workflow:Large_Language_Models
+- sio:SIO_000313 (is component part of); links workflow:Generative_Task -> provone:Execution
+- sio:SIO_000369 (has component part); links provone:Execution -> workflow:Generative_Task
+- sio:SIO_000230 (has input); links workflow:Large_Language_Models -> provone:Data
+- prov:used (used): A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .; links provone:Execution -> provone:Data, workflow:Generative_Task -> workflow:Large_Language_Models
+- prov:agent (hadPlan): Enables the specification of a particular User in a particular Association. This allows for further qualification of the prov:wasAssociatedWith property in the context of an...; links prov:Association -> provone:User
+- prov:qualifiedAssociation (qualifiedAssociation): If this Activity prov:wasAssociatedWith Agent :ag, then it can qualify the Association using prov:qualifiedAssociation [ a prov:Association; prov:agent :ag; :foo :bar ].; links provone:Execution -> prov:Association
+- prov:qualifiedUsage (qualifiedUsage): Enables the specification of a particular Usage by a particular Execution. This allows for further qualification of the prov:used property in the context of an Execution.; links provone:Execution -> prov:Usage
+- prov:qualifiedGeneration (qualifiedGeneration): If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualifiedGeneration [ a prov:Generation; prov:entity :e; :foo :bar ].; links provone:Execution -> prov:Generation
+- prov:hadPlan (hadPlan): The _optional_ Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.; links prov:Association -> provone:Program
+- provone:hasOutPort (hasOutPort): Enables the specification of a Port as an output port of a particular Program.; links provone:Program -> provone:Port
+- provone:hasInPort (hasInPort): Enables the specification of a Port as an input port of a particular Program.; links provone:Program -> provone:Port
+- provone:connectsTo (connectsTo): Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.; links provone:Port -> provone:Port
+- provone:hadInPort (hadInPort): Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.; links prov:Usage -> provone:Port
+- provone:hadOutPort (hadOutPort): Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:wasGeneratedBy property in the context of...; links prov:Generation -> provone:Port
+- prov:hadMember (hadMember); links provone:Collection -> provone:Data
+- provone:hadEntity (hadEntity): Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and...; links prov:Usage -> provone:Data, prov:Generation -> provone:Data
+- prov:wasInformedBy (wasInformedBy): An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.; links provone:Execution -> provone:Execution
+- prov:wasGeneratedBy (wasGeneratedBy); links provone:Data -> provone:Execution, provone:Collection -> provone:Execution
+- prov:wasAssociatedWith (wasAssociatedWith): An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.; links provone:Execution -> provone:User
+Plan steps: explore_object_of_class
+Execution evidence:
+Step step1: Which executions pertain to the 'information extraction' function?
+Program: explore_object_of_class
+Answer: Retrieved 10 candidate object(s) relevant to the question: Which executions pertain to the 'information extraction' function? <cite, id=0>http://testwebsite/testProgram#id_20260420105652_650</cite> <cite, id=1>http://testwebsite/testProgram#id_20260420105659_302</cite> <cite, id=2>http://testwebsite/testProgram#id_20260420105703_307</cite> <cite, id=3>http://testwebsite/testProgram#id_20260420105705_598</cite> <cite, id=4>http://testwebsite/testProgram#id_20260420105705_972</cite> <cite, id=5>http://testwebsite/testProgram#id_20260420105710_61</cite>
+Important entities: http://testwebsite/testProgram#id_20260420105652_650, http://testwebsite/testProgram#id_20260420105659_302, http://testwebsite/testProgram#id_20260420105703_307, http://testwebsite/testProgram#id_20260420105705_598, http://testwebsite/testProgram#id_20260420105705_972, http://testwebsite/testProgram#id_20260420105710_61, http://testwebsite/testProgram#id_20260420105711_320, http://testwebsite/testProgram#id_20260420105711_662, http://testwebsite/testProgram#id_20260420105711_772, http://testwebsite/testProgram#id_20260420105717_370
+Results: {
+  "set_1": [
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105652_650",
+      "object_name": "ChatBS-NexGen:id_20260420105652_650",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105652_650. Types: provone:Execution. Properties: dcterms:identifier: system_prompt_execution_1_1@en^^<xsd:string>; rdfs:label: system_prompt_execution_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:56:51@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_112-foodPreferences; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_420-weight; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_470-bodyMassIndex; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_604-allergies; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_753-diagnosis; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_79-age; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_838-height; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_904-gender; prov:startedAt: 2026-04-20 10:56:51@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105652_112-foodPreferences; prov:used: ChatBS-NexGen:Data-id_20260420105652_420-weight; prov:used: ChatBS-NexGen:Data-id_20260420105652_470-bodyMassIndex; prov:used: ChatBS-NexGen:Data-id_20260420105652_604-allergies; prov:used: ChatBS-NexGen:Data-id_20260420105652_753-diagnosis; prov:used: ChatBS-NexGen:Data-id_20260420105652_79-age; prov:used: ChatBS-NexGen:Data-id_20260420105652_838-height; prov:used: ChatBS-NexGen:Data-id_20260420105652_904-gender; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105659_302.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105659_302",
+      "object_name": "ChatBS-NexGen:id_20260420105659_302",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105659_302. Types: provone:Execution. Properties: dcterms:identifier: llm_chat_1_1@en^^<xsd:string>; sio:SIO_000369: ChatBS-NexGen:Generative_Task-id_20260420105659_302; rdfs:label: llm_chat_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:56:59@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:llm_chat-Association-id_20260420105659_302; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105659_282-generated_answer; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105659_579-system_prompt; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105659_811-user_prompt; prov:startedAt: 2026-04-20 10:56:52@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105652_456-system_prompt; prov:used: ChatBS-NexGen:Data-id_20260420105659_811-user_prompt; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105703_307.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105703_307",
+      "object_name": "ChatBS-NexGen:id_20260420105703_307",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105703_307. Types: provone:Execution. Properties: dcterms:identifier: information_extraction_1_1@en^^<xsd:string>; sio:SIO_000369: ChatBS-NexGen:Generative_Task-id_20260420105703_307; rdfs:label: information_extraction_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:03@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:information_extractor-Association-id_20260420105703_307; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105703_814-extracts; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105703_331-text; prov:startedAt: 2026-04-20 10:56:59@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105659_338-generated_answer; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105705_598; prov:wasInformedBy: ChatBS-NexGen:id_20260420105705_972; prov:wasInformedBy: ChatBS-NexGen:id_20260420105710_61; prov:wasInformedBy: ChatBS-NexGen:id_20260420105711_320; prov:wasInformedBy: ChatBS-NexGen:id_20260420105711_662; prov:wasInformedBy: ChatBS-NexGen:id_20260420105711_772; prov:wasInformedBy: ChatBS-NexGen:id_20260420105717_370; prov:wasInformedBy: ChatBS-NexGen:id_20260420105719_327; prov:wasInformedBy: ChatBS-NexGen:id_20260420105722_117; prov:wasInformedBy: ChatBS-NexGen:id_20260420105723_114; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_300.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105705_598",
+      "object_name": "ChatBS-NexGen:id_20260420105705_598",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105705_598. Types: provone:Execution. Properties: dcterms:identifier: 1_1_2@en^^<xsd:string>; rdfs:label: sparql_query_1_1_2@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:05@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_598; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105705_633-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105705_924-entity; prov:startedAt: 2026-04-20 10:57:05@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_661-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105705_232-kg_info; prov:used: ChatBS-NexGen:Data-id_20260420105705_670-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105705_972",
+      "object_name": "ChatBS-NexGen:id_20260420105705_972",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105705_972. Types: provone:Execution. Properties: dcterms:identifier: 1_1_1@en^^<xsd:string>; rdfs:label: sparql_query_1_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:04@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_972; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105705_591-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105705_106-entity; prov:startedAt: 2026-04-20 10:57:04@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_757-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105705_668-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105710_61",
+      "object_name": "ChatBS-NexGen:id_20260420105710_61",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105710_61. Types: provone:Execution. Properties: dcterms:identifier: 1_1_3@en^^<xsd:string>; rdfs:label: sparql_query_1_1_3@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:10@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105710_61; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105710_897-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105710_626-entity; prov:startedAt: 2026-04-20 10:57:05@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_678-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105710_564-kg_info; prov:used: ChatBS-NexGen:Data-id_20260420105711_94-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105711_320",
+      "object_name": "ChatBS-NexGen:id_20260420105711_320",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105711_320. Types: provone:Execution. Properties: dcterms:identifier: 1_1_4@en^^<xsd:string>; rdfs:label: sparql_query_1_1_4@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_320; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105711_508-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105711_611-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_51-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105711_658-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105711_662",
+      "object_name": "ChatBS-NexGen:id_20260420105711_662",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105711_662. Types: provone:Execution. Properties: dcterms:identifier: 1_1_5@en^^<xsd:string>; rdfs:label: sparql_query_1_1_5@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_662; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105711_758-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105711_768-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_198-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105711_45-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105711_772",
+      "object_name": "ChatBS-NexGen:id_20260420105711_772",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105711_772. Types: provone:Execution. Properties: dcterms:identifier: 1_1_6@en^^<xsd:string>; rdfs:label: sparql_query_1_1_6@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_772; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105711_565-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105711_726-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_218-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105711_547-kg_info; prov:used: ChatBS-NexGen:Data-id_20260420105711_637-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105717_370",
+      "object_name": "ChatBS-NexGen:id_20260420105717_370",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105717_370. Types: provone:Execution. Properties: dcterms:identifier: 1_1_7@en^^<xsd:string>; rdfs:label: sparql_query_1_1_7@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:17@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105717_370; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105717_107-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105717_534-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_886-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105717_899-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    }
+  ]
+}
+Retrieved objects: http://testwebsite/testProgram#id_20260420105652_650, http://testwebsite/testProgram#id_20260420105659_302, http://testwebsite/testProgram#id_20260420105703_307, http://testwebsite/testProgram#id_20260420105705_598, http://testwebsite/testProgram#id_20260420105705_972, http://testwebsite/testProgram#id_20260420105710_61, http://testwebsite/testProgram#id_20260420105711_320, http://testwebsite/testProgram#id_20260420105711_662, http://testwebsite/testProgram#id_20260420105711_772, http://testwebsite/testProgram#id_20260420105717_370
+Step context:
+Original question: Which executions pertain to the 'information extraction' function?
+Current traversal question: Which executions pertain to the 'information extraction' function?
+Selected program: explore_object_of_class
+Execution mode: retrieval
+Step step1: Which executions pertain to the 'information extraction' function?
+Program: explore_object_of_class
+Answer: Retrieved 10 candidate object(s) relevant to the question: Which executions pertain to the 'information extraction' function?
+Important entities: http://testwebsite/testProgram#id_20260420105652_650, http://testwebsite/testProgram#id_20260420105659_302, http://testwebsite/testProgram#id_20260420105703_307, http://testwebsite/testProgram#id_20260420105705_598, http://testwebsite/testProgram#id_20260420105705_972, http://testwebsite/testProgram#id_20260420105710_61, http://testwebsite/testProgram#id_20260420105711_320, http://testwebsite/testProgram#id_20260420105711_662, http://testwebsite/testProgram#id_20260420105711_772, http://testwebsite/testProgram#id_20260420105717_370
+Results: {
+  "set_1": [
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105652_650",
+      "object_name": "ChatBS-NexGen:id_20260420105652_650",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105652_650. Types: provone:Execution. Properties: dcterms:identifier: system_prompt_execution_1_1@en^^<xsd:string>; rdfs:label: system_prompt_execution_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:56:51@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_112-foodPreferences; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_420-weight; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_470-bodyMassIndex; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_604-allergies; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_753-diagnosis; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_79-age; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_838-height; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105652_904-gender; prov:startedAt: 2026-04-20 10:56:51@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105652_112-foodPreferences; prov:used: ChatBS-NexGen:Data-id_20260420105652_420-weight; prov:used: ChatBS-NexGen:Data-id_20260420105652_470-bodyMassIndex; prov:used: ChatBS-NexGen:Data-id_20260420105652_604-allergies; prov:used: ChatBS-NexGen:Data-id_20260420105652_753-diagnosis; prov:used: ChatBS-NexGen:Data-id_20260420105652_79-age; prov:used: ChatBS-NexGen:Data-id_20260420105652_838-height; prov:used: ChatBS-NexGen:Data-id_20260420105652_904-gender; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105659_302.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105659_302",
+      "object_name": "ChatBS-NexGen:id_20260420105659_302",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105659_302. Types: provone:Execution. Properties: dcterms:identifier: llm_chat_1_1@en^^<xsd:string>; sio:SIO_000369: ChatBS-NexGen:Generative_Task-id_20260420105659_302; rdfs:label: llm_chat_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:56:59@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:llm_chat-Association-id_20260420105659_302; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105659_282-generated_answer; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105659_579-system_prompt; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105659_811-user_prompt; prov:startedAt: 2026-04-20 10:56:52@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105652_456-system_prompt; prov:used: ChatBS-NexGen:Data-id_20260420105659_811-user_prompt; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105703_307.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105703_307",
+      "object_name": "ChatBS-NexGen:id_20260420105703_307",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105703_307. Types: provone:Execution. Properties: dcterms:identifier: information_extraction_1_1@en^^<xsd:string>; sio:SIO_000369: ChatBS-NexGen:Generative_Task-id_20260420105703_307; rdfs:label: information_extraction_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:03@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:information_extractor-Association-id_20260420105703_307; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105703_814-extracts; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105703_331-text; prov:startedAt: 2026-04-20 10:56:59@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105659_338-generated_answer; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105705_598; prov:wasInformedBy: ChatBS-NexGen:id_20260420105705_972; prov:wasInformedBy: ChatBS-NexGen:id_20260420105710_61; prov:wasInformedBy: ChatBS-NexGen:id_20260420105711_320; prov:wasInformedBy: ChatBS-NexGen:id_20260420105711_662; prov:wasInformedBy: ChatBS-NexGen:id_20260420105711_772; prov:wasInformedBy: ChatBS-NexGen:id_20260420105717_370; prov:wasInformedBy: ChatBS-NexGen:id_20260420105719_327; prov:wasInformedBy: ChatBS-NexGen:id_20260420105722_117; prov:wasInformedBy: ChatBS-NexGen:id_20260420105723_114; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_300.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105705_598",
+      "object_name": "ChatBS-NexGen:id_20260420105705_598",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105705_598. Types: provone:Execution. Properties: dcterms:identifier: 1_1_2@en^^<xsd:string>; rdfs:label: sparql_query_1_1_2@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:05@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_598; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105705_633-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105705_924-entity; prov:startedAt: 2026-04-20 10:57:05@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_661-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105705_232-kg_info; prov:used: ChatBS-NexGen:Data-id_20260420105705_670-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105705_972",
+      "object_name": "ChatBS-NexGen:id_20260420105705_972",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105705_972. Types: provone:Execution. Properties: dcterms:identifier: 1_1_1@en^^<xsd:string>; rdfs:label: sparql_query_1_1_1@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:04@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_972; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105705_591-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105705_106-entity; prov:startedAt: 2026-04-20 10:57:04@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_757-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105705_668-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105710_61",
+      "object_name": "ChatBS-NexGen:id_20260420105710_61",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105710_61. Types: provone:Execution. Properties: dcterms:identifier: 1_1_3@en^^<xsd:string>; rdfs:label: sparql_query_1_1_3@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:10@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105710_61; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105710_897-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105710_626-entity; prov:startedAt: 2026-04-20 10:57:05@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_678-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105710_564-kg_info; prov:used: ChatBS-NexGen:Data-id_20260420105711_94-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105711_320",
+      "object_name": "ChatBS-NexGen:id_20260420105711_320",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105711_320. Types: provone:Execution. Properties: dcterms:identifier: 1_1_4@en^^<xsd:string>; rdfs:label: sparql_query_1_1_4@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_320; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105711_508-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105711_611-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_51-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105711_658-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105711_662",
+      "object_name": "ChatBS-NexGen:id_20260420105711_662",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105711_662. Types: provone:Execution. Properties: dcterms:identifier: 1_1_5@en^^<xsd:string>; rdfs:label: sparql_query_1_1_5@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_662; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105711_758-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105711_768-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_198-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105711_45-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105711_772",
+      "object_name": "ChatBS-NexGen:id_20260420105711_772",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105711_772. Types: provone:Execution. Properties: dcterms:identifier: 1_1_6@en^^<xsd:string>; rdfs:label: sparql_query_1_1_6@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_772; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105711_565-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105711_726-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_218-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105711_547-kg_info; prov:used: ChatBS-NexGen:Data-id_20260420105711_637-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    },
+    {
+      "object_uri": "http://testwebsite/testProgram#id_20260420105717_370",
+      "object_name": "ChatBS-NexGen:id_20260420105717_370",
+      "object_class": [
+        "provone:Execution"
+      ],
+      "object_description": "Object: ChatBS-NexGen:id_20260420105717_370. Types: provone:Execution. Properties: dcterms:identifier: 1_1_7@en^^<xsd:string>; rdfs:label: sparql_query_1_1_7@en^^<xsd:string>; prov:endedAt: 2026-04-20 10:57:17@en^^<xsd:string>; prov:qualifiedAssociation: ChatBS-NexGen:ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105717_370; prov:qualifiedGeneration: ChatBS-NexGen:Generation-id_20260420105717_107-kg_info; prov:qualifiedUsage: ChatBS-NexGen:Usage-id_20260420105717_534-entity; prov:startedAt: 2026-04-20 10:57:11@en^^<xsd:string>; prov:used: ChatBS-NexGen:Data-id_20260420105703_886-extracts; prov:used: ChatBS-NexGen:Data-id_20260420105717_899-kg_info; prov:wasAssociatedWith: ChatBS-NexGen:test_user; prov:wasInformedBy: ChatBS-NexGen:id_20260420105727_835.",
+      "source": "class-query"
+    }
+  ]
+}
+Current answer: The execution that pertains to the 'information extraction' function is http://testwebsite/testProgram#id_20260420105703_307. This is evidenced by its `object_description` which includes the identifier and label "information_extraction_1_1@en^^<xsd:string>" and association with an 'information_extractor'.
+Judge feedback: The answer is correct and well-supported by the evidence found in the object description for the specified URI. No changes are needed.
+Next question: Which executions pertain to the 'information extraction' function?
+
+Step Context:
+None
+
+Schema Reasoning:
+{
+  "draft_answer": "According to the schema, the relationship `sio:SIO_000313 (is component part of)` links `workflow:Generative_Task` to `provone:Execution`, indicating that an execution is a component part of a 'Generative Task' workflow. Additionally, `sio:SIO_000369 (has component part)` links `provone:Execution` to `workflow:Generative_Task`.",
+  "judge": [
+    {
+      "answer": "According to the schema, the relationship `sio:SIO_000313 (is component part of)` links `workflow:Generative_Task` to `provone:Execution`, indicating that an execution is a component part of a 'Generative Task' workflow. Additionally, `sio:SIO_000369 (has component part)` links `provone:Execution` to `workflow:Generative_Task`.",
+      "answered": true,
+      "feedback": "The answer accurately summarizes the structural relationship between `provone:Execution` and `workflow:Generative_Task` using the provided schema evidence (`sio:SIO_000313` and `sio:SIO_000369`). No revision is needed."
+    }
+  ],
+  "relevant_schema_info": [
+    "sio:SIO_000313 (is component part of); links workflow:Generative_Task -> provone:Execution",
+    "sio:SIO_000369 (has component part); links provone:Execution -> workflow:Generative_Task"
+  ]
+}
+
+Validation / Judge:
+[
+  {
+    "answer": "According to the schema, the relationship `sio:SIO_000313 (is component part of)` links `workflow:Generative_Task` to `provone:Execution`, indicating that an execution is a component part of a 'Generative Task' workflow. Additionally, `sio:SIO_000369 (has component part)` links `provone:Execution` to `workflow:Generative_Task`.",
+    "answered": true,
+    "feedback": "The answer accurately summarizes the structural relationship between `provone:Execution` and `workflow:Generative_Task` using the provided schema evidence (`sio:SIO_000313` and `sio:SIO_000369`). No revision is needed."
+  }
+]
+
+Answer:
+According to the schema, the relationship `sio:SIO_000313 (is component part of)` links `workflow:Generative_Task` to `provone:Execution`, indicating that an execution is a component part of a 'Generative Task' workflow. Additionally, `sio:SIO_000369 (has component part)` links `provone:Execution` to `workflow:Generative_Task`. <cite, id=0>http://testwebsite/testProgram#id_20260420105652_650</cite> <cite, id=1>http://testwebsite/testProgram#id_20260420105659_302</cite> <cite, id=2>http://testwebsite/testProgram#id_20260420105703_307</cite> <cite, id=3>http://testwebsite/testProgram#id_20260420105705_598</cite> <cite, id=4>http://testwebsite/testProgram#id_20260420105705_972</cite> <cite, id=5>http://testwebsite/testProgram#id_20260420105710_61</cite>
+
+Final Report
+### Overall Answer to the Question:
+Yes, the execution pertaining to the 'information extraction' function does have a Generative Task as a component within. Specifically, the execution identified by `http://testwebsite/testProgram#id_20260420105703_307` is linked to a `workflow:Generative_Task` via the object property `sio:SIO_000369 (has component part)`. This relationship indicates that the execution itself incorporates or is composed of components belonging to a Generative Task workflow. <cite, id=0>http://testwebsite/testProgram#id_20260420105652_650</cite> <cite, id=1>http://testwebsite/testProgram#id_20260420105659_302</cite> <cite, id=2>http://testwebsite/testProgram#id_20260420105703_307</cite> <cite, id=3>http://testwebsite/testProgram#id_20260420105705_598</cite> <cite, id=4>http://testwebsite/testProgram#id_20260420105705_972</cite> <cite, id=5>http://testwebsite/testProgram#id_20260420105710_61</cite>
+
+### Original Question:
+Does any of the executions of the information extraction function made has a Generative Task as a component within?
+
+### Final Validation:
+The answer accurately answers the question using specific evidence found in the context (the `object_description` for the relevant URI shows the relationship `sio:SIO_000369`). No changes are necessary.
+
+### Sub Questions Used:
+- [1] Which executions pertain to the 'information extraction' function?
+  Answer: The execution that pertains to the 'information extraction' function is http://testwebsite/testProgram#id_20260420105703_307. This is evidenced by its `object_description` which includes the identifier and label "information_extraction_1_1@en^^<xsd:string>" and association with an 'information_extractor'. <cite, id=0>http://testwebsite/testProgram#id_20260420105652_650</cite> <cite, id=1>http://testwebsite/testProgram#id_20260420105659_302</cite> <cite, id=2>http://testwebsite/testProgram#id_...
+- [2] For those executions, which components are part of the 'Generative Task' workflow?
+  Answer: According to the schema, the relationship `sio:SIO_000313 (is component part of)` links `workflow:Generative_Task` to `provone:Execution`, indicating that an execution is a component part of a 'Generative Task' workflow. Additionally, `sio:SIO_000369 (has component part)` links `provone:Execution` to `workflow:Generative_Task`. <cite, id=0>http://testwebsite/testProgram#id_20260420105652_650</cite> <cite, id=1>http://testwebsite/testProgram#id_20260420105659_302</cite> <cite, id=2>http://test...
+
+### Grounded Reasoning Trace:
+Question [1]: Which executions pertain to the 'information extraction' function?
+Answer: The execution that pertains to the 'information extraction' function is http://testwebsite/testProgram#id_20260420105703_307. This is evidenced by its `object_description` which includes the identifier and label "information_extraction_1_1@en^^<xsd:string>" and association with an 'information_extractor'. <cite, id=0>http://testwebsite/testProgram#id_20260420105652_650</cite> <cite, id=1>http://testwebsite/testProgram#id_20260420105659_302</cite> <cite, id=2>http://testwebsite/testProgram#id_20260420105703_307</cite> <cite, id=3>http://testwebsite/testProgram#id_20260420105705_598</cite> <cite, id=4>http://testwebsite/testProgram#id_20260420105705_972</cite> <cite, id=5>http://testwebsite...
+Grounding:
+{
+  "candidate_classes": [
+    "provone:Execution"
+  ],
+  "candidate_relations": [
+    "dc:description"
+  ],
+  "entity_phrases": [
+    "information extraction"
+  ]
+}
+Validation: The answer is correct and well-supported by the evidence found in the object description for the specified URI. No changes are needed.
+
+Question [2]: For those executions, which components are part of the 'Generative Task' workflow?
+Answer: According to the schema, the relationship `sio:SIO_000313 (is component part of)` links `workflow:Generative_Task` to `provone:Execution`, indicating that an execution is a component part of a 'Generative Task' workflow. Additionally, `sio:SIO_000369 (has component part)` links `provone:Execution` to `workflow:Generative_Task`. <cite, id=0>http://testwebsite/testProgram#id_20260420105652_650</cite> <cite, id=1>http://testwebsite/testProgram#id_20260420105659_302</cite> <cite, id=2>http://testwebsite/testProgram#id_20260420105703_307</cite> <cite, id=3>http://testwebsite/testProgram#id_20260420105705_598</cite> <cite, id=4>http://testwebsite/testProgram#id_20260420105705_972</cite> <cite,...
+Validation: The answer accurately summarizes the structural relationship between `provone:Execution` and `workflow:Generative_Task` using the provided schema evidence (`sio:SIO_000313` and `sio:SIO_000369`). No revision is needed.
+
+Question [0]: Does any of the executions of the information extraction function made has a Generative Task as a component within?
+Answer: Yes, the execution pertaining to the 'information extraction' function does have a Generative Task as a component within. Specifically, the execution identified by `http://testwebsite/testProgram#id_20260420105703_307` is linked to a `workflow:Generative_Task` via the object property `sio:SIO_000369 (has component part)`. This relationship indicates that the execution itself incorporates or is composed of components belonging to a Generative Task workflow. <cite, id=0>http://testwebsite/testProgram#id_20260420105652_650</cite> <cite, id=1>http://testwebsite/testProgram#id_20260420105659_302</cite> <cite, id=2>http://testwebsite/testProgram#id_20260420105703_307</cite> <cite, id=3>http://t...
+Validation: The answer accurately answers the question using specific evidence found in the context (the `object_description` for the relevant URI shows the relationship `sio:SIO_000369`). No changes are necessary.
+
+Final Answer
+Yes, the execution pertaining to the 'information extraction' function does have a Generative Task as a component within. Specifically, the execution identified by `http://testwebsite/testProgram#id_20260420105703_307` is linked to a `workflow:Generative_Task` via the object property `sio:SIO_000369 (has component part)`. This relationship indicates that the execution itself incorporates or is composed of components belonging to a Generative Task workflow. <cite, id=0>http://testwebsite/testProgram#id_20260420105652_650</cite> <cite, id=1>http://testwebsite/testProgram#id_20260420105659_302</cite> <cite, id=2>http://testwebsite/testProgram#id_20260420105703_307</cite> <cite, id=3>http://testwebsite/testProgram#id_20260420105705_598</cite> <cite, id=4>http://testwebsite/testProgram#id_20260420105705_972</cite> <cite, id=5>http://testwebsite/testProgram#id_20260420105710_61</cite>
+
+Final Validation
+[
+  {
+    "answer": "Yes, the execution pertaining to the 'information extraction' function does have a Generative Task as a component within. Specifically, the execution identified by `http://testwebsite/testProgram#id_20260420105703_307` is linked to a `workflow:Generative_Task` via the object property `sio:SIO_000369 (has component part)`. This relationship indicates that the execution itself incorporates or is composed of components belonging to a Generative Task workflow.",
+    "answered": true,
+    "feedback": "The answer accurately answers the question using specific evidence found in the context (the `object_description` for the relevant URI shows the relationship `sio:SIO_000369`). No changes are necessary."
+  }
+]
+
+Timing
+147.85717119497713 seconds

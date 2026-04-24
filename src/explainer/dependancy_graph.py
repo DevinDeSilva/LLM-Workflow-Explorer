@@ -1600,12 +1600,12 @@ class DependencyGraphRuntime:
                         step_question.get("linked_entities") or []
                     ),
                     class_uri=class_uri,
-                    limit=10,
+                    limit=25,
                 )
             if not raw_results:
                 raw_results = self.object_db.get_objects_of_class(
                     class_uri,
-                    limit=10,
+                    limit=25,
                 )
             important_entities = clean_string_list(
                 [
@@ -2244,7 +2244,7 @@ class DependencyGraphRuntime:
         self,
         linked_entities: List[Dict[str, Any]],
         class_uri: str,
-        limit: int = 10,
+        limit: int = 25,
     ) -> List[Dict[str, Any]]:
         if not linked_entities:
             return []

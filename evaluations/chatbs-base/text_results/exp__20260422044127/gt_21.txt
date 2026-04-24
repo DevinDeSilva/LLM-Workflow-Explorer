@@ -1,0 +1,991 @@
+Original Question
+what are the connected functions to the function used in llm chat function step in the pipeline?
+
+Sub Questions
+[1] What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+[2] What are the input ports of this identified LLM function program?
+[3] Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?
+
+Topology Graph
+Nodes:
+[1] What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+[2] What are the input ports of this identified LLM function program?
+[3] Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?
+[0] what are the connected functions to the function used in llm chat function step in the pipeline?
+
+Edges:
+1 -> 2
+1 -> 3
+2 -> 0
+3 -> 0
+
+Adjacency:
+1: 2, 3
+2: 0
+3: 0
+
+Details Of Each Sub Question Solving
+
+
+Sub Question [1]
+Question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Depends on: None
+
+Grounding:
+{
+  "candidate_classes": [
+    "provone:Program",
+    "workflow:Generative_Task"
+  ],
+  "candidate_relations": [],
+  "entity_phrases": [
+    "llm chat function step"
+  ]
+}
+
+Synthetic Question Plan:
+1. step1
+   Sub question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+   Program: retrieval::linked-entities
+   Extra:
+   {
+     "decision_reasoning": "The question asks for a *specific* program or task representing 'llm chat function step'. The linked entity candidates provide direct, named instances that match this specific concept, making `linked-entities` the appropriate retrieval mode.",
+     "execution_mode": "retrieval",
+     "expected_classes": [
+       "provone:Program",
+       "workflow:Generative_Task"
+     ],
+     "important_entities": [
+       "http://testwebsite/testProgram#llm_chat",
+       "http://testwebsite/testProgram#Generative_Task-query_result_post_processor",
+       "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302",
+       "http://testwebsite/testProgram#Generative_Task-system_prompt_generator",
+       "http://testwebsite/testProgram#Generative_Task-information_extractor"
+     ],
+     "input_bindings": {
+       "lookup_phrases": [
+         "llm chat function step"
+       ]
+     },
+     "retrieval_mode": "linked-entities"
+   }
+
+Intermediary Results:
+Step 1: step1
+Sub question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Program: retrieval::linked-entities
+Answer:
+Retrieved 5 candidate object(s) relevant to the question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline? <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#Generative_Task-information_extractor</cite>
+Important entities:
+- http://testwebsite/testProgram#llm_chat
+- http://testwebsite/testProgram#Generative_Task-query_result_post_processor
+- http://testwebsite/testProgram#Generative_Task-id_20260420105659_302
+- http://testwebsite/testProgram#Generative_Task-system_prompt_generator
+- http://testwebsite/testProgram#Generative_Task-information_extractor
+Results:
+{
+  "set_1": [
+    {
+      "metadata": {},
+      "object_class": [
+        "provone:Program"
+      ],
+      "object_description": "Object: ChatBS-NexGen:llm_chat. Types: provone:Program. Properties: provone:hasInPort: ChatBS-NexGen:llm_chat-system_prompt; provone:hasInPort: ChatBS-NexGen:llm_chat-user_prompt; provone:hasOutPort: ChatBS-NexGen:llm_chat-generated_answer; dc:description: Chat with the LLM.@en^^<xsd:string>; rdfs:label: LLM Chat@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:llm_chat",
+      "object_uri": "http://testwebsite/testProgram#llm_chat",
+      "score": 8.772198677062988,
+      "source": "bm25_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-query_result_post_processor. Types: workflow:Generative_Task. Properties: dc:description: Generates the post processing Function using Large language models@en^^<xsd:string>; rdfs:label: Query Result Post-Processor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-query_result_post_processor.",
+      "object_name": "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-query_result_post_processor",
+      "score": 0.7631117105484009,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-id_20260420105659_302. Types: workflow:Generative_Task. Properties: dc:description: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000313: ChatBS-NexGen:id_20260420105659_302; rdfs:label: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-id_20260420105659_302.",
+      "object_name": "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302",
+      "score": 0.7409588098526001,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-system_prompt_generator. Types: workflow:Generative_Task. Properties: dc:description: Generates the System Prompt Template using Large language models@en^^<xsd:string>; rdfs:label: System Prompt Template function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-system_prompt_generator.",
+      "object_name": "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-system_prompt_generator",
+      "score": 0.7365754842758179,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-information_extractor. Types: workflow:Generative_Task. Properties: dc:description: Generates the Information Extractor Function using Large language models@en^^<xsd:string>; rdfs:label: Information Extractor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-information_extractor.",
+      "object_name": "ChatBS-NexGen:Generative_Task-information_extractor",
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-information_extractor",
+      "score": 22.206693649291992,
+      "source": "bm25_results"
+    }
+  ]
+}
+Extra:
+{
+  "execution_mode": "retrieval",
+  "parameter_values": [
+    {
+      "lookup_phrases": [
+        "llm chat function step"
+      ]
+    }
+  ]
+}
+
+Predecessor Context:
+None
+
+Step Context:
+Original question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Current traversal question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Selected program: retrieval::linked-entities
+Execution mode: retrieval
+Step step1: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Program: retrieval::linked-entities
+Answer: Retrieved 5 candidate object(s) relevant to the question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Important entities: http://testwebsite/testProgram#llm_chat, http://testwebsite/testProgram#Generative_Task-query_result_post_processor, http://testwebsite/testProgram#Generative_Task-id_20260420105659_302, http://testwebsite/testProgram#Generative_Task-system_prompt_generator, http://testwebsite/testProgram#Generative_Task-information_extractor
+Results: {
+  "set_1": [
+    {
+      "score": 8.772198677062988,
+      "object_description": "Object: ChatBS-NexGen:llm_chat. Types: provone:Program. Properties: provone:hasInPort: ChatBS-NexGen:llm_chat-system_prompt; provone:hasInPort: ChatBS-NexGen:llm_chat-user_prompt; provone:hasOutPort: ChatBS-NexGen:llm_chat-generated_answer; dc:description: Chat with the LLM.@en^^<xsd:string>; rdfs:label: LLM Chat@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:llm_chat",
+      "metadata": {},
+      "object_class": [
+        "provone:Program"
+      ],
+      "object_uri": "http://testwebsite/testProgram#llm_chat",
+      "source": "bm25_results"
+    },
+    {
+      "score": 0.7631117105484009,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-query_result_post_processor. Types: workflow:Generative_Task. Properties: dc:description: Generates the post processing Function using Large language models@en^^<xsd:string>; rdfs:label: Query Result Post-Processor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-query_result_post_processor.",
+      "object_name": "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-query_result_post_processor",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.7409588098526001,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-id_20260420105659_302. Types: workflow:Generative_Task. Properties: dc:description: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000313: ChatBS-NexGen:id_20260420105659_302; rdfs:label: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-id_20260420105659_302.",
+      "object_name": "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.7365754842758179,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-system_prompt_generator. Types: workflow:Generative_Task. Properties: dc:description: Generates the System Prompt Template using Large language models@en^^<xsd:string>; rdfs:label: System Prompt Template function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-system_prompt_generator.",
+      "object_name": "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-system_prompt_generator",
+      "source": "vector_results"
+    },
+    {
+      "score": 22.206693649291992,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-information_extractor. Types: workflow:Generative_Task. Properties: dc:description: Generates the Information Extractor Function using Large language models@en^^<xsd:string>; rdfs:label: Information Extractor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-information_extractor.",
+      "object_name": "ChatBS-NexGen:Generative_Task-information_extractor",
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-information_extractor",
+      "source": "bm25_results"
+    }
+  ]
+}
+Current answer: The specific provone:Program that represents the 'llm chat function step' in the pipeline is **ChatBS-NexGen:llm_chat** (URI: http://testwebsite/testProgram#llm_chat). This object is identified by its description, which states it performs "Chat with the LLM."
+Judge feedback: The answer accurately identifies the specific `provone:Program` representing the 'llm chat function step' using the provided evidence. No revisions are needed.
+Next question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+
+Schema Reasoning:
+{
+  "draft_answer": "",
+  "judge": [],
+  "relevant_schema_info": [
+    "workflow:Generative_Task (Generative Task): A task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data.",
+    "workflow:Large_Language_Models (Large Language Models; alias=LLM)"
+  ]
+}
+
+Validation / Judge:
+[
+  {
+    "answer": "Retrieved 5 candidate object(s) relevant to the question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?",
+    "answered": false,
+    "feedback": "The answer provided merely repeats the summary of the retrieval process (\"Retrieved 5 candidate object(s)...\") and does not actually state the specific provone:Program or workflow:Generative_Task that answers the question. Based on the evidence, the object representing the 'llm chat function step' is \"ChatBS-NexGen:llm_chat\" (URI: http://testwebsite/testProgram#llm_chat), which is explicitly described as doing \"Chat with the LLM.\" Please state this specific object as the answer."
+  },
+  {
+    "answer": "The specific provone:Program that represents the 'llm chat function step' in the pipeline is **ChatBS-NexGen:llm_chat** (URI: http://testwebsite/testProgram#llm_chat). This object is identified by its description, which states it performs \"Chat with the LLM.\"",
+    "answered": true,
+    "feedback": "The answer accurately identifies the specific `provone:Program` representing the 'llm chat function step' using the provided evidence. No revisions are needed."
+  }
+]
+
+Answer:
+The specific provone:Program that represents the 'llm chat function step' in the pipeline is **ChatBS-NexGen:llm_chat** (URI: http://testwebsite/testProgram#llm_chat). This object is identified by its description, which states it performs "Chat with the LLM." <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#Generative_Task-information_extractor</cite>
+
+Sub Question [2]
+Question: What are the input ports of this identified LLM function program?
+Depends on: 1
+
+Grounding:
+{}
+
+Synthetic Question Plan:
+None
+
+Intermediary Results:
+None
+
+Predecessor Context:
+Predecessor context:
+Node 1: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Answer: The specific provone:Program that represents the 'llm chat function step' in the pipeline is **ChatBS-NexGen:llm_chat** (URI: http://testwebsite/testProgram#llm_chat). This object is identified by its description, which states it performs "Chat with the LLM." <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#Generative_Task-information_extractor</cite>
+Schema context:
+Workflow schema
+Classes:
+- workflow:Generative_Task (Generative Task): A task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data.
+- workflow:Large_Language_Models (Large Language Models; alias=LLM)
+- workflow:Large_Language_Model_Output (Large Language Model Output): An Output Artifact from a AI Task
+- eo:Reasoning_Mode (Reasoning Mode): a process being executed by the system that achieves a particular goal; e.g. inference models such as treatment planning involved in medical diagnosis can be considered...
+- provone:Program (Program): A Program represents a computational task that consumes and produces data through its input and output ports, respectively. It can be atomic or composite, the latter case...
+- provone:Port (Port): A Port enables a Program to send and receive Entities (Data, Visualizations, etc.). When used in a role as an input port, default parameters may be configured for the Port.
+- provone:Channel (Channel): A Channel provides a connection between Ports that are defined for Programs. Typically, a Program with an output Port defined using the provone:hasOutPort object property...
+- provone:Execution (Execution): An Execution represents the execution of a Program. If the Program in question is a Workflow, then the Execution represents a trace of its execution.
+- provone:User (User): A User is the person responsible for the execution of a Program, which in turn can be a Workflow. Its specification serves attribution and accountability purposes.
+- provone:Data (Data): A Data item represents the basic unit of information consumed and produced by a Program. Multiple Data items may be grouped into a Collection.
+- provone:Collection
+- prov:Association (Association): An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity. It further allows for a plan to...
+- prov:Usage (Usage): Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity.
+- prov:Generation (Generation): Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.
+Object properties:
+- sio:SIO_000202; links workflow:Large_Language_Model_Output -> provone:Program, workflow:Large_Language_Model_Output -> provone:Data
+- sio:SIO_000229 (has output); links workflow:Large_Language_Models -> workflow:Large_Language_Model_Output
+- sio:SIO_000232 (is output of); links workflow:Large_Language_Model_Output -> workflow:Large_Language_Models
+- sio:SIO_000313 (is component part of); links workflow:Generative_Task -> provone:Execution
+- sio:SIO_000369 (has component part); links provone:Execution -> workflow:Generative_Task
+- sio:SIO_000230 (has input); links workflow:Large_Language_Models -> provone:Data
+- prov:used (used): A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .; links provone:Execution -> provone:Data, workflow:Generative_Task -> workflow:Large_Language_Models
+- prov:agent (hadPlan): Enables the specification of a particular User in a particular Association. This allows for further qualification of the prov:wasAssociatedWith property in the context of an...; links prov:Association -> provone:User
+- prov:qualifiedAssociation (qualifiedAssociation): If this Activity prov:wasAssociatedWith Agent :ag, then it can qualify the Association using prov:qualifiedAssociation [ a prov:Association; prov:agent :ag; :foo :bar ].; links provone:Execution -> prov:Association
+- prov:qualifiedUsage (qualifiedUsage): Enables the specification of a particular Usage by a particular Execution. This allows for further qualification of the prov:used property in the context of an Execution.; links provone:Execution -> prov:Usage
+- prov:qualifiedGeneration (qualifiedGeneration): If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualifiedGeneration [ a prov:Generation; prov:entity :e; :foo :bar ].; links provone:Execution -> prov:Generation
+- prov:hadPlan (hadPlan): The _optional_ Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.; links prov:Association -> provone:Program
+- provone:hasOutPort (hasOutPort): Enables the specification of a Port as an output port of a particular Program.; links provone:Program -> provone:Port
+- provone:hasInPort (hasInPort): Enables the specification of a Port as an input port of a particular Program.; links provone:Program -> provone:Port
+- provone:connectsTo (connectsTo): Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.; links provone:Port -> provone:Port
+- provone:hadInPort (hadInPort): Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.; links prov:Usage -> provone:Port
+- provone:hadOutPort (hadOutPort): Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:wasGeneratedBy property in the context of...; links prov:Generation -> provone:Port
+- prov:hadMember (hadMember); links provone:Collection -> provone:Data
+- provone:hadEntity (hadEntity): Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and...; links prov:Usage -> provone:Data, prov:Generation -> provone:Data
+- prov:wasInformedBy (wasInformedBy): An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.; links provone:Execution -> provone:Execution
+- prov:wasGeneratedBy (wasGeneratedBy); links provone:Data -> provone:Execution, provone:Collection -> provone:Execution
+- prov:wasAssociatedWith (wasAssociatedWith): An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.; links provone:Execution -> provone:User
+Schema details:
+- workflow:Generative_Task (Generative Task): A task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data.
+- workflow:Large_Language_Models (Large Language Models; alias=LLM)
+Plan steps: retrieval::linked-entities
+Execution evidence:
+Step step1: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Program: retrieval::linked-entities
+Answer: Retrieved 5 candidate object(s) relevant to the question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline? <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#Generative_Task-information_extractor</cite>
+Important entities: http://testwebsite/testProgram#llm_chat, http://testwebsite/testProgram#Generative_Task-query_result_post_processor, http://testwebsite/testProgram#Generative_Task-id_20260420105659_302, http://testwebsite/testProgram#Generative_Task-system_prompt_generator, http://testwebsite/testProgram#Generative_Task-information_extractor
+Results: {
+  "set_1": [
+    {
+      "score": 8.772198677062988,
+      "object_description": "Object: ChatBS-NexGen:llm_chat. Types: provone:Program. Properties: provone:hasInPort: ChatBS-NexGen:llm_chat-system_prompt; provone:hasInPort: ChatBS-NexGen:llm_chat-user_prompt; provone:hasOutPort: ChatBS-NexGen:llm_chat-generated_answer; dc:description: Chat with the LLM.@en^^<xsd:string>; rdfs:label: LLM Chat@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:llm_chat",
+      "metadata": {},
+      "object_class": [
+        "provone:Program"
+      ],
+      "object_uri": "http://testwebsite/testProgram#llm_chat",
+      "source": "bm25_results"
+    },
+    {
+      "score": 0.7631117105484009,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-query_result_post_processor. Types: workflow:Generative_Task. Properties: dc:description: Generates the post processing Function using Large language models@en^^<xsd:string>; rdfs:label: Query Result Post-Processor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-query_result_post_processor.",
+      "object_name": "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-query_result_post_processor",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.7409588098526001,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-id_20260420105659_302. Types: workflow:Generative_Task. Properties: dc:description: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000313: ChatBS-NexGen:id_20260420105659_302; rdfs:label: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-id_20260420105659_302.",
+      "object_name": "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.7365754842758179,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-system_prompt_generator. Types: workflow:Generative_Task. Properties: dc:description: Generates the System Prompt Template using Large language models@en^^<xsd:string>; rdfs:label: System Prompt Template function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-system_prompt_generator.",
+      "object_name": "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-system_prompt_generator",
+      "source": "vector_results"
+    },
+    {
+      "score": 22.206693649291992,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-information_extractor. Types: workflow:Generative_Task. Properties: dc:description: Generates the Information Extractor Function using Large language models@en^^<xsd:string>; rdfs:label: Information Extractor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-information_extractor.",
+      "object_name": "ChatBS-NexGen:Generative_Task-information_extractor",
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-information_extractor",
+      "source": "bm25_results"
+    }
+  ]
+}
+Retrieved objects: http://testwebsite/testProgram#llm_chat, http://testwebsite/testProgram#Generative_Task-query_result_post_processor, http://testwebsite/testProgram#Generative_Task-id_20260420105659_302, http://testwebsite/testProgram#Generative_Task-system_prompt_generator, http://testwebsite/testProgram#Generative_Task-information_extractor
+Step context:
+Original question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Current traversal question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Selected program: retrieval::linked-entities
+Execution mode: retrieval
+Step step1: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Program: retrieval::linked-entities
+Answer: Retrieved 5 candidate object(s) relevant to the question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Important entities: http://testwebsite/testProgram#llm_chat, http://testwebsite/testProgram#Generative_Task-query_result_post_processor, http://testwebsite/testProgram#Generative_Task-id_20260420105659_302, http://testwebsite/testProgram#Generative_Task-system_prompt_generator, http://testwebsite/testProgram#Generative_Task-information_extractor
+Results: {
+  "set_1": [
+    {
+      "score": 8.772198677062988,
+      "object_description": "Object: ChatBS-NexGen:llm_chat. Types: provone:Program. Properties: provone:hasInPort: ChatBS-NexGen:llm_chat-system_prompt; provone:hasInPort: ChatBS-NexGen:llm_chat-user_prompt; provone:hasOutPort: ChatBS-NexGen:llm_chat-generated_answer; dc:description: Chat with the LLM.@en^^<xsd:string>; rdfs:label: LLM Chat@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:llm_chat",
+      "metadata": {},
+      "object_class": [
+        "provone:Program"
+      ],
+      "object_uri": "http://testwebsite/testProgram#llm_chat",
+      "source": "bm25_results"
+    },
+    {
+      "score": 0.7631117105484009,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-query_result_post_processor. Types: workflow:Generative_Task. Properties: dc:description: Generates the post processing Function using Large language models@en^^<xsd:string>; rdfs:label: Query Result Post-Processor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-query_result_post_processor.",
+      "object_name": "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-query_result_post_processor",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.7409588098526001,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-id_20260420105659_302. Types: workflow:Generative_Task. Properties: dc:description: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000313: ChatBS-NexGen:id_20260420105659_302; rdfs:label: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-id_20260420105659_302.",
+      "object_name": "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.7365754842758179,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-system_prompt_generator. Types: workflow:Generative_Task. Properties: dc:description: Generates the System Prompt Template using Large language models@en^^<xsd:string>; rdfs:label: System Prompt Template function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-system_prompt_generator.",
+      "object_name": "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-system_prompt_generator",
+      "source": "vector_results"
+    },
+    {
+      "score": 22.206693649291992,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-information_extractor. Types: workflow:Generative_Task. Properties: dc:description: Generates the Information Extractor Function using Large language models@en^^<xsd:string>; rdfs:label: Information Extractor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-information_extractor.",
+      "object_name": "ChatBS-NexGen:Generative_Task-information_extractor",
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-information_extractor",
+      "source": "bm25_results"
+    }
+  ]
+}
+Current answer: The specific provone:Program that represents the 'llm chat function step' in the pipeline is **ChatBS-NexGen:llm_chat** (URI: http://testwebsite/testProgram#llm_chat). This object is identified by its description, which states it performs "Chat with the LLM."
+Judge feedback: The answer accurately identifies the specific `provone:Program` representing the 'llm chat function step' using the provided evidence. No revisions are needed.
+Next question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+
+Step Context:
+None
+
+Schema Reasoning:
+{
+  "draft_answer": "The input ports of the identified program, **ChatBS-NexGen:llm_chat**, are ChatBS-NexGen:llm_chat-system_prompt and ChatBS-NexGen:llm_chat-user_prompt.",
+  "judge": [
+    {
+      "answer": "The input ports of the identified program, **ChatBS-NexGen:llm_chat**, are ChatBS-NexGen:llm_chat-system_prompt and ChatBS-NexGen:llm_chat-user_prompt.",
+      "answered": true,
+      "feedback": "The answer successfully identifies the input ports based on the evidence collected about the `ChatBS-NexGen:llm_chat` program. No revisions are needed."
+    }
+  ],
+  "relevant_schema_info": [
+    "provone:hasInPort (hasInPort): Enables the specification of a Port as an input port of a particular Program.; links provone:Program -> provone:Port"
+  ]
+}
+
+Validation / Judge:
+[
+  {
+    "answer": "The input ports of the identified program, **ChatBS-NexGen:llm_chat**, are ChatBS-NexGen:llm_chat-system_prompt and ChatBS-NexGen:llm_chat-user_prompt.",
+    "answered": true,
+    "feedback": "The answer successfully identifies the input ports based on the evidence collected about the `ChatBS-NexGen:llm_chat` program. No revisions are needed."
+  }
+]
+
+Answer:
+The input ports of the identified program, **ChatBS-NexGen:llm_chat**, are ChatBS-NexGen:llm_chat-system_prompt and ChatBS-NexGen:llm_chat-user_prompt. <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#Generative_Task-information_extractor</cite>
+
+Sub Question [3]
+Question: Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?
+Depends on: 1
+
+Grounding:
+{
+  "candidate_classes": [
+    "provone:Program",
+    "provone:Port"
+  ],
+  "candidate_relations": [],
+  "entity_phrases": [
+    "output ports",
+    "LLM chat function step"
+  ]
+}
+
+Synthetic Question Plan:
+1. step1
+   Sub question: Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?
+   Program: retrieval::linked-entities
+   Extra:
+   {
+     "decision_reasoning": "The question asks which other programs connect to or use data from a specific, identified output source (the LLM chat function step's output ports). Since relevant candidate ports are provided via linked entities, the retrieval should start by exploring connections relative to these concrete, named components.",
+     "execution_mode": "retrieval",
+     "expected_classes": [
+       "provone:Program",
+       "provone:Port"
+     ],
+     "important_entities": [
+       "http://testwebsite/testProgram#query_result_post_processor-post_processed_output",
+       "http://testwebsite/testProgram#llm_chat-generated_answer",
+       "http://testwebsite/testProgram#DF_combine-kg_knowledge",
+       "http://testwebsite/testProgram#llm_chat-user_prompt",
+       "http://testwebsite/testProgram#llm_chat-system_prompt"
+     ],
+     "input_bindings": {
+       "lookup_phrases": [
+         "output ports",
+         "LLM chat function step"
+       ]
+     },
+     "retrieval_mode": "linked-entities"
+   }
+
+Intermediary Results:
+Step 1: step1
+Sub question: Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?
+Program: retrieval::linked-entities
+Answer:
+Retrieved 5 candidate object(s) relevant to the question: Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step? <cite, id=0>http://testwebsite/testProgram#query_result_post_processor-post_processed_output</cite> <cite, id=1>http://testwebsite/testProgram#llm_chat-generated_answer</cite> <cite, id=2>http://testwebsite/testProgram#DF_combine-kg_knowledge</cite> <cite, id=3>http://testwebsite/testProgram#llm_chat-user_prompt</cite> <cite, id=4>http://testwebsite/testProgram#llm_chat-system_prompt</cite>
+Important entities:
+- http://testwebsite/testProgram#query_result_post_processor-post_processed_output
+- http://testwebsite/testProgram#llm_chat-generated_answer
+- http://testwebsite/testProgram#DF_combine-kg_knowledge
+- http://testwebsite/testProgram#llm_chat-user_prompt
+- http://testwebsite/testProgram#llm_chat-system_prompt
+Results:
+{
+  "set_1": [
+    {
+      "metadata": {},
+      "object_class": [
+        "provone:Port"
+      ],
+      "object_description": "Object: ChatBS-NexGen:query_result_post_processor-post_processed_output. Types: provone:Port. Properties: dc:description: Post-processed output port: post_processed_output@en^^<xsd:string>; rdfs:label: Post-processed output port: post_processed_output@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:query_result_post_processor-post_processed_output",
+      "object_uri": "http://testwebsite/testProgram#query_result_post_processor-post_processed_output",
+      "score": 0.6613678932189941,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "provone:Port"
+      ],
+      "object_description": "Object: ChatBS-NexGen:llm_chat-generated_answer. Types: provone:Port. Properties: provone:connectsTo: ChatBS-NexGen:channel_generated_answer; dc:description: LLM Chat output port: generated_answer@en^^<xsd:string>; rdfs:label: LLM Chat output port: generated_answer@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:llm_chat-generated_answer",
+      "object_uri": "http://testwebsite/testProgram#llm_chat-generated_answer",
+      "score": 0.6266290545463562,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "provone:Port"
+      ],
+      "object_description": "Object: ChatBS-NexGen:DF_combine-kg_knowledge. Types: provone:Port. Properties: dc:description: Output port for kg_knowledge in the DF combine program@en^^<xsd:string>; rdfs:label: Output port for kg_knowledge@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:DF_combine-kg_knowledge",
+      "object_uri": "http://testwebsite/testProgram#DF_combine-kg_knowledge",
+      "score": 0.6238852739334106,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "provone:Port"
+      ],
+      "object_description": "Object: ChatBS-NexGen:llm_chat-user_prompt. Types: provone:Port. Properties: dc:description: LLM Chat input port: user_prompt@en^^<xsd:string>; rdfs:label: LLM Chat input port: user_prompt@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:llm_chat-user_prompt",
+      "object_uri": "http://testwebsite/testProgram#llm_chat-user_prompt",
+      "score": 0.6711069941520691,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "provone:Port"
+      ],
+      "object_description": "Object: ChatBS-NexGen:llm_chat-system_prompt. Types: provone:Port. Properties: provone:connectsTo: ChatBS-NexGen:channel_system_prompt; dc:description: LLM Chat input port: system_prompt@en^^<xsd:string>; rdfs:label: LLM Chat input port: system_prompt@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:llm_chat-system_prompt",
+      "object_uri": "http://testwebsite/testProgram#llm_chat-system_prompt",
+      "score": 0.6637279987335205,
+      "source": "vector_results"
+    }
+  ]
+}
+Extra:
+{
+  "execution_mode": "retrieval",
+  "parameter_values": [
+    {
+      "lookup_phrases": [
+        "output ports",
+        "LLM chat function step"
+      ]
+    }
+  ]
+}
+
+Predecessor Context:
+Predecessor context:
+Node 1: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Answer: The specific provone:Program that represents the 'llm chat function step' in the pipeline is **ChatBS-NexGen:llm_chat** (URI: http://testwebsite/testProgram#llm_chat). This object is identified by its description, which states it performs "Chat with the LLM." <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#Generative_Task-information_extractor</cite>
+Schema context:
+Workflow schema
+Classes:
+- workflow:Generative_Task (Generative Task): A task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data.
+- workflow:Large_Language_Models (Large Language Models; alias=LLM)
+- workflow:Large_Language_Model_Output (Large Language Model Output): An Output Artifact from a AI Task
+- eo:Reasoning_Mode (Reasoning Mode): a process being executed by the system that achieves a particular goal; e.g. inference models such as treatment planning involved in medical diagnosis can be considered...
+- provone:Program (Program): A Program represents a computational task that consumes and produces data through its input and output ports, respectively. It can be atomic or composite, the latter case...
+- provone:Port (Port): A Port enables a Program to send and receive Entities (Data, Visualizations, etc.). When used in a role as an input port, default parameters may be configured for the Port.
+- provone:Channel (Channel): A Channel provides a connection between Ports that are defined for Programs. Typically, a Program with an output Port defined using the provone:hasOutPort object property...
+- provone:Execution (Execution): An Execution represents the execution of a Program. If the Program in question is a Workflow, then the Execution represents a trace of its execution.
+- provone:User (User): A User is the person responsible for the execution of a Program, which in turn can be a Workflow. Its specification serves attribution and accountability purposes.
+- provone:Data (Data): A Data item represents the basic unit of information consumed and produced by a Program. Multiple Data items may be grouped into a Collection.
+- provone:Collection
+- prov:Association (Association): An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity. It further allows for a plan to...
+- prov:Usage (Usage): Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity.
+- prov:Generation (Generation): Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.
+Object properties:
+- sio:SIO_000202; links workflow:Large_Language_Model_Output -> provone:Program, workflow:Large_Language_Model_Output -> provone:Data
+- sio:SIO_000229 (has output); links workflow:Large_Language_Models -> workflow:Large_Language_Model_Output
+- sio:SIO_000232 (is output of); links workflow:Large_Language_Model_Output -> workflow:Large_Language_Models
+- sio:SIO_000313 (is component part of); links workflow:Generative_Task -> provone:Execution
+- sio:SIO_000369 (has component part); links provone:Execution -> workflow:Generative_Task
+- sio:SIO_000230 (has input); links workflow:Large_Language_Models -> provone:Data
+- prov:used (used): A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .; links provone:Execution -> provone:Data, workflow:Generative_Task -> workflow:Large_Language_Models
+- prov:agent (hadPlan): Enables the specification of a particular User in a particular Association. This allows for further qualification of the prov:wasAssociatedWith property in the context of an...; links prov:Association -> provone:User
+- prov:qualifiedAssociation (qualifiedAssociation): If this Activity prov:wasAssociatedWith Agent :ag, then it can qualify the Association using prov:qualifiedAssociation [ a prov:Association; prov:agent :ag; :foo :bar ].; links provone:Execution -> prov:Association
+- prov:qualifiedUsage (qualifiedUsage): Enables the specification of a particular Usage by a particular Execution. This allows for further qualification of the prov:used property in the context of an Execution.; links provone:Execution -> prov:Usage
+- prov:qualifiedGeneration (qualifiedGeneration): If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualifiedGeneration [ a prov:Generation; prov:entity :e; :foo :bar ].; links provone:Execution -> prov:Generation
+- prov:hadPlan (hadPlan): The _optional_ Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.; links prov:Association -> provone:Program
+- provone:hasOutPort (hasOutPort): Enables the specification of a Port as an output port of a particular Program.; links provone:Program -> provone:Port
+- provone:hasInPort (hasInPort): Enables the specification of a Port as an input port of a particular Program.; links provone:Program -> provone:Port
+- provone:connectsTo (connectsTo): Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.; links provone:Port -> provone:Port
+- provone:hadInPort (hadInPort): Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.; links prov:Usage -> provone:Port
+- provone:hadOutPort (hadOutPort): Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:wasGeneratedBy property in the context of...; links prov:Generation -> provone:Port
+- prov:hadMember (hadMember); links provone:Collection -> provone:Data
+- provone:hadEntity (hadEntity): Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and...; links prov:Usage -> provone:Data, prov:Generation -> provone:Data
+- prov:wasInformedBy (wasInformedBy): An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.; links provone:Execution -> provone:Execution
+- prov:wasGeneratedBy (wasGeneratedBy); links provone:Data -> provone:Execution, provone:Collection -> provone:Execution
+- prov:wasAssociatedWith (wasAssociatedWith): An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.; links provone:Execution -> provone:User
+Schema details:
+- workflow:Generative_Task (Generative Task): A task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data.
+- workflow:Large_Language_Models (Large Language Models; alias=LLM)
+Plan steps: retrieval::linked-entities
+Execution evidence:
+Step step1: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Program: retrieval::linked-entities
+Answer: Retrieved 5 candidate object(s) relevant to the question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline? <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#Generative_Task-information_extractor</cite>
+Important entities: http://testwebsite/testProgram#llm_chat, http://testwebsite/testProgram#Generative_Task-query_result_post_processor, http://testwebsite/testProgram#Generative_Task-id_20260420105659_302, http://testwebsite/testProgram#Generative_Task-system_prompt_generator, http://testwebsite/testProgram#Generative_Task-information_extractor
+Results: {
+  "set_1": [
+    {
+      "score": 8.772198677062988,
+      "object_description": "Object: ChatBS-NexGen:llm_chat. Types: provone:Program. Properties: provone:hasInPort: ChatBS-NexGen:llm_chat-system_prompt; provone:hasInPort: ChatBS-NexGen:llm_chat-user_prompt; provone:hasOutPort: ChatBS-NexGen:llm_chat-generated_answer; dc:description: Chat with the LLM.@en^^<xsd:string>; rdfs:label: LLM Chat@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:llm_chat",
+      "metadata": {},
+      "object_class": [
+        "provone:Program"
+      ],
+      "object_uri": "http://testwebsite/testProgram#llm_chat",
+      "source": "bm25_results"
+    },
+    {
+      "score": 0.7631117105484009,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-query_result_post_processor. Types: workflow:Generative_Task. Properties: dc:description: Generates the post processing Function using Large language models@en^^<xsd:string>; rdfs:label: Query Result Post-Processor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-query_result_post_processor.",
+      "object_name": "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-query_result_post_processor",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.7409588098526001,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-id_20260420105659_302. Types: workflow:Generative_Task. Properties: dc:description: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000313: ChatBS-NexGen:id_20260420105659_302; rdfs:label: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-id_20260420105659_302.",
+      "object_name": "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.7365754842758179,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-system_prompt_generator. Types: workflow:Generative_Task. Properties: dc:description: Generates the System Prompt Template using Large language models@en^^<xsd:string>; rdfs:label: System Prompt Template function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-system_prompt_generator.",
+      "object_name": "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-system_prompt_generator",
+      "source": "vector_results"
+    },
+    {
+      "score": 22.206693649291992,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-information_extractor. Types: workflow:Generative_Task. Properties: dc:description: Generates the Information Extractor Function using Large language models@en^^<xsd:string>; rdfs:label: Information Extractor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-information_extractor.",
+      "object_name": "ChatBS-NexGen:Generative_Task-information_extractor",
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-information_extractor",
+      "source": "bm25_results"
+    }
+  ]
+}
+Retrieved objects: http://testwebsite/testProgram#llm_chat, http://testwebsite/testProgram#Generative_Task-query_result_post_processor, http://testwebsite/testProgram#Generative_Task-id_20260420105659_302, http://testwebsite/testProgram#Generative_Task-system_prompt_generator, http://testwebsite/testProgram#Generative_Task-information_extractor
+Step context:
+Original question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Current traversal question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Selected program: retrieval::linked-entities
+Execution mode: retrieval
+Step step1: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Program: retrieval::linked-entities
+Answer: Retrieved 5 candidate object(s) relevant to the question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Important entities: http://testwebsite/testProgram#llm_chat, http://testwebsite/testProgram#Generative_Task-query_result_post_processor, http://testwebsite/testProgram#Generative_Task-id_20260420105659_302, http://testwebsite/testProgram#Generative_Task-system_prompt_generator, http://testwebsite/testProgram#Generative_Task-information_extractor
+Results: {
+  "set_1": [
+    {
+      "score": 8.772198677062988,
+      "object_description": "Object: ChatBS-NexGen:llm_chat. Types: provone:Program. Properties: provone:hasInPort: ChatBS-NexGen:llm_chat-system_prompt; provone:hasInPort: ChatBS-NexGen:llm_chat-user_prompt; provone:hasOutPort: ChatBS-NexGen:llm_chat-generated_answer; dc:description: Chat with the LLM.@en^^<xsd:string>; rdfs:label: LLM Chat@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:llm_chat",
+      "metadata": {},
+      "object_class": [
+        "provone:Program"
+      ],
+      "object_uri": "http://testwebsite/testProgram#llm_chat",
+      "source": "bm25_results"
+    },
+    {
+      "score": 0.7631117105484009,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-query_result_post_processor. Types: workflow:Generative_Task. Properties: dc:description: Generates the post processing Function using Large language models@en^^<xsd:string>; rdfs:label: Query Result Post-Processor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-query_result_post_processor.",
+      "object_name": "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-query_result_post_processor",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.7409588098526001,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-id_20260420105659_302. Types: workflow:Generative_Task. Properties: dc:description: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000313: ChatBS-NexGen:id_20260420105659_302; rdfs:label: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-id_20260420105659_302.",
+      "object_name": "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.7365754842758179,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-system_prompt_generator. Types: workflow:Generative_Task. Properties: dc:description: Generates the System Prompt Template using Large language models@en^^<xsd:string>; rdfs:label: System Prompt Template function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-system_prompt_generator.",
+      "object_name": "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-system_prompt_generator",
+      "source": "vector_results"
+    },
+    {
+      "score": 22.206693649291992,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-information_extractor. Types: workflow:Generative_Task. Properties: dc:description: Generates the Information Extractor Function using Large language models@en^^<xsd:string>; rdfs:label: Information Extractor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-information_extractor.",
+      "object_name": "ChatBS-NexGen:Generative_Task-information_extractor",
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-information_extractor",
+      "source": "bm25_results"
+    }
+  ]
+}
+Current answer: The specific provone:Program that represents the 'llm chat function step' in the pipeline is **ChatBS-NexGen:llm_chat** (URI: http://testwebsite/testProgram#llm_chat). This object is identified by its description, which states it performs "Chat with the LLM."
+Judge feedback: The answer accurately identifies the specific `provone:Program` representing the 'llm chat function step' using the provided evidence. No revisions are needed.
+Next question: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+
+Step Context:
+Original question: Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?
+Current traversal question: Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?
+Selected program: retrieval::linked-entities
+Execution mode: retrieval
+Step step1: Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?
+Program: retrieval::linked-entities
+Answer: Retrieved 5 candidate object(s) relevant to the question: Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?
+Important entities: http://testwebsite/testProgram#query_result_post_processor-post_processed_output, http://testwebsite/testProgram#llm_chat-generated_answer, http://testwebsite/testProgram#DF_combine-kg_knowledge, http://testwebsite/testProgram#llm_chat-user_prompt, http://testwebsite/testProgram#llm_chat-system_prompt
+Results: {
+  "set_1": [
+    {
+      "score": 0.6613678932189941,
+      "object_description": "Object: ChatBS-NexGen:query_result_post_processor-post_processed_output. Types: provone:Port. Properties: dc:description: Post-processed output port: post_processed_output@en^^<xsd:string>; rdfs:label: Post-processed output port: post_processed_output@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:query_result_post_processor-post_processed_output",
+      "object_class": [
+        "provone:Port"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#query_result_post_processor-post_processed_output",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.6266290545463562,
+      "object_description": "Object: ChatBS-NexGen:llm_chat-generated_answer. Types: provone:Port. Properties: provone:connectsTo: ChatBS-NexGen:channel_generated_answer; dc:description: LLM Chat output port: generated_answer@en^^<xsd:string>; rdfs:label: LLM Chat output port: generated_answer@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:llm_chat-generated_answer",
+      "object_class": [
+        "provone:Port"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#llm_chat-generated_answer",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.6238852739334106,
+      "object_description": "Object: ChatBS-NexGen:DF_combine-kg_knowledge. Types: provone:Port. Properties: dc:description: Output port for kg_knowledge in the DF combine program@en^^<xsd:string>; rdfs:label: Output port for kg_knowledge@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:DF_combine-kg_knowledge",
+      "object_class": [
+        "provone:Port"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#DF_combine-kg_knowledge",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.6711069941520691,
+      "object_description": "Object: ChatBS-NexGen:llm_chat-user_prompt. Types: provone:Port. Properties: dc:description: LLM Chat input port: user_prompt@en^^<xsd:string>; rdfs:label: LLM Chat input port: user_prompt@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:llm_chat-user_prompt",
+      "object_class": [
+        "provone:Port"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#llm_chat-user_prompt",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.6637279987335205,
+      "object_description": "Object: ChatBS-NexGen:llm_chat-system_prompt. Types: provone:Port. Properties: provone:connectsTo: ChatBS-NexGen:channel_system_prompt; dc:description: LLM Chat input port: system_prompt@en^^<xsd:string>; rdfs:label: LLM Chat input port: system_prompt@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:llm_chat-system_prompt",
+      "object_class": [
+        "provone:Port"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#llm_chat-system_prompt",
+      "source": "vector_results"
+    }
+  ]
+}
+Current answer: The LLM chat function step, **ChatBS-NexGen:llm_chat**, has an output port named `ChatBS-NexGen:llm_chat-generated_answer`. The evidence confirms that the data from this output port is routed through a channel identified as `provone:connectsTo: ChatBS-NexGen:channel_generated_answer`. However, while the connection itself is established in the evidence, there are no other programs or input ports explicitly named in the provided context that are shown to consume data directly from this specific channel.
+Judge feedback: The answer correctly identifies the output port and assesses the connectivity based on the available evidence, accurately reporting that no other consuming programs are explicitly detailed in the context. No revisions are needed; the answer fully addresses the scope of the question given the provided data.
+Next question: Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?
+
+Schema Reasoning:
+{
+  "draft_answer": "",
+  "judge": [],
+  "relevant_schema_info": []
+}
+
+Validation / Judge:
+[
+  {
+    "answer": "Retrieved 5 candidate object(s) relevant to the question: Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?",
+    "answered": false,
+    "feedback": "The provided answer is merely a restatement of the retrieval query and shows the candidate objects retrieved, but it does not actually answer the question. To answer \"Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?\", you must examine the `provone:hasOutPort` properties (specifically on `ChatBS-NexGen:llm_chat`) and then look for connections using `provone:connectsTo` to other programs' input ports, OR search for any other programs/workflows that use data originating from the output port (`ChatBS-NexGen:llm_chat-generated_answer`). The current answer only lists candidate objects without synthesizing the relationship."
+  },
+  {
+    "answer": "The identified LLM chat function step, **ChatBS-NexGen:llm_chat**, has an output port named `ChatBS-NexGen:llm_chat-generated_answer`. The evidence indicates that the data from this output port is channeled to another component via a connection described as `provone:connectsTo: ChatBS-NexGen:channel_generated_answer`. This suggests that other programs or parts of the workflow utilize the generated answer through this specific channel.",
+    "answered": false,
+    "feedback": "The answer correctly identifies the output port (`ChatBS-NexGen:llm_chat-generated_answer`) and notes that it connects to another part of the workflow via `provone:connectsTo: ChatBS-NexGen:channel_generated_answer`. However, the question asks for *which other programs* connect to or use this output data. The current answer only suggests utilization generally (\"This suggests that other programs...\"). You need to explicitly name the downstream program(s) or ports that consume the data from `ChatBS-NexGen:llm_chat-generated_answer` based on the evidence, if available in the `evidence_context`. If no specific consuming program is named in the evidence for this channel, you should state that the connecting programs are not explicitly identified."
+  },
+  {
+    "answer": "The LLM chat function step, **ChatBS-NexGen:llm_chat**, has an output port named `ChatBS-NexGen:llm_chat-generated_answer`. The evidence confirms that the data from this output port is routed through a channel identified as `provone:connectsTo: ChatBS-NexGen:channel_generated_answer`. However, while the connection itself is established in the evidence, there are no other programs or input ports explicitly named in the provided context that are shown to consume data directly from this specific channel.",
+    "answered": true,
+    "feedback": "The answer correctly identifies the output port and assesses the connectivity based on the available evidence, accurately reporting that no other consuming programs are explicitly detailed in the context. No revisions are needed; the answer fully addresses the scope of the question given the provided data."
+  }
+]
+
+Answer:
+The LLM chat function step, **ChatBS-NexGen:llm_chat**, has an output port named `ChatBS-NexGen:llm_chat-generated_answer`. The evidence confirms that the data from this output port is routed through a channel identified as `provone:connectsTo: ChatBS-NexGen:channel_generated_answer`. However, while the connection itself is established in the evidence, there are no other programs or input ports explicitly named in the provided context that are shown to consume data directly from this specific channel. <cite, id=0>http://testwebsite/testProgram#query_result_post_processor-post_processed_output</cite> <cite, id=1>http://testwebsite/testProgram#llm_chat-generated_answer</cite> <cite, id=2>http://testwebsite/testProgram#DF_combine-kg_knowledge</cite> <cite, id=3>http://testwebsite/testProgram#llm_chat-user_prompt</cite> <cite, id=4>http://testwebsite/testProgram#llm_chat-system_prompt</cite>
+
+Final Report
+### Overall Answer to the Question:
+The function used for the 'llm chat function step' is identified as **ChatBS-NexGen:llm_chat**, which acts as a `provone:Program` designed to perform "Chat with the LLM." Regarding connected functions that use its output data, the evidence confirms that this program generates an output port named `ChatBS-NexGen:llm_chat-generated_answer`. This output is routed through a defined channel (`provone:connectsTo: ChatBS-NexGen:channel_generated_answer`). However, based solely on the provided context and retrieved evidence snippets from the preceding steps, there are no other programs or input ports explicitly detailed as directly consuming data from this specific generated answer port. Therefore, while the connection infrastructure is established, the downstream consumer functions are not specified in the available data. <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProg...
+
+### Original Question:
+what are the connected functions to the function used in llm chat function step in the pipeline?
+
+### Final Validation:
+The answer is complete and accurate. It successfully synthesizes the information gathered across multiple nodes—identifying the source function, confirming its output port, noting the connection channel, and correctly concluding that no downstream consuming functions are explicitly detailed in the available evidence. No revisions are necessary.
+
+### Sub Questions Used:
+- [1] What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+  Answer: The specific provone:Program that represents the 'llm chat function step' in the pipeline is **ChatBS-NexGen:llm_chat** (URI: http://testwebsite/testProgram#llm_chat). This object is identified by its description, which states it performs "Chat with the LLM." <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</ci...
+- [2] What are the input ports of this identified LLM function program?
+  Answer: The input ports of the identified program, **ChatBS-NexGen:llm_chat**, are ChatBS-NexGen:llm_chat-system_prompt and ChatBS-NexGen:llm_chat-user_prompt. <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>ht...
+- [1] What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+  Answer: The specific provone:Program that represents the 'llm chat function step' in the pipeline is **ChatBS-NexGen:llm_chat** (URI: http://testwebsite/testProgram#llm_chat). This object is identified by its description, which states it performs "Chat with the LLM." <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</ci...
+- [3] Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?
+  Answer: The LLM chat function step, **ChatBS-NexGen:llm_chat**, has an output port named `ChatBS-NexGen:llm_chat-generated_answer`. The evidence confirms that the data from this output port is routed through a channel identified as `provone:connectsTo: ChatBS-NexGen:channel_generated_answer`. However, while the connection itself is established in the evidence, there are no other programs or input ports explicitly named in the provided context that are shown to consume data directly from this specific...
+
+### Grounded Reasoning Trace:
+Question [1]: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Answer: The specific provone:Program that represents the 'llm chat function step' in the pipeline is **ChatBS-NexGen:llm_chat** (URI: http://testwebsite/testProgram#llm_chat). This object is identified by its description, which states it performs "Chat with the LLM." <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#Generative_Task-information_extractor</cite>
+Grounding:
+{
+  "candidate_classes": [
+    "provone:Program",
+    "workflow:Generative_Task"
+  ],
+  "candidate_relations": [],
+  "entity_phrases": [
+    "llm chat function step"
+  ]
+}
+Validation: The answer accurately identifies the specific `provone:Program` representing the 'llm chat function step' using the provided evidence. No revisions are needed.
+
+Question [2]: What are the input ports of this identified LLM function program?
+Answer: The input ports of the identified program, **ChatBS-NexGen:llm_chat**, are ChatBS-NexGen:llm_chat-system_prompt and ChatBS-NexGen:llm_chat-user_prompt. <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#Generative_Task-information_extractor</cite>
+Validation: The answer successfully identifies the input ports based on the evidence collected about the `ChatBS-NexGen:llm_chat` program. No revisions are needed.
+
+Question [1]: What is the specific provone:Program or workflow:Generative_Task that represents the 'llm chat function step' in the pipeline?
+Answer: The specific provone:Program that represents the 'llm chat function step' in the pipeline is **ChatBS-NexGen:llm_chat** (URI: http://testwebsite/testProgram#llm_chat). This object is identified by its description, which states it performs "Chat with the LLM." <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#Generative_Task-information_extractor</cite>
+Grounding:
+{
+  "candidate_classes": [
+    "provone:Program",
+    "workflow:Generative_Task"
+  ],
+  "candidate_relations": [],
+  "entity_phrases": [
+    "llm chat function step"
+  ]
+}
+Validation: The answer accurately identifies the specific `provone:Program` representing the 'llm chat function step' using the provided evidence. No revisions are needed.
+
+Question [3]: Which other programs connect to the output ports, or use the output data from, the identified LLM chat function step?
+Answer: The LLM chat function step, **ChatBS-NexGen:llm_chat**, has an output port named `ChatBS-NexGen:llm_chat-generated_answer`. The evidence confirms that the data from this output port is routed through a channel identified as `provone:connectsTo: ChatBS-NexGen:channel_generated_answer`. However, while the connection itself is established in the evidence, there are no other programs or input ports explicitly named in the provided context that are shown to consume data directly from this specific channel. <cite, id=0>http://testwebsite/testProgram#query_result_post_processor-post_processed_output</cite> <cite, id=1>http://testwebsite/testProgram#llm_chat-generated_answer</cite> <cite, id=2>ht...
+Grounding:
+{
+  "candidate_classes": [
+    "provone:Program",
+    "provone:Port"
+  ],
+  "candidate_relations": [],
+  "entity_phrases": [
+    "output ports",
+    "LLM chat function step"
+  ]
+}
+Validation: The answer correctly identifies the output port and assesses the connectivity based on the available evidence, accurately reporting that no other consuming programs are explicitly detailed in the context. No revisions are needed; the answer fully addresses the scope of the question given the provided data.
+
+Question [0]: what are the connected functions to the function used in llm chat function step in the pipeline?
+Answer: The function used for the 'llm chat function step' is identified as **ChatBS-NexGen:llm_chat**, which acts as a `provone:Program` designed to perform "Chat with the LLM." Regarding connected functions that use its output data, the evidence confirms that this program generates an output port named `ChatBS-NexGen:llm_chat-generated_answer`. This output is routed through a defined channel (`provone:connectsTo: ChatBS-NexGen:channel_generated_answer`). However, based solely on the provided context and retrieved evidence snippets from the preceding steps, there are no other programs or input ports explicitly detailed as directly consuming data from this specific generated answer port. Therefor...
+Validation: The answer is complete and accurate. It successfully synthesizes the information gathered across multiple nodes—identifying the source function, confirming its output port, noting the connection channel, and correctly concluding that no downstream consuming functions are explicitly detailed in the available evidence. No revisions are necessary.
+
+Final Answer
+The function used for the 'llm chat function step' is identified as **ChatBS-NexGen:llm_chat**, which acts as a `provone:Program` designed to perform "Chat with the LLM." Regarding connected functions that use its output data, the evidence confirms that this program generates an output port named `ChatBS-NexGen:llm_chat-generated_answer`. This output is routed through a defined channel (`provone:connectsTo: ChatBS-NexGen:channel_generated_answer`). However, based solely on the provided context and retrieved evidence snippets from the preceding steps, there are no other programs or input ports explicitly detailed as directly consuming data from this specific generated answer port. Therefore, while the connection infrastructure is established, the downstream consumer functions are not specified in the available data. <cite, id=0>http://testwebsite/testProgram#llm_chat</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#Generative_Task-information_extractor</cite> <cite, id=5>http://testwebsite/testProgram#query_result_post_processor-post_processed_output</cite>
+
+Final Validation
+[
+  {
+    "answer": "The function used for the 'llm chat function step' is identified as **ChatBS-NexGen:llm_chat**, which acts as a `provone:Program` designed to perform \"Chat with the LLM.\" Regarding connected functions that use its output data, the evidence confirms that this program generates an output port named `ChatBS-NexGen:llm_chat-generated_answer`. This output is routed through a defined channel (`provone:connectsTo: ChatBS-NexGen:channel_generated_answer`). However, based solely on the provided context and retrieved evidence snippets from the preceding steps, there are no other programs or input ports explicitly detailed as directly consuming data from this specific generated answer port. Therefore, while the connection infrastructure is established, the downstream consumer functions are not specified in the available data.",
+    "answered": true,
+    "feedback": "The answer is complete and accurate. It successfully synthesizes the information gathered across multiple nodes—identifying the source function, confirming its output port, noting the connection channel, and correctly concluding that no downstream consuming functions are explicitly detailed in the available evidence. No revisions are necessary."
+  }
+]
+
+Timing
+259.1633423069725 seconds

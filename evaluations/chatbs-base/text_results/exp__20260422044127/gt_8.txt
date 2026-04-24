@@ -1,0 +1,204 @@
+Original Question
+what are the input parameters of the function used in system prompt template step in the pipeline?
+
+Sub Questions
+[1] Which data elements or variables constitute the parameters required by the system prompt template function?
+
+Topology Graph
+Nodes:
+[1] Which data elements or variables constitute the parameters required by the system prompt template function?
+[0] what are the input parameters of the function used in system prompt template step in the pipeline?
+
+Edges:
+1 -> 0
+
+Adjacency:
+1: 0
+
+Details Of Each Sub Question Solving
+
+
+Sub Question [1]
+Question: Which data elements or variables constitute the parameters required by the system prompt template function?
+Depends on: None
+
+Grounding:
+{
+  "candidate_classes": [
+    "provone:Data",
+    "provone:Port",
+    "provone:Program"
+  ],
+  "candidate_relations": [],
+  "entity_phrases": [
+    "parameters required by the system prompt template function"
+  ]
+}
+
+Synthetic Question Plan:
+1. step1
+   Sub question: Which data elements or variables constitute the parameters required by the system prompt template function?
+   Program: retrieval::linked-entities
+   Extra:
+   {
+     "decision_reasoning": "The question asks for parameters required by a specific functional component (\"system prompt template function\"), which corresponds to a linked entity candidate (`provone:Program`). Therefore, linking to this specific object is the correct first step.",
+     "execution_mode": "retrieval",
+     "expected_classes": [
+       "provone:Data",
+       "provone:Port",
+       "provone:Program"
+     ],
+     "important_entities": [
+       "http://testwebsite/testProgram#system_prompt_generator"
+     ],
+     "input_bindings": {
+       "lookup_phrases": [
+         "parameters required by the system prompt template function"
+       ]
+     },
+     "retrieval_mode": "linked-entities"
+   }
+
+Intermediary Results:
+Step 1: step1
+Sub question: Which data elements or variables constitute the parameters required by the system prompt template function?
+Program: retrieval::linked-entities
+Answer:
+Retrieved 1 candidate object(s) relevant to the question: Which data elements or variables constitute the parameters required by the system prompt template function? <cite, id=0>http://testwebsite/testProgram#system_prompt_generator</cite>
+Important entities:
+- http://testwebsite/testProgram#system_prompt_generator
+Results:
+{
+  "set_1": [
+    {
+      "metadata": {},
+      "object_class": [
+        "provone:Program"
+      ],
+      "object_description": "Object: ChatBS-NexGen:system_prompt_generator. Types: provone:Program. Properties: provone:hasInPort: ChatBS-NexGen:system_prompt_generator-age; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-allergies; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-bodyMassIndex; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-diagnosis; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-foodPreferences; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-gender; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-height; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-weight; provone:hasOutPort: ChatBS-NexGen:system_prompt_generator-system_prompt; dc:description: Generates a system prompt based on the provided dataset structure and user input.@en^^<xsd:string>; dcterms:identifier: 1@en^^<xsd:string>; rdfs:label: System Prompt Template Generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:19:23@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:system_prompt_generator",
+      "object_uri": "http://testwebsite/testProgram#system_prompt_generator",
+      "score": 0.6401994228363037,
+      "source": "vector_results"
+    }
+  ]
+}
+Extra:
+{
+  "execution_mode": "retrieval",
+  "parameter_values": [
+    {
+      "lookup_phrases": [
+        "parameters required by the system prompt template function"
+      ]
+    }
+  ]
+}
+
+Predecessor Context:
+None
+
+Step Context:
+Original question: Which data elements or variables constitute the parameters required by the system prompt template function?
+Current traversal question: Which data elements or variables constitute the parameters required by the system prompt template function?
+Selected program: retrieval::linked-entities
+Execution mode: retrieval
+Step step1: Which data elements or variables constitute the parameters required by the system prompt template function?
+Program: retrieval::linked-entities
+Answer: Retrieved 1 candidate object(s) relevant to the question: Which data elements or variables constitute the parameters required by the system prompt template function?
+Important entities: http://testwebsite/testProgram#system_prompt_generator
+Results: {
+  "set_1": [
+    {
+      "score": 0.6401994228363037,
+      "object_description": "Object: ChatBS-NexGen:system_prompt_generator. Types: provone:Program. Properties: provone:hasInPort: ChatBS-NexGen:system_prompt_generator-age; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-allergies; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-bodyMassIndex; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-diagnosis; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-foodPreferences; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-gender; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-height; provone:hasInPort: ChatBS-NexGen:system_prompt_generator-weight; provone:hasOutPort: ChatBS-NexGen:system_prompt_generator-system_prompt; dc:description: Generates a system prompt based on the provided dataset structure and user input.@en^^<xsd:string>; dcterms:identifier: 1@en^^<xsd:string>; rdfs:label: System Prompt Template Generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:19:23@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:system_prompt_generator",
+      "object_class": [
+        "provone:Program"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#system_prompt_generator",
+      "source": "vector_results"
+    }
+  ]
+}
+Current answer: The parameters required by the system prompt template function, which is associated with the `ChatBS-NexGen:system_prompt_generator` program, are defined by its input ports (`provone:hasInPort`). These variables include: age, allergies, bodyMassIndex, diagnosis, foodPreferences, gender, height, and weight.
+Judge feedback: The answer accurately identifies the required data elements by referencing the input ports listed in the evidence for the system prompt generator function. No revisions are needed.
+Next question: Which data elements or variables constitute the parameters required by the system prompt template function?
+
+Schema Reasoning:
+{
+  "draft_answer": "",
+  "judge": [],
+  "relevant_schema_info": [
+    "provone:Program (Program): A Program represents a computational task that consumes and produces data through its input and output ports, respectively. It can be atomic or composite, the latter case...",
+    "provone:Port (Port): A Port enables a Program to send and receive Entities (Data, Visualizations, etc.). When used in a role as an input port, default parameters may be configured for the Port."
+  ]
+}
+
+Validation / Judge:
+[
+  {
+    "answer": "Retrieved 1 candidate object(s) relevant to the question: Which data elements or variables constitute the parameters required by the system prompt template function?",
+    "answered": false,
+    "feedback": "The provided answer merely repeats the search query and does not synthesize the required information from the `evidence_context`. You need to list the specific data elements or variables identified as input ports (`provone:hasInPort`) for the `ChatBS-NexGen:system_prompt_generator` program, as these constitute the parameters required by the system prompt template function. Please extract and list these variable names (e.g., age, allergies, bodyMassIndex, etc.)."
+  },
+  {
+    "answer": "The parameters required by the system prompt template function, which is associated with the `ChatBS-NexGen:system_prompt_generator` program, are defined by its input ports (`provone:hasInPort`). These variables include: age, allergies, bodyMassIndex, diagnosis, foodPreferences, gender, height, and weight.",
+    "answered": true,
+    "feedback": "The answer accurately identifies the required data elements by referencing the input ports listed in the evidence for the system prompt generator function. No revisions are needed."
+  }
+]
+
+Answer:
+The parameters required by the system prompt template function, which is associated with the `ChatBS-NexGen:system_prompt_generator` program, are defined by its input ports (`provone:hasInPort`). These variables include: age, allergies, bodyMassIndex, diagnosis, foodPreferences, gender, height, and weight. <cite, id=0>http://testwebsite/testProgram#system_prompt_generator</cite>
+
+Final Report
+### Overall Answer to the Question:
+The input parameters, or data elements/variables, required by the system prompt template function, which is associated with the program named `ChatBS-NexGen:system_prompt_generator`, are determined by its defined input ports (`provone:hasInPort`). These specific variables that must be provided to the function include: **age**, **allergies**, **bodyMassIndex**, **diagnosis**, **foodPreferences**, **gender**, **height**, and **weight**. <cite, id=0>http://testwebsite/testProgram#system_prompt_generator</cite>
+
+### Original Question:
+what are the input parameters of the function used in system prompt template step in the pipeline?
+
+### Final Validation:
+The answer accurately and completely addresses the question by listing all the required input parameters for the specified system prompt template function, referencing the structural evidence found in the preceding steps. No revisions are needed.
+
+### Sub Questions Used:
+- [1] Which data elements or variables constitute the parameters required by the system prompt template function?
+  Answer: The parameters required by the system prompt template function, which is associated with the `ChatBS-NexGen:system_prompt_generator` program, are defined by its input ports (`provone:hasInPort`). These variables include: age, allergies, bodyMassIndex, diagnosis, foodPreferences, gender, height, and weight. <cite, id=0>http://testwebsite/testProgram#system_prompt_generator</cite>
+
+### Grounded Reasoning Trace:
+Question [1]: Which data elements or variables constitute the parameters required by the system prompt template function?
+Answer: The parameters required by the system prompt template function, which is associated with the `ChatBS-NexGen:system_prompt_generator` program, are defined by its input ports (`provone:hasInPort`). These variables include: age, allergies, bodyMassIndex, diagnosis, foodPreferences, gender, height, and weight. <cite, id=0>http://testwebsite/testProgram#system_prompt_generator</cite>
+Grounding:
+{
+  "candidate_classes": [
+    "provone:Data",
+    "provone:Port",
+    "provone:Program"
+  ],
+  "candidate_relations": [],
+  "entity_phrases": [
+    "parameters required by the system prompt template function"
+  ]
+}
+Validation: The answer accurately identifies the required data elements by referencing the input ports listed in the evidence for the system prompt generator function. No revisions are needed.
+
+Question [0]: what are the input parameters of the function used in system prompt template step in the pipeline?
+Answer: The input parameters, or data elements/variables, required by the system prompt template function, which is associated with the program named `ChatBS-NexGen:system_prompt_generator`, are determined by its defined input ports (`provone:hasInPort`). These specific variables that must be provided to the function include: **age**, **allergies**, **bodyMassIndex**, **diagnosis**, **foodPreferences**, **gender**, **height**, and **weight**. <cite, id=0>http://testwebsite/testProgram#system_prompt_generator</cite>
+Validation: The answer accurately and completely addresses the question by listing all the required input parameters for the specified system prompt template function, referencing the structural evidence found in the preceding steps. No revisions are needed.
+
+Final Answer
+The input parameters, or data elements/variables, required by the system prompt template function, which is associated with the program named `ChatBS-NexGen:system_prompt_generator`, are determined by its defined input ports (`provone:hasInPort`). These specific variables that must be provided to the function include: **age**, **allergies**, **bodyMassIndex**, **diagnosis**, **foodPreferences**, **gender**, **height**, and **weight**. <cite, id=0>http://testwebsite/testProgram#system_prompt_generator</cite>
+
+Final Validation
+[
+  {
+    "answer": "The input parameters, or data elements/variables, required by the system prompt template function, which is associated with the program named `ChatBS-NexGen:system_prompt_generator`, are determined by its defined input ports (`provone:hasInPort`). These specific variables that must be provided to the function include: **age**, **allergies**, **bodyMassIndex**, **diagnosis**, **foodPreferences**, **gender**, **height**, and **weight**.",
+    "answered": true,
+    "feedback": "The answer accurately and completely addresses the question by listing all the required input parameters for the specified system prompt template function, referencing the structural evidence found in the preceding steps. No revisions are needed."
+  }
+]
+
+Timing
+0.08249434200115502 seconds

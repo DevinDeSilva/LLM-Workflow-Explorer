@@ -1,0 +1,347 @@
+Original Question
+what are the instructions used by the LLM to generate the information extraction function step in the pipeline?
+
+Sub Questions
+[1] What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step?
+
+Topology Graph
+Nodes:
+[1] What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step?
+[0] what are the instructions used by the LLM to generate the information extraction function step in the pipeline?
+
+Edges:
+1 -> 0
+
+Adjacency:
+1: 0
+
+Details Of Each Sub Question Solving
+
+
+Sub Question [1]
+Question: What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step?
+Depends on: None
+
+Grounding:
+{
+  "candidate_classes": [
+    "workflow:Generative_Task",
+    "workflow:Large_Language_Models",
+    "workflow:Large_Language_Model_Output"
+  ],
+  "candidate_relations": [
+    "dc:description"
+  ],
+  "entity_phrases": [
+    "explicit instructions",
+    "prompts",
+    "context provided to the Large Language Model"
+  ]
+}
+
+Synthetic Question Plan:
+1. step1
+   Sub question: What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step?
+   Program: retrieval::linked-entities
+   Extra:
+   {
+     "decision_reasoning": "The question asks for specific prompts and context provided to an LLM, implying a search for details attached to concrete, instantiated entities (like specific runs or tasks), making `linked-entities` the appropriate starting point.",
+     "execution_mode": "retrieval",
+     "expected_classes": [
+       "workflow:Generative_Task",
+       "workflow:Large_Language_Models",
+       "workflow:Large_Language_Model_Output"
+     ],
+     "important_entities": [
+       "http://testwebsite/testProgram#LLM-id_20260420105659_302",
+       "http://testwebsite/testProgram#LLM-id_20260420105703_307",
+       "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302",
+       "http://testwebsite/testProgram#Generative_Task-system_prompt_generator",
+       "http://testwebsite/testProgram#LLM-information_extractor"
+     ],
+     "input_bindings": {
+       "lookup_phrases": [
+         "explicit instructions",
+         "prompts",
+         "context provided to the Large Language Model"
+       ]
+     },
+     "retrieval_mode": "linked-entities"
+   }
+
+Intermediary Results:
+Step 1: step1
+Sub question: What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step?
+Program: retrieval::linked-entities
+Answer:
+Retrieved 5 candidate object(s) relevant to the question: What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step? <cite, id=0>http://testwebsite/testProgram#LLM-id_20260420105659_302</cite> <cite, id=1>http://testwebsite/testProgram#LLM-id_20260420105703_307</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#LLM-information_extractor</cite>
+Important entities:
+- http://testwebsite/testProgram#LLM-id_20260420105659_302
+- http://testwebsite/testProgram#LLM-id_20260420105703_307
+- http://testwebsite/testProgram#Generative_Task-id_20260420105659_302
+- http://testwebsite/testProgram#Generative_Task-system_prompt_generator
+- http://testwebsite/testProgram#LLM-information_extractor
+Results:
+{
+  "set_1": [
+    {
+      "metadata": {},
+      "object_class": [
+        "workflow:Large_Language_Model_Output",
+        "workflow:Large_Language_Models"
+      ],
+      "object_description": "Object: ChatBS-NexGen:LLM-id_20260420105659_302. Types: workflow:Large_Language_Model_Output, workflow:Large_Language_Models. Properties: dc:description: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-id_20260420105659_302; sio:SIO_000230: ChatBS-NexGen:Data-id_20260420105652_456-system_prompt; sio:SIO_000230: ChatBS-NexGen:Data-id_20260420105659_811-user_prompt; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-id_20260420105659_302",
+      "object_uri": "http://testwebsite/testProgram#LLM-id_20260420105659_302",
+      "score": 0.5352402925491333,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "workflow:Large_Language_Model_Output",
+        "workflow:Large_Language_Models"
+      ],
+      "object_description": "Object: ChatBS-NexGen:LLM-id_20260420105703_307. Types: workflow:Large_Language_Model_Output, workflow:Large_Language_Models. Properties: dc:description: Extracts important entities for  text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:  1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.  2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.  3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.  4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.  5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.  Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-id_20260420105703_307; sio:SIO_000230: ChatBS-NexGen:Data-id_20260420105659_338-generated_answer; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: Extracts important entities for  text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:  1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.  2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.  3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.  4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.  5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.  Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response.   using: gpt-4o@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-id_20260420105703_307",
+      "object_uri": "http://testwebsite/testProgram#LLM-id_20260420105703_307",
+      "score": 0.5325779914855957,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-id_20260420105659_302. Types: workflow:Generative_Task. Properties: dc:description: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000313: ChatBS-NexGen:id_20260420105659_302; rdfs:label: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-id_20260420105659_302.",
+      "object_name": "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302",
+      "score": 0.5210658311843872,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-system_prompt_generator. Types: workflow:Generative_Task. Properties: dc:description: Generates the System Prompt Template using Large language models@en^^<xsd:string>; rdfs:label: System Prompt Template function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-system_prompt_generator.",
+      "object_name": "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-system_prompt_generator",
+      "score": 0.6406781673431396,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "workflow:Large_Language_Models"
+      ],
+      "object_description": "Object: ChatBS-NexGen:LLM-information_extractor. Types: workflow:Large_Language_Models. Properties: dc:description: Generates the Information Extractor Function using Large language models@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-information_extractor; sio:SIO_000230: ChatBS-NexGen:LLM-information_extractor-Input-builder_llm; sio:SIO_000230: ChatBS-NexGen:LLM-information_extractor-Input-text; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: Information Extractor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-information_extractor",
+      "object_uri": "http://testwebsite/testProgram#LLM-information_extractor",
+      "score": 0.6110472083091736,
+      "source": "vector_results"
+    }
+  ]
+}
+Extra:
+{
+  "execution_mode": "retrieval",
+  "parameter_values": [
+    {
+      "lookup_phrases": [
+        "explicit instructions",
+        "prompts",
+        "context provided to the Large Language Model"
+      ]
+    }
+  ]
+}
+
+Predecessor Context:
+None
+
+Step Context:
+Original question: What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step?
+Current traversal question: What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step?
+Selected program: retrieval::linked-entities
+Execution mode: retrieval
+Step step1: What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step?
+Program: retrieval::linked-entities
+Answer: Retrieved 5 candidate object(s) relevant to the question: What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step?
+Important entities: http://testwebsite/testProgram#LLM-id_20260420105659_302, http://testwebsite/testProgram#LLM-id_20260420105703_307, http://testwebsite/testProgram#Generative_Task-id_20260420105659_302, http://testwebsite/testProgram#Generative_Task-system_prompt_generator, http://testwebsite/testProgram#LLM-information_extractor
+Results: {
+  "set_1": [
+    {
+      "score": 0.5352402925491333,
+      "object_description": "Object: ChatBS-NexGen:LLM-id_20260420105659_302. Types: workflow:Large_Language_Model_Output, workflow:Large_Language_Models. Properties: dc:description: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-id_20260420105659_302; sio:SIO_000230: ChatBS-NexGen:Data-id_20260420105652_456-system_prompt; sio:SIO_000230: ChatBS-NexGen:Data-id_20260420105659_811-user_prompt; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-id_20260420105659_302",
+      "object_class": [
+        "workflow:Large_Language_Model_Output",
+        "workflow:Large_Language_Models"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#LLM-id_20260420105659_302",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.5325779914855957,
+      "object_description": "Object: ChatBS-NexGen:LLM-id_20260420105703_307. Types: workflow:Large_Language_Model_Output, workflow:Large_Language_Models. Properties: dc:description: Extracts important entities for  text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:  1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.  2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.  3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.  4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.  5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.  Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-id_20260420105703_307; sio:SIO_000230: ChatBS-NexGen:Data-id_20260420105659_338-generated_answer; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: Extracts important entities for  text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:  1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.  2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.  3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.  4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.  5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.  Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response.   using: gpt-4o@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-id_20260420105703_307",
+      "object_class": [
+        "workflow:Large_Language_Model_Output",
+        "workflow:Large_Language_Models"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#LLM-id_20260420105703_307",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.5210658311843872,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-id_20260420105659_302. Types: workflow:Generative_Task. Properties: dc:description: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000313: ChatBS-NexGen:id_20260420105659_302; rdfs:label: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-id_20260420105659_302.",
+      "object_name": "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.6406781673431396,
+      "object_description": "Object: ChatBS-NexGen:Generative_Task-system_prompt_generator. Types: workflow:Generative_Task. Properties: dc:description: Generates the System Prompt Template using Large language models@en^^<xsd:string>; rdfs:label: System Prompt Template function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>; prov:used: ChatBS-NexGen:LLM-system_prompt_generator.",
+      "object_name": "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+      "metadata": {},
+      "object_class": [
+        "workflow:Generative_Task"
+      ],
+      "object_uri": "http://testwebsite/testProgram#Generative_Task-system_prompt_generator",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.6110472083091736,
+      "object_description": "Object: ChatBS-NexGen:LLM-information_extractor. Types: workflow:Large_Language_Models. Properties: dc:description: Generates the Information Extractor Function using Large language models@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-information_extractor; sio:SIO_000230: ChatBS-NexGen:LLM-information_extractor-Input-builder_llm; sio:SIO_000230: ChatBS-NexGen:LLM-information_extractor-Input-text; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: Information Extractor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-information_extractor",
+      "object_class": [
+        "workflow:Large_Language_Models"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#LLM-information_extractor",
+      "source": "vector_results"
+    }
+  ]
+}
+Current answer: The explicit instructions (system prompt) and context provided to the Large Language Model for generating the function/step are:
+
+**System Prompt:** "You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline."
+
+**User Prompt:** "I need suggestions for light and energy-boosting foods to eat before my gym workout."
+Judge feedback: The answer accurately extracts the explicit system prompt and user prompt from the evidence context, directly answering the question. No revisions are needed.
+Next question: What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step?
+
+Schema Reasoning:
+{
+  "draft_answer": "",
+  "judge": [],
+  "relevant_schema_info": []
+}
+
+Validation / Judge:
+[
+  {
+    "answer": "Retrieved 5 candidate object(s) relevant to the question: What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step?",
+    "answered": false,
+    "feedback": "The provided answer simply repeats the question that was asked, indicating that only a retrieval step has been performed, but no synthesis of the actual evidence has occurred. The `evidence_context` contains detailed descriptions in the retrieved objects (specifically Object 1 and Object 3) which explicitly state the system prompt (\"You are a health care assistant...\") and the user prompt (\"I need suggestions for light and energy-boosting foods...\"). You must extract these concrete prompts/instructions from the results to answer the question."
+  },
+  {
+    "answer": "The explicit instructions (system prompt) and context provided to the Large Language Model for generating the function/step are:\n\n**System Prompt:** \"You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.\"\n\n**User Prompt:** \"I need suggestions for light and energy-boosting foods to eat before my gym workout.\"",
+    "answered": true,
+    "feedback": "The answer accurately extracts the explicit system prompt and user prompt from the evidence context, directly answering the question. No revisions are needed."
+  }
+]
+
+Answer:
+The explicit instructions (system prompt) and context provided to the Large Language Model for generating the function/step are:
+
+**System Prompt:** "You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline."
+
+**User Prompt:** "I need suggestions for light and energy-boosting foods to eat before my gym workout." <cite, id=0>http://testwebsite/testProgram#LLM-id_20260420105659_302</cite> <cite, id=1>http://testwebsite/testProgram#LLM-id_20260420105703_307</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#LLM-information_extractor</cite>
+
+Final Report
+### Overall Answer to the Question:
+The instructions or context used by the LLM to generate the information extraction function step in the pipeline were related to generating the Information Extractor Function itself. Specifically, the process involved:
+
+1.  **Function Generation:** The generation of the "Information Extractor Function" using Large Language Models (LLMs).
+2.  **Inputs/Context for Generation:** This generation utilized specific input components, including an `Input-builder_llm` and an `Input-text`.
+3.  **Model Used:** The function was generated using the `gpt-4o@en` LLM model.
+
+The resulting artifact is represented by the object `ChatBS-NexGen:LLM-information_extractor`, which signifies that this step is responsible for creating the logic to extract important information from text within the overall pipeline structure. <cite, id=0>http://testwebsite/testProgram#LLM-id_20260420105659_302</cite> <cite, id=1>http://testwebsite/testProgram#LLM-id_20260420105703_307</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#LLM-informat...
+
+### Original Question:
+what are the instructions used by the LLM to generate the information extraction function step in the pipeline?
+
+### Final Validation:
+The answer accurately addresses the highly specific follow-up question regarding the instructions/context for generating the *information extraction* function step, correctly pivoting from the general context of the previous steps. It synthesizes the key components (purpose, inputs, model) described in the evidence related to `ChatBS-NexGen:LLM-information_extractor`. No revisions are needed.
+
+### Sub Questions Used:
+- [1] What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step?
+  Answer: The explicit instructions (system prompt) and context provided to the Large Language Model for generating the function/step are:
+
+**System Prompt:** "You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline."
+
+**User Prompt:** "I need suggestions for light and energy-boos...
+
+### Grounded Reasoning Trace:
+Question [1]: What explicit instructions, prompts, or context were provided to the Large Language Model for the generation of the function/step?
+Answer: The explicit instructions (system prompt) and context provided to the Large Language Model for generating the function/step are:
+
+**System Prompt:** "You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline."
+
+**User Prompt:** "I need suggestions for light and energy-boosting foods to eat before my gym workout." <cite, id=0>http://testwebsite/testProgram#LLM-id_20260420105659_302</cite> <cite, id=1>http://testwebsite/testProgram#LLM-id_20260420105703_307</cite> <cite,...
+Grounding:
+{
+  "candidate_classes": [
+    "workflow:Generative_Task",
+    "workflow:Large_Language_Models",
+    "workflow:Large_Language_Model_Output"
+  ],
+  "candidate_relations": [
+    "dc:description"
+  ],
+  "entity_phrases": [
+    "explicit instructions",
+    "prompts",
+    "context provided to the Large Language Model"
+  ]
+}
+Validation: The answer accurately extracts the explicit system prompt and user prompt from the evidence context, directly answering the question. No revisions are needed.
+
+Question [0]: what are the instructions used by the LLM to generate the information extraction function step in the pipeline?
+Answer: The instructions or context used by the LLM to generate the information extraction function step in the pipeline were related to generating the Information Extractor Function itself. Specifically, the process involved:
+
+1.  **Function Generation:** The generation of the "Information Extractor Function" using Large Language Models (LLMs).
+2.  **Inputs/Context for Generation:** This generation utilized specific input components, including an `Input-builder_llm` and an `Input-text`.
+3.  **Model Used:** The function was generated using the `gpt-4o@en` LLM model.
+
+The resulting artifact is represented by the object `ChatBS-NexGen:LLM-information_extractor`, which signifies that this step is re...
+Validation: The answer accurately addresses the highly specific follow-up question regarding the instructions/context for generating the *information extraction* function step, correctly pivoting from the general context of the previous steps. It synthesizes the key components (purpose, inputs, model) described in the evidence related to `ChatBS-NexGen:LLM-information_extractor`. No revisions are needed.
+
+Final Answer
+The instructions or context used by the LLM to generate the information extraction function step in the pipeline were related to generating the Information Extractor Function itself. Specifically, the process involved:
+
+1.  **Function Generation:** The generation of the "Information Extractor Function" using Large Language Models (LLMs).
+2.  **Inputs/Context for Generation:** This generation utilized specific input components, including an `Input-builder_llm` and an `Input-text`.
+3.  **Model Used:** The function was generated using the `gpt-4o@en` LLM model.
+
+The resulting artifact is represented by the object `ChatBS-NexGen:LLM-information_extractor`, which signifies that this step is responsible for creating the logic to extract important information from text within the overall pipeline structure. <cite, id=0>http://testwebsite/testProgram#LLM-id_20260420105659_302</cite> <cite, id=1>http://testwebsite/testProgram#LLM-id_20260420105703_307</cite> <cite, id=2>http://testwebsite/testProgram#Generative_Task-id_20260420105659_302</cite> <cite, id=3>http://testwebsite/testProgram#Generative_Task-system_prompt_generator</cite> <cite, id=4>http://testwebsite/testProgram#LLM-information_extractor</cite>
+
+Final Validation
+[
+  {
+    "answer": "The instructions or context used by the LLM to generate the information extraction function step in the pipeline were related to generating the Information Extractor Function itself. Specifically, the process involved:\n\n1.  **Function Generation:** The generation of the \"Information Extractor Function\" using Large Language Models (LLMs).\n2.  **Inputs/Context for Generation:** This generation utilized specific input components, including an `Input-builder_llm` and an `Input-text`.\n3.  **Model Used:** The function was generated using the `gpt-4o@en` LLM model.\n\nThe resulting artifact is represented by the object `ChatBS-NexGen:LLM-information_extractor`, which signifies that this step is responsible for creating the logic to extract important information from text within the overall pipeline structure.",
+    "answered": true,
+    "feedback": "The answer accurately addresses the highly specific follow-up question regarding the instructions/context for generating the *information extraction* function step, correctly pivoting from the general context of the previous steps. It synthesizes the key components (purpose, inputs, model) described in the evidence related to `ChatBS-NexGen:LLM-information_extractor`. No revisions are needed."
+  }
+]
+
+Timing
+89.33094145497307 seconds

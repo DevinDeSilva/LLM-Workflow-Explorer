@@ -16,7 +16,8 @@ from pydantic import BaseModel, Field
 from tqdm import tqdm
 import dycomutils as common_utils
 import os
-
+import requests
+from bert_score import score as bertscore
 
 from src.config.experiment import FullContextExperimentConfig
 from src.experiment.ground_truth import GTInfo, GT
@@ -30,8 +31,9 @@ MetricFn = Callable[[dict[str, Any], dict[str, Any]], dict[str, Any]]
 
 class AnswerQualityScores(BaseModel):
     completeness: float = Field(ge=0.0, le=1.0)
-    accuracy: float = Field(ge=0.0, le=1.0)
+    faithfulness: float = Field(ge=0.0, le=1.0)
     relevance: float = Field(ge=0.0, le=1.0)
+    understanderbility: float = Field(ge=0.0, le=1.0)
 
 
 class AnswerQualityJudgeSignature(dspy.Signature):
@@ -41,8 +43,9 @@ class AnswerQualityJudgeSignature(dspy.Signature):
     ground_truth_answer: str = dspy.InputField()
     model_answer: str = dspy.InputField()
     completeness: float = dspy.OutputField(desc="How much of the ground truth is covered, from 0 to 1.")
-    accuracy: float = dspy.OutputField(desc="How faithful the answer is to the ground truth, from 0 to 1.")
+    faithfulness: float = dspy.OutputField(desc="How faithful the answer is to the ground truth, from 0 to 1.")
     relevance: float = dspy.OutputField(desc="How directly the answer addresses the question, from 0 to 1.")
+    understanderbility: float = dspy.OutputField(desc="How understandable is the answer by a lay user, from 0 to 1.")
 
 
 _judge_llm: Any | None = None
@@ -76,6 +79,19 @@ def metric_answer_token_overlap(pred: dict[str, Any], actual: dict[str, Any]) ->
         "answer_token_recall": recall,
         "answer_token_f1": f1,
     }
+    
+def metric_bert_score(pred: dict[str, Any], actual: dict[str, Any]) -> dict[str, Any]:
+    pred_ans = [pred.get("answer", "").replace("\n", " ")]
+    actual_ans = [actual.get("answer", "").replace("\n", " ")]
+    
+    P, R, F1 = bertscore(pred_ans, actual_ans, lang='en', verbose=False)
+    return {
+        "bertscore_precision": P[0].item(),
+        "bertscore_recall": R[0].item(),
+        "bertscore_f1": F1[0].item(),
+    }
+    
+    
 
 
 def metric_ground_truth_entity_coverage(pred: dict[str, Any], actual: dict[str, Any]) -> dict[str, Any]:
@@ -130,9 +146,9 @@ CONFIG_FILENAME = "config.fullcontext.yaml"
 
 PREDICTION_FILES = {
     "fullcontext": "evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl",
-    "grasp": "evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl",
     "llmbased": "evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl",
-#    "ours":"evaluations/chatbs-base/explainer/results/exp__20260419212418/RESULTS.jsonl"
+    "grasp": "evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl",
+    "ours":"evaluations/chatbs-base/explainer/results/exp__20260422044127/RESULTS.jsonl"
 }
 
 JUDGE_LLM = {
@@ -150,16 +166,19 @@ ENABLED_METRICS: Dict[str, List[MetricFn]] = {
     "multi":[
         metric_answer_token_overlap,
         metric_ground_truth_entity_coverage,
+        metric_bert_score,
 #        build_llm_answer_quality_metric()
         ], 
-    "single|bool":[
+    "single--bool":[
         metric_answer_token_overlap,
         metric_ground_truth_entity_coverage,
+        metric_bert_score,
 #        build_llm_answer_quality_metric()
         ], 
-    "single|entity":[
+    "single--entity":[
         metric_answer_token_overlap,
         metric_ground_truth_entity_coverage,
+        metric_bert_score,
 #        build_llm_answer_quality_metric()
         ]
 
@@ -265,7 +284,55 @@ display(
 
 # %%
 def grasp_input_config(record:Dict[str, Any]) -> Dict[str, Any]:
-    return record
+    output = record.get("output", {})
+    endpoint = output.get("endpoint")
+    sparql_query = output.get("sparql")
+    evidence: list[dict[str, Any]] = []
+    relevant_entities: list[str] = []
+
+    if endpoint and sparql_query:
+        try:
+            req = requests.post(
+                endpoint,
+                data={'query':sparql_query},
+            )
+            req.raise_for_status()
+            sparql_result = req.json()
+
+            evidence = sparql_result.get("results", {}).get("bindings", [])
+            relevant_entities = unique_preserving_order(
+                [
+                    binding_value["value"]
+                    for row in evidence
+                    for binding_value in row.values()
+                    if isinstance(binding_value, dict) and binding_value.get("value")
+                ]
+            )
+        except requests.HTTPError as exc:
+            error_body = (exc.response.text or "").strip() if exc.response is not None else ""
+            status_code = exc.response.status_code if exc.response is not None else "unknown"
+            evidence = [{"sparql_error": f"HTTP {status_code}: {error_body or str(exc)}"}]
+        except requests.RequestException as exc:
+            evidence = [{"sparql_error": str(exc)}]
+
+    question = ""
+    for message in record.get("messages", []):
+        if message.get("role") == "user":
+            content = message.get("content")
+            if isinstance(content, str):
+                question = content
+                break
+
+    return {
+        "_line_number": record["_line_number"],
+        "_prediction_path": record["_prediction_path"],
+        "answer": output.get("answer", ""),
+        "evidence": evidence,
+        "id": record.get("id"),
+        "question": question,
+        "relevant_entities": relevant_entities,
+        "time_taken": record.get("elapsed"),
+    }
 
 
 INPUT_AUGMENTATION_MAP = {
@@ -443,7 +510,7 @@ def evaluate_run(
         }
         
         for atags, func in metric_functions.items():
-            satags = atags.split("|")
+            satags = atags.split("--")
             if not actual["qtype"]:
                 ValueError(f"tags is None for quession :{pred.get("id")}")
             if len(set(satags) - set(actual["qtype"]))>0:
@@ -534,5 +601,3 @@ for cat, eval_rows in evaluation_rows.items():
     os.makedirs(os.path.join(SAVE_DIR, cat), exist_ok=True)
     RESULTS_DF.to_csv(os.path.join(SAVE_DIR, cat, "results.csv"), index=False)
     RUN_SUMMARY_DF.to_csv(os.path.join(SAVE_DIR, cat, "results_summary.csv"), index=False)
-
-
