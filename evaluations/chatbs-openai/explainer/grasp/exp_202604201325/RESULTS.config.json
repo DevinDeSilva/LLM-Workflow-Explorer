@@ -1,7 +1,7 @@
 {
   "seed": 22,
   "model": "gpt-4o",
-  "model_provider": "openai/responses",
+  "model_provider": "openai/completions",
   "model_endpoint": null,
   "model_kwargs": {},
   "temperature": 1.0,
