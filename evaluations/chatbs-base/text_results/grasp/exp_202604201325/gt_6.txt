@@ -1,0 +1,810 @@
+Result ID
+gt_6
+
+Task
+sparql-qa
+
+Row Type
+output
+
+Question
+what are the input instructions used by the Large Language Model to create the "information extraction" function?
+
+Error
+None
+
+Output
+Output Type
+answer
+
+Answer
+No answer provided
+
+Formatted
+No answer provided
+
+SPARQL query over chatbs:
+```sparql
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?entity WHERE { 
+  ?entity rdfs:label "Information Extractor"@en . 
+}
+```
+
+Using properties:
+- http://www.w3.org/2000/01/rdf-schema#label (rdfs:label), also known as "label":
+  - used 2341 times from Class
+  - 
+
+Execution result:
+Got no rows and 1 columns in 0.00s
+
+SPARQL
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?entity WHERE { 
+  ?entity rdfs:label "Information Extractor"@en . 
+}
+
+Knowledge Graph
+chatbs
+
+Endpoint
+http://localhost:3030/ds/sparql
+
+Selections
+Using properties:
+- http://www.w3.org/2000/01/rdf-schema#label (rdfs:label), also known as "label":
+  - used 2341 times from Class
+  -
+
+Execution Result
+Got no rows and 1 columns in 0.00s
+
+Known Items
+[
+  "http://www.w3.org/ns/prov#value",
+  "http://purl.dataone.org/provone/2015/01/15/ontology#Program",
+  "http://semanticscience.org/resource/SIO_001359",
+  "http://testwebsite/testProgram#LLM-information_extractor",
+  "http://semanticscience.org/resource/SIO_001366",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+  "http://semanticscience.org/resource/SIO_000015",
+  "http://www.w3.org/ns/prov#category",
+  "http://semanticscience.org/resource/SIO_000649",
+  "http://semanticscience.org/resource/SIO_000225",
+  "http://testwebsite/testProgram#LLM_Output-information_extractor",
+  "http://semanticscience.org/resource/SIO_000632",
+  "http://testwebsite/testProgram#information_extractor",
+  "http://testwebsite/testProgram#LLM-information_extractor-Input-builder_llm",
+  "http://semanticscience.org/resource/SIO_001362",
+  "http://semanticscience.org/resource/SIO_001363",
+  "http://www.w3.org/ns/prov#Association",
+  "http://semanticscience.org/resource/SIO_000229",
+  "http://semanticscience.org/resource/SIO_000226",
+  "http://www.w3.org/2000/01/rdf-schema#label",
+  "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/llm_model",
+  "http://testwebsite/testProgram#Generative_Task-information_extractor",
+  "http://semanticscience.org/resource/SIO_001364",
+  "http://purl.org/dc/terms#identifier",
+  "https://purl.org/heals/eo#ModelExplanationOutputs",
+  "http://semanticscience.org/resource/SIO_000230",
+  "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Large_Language_Model_Output",
+  "http://www.w3.org/ns/prov-o#",
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+  "http://testwebsite/testProgram#LLM-information_extractor-Input-text",
+  "http://purl.dataone.org/provone/2015/01/15/ontology#hasInPort",
+  "http://semanticscience.org/resource/SIO_000017",
+  "http://purl.dataone.org/provone/2015/01/15/ontology#Data",
+  "http://purl.org/dc/elements/1.1/description",
+  "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Large_Language_Models",
+  "http://testwebsite/testProgram#llm_chat",
+  "http://semanticscience.org/resource/SIO_000078",
+  "http://testwebsite/testProgram#llm_chat-system_prompt",
+  "http://www.w3.org/ns/prov#atTime",
+  "http://www.w3.org/2000/01/rdf-schema#comment",
+  "http://www.w3.org/2002/07/owl#Class",
+  "http://semanticscience.org/resource/SIO_000104"
+]
+
+Messages
+Message 1: system
+Content:
+You are a question answering assistant. Your job is to generate a SPARQL query to answer a given user question.
+
+You should follow a step-by-step approach to generate the SPARQL query:
+1. Determine possible entities and properties implied by the user question.
+2. Search for the entities and properties in the knowledge graphs. Where applicable, constrain the searches with already identified entities and properties.
+3. Gradually build up the SPARQL query using the identified entities and properties. Start with simple queries and add more complexity as needed. Execute intermediate queries to get feedback and to verify your assumptions. You may need to refine or rethink your current plan based on the query results and go back to step 2 if needed, possibly multiple times.
+4. Use the answer or cancel function to finalize your answer and stop the generation process.
+
+Types of knowledge graph indices:
+- "embedding": Retrieves items by cosine similarity between their embeddings and the query embedding. The embedding model used depends on the index and may support text, images, or both.
+- "fuzzy": Retrieves items by overlap between their label words and the query keywords. The query keywords must not match label words exactly, but some fuzziness is allowed. The longer a query keyword is, the more it can deviate from a label word and still be considered a match, though it will also contribute less to the overall score. No special query operators like AND/OR are supported.
+
+Available knowledge graphs:
+- "chatbs" at http://localhost:3030/ds/sparql: chat
+  Search indices:
+    - "entities" index (type="fuzzy"): Searchable entities from the chatbs workflow knowledge graph.
+    - "properties" index (type="embedding", modalities="text"): Searchable properties from the chatbs workflow knowledge graph.
+  SPARQL prefixes:
+    - ChatBS-NexGen: http://testwebsite/testProgram#
+    - DFColumn: http://testwebsite/testDFColumn#
+    - cwfo: http://cwf.tw.rpi.edu/vocab#
+    - dbo: http://dbpedia.org/ontology/
+    - dbp: http://dbpedia.org/property/
+    - dbt: http://dbpedia.org/resource/Template:
+    - dcterms: http://purl.org/dc/terms#
+    - eo: https://purl.org/heals/eo#
+    - ep: http://linkedu.eu/dedalo/explanationPattern.owl#
+    - fno: https://w3id.org/function/vocabulary/core#
+    - fnoc: https://w3id.org/function/vocabulary/composition/0.1.0/
+    - fnoi: https://w3id.org/function/vocabulary/implementation#
+    - fnom: https://w3id.org/function/vocabulary/mapping#
+    - food: http://purl.org/heals/food/
+    - provone: http://purl.dataone.org/provone/2015/01/15/ontology#
+    - ques: http://atomic_questions.org/
+    - sio: http://semanticscience.org/resource/
+    - user: http://testwebsite/testUser#
+    - workflow: http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/
+
+Common SPARQL prefixes:
+- bd: http://www.bigdata.com/rdf#
+- dc: http://purl.org/dc/elements/1.1/
+- dct: http://purl.org/dc/terms/
+- foaf: http://xmlns.com/foaf/0.1/
+- geo: http://www.opengis.net/ont/geosparql#
+- geof: http://www.opengis.net/def/function/geosparql/
+- geosparql: http://www.opengis.net/ont/geosparql#
+- gn: http://www.geonames.org/ontology#
+- hint: http://www.bigdata.com/queryHints#
+- owl: http://www.w3.org/2002/07/owl#
+- prov: http://www.w3.org/ns/prov#
+- qb: http://purl.org/linked-data/cube#
+- rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+- rdfs: http://www.w3.org/2000/01/rdf-schema#
+- schema: http://schema.org/
+- skos: http://www.w3.org/2004/02/skos/core#
+- void: http://rdfs.org/ns/void#
+- wikibase: http://wikiba.se/ontology#
+- xsd: http://www.w3.org/2001/XMLSchema#
+
+All SPARQL prefixes above can be used implicitly in SPARQL queries and function calls.
+
+Additional rules to follow:
+- Explain your thought process before each step and function call.
+- Do not ask the user for clarification, neither on the initial input nor on follow-up inputs or feedback. When the task input is incomplete or ambiguous, proceed based on reasonable assumptions.
+- Use IRIs returned in function call results as is in subsequent function calls. Shortening them to their prefixed form, and escaping or encoding special characters might lead to errors and unexpected or empty results.
+- Do not use "SERVICE wikibase:label { bd:serviceParam wikibase:language ..." in SPARQL queries. It is not SPARQL standard and unsupported by most SPARQL endpoints. Use rdfs:label or similar properties to get labels instead.
+- Always execute your final SPARQL query before giving an answer to make sure it returns the expected results.
+- The SPARQL query should always return the actual identifiers / IRIs of the items in its result. It additionally may return labels or other human-readable information, but they are optional and should be put within optional clauses unless explicitly requested by the user.
+- Do not stop early if there are still obvious improvements to be made to the SPARQL query. For example, keep refining your SPARQL query if its result contains irrelevant items or is missing items you expected.
+- Do not perform additional computation (e.g. filtering, sorting, calculations) on the result of the SPARQL query to determine the answer. All computation should be done solely within SPARQL.
+- For questions with a "True" or "False" answer the SPARQL query should be an ASK query.
+
+Message 2: user
+Content:
+what are the input instructions used by the Large Language Model to create the "information extraction" function?
+
+Message 3: assistant
+Content:
+{
+  "id": "chatcmpl-jn2shbalhbdw7s2cfjcu2",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": "The user is asking about input instructions used by a Large Language Model (LLM) to create the \"information extraction\" function. This seems like a question about the knowledge graph that contains information about functions, possibly in the ChatBS workflow context.\n\nLet me think about this step by step:\n\n1. First, I need to search for entities or properties related to \"function\", \"information extraction\", and \"input instructions\" in the chatbs knowledge graph.\n\n2. The question is asking about some kind of function called \"information extraction\" that was created with input instructions from an LLM.\n\n3. Let me start by searching for entities related to \"information extraction\" to see if there's a specific entity or property I should look at.\n\nLet me search for \"information extraction\" in the chatbs knowledge graph first.",
+    "encrypted_content": null,
+    "id": "94aa25d7f4a74c80ace827fa88ed1f3c",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "query": "information extraction function"
+      },
+      "error": null,
+      "id": "886874046",
+      "name": "search_entity",
+      "result": "Top 10 entities alternatives:\n1. Information Extractor function generator@en^^<xsd:string> (ChatBS-NexGen:LLM-information_extractor):\n  - is a Large Language Models\n2. Information Extractor function generator@en^^<xsd:string> (ChatBS-NexGen:Generative_Task-information_extractor):\n  - is a Generative Task\n3. information content entity (sio:SIO_000015):\n  - is subclass of object\n4. has function (sio:SIO_000225)\n5. information processing (sio:SIO_000649):\n  - is subclass of procedure\n6. function (sio:SIO_000017):\n  - is subclass of capability\n7. is function of (sio:SIO_000226)\n8. Information Extractor@en^^<xsd:string> (ChatBS-NexGen:information_extractor):\n  - is a Program\n9. information translation (sio:SIO_001359):\n  - is subclass of information processing\n10. information maintenance (sio:SIO_001366):\n  - is subclass of process maintenance"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 212,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 170,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 3561,
+    "prompt_tokens_details": null,
+    "total_tokens": 3773
+  }
+}
+
+Message 4: assistant
+Content:
+{
+  "id": "chatcmpl-xu5grjp7nrcf5l7k1i26o9",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": null,
+    "encrypted_content": null,
+    "id": "6c0e9dcf9eb84efc910af664bc7c9501",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "entity": "ChatBS-NexGen:LLM-information_extractor",
+        "kg": "chatbs",
+        "query": "input instruction"
+      },
+      "error": null,
+      "id": "300905355",
+      "name": "search_property_of_entity",
+      "result": "Top 10 properties alternatives:\n1. has input (sio:SIO_000230), also known as \"SIO 000230\":\n  - example value system_prompt@en^^<xsd:string>\n  - is subproperty of has participant\n  - used 12 times from  to Data\n2. http://purl.org/dc/elements/1.1/description (dc:description, matched via \"description\"), also known as \"description\":\n  - used 115 times from Program\n3. http://www.w3.org/2000/01/rdf-schema#label (rdfs:label, matched via \"label\"), also known as \"label\":\n  - used 2341 times from Class\n  - \n4. http://www.w3.org/1999/02/22-rdf-syntax-ns#type (rdf:type, matched via \"type\"), also known as \"type\":\n  - example value Agent\n  - used 3680 times from Class to Class\n5. has output (sio:SIO_000229), also known as \"SIO 000229\":\n  - example value Drug A is not sufficient for this patient\n  - has domain Large Language Models\n  - has range Large Language Model Output\n  - is subproperty of has participant\n  - used 15 times from  to \n6. http://www.w3.org/ns/prov#atTime (prov:atTime, matched via \"atTime\"), also known as \"atTime\", \"at Time\":\n  - has domain InstantaneousEvent\n  - used 11 times from Program\n  - The time at which an InstantaneousEvent occurred, in the form of xsd:dateTime.\n7. http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/llm_model (workflow:llm_model, matched via \"llm model\"), also known as \"llm model\":\n  - used 7 times from "
+    }
+  ],
+  "usage": {
+    "completion_tokens": 64,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 3890,
+    "prompt_tokens_details": null,
+    "total_tokens": 3954
+  }
+}
+
+Message 5: assistant
+Content:
+{
+  "id": "chatcmpl-t7z812934dshvchldqnk",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": "The search results show properties related to the LLM-information_extractor entity. The property \"has input\" (sio:SIO_000230) appears relevant, with an example value of \"system_prompt\". Let me list triples for this entity to find the specific input instructions.",
+    "encrypted_content": null,
+    "id": "838c755979af4cffb9ac1eba67abdec6",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "object": "null",
+        "page": 1,
+        "property": "sio:SIO_000230",
+        "subject": "ChatBS-NexGen:LLM-information_extractor",
+        "unclipped": false
+      },
+      "error": null,
+      "id": "467731797",
+      "name": "list",
+      "result": "Got no rows and 3 columns"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 169,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 60,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 4420,
+    "prompt_tokens_details": null,
+    "total_tokens": 4589
+  }
+}
+
+Message 6: assistant
+Content:
+{
+  "id": "chatcmpl-i7cmklt5ursh0uj7uri7a",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": "No results were found with the exact subject IRI `ChatBS-NexGen:LLM-information_extractor`. Let's try to search for entities related to \"Large Language Model\" or \"information extractor\" more specifically, and look for properties that might contain input instructions.\n\nLet's first check if the entity exists with a slightly different query or look at its type.",
+    "encrypted_content": null,
+    "id": "5942c6a96fb44b24bd2d46034a2b5253",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "query": "Large Language Model information extractor"
+      },
+      "error": null,
+      "id": "601506327",
+      "name": "search_entity",
+      "result": "Top 10 entities alternatives:\n1. Large Language Model Output (workflow:Large_Language_Model_Output):\n  - is subclass of System Recommendation\n2. Large Language Models (workflow:Large_Language_Models):\n  - is subclass of AI Method\n3. Information Extractor function generator@en^^<xsd:string> (ChatBS-NexGen:LLM-information_extractor):\n  - is a Large Language Models\n4. Information Extractor function generator@en^^<xsd:string> (ChatBS-NexGen:Generative_Task-information_extractor):\n  - is a Generative Task\n5. information content entity (sio:SIO_000015):\n  - is subclass of object\n6. language entity (sio:SIO_000078):\n  - is subclass of information content entity\n7. Model Explanation Output (eo:ModelExplanationOutputs):\n  - is subclass of System Recommendation\n8. information processing (sio:SIO_000649):\n  - is subclass of procedure\n9. is model of (sio:SIO_000632)\n10. language (sio:SIO_000104):\n  - is subclass of language entity"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 119,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 75,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 4551,
+    "prompt_tokens_details": null,
+    "total_tokens": 4670
+  }
+}
+
+Message 7: assistant
+Content:
+{
+  "id": "chatcmpl-14mq1v6g9xy10rq8zhanpbd",
+  "message": "Let me try a more direct approach by looking for entities related to \"input instruction\" or similar concepts in the context of LLM operations.",
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": null,
+    "encrypted_content": null,
+    "id": "5531c0654c2e4e8985bc17e098612504",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "entity": "ChatBS-NexGen:LLM-information_extractor",
+        "kg": "chatbs",
+        "query": "instruction"
+      },
+      "error": null,
+      "id": "346398265",
+      "name": "search_property_of_entity",
+      "result": "Top 10 properties alternatives:\n1. http://www.w3.org/2000/01/rdf-schema#label (rdfs:label, matched via \"label\"), also known as \"label\":\n  - used 2341 times from Class\n  - \n2. http://purl.org/dc/elements/1.1/description (dc:description, matched via \"description\"), also known as \"description\":\n  - used 115 times from Program\n3. http://www.w3.org/1999/02/22-rdf-syntax-ns#type (rdf:type, matched via \"type\"), also known as \"type\":\n  - example value Agent\n  - used 3680 times from Class to Class\n4. has input (sio:SIO_000230), also known as \"SIO 000230\":\n  - example value system_prompt@en^^<xsd:string>\n  - is subproperty of has participant\n  - used 12 times from  to Data\n5. has output (sio:SIO_000229), also known as \"SIO 000229\":\n  - example value Drug A is not sufficient for this patient\n  - has domain Large Language Models\n  - has range Large Language Model Output\n  - is subproperty of has participant\n  - used 15 times from  to \n6. http://www.w3.org/ns/prov#atTime (prov:atTime, matched via \"atTime\"), also known as \"atTime\", \"at Time\":\n  - has domain InstantaneousEvent\n  - used 11 times from Program\n  - The time at which an InstantaneousEvent occurred, in the form of xsd:dateTime.\n7. http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/llm_model (workflow:llm_model, matched via \"llm model\"), also known as \"llm model\":\n  - used 7 times from "
+    }
+  ],
+  "usage": {
+    "completion_tokens": 92,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 4879,
+    "prompt_tokens_details": null,
+    "total_tokens": 4971
+  }
+}
+
+Message 8: assistant
+Content:
+{
+  "id": "chatcmpl-my690nqlp8953e6adxe0c",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": "The search results don't directly show input instructions. Let me look for the exact entity and all its properties to understand what information is available about this LLM-information_extractor.",
+    "encrypted_content": null,
+    "id": "4bbae29541df4c6b8da48b9b834fb215",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "object": "null",
+        "page": 1,
+        "property": "null",
+        "subject": "ChatBS-NexGen:LLM-information_extractor",
+        "unclipped": false
+      },
+      "error": "Value \"null\" for property is not a valid IRI. IRIs can be given in prefixed form, like wd:Q937, or in full form, like <http://www.wikidata.org/entity/Q937> or http://www.wikidata.org/entity/Q937. Be aware that not all IRIs can be used in prefixed form due to unsupported characters. If the value comes from a previous function call result, make sure to specify it exactly as given, with proper escaping and quoting.",
+      "id": "250722635",
+      "name": "list",
+      "result": "Call to function list returned an error:\nValue \"null\" for property is not a valid IRI. IRIs can be given in prefixed form, like wd:Q937, or in full form, like <http://www.wikidata.org/entity/Q937> or http://www.wikidata.org/entity/Q937. Be aware that not all IRIs can be used in prefixed form due to unsupported characters. If the value comes from a previous function call result, make sure to specify it exactly as given, with proper escaping and quoting."
+    }
+  ],
+  "usage": {
+    "completion_tokens": 134,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 35,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 5437,
+    "prompt_tokens_details": null,
+    "total_tokens": 5571
+  }
+}
+
+Message 9: assistant
+Content:
+{
+  "id": "chatcmpl-qqtlr2gebb84onjv9nfzgo",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": "Let me try listing all triples for this entity without constraining properties:",
+    "encrypted_content": null,
+    "id": "dc1064a9a4844f20b52a121e45917a67",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "object": "null",
+        "page": 1,
+        "property": "null",
+        "subject": "ChatBS-NexGen:LLM-information_extractor",
+        "unclipped": false
+      },
+      "error": "Value \"null\" for property is not a valid IRI. IRIs can be given in prefixed form, like wd:Q937, or in full form, like <http://www.wikidata.org/entity/Q937> or http://www.wikidata.org/entity/Q937. Be aware that not all IRIs can be used in prefixed form due to unsupported characters. If the value comes from a previous function call result, make sure to specify it exactly as given, with proper escaping and quoting.",
+      "id": "864423483",
+      "name": "list",
+      "result": "Call to function list returned an error:\nValue \"null\" for property is not a valid IRI. IRIs can be given in prefixed form, like wd:Q937, or in full form, like <http://www.wikidata.org/entity/Q937> or http://www.wikidata.org/entity/Q937. Be aware that not all IRIs can be used in prefixed form due to unsupported characters. If the value comes from a previous function call result, make sure to specify it exactly as given, with proper escaping and quoting."
+    }
+  ],
+  "usage": {
+    "completion_tokens": 114,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 15,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 5666,
+    "prompt_tokens_details": null,
+    "total_tokens": 5780
+  }
+}
+
+Message 10: assistant
+Content:
+{
+  "id": "chatcmpl-cd641yvg6cof2zr3606jzm",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": "The API seems to require explicit property values rather than null for unconstrained properties. Let me try using a different approach to search for triples involving this entity without constraining the property or object.",
+    "encrypted_content": null,
+    "id": "0bec1f48d5254216b28611d002db216d",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "sparql": "PREFIX ChatBS-NexGen: <http://testwebsite/testProgram#>\nSELECT ?property ?object WHERE {\n  ChatBS-NexGen:LLM-information_extractor ?property ?object .\n} LIMIT 20"
+      },
+      "error": null,
+      "id": "921435934",
+      "name": "execute",
+      "result": "Got 8 rows and 2 columns in 0.00s:\n| property                       | object                                                                                    |\n| ------------------------------ | ----------------------------------------------------------------------------------------- |\n| type (rdf:type)                | Large Language Models (workflow:Large_Language_Models)                                    |\n| description (dc:description)   | Generates the Information Extractor Function using Large language models@en^^<xsd:string> |\n| label (rdfs:label)             | Information Extractor function generator@en^^<xsd:string>                                 |\n| atTime (prov:atTime)           | 2026-03-05 19:21:32@en^^<xsd:string>                                                      |\n| has output (sio:SIO_000229)    | ChatBS-NexGen:LLM_Output-information_extractor                                            |\n| has input (sio:SIO_000230)     | ChatBS-NexGen:LLM-information_extractor-Input-builder_llm                                 |\n| has input (sio:SIO_000230)     | ChatBS-NexGen:LLM-information_extractor-Input-text                                        |\n| llm model (workflow:llm_model) | gpt-4o@en^^<xsd:string>                                                                   |"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 127,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 39,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 5895,
+    "prompt_tokens_details": null,
+    "total_tokens": 6022
+  }
+}
+
+Message 11: assistant
+Content:
+{
+  "id": "chatcmpl-3proupyy9h35s3jr5w2gxf",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": null,
+    "encrypted_content": null,
+    "id": "2e0e823ead9a413799518c8b5c5a84ea",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "sparql": "PREFIX ChatBS-NexGen: <http://testwebsite/testProgram#>\nSELECT ?property ?object WHERE {\n  ChatBS-NexGen:LLM-information_extractor-Input-builder_llm ?property ?object .\n} LIMIT 20"
+      },
+      "error": null,
+      "id": "831485593",
+      "name": "execute",
+      "result": "Got 2 rows and 2 columns in 0.00s:\n| property           | object                  |\n| ------------------ | ----------------------- |\n| type (rdf:type)    | Data (provone:Data)     |\n| value (prov:value) | gpt-4o@en^^<xsd:string> |"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 93,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 6275,
+    "prompt_tokens_details": null,
+    "total_tokens": 6368
+  }
+}
+
+Message 12: assistant
+Content:
+{
+  "id": "chatcmpl-p2lbeiq6zgk83cb4ubzai6",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": null,
+    "encrypted_content": null,
+    "id": "e189001338564abdaa32b03095c6ba77",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "sparql": "PREFIX ChatBS-NexGen: <http://testwebsite/testProgram#>\nSELECT ?subject ?property ?object WHERE {\n  ?subject ?property ?object .\n  FILTER(STRSTARTS(STR(?subject), \"ChatBS-Nexgen\") || STRSTARTS(STR(?subject), \"ChatBS-NexGen\"))\n} LIMIT 30"
+      },
+      "error": null,
+      "id": "528017145",
+      "name": "execute",
+      "result": "Got no rows and 3 columns in 0.02s"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 117,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 6454,
+    "prompt_tokens_details": null,
+    "total_tokens": 6571
+  }
+}
+
+Message 13: assistant
+Content:
+{
+  "id": "chatcmpl-1myefp6v53b31hepsbah1v",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": null,
+    "encrypted_content": null,
+    "id": "24b2b9f2812d4114be83aa376954fe99",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "sparql": "PREFIX ChatBS-NexGen: <http://testwebsite/testProgram#>\nSELECT ?subject ?property ?object WHERE {\n  ?subject ?property ?object .\n} LIMIT 50"
+      },
+      "error": null,
+      "id": "388950975",
+      "name": "execute",
+      "result": "Got 50 rows and 3 columns in 0.01s, showing the first 5 and last 5 rows below:\n| subject                                                                      | property                         | object                                                                                                                  |\n| ---------------------------------------------------------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |\n| Association (prov:Association)                                               | type (rdf:type)                  | owl:Class                                                                                                               |\n| Association (prov:Association)                                               | label (rdfs:label)               | Association                                                                                                             |\n| Association (prov:Association)                                               | comment (rdfs:comment)           | An instance of prov:Association provides additional ... [ a prov:Association; prov:agent :baker; :foo :bar ]. (lang:en) |\n| Association (prov:Association)                                               | is Defined By (rdfs:isDefinedBy) | http://www.w3.org/ns/prov-o#                                                                                            |\n| Association (prov:Association)                                               | category (prov:category)         | qualified                                                                                                               |\n| ...                                                                          | ...                              | ...                                                                                                                     |\n| Information Extractor@en^^<xsd:string> (ChatBS-NexGen:information_extractor) | identifier (dcterms:identifier)  | 2@en^^<xsd:string>                                                                                                      |\n| Information Extractor@en^^<xsd:string> (ChatBS-NexGen:information_extractor) | label (rdfs:label)               | Information Extractor@en^^<xsd:string>                                                                                  |\n| Information Extractor@en^^<xsd:string> (ChatBS-NexGen:information_extractor) | atTime (prov:atTime)             | 2026-03-05 19:20:19@en^^<xsd:string>                                                                                    |\n| LLM Chat@en^^<xsd:string> (ChatBS-NexGen:llm_chat)                           | type (rdf:type)                  | Program (provone:Program)                                                                                               |\n| LLM Chat@en^^<xsd:string> (ChatBS-NexGen:llm_chat)                           | hasInPort (provone:hasInPort)    | LLM Chat input port: system_prompt@en^^<xsd:string> (ChatBS-NexGen:llm_chat-system_prompt)                              |"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 82,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 6600,
+    "prompt_tokens_details": null,
+    "total_tokens": 6682
+  }
+}
+
+Message 14: assistant
+Content:
+{
+  "id": "chatcmpl-14lpeusien2020d7ir1i3zi",
+  "message": "I found information about \"information_extractor_input-builder_llm\" which is an input to the LLM-information_extractor. Let me examine this entity and look for related properties that might contain instructions or prompts used by the Large Language Model.",
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": null,
+    "encrypted_content": null,
+    "id": "28fa150631fb4b1a98a172de991a41f1",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "sparql": "PREFIX ChatBS-NexGen: <http://testwebsite/testProgram#>\nSELECT ?property ?object WHERE {\n  ChatBS-NexGen:LLM-information_extractor-Input-builder_llm ?property ?object .\n}"
+      },
+      "error": null,
+      "id": "360195223",
+      "name": "execute",
+      "result": "Got 2 rows and 2 columns in 0.00s:\n| property           | object                  |\n| ------------------ | ----------------------- |\n| type (rdf:type)    | Data (provone:Data)     |\n| value (prov:value) | gpt-4o@en^^<xsd:string> |"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 136,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 7175,
+    "prompt_tokens_details": null,
+    "total_tokens": 7311
+  }
+}
+
+Message 15: assistant
+Content:
+{
+  "id": "chatcmpl-3k2ho0vmgn6gwcgvcuzcbv",
+  "message": "The \"Input-builder_llm\" only contains the LLM model value. Let me check if there are other related entities or properties that capture the input instructions, system prompts, or similar information used by the Large Language Model to create the Information Extractor function. I need to look for entities like \"system_prompt\", or instruction-related entities in the context of this function.",
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": null,
+    "encrypted_content": null,
+    "id": "1a582e7c19c74819894480fc06c6456d",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "sparql": "PREFIX ChatBS-NexGen: <http://testwebsite/testProgram#>\nSELECT ?entity WHERE { \n  ?entity rdfs:label \"Information Extractor\"@en . \n} "
+      },
+      "error": null,
+      "id": "119368810",
+      "name": "execute",
+      "result": "Got no rows and 1 columns in 0.00s"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 155,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 7397,
+    "prompt_tokens_details": null,
+    "total_tokens": 7552
+  }
+}
+
+Message 16: assistant
+Content:
+{
+  "id": "chatcmpl-y0b8bkghquo4wui9qs9476",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": null,
+    "encrypted_content": null,
+    "id": "b260621b17bd4ee5b116352eb1be3a88",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "query": "system_prompt information extractor"
+      },
+      "error": null,
+      "id": "237934417",
+      "name": "search_entity",
+      "result": "Top 10 entities alternatives:\n1. Information Extractor function generator@en^^<xsd:string> (ChatBS-NexGen:LLM-information_extractor):\n  - is a Large Language Models\n2. Information Extractor function generator@en^^<xsd:string> (ChatBS-NexGen:Generative_Task-information_extractor):\n  - is a Generative Task\n3. information content entity (sio:SIO_000015):\n  - is subclass of object\n4. information processing (sio:SIO_000649):\n  - is subclass of procedure\n5. Information Extractor@en^^<xsd:string> (ChatBS-NexGen:information_extractor):\n  - is a Program\n6. information translation (sio:SIO_001359):\n  - is subclass of information processing\n7. information maintenance (sio:SIO_001366):\n  - is subclass of process maintenance\n8. to encode information (sio:SIO_001362):\n  - is subclass of to actively interact with\n9. to maintain information (sio:SIO_001363):\n  - is subclass of to actively interact with\n10. to decode information (sio:SIO_001364):\n  - is subclass of to actively interact with"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 43,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 7581,
+    "prompt_tokens_details": null,
+    "total_tokens": 7624
+  }
+}
+
+Message 17: assistant
+Content:
+{
+  "id": "chatcmpl-iigzb03lc79oxntnfcvo6",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": "Let me search for entities related to prompts or instructions that might be connected to the LLM-information_extractor function. The question asks about \"input instructions\" used by the Large Language Model. I should look for properties like \"system_prompt\", \"instruction\", or similar concepts that relate to what guides an LLM's behavior when creating a function.\n\n<tool_call>\n<function=search_entity>\n<parameter=kg>\nchatbs\n</parameter>\n<parameter=query>\ninput instruction prompt system\n</parameter>\n</function>\n</tool_call>",
+    "encrypted_content": null,
+    "id": "d1e565b97f2547db9f4cacdd5f600d67",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [],
+  "usage": {
+    "completion_tokens": 110,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 109,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 7937,
+    "prompt_tokens_details": null,
+    "total_tokens": 8047
+  }
+}
+
+Timing
+32.08673048601486 seconds
+
+Elapsed
+32.083388018189 seconds

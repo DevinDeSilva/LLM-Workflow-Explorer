@@ -1,4 +1,3 @@
-from icecream import ic 
 from src.llm.base import BaseLLM
 
 class LLM:
@@ -17,13 +16,11 @@ class LLM:
             from src.llm.openai import OpenAILlm
             from src.config.llm.openai import OpenAILlmConfig
             config = OpenAILlmConfig(**kwargs)
-            ic(config)
             return OpenAILlm(config, library)
         elif llm_type == "lmstudio":
             from src.llm.lmstudio import LMStudio
             from src.config.llm.lmstudio import LMStudioConfig
             config = LMStudioConfig(**kwargs)
-            ic(config)
             return LMStudio(config, library)
         else:
             raise NotImplementedError

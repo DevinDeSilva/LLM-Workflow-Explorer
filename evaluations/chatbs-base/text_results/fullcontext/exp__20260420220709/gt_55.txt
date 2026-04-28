@@ -1,0 +1,65 @@
+Result ID
+gt_55
+
+Question
+What Generative Task generated the data that was used by the execution http://testwebsite/testProgram#id_20260420105705_972?
+
+Answer
+The Generative Task that generated content used in the execution `http://testwebsite/testProgram#id_20260420105705_972` is 'LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. using: gpt-4o'. <cite, id=0>LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. using: gpt-4o</cite> <cite, id=1>sparql query 1 1 1</cite>
+
+Relevant Entities
+1. LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. using: gpt-4o (ChatBS-NexGen:Generative_Task-id_20260420105659_302) [types=['workflow:Generative_Task']; score=1.0]
+2. sparql query 1 1 1 (ChatBS-NexGen:id_20260420105705_972) [types=['provone:Execution']; score=0.9]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+    "label": "LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. using: gpt-4o",
+    "score": 1.0,
+    "types": [
+      "workflow:Generative_Task"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:id_20260420105705_972",
+    "label": "sparql query 1 1 1",
+    "score": 0.9,
+    "types": [
+      "provone:Execution"
+    ]
+  }
+]
+
+Evidence
+1. LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. using: gpt-4o (ChatBS-NexGen:Generative_Task-id_20260420105659_302) -- is component part of (sio:SIO_000313) -> ChatBS-NexGen:id_20260420105659_302 [llm chat 1 1] [direction=outgoing; literal=True; score=1.0]
+2. kg info (ChatBS-NexGen:Collection-id_20260420105705_846-kg_info) -- wasGeneratedBy (prov:wasGeneratedBy) -> ChatBS-NexGen:id_20260420105705_972 [sparql query 1 1 1] [direction=outgoing; literal=True; score=0.9]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:id_20260420105659_302 [llm chat 1 1]",
+    "predicate_id": "sio:SIO_000313",
+    "predicate_label": "is component part of",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+    "subject_label": "LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. using: gpt-4o"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:id_20260420105705_972 [sparql query 1 1 1]",
+    "predicate_id": "prov:wasGeneratedBy",
+    "predicate_label": "wasGeneratedBy",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:Collection-id_20260420105705_846-kg_info",
+    "subject_label": "kg info"
+  }
+]
+
+Timing
+78.65196228795685 seconds

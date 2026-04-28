@@ -1,0 +1,138 @@
+Ground Truth ID
+gt_90
+
+Question
+what is the number of output for the "Extracted Entities" in the execution "http://testwebsite/testProgram#id_20260420105703_307" ?
+
+Answer
+The number of output for the "Extracted Entities" in the execution "http://testwebsite/testProgram#id_20260420105703_307" is 11
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105703_198-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_218-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_51-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_661-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_678-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_693-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_757-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_886-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_891-extracts
+http://testwebsite/testProgram#Data-id_20260420105704_531-extracts
+http://testwebsite/testProgram#Data-id_20260420105704_782-extracts
+
+Question Type
+[
+  "multi",
+  "numeric"
+]
+
+Decision
+None
+
+Count
+11
+
+Entities
+[
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105703_198-extracts"
+  },
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105703_218-extracts"
+  },
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105703_51-extracts"
+  },
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105703_661-extracts"
+  },
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105703_678-extracts"
+  },
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105703_693-extracts"
+  },
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105703_757-extracts"
+  },
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105703_886-extracts"
+  },
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105703_891-extracts"
+  },
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105704_531-extracts"
+  },
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105704_782-extracts"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT DISTINCT ?data\n            WHERE {\n                <http://testwebsite/testProgram#id_20260420105703_307> prov:qualifiedGeneration ?generation .\n                ?generation provone:hadOutPort ?port .\n                ?port rdfs:label ?plbl .\n                FILTER(REGEX(?plbl, \"Extracted Entities\",\"i\"))\n\n                ?generation provone:hadEntity ?data .\n        }\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    The number of output for the \"Extracted Entities\" in the execution \"http://testwebsite/testProgram#id_20260420105703_307\" is 11\n\n    Output Data\nhttp://testwebsite/testProgram#Data-id_20260420105703_198-extracts\nhttp://testwebsite/testProgram#Data-id_20260420105703_218-extracts\nhttp://testwebsite/testProgram#Data-id_20260420105703_51-extracts\nhttp://testwebsite/testProgram#Data-id_20260420105703_661-extracts\nhttp://testwebsite/testProgram#Data-id_20260420105703_678-extracts\nhttp://testwebsite/testProgram#Data-id_20260420105703_693-extracts\nhttp://testwebsite/testProgram#Data-id_20260420105703_757-extracts\nhttp://testwebsite/testProgram#Data-id_20260420105703_886-extracts\nhttp://testwebsite/testProgram#Data-id_20260420105703_891-extracts\nhttp://testwebsite/testProgram#Data-id_20260420105704_531-extracts\nhttp://testwebsite/testProgram#Data-id_20260420105704_782-extracts\n    ",
+  "count": 11,
+  "decision": null,
+  "entities": [
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105703_198-extracts"
+    },
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105703_218-extracts"
+    },
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105703_51-extracts"
+    },
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105703_661-extracts"
+    },
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105703_678-extracts"
+    },
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105703_693-extracts"
+    },
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105703_757-extracts"
+    },
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105703_886-extracts"
+    },
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105703_891-extracts"
+    },
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105704_531-extracts"
+    },
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105704_782-extracts"
+    }
+  ],
+  "id": "gt_90",
+  "qtype": [
+    "multi",
+    "numeric"
+  ],
+  "question": "\nwhat is the number of output for the \"Extracted Entities\" in the execution \"http://testwebsite/testProgram#id_20260420105703_307\" ?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT DISTINCT ?data\n            WHERE {\n                <http://testwebsite/testProgram#id_20260420105703_307> prov:qualifiedGeneration ?generation .\n                ?generation provone:hadOutPort ?port .\n                ?port rdfs:label ?plbl .\n                FILTER(REGEX(?plbl, \"Extracted Entities\",\"i\"))\n\n                ?generation provone:hadEntity ?data .\n        }\n"
+    }
+  ],
+  "tags": {}
+}

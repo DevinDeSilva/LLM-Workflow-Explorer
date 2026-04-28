@@ -1,0 +1,70 @@
+Ground Truth ID
+gt_10
+
+Question
+what are the input parameters of the function used in sparql query function step in the pipeline?
+
+Answer
+The input parameters to sparql query function function.
+
+    Funtion name | Function returns
+SPARQL Query Builder@en^^<xsd:string> | Input port for entity@en^^<xsd:string>
+
+Question Type
+[
+  "multi",
+  "entity"
+]
+
+Decision
+None
+
+Count
+None
+
+Entities
+[
+  {
+    "flbl": "SPARQL Query Builder@en^^<xsd:string>",
+    "lbl": "Input port for entity@en^^<xsd:string>"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT distinct ?flbl ?lbl\nWHERE {\n     ?obj dc:description ?desc .\n     ?obj rdfs:label ?flbl . \n     ?obj a ?class .\n     FILTER(REGEX(?desc, \"Builds SPARQL\",\"i\"))\n\n     ?obj provone:hasInPort ?port .\n     ?port rdfs:label ?lbl .\n}\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    The input parameters to sparql query function function.\n\n    Funtion name | Function returns\nSPARQL Query Builder@en^^<xsd:string> | Input port for entity@en^^<xsd:string>\n    ",
+  "count": null,
+  "decision": null,
+  "entities": [
+    {
+      "flbl": "SPARQL Query Builder@en^^<xsd:string>",
+      "lbl": "Input port for entity@en^^<xsd:string>"
+    }
+  ],
+  "id": "gt_10",
+  "qtype": [
+    "multi",
+    "entity"
+  ],
+  "question": "\nwhat are the input parameters of the function used in sparql query function step in the pipeline?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT distinct ?flbl ?lbl\nWHERE {\n     ?obj dc:description ?desc .\n     ?obj rdfs:label ?flbl . \n     ?obj a ?class .\n     FILTER(REGEX(?desc, \"Builds SPARQL\",\"i\"))\n\n     ?obj provone:hasInPort ?port .\n     ?port rdfs:label ?lbl .\n}\n"
+    }
+  ],
+  "tags": {}
+}

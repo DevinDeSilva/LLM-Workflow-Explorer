@@ -1,0 +1,78 @@
+Ground Truth ID
+gt_2
+
+Question
+What are the outputs data of  the sparql query function executions?
+
+Answer
+The retrieved entities from the knowledge graph includes the following ingredients,
+
+1. Yogurt
+2. Avocado
+3. Chicken
+4. Tuna
+5. Turkey
+6. Cheese
+
+Question Type
+[
+  "multi",
+  "entity"
+]
+
+Decision
+None
+
+Count
+None
+
+Entities
+[
+  "Yogurt",
+  "Avocado",
+  "Chicken",
+  "Tuna",
+  "Turkey",
+  "Cheese"
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT DISTINCT ?member ?prop ?value\nWHERE {\n     ?obj dc:description ?desc .\n     FILTER(REGEX(?desc, \"SPARQL queries to extract information\", \"i\"))\n\n     ?obj a provone:Program .\n     ?exe prov:qualifiedAssociation/prov:hadPlan ?obj .\n     ?exe dcterms:identifier ?id .\n     FILTER(REGEX(?id, \"1_1\", \"i\"))\n\n     ?data prov:wasGeneratedBy ?exe .\n     ?data a ?class .\n\n     {\n         ?data a provone:Collection .\n         ?data provone:hadMember ?member .\n         ?member ?prop ?value .\n     }\n     UNION\n     {\n         ?data a provone:Data .\n         BIND(?data AS ?member)\n         ?data ?prop ?value .\n     }\n}\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\nThe retrieved entities from the knowledge graph includes the following ingredients,\n\n1. Yogurt\n2. Avocado\n3. Chicken\n4. Tuna\n5. Turkey\n6. Cheese\n",
+  "count": null,
+  "decision": null,
+  "entities": [
+    "Yogurt",
+    "Avocado",
+    "Chicken",
+    "Tuna",
+    "Turkey",
+    "Cheese"
+  ],
+  "id": "gt_2",
+  "qtype": [
+    "multi",
+    "entity"
+  ],
+  "question": "\nWhat are the outputs data of  the sparql query function executions?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT DISTINCT ?member ?prop ?value\nWHERE {\n     ?obj dc:description ?desc .\n     FILTER(REGEX(?desc, \"SPARQL queries to extract information\", \"i\"))\n\n     ?obj a provone:Program .\n     ?exe prov:qualifiedAssociation/prov:hadPlan ?obj .\n     ?exe dcterms:identifier ?id .\n     FILTER(REGEX(?id, \"1_1\", \"i\"))\n\n     ?data prov:wasGeneratedBy ?exe .\n     ?data a ?class .\n\n     {\n         ?data a provone:Collection .\n         ?data provone:hadMember ?member .\n         ?member ?prop ?value .\n     }\n     UNION\n     {\n         ?data a provone:Data .\n         BIND(?data AS ?member)\n         ?data ?prop ?value .\n     }\n}\n"
+    }
+  ],
+  "tags": {}
+}

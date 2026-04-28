@@ -1,0 +1,645 @@
+Result ID
+gt_18
+
+Original Question
+what are the connected functions to the function used in system prompt template step in the pipeline?
+
+Sub Questions
+None
+
+Topology Graph
+Nodes:
+[0] what are the connected functions to the function used in system prompt template step in the pipeline?
+
+Edges:
+(none)
+
+Adjacency:
+(none)
+
+Details Of Question Solving
+Question [0]
+Question: what are the connected functions to the function used in system prompt template step in the pipeline?
+Depends on: None
+
+Grounding:
+{
+  "candidate_classes": [
+    "provone:Program",
+    "provone:Port"
+  ],
+  "candidate_relations": [],
+  "entity_phrases": [
+    "system prompt templates",
+    "workflow pipeline"
+  ]
+}
+
+Answer Requirements:
+[
+  "Identify the `provone:Program` associated with the system prompt template step.",
+  "List any outgoing connections (`provone:Port`s with `provone:connectsTo`) from this program.",
+  "List any incoming connections (`provone:Port`s that are connected to) into this program."
+]
+
+Retrieved Objects:
+[
+  "ChatBS-NexGen:DF_combine",
+  "ChatBS-NexGen:batch_sparql_query_extractor",
+  "ChatBS-NexGen:information_extractor",
+  "ChatBS-NexGen:llm_chat",
+  "ChatBS-NexGen:query_result_post_processor",
+  "ChatBS-NexGen:sparql_query_extractor",
+  "ChatBS-NexGen:system_prompt_generator"
+]
+
+Schema Info Used:
+Workflow schema
+Classes:
+- workflow:Generative_Task (Generative Task): A task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data.
+- workflow:Large_Language_Models (Large Language Models)
+- workflow:Large_Language_Model_Output (Large Language Model Output): An Output Artifact from a AI Task
+- eo:Reasoning_Mode (Reasoning Mode): a process being executed by the system that achieves a particular goal; e.g. inference models such as treatment planning involved in medical diagnosis can be considered...
+- provone:Program (Program): A Program represents a computational task that consumes and produces data through its input and output ports, respectively. It can be atomic or composite, the latter case...
+- provone:Port (Port): A Port enables a Program to send and receive Entities (Data, Visualizations, etc.). When used in a role as an input port, default parameters may be configured for the Port.
+- provone:Channel (Channel): A Channel provides a connection between Ports that are defined for Programs. Typically, a Program with an output Port defined using the provone:hasOutPort object property...
+- provone:Execution (Execution): An Execution represents the execution of a Program. If the Program in question is a Workflow, then the Execution represents a trace of its execution.
+- provone:User (User): A User is the person responsible for the execution of a Program, which in turn can be a Workflow. Its specification serves attribution and accountability purposes.
+- provone:Data (Data): A Data item represents the basic unit of information consumed and produced by a Program. Multiple Data items may be grouped into a Collection.
+- provone:Collection
+- prov:Association (Association): An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity. It further allows for a plan to...
+- prov:Usage (Usage): Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity.
+- prov:Generation (Generation): Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.
+Object properties:
+- sio:SIO_000202; links workflow:Large_Language_Model_Output -> provone:Program, workflow:Large_Language_Model_Output -> provone:Data
+- sio:SIO_000229 (has output); links workflow:Large_Language_Models -> workflow:Large_Language_Model_Output
+- sio:SIO_000232 (is output of); links workflow:Large_Language_Model_Output -> workflow:Large_Language_Models
+- sio:SIO_000313 (is component part of); links workflow:Generative_Task -> provone:Execution
+- sio:SIO_000369 (has component part); links provone:Execution -> workflow:Generative_Task
+- sio:SIO_000230 (has input); links workflow:Large_Language_Models -> provone:Data
+- prov:used (used): A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .; links provone:Execution -> provone:Data, workflow:Generative_Task -> workflow:Large_Language_Models
+- prov:agent (hadPlan): Enables the specification of a particular User in a particular Association. This allows for further qualification of the prov:wasAssociatedWith property in the context of an...; links prov:Association -> provone:User
+- prov:qualifiedAssociation (qualifiedAssociation): If this Activity prov:wasAssociatedWith Agent :ag, then it can qualify the Association using prov:qualifiedAssociation [ a prov:Association; prov:agent :ag; :foo :bar ].; links provone:Execution -> prov:Association
+- prov:qualifiedUsage (qualifiedUsage): Enables the specification of a particular Usage by a particular Execution. This allows for further qualification of the prov:used property in the context of an Execution.; links provone:Execution -> prov:Usage
+- prov:qualifiedGeneration (qualifiedGeneration): If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualifiedGeneration [ a prov:Generation; prov:entity :e; :foo :bar ].; links provone:Execution -> prov:Generation
+- prov:hadPlan (hadPlan): The _optional_ Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.; links prov:Association -> provone:Program
+- provone:hasOutPort (hasOutPort): Enables the specification of a Port as an output port of a particular Program.; links provone:Program -> provone:Port
+- provone:hasInPort (hasInPort): Enables the specification of a Port as an input port of a particular Program.; links provone:Program -> provone:Port
+- provone:connectsTo (connectsTo): Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.; links provone:Port -> provone:Port
+- provone:hadInPort (hadInPort): Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.; links prov:Usage -> provone:Port
+- provone:hadOutPort (hadOutPort): Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:wasGeneratedBy property in the context of...; links prov:Generation -> provone:Port
+- prov:hadMember (hadMember); links provone:Collection -> provone:Data
+- provone:hadEntity (hadEntity): Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and...; links prov:Usage -> provone:Data, prov:Generation -> provone:Data
+- prov:wasInformedBy (wasInformedBy): An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.; links provone:Execution -> provone:Execution
+- prov:wasGeneratedBy (wasGeneratedBy); links provone:Data -> provone:Execution, provone:Collection -> provone:Execution
+- prov:wasAssociatedWith (wasAssociatedWith): An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.; links provone:Execution -> provone:User
+
+Synthetic Question Plan:
+1. round 0
+   Question: What are all the connected programs or components that interface with (input from or output to) the specific function step responsible for handling system prompt templates within the overall workflow pipeline?
+To be properly answered, cover: Identify the `provone:Program` associated with the system prompt template step.; List any outgoing connections (`provone:Port`s with `provone:connectsTo`) from this program.; List any incoming connections (`provone:Port`s that are connected to) into this program.
+   Object URIs (7):
+   - ChatBS-NexGen:DF_combine
+   - ChatBS-NexGen:batch_sparql_query_extractor
+   - ChatBS-NexGen:information_extractor
+   - ChatBS-NexGen:llm_chat
+   - ChatBS-NexGen:query_result_post_processor
+   - ChatBS-NexGen:sparql_query_extractor
+   - ChatBS-NexGen:system_prompt_generator
+
+Intermediary Results:
+Step 1: step1
+Sub question: What are all the connected programs or components that interface with (input from or output to) the specific function step responsible for handling system prompt templates within the overall workflow pipeline?
+To be properly answered, cover: Identify the `provone:Program` associated with the system prompt template step.; List any outgoing connections (`provone:Port`s with `provone:connectsTo`) from this program.; List any incoming connections (`provone:Port`s that are connected to) into this program.
+Program: explore_object_of_class
+Answer:
+Retrieved 7 initial candidate object(s) relevant to the question: What are all the connected programs or components that interface with (input from or output to) the specific function step responsible for handling system prompt templates within the overall workflow pipeline?
+To be properly answered, cover: Identify the `provone:Program` associated with the system prompt template step.; List any outgoing connections (`provone:Port`s with `provone:connectsTo`) from this program.; List any incoming connections (`provone:Port`s that are connected to) into this program. <cite, id=0>ChatBS-NexGen:DF_combine</cite> <cite, id=1>ChatBS-NexGen:batch_sparql_query_extractor</cite> <cite, id=2>ChatBS-NexGen:information_extractor</cite> <cite, id=3>ChatBS-NexGen:llm_chat</cite> <cite, id=4>ChatBS-NexGen:query_result_post_processor</cite> <cite, id=5>ChatBS-NexGen:sparql_query_extractor</cite>
+Important entities:
+- ChatBS-NexGen:DF_combine
+- ChatBS-NexGen:batch_sparql_query_extractor
+- ChatBS-NexGen:information_extractor
+- ChatBS-NexGen:llm_chat
+- ChatBS-NexGen:query_result_post_processor
+- ChatBS-NexGen:sparql_query_extractor
+- ChatBS-NexGen:system_prompt_generator
+Results:
+{
+  "set_1": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:DF_combine"
+      },
+      {
+        "value": "ChatBS-NexGen:batch_sparql_query_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:information_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:llm_chat"
+      },
+      {
+        "value": "ChatBS-NexGen:query_result_post_processor"
+      },
+      {
+        "value": "ChatBS-NexGen:sparql_query_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator"
+      }
+    ]
+  }
+}
+Extra:
+{
+  "execution_mode": "initial-data",
+  "extracted_results": [
+    {
+      "attributes": [
+        {
+          "o": "ChatBS-NexGen:DF_combine-kg_queries",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:DF_combine-kg_knowledge",
+          "p": "provone:hasOutPort"
+        },
+        {
+          "o": "Combines multiple data frames resulting from SPARQL queries into a single data frame.@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "3@en^^<xsd:string>",
+          "p": "dcterms:identifier"
+        },
+        {
+          "o": "provone:Program",
+          "p": "rdf:type"
+        },
+        {
+          "o": "Data Frame Combiner@en^^<xsd:string>",
+          "p": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:DF_combine"
+    },
+    {
+      "attributes": [
+        {
+          "o": "ChatBS-NexGen:batch_sparql_query_extractor-entities",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:batch_sparql_query_extractor-query_function",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge",
+          "p": "provone:hasOutPort"
+        },
+        {
+          "o": "ChatBS-NexGen:DF_combine",
+          "p": "provone:hasSubProgram"
+        },
+        {
+          "o": "ChatBS-NexGen:sparql_query_extractor",
+          "p": "provone:hasSubProgram"
+        },
+        {
+          "o": "Extracts information about the entities from the knowledge graph in batch mode.@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "3@en^^<xsd:string>",
+          "p": "dcterms:identifier"
+        },
+        {
+          "o": "provone:Program",
+          "p": "rdf:type"
+        },
+        {
+          "o": "Batch SPARQL Query Extractor@en^^<xsd:string>",
+          "p": "rdfs:label"
+        },
+        {
+          "o": "2026-03-05 19:20:56@en^^<xsd:string>",
+          "p": "prov:atTime"
+        }
+      ],
+      "uri": "ChatBS-NexGen:batch_sparql_query_extractor"
+    },
+    {
+      "attributes": [
+        {
+          "o": "ChatBS-NexGen:information_extractor-text",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:information_extractor-extracts",
+          "p": "provone:hasOutPort"
+        },
+        {
+          "o": "Extracts entities or relevant information from the generated text using specified instructions.@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "2@en^^<xsd:string>",
+          "p": "dcterms:identifier"
+        },
+        {
+          "o": "provone:Program",
+          "p": "rdf:type"
+        },
+        {
+          "o": "Information Extractor@en^^<xsd:string>",
+          "p": "rdfs:label"
+        },
+        {
+          "o": "2026-03-05 19:20:19@en^^<xsd:string>",
+          "p": "prov:atTime"
+        }
+      ],
+      "uri": "ChatBS-NexGen:information_extractor"
+    },
+    {
+      "attributes": [
+        {
+          "o": "ChatBS-NexGen:llm_chat-system_prompt",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:llm_chat-user_prompt",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:llm_chat-generated_answer",
+          "p": "provone:hasOutPort"
+        },
+        {
+          "o": "Chat with the LLM.@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "provone:Program",
+          "p": "rdf:type"
+        },
+        {
+          "o": "LLM Chat@en^^<xsd:string>",
+          "p": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:llm_chat"
+    },
+    {
+      "attributes": [
+        {
+          "o": "ChatBS-NexGen:query_result_post_processor-kg_knowledge",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:query_result_post_processor-post_processed_output",
+          "p": "provone:hasOutPort"
+        },
+        {
+          "o": "Post-processes the query results from the knowledge graph.@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "4@en^^<xsd:string>",
+          "p": "dcterms:identifier"
+        },
+        {
+          "o": "provone:Program",
+          "p": "rdf:type"
+        },
+        {
+          "o": "Query Result Post-Processor@en^^<xsd:string>",
+          "p": "rdfs:label"
+        },
+        {
+          "o": "2026-03-05 19:21:32@en^^<xsd:string>",
+          "p": "prov:atTime"
+        }
+      ],
+      "uri": "ChatBS-NexGen:query_result_post_processor"
+    },
+    {
+      "attributes": [
+        {
+          "o": "ChatBS-NexGen:sparql_query_extractor-entity",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:sparql_query_extractor-kg_info",
+          "p": "provone:hasOutPort"
+        },
+        {
+          "o": "Builds SPARQL queries to extract information about the entities from the knowledge graph.@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "3@en^^<xsd:string>",
+          "p": "dcterms:identifier"
+        },
+        {
+          "o": "provone:Program",
+          "p": "rdf:type"
+        },
+        {
+          "o": "SPARQL Query Builder@en^^<xsd:string>",
+          "p": "rdfs:label"
+        },
+        {
+          "o": "2026-03-05 19:20:56@en^^<xsd:string>",
+          "p": "prov:atTime"
+        }
+      ],
+      "uri": "ChatBS-NexGen:sparql_query_extractor"
+    },
+    {
+      "attributes": [
+        {
+          "o": "ChatBS-NexGen:system_prompt_generator-age",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:system_prompt_generator-allergies",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:system_prompt_generator-bodyMassIndex",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:system_prompt_generator-diagnosis",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:system_prompt_generator-foodPreferences",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:system_prompt_generator-gender",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:system_prompt_generator-height",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:system_prompt_generator-weight",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:system_prompt_generator-system_prompt",
+          "p": "provone:hasOutPort"
+        },
+        {
+          "o": "Generates a system prompt based on the provided dataset structure and user input.@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "1@en^^<xsd:string>",
+          "p": "dcterms:identifier"
+        },
+        {
+          "o": "provone:Program",
+          "p": "rdf:type"
+        },
+        {
+          "o": "System Prompt Template Generator@en^^<xsd:string>",
+          "p": "rdfs:label"
+        },
+        {
+          "o": "2026-03-05 19:19:23@en^^<xsd:string>",
+          "p": "prov:atTime"
+        }
+      ],
+      "uri": "ChatBS-NexGen:system_prompt_generator"
+    }
+  ],
+  "parameter_values": [
+    {
+      "class_uri": "http://purl.dataone.org/provone/2015/01/15/ontology#Program"
+    }
+  ],
+  "strategy": "by_program"
+}
+
+Predecessor Context:
+None
+
+Step Context:
+Initial-data retrieval:
+{
+  "question": "What are all the connected programs or components that interface with (input from or output to) the specific function step responsible for handling system prompt templates within the overall workflow pipeline?\nTo be properly answered, cover: Identify the `provone:Program` associated with the system prompt template step.; List any outgoing connections (`provone:Port`s with `provone:connectsTo`) from this program.; List any incoming connections (`provone:Port`s that are connected to) into this program.",
+  "original_question": "What are all the connected programs or components that interface with (input from or output to) the specific function step responsible for handling system prompt templates within the overall workflow pipeline?\nTo be properly answered, cover: Identify the `provone:Program` associated with the system prompt template step.; List any outgoing connections (`provone:Port`s with `provone:connectsTo`) from this program.; List any incoming connections (`provone:Port`s that are connected to) into this program.",
+  "grounding": {
+    "candidate_classes": [
+      "provone:Program",
+      "provone:Port"
+    ],
+    "candidate_relations": [],
+    "entity_phrases": [
+      "system prompt templates",
+      "workflow pipeline"
+    ]
+  },
+  "program_id": "explore_object_of_class",
+  "parameter_values": [
+    {
+      "class_uri": "http://purl.dataone.org/provone/2015/01/15/ontology#Program"
+    }
+  ],
+  "strategy": "by_program",
+  "linked_entities": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:DF_combine"
+      },
+      {
+        "value": "ChatBS-NexGen:batch_sparql_query_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:information_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:llm_chat"
+      },
+      {
+        "value": "ChatBS-NexGen:query_result_post_processor"
+      },
+      {
+        "value": "ChatBS-NexGen:sparql_query_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator"
+      }
+    ]
+  }
+}
+
+Answer loop round:
+{
+  "round": 1,
+  "question": "What are all the connected programs or components that interface with (input from or output to) the specific function step responsible for handling system prompt templates within the overall workflow pipeline?\nTo be properly answered, cover: Identify the `provone:Program` associated with the system prompt template step.; List any outgoing connections (`provone:Port`s with `provone:connectsTo`) from this program.; List any incoming connections (`provone:Port`s that are connected to) into this program.",
+  "strategy": "by_program",
+  "program_id": "explore_object_of_class",
+  "grounding": {
+    "candidate_classes": [
+      "provone:Program",
+      "provone:Port"
+    ],
+    "candidate_relations": [],
+    "entity_phrases": [
+      "system prompt templates",
+      "workflow pipeline"
+    ]
+  },
+  "object_uris": [
+    "ChatBS-NexGen:DF_combine",
+    "ChatBS-NexGen:batch_sparql_query_extractor",
+    "ChatBS-NexGen:information_extractor",
+    "ChatBS-NexGen:llm_chat",
+    "ChatBS-NexGen:query_result_post_processor",
+    "ChatBS-NexGen:sparql_query_extractor",
+    "ChatBS-NexGen:system_prompt_generator"
+  ]
+}
+Step step1: What are all the connected programs or components that interface with (input from or output to) the specific function step responsible for handling system prompt templates within the overall workflow pipeline?
+To be properly answered, cover: Identify the `provone:Program` associated with the system prompt template step.; List any outgoing connections (`provone:Port`s with `provone:connectsTo`) from this program.; List any incoming connections (`provone:Port`s that are connected to) into this program.
+Function: What are all the objects of a given class?
+Answer: Retrieved 7 initial candidate object(s) relevant to the question: What are all the connected programs or components that interface with (input from or output to) the specific function step responsible for handling system prompt templates within the overall workflow pipeline?
+To be properly answered, cover: Identify the `provone:Program` associated with the system prompt template step.; List any outgoing connections (`provone:Port`s with `provone:connectsTo`) from this program.; List any incoming connections (`provone:Port`s that are connected to) into this program.
+Important entities: ChatBS-NexGen:DF_combine: provone:hasInPort=ChatBS-NexGen:DF_combine-kg_queries; provone:hasOutPort=ChatBS-NexGen:DF_combine-kg_knowledge; dc:description=Combines multiple data frames resulting from SPARQL queries into a single data frame.@en^^<xsd:string>; dcterms:identifier=3@en^^<xsd:string>; rdf:type=provone:Program; rdfs:label=Data Frame Combiner@en^^<xsd:string>
+ChatBS-NexGen:batch_sparql_query_extractor: provone:hasInPort=ChatBS-NexGen:batch_sparql_query_extractor-entities; provone:hasInPort=ChatBS-NexGen:batch_sparql_query_extractor-query_function; provone:hasOutPort=ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge; provone:hasSubProgram=ChatBS-NexGen:DF_combine; provone:hasSubProgram=ChatBS-NexGen:sparql_query_extractor; dc:description=Extracts information about the entities from the knowledge graph in batch mode.@en^^<xsd:string>; dcterms:identifier=3@en^^<xsd:string>; rdf:type=provone:Program; rdfs:label=Batch SPARQL Query Extractor@en^^<xsd:string>; prov:atTime=2026-03-05 19:20:56@en^^<xsd:string>
+ChatBS-NexGen:information_extractor: provone:hasInPort=ChatBS-NexGen:information_extractor-text; provone:hasOutPort=ChatBS-NexGen:information_extractor-extracts; dc:description=Extracts entities or relevant information from the generated text using specified instructions.@en^^<xsd:string>; dcterms:identifier=2@en^^<xsd:string>; rdf:type=provone:Program; rdfs:label=Information Extractor@en^^<xsd:string>; prov:atTime=2026-03-05 19:20:19@en^^<xsd:string>
+ChatBS-NexGen:llm_chat: provone:hasInPort=ChatBS-NexGen:llm_chat-system_prompt; provone:hasInPort=ChatBS-NexGen:llm_chat-user_prompt; provone:hasOutPort=ChatBS-NexGen:llm_chat-generated_answer; dc:description=Chat with the LLM.@en^^<xsd:string>; rdf:type=provone:Program; rdfs:label=LLM Chat@en^^<xsd:string>
+ChatBS-NexGen:query_result_post_processor: provone:hasInPort=ChatBS-NexGen:query_result_post_processor-kg_knowledge; provone:hasOutPort=ChatBS-NexGen:query_result_post_processor-post_processed_output; dc:description=Post-processes the query results from the knowledge graph.@en^^<xsd:string>; dcterms:identifier=4@en^^<xsd:string>; rdf:type=provone:Program; rdfs:label=Query Result Post-Processor@en^^<xsd:string>; prov:atTime=2026-03-05 19:21:32@en^^<xsd:string>
+ChatBS-NexGen:sparql_query_extractor: provone:hasInPort=ChatBS-NexGen:sparql_query_extractor-entity; provone:hasOutPort=ChatBS-NexGen:sparql_query_extractor-kg_info; dc:description=Builds SPARQL queries to extract information about the entities from the knowledge graph.@en^^<xsd:string>; dcterms:identifier=3@en^^<xsd:string>; rdf:type=provone:Program; rdfs:label=SPARQL Query Builder@en^^<xsd:string>; prov:atTime=2026-03-05 19:20:56@en^^<xsd:string>
+ChatBS-NexGen:system_prompt_generator: provone:hasInPort=ChatBS-NexGen:system_prompt_generator-age; provone:hasInPort=ChatBS-NexGen:system_prompt_generator-allergies; provone:hasInPort=ChatBS-NexGen:system_prompt_generator-bodyMassIndex; provone:hasInPort=ChatBS-NexGen:system_prompt_generator-diagnosis; provone:hasInPort=ChatBS-NexGen:system_prompt_generator-foodPreferences; provone:hasInPort=ChatBS-NexGen:system_prompt_generator-gender; provone:hasInPort=ChatBS-NexGen:system_prompt_generator-height; provone:hasInPort=ChatBS-NexGen:system_prompt_generator-weight; provone:hasOutPort=ChatBS-NexGen:system_prompt_generator-system_prompt; dc:description=Generates a system prompt based on the provided dataset structure and user input.@en^^<xsd:string>; dcterms:identifier=1@en^^<xsd:string>; rdf:type=provone:Program; rdfs:label=System Prompt Template Generator@en^^<xsd:string>; prov:atTime=2026-03-05 19:19:23@en^^<xsd:string>
+Results: {
+  "set_1": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:DF_combine"
+      },
+      {
+        "value": "ChatBS-NexGen:batch_sparql_query_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:information_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:llm_chat"
+      },
+      {
+        "value": "ChatBS-NexGen:query_result_post_processor"
+      },
+      {
+        "value": "ChatBS-NexGen:sparql_query_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator"
+      }
+    ]
+  }
+}
+
+Schema Reasoning:
+{}
+
+Validation / Judge:
+{
+  "answer": "The specific function step responsible for handling system prompt templates within the overall workflow pipeline is identified as the **`ChatBS-NexGen:system_prompt_generator`** program, which has the label \"System Prompt Template Generator.\"\n\nTo detail its connections as requested:\n\n1.  **Program Identification**: The associated `provone:Program` is `ChatBS-NexGen:system_prompt_generator`.\n2.  **Outgoing Connections (What it outputs)**: This program has one defined output port, **`ChatBS-NexGen:system_prompt_generator-system_prompt`**, which produces the generated system prompt artifact. While the schema lists this output port, the provided dialogue data does not explicitly list other programs that connect *to* this specific outgoing port via a `provone:connectsTo` relationship to indicate downstream consumption.\n3.  **Incoming Connections (What it requires as input)**: This program is designed to receive comprehensive personal health parameters as inputs to construct the system prompt accurately. It accepts data through multiple input ports, including:\n    *   `ChatBS-NexGen:system_prompt_generator-age`\n    *   `ChatBS-NexGen:system_prompt_generator-allergies`\n    *   `ChatBS-NexGen:system_prompt_generator-bodyMassIndex`\n    *   `ChatBS-NexGen:system_prompt_generator-diagnosis`\n    *   `ChatBS-NexGen:system_prompt_generator-foodPreferences`\n    *   `ChatBS-NexGen:system_prompt_generator-gender`\n    *   `ChatBS-NexGen:system_prompt_generator-height`\n    *   `ChatBS-NexGen:system_prompt_generator-weight`\n\nIn summary, the component acts as a central aggregation point for structured patient data to generate a contextually rich system prompt that will subsequently be passed to another component (likely `ChatBS-NexGen:llm_chat`).",
+  "answered": true,
+  "feedback": "The answer correctly identifies the program and lists all incoming connections (input ports) with detail, which is excellent. Regarding outgoing connections, you accurately noted that the evidence context provides the output port (`ChatBS-NexGen:system_prompt_generator-system_prompt`) but not explicit `provone:connectsTo` relationships to other programs in this specific snippet. Since the question asks for *all* connected components (input from OR output to), and you have exhaustively covered the inputs, acknowledging the single known output port is sufficient given the evidence limitations. No major revisions are needed; the answer is highly detailed and addresses all parts of the prompt using the available context."
+}
+
+Answer:
+The specific function step responsible for handling system prompt templates within the overall workflow pipeline is identified as the **`ChatBS-NexGen:system_prompt_generator`** program, which has the label "System Prompt Template Generator."
+
+To detail its connections as requested:
+
+1.  **Program Identification**: The associated `provone:Program` is `ChatBS-NexGen:system_prompt_generator`.
+2.  **Outgoing Connections (What it outputs)**: This program has one defined output port, **`ChatBS-NexGen:system_prompt_generator-system_prompt`**, which produces the generated system prompt artifact. While the schema lists this output port, the provided dialogue data does not explicitly list other programs that connect *to* this specific outgoing port via a `provone:connectsTo` relationship to indicate downstream consumption.
+3.  **Incoming Connections (What it requires as input)**: This program is designed to receive comprehensive personal health parameters as inputs to construct the system prompt accurately. It accepts data through multiple input ports, including:
+    *   `ChatBS-NexGen:system_prompt_generator-age`
+    *   `ChatBS-NexGen:system_prompt_generator-allergies`
+    *   `ChatBS-NexGen:system_prompt_generator-bodyMassIndex`
+    *   `ChatBS-NexGen:system_prompt_generator-diagnosis`
+    *   `ChatBS-NexGen:system_prompt_generator-foodPreferences`
+    *   `ChatBS-NexGen:system_prompt_generator-gender`
+    *   `ChatBS-NexGen:system_prompt_generator-height`
+    *   `ChatBS-NexGen:system_prompt_generator-weight`
+
+In summary, the component acts as a central aggregation point for structured patient data to generate a contextually rich system prompt that will subsequently be passed to another component (likely `ChatBS-NexGen:llm_chat`). <cite, id=0>ChatBS-NexGen:DF_combine</cite> <cite, id=1>ChatBS-NexGen:batch_sparql_query_extractor</cite> <cite, id=2>ChatBS-NexGen:information_extractor</cite> <cite, id=3>ChatBS-NexGen:llm_chat</cite> <cite, id=4>ChatBS-NexGen:query_result_post_processor</cite> <cite, id=5>ChatBS-NexGen:sparql_query_extractor</cite>
+
+Final Report
+### Overall Answer to the Question:
+The specific function step responsible for handling system prompt templates within the overall workflow pipeline is identified as the **`ChatBS-NexGen:system_prompt_generator`** program, which has the label "System Prompt Template Generator."
+
+To detail its connections as requested:
+
+1.  **Program Identification**: The associated `provone:Program` is `ChatBS-NexGen:system_prompt_generator`.
+2.  **Outgoing Connections (What it outputs)**: This program has one defined output port, **`ChatBS-NexGen:system_prompt_generator-system_prompt`**, which produces the generated system prompt artifact. While the schema lists this output port, the provided dialogue data does not explicitly list other programs that connect *to* this specific outgoing port via a `provone:connectsTo` relationship to indicate downstream consumption.
+3.  **Incoming Connections (What it requires as input)**: This program is designed to receive comprehensive personal health parameters as inputs to construct the system prompt accurately. It accepts data through multiple input ports, including:
+    *   `ChatBS-NexGen:system_prompt_generator-age`
+    *   `ChatBS-NexGen:system_prompt_generator-allergies`
+    *   `ChatBS-...
+
+### Original Question:
+What are all the connected programs or components that interface with (input from or output to) the specific function step responsible for handling system prompt templates within the overall workflow pipeline?
+To be properly answered, cover: Identify the `provone:Program` associated with the system prompt template step.; List any outgoing connections (`provone:Port`s with `provone:connectsTo`) from this program.; List any incoming connections (`provone:Port`s that are connected to) into this program.
+
+### Grounded Reasoning Trace:
+Question [0]: What are all the connected programs or components that interface with (input from or output to) the specific function step responsible for handling system prompt templates within the overall workflow pipeline?
+To be properly answered, cover: Identify the `provone:Program` associated with the system prompt template step.; List any outgoing connections (`provone:Port`s with `provone:connectsTo`) from this program.; List any incoming connections (`provone:Port`s that are connected to) into this program.
+Answer: The specific function step responsible for handling system prompt templates within the overall workflow pipeline is identified as the **`ChatBS-NexGen:system_prompt_generator`** program, which has the label "System Prompt Template Generator."
+
+To detail its connections as requested:
+
+1.  **Program Identification**: The associated `provone:Program` is `ChatBS-NexGen:system_prompt_generator`.
+2.  **Outgoing Connections (What it outputs)**: This program has one defined output port, **`ChatBS-NexGen:system_prompt_generator-system_prompt`**, which produces the generated system prompt artifact. While the schema lists this output port, the provided dialogue data does not explicitly list other pr...
+Grounding:
+{
+  "candidate_classes": [
+    "provone:Program",
+    "provone:Port"
+  ],
+  "candidate_relations": [],
+  "entity_phrases": [
+    "system prompt templates",
+    "workflow pipeline"
+  ]
+}
+
+Final Answer
+The specific function step responsible for handling system prompt templates within the overall workflow pipeline is identified as the **`ChatBS-NexGen:system_prompt_generator`** program, which has the label "System Prompt Template Generator."
+
+To detail its connections as requested:
+
+1.  **Program Identification**: The associated `provone:Program` is `ChatBS-NexGen:system_prompt_generator`.
+2.  **Outgoing Connections (What it outputs)**: This program has one defined output port, **`ChatBS-NexGen:system_prompt_generator-system_prompt`**, which produces the generated system prompt artifact. While the schema lists this output port, the provided dialogue data does not explicitly list other programs that connect *to* this specific outgoing port via a `provone:connectsTo` relationship to indicate downstream consumption.
+3.  **Incoming Connections (What it requires as input)**: This program is designed to receive comprehensive personal health parameters as inputs to construct the system prompt accurately. It accepts data through multiple input ports, including:
+    *   `ChatBS-NexGen:system_prompt_generator-age`
+    *   `ChatBS-NexGen:system_prompt_generator-allergies`
+    *   `ChatBS-NexGen:system_prompt_generator-bodyMassIndex`
+    *   `ChatBS-NexGen:system_prompt_generator-diagnosis`
+    *   `ChatBS-NexGen:system_prompt_generator-foodPreferences`
+    *   `ChatBS-NexGen:system_prompt_generator-gender`
+    *   `ChatBS-NexGen:system_prompt_generator-height`
+    *   `ChatBS-NexGen:system_prompt_generator-weight`
+
+In summary, the component acts as a central aggregation point for structured patient data to generate a contextually rich system prompt that will subsequently be passed to another component (likely `ChatBS-NexGen:llm_chat`). <cite, id=0>ChatBS-NexGen:DF_combine</cite> <cite, id=1>ChatBS-NexGen:batch_sparql_query_extractor</cite> <cite, id=2>ChatBS-NexGen:information_extractor</cite> <cite, id=3>ChatBS-NexGen:llm_chat</cite> <cite, id=4>ChatBS-NexGen:query_result_post_processor</cite> <cite, id=5>ChatBS-NexGen:sparql_query_extractor</cite>
+
+Final Validation
+{
+  "answer": "The specific function step responsible for handling system prompt templates within the overall workflow pipeline is identified as the **`ChatBS-NexGen:system_prompt_generator`** program, which has the label \"System Prompt Template Generator.\"\n\nTo detail its connections as requested:\n\n1.  **Program Identification**: The associated `provone:Program` is `ChatBS-NexGen:system_prompt_generator`.\n2.  **Outgoing Connections (What it outputs)**: This program has one defined output port, **`ChatBS-NexGen:system_prompt_generator-system_prompt`**, which produces the generated system prompt artifact. While the schema lists this output port, the provided dialogue data does not explicitly list other programs that connect *to* this specific outgoing port via a `provone:connectsTo` relationship to indicate downstream consumption.\n3.  **Incoming Connections (What it requires as input)**: This program is designed to receive comprehensive personal health parameters as inputs to construct the system prompt accurately. It accepts data through multiple input ports, including:\n    *   `ChatBS-NexGen:system_prompt_generator-age`\n    *   `ChatBS-NexGen:system_prompt_generator-allergies`\n    *   `ChatBS-NexGen:system_prompt_generator-bodyMassIndex`\n    *   `ChatBS-NexGen:system_prompt_generator-diagnosis`\n    *   `ChatBS-NexGen:system_prompt_generator-foodPreferences`\n    *   `ChatBS-NexGen:system_prompt_generator-gender`\n    *   `ChatBS-NexGen:system_prompt_generator-height`\n    *   `ChatBS-NexGen:system_prompt_generator-weight`\n\nIn summary, the component acts as a central aggregation point for structured patient data to generate a contextually rich system prompt that will subsequently be passed to another component (likely `ChatBS-NexGen:llm_chat`).",
+  "answered": true,
+  "feedback": "The answer correctly identifies the program and lists all incoming connections (input ports) with detail, which is excellent. Regarding outgoing connections, you accurately noted that the evidence context provides the output port (`ChatBS-NexGen:system_prompt_generator-system_prompt`) but not explicit `provone:connectsTo` relationships to other programs in this specific snippet. Since the question asks for *all* connected components (input from OR output to), and you have exhaustively covered the inputs, acknowledging the single known output port is sufficient given the evidence limitations. No major revisions are needed; the answer is highly detailed and addresses all parts of the prompt using the available context."
+}
+
+Timing
+39.2939535418991 seconds

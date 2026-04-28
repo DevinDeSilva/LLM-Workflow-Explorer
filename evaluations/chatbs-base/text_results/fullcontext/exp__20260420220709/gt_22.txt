@@ -1,0 +1,98 @@
+Result ID
+gt_22
+
+Question
+what are the executions of the sparql query post processing step in the pipeline?
+
+Answer
+The SPARQL query post-processing step is represented by an execution instance identified as `ChatBS-NexGen:id_20260420105727_835`. This execution used the 'Query Result Post-Processor' program, was associated with the user 'test user', and utilized the resulting data from that process. <cite, id=0>post processing 1 1</cite> <cite, id=1>Query Result Post-Processor</cite> <cite, id=2>test user</cite>
+
+Relevant Entities
+1. post processing 1 1 (ChatBS-NexGen:id_20260420105727_835) [types=['provone:Execution']; score=1.0]
+2. Query Result Post-Processor (ChatBS-NexGen:query_result_post_processor) [types=['provone:Program']; score=0.9]
+3. test user (ChatBS-NexGen:test_user) [types=['prov:Agent']; score=0.8]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:id_20260420105727_835",
+    "label": "post processing 1 1",
+    "score": 1.0,
+    "types": [
+      "provone:Execution"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:query_result_post_processor",
+    "label": "Query Result Post-Processor",
+    "score": 0.9,
+    "types": [
+      "provone:Program"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:test_user",
+    "label": "test user",
+    "score": 0.8,
+    "types": [
+      "prov:Agent"
+    ]
+  }
+]
+
+Evidence
+1. post processing 1 1 (ChatBS-NexGen:id_20260420105727_835) -- type (rdf:type) -> Execution (provone:Execution) [direction=outgoing; literal=False; score=1.0]
+2. post processing 1 1 (ChatBS-NexGen:id_20260420105727_835) -- qualifiedAssociation (prov:qualifiedAssociation) -> query result post processor Association (ChatBS-NexGen:ChatBS-NexGen:query_result_post_processor-Association-id_20260420105727_835) [direction=outgoing; literal=False; score=0.9]
+3. post processing 1 1 (ChatBS-NexGen:id_20260420105727_835) -- wasAssociatedWith (prov:wasAssociatedWith) -> test user (ChatBS-NexGen:test_user) [direction=outgoing; literal=False; score=0.8]
+4. post processing 1 1 (ChatBS-NexGen:id_20260420105727_835) -- used (prov:used) -> row 1 (ChatBS-NexGen:Data-id_20260420105727_858-post_processed_output) [direction=outgoing; literal=False; score=0.7]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "provone:Execution",
+    "object_is_literal": false,
+    "object_label": "Execution",
+    "predicate_id": "rdf:type",
+    "predicate_label": "type",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:id_20260420105727_835",
+    "subject_label": "post processing 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:ChatBS-NexGen:query_result_post_processor-Association-id_20260420105727_835",
+    "object_is_literal": false,
+    "object_label": "query result post processor Association",
+    "predicate_id": "prov:qualifiedAssociation",
+    "predicate_label": "qualifiedAssociation",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:id_20260420105727_835",
+    "subject_label": "post processing 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:test_user",
+    "object_is_literal": false,
+    "object_label": "test user",
+    "predicate_id": "prov:wasAssociatedWith",
+    "predicate_label": "wasAssociatedWith",
+    "score": 0.8,
+    "subject_id": "ChatBS-NexGen:id_20260420105727_835",
+    "subject_label": "post processing 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:Data-id_20260420105727_858-post_processed_output",
+    "object_is_literal": false,
+    "object_label": "row 1",
+    "predicate_id": "prov:used",
+    "predicate_label": "used",
+    "score": 0.7,
+    "subject_id": "ChatBS-NexGen:id_20260420105727_835",
+    "subject_label": "post processing 1 1"
+  }
+]
+
+Timing
+40.12655404093675 seconds

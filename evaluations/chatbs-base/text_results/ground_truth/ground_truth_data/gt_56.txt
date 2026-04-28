@@ -1,0 +1,83 @@
+Ground Truth ID
+gt_56
+
+Question
+The execution "http://testwebsite/testProgram#id_20260420105710_61" used data were created by what Generative Task?
+
+Answer
+The Generative Task that generated the data that was used by the execution "http://testwebsite/testProgram#id_20260420105710_61" is 
+
+    Generative Task | glbl
+http://testwebsite/testProgram#Generative_Task-id_20260420105703_307 | Extracts important entities for 
+text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:
+
+1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.
+
+2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.
+
+3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.
+
+4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.
+
+5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.
+
+Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. 
+
+using: gpt-4o@en^^<xsd:string>
+
+Question Type
+[
+  "single",
+  "entity"
+]
+
+Decision
+None
+
+Count
+None
+
+Entities
+[
+  {
+    "gtask": "http://testwebsite/testProgram#Generative_Task-id_20260420105703_307"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT DISTINCT ?gtask ?glbl\n            WHERE {\n                <http://testwebsite/testProgram#id_20260420105710_61> prov:used ?data .\n                ?llm_out sio:SIO_000202 ?data .\n                ?llm_out sio:SIO_000232 ?llm .\n                ?gtask prov:used ?llm .\n                ?gtask rdfs:label ?glbl\n        }\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    The Generative Task that generated the data that was used by the execution \"http://testwebsite/testProgram#id_20260420105710_61\" is \n\n    Generative Task | glbl\nhttp://testwebsite/testProgram#Generative_Task-id_20260420105703_307 | Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>\n    ",
+  "count": null,
+  "decision": null,
+  "entities": [
+    {
+      "gtask": "http://testwebsite/testProgram#Generative_Task-id_20260420105703_307"
+    }
+  ],
+  "id": "gt_56",
+  "qtype": [
+    "single",
+    "entity"
+  ],
+  "question": "\nThe execution \"http://testwebsite/testProgram#id_20260420105710_61\" used data were created by what Generative Task?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT DISTINCT ?gtask ?glbl\n            WHERE {\n                <http://testwebsite/testProgram#id_20260420105710_61> prov:used ?data .\n                ?llm_out sio:SIO_000202 ?data .\n                ?llm_out sio:SIO_000232 ?llm .\n                ?gtask prov:used ?llm .\n                ?gtask rdfs:label ?glbl\n        }\n"
+    }
+  ],
+  "tags": {}
+}

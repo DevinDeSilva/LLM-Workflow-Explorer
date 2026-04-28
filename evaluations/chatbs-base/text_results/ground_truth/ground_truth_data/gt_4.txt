@@ -1,0 +1,79 @@
+Ground Truth ID
+gt_4
+
+Question
+what are the input instructions used by the Large Language Model to create the "sparql query post processing" function?
+
+Answer
+We utilize the following input instructions to generate the function responsible for sparql query post processing.
+
+    Funtion | Instruction for function generation
+http://testwebsite/testProgram#query_result_post_processor | Concat all the rows into single row at each column by '|' concatenation marker.@en^^<xsd:string>
+http://testwebsite/testProgram#query_result_post_processor | If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat` column.@en^^<xsd:string>
+
+Question Type
+[
+  "multi",
+  "entity"
+]
+
+Decision
+None
+
+Count
+None
+
+Entities
+[
+  {
+    "inpd": "Concat all the rows into single row at each column by '|' concatenation marker.@en^^<xsd:string>",
+    "obj": "http://testwebsite/testProgram#query_result_post_processor"
+  },
+  {
+    "inpd": "If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat` column.@en^^<xsd:string>",
+    "obj": "http://testwebsite/testProgram#query_result_post_processor"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT distinct ?obj ?llm ?inpd\nWHERE {\n     ?obj dc:description ?desc .\n     ?obj a ?class .\n     FILTER(REGEX(?desc, \"Post-processes the query results\",\"i\"))\n\n     ?llm_out sio:SIO_000202 ?obj .\n     ?llm_out sio:SIO_000232 ?llm .\n     ?llm sio:SIO_000230 ?inp .\n     ?inp prov:value ?inpd\n}\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    We utilize the following input instructions to generate the function responsible for sparql query post processing.\n\n    Funtion | Instruction for function generation\nhttp://testwebsite/testProgram#query_result_post_processor | Concat all the rows into single row at each column by '|' concatenation marker.@en^^<xsd:string>\nhttp://testwebsite/testProgram#query_result_post_processor | If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat` column.@en^^<xsd:string>\n    ",
+  "count": null,
+  "decision": null,
+  "entities": [
+    {
+      "inpd": "Concat all the rows into single row at each column by '|' concatenation marker.@en^^<xsd:string>",
+      "obj": "http://testwebsite/testProgram#query_result_post_processor"
+    },
+    {
+      "inpd": "If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat` column.@en^^<xsd:string>",
+      "obj": "http://testwebsite/testProgram#query_result_post_processor"
+    }
+  ],
+  "id": "gt_4",
+  "qtype": [
+    "multi",
+    "entity"
+  ],
+  "question": "\nwhat are the input instructions used by the Large Language Model to create the \"sparql query post processing\" function?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT distinct ?obj ?llm ?inpd\nWHERE {\n     ?obj dc:description ?desc .\n     ?obj a ?class .\n     FILTER(REGEX(?desc, \"Post-processes the query results\",\"i\"))\n\n     ?llm_out sio:SIO_000202 ?obj .\n     ?llm_out sio:SIO_000232 ?llm .\n     ?llm sio:SIO_000230 ?inp .\n     ?inp prov:value ?inpd\n}\n"
+    }
+  ],
+  "tags": {}
+}

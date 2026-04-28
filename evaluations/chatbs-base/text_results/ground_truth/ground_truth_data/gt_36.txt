@@ -1,0 +1,70 @@
+Ground Truth ID
+gt_36
+
+Question
+Is the llm chat function function made by a Generative Task using AI?
+
+Answer
+The llm chat function function is not made by a Generative Task.
+
+    fnlbl | Generative Task used to generate function
+LLM Chat@en^^<xsd:string> | None
+
+Question Type
+[
+  "single",
+  "bool"
+]
+
+Decision
+False
+
+Count
+None
+
+Entities
+[
+  {
+    "fnlbl": "LLM Chat@en^^<xsd:string>",
+    "llm_gen_out": "None"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT DISTINCT ?fnlbl ?llm_gen_out\nWHERE {\n    ?obj dc:description ?desc .\n    ?obj rdfs:label ?fnlbl .\n    FILTER(REGEX(?desc, \"Chat with the LLM\", \"i\"))\n\n    OPTIONAL {\n        ?llm_out sio:SIO_000202 ?obj .\n        ?llm_out sio:SIO_000232 ?llm .\n        ?llm_gen prov:used ?llm .\n    }\n\n    BIND(COALESCE(?llm_gen, \"None\") AS ?llm_gen_out)\n}\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    The llm chat function function is not made by a Generative Task.\n\n    fnlbl | Generative Task used to generate function\nLLM Chat@en^^<xsd:string> | None\n    ",
+  "count": null,
+  "decision": false,
+  "entities": [
+    {
+      "fnlbl": "LLM Chat@en^^<xsd:string>",
+      "llm_gen_out": "None"
+    }
+  ],
+  "id": "gt_36",
+  "qtype": [
+    "single",
+    "bool"
+  ],
+  "question": "\nIs the llm chat function function made by a Generative Task using AI?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT DISTINCT ?fnlbl ?llm_gen_out\nWHERE {\n    ?obj dc:description ?desc .\n    ?obj rdfs:label ?fnlbl .\n    FILTER(REGEX(?desc, \"Chat with the LLM\", \"i\"))\n\n    OPTIONAL {\n        ?llm_out sio:SIO_000202 ?obj .\n        ?llm_out sio:SIO_000232 ?llm .\n        ?llm_gen prov:used ?llm .\n    }\n\n    BIND(COALESCE(?llm_gen, \"None\") AS ?llm_gen_out)\n}\n"
+    }
+  ],
+  "tags": {}
+}

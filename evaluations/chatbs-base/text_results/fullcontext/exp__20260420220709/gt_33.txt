@@ -1,0 +1,51 @@
+Result ID
+gt_33
+
+Question
+Is the system prompt template function made by a Generative Task using AI?
+
+Answer
+Yes, the System Prompt Template function generator is classified as a Generative Task. <cite, id=0>System Prompt Template function generator</cite> <cite, id=1>Generative Task</cite>
+
+Relevant Entities
+1. System Prompt Template function generator (ChatBS-NexGen:Generative_Task-system_prompt_generator) [types=['workflow:Generative_Task']; score=1.0]
+2. Generative Task (workflow:Generative_Task) [score=0.9]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+    "label": "System Prompt Template function generator",
+    "score": 1.0,
+    "types": [
+      "workflow:Generative_Task"
+    ]
+  },
+  {
+    "id": "workflow:Generative_Task",
+    "label": "Generative Task",
+    "score": 0.9,
+    "types": []
+  }
+]
+
+Evidence
+1. System Prompt Template function generator (ChatBS-NexGen:Generative_Task-system_prompt_generator) -- type (rdf:type) -> Generative Task (workflow:Generative_Task) [direction=outgoing; literal=False; score=1.0]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "workflow:Generative_Task",
+    "object_is_literal": false,
+    "object_label": "Generative Task",
+    "predicate_id": "rdf:type",
+    "predicate_label": "type",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+    "subject_label": "System Prompt Template function generator"
+  }
+]
+
+Timing
+11.922578806057572 seconds

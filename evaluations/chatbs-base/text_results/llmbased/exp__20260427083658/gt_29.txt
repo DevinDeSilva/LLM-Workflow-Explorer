@@ -1,0 +1,62 @@
+Result ID
+gt_29
+
+Question
+who were the agents that ran the information extraction step in the pipeline?
+
+Answer
+The age was used by System Prompt Template Generator to produce system prompt. <cite, id=0>age</cite> <cite, id=1>System Prompt Template Generator</cite> <cite, id=2>system prompt execution 1 1</cite>
+
+Relevant Entities
+1. age (ChatBS-NexGen:Data-id_20260420105652_79-age) [types=['provone:Data']; score=1.0]
+2. System Prompt Template Generator (ChatBS-NexGen:system_prompt_generator) [types=['provone:Program']; score=0.7]
+3. system prompt execution 1 1 (ChatBS-NexGen:id_20260420105652_650) [types=['provone:Execution']; score=0.6]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:Data-id_20260420105652_79-age",
+    "label": "age",
+    "score": 1.0,
+    "types": [
+      "provone:Data"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:system_prompt_generator",
+    "label": "System Prompt Template Generator",
+    "score": 0.7,
+    "types": [
+      "provone:Program"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:id_20260420105652_650",
+    "label": "system prompt execution 1 1",
+    "score": 0.6,
+    "types": [
+      "provone:Execution"
+    ]
+  }
+]
+
+Evidence
+1. system prompt execution 1 1 (ChatBS-NexGen:id_20260420105652_650) -- used (prov:used) -> age (ChatBS-NexGen:Data-id_20260420105652_79-age) [direction=outgoing; literal=False; score=1.0]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:Data-id_20260420105652_79-age",
+    "object_is_literal": false,
+    "object_label": "age",
+    "predicate_id": "prov:used",
+    "predicate_label": "used",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:id_20260420105652_650",
+    "subject_label": "system prompt execution 1 1"
+  }
+]
+
+Timing
+0.414294766029343 seconds

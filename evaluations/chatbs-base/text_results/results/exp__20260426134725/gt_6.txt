@@ -1,0 +1,651 @@
+Result ID
+gt_6
+
+Original Question
+what are the instructions used by the LLM to generate the information extraction function step in the pipeline?
+
+Sub Questions
+None
+
+Topology Graph
+Nodes:
+[0] what are the instructions used by the LLM to generate the information extraction function step in the pipeline?
+
+Edges:
+(none)
+
+Adjacency:
+(none)
+
+Details Of Question Solving
+Question [0]
+Question: what are the instructions used by the LLM to generate the information extraction function step in the pipeline?
+Depends on: None
+
+Grounding:
+{
+  "candidate_classes": [
+    "workflow:Generative_Task",
+    "provone:Program"
+  ],
+  "candidate_relations": [
+    "workflow:llm_model",
+    "workflow:llm_model"
+  ],
+  "entity_phrases": [
+    "What",
+    "are",
+    "the",
+    "specific",
+    "instructions"
+  ]
+}
+
+Answer Requirements:
+[
+  "The content and structure of the instructions/prompt used by the LLM.",
+  "How these instructions guide the LLM specifically for 'information extraction'.",
+  "Where this instruction set fits within the overall execution pipeline (e.g., as part of a Generative_Task or Program input)."
+]
+
+Retrieved Objects:
+[
+  "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+  "ChatBS-NexGen:Generative_Task-id_20260420105703_307",
+  "ChatBS-NexGen:Generative_Task-information_extractor",
+  "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+  "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+  "ChatBS-NexGen:LLM-information_extractor-Input-builder_llm",
+  "ChatBS-NexGen:LLM-information_extractor-Input-text"
+]
+
+Schema Info Used:
+Workflow schema
+Classes:
+- workflow:Generative_Task (Generative Task): A task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data.
+- workflow:Large_Language_Models (Large Language Models)
+- workflow:Large_Language_Model_Output (Large Language Model Output): An Output Artifact from a AI Task
+- eo:Reasoning_Mode (Reasoning Mode): a process being executed by the system that achieves a particular goal; e.g. inference models such as treatment planning involved in medical diagnosis can be considered...
+- provone:Program (Program): A Program represents a computational task that consumes and produces data through its input and output ports, respectively. It can be atomic or composite, the latter case...
+- provone:Port (Port): A Port enables a Program to send and receive Entities (Data, Visualizations, etc.). When used in a role as an input port, default parameters may be configured for the Port.
+- provone:Channel (Channel): A Channel provides a connection between Ports that are defined for Programs. Typically, a Program with an output Port defined using the provone:hasOutPort object property...
+- provone:Execution (Execution): An Execution represents the execution of a Program. If the Program in question is a Workflow, then the Execution represents a trace of its execution.
+- provone:User (User): A User is the person responsible for the execution of a Program, which in turn can be a Workflow. Its specification serves attribution and accountability purposes.
+- provone:Data (Data): A Data item represents the basic unit of information consumed and produced by a Program. Multiple Data items may be grouped into a Collection.
+- provone:Collection
+- prov:Association (Association): An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity. It further allows for a plan to...
+- prov:Usage (Usage): Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity.
+- prov:Generation (Generation): Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.
+Object properties:
+- sio:SIO_000202; links workflow:Large_Language_Model_Output -> provone:Program, workflow:Large_Language_Model_Output -> provone:Data
+- sio:SIO_000229 (has output); links workflow:Large_Language_Models -> workflow:Large_Language_Model_Output
+- sio:SIO_000232 (is output of); links workflow:Large_Language_Model_Output -> workflow:Large_Language_Models
+- sio:SIO_000313 (is component part of); links workflow:Generative_Task -> provone:Execution
+- sio:SIO_000369 (has component part); links provone:Execution -> workflow:Generative_Task
+- sio:SIO_000230 (has input); links workflow:Large_Language_Models -> provone:Data
+- prov:used (used): A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .; links provone:Execution -> provone:Data, workflow:Generative_Task -> workflow:Large_Language_Models
+- prov:agent (hadPlan): Enables the specification of a particular User in a particular Association. This allows for further qualification of the prov:wasAssociatedWith property in the context of an...; links prov:Association -> provone:User
+- prov:qualifiedAssociation (qualifiedAssociation): If this Activity prov:wasAssociatedWith Agent :ag, then it can qualify the Association using prov:qualifiedAssociation [ a prov:Association; prov:agent :ag; :foo :bar ].; links provone:Execution -> prov:Association
+- prov:qualifiedUsage (qualifiedUsage): Enables the specification of a particular Usage by a particular Execution. This allows for further qualification of the prov:used property in the context of an Execution.; links provone:Execution -> prov:Usage
+- prov:qualifiedGeneration (qualifiedGeneration): If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualifiedGeneration [ a prov:Generation; prov:entity :e; :foo :bar ].; links provone:Execution -> prov:Generation
+- prov:hadPlan (hadPlan): The _optional_ Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.; links prov:Association -> provone:Program
+- provone:hasOutPort (hasOutPort): Enables the specification of a Port as an output port of a particular Program.; links provone:Program -> provone:Port
+- provone:hasInPort (hasInPort): Enables the specification of a Port as an input port of a particular Program.; links provone:Program -> provone:Port
+- provone:connectsTo (connectsTo): Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.; links provone:Port -> provone:Port
+- provone:hadInPort (hadInPort): Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.; links prov:Usage -> provone:Port
+- provone:hadOutPort (hadOutPort): Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:wasGeneratedBy property in the context of...; links prov:Generation -> provone:Port
+- prov:hadMember (hadMember); links provone:Collection -> provone:Data
+- provone:hadEntity (hadEntity): Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and...; links prov:Usage -> provone:Data, prov:Generation -> provone:Data
+- prov:wasInformedBy (wasInformedBy): An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.; links provone:Execution -> provone:Execution
+- prov:wasGeneratedBy (wasGeneratedBy); links provone:Data -> provone:Execution, provone:Collection -> provone:Execution
+- prov:wasAssociatedWith (wasAssociatedWith): An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.; links provone:Execution -> provone:User
+
+Synthetic Question Plan:
+1. round 0
+   Question: What are the specific instructions or prompts provided to the Large Language Model (LLM) that direct it to perform an information extraction function as part of a workflow pipeline execution?
+To be properly answered, cover: The content and structure of the instructions/prompt used by the LLM.; How these instructions guide the LLM specifically for 'information extraction'.; Where this instruction set fits within the overall execution pipeline (e.g., as part of a Generative_Task or Program input).
+   Object URIs (5):
+   - ChatBS-NexGen:Generative_Task-id_20260420105659_302
+   - ChatBS-NexGen:Generative_Task-id_20260420105703_307
+   - ChatBS-NexGen:Generative_Task-information_extractor
+   - ChatBS-NexGen:Generative_Task-query_result_post_processor
+   - ChatBS-NexGen:Generative_Task-system_prompt_generator
+2. round 1
+   Question: What is the concrete system prompt or textual instruction set that defines the 'information extraction' functionality within the `workflow:Generative_Task` object, specifically related to entity extraction from provided text?
+   Object URIs (2):
+   - ChatBS-NexGen:LLM-information_extractor-Input-builder_llm
+   - ChatBS-NexGen:LLM-information_extractor-Input-text
+
+Intermediary Results:
+Step 1: step1
+Sub question: What are the specific instructions or prompts provided to the Large Language Model (LLM) that direct it to perform an information extraction function as part of a workflow pipeline execution?
+To be properly answered, cover: The content and structure of the instructions/prompt used by the LLM.; How these instructions guide the LLM specifically for 'information extraction'.; Where this instruction set fits within the overall execution pipeline (e.g., as part of a Generative_Task or Program input).
+Program: explore_object_of_class
+Answer:
+Retrieved 5 initial candidate object(s) relevant to the question: What are the specific instructions or prompts provided to the Large Language Model (LLM) that direct it to perform an information extraction function as part of a workflow pipeline execution?
+To be properly answered, cover: The content and structure of the instructions/prompt used by the LLM.; How these instructions guide the LLM specifically for 'information extraction'.; Where this instruction set fits within the overall execution pipeline (e.g., as part of a Generative_Task or Program input). <cite, id=0>ChatBS-NexGen:Generative_Task-id_20260420105659_302</cite> <cite, id=1>ChatBS-NexGen:Generative_Task-id_20260420105703_307</cite> <cite, id=2>ChatBS-NexGen:Generative_Task-information_extractor</cite> <cite, id=3>ChatBS-NexGen:Generative_Task-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:Generative_Task-system_prompt_generator</cite>
+Important entities:
+- ChatBS-NexGen:Generative_Task-id_20260420105659_302
+- ChatBS-NexGen:Generative_Task-id_20260420105703_307
+- ChatBS-NexGen:Generative_Task-information_extractor
+- ChatBS-NexGen:Generative_Task-query_result_post_processor
+- ChatBS-NexGen:Generative_Task-system_prompt_generator
+Results:
+{
+  "set_1": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:Generative_Task-id_20260420105659_302"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-id_20260420105703_307"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-information_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-query_result_post_processor"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+      }
+    ]
+  }
+}
+Extra:
+{
+  "execution_mode": "initial-data",
+  "extracted_results": [
+    {
+      "attributes": [
+        {
+          "o": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "ChatBS-NexGen:id_20260420105659_302",
+          "p": "sio:SIO_000313"
+        },
+        {
+          "o": "workflow:Generative_Task",
+          "p": "rdf:type"
+        },
+        {
+          "o": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "p": "rdfs:label"
+        },
+        {
+          "o": "ChatBS-NexGen:LLM-id_20260420105659_302",
+          "p": "prov:used"
+        }
+      ],
+      "uri": "ChatBS-NexGen:Generative_Task-id_20260420105659_302"
+    },
+    {
+      "attributes": [
+        {
+          "o": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "ChatBS-NexGen:id_20260420105703_307",
+          "p": "sio:SIO_000313"
+        },
+        {
+          "o": "workflow:Generative_Task",
+          "p": "rdf:type"
+        },
+        {
+          "o": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "p": "rdfs:label"
+        },
+        {
+          "o": "ChatBS-NexGen:LLM-id_20260420105703_307",
+          "p": "prov:used"
+        }
+      ],
+      "uri": "ChatBS-NexGen:Generative_Task-id_20260420105703_307"
+    },
+    {
+      "attributes": [
+        {
+          "o": "Generates the Information Extractor Function using Large language models@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "workflow:Generative_Task",
+          "p": "rdf:type"
+        },
+        {
+          "o": "Information Extractor function generator@en^^<xsd:string>",
+          "p": "rdfs:label"
+        },
+        {
+          "o": "2026-03-05 19:21:32@en^^<xsd:string>",
+          "p": "prov:atTime"
+        },
+        {
+          "o": "ChatBS-NexGen:LLM-information_extractor",
+          "p": "prov:used"
+        }
+      ],
+      "uri": "ChatBS-NexGen:Generative_Task-information_extractor"
+    },
+    {
+      "attributes": [
+        {
+          "o": "Generates the post processing Function using Large language models@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "workflow:Generative_Task",
+          "p": "rdf:type"
+        },
+        {
+          "o": "Query Result Post-Processor function generator@en^^<xsd:string>",
+          "p": "rdfs:label"
+        },
+        {
+          "o": "2026-03-05 19:21:32@en^^<xsd:string>",
+          "p": "prov:atTime"
+        },
+        {
+          "o": "ChatBS-NexGen:LLM-query_result_post_processor",
+          "p": "prov:used"
+        }
+      ],
+      "uri": "ChatBS-NexGen:Generative_Task-query_result_post_processor"
+    },
+    {
+      "attributes": [
+        {
+          "o": "Generates the System Prompt Template using Large language models@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "workflow:Generative_Task",
+          "p": "rdf:type"
+        },
+        {
+          "o": "System Prompt Template function generator@en^^<xsd:string>",
+          "p": "rdfs:label"
+        },
+        {
+          "o": "2026-03-05 19:21:32@en^^<xsd:string>",
+          "p": "prov:atTime"
+        },
+        {
+          "o": "ChatBS-NexGen:LLM-system_prompt_generator",
+          "p": "prov:used"
+        }
+      ],
+      "uri": "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+    }
+  ],
+  "parameter_values": [
+    {
+      "class_uri": "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Generative_Task"
+    }
+  ],
+  "strategy": "by_program"
+}
+
+Step 2: step2
+Sub question: What is the concrete system prompt or textual instruction set that defines the 'information extraction' functionality within the `workflow:Generative_Task` object, specifically related to entity extraction from provided text?
+Program: explore_path_workflow:Generative_Task->prov:used->workflow:Large_Language_Models->sio:SIO_000230->provone:Data
+Answer:
+Retrieved 2 initial candidate object(s) relevant to the question: What is the concrete system prompt or textual instruction set that defines the 'information extraction' functionality within the `workflow:Generative_Task` object, specifically related to entity extraction from provided text? <cite, id=0>ChatBS-NexGen:LLM-information_extractor-Input-builder_llm</cite> <cite, id=1>ChatBS-NexGen:LLM-information_extractor-Input-text</cite>
+Important entities:
+- ChatBS-NexGen:LLM-information_extractor-Input-builder_llm
+- ChatBS-NexGen:LLM-information_extractor-Input-text
+Results:
+{
+  "set_1": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:LLM-information_extractor-Input-builder_llm"
+      },
+      {
+        "value": "ChatBS-NexGen:LLM-information_extractor-Input-text"
+      }
+    ]
+  }
+}
+Extra:
+{
+  "execution_mode": "initial-data",
+  "extracted_results": [
+    {
+      "attributes": [
+        {
+          "o": "provone:Data",
+          "p": "rdf:type"
+        },
+        {
+          "o": "gpt-4o@en^^<xsd:string>",
+          "p": "prov:value"
+        }
+      ],
+      "uri": "ChatBS-NexGen:LLM-information_extractor-Input-builder_llm"
+    },
+    {
+      "attributes": [
+        {
+          "o": "provone:Data",
+          "p": "rdf:type"
+        },
+        {
+          "o": "Extract all the main ingredients without any subsidiary; return in singular noun form and First letter capital. Extract mean and dairy product in its' base form. (e.g., from 'egg white' extract 'Egg')@en^^<xsd:string>",
+          "p": "prov:value"
+        }
+      ],
+      "uri": "ChatBS-NexGen:LLM-information_extractor-Input-text"
+    }
+  ],
+  "parameter_values": [
+    {
+      "obj": "http://testwebsite/testProgram#Generative_Task-information_extractor"
+    }
+  ],
+  "strategy": "by_program"
+}
+
+Predecessor Context:
+None
+
+Step Context:
+Initial-data retrieval:
+{
+  "question": "What are the specific instructions or prompts provided to the Large Language Model (LLM) that direct it to perform an information extraction function as part of a workflow pipeline execution?\nTo be properly answered, cover: The content and structure of the instructions/prompt used by the LLM.; How these instructions guide the LLM specifically for 'information extraction'.; Where this instruction set fits within the overall execution pipeline (e.g., as part of a Generative_Task or Program input).",
+  "original_question": "What are the specific instructions or prompts provided to the Large Language Model (LLM) that direct it to perform an information extraction function as part of a workflow pipeline execution?\nTo be properly answered, cover: The content and structure of the instructions/prompt used by the LLM.; How these instructions guide the LLM specifically for 'information extraction'.; Where this instruction set fits within the overall execution pipeline (e.g., as part of a Generative_Task or Program input).",
+  "grounding": {
+    "candidate_classes": [
+      "workflow:Generative_Task",
+      "provone:Program"
+    ],
+    "candidate_relations": [
+      "workflow:llm_model",
+      "workflow:llm_model"
+    ],
+    "entity_phrases": [
+      "What",
+      "are",
+      "the",
+      "specific",
+      "instructions"
+    ]
+  },
+  "program_id": "explore_object_of_class",
+  "parameter_values": [
+    {
+      "class_uri": "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Generative_Task"
+    }
+  ],
+  "strategy": "by_program",
+  "linked_entities": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:Generative_Task-id_20260420105659_302"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-id_20260420105703_307"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-information_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-query_result_post_processor"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+      }
+    ]
+  }
+}
+
+Answer loop round:
+{
+  "round": 1,
+  "question": "What are the specific instructions or prompts provided to the Large Language Model (LLM) that direct it to perform an information extraction function as part of a workflow pipeline execution?\nTo be properly answered, cover: The content and structure of the instructions/prompt used by the LLM.; How these instructions guide the LLM specifically for 'information extraction'.; Where this instruction set fits within the overall execution pipeline (e.g., as part of a Generative_Task or Program input).",
+  "strategy": "by_program",
+  "program_id": "explore_object_of_class",
+  "grounding": {
+    "candidate_classes": [
+      "workflow:Generative_Task",
+      "provone:Program"
+    ],
+    "candidate_relations": [
+      "workflow:llm_model",
+      "workflow:llm_model"
+    ],
+    "entity_phrases": [
+      "What",
+      "are",
+      "the",
+      "specific",
+      "instructions"
+    ]
+  },
+  "object_uris": [
+    "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+    "ChatBS-NexGen:Generative_Task-id_20260420105703_307",
+    "ChatBS-NexGen:Generative_Task-information_extractor",
+    "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+    "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+  ]
+}
+Step step1: What are the specific instructions or prompts provided to the Large Language Model (LLM) that direct it to perform an information extraction function as part of a workflow pipeline execution?
+To be properly answered, cover: The content and structure of the instructions/prompt used by the LLM.; How these instructions guide the LLM specifically for 'information extraction'.; Where this instruction set fits within the overall execution pipeline (e.g., as part of a Generative_Task or Program input).
+Function: What are all the objects of a given class?
+Answer: Retrieved 5 initial candidate object(s) relevant to the question: What are the specific instructions or prompts provided to the Large Language Model (LLM) that direct it to perform an information extraction function as part of a workflow pipeline execution?
+To be properly answered, cover: The content and structure of the instructions/prompt used by the LLM.; How these instructions guide the LLM specifically for 'information extraction'.; Where this instruction set fits within the overall execution pipeline (e.g., as part of a Generative_Task or Program input).
+Important entities: ChatBS-NexGen:Generative_Task-id_20260420105659_302: dc:description=LLM Generates an text for 
+system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. 
+
+user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. 
+
+using: gpt-4o@en^^<xsd:string>; sio:SIO_000313=ChatBS-NexGen:id_20260420105659_302; rdf:type=workflow:Generative_Task; rdfs:label=LLM Generates an text for 
+system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. 
+
+user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. 
+
+using: gpt-4o@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-id_20260420105659_302
+ChatBS-NexGen:Generative_Task-id_20260420105703_307: dc:description=Extracts important entities for 
+text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:
+
+1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.
+
+2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.
+
+3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.
+
+4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.
+
+5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.
+
+Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. 
+
+using: gpt-4o@en^^<xsd:string>; sio:SIO_000313=ChatBS-NexGen:id_20260420105703_307; rdf:type=workflow:Generative_Task; rdfs:label=Extracts important entities for 
+text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:
+
+1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.
+
+2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.
+
+3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.
+
+4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.
+
+5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.
+
+Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. 
+
+using: gpt-4o@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-id_20260420105703_307
+ChatBS-NexGen:Generative_Task-information_extractor: dc:description=Generates the Information Extractor Function using Large language models@en^^<xsd:string>; rdf:type=workflow:Generative_Task; rdfs:label=Information Extractor function generator@en^^<xsd:string>; prov:atTime=2026-03-05 19:21:32@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-information_extractor
+ChatBS-NexGen:Generative_Task-query_result_post_processor: dc:description=Generates the post processing Function using Large language models@en^^<xsd:string>; rdf:type=workflow:Generative_Task; rdfs:label=Query Result Post-Processor function generator@en^^<xsd:string>; prov:atTime=2026-03-05 19:21:32@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-query_result_post_processor
+ChatBS-NexGen:Generative_Task-system_prompt_generator: dc:description=Generates the System Prompt Template using Large language models@en^^<xsd:string>; rdf:type=workflow:Generative_Task; rdfs:label=System Prompt Template function generator@en^^<xsd:string>; prov:atTime=2026-03-05 19:21:32@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-system_prompt_generator
+Results: {
+  "set_1": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:Generative_Task-id_20260420105659_302"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-id_20260420105703_307"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-information_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-query_result_post_processor"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+      }
+    ]
+  }
+}
+
+Answer loop round:
+{
+  "round": 2,
+  "question": "What is the concrete system prompt or textual instruction set that defines the 'information extraction' functionality within the `workflow:Generative_Task` object, specifically related to entity extraction from provided text?",
+  "strategy": "by_program",
+  "program_id": "explore_path_workflow:Generative_Task->prov:used->workflow:Large_Language_Models->sio:SIO_000230->provone:Data",
+  "grounding": {
+    "candidate_classes": [
+      "workflow:Generative_Task"
+    ],
+    "entity_phrases": [
+      "What",
+      "the",
+      "concrete",
+      "system",
+      "prompt"
+    ],
+    "candidate_relations": []
+  },
+  "object_uris": [
+    "ChatBS-NexGen:LLM-information_extractor-Input-builder_llm",
+    "ChatBS-NexGen:LLM-information_extractor-Input-text"
+  ]
+}
+Step step2: What is the concrete system prompt or textual instruction set that defines the 'information extraction' functionality within the `workflow:Generative_Task` object, specifically related to entity extraction from provided text?
+Function: What specific input data is required for a Generative Task that utilizes Large Language Models?
+Answer: Retrieved 2 initial candidate object(s) relevant to the question: What is the concrete system prompt or textual instruction set that defines the 'information extraction' functionality within the `workflow:Generative_Task` object, specifically related to entity extraction from provided text?
+Important entities: ChatBS-NexGen:LLM-information_extractor-Input-builder_llm: rdf:type=provone:Data; prov:value=gpt-4o@en^^<xsd:string>
+ChatBS-NexGen:LLM-information_extractor-Input-text: rdf:type=provone:Data; prov:value=Extract all the main ingredients without any subsidiary; return in singular noun form and First letter capital. Extract mean and dairy product in its' base form. (e.g., from 'egg white' extract 'Egg')@en^^<xsd:string>
+Results: {
+  "set_1": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:LLM-information_extractor-Input-builder_llm"
+      },
+      {
+        "value": "ChatBS-NexGen:LLM-information_extractor-Input-text"
+      }
+    ]
+  }
+}
+
+Schema Reasoning:
+{}
+
+Validation / Judge:
+{
+  "answer": "The specific instructions or prompts provided to direct a Large Language Model (LLM) for information extraction are highly structured directives that enforce both the content extraction requirements and the precise output formatting rules.\n\n**Content and Structure of the Instructions/Prompt:**\nThe prompt must contain explicit, detailed instructions outlining exactly what data points need to be captured from the source text. Based on the retrieved examples, a sample instruction set is: \"Extract all the main ingredients without any subsidiary; return in singular noun form and First letter capital. Extract mean and dairy product in its' base form. (e.g., from 'egg white' extract 'Egg')\". This structure demonstrates several key components:\n1.  **Scope Definition:** Specifying *what* to extract (e.g., \"main ingredients,\" \"mean and dairy products\").\n2.  **Exclusion Rules:** Defining what *not* to include (e.g., \"without any subsidiary\").\n3.  **Normalization/Formatting Constraints:** Dictating the required output format, such as returning items in \"singular noun form\" and ensuring the \"First letter [is] capital.\"\n4.  **Illustrative Examples:** Providing clear examples (\"e.g., from 'egg white' extract 'Egg'\") to eliminate ambiguity for the LLM.\n\n**Guidance for Information Extraction:**\nThese instructions guide the LLM beyond simple retrieval by imposing a layer of *transformation* and *structuring*. The prompt doesn't just ask \"What are the ingredients?\"; it mandates that the model acts as an expert processor, requiring it to:\n*   Perform **disambiguation** (separating main from subsidiary items).\n*   Perform **linguistic normalization** (converting phrases into singular noun forms).\n*   Adhere to **stylistic rules** (capitalization).\n\nThis guidance transforms the LLM from a general text generator into a specialized, rule-bound data extractor.\n\n**Placement within the Overall Execution Pipeline:**\nWithin the workflow pipeline, this instruction set is implemented as a dedicated, discrete step called a `workflow:Generative_Task`. Specifically, it is associated with an \"Information Extractor function\" (e.g., `ChatBS-NexGen:Generative_Task-information_extractor`). This task receives the raw text corpus as its input (`provone:Data`) and uses the specialized prompt instructions to guide the LLM execution, ultimately generating a structured output artifact that can be used by subsequent components in the workflow (like post-processors).",
+  "answered": true,
+  "feedback": "The answer thoroughly covers all aspects of the question: it provides the content and structure of a sample prompt, details how these instructions guide the LLM for extraction (transformation/normalization), and accurately places the instruction set within the execution pipeline (`workflow:Generative_Task`). No revisions are necessary."
+}
+
+Answer:
+The specific instructions or prompts provided to direct a Large Language Model (LLM) for information extraction are highly structured directives that enforce both the content extraction requirements and the precise output formatting rules.
+
+**Content and Structure of the Instructions/Prompt:**
+The prompt must contain explicit, detailed instructions outlining exactly what data points need to be captured from the source text. Based on the retrieved examples, a sample instruction set is: "Extract all the main ingredients without any subsidiary; return in singular noun form and First letter capital. Extract mean and dairy product in its' base form. (e.g., from 'egg white' extract 'Egg')". This structure demonstrates several key components:
+1.  **Scope Definition:** Specifying *what* to extract (e.g., "main ingredients," "mean and dairy products").
+2.  **Exclusion Rules:** Defining what *not* to include (e.g., "without any subsidiary").
+3.  **Normalization/Formatting Constraints:** Dictating the required output format, such as returning items in "singular noun form" and ensuring the "First letter [is] capital."
+4.  **Illustrative Examples:** Providing clear examples ("e.g., from 'egg white' extract 'Egg'") to eliminate ambiguity for the LLM.
+
+**Guidance for Information Extraction:**
+These instructions guide the LLM beyond simple retrieval by imposing a layer of *transformation* and *structuring*. The prompt doesn't just ask "What are the ingredients?"; it mandates that the model acts as an expert processor, requiring it to:
+*   Perform **disambiguation** (separating main from subsidiary items).
+*   Perform **linguistic normalization** (converting phrases into singular noun forms).
+*   Adhere to **stylistic rules** (capitalization).
+
+This guidance transforms the LLM from a general text generator into a specialized, rule-bound data extractor.
+
+**Placement within the Overall Execution Pipeline:**
+Within the workflow pipeline, this instruction set is implemented as a dedicated, discrete step called a `workflow:Generative_Task`. Specifically, it is associated with an "Information Extractor function" (e.g., `ChatBS-NexGen:Generative_Task-information_extractor`). This task receives the raw text corpus as its input (`provone:Data`) and uses the specialized prompt instructions to guide the LLM execution, ultimately generating a structured output artifact that can be used by subsequent components in the workflow (like post-processors). <cite, id=0>ChatBS-NexGen:Generative_Task-id_20260420105659_302</cite> <cite, id=1>ChatBS-NexGen:Generative_Task-id_20260420105703_307</cite> <cite, id=2>ChatBS-NexGen:Generative_Task-information_extractor</cite> <cite, id=3>ChatBS-NexGen:Generative_Task-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:Generative_Task-system_prompt_generator</cite> <cite, id=5>ChatBS-NexGen:LLM-information_extractor-Input-builder_llm</cite>
+
+Final Report
+### Overall Answer to the Question:
+The specific instructions or prompts provided to direct a Large Language Model (LLM) for information extraction are highly structured directives that enforce both the content extraction requirements and the precise output formatting rules.
+
+**Content and Structure of the Instructions/Prompt:**
+The prompt must contain explicit, detailed instructions outlining exactly what data points need to be captured from the source text. Based on the retrieved examples, a sample instruction set is: "Extract all the main ingredients without any subsidiary; return in singular noun form and First letter capital. Extract mean and dairy product in its' base form. (e.g., from 'egg white' extract 'Egg')". This structure demonstrates several key components:
+1.  **Scope Definition:** Specifying *what* to extract (e.g., "main ingredients," "mean and dairy products").
+2.  **Exclusion Rules:** Defining what *not* to include (e.g., "without any subsidiary").
+3.  **Normalization/Formatting Constraints:** Dictating the required output format, such as returning items in "singular noun form" and ensuring the "First letter [is] capital."
+4.  **Illustrative Examples:** Providing clear examples ("e.g., from 'egg...
+
+### Original Question:
+What are the specific instructions or prompts provided to the Large Language Model (LLM) that direct it to perform an information extraction function as part of a workflow pipeline execution?
+To be properly answered, cover: The content and structure of the instructions/prompt used by the LLM.; How these instructions guide the LLM specifically for 'information extraction'.; Where this instruction set fits within the overall execution pipeline (e.g., as part of a Generative_Task or Program input).
+
+### Grounded Reasoning Trace:
+Question [0]: What are the specific instructions or prompts provided to the Large Language Model (LLM) that direct it to perform an information extraction function as part of a workflow pipeline execution?
+To be properly answered, cover: The content and structure of the instructions/prompt used by the LLM.; How these instructions guide the LLM specifically for 'information extraction'.; Where this instruction set fits within the overall execution pipeline (e.g., as part of a Generative_Task or Program input).
+Answer: The specific instructions or prompts provided to direct a Large Language Model (LLM) for information extraction are highly structured directives that enforce both the content extraction requirements and the precise output formatting rules.
+
+**Content and Structure of the Instructions/Prompt:**
+The prompt must contain explicit, detailed instructions outlining exactly what data points need to be captured from the source text. Based on the retrieved examples, a sample instruction set is: "Extract all the main ingredients without any subsidiary; return in singular noun form and First letter capital. Extract mean and dairy product in its' base form. (e.g., from 'egg white' extract 'Egg')". Thi...
+Grounding:
+{
+  "candidate_classes": [
+    "workflow:Generative_Task",
+    "provone:Program"
+  ],
+  "candidate_relations": [
+    "workflow:llm_model",
+    "workflow:llm_model"
+  ],
+  "entity_phrases": [
+    "What",
+    "are",
+    "the",
+    "... 2 more item(s)"
+  ]
+}
+
+Final Answer
+The specific instructions or prompts provided to direct a Large Language Model (LLM) for information extraction are highly structured directives that enforce both the content extraction requirements and the precise output formatting rules.
+
+**Content and Structure of the Instructions/Prompt:**
+The prompt must contain explicit, detailed instructions outlining exactly what data points need to be captured from the source text. Based on the retrieved examples, a sample instruction set is: "Extract all the main ingredients without any subsidiary; return in singular noun form and First letter capital. Extract mean and dairy product in its' base form. (e.g., from 'egg white' extract 'Egg')". This structure demonstrates several key components:
+1.  **Scope Definition:** Specifying *what* to extract (e.g., "main ingredients," "mean and dairy products").
+2.  **Exclusion Rules:** Defining what *not* to include (e.g., "without any subsidiary").
+3.  **Normalization/Formatting Constraints:** Dictating the required output format, such as returning items in "singular noun form" and ensuring the "First letter [is] capital."
+4.  **Illustrative Examples:** Providing clear examples ("e.g., from 'egg white' extract 'Egg'") to eliminate ambiguity for the LLM.
+
+**Guidance for Information Extraction:**
+These instructions guide the LLM beyond simple retrieval by imposing a layer of *transformation* and *structuring*. The prompt doesn't just ask "What are the ingredients?"; it mandates that the model acts as an expert processor, requiring it to:
+*   Perform **disambiguation** (separating main from subsidiary items).
+*   Perform **linguistic normalization** (converting phrases into singular noun forms).
+*   Adhere to **stylistic rules** (capitalization).
+
+This guidance transforms the LLM from a general text generator into a specialized, rule-bound data extractor.
+
+**Placement within the Overall Execution Pipeline:**
+Within the workflow pipeline, this instruction set is implemented as a dedicated, discrete step called a `workflow:Generative_Task`. Specifically, it is associated with an "Information Extractor function" (e.g., `ChatBS-NexGen:Generative_Task-information_extractor`). This task receives the raw text corpus as its input (`provone:Data`) and uses the specialized prompt instructions to guide the LLM execution, ultimately generating a structured output artifact that can be used by subsequent components in the workflow (like post-processors). <cite, id=0>ChatBS-NexGen:Generative_Task-id_20260420105659_302</cite> <cite, id=1>ChatBS-NexGen:Generative_Task-id_20260420105703_307</cite> <cite, id=2>ChatBS-NexGen:Generative_Task-information_extractor</cite> <cite, id=3>ChatBS-NexGen:Generative_Task-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:Generative_Task-system_prompt_generator</cite> <cite, id=5>ChatBS-NexGen:LLM-information_extractor-Input-builder_llm</cite>
+
+Final Validation
+{
+  "answer": "The specific instructions or prompts provided to direct a Large Language Model (LLM) for information extraction are highly structured directives that enforce both the content extraction requirements and the precise output formatting rules.\n\n**Content and Structure of the Instructions/Prompt:**\nThe prompt must contain explicit, detailed instructions outlining exactly what data points need to be captured from the source text. Based on the retrieved examples, a sample instruction set is: \"Extract all the main ingredients without any subsidiary; return in singular noun form and First letter capital. Extract mean and dairy product in its' base form. (e.g., from 'egg white' extract 'Egg')\". This structure demonstrates several key components:\n1.  **Scope Definition:** Specifying *what* to extract (e.g., \"main ingredients,\" \"mean and dairy products\").\n2.  **Exclusion Rules:** Defining what *not* to include (e.g., \"without any subsidiary\").\n3.  **Normalization/Formatting Constraints:** Dictating the required output format, such as returning items in \"singular noun form\" and ensuring the \"First letter [is] capital.\"\n4.  **Illustrative Examples:** Providing clear examples (\"e.g., from 'egg white' extract 'Egg'\") to eliminate ambiguity for the LLM.\n\n**Guidance for Information Extraction:**\nThese instructions guide the LLM beyond simple retrieval by imposing a layer of *transformation* and *structuring*. The prompt doesn't just ask \"What are the ingredients?\"; it mandates that the model acts as an expert processor, requiring it to:\n*   Perform **disambiguation** (separating main from subsidiary items).\n*   Perform **linguistic normalization** (converting phrases into singular noun forms).\n*   Adhere to **stylistic rules** (capitalization).\n\nThis guidance transforms the LLM from a general text generator into a specialized, rule-bound data extractor.\n\n**Placement within the Overall Execution Pipeline:**\nWithin the workflow pipeline, this instruction set is implemented as a dedicated, discrete step called a `workflow:Generative_Task`. Specifically, it is associated with an \"Information Extractor function\" (e.g., `ChatBS-NexGen:Generative_Task-information_extractor`). This task receives the raw text corpus as its input (`provone:Data`) and uses the specialized prompt instructions to guide the LLM execution, ultimately generating a structured output artifact that can be used by subsequent components in the workflow (like post-processors).",
+  "answered": true,
+  "feedback": "The answer thoroughly covers all aspects of the question: it provides the content and structure of a sample prompt, details how these instructions guide the LLM for extraction (transformation/normalization), and accurately places the instruction set within the execution pipeline (`workflow:Generative_Task`). No revisions are necessary."
+}
+
+Timing
+0.1722523660864681 seconds

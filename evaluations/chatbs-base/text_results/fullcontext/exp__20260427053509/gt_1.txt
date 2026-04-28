@@ -1,0 +1,102 @@
+Result ID
+gt_1
+
+Question
+In what places do we utilize AI in this workflow?
+
+Answer
+AI is utilized in generating system prompt templates, creating information extractor functions, and developing query result post-processing functions via Large Language Models (specifically gpt-4o). Additionally, LLMs are used directly during program executions for user chat interactions and extracting entities from text. <cite, id=0>System Prompt Template function generator</cite> <cite, id=1>System Prompt Template function generator</cite> <cite, id=2>Information Extractor function generator</cite> <cite, id=3>Information Extractor function generator</cite> <cite, id=4>Large Language Models</cite>
+
+Relevant Entities
+1. System Prompt Template function generator (ChatBS-NexGen:Generative_Task-system_prompt_generator) [types=['workflow:Generative_Task']; score=1.0]
+2. System Prompt Template function generator (ChatBS-NexGen:LLM-system_prompt_generator) [types=['workflow:Large_Language_Models']; score=0.9]
+3. Information Extractor function generator (ChatBS-NexGen:Generative_Task-information_extractor) [types=['workflow:Generative_Task']; score=0.8]
+4. Information Extractor function generator (ChatBS-NexGen:LLM-information_extractor) [types=['workflow:Large_Language_Models']; score=0.7]
+5. Large Language Models (workflow:Large_Language_Models) [score=0.6]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+    "label": "System Prompt Template function generator",
+    "score": 1.0,
+    "types": [
+      "workflow:Generative_Task"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:LLM-system_prompt_generator",
+    "label": "System Prompt Template function generator",
+    "score": 0.9,
+    "types": [
+      "workflow:Large_Language_Models"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Generative_Task-information_extractor",
+    "label": "Information Extractor function generator",
+    "score": 0.8,
+    "types": [
+      "workflow:Generative_Task"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:LLM-information_extractor",
+    "label": "Information Extractor function generator",
+    "score": 0.7,
+    "types": [
+      "workflow:Large_Language_Models"
+    ]
+  },
+  {
+    "id": "workflow:Large_Language_Models",
+    "label": "Large Language Models",
+    "score": 0.6,
+    "types": []
+  }
+]
+
+Evidence
+1. System Prompt Template function generator (ChatBS-NexGen:Generative_Task-system_prompt_generator) -- used (prov:used) -> System Prompt Template function generator (ChatBS-NexGen:LLM-system_prompt_generator) [direction=outgoing; literal=False; score=1.0]
+2. Information Extractor function generator (ChatBS-NexGen:Generative_Task-information_extractor) -- used (prov:used) -> Information Extractor function generator (ChatBS-NexGen:LLM-information_extractor) [direction=outgoing; literal=False; score=0.9]
+3. LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. using: gpt-4o (ChatBS-NexGen:LLM-id_20260420105659_302) -- llm model (workflow:llm_model) -> gpt-4o [direction=outgoing; literal=True; score=0.8]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:LLM-system_prompt_generator",
+    "object_is_literal": false,
+    "object_label": "System Prompt Template function generator",
+    "predicate_id": "prov:used",
+    "predicate_label": "used",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+    "subject_label": "System Prompt Template function generator"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:LLM-information_extractor",
+    "object_is_literal": false,
+    "object_label": "Information Extractor function generator",
+    "predicate_id": "prov:used",
+    "predicate_label": "used",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:Generative_Task-information_extractor",
+    "subject_label": "Information Extractor function generator"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "gpt-4o",
+    "predicate_id": "workflow:llm_model",
+    "predicate_label": "llm model",
+    "score": 0.8,
+    "subject_id": "ChatBS-NexGen:LLM-id_20260420105659_302",
+    "subject_label": "LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. using: gpt-4o"
+  }
+]
+
+Timing
+63.73300102585927 seconds

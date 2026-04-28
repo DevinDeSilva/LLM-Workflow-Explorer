@@ -1,0 +1,60 @@
+evaluation:
+  name: "chatbs-base"
+  source_config: "config.fullcontext.yaml"
+  save_dir: "evaluations/chatbs-base/analysis"
+  max_examples_per_run:
+
+  prediction_filename: "RESULTS.jsonl"
+  prediction_dirs:
+    fullcontext: "evaluations/chatbs-base/explainer/fullcontext"
+    llmbased: "evaluations/chatbs-base/explainer/llmbased"
+    grasp: "evaluations/chatbs-base/explainer/grasp"
+    ours: "evaluations/chatbs-base/explainer/results"
+
+  judge_llm:
+    llm_type: "lmstudio"
+    llm_library: "dspy"
+    llm_config:
+      model: "lm_studio/meta-llama/llama-3.3-70b-instruct"
+      base_url: "http://localhost:1234/v1"
+      temperature: 0
+
+  nli:
+    model_name: "cross-encoder/nli-distilroberta-base"
+    entailment_fallback_index: 1
+
+  metrics:
+    enabled_by_qtype:
+      entity:
+        - "answer_token_overlap"
+        - "ground_truth_entity_coverage"
+        - "bert_score"
+        - "llm_answer_quality"
+        - "nli_entailment"
+        - "entity_retrieval"
+      bool:
+        - "answer_token_overlap"
+        - "ground_truth_entity_coverage"
+        - "bert_score"
+        - "llm_answer_quality"
+        - "nli_entailment"
+        - "bool_accuracy"
+      numeric:
+        - "answer_token_overlap"
+        - "ground_truth_entity_coverage"
+        - "bert_score"
+        - "llm_answer_quality"
+        - "nli_entailment"
+        - "numeric_accuracy"
+
+  winrate:
+    judge_llm:
+      llm_type: "lmstudio"
+      llm_library: "dspy"
+      llm_config:
+        model: "lm_studio/meta-llama/llama-3.3-70b-instruct"
+        base_url: "http://localhost:1234/v1"
+        temperature: 0
+        max_tokens: 300
+    methods:
+    tie_score: 0.5

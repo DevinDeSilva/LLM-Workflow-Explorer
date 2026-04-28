@@ -1,0 +1,105 @@
+Result ID
+gt_5
+
+Question
+what are the input instructions used by the Large Language Model to create the "system prompt template" function?
+
+Answer
+The LLM Chat execution used the gpt-4o model to handle the prompt with inputs user prompt, system prompt. <cite, id=0>LLM Chat</cite> <cite, id=1>llm chat 1 1</cite> <cite, id=2>gpt-4o model</cite> <cite, id=3>system prompt</cite> <cite, id=4>user prompt</cite>
+
+Relevant Entities
+1. LLM Chat (ChatBS-NexGen:llm_chat) [types=['provone:Program']; score=1.0]
+2. llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) [types=['provone:Execution']; score=0.9]
+3. gpt-4o model (ChatBS-NexGen:LLM-id_20260420105659_302) [types=['workflow:Large_Language_Model_Output', 'workflow:Large_Language_Models']; score=0.8]
+4. system prompt (ChatBS-NexGen:Data-id_20260420105652_456-system_prompt) [types=['provone:Data']; score=0.7]
+5. user prompt (ChatBS-NexGen:Data-id_20260420105659_811-user_prompt) [types=['provone:Data']; score=0.6]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:llm_chat",
+    "label": "LLM Chat",
+    "score": 1.0,
+    "types": [
+      "provone:Program"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:id_20260420105659_302",
+    "label": "llm chat 1 1",
+    "score": 0.9,
+    "types": [
+      "provone:Execution"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:LLM-id_20260420105659_302",
+    "label": "gpt-4o model",
+    "score": 0.8,
+    "types": [
+      "workflow:Large_Language_Model_Output",
+      "workflow:Large_Language_Models"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Data-id_20260420105652_456-system_prompt",
+    "label": "system prompt",
+    "score": 0.7,
+    "types": [
+      "provone:Data"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Data-id_20260420105659_811-user_prompt",
+    "label": "user prompt",
+    "score": 0.6,
+    "types": [
+      "provone:Data"
+    ]
+  }
+]
+
+Evidence
+1. gpt-4o model (ChatBS-NexGen:LLM-id_20260420105659_302) -- llm model (workflow:llm_model) -> gpt-4o [direction=outgoing; literal=True; score=1.0]
+2. llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) -- used (prov:used) -> system prompt (ChatBS-NexGen:Data-id_20260420105652_456-system_prompt) [direction=outgoing; literal=False; score=0.9]
+3. llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) -- used (prov:used) -> user prompt (ChatBS-NexGen:Data-id_20260420105659_811-user_prompt) [direction=outgoing; literal=False; score=0.8]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "gpt-4o",
+    "predicate_id": "workflow:llm_model",
+    "predicate_label": "llm model",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:LLM-id_20260420105659_302",
+    "subject_label": "gpt-4o model"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:Data-id_20260420105652_456-system_prompt",
+    "object_is_literal": false,
+    "object_label": "system prompt",
+    "predicate_id": "prov:used",
+    "predicate_label": "used",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:id_20260420105659_302",
+    "subject_label": "llm chat 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:Data-id_20260420105659_811-user_prompt",
+    "object_is_literal": false,
+    "object_label": "user prompt",
+    "predicate_id": "prov:used",
+    "predicate_label": "used",
+    "score": 0.8,
+    "subject_id": "ChatBS-NexGen:id_20260420105659_302",
+    "subject_label": "llm chat 1 1"
+  }
+]
+
+Timing
+0.3918634080328047 seconds

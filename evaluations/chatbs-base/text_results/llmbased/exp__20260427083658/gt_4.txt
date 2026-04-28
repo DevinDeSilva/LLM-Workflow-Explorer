@@ -1,0 +1,44 @@
+Result ID
+gt_4
+
+Question
+what are the input instructions used by the Large Language Model to create the "sparql query post processing" function?
+
+Answer
+The gpt-4o model. <cite, id=0>gpt-4o model</cite>
+
+Relevant Entities
+1. gpt-4o model (ChatBS-NexGen:LLM-query_result_post_processor) [types=['workflow:Large_Language_Models']; score=1.0]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:LLM-query_result_post_processor",
+    "label": "gpt-4o model",
+    "score": 1.0,
+    "types": [
+      "workflow:Large_Language_Models"
+    ]
+  }
+]
+
+Evidence
+1. Query Result Post-Processor function generator (ChatBS-NexGen:Generative_Task-query_result_post_processor) -- used (prov:used) -> gpt-4o model (ChatBS-NexGen:LLM-query_result_post_processor) [direction=outgoing; literal=False; score=1.0]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:LLM-query_result_post_processor",
+    "object_is_literal": false,
+    "object_label": "gpt-4o model",
+    "predicate_id": "prov:used",
+    "predicate_label": "used",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+    "subject_label": "Query Result Post-Processor function generator"
+  }
+]
+
+Timing
+0.5008442830294371 seconds

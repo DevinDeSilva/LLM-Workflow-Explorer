@@ -1,0 +1,88 @@
+Result ID
+gt_5
+
+Question
+what are the input instructions used by the Large Language Model to create the "system prompt template" function?
+
+Answer
+{
+  "answer": "The input instructions used by the Large Language Model to create the 'system prompt template' function consist of a base system prompt ('You are a health care assistant') and an LLM builder identifier ('gpt-4o'). These were provided as inputs to the generation process.",
+  "relevant_entities": [
+    "ChatBS-NexGen:LLM-system_prompt-generator",
+    "ChatBS-NexGen:LLM-system_prompt-generator-Input-base_sys_prompt",
+    "ChatBS-NexGen:LLM-system_prompt-generator-Input-builder_llm"
+  ],
+  "evidence": [
+    {
+      "subject": "ChatBS-NexGen:LLM-system_prompt-generator",
+      "predicate": "sio:SIO_000230",
+      "object": "ChatBS-NexGen:LLM-system_prompt-generator-Input-base_sys_prompt"
+    },
+    {
+      " <cite, id=0>LLM system prompt generator Input base sys prompt</cite> <cite, id=1>LLM system prompt generator Input builder llm</cite> <cite, id=2>system prompt</cite> <cite, id=3>system prompt</cite> <cite, id=4>system prompt</cite> <cite, id=5>System Prompt</cite>
+
+Relevant Entities
+1. LLM system prompt generator Input base sys prompt (ChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt) [types=['provone:Data']; score=0.5]
+2. LLM system prompt generator Input builder llm (ChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm) [types=['provone:Data']; score=0.45]
+3. system prompt (ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt) [types=['prov:Generation']; score=0.4]
+4. system prompt (ChatBS-NexGen:Data-id_20260420105652_456-system_prompt) [types=['provone:Data']; score=0.35]
+5. system prompt (ChatBS-NexGen:Usage-id_20260420105659_579-system_prompt) [types=['prov:Usage']; score=0.3]
+6. System Prompt (ChatBS-NexGen:system_prompt_generator-system_prompt) [types=['provone:Port']; score=0.25]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt",
+    "label": "LLM system prompt generator Input base sys prompt",
+    "score": 0.5,
+    "types": [
+      "provone:Data"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm",
+    "label": "LLM system prompt generator Input builder llm",
+    "score": 0.45,
+    "types": [
+      "provone:Data"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt",
+    "label": "system prompt",
+    "score": 0.4,
+    "types": [
+      "prov:Generation"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Data-id_20260420105652_456-system_prompt",
+    "label": "system prompt",
+    "score": 0.35,
+    "types": [
+      "provone:Data"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Usage-id_20260420105659_579-system_prompt",
+    "label": "system prompt",
+    "score": 0.3,
+    "types": [
+      "prov:Usage"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:system_prompt_generator-system_prompt",
+    "label": "System Prompt",
+    "score": 0.25,
+    "types": [
+      "provone:Port"
+    ]
+  }
+]
+
+Evidence
+None
+
+Timing
+168.14157898398116 seconds

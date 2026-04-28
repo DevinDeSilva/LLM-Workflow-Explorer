@@ -1,0 +1,38 @@
+Result ID
+gt_37
+
+Question
+Does any of the executions of the sparql query post processing function made has a Generative Task as a component within?
+
+Answer
+No, none of the executions of the sparql query post processing function have a Generative Task as a component within them. <cite, id=0>post processing 1 1</cite> <cite, id=1>Query Result Post-Processor</cite>
+
+Relevant Entities
+1. post processing 1 1 (ChatBS-NexGen:id_20260420105727_835) [types=['provone:Execution']; score=1.0]
+2. Query Result Post-Processor (ChatBS-NexGen:query_result_post_processor) [types=['provone:Program']; score=0.9]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:id_20260420105727_835",
+    "label": "post processing 1 1",
+    "score": 1.0,
+    "types": [
+      "provone:Execution"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:query_result_post_processor",
+    "label": "Query Result Post-Processor",
+    "score": 0.9,
+    "types": [
+      "provone:Program"
+    ]
+  }
+]
+
+Evidence
+None
+
+Timing
+95.26508108293638 seconds

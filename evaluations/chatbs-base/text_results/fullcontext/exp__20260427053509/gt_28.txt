@@ -1,0 +1,65 @@
+Result ID
+gt_28
+
+Question
+who were the agents that ran the system prompt template step in the pipeline?
+
+Answer
+The test user (ChatBS-NexGen:test_user) was the agent responsible for running the system prompt template step. <cite, id=0>test user</cite> <cite, id=1>system prompt execution 1 1</cite>
+
+Relevant Entities
+1. test user (ChatBS-NexGen:test_user) [types=['prov:Agent']; score=1.0]
+2. system prompt execution 1 1 (ChatBS-NexGen:id_20260420105652_650) [types=['provone:Execution']; score=0.9]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:test_user",
+    "label": "test user",
+    "score": 1.0,
+    "types": [
+      "prov:Agent"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:id_20260420105652_650",
+    "label": "system prompt execution 1 1",
+    "score": 0.9,
+    "types": [
+      "provone:Execution"
+    ]
+  }
+]
+
+Evidence
+1. system prompt execution 1 1 (ChatBS-NexGen:id_20260420105652_650) -- wasAssociatedWith (prov:wasAssociatedWith) -> test user (ChatBS-NexGen:test_user) [direction=outgoing; literal=False; score=1.0]
+2. system prompt generator Association (ChatBS-NexGen:ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650) -- agent (prov:agent) -> test user (ChatBS-NexGen:test_user) [direction=outgoing; literal=False; score=0.9]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:test_user",
+    "object_is_literal": false,
+    "object_label": "test user",
+    "predicate_id": "prov:wasAssociatedWith",
+    "predicate_label": "wasAssociatedWith",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:id_20260420105652_650",
+    "subject_label": "system prompt execution 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:test_user",
+    "object_is_literal": false,
+    "object_label": "test user",
+    "predicate_id": "prov:agent",
+    "predicate_label": "agent",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650",
+    "subject_label": "system prompt generator Association"
+  }
+]
+
+Timing
+37.66825041198172 seconds

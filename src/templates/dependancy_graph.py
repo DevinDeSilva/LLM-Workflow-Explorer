@@ -3,30 +3,6 @@ from typing import List
 import dspy
 
 
-class SubQuestionSignature(dspy.Signature):
-    """
-    Decompose the original user question into 2 to 4 logically connected smaller sub questions 
-    that must be answered to answer the user question. Ensure that each question leads to a next question
-    while ensuring that no semantically similar questions. You may denotes questions that are answered by
-    context (previous question answer context or application context) or retrieve information
-    from the execution KG.
-
-    Return only list of concise strings. Each string should describe
-    one information need, not a search strategy or an answer.
-    """
-
-    user_query: str = dspy.InputField(
-        desc="Natural language question from the user."
-    )
-    schema_context: str = dspy.InputField(
-        desc="Compact ontology and schema summary for valid classes and relations."
-    )
-    application_context: str = dspy.InputField(
-        desc="Description of the application and its functional scope."
-    )
-    sub_questions: List[str] = dspy.OutputField(
-        desc="Two to four logically connected sub-questions. These questions need to be answered to answer the main question"
-    )
 
 
 class BuildTopologyGraphSignature(dspy.Signature):
@@ -34,7 +10,7 @@ class BuildTopologyGraphSignature(dspy.Signature):
     Build a topology graph over the sub-questions and the main question.
 
     Represent the main question as Q, label each sub-question by number,
-    and use '->' to show reasoning dependencies. Use ; to denote the 
+    and use '->' to show reasoning dependencies. Use ; to denote the
     seperation
     """
 
@@ -52,32 +28,37 @@ class BuildTopologyGraphSignature(dspy.Signature):
     )
 
 
-class SubQuestionVerificationSignature(dspy.Signature):
-    """
-    Review sub-questions and identify the ones that should be filtered out.
 
-    Filter any sub-question that is irrelevant, misses critical context,
-    or semantically repeats another sub-question.
+
+class UserQueryCoverageRewriteSignature(dspy.Signature):
+    """
+    Rewrite the user query into a self-contained question and list what the
+    answer must cover to be complete. 
+    
+    Instructions 
+    1. If the user query requests about any data (eg:- output data , input data). The question should EXPLICITLY request
+       The values as literals stored in the Data Objects.
     """
 
-    original_question: str = dspy.InputField(
-        desc="The original question the sub-questions should support."
+    user_query: str = dspy.InputField(
+        desc="Original natural language question from the user."
     )
     application_context: str = dspy.InputField(
         desc="Description of the application and its functional scope."
     )
-    sub_questions: List[str] = dspy.InputField(
-        desc="Candidate sub-questions to evaluate."
+    rewritten_user_query: str = dspy.OutputField(
+        desc="A concise, self-contained rewrite of the user query that includes the required answer coverage."
     )
-    filtered_sub_question: List[int] = dspy.OutputField(
-        desc="The numbers of sub-questions that should be filtered out."
+    answer_requirements: List[str] = dspy.OutputField(
+        desc="Short list of things the final answer must cover to properly answer the user query."
     )
 
 
 class SummarySignature(dspy.Signature):
     """
     Answer the original question using the provided relevant information.
-    Be explanatory in your answer and use explicit.
+    Be explanatory in your answer. If the given infomration is not enough to answer please
+    explicitly say as such.
     """
 
     qa_dialog: str = dspy.InputField(
@@ -107,6 +88,10 @@ class SyntheticQuestionGroundingSignature(dspy.Signature):
 
     Prefer CURIEs that appear in the provided available lists. Keep the output
     small and high precision.
+
+    Instructions:
+    1. Usually entity_phrases will be covered in ""
+    3. Try to increase recall as much as possible, for candidates
     """
 
     question: str = dspy.InputField(
@@ -118,9 +103,9 @@ class SyntheticQuestionGroundingSignature(dspy.Signature):
     schema_context: str = dspy.InputField(
         desc="Compact ontology and schema summary."
     )
-    predecessor_context: str = dspy.InputField(
-        desc="Answers or evidence already gathered from predecessor nodes."
-    )
+    # predecessor_context: str = dspy.InputField(
+    #     desc="Answers or evidence already gathered from predecessor nodes."
+    # )
     available_classes: List[str] = dspy.InputField(
         desc="Available ontology classes that can be used as synthetic-question filters."
     )
@@ -137,19 +122,21 @@ class SyntheticQuestionGroundingSignature(dspy.Signature):
         desc="Short free-text entity mentions or lookup phrases from the question that should be linked into the KG."
     )
 
-
-class SyntheticQuestionInitialRetrievalDecisionSignature(dspy.Signature):
+class InitialDataSyntheticQuestion(dspy.Signature):
     """
-    Choose how the first retrieval step should start.
+    Choose which function to use to retrive data from a knowledge graph.
+    You are given the function_id -> "question the function solves"
 
-    Use `linked-entities` when the question is about a specific named object or
-    a small set of concrete objects that can be linked directly. Use
-    `class-members` when the question needs a broader set of objects from a
-    class before narrowing further.
+    Instructions:
+    1. Only choose from prop / relation type function if the question gives hint to select
+       a relation and entity_phrases eg:- {'prop':'dc:identifier', entity_phrase:['1_1']}.
+    2. If no relation OR entity_phrases (these must be small MEANINGFUL text)
+       choose "What are all the objects of a given class?"
+    3. Default to What are all the objects of a given class? if unsure.
 
-    If `retrieval_mode` is `class-members`, `class_member_scope` must be one of:
-    - `linked-only`: only use class members already linked to the question
-    - `all`: explore class members broadly
+    Example 1:
+    question:
+    ONLY PROVIDE THE function_id
     """
 
     question: str = dspy.InputField(
@@ -161,38 +148,33 @@ class SyntheticQuestionInitialRetrievalDecisionSignature(dspy.Signature):
     schema_context: str = dspy.InputField(
         desc="Compact ontology and schema summary."
     )
-    candidate_classes: List[str] = dspy.InputField(
-        desc="Likely ontology classes relevant to the question."
-    )
     entity_phrases: List[str] = dspy.InputField(
         desc="Entity mentions or lookup phrases extracted from the question."
     )
-    linked_entity_candidates: str = dspy.InputField(
-        desc="Short preview of candidate objects linked from the object store."
+    functions: List[str] = dspy.InputField(
+        desc="Functions in the format function_id : question the function solves"
     )
-    retrieval_mode: str = dspy.OutputField(
-        desc="Either `linked-entities` or `class-members`."
+    function_id: str = dspy.OutputField(
+        desc="function_id of selected function. ONLY PROVIDE THE function_id"
     )
-    class_member_scope: str = dspy.OutputField(
-        desc="Either `linked-only` or `all`. Use `linked-only` when retrieval_mode is `linked-entities`."
-    )
+
     decision_reasoning: str = dspy.OutputField(
         desc="Brief reason for the chosen retrieval mode."
     )
 
 
-class SyntheticQuestionCategorySelectionSignature(dspy.Signature):
+class SelectSyntheticQuestionSignature(dspy.Signature):
     """
-    Decide which synthetic-question retrieval categories are plausible for the
-    current question.
+    Select the best synthetic question function to execute next.
 
-    Select one or more category ids from the provided options. Multiple
-    categories are allowed when the question could reasonably require different
-    retrieval strategies. Never invent new category ids.
+    Choose exactly one function_id from the provided functions. The function_id
+    should be copied exactly from the candidate list.
+
+    ONLY PROVIDE THE function_id
     """
 
     question: str = dspy.InputField(
-        desc="The question that should be answered."
+        desc="The current question or retrieval need."
     )
     application_context: str = dspy.InputField(
         desc="Description of the application and its functional scope."
@@ -200,43 +182,35 @@ class SyntheticQuestionCategorySelectionSignature(dspy.Signature):
     schema_context: str = dspy.InputField(
         desc="Compact ontology and schema summary."
     )
-    predecessor_context: str = dspy.InputField(
-        desc="Answers or evidence already available."
+    step_context: str = dspy.InputField(
+        desc="Evidence and retrieval context gathered so far."
     )
-    candidate_classes: List[str] = dspy.InputField(
-        desc="Likely ontology classes relevant to the question."
+    judge_context: str = dspy.InputField(
+        desc="Current judge answer and feedback describing what is missing."
     )
-    candidate_relations: List[str] = dspy.InputField(
-        desc="Likely ontology relations relevant to the question."
+    functions: List[str] = dspy.InputField(
+        desc="Candidate functions in the format function_id : question the function solves."
     )
-    category_options: str = dspy.InputField(
-        desc="Available retrieval category ids and short usage guidance."
+    entity_phrases: List[str] = dspy.InputField(
+        desc="Entity mentions or lookup phrases relevant to the next retrieval."
     )
-    plausible_categories: List[str] = dspy.OutputField(
-        desc="One or more category ids selected from the provided options."
+    function_id: str = dspy.OutputField(
+        desc="Exact function_id of the selected function. Do not include the function description."
+    )
+    decision_reasoning: str = dspy.OutputField(
+        desc="Brief reason for selecting this function."
     )
 
 
-class SyntheticQuestionPlanningSignature(dspy.Signature):
+class SyntheticQuestionPathGroundingSignature(dspy.Signature):
     """
-    Build a short ordered execution plan using the provided synthetic questions.
+    Ground the next path-level synthetic question to available ontology classes.
 
-    Return a JSON array. Each step object must contain:
-    - step_id
-    - sub_question
-    - program_id
-    - input_bindings
-    - expected_classes
-
-    `program_id` must exactly match one of the provided candidates.
-    `input_bindings` may use:
-    - ontology CURIEs or full IRIs,
-    - free-text lookup phrases,
-    - STEP:<step_id> to reference entities from a previous step.
+    Use only class ids from available_classes when possible.
     """
 
     question: str = dspy.InputField(
-        desc="The question being answered."
+        desc="The current question or retrieval need."
     )
     application_context: str = dspy.InputField(
         desc="Description of the application and its functional scope."
@@ -244,23 +218,40 @@ class SyntheticQuestionPlanningSignature(dspy.Signature):
     schema_context: str = dspy.InputField(
         desc="Compact ontology and schema summary."
     )
-    predecessor_context: str = dspy.InputField(
-        desc="Answers or evidence already available."
+    step_context: str = dspy.InputField(
+        desc="Evidence and retrieval context gathered so far."
     )
-    candidate_synthetic_questions: str = dspy.InputField(
-        desc="Candidate synthetic questions with program ids, filters, and query inputs."
+    judge_context: str = dspy.InputField(
+        desc="Current judge answer and feedback describing what is missing."
     )
-    execution_plan_json: str = dspy.OutputField(
-        desc="A JSON array describing the ordered execution plan."
+    available_classes: List[str] = dspy.InputField(
+        desc="Available start-node ontology classes for path-level synthetic questions."
     )
+    candidate_classes: List[str] = dspy.OutputField(
+        desc="Likely start-node classes for path-level retrieval, copied from available_classes when possible."
+    )
+    entitys: List[str] = dspy.OutputField(
+        desc="This are the associated entities and must be URIs (can use prefix)"
+    )
+
 
 
 class SyntheticQuestionParameterSignature(dspy.Signature):
     """
     Fill the SPARQL template placeholders for a selected synthetic question.
 
-    Return a JSON object or JSON array of objects. Use full IRIs for class or
-    object URI placeholders. Use raw strings only for literal filter values.
+    Return a JSON object or JSON array of objects. Use prefixes if available else
+    URI. 
+    
+    Instructions
+    1. Use Either URI (with or without prefix) or strings withing qoutations. 
+    2. if spec contains 
+            prop_vlaue: then select important words from the question and return DO NOT SEND RETURN THE WHOLE QUESTION.
+            obj, obj_uri: Must be entities in predecessor_context (Answers or evidence already available), Do NOT send Ontology entity , Select multiple if they apply
+            class_url: Must be an Ontology/Schema entity.
+
+    Formatting Instructions for parameter_values_json.
+    1. for each object create a json list
     """
 
     question: str = dspy.InputField(
@@ -269,12 +260,12 @@ class SyntheticQuestionParameterSignature(dspy.Signature):
     application_context: str = dspy.InputField(
         desc="Description of the application and its functional scope."
     )
+    schema_context: str = dspy.InputField(
+        desc="Compact ontology and schema summary, this containes ontology prefixes     "
+    )
     predecessor_context: str = dspy.InputField(
         desc="Answers or evidence already available."
-    )
-    previous_step_results: str = dspy.InputField(
-        desc="Results from previously executed synthetic-question steps."
-    )
+        )
     step_spec: str = dspy.InputField(
         desc="The synthetic-question step being executed, including its program id, sub-question, and expected classes."
     )
@@ -318,6 +309,41 @@ class SyntheticQuestionResultSignature(dspy.Signature):
     )
 
 
+class ImportantEntitySelectionSignature(dspy.Signature):
+    """
+    Select the entities from the latest retrieval step that should be carried
+    forward into the next retrieval step.
+    """
+
+    original_question: str = dspy.InputField(
+        desc="The overall question being answered."
+    )
+    current_question: str = dspy.InputField(
+        desc="The current question used for the latest retrieval step."
+    )
+    application_context: str = dspy.InputField(
+        desc="Description of the application and its functional scope."
+    )
+    step_context: str = dspy.InputField(
+        desc="Context accumulated before the latest retrieval step."
+    )
+    judge_context: str = dspy.InputField(
+        desc="Current judge answer and feedback describing what is missing."
+    )
+    latest_step_results: str = dspy.InputField(
+        desc="Latest retrieval step results containing candidate entity URIs and attributes."
+    )
+    candidate_entities: List[str] = dspy.InputField(
+        desc="Candidate entity URIs from the latest retrieval step."
+    )
+    important_entities: List[str] = dspy.OutputField(
+        desc="Entity URIs from candidate_entities that should be passed to the next step."
+    )
+    selection_reasoning: str = dspy.OutputField(
+        desc="Brief reason these entities are relevant for the next retrieval step."
+    )
+
+
 class SyntheticQuestionNextStepSignature(dspy.Signature):
     """
     Decide the next single question to execute in the traversal.
@@ -339,9 +365,6 @@ class SyntheticQuestionNextStepSignature(dspy.Signature):
     schema_context: str = dspy.InputField(
         desc="Compact ontology and schema summary."
     )
-    predecessor_context: str = dspy.InputField(
-        desc="Answers or evidence already available before the current node."
-    )
     step_context: str = dspy.InputField(
         desc="Accumulated traversal context from previous rounds."
     )
@@ -358,34 +381,6 @@ class SyntheticQuestionNextStepSignature(dspy.Signature):
         desc="The next concise question that should be executed to move closer to answering the original question."
     )
 
-
-class AnswerRevisionSignature(dspy.Signature):
-    """
-    Revise an answer using judge feedback while staying faithful to the provided
-    evidence and without inventing facts.
-    """
-
-    question: str = dspy.InputField(
-        desc="The question that should be answered."
-    )
-    application_context: str = dspy.InputField(
-        desc="Description of the application and its functional scope."
-    )
-    predecessor_context: str = dspy.InputField(
-        desc="Answers or evidence already gathered from predecessor nodes."
-    )
-    answer: str = dspy.InputField(
-        desc="The current draft answer."
-    )
-    feedback: str = dspy.InputField(
-        desc="Judge feedback describing what is missing or incorrect."
-    )
-    evidence_context: str = dspy.InputField(
-        desc="Grounded execution evidence and prior answers."
-    )
-    revised_answer: str = dspy.OutputField(
-        desc="A revised answer that addresses the feedback while remaining grounded in the evidence."
-    )
 
 
 class LeafNodeVerificationSignature(dspy.Signature):

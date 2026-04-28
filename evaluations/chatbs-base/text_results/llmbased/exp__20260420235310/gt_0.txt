@@ -1,0 +1,66 @@
+Result ID
+gt_0
+
+Question
+How many unique "experiment execution" are there in this?
+
+Answer
+The closest grounded entity is Execution. <cite, id=0>Execution</cite>
+
+Relevant Entities
+1. Execution (provone:Execution) [score=1.0]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "provone:Execution",
+    "label": "Execution",
+    "score": 1.0,
+    "types": []
+  }
+]
+
+Evidence
+1. system prompt execution 1 1 (ChatBS-NexGen:id_20260420105652_650) -- type (rdf:type) -> Execution (provone:Execution) [direction=outgoing; literal=False; score=1.0]
+2. llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) -- type (rdf:type) -> Execution (provone:Execution) [direction=outgoing; literal=False; score=0.9]
+3. information extraction 1 1 (ChatBS-NexGen:id_20260420105703_307) -- type (rdf:type) -> Execution (provone:Execution) [direction=outgoing; literal=False; score=0.8]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "provone:Execution",
+    "object_is_literal": false,
+    "object_label": "Execution",
+    "predicate_id": "rdf:type",
+    "predicate_label": "type",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:id_20260420105652_650",
+    "subject_label": "system prompt execution 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "provone:Execution",
+    "object_is_literal": false,
+    "object_label": "Execution",
+    "predicate_id": "rdf:type",
+    "predicate_label": "type",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:id_20260420105659_302",
+    "subject_label": "llm chat 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "provone:Execution",
+    "object_is_literal": false,
+    "object_label": "Execution",
+    "predicate_id": "rdf:type",
+    "predicate_label": "type",
+    "score": 0.8,
+    "subject_id": "ChatBS-NexGen:id_20260420105703_307",
+    "subject_label": "information extraction 1 1"
+  }
+]
+
+Timing
+0.20300970308016986 seconds

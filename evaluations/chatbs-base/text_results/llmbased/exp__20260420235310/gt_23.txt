@@ -1,0 +1,74 @@
+Result ID
+gt_23
+
+Question
+what are the executions of the system prompt template step in the pipeline?
+
+Answer
+The system prompt was produced by the LLM Chat execution and then used by LLM Chat to produce generated answer. <cite, id=0>system prompt</cite> <cite, id=1>LLM Chat</cite> <cite, id=2>llm chat 1 1</cite>
+
+Relevant Entities
+1. system prompt (ChatBS-NexGen:Data-id_20260420105652_456-system_prompt) [types=['provone:Data']; score=1.0]
+2. LLM Chat (ChatBS-NexGen:llm_chat) [types=['provone:Program']; score=0.9]
+3. llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) [types=['provone:Execution']; score=0.8]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:Data-id_20260420105652_456-system_prompt",
+    "label": "system prompt",
+    "score": 1.0,
+    "types": [
+      "provone:Data"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:llm_chat",
+    "label": "LLM Chat",
+    "score": 0.9,
+    "types": [
+      "provone:Program"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:id_20260420105659_302",
+    "label": "llm chat 1 1",
+    "score": 0.8,
+    "types": [
+      "provone:Execution"
+    ]
+  }
+]
+
+Evidence
+1. system prompt (ChatBS-NexGen:Data-id_20260420105652_456-system_prompt) -- wasGeneratedBy (prov:wasGeneratedBy) -> llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) [direction=outgoing; literal=False; score=1.0]
+2. llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) -- used (prov:used) -> system prompt (ChatBS-NexGen:Data-id_20260420105652_456-system_prompt) [direction=outgoing; literal=False; score=0.9]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:id_20260420105659_302",
+    "object_is_literal": false,
+    "object_label": "llm chat 1 1",
+    "predicate_id": "prov:wasGeneratedBy",
+    "predicate_label": "wasGeneratedBy",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:Data-id_20260420105652_456-system_prompt",
+    "subject_label": "system prompt"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:Data-id_20260420105652_456-system_prompt",
+    "object_is_literal": false,
+    "object_label": "system prompt",
+    "predicate_id": "prov:used",
+    "predicate_label": "used",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:id_20260420105659_302",
+    "subject_label": "llm chat 1 1"
+  }
+]
+
+Timing
+0.3838436689693481 seconds

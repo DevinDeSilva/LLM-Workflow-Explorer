@@ -1,0 +1,1210 @@
+Result ID
+gt_11
+
+Original Question
+what are the input parameters of the function used in llm chat function step in the pipeline?
+
+Sub Questions
+None
+
+Topology Graph
+Nodes:
+[0] what are the input parameters of the function used in llm chat function step in the pipeline?
+
+Edges:
+(none)
+
+Adjacency:
+(none)
+
+Details Of Question Solving
+Question [0]
+Question: what are the input parameters of the function used in llm chat function step in the pipeline?
+Depends on: None
+
+Grounding:
+{
+  "candidate_classes": [
+    "workflow:Generative_Task",
+    "provone:Program",
+    "provone:Port",
+    "provone:Execution"
+  ],
+  "candidate_relations": [
+    "workflow:llm_model",
+    "dcterms:identifier"
+  ],
+  "entity_phrases": [
+    "input parameters",
+    "llm chat function step",
+    "pipeline"
+  ]
+}
+
+Answer Requirements:
+[
+  "Identify the relevant ontology classes representing the LLM step, such as provone:Execution or workflow:Generative_Task.",
+  "Describe how input parameters are defined at the program level using properties like provone:hasInPort and provone:Port.",
+  "Explain how these inputs are associated with specific data instances during execution via prov:used and prov:Usage."
+]
+
+Retrieved Objects:
+[
+  "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+  "ChatBS-NexGen:Generative_Task-id_20260420105703_307",
+  "ChatBS-NexGen:Generative_Task-information_extractor",
+  "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+  "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+  "ChatBS-NexGen:llm_chat-system_prompt",
+  "ChatBS-NexGen:llm_chat-user_prompt",
+  "ChatBS-NexGen:system_prompt_generator-age",
+  "ChatBS-NexGen:system_prompt_generator-allergies",
+  "ChatBS-NexGen:system_prompt_generator-bodyMassIndex",
+  "ChatBS-NexGen:system_prompt_generator-diagnosis",
+  "ChatBS-NexGen:system_prompt_generator-foodPreferences",
+  "ChatBS-NexGen:system_prompt_generator-gender",
+  "ChatBS-NexGen:system_prompt_generator-height",
+  "ChatBS-NexGen:system_prompt_generator-weight",
+  "ChatBS-NexGen:batch_sparql_query_extractor-entities",
+  "ChatBS-NexGen:batch_sparql_query_extractor-query_function"
+]
+
+Schema Info Used:
+Workflow schema
+Classes:
+- workflow:Generative_Task (Generative Task): A task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data.
+- workflow:Large_Language_Models (Large Language Models)
+- workflow:Large_Language_Model_Output (Large Language Model Output): An Output Artifact from a AI Task
+- eo:Reasoning_Mode (Reasoning Mode): a process being executed by the system that achieves a particular goal; e.g. inference models such as treatment planning involved in medical diagnosis can be considered...
+- provone:Program (Program): A Program represents a computational task that consumes and produces data through its input and output ports, respectively. It can be atomic or composite, the latter case...
+- provone:Port (Port): A Port enables a Program to send and receive Entities (Data, Visualizations, etc.). When used in a role as an input port, default parameters may be configured for the Port.
+- provone:Channel (Channel): A Channel provides a connection between Ports that are defined for Programs. Typically, a Program with an output Port defined using the provone:hasOutPort object property...
+- provone:Execution (Execution): An Execution represents the execution of a Program. If the Program in question is a Workflow, then the Execution represents a trace of its execution.
+- provone:User (User): A User is the person responsible for the execution of a Program, which in turn can be a Workflow. Its specification serves attribution and accountability purposes.
+- provone:Data (Data): A Data item represents the basic unit of information consumed and produced by a Program. Multiple Data items may be grouped into a Collection.
+- provone:Collection
+- prov:Association (Association): An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity. It further allows for a plan to...
+- prov:Usage (Usage): Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity.
+- prov:Generation (Generation): Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.
+Object properties:
+- sio:SIO_000202; links workflow:Large_Language_Model_Output -> provone:Program, workflow:Large_Language_Model_Output -> provone:Data
+- sio:SIO_000229 (has output); links workflow:Large_Language_Models -> workflow:Large_Language_Model_Output
+- sio:SIO_000232 (is output of); links workflow:Large_Language_Model_Output -> workflow:Large_Language_Models
+- sio:SIO_000313 (is component part of); links workflow:Generative_Task -> provone:Execution
+- sio:SIO_000369 (has component part); links provone:Execution -> workflow:Generative_Task
+- sio:SIO_000230 (has input); links workflow:Large_Language_Models -> provone:Data
+- prov:used (used): A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .; links provone:Execution -> provone:Data, workflow:Generative_Task -> workflow:Large_Language_Models
+- prov:agent (hadPlan): Enables the specification of a particular User in a particular Association. This allows for further qualification of the prov:wasAssociatedWith property in the context of an...; links prov:Association -> provone:User
+- prov:qualifiedAssociation (qualifiedAssociation): If this Activity prov:wasAssociatedWith Agent :ag, then it can qualify the Association using prov:qualifiedAssociation [ a prov:Association; prov:agent :ag; :foo :bar ].; links provone:Execution -> prov:Association
+- prov:qualifiedUsage (qualifiedUsage): Enables the specification of a particular Usage by a particular Execution. This allows for further qualification of the prov:used property in the context of an Execution.; links provone:Execution -> prov:Usage
+- prov:qualifiedGeneration (qualifiedGeneration): If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualifiedGeneration [ a prov:Generation; prov:entity :e; :foo :bar ].; links provone:Execution -> prov:Generation
+- prov:hadPlan (hadPlan): The _optional_ Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.; links prov:Association -> provone:Program
+- provone:hasOutPort (hasOutPort): Enables the specification of a Port as an output port of a particular Program.; links provone:Program -> provone:Port
+- provone:hasInPort (hasInPort): Enables the specification of a Port as an input port of a particular Program.; links provone:Program -> provone:Port
+- provone:connectsTo (connectsTo): Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.; links provone:Port -> provone:Port
+- provone:hadInPort (hadInPort): Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.; links prov:Usage -> provone:Port
+- provone:hadOutPort (hadOutPort): Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:wasGeneratedBy property in the context of...; links prov:Generation -> provone:Port
+- prov:hadMember (hadMember); links provone:Collection -> provone:Data
+- provone:hadEntity (hadEntity): Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and...; links prov:Usage -> provone:Data, prov:Generation -> provone:Data
+- prov:wasInformedBy (wasInformedBy): An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.; links provone:Execution -> provone:Execution
+- prov:wasGeneratedBy (wasGeneratedBy); links provone:Data -> provone:Execution, provone:Collection -> provone:Execution
+- prov:wasAssociatedWith (wasAssociatedWith): An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.; links provone:Execution -> provone:User
+
+Synthetic Question Plan:
+1. round 0
+   Question: what are the input parameters of the function used in llm chat function step in the pipeline?
+   Object URIs (5):
+   - ChatBS-NexGen:Generative_Task-id_20260420105659_302
+   - ChatBS-NexGen:Generative_Task-id_20260420105703_307
+   - ChatBS-NexGen:Generative_Task-information_extractor
+   - ChatBS-NexGen:Generative_Task-query_result_post_processor
+   - ChatBS-NexGen:Generative_Task-system_prompt_generator
+2. round 1
+   Question: what are the explicit input parameters (ports) defined on the Program instances for the LLM chat function step?
+   Object URIs (12):
+   - ChatBS-NexGen:llm_chat-system_prompt
+   - ChatBS-NexGen:llm_chat-user_prompt
+   - ChatBS-NexGen:system_prompt_generator-age
+   - ChatBS-NexGen:system_prompt_generator-allergies
+   - ChatBS-NexGen:system_prompt_generator-bodyMassIndex
+   - ChatBS-NexGen:system_prompt_generator-diagnosis
+   - ChatBS-NexGen:system_prompt_generator-foodPreferences
+   - ChatBS-NexGen:system_prompt_generator-gender
+   - ChatBS-NexGen:system_prompt_generator-height
+   - ChatBS-NexGen:system_prompt_generator-weight
+   - ChatBS-NexGen:batch_sparql_query_extractor-entities
+   - ChatBS-NexGen:batch_sparql_query_extractor-query_function
+
+Intermediary Results:
+Step 1: step1
+Sub question: what are the input parameters of the function used in llm chat function step in the pipeline?
+Program: explore_object_of_class
+Answer:
+Retrieved 5 initial candidate object(s) relevant to the question: what are the input parameters of the function used in llm chat function step in the pipeline? <cite, id=0>ChatBS-NexGen:Generative_Task-id_20260420105659_302</cite> <cite, id=1>ChatBS-NexGen:Generative_Task-id_20260420105703_307</cite> <cite, id=2>ChatBS-NexGen:Generative_Task-information_extractor</cite> <cite, id=3>ChatBS-NexGen:Generative_Task-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:Generative_Task-system_prompt_generator</cite>
+Important entities:
+- ChatBS-NexGen:Generative_Task-id_20260420105659_302
+- ChatBS-NexGen:Generative_Task-id_20260420105703_307
+- ChatBS-NexGen:Generative_Task-information_extractor
+- ChatBS-NexGen:Generative_Task-query_result_post_processor
+- ChatBS-NexGen:Generative_Task-system_prompt_generator
+Results:
+{
+  "set_1": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:Generative_Task-id_20260420105659_302"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-id_20260420105703_307"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-information_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-query_result_post_processor"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+      }
+    ]
+  }
+}
+Extra:
+{
+  "execution_mode": "initial-data",
+  "extracted_results": [
+    {
+      "attributes": [
+        {
+          "object": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "ChatBS-NexGen:id_20260420105659_302",
+          "object_class": "provone:Execution",
+          "object_label": "llm_chat_1_1@en^^<xsd:string>",
+          "relation": "sio:SIO_000313"
+        },
+        {
+          "object": "workflow:Generative_Task",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        },
+        {
+          "object": "ChatBS-NexGen:LLM-id_20260420105659_302",
+          "object_class": "workflow:Large_Language_Model_Output",
+          "object_label": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "relation": "prov:used"
+        },
+        {
+          "object": "ChatBS-NexGen:LLM-id_20260420105659_302",
+          "object_class": "workflow:Large_Language_Models",
+          "object_label": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "relation": "prov:used"
+        }
+      ],
+      "uri": "ChatBS-NexGen:Generative_Task-id_20260420105659_302"
+    },
+    {
+      "attributes": [
+        {
+          "object": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "ChatBS-NexGen:id_20260420105703_307",
+          "object_class": "provone:Execution",
+          "object_label": "information_extraction_1_1@en^^<xsd:string>",
+          "relation": "sio:SIO_000313"
+        },
+        {
+          "object": "workflow:Generative_Task",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        },
+        {
+          "object": "ChatBS-NexGen:LLM-id_20260420105703_307",
+          "object_class": "workflow:Large_Language_Model_Output",
+          "object_label": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "relation": "prov:used"
+        },
+        {
+          "object": "ChatBS-NexGen:LLM-id_20260420105703_307",
+          "object_class": "workflow:Large_Language_Models",
+          "object_label": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "relation": "prov:used"
+        }
+      ],
+      "uri": "ChatBS-NexGen:Generative_Task-id_20260420105703_307"
+    },
+    {
+      "attributes": [
+        {
+          "object": "Generates the Information Extractor Function using Large language models@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "workflow:Generative_Task",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "Information Extractor function generator@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        },
+        {
+          "object": "2026-03-05 19:21:32@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "prov:atTime"
+        },
+        {
+          "object": "ChatBS-NexGen:LLM-information_extractor",
+          "object_class": "workflow:Large_Language_Models",
+          "object_label": "Information Extractor function generator@en^^<xsd:string>",
+          "relation": "prov:used"
+        }
+      ],
+      "uri": "ChatBS-NexGen:Generative_Task-information_extractor"
+    },
+    {
+      "attributes": [
+        {
+          "object": "Generates the post processing Function using Large language models@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "workflow:Generative_Task",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "Query Result Post-Processor function generator@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        },
+        {
+          "object": "2026-03-05 19:21:32@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "prov:atTime"
+        },
+        {
+          "object": "ChatBS-NexGen:LLM-query_result_post_processor",
+          "object_class": "workflow:Large_Language_Models",
+          "object_label": "Query Result Post-Processor function generator@en^^<xsd:string>",
+          "relation": "prov:used"
+        }
+      ],
+      "uri": "ChatBS-NexGen:Generative_Task-query_result_post_processor"
+    },
+    {
+      "attributes": [
+        {
+          "object": "Generates the System Prompt Template using Large language models@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "workflow:Generative_Task",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "System Prompt Template function generator@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        },
+        {
+          "object": "2026-03-05 19:21:32@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "prov:atTime"
+        },
+        {
+          "object": "ChatBS-NexGen:LLM-system_prompt_generator",
+          "object_class": "workflow:Large_Language_Models",
+          "object_label": "System Prompt Template function generator@en^^<xsd:string>",
+          "relation": "prov:used"
+        }
+      ],
+      "uri": "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+    }
+  ],
+  "parameter_values": [
+    {
+      "class_uri": "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Generative_Task"
+    }
+  ],
+  "strategy": "by_program"
+}
+
+Step 2: step2
+Sub question: what are the explicit input parameters (ports) defined on the Program instances for the LLM chat function step?
+Program: explore_path_provone:Program->provone:hasInPort->provone:Port
+Answer:
+Retrieved 12 initial candidate object(s) relevant to the question: what are the explicit input parameters (ports) defined on the Program instances for the LLM chat function step? <cite, id=0>ChatBS-NexGen:llm_chat-system_prompt</cite> <cite, id=1>ChatBS-NexGen:llm_chat-user_prompt</cite> <cite, id=2>ChatBS-NexGen:system_prompt_generator-age</cite> <cite, id=3>ChatBS-NexGen:system_prompt_generator-allergies</cite> <cite, id=4>ChatBS-NexGen:system_prompt_generator-bodyMassIndex</cite> <cite, id=5>ChatBS-NexGen:system_prompt_generator-diagnosis</cite>
+Important entities:
+- ChatBS-NexGen:llm_chat-system_prompt
+- ChatBS-NexGen:llm_chat-user_prompt
+- ChatBS-NexGen:system_prompt_generator-age
+- ChatBS-NexGen:system_prompt_generator-allergies
+- ChatBS-NexGen:system_prompt_generator-bodyMassIndex
+- ChatBS-NexGen:system_prompt_generator-diagnosis
+- ChatBS-NexGen:system_prompt_generator-foodPreferences
+- ChatBS-NexGen:system_prompt_generator-gender
+- ChatBS-NexGen:system_prompt_generator-height
+- ChatBS-NexGen:system_prompt_generator-weight
+- ChatBS-NexGen:batch_sparql_query_extractor-entities
+- ChatBS-NexGen:batch_sparql_query_extractor-query_function
+Results:
+{
+  "set_1": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:llm_chat-system_prompt"
+      },
+      {
+        "value": "ChatBS-NexGen:llm_chat-user_prompt"
+      }
+    ],
+    "set_2": [
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-age"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-allergies"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-bodyMassIndex"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-diagnosis"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-foodPreferences"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-gender"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-height"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-weight"
+      }
+    ],
+    "set_3": [
+      {
+        "value": "ChatBS-NexGen:batch_sparql_query_extractor-entities"
+      },
+      {
+        "value": "ChatBS-NexGen:batch_sparql_query_extractor-query_function"
+      }
+    ]
+  }
+}
+Extra:
+{
+  "execution_mode": "initial-data",
+  "extracted_results": [
+    {
+      "attributes": [
+        {
+          "object": "ChatBS-NexGen:channel_system_prompt",
+          "object_class": "provone:Channel",
+          "object_label": "Channel for the system prompt@en^^<xsd:string>",
+          "relation": "provone:connectsTo"
+        },
+        {
+          "object": "LLM Chat input port: system_prompt@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "provone:Port",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "LLM Chat input port: system_prompt@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:llm_chat-system_prompt"
+    },
+    {
+      "attributes": [
+        {
+          "object": "LLM Chat input port: user_prompt@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "provone:Port",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "LLM Chat input port: user_prompt@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:llm_chat-user_prompt"
+    },
+    {
+      "attributes": [
+        {
+          "object": "Input port for age in the system prompt generation program@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "provone:Port",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "Input port for age@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:system_prompt_generator-age"
+    },
+    {
+      "attributes": [
+        {
+          "object": "Input port for allergies in the system prompt generation program@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "provone:Port",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "Input port for allergies@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:system_prompt_generator-allergies"
+    },
+    {
+      "attributes": [
+        {
+          "object": "Input port for bodyMassIndex in the system prompt generation program@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "provone:Port",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "Input port for bodyMassIndex@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:system_prompt_generator-bodyMassIndex"
+    },
+    {
+      "attributes": [
+        {
+          "object": "Input port for diagnosis in the system prompt generation program@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "provone:Port",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "Input port for diagnosis@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:system_prompt_generator-diagnosis"
+    },
+    {
+      "attributes": [
+        {
+          "object": "Input port for foodPreferences in the system prompt generation program@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "provone:Port",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "Input port for foodPreferences@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:system_prompt_generator-foodPreferences"
+    },
+    {
+      "attributes": [
+        {
+          "object": "Input port for gender in the system prompt generation program@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "provone:Port",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "Input port for gender@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:system_prompt_generator-gender"
+    },
+    {
+      "attributes": [
+        {
+          "object": "Input port for height in the system prompt generation program@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "provone:Port",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "Input port for height@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:system_prompt_generator-height"
+    },
+    {
+      "attributes": [
+        {
+          "object": "Input port for weight in the system prompt generation program@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "provone:Port",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "Input port for weight@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:system_prompt_generator-weight"
+    },
+    {
+      "attributes": [
+        {
+          "object": "ChatBS-NexGen:channel_sparql_query_extraction",
+          "object_class": "provone:Channel",
+          "object_label": "Channel for the SPARQL query extraction@en^^<xsd:string>",
+          "relation": "provone:connectsTo"
+        },
+        {
+          "object": "KG query extraction input port: entities@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "provone:Port",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "KG query extraction input port: entities@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:batch_sparql_query_extractor-entities"
+    },
+    {
+      "attributes": [
+        {
+          "object": "KG query extraction input port: query_function@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "dc:description"
+        },
+        {
+          "object": "provone:Port",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdf:type"
+        },
+        {
+          "object": "KG query extraction input port: query_function@en^^<xsd:string>",
+          "object_class": "-",
+          "object_label": "-",
+          "relation": "rdfs:label"
+        }
+      ],
+      "uri": "ChatBS-NexGen:batch_sparql_query_extractor-query_function"
+    }
+  ],
+  "parameter_values": [
+    {
+      "obj": "http://testwebsite/testProgram#llm_chat"
+    },
+    {
+      "obj": "http://testwebsite/testProgram#system_prompt_generator"
+    },
+    {
+      "obj": "http://testwebsite/testProgram#batch_sparql_query_extractor"
+    }
+  ],
+  "strategy": "by_program"
+}
+
+Predecessor Context:
+None
+
+Step Context:
+Initial-data retrieval:
+{
+  "question": "what are the input parameters of the function used in llm chat function step in the pipeline?",
+  "original_question": "what are the input parameters of the function used in llm chat function step in the pipeline?",
+  "grounding": {
+    "candidate_classes": [
+      "workflow:Generative_Task",
+      "provone:Program",
+      "provone:Port",
+      "provone:Execution"
+    ],
+    "candidate_relations": [
+      "workflow:llm_model",
+      "dcterms:identifier"
+    ],
+    "entity_phrases": [
+      "input parameters",
+      "llm chat function step",
+      "pipeline"
+    ]
+  },
+  "program_id": "explore_object_of_class",
+  "parameter_values": [
+    {
+      "class_uri": "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Generative_Task"
+    }
+  ],
+  "strategy": "by_program",
+  "linked_entities": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:Generative_Task-id_20260420105659_302"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-id_20260420105703_307"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-information_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-query_result_post_processor"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+      }
+    ]
+  }
+}
+
+Answer loop round:
+{
+  "round": 1,
+  "question": "what are the input parameters of the function used in llm chat function step in the pipeline?",
+  "strategy": "by_program",
+  "program_id": "explore_object_of_class",
+  "grounding": {
+    "candidate_classes": [
+      "workflow:Generative_Task",
+      "provone:Program",
+      "provone:Port",
+      "provone:Execution"
+    ],
+    "candidate_relations": [
+      "workflow:llm_model",
+      "dcterms:identifier"
+    ],
+    "entity_phrases": [
+      "input parameters",
+      "llm chat function step",
+      "pipeline"
+    ]
+  },
+  "object_uris": [
+    "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+    "ChatBS-NexGen:Generative_Task-id_20260420105703_307",
+    "ChatBS-NexGen:Generative_Task-information_extractor",
+    "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+    "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+  ]
+}
+Step step1: what are the input parameters of the function used in llm chat function step in the pipeline?
+Function: What are all the objects of a given class?
+Answer: Retrieved 5 initial candidate object(s) relevant to the question: what are the input parameters of the function used in llm chat function step in the pipeline?
+Important entities: 
+ChatBS-NexGen:Generative_Task-id_20260420105659_302 =>dc:description=LLM Generates an text for 
+system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. 
+
+user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. 
+
+using: gpt-4o@en^^<xsd:string>; sio:SIO_000313=ChatBS-NexGen:id_20260420105659_302; rdf:type=workflow:Generative_Task; rdfs:label=LLM Generates an text for 
+system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. 
+
+user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. 
+
+using: gpt-4o@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-id_20260420105659_302; prov:used=ChatBS-NexGen:LLM-id_20260420105659_302; 
+ChatBS-NexGen:Generative_Task-id_20260420105703_307 =>dc:description=Extracts important entities for 
+text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:
+
+1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.
+
+2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.
+
+3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.
+
+4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.
+
+5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.
+
+Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. 
+
+using: gpt-4o@en^^<xsd:string>; sio:SIO_000313=ChatBS-NexGen:id_20260420105703_307; rdf:type=workflow:Generative_Task; rdfs:label=Extracts important entities for 
+text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:
+
+1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.
+
+2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.
+
+3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.
+
+4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.
+
+5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.
+
+Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. 
+
+using: gpt-4o@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-id_20260420105703_307; prov:used=ChatBS-NexGen:LLM-id_20260420105703_307; 
+ChatBS-NexGen:Generative_Task-information_extractor =>dc:description=Generates the Information Extractor Function using Large language models@en^^<xsd:string>; rdf:type=workflow:Generative_Task; rdfs:label=Information Extractor function generator@en^^<xsd:string>; prov:atTime=2026-03-05 19:21:32@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-information_extractor; 
+ChatBS-NexGen:Generative_Task-query_result_post_processor =>dc:description=Generates the post processing Function using Large language models@en^^<xsd:string>; rdf:type=workflow:Generative_Task; rdfs:label=Query Result Post-Processor function generator@en^^<xsd:string>; prov:atTime=2026-03-05 19:21:32@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-query_result_post_processor; 
+ChatBS-NexGen:Generative_Task-system_prompt_generator =>dc:description=Generates the System Prompt Template using Large language models@en^^<xsd:string>; rdf:type=workflow:Generative_Task; rdfs:label=System Prompt Template function generator@en^^<xsd:string>; prov:atTime=2026-03-05 19:21:32@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-system_prompt_generator; 
+
+Results: {
+  "set_1": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:Generative_Task-id_20260420105659_302"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-id_20260420105703_307"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-information_extractor"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-query_result_post_processor"
+      },
+      {
+        "value": "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+      }
+    ]
+  }
+}
+
+Answer loop round:
+{
+  "round": 2,
+  "question": "what are the explicit input parameters (ports) defined on the Program instances for the LLM chat function step?",
+  "strategy": "by_program",
+  "program_id": "explore_path_provone:Program->provone:hasInPort->provone:Port",
+  "grounding": {
+    "candidate_classes": [
+      "provone:Program"
+    ],
+    "entity_phrases": [
+      "what",
+      "are",
+      "the",
+      "explicit",
+      "input"
+    ],
+    "candidate_relations": []
+  },
+  "object_uris": [
+    "ChatBS-NexGen:llm_chat-system_prompt",
+    "ChatBS-NexGen:llm_chat-user_prompt",
+    "ChatBS-NexGen:system_prompt_generator-age",
+    "ChatBS-NexGen:system_prompt_generator-allergies",
+    "ChatBS-NexGen:system_prompt_generator-bodyMassIndex",
+    "ChatBS-NexGen:system_prompt_generator-diagnosis",
+    "ChatBS-NexGen:system_prompt_generator-foodPreferences",
+    "ChatBS-NexGen:system_prompt_generator-gender",
+    "ChatBS-NexGen:system_prompt_generator-height",
+    "ChatBS-NexGen:system_prompt_generator-weight",
+    "ChatBS-NexGen:batch_sparql_query_extractor-entities",
+    "ChatBS-NexGen:batch_sparql_query_extractor-query_function"
+  ]
+}
+Step step2: what are the explicit input parameters (ports) defined on the Program instances for the LLM chat function step?
+Function: What input ports (data/visualizations) are required for a specific Program or function instance?
+Answer: Retrieved 12 initial candidate object(s) relevant to the question: what are the explicit input parameters (ports) defined on the Program instances for the LLM chat function step?
+Important entities: 
+ChatBS-NexGen:llm_chat-system_prompt =>provone:connectsTo=ChatBS-NexGen:channel_system_prompt; dc:description=LLM Chat input port: system_prompt@en^^<xsd:string>; rdf:type=provone:Port; rdfs:label=LLM Chat input port: system_prompt@en^^<xsd:string>; 
+ChatBS-NexGen:llm_chat-user_prompt =>dc:description=LLM Chat input port: user_prompt@en^^<xsd:string>; rdf:type=provone:Port; rdfs:label=LLM Chat input port: user_prompt@en^^<xsd:string>; 
+ChatBS-NexGen:system_prompt_generator-age =>dc:description=Input port for age in the system prompt generation program@en^^<xsd:string>; rdf:type=provone:Port; rdfs:label=Input port for age@en^^<xsd:string>; 
+ChatBS-NexGen:system_prompt_generator-allergies =>dc:description=Input port for allergies in the system prompt generation program@en^^<xsd:string>; rdf:type=provone:Port; rdfs:label=Input port for allergies@en^^<xsd:string>; 
+ChatBS-NexGen:system_prompt_generator-bodyMassIndex =>dc:description=Input port for bodyMassIndex in the system prompt generation program@en^^<xsd:string>; rdf:type=provone:Port; rdfs:label=Input port for bodyMassIndex@en^^<xsd:string>; 
+ChatBS-NexGen:system_prompt_generator-diagnosis =>dc:description=Input port for diagnosis in the system prompt generation program@en^^<xsd:string>; rdf:type=provone:Port; rdfs:label=Input port for diagnosis@en^^<xsd:string>; 
+ChatBS-NexGen:system_prompt_generator-foodPreferences =>dc:description=Input port for foodPreferences in the system prompt generation program@en^^<xsd:string>; rdf:type=provone:Port; rdfs:label=Input port for foodPreferences@en^^<xsd:string>; 
+ChatBS-NexGen:system_prompt_generator-gender =>dc:description=Input port for gender in the system prompt generation program@en^^<xsd:string>; rdf:type=provone:Port; rdfs:label=Input port for gender@en^^<xsd:string>; 
+ChatBS-NexGen:system_prompt_generator-height =>dc:description=Input port for height in the system prompt generation program@en^^<xsd:string>; rdf:type=provone:Port; rdfs:label=Input port for height@en^^<xsd:string>; 
+ChatBS-NexGen:system_prompt_generator-weight =>dc:description=Input port for weight in the system prompt generation program@en^^<xsd:string>; rdf:type=provone:Port; rdfs:label=Input port for weight@en^^<xsd:string>; 
+ChatBS-NexGen:batch_sparql_query_extractor-entities =>provone:connectsTo=ChatBS-NexGen:channel_sparql_query_extraction; dc:description=KG query extraction input port: entities@en^^<xsd:string>; rdf:type=provone:Port; rdfs:label=KG query extraction input port: entities@en^^<xsd:string>; 
+ChatBS-NexGen:batch_sparql_query_extractor-query_function =>dc:description=KG query extraction input port: query_function@en^^<xsd:string>; rdf:type=provone:Port; rdfs:label=KG query extraction input port: query_function@en^^<xsd:string>; 
+
+Results: {
+  "set_1": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:llm_chat-system_prompt"
+      },
+      {
+        "value": "ChatBS-NexGen:llm_chat-user_prompt"
+      }
+    ],
+    "set_2": [
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-age"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-allergies"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-bodyMassIndex"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-diagnosis"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-foodPreferences"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-gender"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-height"
+      },
+      {
+        "value": "ChatBS-NexGen:system_prompt_generator-weight"
+      }
+    ],
+    "set_3": [
+      {
+        "value": "ChatBS-NexGen:batch_sparql_query_extractor-entities"
+      },
+      {
+        "value": "ChatBS-NexGen:batch_sparql_query_extractor-query_function"
+      }
+    ]
+  }
+}
+
+Schema Reasoning:
+{}
+
+Validation / Judge:
+{
+  "answer": "Based on the provided ontology schema and the query dialogue analysis, the \"LLM chat function step\" within the pipeline is represented by a `provone:Program` instance (specifically identified as `ChatBS-NexGen:llm_chat`). The explicit input parameters for this specific program step are defined as `provone:Port` instances that accept data required to execute the Large Language Model inference.\n\nAccording to the retrieval results from Step 2 of the reasoning process, there are two direct input parameters (ports) defined on the Program instance for the LLM Chat function step:\n1.  **system_prompt**: This input port receives a structured instruction set that defines the behavior and constraints of the AI assistant. In this specific context, the system prompt is configured to act as a \"health care assistant\" responsible for responding to users with specific demographics (e.g., age, gender, diagnosis) and providing dietary guidelines while considering factors like allergies and food preferences.\n2.  **user_prompt**: This input port receives the actual inquiry or request from the user that needs to be addressed by the system (e.g., \"I need suggestions for light and energy-boosting foods to eat before my gym workout\").\n\nWhile other parameters such as `age`, `diagnosis`, `height`, `weight`, etc., are present in the pipeline, they serve as inputs to the `system_prompt_generator` Program. These parameters are used to construct or populate the content of the system prompt *before* it reaches the LLM Chat step. Therefore, the direct input parameters required for the execution of the LLM Chat function itself are the compiled **system_prompt** and the **user_prompt**.",
+  "answered": true,
+  "feedback": "The answer accurately identifies the input parameters for the \"LLM chat function step\" based on the provided evidence context. It correctly distinguishes between the direct inputs required by the `llm_chat` program (`system_prompt`, `user_prompt`) and the inputs used by upstream programs like `system_prompt_generator`. The response is complete and aligned with the retrieved ontology data."
+}
+
+Answer:
+Based on the provided ontology schema and the query dialogue analysis, the "LLM chat function step" within the pipeline is represented by a `provone:Program` instance (specifically identified as `ChatBS-NexGen:llm_chat`). The explicit input parameters for this specific program step are defined as `provone:Port` instances that accept data required to execute the Large Language Model inference.
+
+According to the retrieval results from Step 2 of the reasoning process, there are two direct input parameters (ports) defined on the Program instance for the LLM Chat function step:
+1.  **system_prompt**: This input port receives a structured instruction set that defines the behavior and constraints of the AI assistant. In this specific context, the system prompt is configured to act as a "health care assistant" responsible for responding to users with specific demographics (e.g., age, gender, diagnosis) and providing dietary guidelines while considering factors like allergies and food preferences.
+2.  **user_prompt**: This input port receives the actual inquiry or request from the user that needs to be addressed by the system (e.g., "I need suggestions for light and energy-boosting foods to eat before my gym workout").
+
+While other parameters such as `age`, `diagnosis`, `height`, `weight`, etc., are present in the pipeline, they serve as inputs to the `system_prompt_generator` Program. These parameters are used to construct or populate the content of the system prompt *before* it reaches the LLM Chat step. Therefore, the direct input parameters required for the execution of the LLM Chat function itself are the compiled **system_prompt** and the **user_prompt**. <cite, id=0>ChatBS-NexGen:Generative_Task-id_20260420105659_302</cite> <cite, id=1>ChatBS-NexGen:Generative_Task-id_20260420105703_307</cite> <cite, id=2>ChatBS-NexGen:Generative_Task-information_extractor</cite> <cite, id=3>ChatBS-NexGen:Generative_Task-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:Generative_Task-system_prompt_generator</cite> <cite, id=5>ChatBS-NexGen:llm_chat-system_prompt</cite>
+
+Additional Fields:
+{
+  "token_usage": {
+    "calls": [
+      {
+        "estimated": true,
+        "model": "lm_studio/qwen/qwen3.5-35b-a3b",
+        "source": "dspy_lm_history",
+        "usage": {
+          "completion_tokens": 2904,
+          "prompt_tokens": 1878,
+          "total_tokens": 4782
+        }
+      },
+      {
+        "estimated": true,
+        "model": "lm_studio/qwen/qwen3.5-35b-a3b",
+        "source": "dspy_lm_history",
+        "usage": {
+          "completion_tokens": 774,
+          "prompt_tokens": 2463,
+          "total_tokens": 3237
+        }
+      },
+      {
+        "estimated": true,
+        "model": "lm_studio/qwen/qwen3.5-35b-a3b",
+        "source": "dspy_lm_history",
+        "usage": {
+          "completion_tokens": 3480,
+          "prompt_tokens": 2140,
+          "total_tokens": 5620
+        }
+      },
+      {
+        "estimated": true,
+        "model": "lm_studio/qwen/qwen3.5-35b-a3b",
+        "source": "dspy_lm_history",
+        "usage": {
+          "completion_tokens": 2892,
+          "prompt_tokens": 2090,
+          "total_tokens": 4982
+        }
+      },
+      {
+        "estimated": true,
+        "model": "lm_studio/qwen/qwen3.5-35b-a3b",
+        "source": "dspy_lm_history",
+        "usage": {
+          "completion_tokens": 1103,
+          "prompt_tokens": 5705,
+          "total_tokens": 6808
+        }
+      },
+      {
+        "estimated": true,
+        "model": "lm_studio/qwen/qwen3.5-35b-a3b",
+        "source": "dspy_lm_history",
+        "usage": {
+          "completion_tokens": 702,
+          "prompt_tokens": 4732,
+          "total_tokens": 5434
+        }
+      },
+      {
+        "estimated": true,
+        "model": "lm_studio/qwen/qwen3.5-35b-a3b",
+        "source": "dspy_lm_history",
+        "usage": {
+          "completion_tokens": 3884,
+          "prompt_tokens": 7980,
+          "total_tokens": 11864
+        }
+      },
+      {
+        "estimated": true,
+        "model": "lm_studio/qwen/qwen3.5-35b-a3b",
+        "source": "dspy_lm_history",
+        "usage": {
+          "completion_tokens": 2888,
+          "prompt_tokens": 5428,
+          "total_tokens": 8316
+        }
+      },
+      {
+        "estimated": true,
+        "model": "lm_studio/qwen/qwen3.5-35b-a3b",
+        "source": "dspy_lm_history",
+        "usage": {
+          "completion_tokens": 1306,
+          "prompt_tokens": 4820,
+          "total_tokens": 6126
+        }
+      },
+      {
+        "estimated": true,
+        "model": "lm_studio/qwen/qwen3.5-35b-a3b",
+        "source": "dspy_lm_history",
+        "usage": {
+          "completion_tokens": 6126,
+          "prompt_tokens": 5008,
+          "total_tokens": 11134
+        }
+      },
+      {
+        "estimated": true,
+        "model": "lm_studio/qwen/qwen3.5-35b-a3b",
+        "source": "dspy_lm_history",
+        "usage": {
+          "completion_tokens": 2594,
+          "prompt_tokens": 8265,
+          "total_tokens": 10859
+        }
+      },
+      {
+        "estimated": true,
+        "model": "lm_studio/qwen/qwen3.5-35b-a3b",
+        "source": "dspy_lm_history",
+        "usage": {
+          "completion_tokens": 863,
+          "prompt_tokens": 7291,
+          "total_tokens": 8154
+        }
+      }
+    ],
+    "completion_tokens": 29516,
+    "estimated": true,
+    "models": {
+      "lm_studio/qwen/qwen3.5-35b-a3b": {
+        "completion_tokens": 29516,
+        "prompt_tokens": 57800,
+        "total_tokens": 87316
+      }
+    },
+    "prompt_tokens": 57800,
+    "source": "dspy_lm_history",
+    "total_tokens": 87316
+  }
+}
+
+Final Report
+### Overall Answer to the Question:
+Based on the provided ontology schema and the query dialogue analysis, the "LLM chat function step" within the pipeline is represented by a `provone:Program` instance (specifically identified as `ChatBS-NexGen:llm_chat`). The explicit input parameters for this specific program step are defined as `provone:Port` instances that accept data required to execute the Large Language Model inference.
+
+According to the retrieval results from Step 2 of the reasoning process, there are two direct input parameters (ports) defined on the Program instance for the LLM Chat function step:
+1.  **system_prompt**: This input port receives a structured instruction set that defines the behavior and constraints of the AI assistant. In this specific context, the system prompt is configured to act as a "health care assistant" responsible for responding to users with specific demographics (e.g., age, gender, diagnosis) and providing dietary guidelines while considering factors like allergies and food preferences.
+2.  **user_prompt**: This input port receives the actual inquiry or request from the user that needs to be addressed by the system (e.g., "I need suggestions for light and energy-boosting foods...
+
+### Original Question:
+what are the input parameters of the function used in llm chat function step in the pipeline?
+
+### Grounded Reasoning Trace:
+Question [0]: what are the input parameters of the function used in llm chat function step in the pipeline?
+Answer: Based on the provided ontology schema and the query dialogue analysis, the "LLM chat function step" within the pipeline is represented by a `provone:Program` instance (specifically identified as `ChatBS-NexGen:llm_chat`). The explicit input parameters for this specific program step are defined as `provone:Port` instances that accept data required to execute the Large Language Model inference.
+
+According to the retrieval results from Step 2 of the reasoning process, there are two direct input parameters (ports) defined on the Program instance for the LLM Chat function step:
+1.  **system_prompt**: This input port receives a structured instruction set that defines the behavior and constraint...
+Grounding:
+{
+  "candidate_classes": [
+    "workflow:Generative_Task",
+    "provone:Program",
+    "provone:Port",
+    "... 1 more item(s)"
+  ],
+  "candidate_relations": [
+    "workflow:llm_model",
+    "dcterms:identifier"
+  ],
+  "entity_phrases": [
+    "input parameters",
+    "llm chat function step",
+    "pipeline"
+  ]
+}
+
+Final Answer
+Based on the provided ontology schema and the query dialogue analysis, the "LLM chat function step" within the pipeline is represented by a `provone:Program` instance (specifically identified as `ChatBS-NexGen:llm_chat`). The explicit input parameters for this specific program step are defined as `provone:Port` instances that accept data required to execute the Large Language Model inference.
+
+According to the retrieval results from Step 2 of the reasoning process, there are two direct input parameters (ports) defined on the Program instance for the LLM Chat function step:
+1.  **system_prompt**: This input port receives a structured instruction set that defines the behavior and constraints of the AI assistant. In this specific context, the system prompt is configured to act as a "health care assistant" responsible for responding to users with specific demographics (e.g., age, gender, diagnosis) and providing dietary guidelines while considering factors like allergies and food preferences.
+2.  **user_prompt**: This input port receives the actual inquiry or request from the user that needs to be addressed by the system (e.g., "I need suggestions for light and energy-boosting foods to eat before my gym workout").
+
+While other parameters such as `age`, `diagnosis`, `height`, `weight`, etc., are present in the pipeline, they serve as inputs to the `system_prompt_generator` Program. These parameters are used to construct or populate the content of the system prompt *before* it reaches the LLM Chat step. Therefore, the direct input parameters required for the execution of the LLM Chat function itself are the compiled **system_prompt** and the **user_prompt**. <cite, id=0>ChatBS-NexGen:Generative_Task-id_20260420105659_302</cite> <cite, id=1>ChatBS-NexGen:Generative_Task-id_20260420105703_307</cite> <cite, id=2>ChatBS-NexGen:Generative_Task-information_extractor</cite> <cite, id=3>ChatBS-NexGen:Generative_Task-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:Generative_Task-system_prompt_generator</cite> <cite, id=5>ChatBS-NexGen:llm_chat-system_prompt</cite>
+
+Final Validation
+{
+  "answer": "Based on the provided ontology schema and the query dialogue analysis, the \"LLM chat function step\" within the pipeline is represented by a `provone:Program` instance (specifically identified as `ChatBS-NexGen:llm_chat`). The explicit input parameters for this specific program step are defined as `provone:Port` instances that accept data required to execute the Large Language Model inference.\n\nAccording to the retrieval results from Step 2 of the reasoning process, there are two direct input parameters (ports) defined on the Program instance for the LLM Chat function step:\n1.  **system_prompt**: This input port receives a structured instruction set that defines the behavior and constraints of the AI assistant. In this specific context, the system prompt is configured to act as a \"health care assistant\" responsible for responding to users with specific demographics (e.g., age, gender, diagnosis) and providing dietary guidelines while considering factors like allergies and food preferences.\n2.  **user_prompt**: This input port receives the actual inquiry or request from the user that needs to be addressed by the system (e.g., \"I need suggestions for light and energy-boosting foods to eat before my gym workout\").\n\nWhile other parameters such as `age`, `diagnosis`, `height`, `weight`, etc., are present in the pipeline, they serve as inputs to the `system_prompt_generator` Program. These parameters are used to construct or populate the content of the system prompt *before* it reaches the LLM Chat step. Therefore, the direct input parameters required for the execution of the LLM Chat function itself are the compiled **system_prompt** and the **user_prompt**.",
+  "answered": true,
+  "feedback": "The answer accurately identifies the input parameters for the \"LLM chat function step\" based on the provided evidence context. It correctly distinguishes between the direct inputs required by the `llm_chat` program (`system_prompt`, `user_prompt`) and the inputs used by upstream programs like `system_prompt_generator`. The response is complete and aligned with the retrieved ontology data."
+}
+
+Timing
+0.5650654560886323 seconds

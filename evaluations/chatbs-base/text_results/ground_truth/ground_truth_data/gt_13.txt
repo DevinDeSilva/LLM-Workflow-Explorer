@@ -1,0 +1,70 @@
+Ground Truth ID
+gt_13
+
+Question
+what are the output parameters of the function used in system prompt template step in the pipeline?
+
+Answer
+The input parameters to system prompt template function.
+
+    Funtion name | Function returns
+System Prompt Template Generator@en^^<xsd:string> | System Prompt@en^^<xsd:string>
+
+Question Type
+[
+  "multi",
+  "entity"
+]
+
+Decision
+None
+
+Count
+None
+
+Entities
+[
+  {
+    "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+    "lbl": "System Prompt@en^^<xsd:string>"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT distinct ?flbl ?lbl\nWHERE {\n     ?obj dc:description ?desc .\n     ?obj rdfs:label ?flbl . \n     ?obj a ?class .\n     FILTER(REGEX(?desc, \"Generates a system prompt\",\"i\"))\n\n     ?obj provone:hasOutPort ?port .\n     ?port rdfs:label ?lbl .\n}\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    The input parameters to system prompt template function.\n\n    Funtion name | Function returns\nSystem Prompt Template Generator@en^^<xsd:string> | System Prompt@en^^<xsd:string>\n    ",
+  "count": null,
+  "decision": null,
+  "entities": [
+    {
+      "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+      "lbl": "System Prompt@en^^<xsd:string>"
+    }
+  ],
+  "id": "gt_13",
+  "qtype": [
+    "multi",
+    "entity"
+  ],
+  "question": "\nwhat are the output parameters of the function used in system prompt template step in the pipeline?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT distinct ?flbl ?lbl\nWHERE {\n     ?obj dc:description ?desc .\n     ?obj rdfs:label ?flbl . \n     ?obj a ?class .\n     FILTER(REGEX(?desc, \"Generates a system prompt\",\"i\"))\n\n     ?obj provone:hasOutPort ?port .\n     ?port rdfs:label ?lbl .\n}\n"
+    }
+  ],
+  "tags": {}
+}

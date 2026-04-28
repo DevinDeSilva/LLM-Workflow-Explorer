@@ -1,6 +1,5 @@
 from src.llm.base import BaseLLM
 from src.config.llm.openai import OpenAILlmConfig
-from icecream import ic
 import dspy
 
 try:
@@ -14,14 +13,12 @@ class OpenAILlm(BaseLLM):
 
     def _create_client(self):
         kwargs = {
-            "openai_api_key": self.config.api_key,
             "model": self.config.model,
             "temperature": self.config.temperature,
             "max_tokens": self.config.max_tokens,
-            "model_kwargs": {},
         }
         if self.config.top_p: # XXX: need to update
-            kwargs["model_kwargs"]["top_p"] = self.config.top_p
+            kwargs["top_p"] = self.config.top_p
         
         if self.library == "langchain":
             return ChatOpenAI(**kwargs)

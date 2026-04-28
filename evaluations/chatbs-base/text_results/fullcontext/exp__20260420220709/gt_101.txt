@@ -1,0 +1,71 @@
+Result ID
+gt_101
+
+Question
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 ?
+
+Answer
+The provided knowledge graph shows one connection originating from the Output port for kg_info in the execution identified by http://testwebsite/testProgram#id_20260420105727_300. <cite, id=0>Batch SPARQL Query Extractor</cite> <cite, id=1>Output port for kg_knowledge</cite> <cite, id=2>sparql query 1 1 11</cite> <cite, id=3>Channel for the query result post-processing</cite>
+
+Relevant Entities
+1. Batch SPARQL Query Extractor (ChatBS-NexGen:batch_sparql_query_extractor) [types=['provone:Program']; score=1.0]
+2. Output port for kg_knowledge (ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge) [types=['provone:Port']; score=0.9]
+3. sparql query 1 1 11 (ChatBS-NexGen:id_20260420105727_300) [types=['provone:Execution']; score=0.8]
+4. Channel for the query result post-processing (ChatBS-NexGen:channel_query_result_post_processing) [types=['provone:Channel']; score=0.7]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:batch_sparql_query_extractor",
+    "label": "Batch SPARQL Query Extractor",
+    "score": 1.0,
+    "types": [
+      "provone:Program"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge",
+    "label": "Output port for kg_knowledge",
+    "score": 0.9,
+    "types": [
+      "provone:Port"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:id_20260420105727_300",
+    "label": "sparql query 1 1 11",
+    "score": 0.8,
+    "types": [
+      "provone:Execution"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:channel_query_result_post_processing",
+    "label": "Channel for the query result post-processing",
+    "score": 0.7,
+    "types": [
+      "provone:Channel"
+    ]
+  }
+]
+
+Evidence
+1. Output port for kg_knowledge (ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge) -- connectsTo (provone:connectsTo) -> Channel for the query result post-processing (ChatBS-NexGen:channel_query_result_post_processing) [direction=outgoing; literal=False; score=1.0]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:channel_query_result_post_processing",
+    "object_is_literal": false,
+    "object_label": "Channel for the query result post-processing",
+    "predicate_id": "provone:connectsTo",
+    "predicate_label": "connectsTo",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge",
+    "subject_label": "Output port for kg_knowledge"
+  }
+]
+
+Timing
+29.812125514959916 seconds

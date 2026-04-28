@@ -1,0 +1,73 @@
+Ground Truth ID
+gt_53
+
+Question
+The execution "http://testwebsite/testProgram#id_20260420105703_307" used data were created by what Generative Task?
+
+Answer
+The Generative Task that generated the data that was used by the execution "http://testwebsite/testProgram#id_20260420105703_307" is 
+
+    Generative Task | glbl
+http://testwebsite/testProgram#Generative_Task-id_20260420105659_302 | LLM Generates an text for 
+system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. 
+
+user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. 
+
+using: gpt-4o@en^^<xsd:string>
+
+Question Type
+[
+  "single",
+  "entity"
+]
+
+Decision
+None
+
+Count
+None
+
+Entities
+[
+  {
+    "gtask": "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT DISTINCT ?gtask ?glbl\n            WHERE {\n                <http://testwebsite/testProgram#id_20260420105703_307> prov:used ?data .\n                ?llm_out sio:SIO_000202 ?data .\n                ?llm_out sio:SIO_000232 ?llm .\n                ?gtask prov:used ?llm .\n                ?gtask rdfs:label ?glbl\n        }\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    The Generative Task that generated the data that was used by the execution \"http://testwebsite/testProgram#id_20260420105703_307\" is \n\n    Generative Task | glbl\nhttp://testwebsite/testProgram#Generative_Task-id_20260420105659_302 | LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>\n    ",
+  "count": null,
+  "decision": null,
+  "entities": [
+    {
+      "gtask": "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302"
+    }
+  ],
+  "id": "gt_53",
+  "qtype": [
+    "single",
+    "entity"
+  ],
+  "question": "\nThe execution \"http://testwebsite/testProgram#id_20260420105703_307\" used data were created by what Generative Task?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT DISTINCT ?gtask ?glbl\n            WHERE {\n                <http://testwebsite/testProgram#id_20260420105703_307> prov:used ?data .\n                ?llm_out sio:SIO_000202 ?data .\n                ?llm_out sio:SIO_000232 ?llm .\n                ?gtask prov:used ?llm .\n                ?gtask rdfs:label ?glbl\n        }\n"
+    }
+  ],
+  "tags": {}
+}

@@ -17,6 +17,7 @@ explorer_config:
   parallel: True
   temp_folder: "evaluations/chatbs-base/exeprog_creation/tmp/programs"
   use_cache: False
+  entity_length: 5
   explorer_metadata_loc: "evaluations/chatbs-base/exeprog_creation/exeplorer_metadata.pkl"
   exeprog_save_loc: "evaluations/chatbs-base/exeprog_creation/exeplored_programs.pkl"
   log_file: "evaluations/chatbs-base/exeprog_creation/explorer_log.txt"
@@ -26,7 +27,7 @@ question_creation_config:
   log_file: "evaluations/chatbs-base/ques_creation/question_creation_log.txt"
   llm_type: "lmstudio"
   llm_config:
-    model: "lm_studio/google/gemma-4-e4b"
+    model: "lm_studio/openai/gpt-oss-20b"
     base_url: "http://localhost:1234/v1"
 
 explainer_config:
@@ -36,7 +37,7 @@ explainer_config:
   save_answer_loc: "evaluations/chatbs-base/explainer/results"
 
   llm_config:
-    model: "lm_studio/google/gemma-4-e4b"
+    model: "lm_studio/openai/gpt-oss-20b"
     base_url: "http://localhost:1234/v1"
   
   vectordb_config:
@@ -62,6 +63,7 @@ ttl:
     { name: "skos", uri: "http://www.w3.org/2004/02/skos/core#" },
     { name: "prov", uri: "http://www.w3.org/ns/prov#" },
     { name: "rdfs", uri: "http://www.w3.org/2000/01/rdf-schema#" },
+    { name: "rdf", uri: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"},
     { name: "cwfo", uri: "http://cwf.tw.rpi.edu/vocab#" },
     { name: "dcterms", uri: "http://purl.org/dc/terms#" },
     { name: "ChatBS-NexGen", uri: "http://testwebsite/testProgram#" },

@@ -9,6 +9,7 @@ class ExplorerConfig(BaseModel):
     use_cache: bool = False
     explorer_metadata_loc: str
     exeprog_save_loc: str
+    entity_length:int = 7
     log_file: str
 
 

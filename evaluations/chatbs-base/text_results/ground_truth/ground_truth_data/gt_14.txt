@@ -1,0 +1,70 @@
+Ground Truth ID
+gt_14
+
+Question
+what are the output parameters of the function used in information extraction step in the pipeline?
+
+Answer
+The input parameters to information extraction function.
+
+    Funtion name | Function returns
+Information Extractor@en^^<xsd:string> | Extracted Entities@en^^<xsd:string>
+
+Question Type
+[
+  "multi",
+  "entity"
+]
+
+Decision
+None
+
+Count
+None
+
+Entities
+[
+  {
+    "flbl": "Information Extractor@en^^<xsd:string>",
+    "lbl": "Extracted Entities@en^^<xsd:string>"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT distinct ?flbl ?lbl\nWHERE {\n     ?obj dc:description ?desc .\n     ?obj rdfs:label ?flbl . \n     ?obj a ?class .\n     FILTER(REGEX(?desc, \"Extracts entities or relevant information\",\"i\"))\n\n     ?obj provone:hasOutPort ?port .\n     ?port rdfs:label ?lbl .\n}\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    The input parameters to information extraction function.\n\n    Funtion name | Function returns\nInformation Extractor@en^^<xsd:string> | Extracted Entities@en^^<xsd:string>\n    ",
+  "count": null,
+  "decision": null,
+  "entities": [
+    {
+      "flbl": "Information Extractor@en^^<xsd:string>",
+      "lbl": "Extracted Entities@en^^<xsd:string>"
+    }
+  ],
+  "id": "gt_14",
+  "qtype": [
+    "multi",
+    "entity"
+  ],
+  "question": "\nwhat are the output parameters of the function used in information extraction step in the pipeline?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT distinct ?flbl ?lbl\nWHERE {\n     ?obj dc:description ?desc .\n     ?obj rdfs:label ?flbl . \n     ?obj a ?class .\n     FILTER(REGEX(?desc, \"Extracts entities or relevant information\",\"i\"))\n\n     ?obj provone:hasOutPort ?port .\n     ?port rdfs:label ?lbl .\n}\n"
+    }
+  ],
+  "tags": {}
+}

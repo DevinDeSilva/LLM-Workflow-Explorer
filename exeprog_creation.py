@@ -1,40 +1,41 @@
-import argparse
-from pathlib import Path
-import sys
-
 import marimo
 
-__generated_with = "0.20.4"
+__generated_with = "0.23.2"
 app = marimo.App()
-
-
-def _get_evaluation_choices() -> list[str]:
-    evaluations_dir = Path(__file__).resolve().parent / "evaluations"
-    return sorted(
-        path.name
-        for path in evaluations_dir.iterdir()
-        if path.is_dir() and path.name != "test_questions"
-    )
-
-
-def _parse_config_path() -> str:
-    parser = argparse.ArgumentParser(add_help=False)
-    parser.add_argument(
-        "--evaluation",
-        choices=_get_evaluation_choices(),
-        default="calibration",
-        help="Evaluation folder under evaluations/ to load config from.",
-    )
-    args, remaining = parser.parse_known_args()
-    sys.argv = [sys.argv[0], *remaining]
-    return str(Path("evaluations") / args.evaluation / "config.yaml")
-
-
-CONFIG_PATH = _parse_config_path()
-
 
 @app.cell
 def _():
+    import argparse
+    from pathlib import Path
+    import sys
+
+    def _get_evaluation_choices() -> list[str]:
+        evaluations_dir = Path(__file__).resolve().parent / "evaluations"
+        return sorted(
+            path.name
+            for path in evaluations_dir.iterdir()
+            if path.is_dir() and path.name != "test_questions"
+        )
+
+
+    def _parse_config_path() -> str:
+        parser = argparse.ArgumentParser(add_help=False)
+        parser.add_argument(
+            "--evaluation",
+            choices=_get_evaluation_choices(),
+            default="calibration-base",
+            help="Evaluation folder under evaluations/ to load config from.",
+        )
+        args, remaining = parser.parse_known_args()
+        sys.argv = [sys.argv[0], *remaining]
+        return str(Path("evaluations") / args.evaluation / "config.yaml")
+
+
+    CONFIG_PATH = _parse_config_path()
+    return (CONFIG_PATH,)
+
+@app.cell
+def _(CONFIG_PATH):
     import logging
     import pandas as pd
     import os
@@ -95,7 +96,8 @@ def _(BFSExplorer, config, graph_manager, ontology_triples_df):
         graph_manager=graph_manager,
         ontology_info_triples=ontology_triples_df,
         parallel_execution=config.explorer_config.parallel,
-        temp_folder=config.explorer_config.temp_folder
+        temp_folder=config.explorer_config.temp_folder,
+        entity_length = config.explorer_config.entity_length
         )
 
     workflow_explorer.load_graph_and_schema(

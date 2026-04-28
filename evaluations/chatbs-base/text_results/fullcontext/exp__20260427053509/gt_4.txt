@@ -1,0 +1,107 @@
+Result ID
+gt_4
+
+Question
+what are the input instructions used by the Large Language Model to create the "sparql query post processing" function?
+
+Answer
+The Large Language Model used two specific input instructions to generate the Query Result Post-Processor function: a formatting instruction and a processing instruction. <cite, id=0>Query Result Post-Processor function generator</cite> <cite, id=1>Query Result Post-Processor function generator</cite> <cite, id=2>LLM query result post processor Input formatting instruction</cite> <cite, id=3>LLM query result post processor Input processing instruction</cite>
+
+Relevant Entities
+1. Query Result Post-Processor function generator (ChatBS-NexGen:LLM-query_result_post_processor) [types=['workflow:Large_Language_Models']; score=1.0]
+2. Query Result Post-Processor function generator (ChatBS-NexGen:Generative_Task-query_result_post_processor) [types=['workflow:Generative_Task']; score=0.9]
+3. LLM query result post processor Input formatting instruction (ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction) [types=['provone:Data']; score=0.8]
+4. LLM query result post processor Input processing instruction (ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction) [types=['provone:Data']; score=0.7]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:LLM-query_result_post_processor",
+    "label": "Query Result Post-Processor function generator",
+    "score": 1.0,
+    "types": [
+      "workflow:Large_Language_Models"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+    "label": "Query Result Post-Processor function generator",
+    "score": 0.9,
+    "types": [
+      "workflow:Generative_Task"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction",
+    "label": "LLM query result post processor Input formatting instruction",
+    "score": 0.8,
+    "types": [
+      "provone:Data"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction",
+    "label": "LLM query result post processor Input processing instruction",
+    "score": 0.7,
+    "types": [
+      "provone:Data"
+    ]
+  }
+]
+
+Evidence
+1. Query Result Post-Processor function generator (ChatBS-NexGen:LLM-query_result_post_processor) -- has input (sio:SIO_000230) -> LLM query result post processor Input formatting instruction (ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction) [direction=outgoing; literal=False; score=1.0]
+2. LLM query result post processor Input formatting instruction (ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction) -- value (prov:value) -> Concat all the rows into single row at each column by '|' concatenation marker. [direction=outgoing; literal=True; score=0.9]
+3. Query Result Post-Processor function generator (ChatBS-NexGen:LLM-query_result_post_processor) -- has input (sio:SIO_000230) -> LLM query result post processor Input processing instruction (ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction) [direction=outgoing; literal=False; score=0.8]
+4. LLM query result post processor Input processing instruction (ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction) -- value (prov:value) -> If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat` column. [direction=outgoing; literal=True; score=0.7]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction",
+    "object_is_literal": false,
+    "object_label": "LLM query result post processor Input formatting instruction",
+    "predicate_id": "sio:SIO_000230",
+    "predicate_label": "has input",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:LLM-query_result_post_processor",
+    "subject_label": "Query Result Post-Processor function generator"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "Concat all the rows into single row at each column by '|' concatenation marker.",
+    "predicate_id": "prov:value",
+    "predicate_label": "value",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction",
+    "subject_label": "LLM query result post processor Input formatting instruction"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction",
+    "object_is_literal": false,
+    "object_label": "LLM query result post processor Input processing instruction",
+    "predicate_id": "sio:SIO_000230",
+    "predicate_label": "has input",
+    "score": 0.8,
+    "subject_id": "ChatBS-NexGen:LLM-query_result_post_processor",
+    "subject_label": "Query Result Post-Processor function generator"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat` column.",
+    "predicate_id": "prov:value",
+    "predicate_label": "value",
+    "score": 0.7,
+    "subject_id": "ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction",
+    "subject_label": "LLM query result post processor Input processing instruction"
+  }
+]
+
+Timing
+42.63388617406599 seconds

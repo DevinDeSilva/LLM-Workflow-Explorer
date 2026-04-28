@@ -1,0 +1,70 @@
+Ground Truth ID
+gt_34
+
+Question
+Is the information extraction function made by a Generative Task using AI?
+
+Answer
+The information extraction function is made by a Generative Task.
+
+    fnlbl | Generative Task used to generate function
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#Generative_Task-information_extractor
+
+Question Type
+[
+  "single",
+  "bool"
+]
+
+Decision
+True
+
+Count
+None
+
+Entities
+[
+  {
+    "fnlbl": "Information Extractor@en^^<xsd:string>",
+    "llm_gen_out": "http://testwebsite/testProgram#Generative_Task-information_extractor"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT DISTINCT ?fnlbl ?llm_gen_out\nWHERE {\n    ?obj dc:description ?desc .\n    ?obj rdfs:label ?fnlbl .\n    FILTER(REGEX(?desc, \"Extracts entities or relevant information\", \"i\"))\n\n    OPTIONAL {\n        ?llm_out sio:SIO_000202 ?obj .\n        ?llm_out sio:SIO_000232 ?llm .\n        ?llm_gen prov:used ?llm .\n    }\n\n    BIND(COALESCE(?llm_gen, \"None\") AS ?llm_gen_out)\n}\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    The information extraction function is made by a Generative Task.\n\n    fnlbl | Generative Task used to generate function\nInformation Extractor@en^^<xsd:string> | http://testwebsite/testProgram#Generative_Task-information_extractor\n    ",
+  "count": null,
+  "decision": true,
+  "entities": [
+    {
+      "fnlbl": "Information Extractor@en^^<xsd:string>",
+      "llm_gen_out": "http://testwebsite/testProgram#Generative_Task-information_extractor"
+    }
+  ],
+  "id": "gt_34",
+  "qtype": [
+    "single",
+    "bool"
+  ],
+  "question": "\nIs the information extraction function made by a Generative Task using AI?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT DISTINCT ?fnlbl ?llm_gen_out\nWHERE {\n    ?obj dc:description ?desc .\n    ?obj rdfs:label ?fnlbl .\n    FILTER(REGEX(?desc, \"Extracts entities or relevant information\", \"i\"))\n\n    OPTIONAL {\n        ?llm_out sio:SIO_000202 ?obj .\n        ?llm_out sio:SIO_000232 ?llm .\n        ?llm_gen prov:used ?llm .\n    }\n\n    BIND(COALESCE(?llm_gen, \"None\") AS ?llm_gen_out)\n}\n"
+    }
+  ],
+  "tags": {}
+}

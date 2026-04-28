@@ -1,0 +1,86 @@
+Result ID
+gt_16
+
+Question
+what are the output parameters of the function used in llm chat function step in the pipeline?
+
+Answer
+The output parameter of the function (Program) used in the LLM Chat step is 'generated_answer'. This corresponds to the output port 'llm_chat-generated_answer' which produces data labeled 'generated_answer'. <cite, id=0>LLM Chat</cite> <cite, id=1>LLM Chat output port: generated_answer</cite> <cite, id=2>generated answer</cite>
+
+Relevant Entities
+1. LLM Chat (ChatBS-NexGen:llm_chat) [types=['provone:Program']; score=1.0]
+2. LLM Chat output port: generated_answer (ChatBS-NexGen:llm_chat-generated_answer) [types=['provone:Port']; score=0.9]
+3. generated answer (ChatBS-NexGen:Data-id_20260420105659_338-generated_answer) [types=['provone:Data']; score=0.8]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:llm_chat",
+    "label": "LLM Chat",
+    "score": 1.0,
+    "types": [
+      "provone:Program"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:llm_chat-generated_answer",
+    "label": "LLM Chat output port: generated_answer",
+    "score": 0.9,
+    "types": [
+      "provone:Port"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Data-id_20260420105659_338-generated_answer",
+    "label": "generated answer",
+    "score": 0.8,
+    "types": [
+      "provone:Data"
+    ]
+  }
+]
+
+Evidence
+1. LLM Chat (ChatBS-NexGen:llm_chat) -- hasOutPort (provone:hasOutPort) -> LLM Chat output port: generated_answer (ChatBS-NexGen:llm_chat-generated_answer) [direction=outgoing; literal=False; score=1.0]
+2. generated answer (ChatBS-NexGen:Generation-id_20260420105659_282-generated_answer) -- hadOutPort (provone:hadOutPort) -> LLM Chat output port: generated_answer (ChatBS-NexGen:llm_chat-generated_answer) [direction=outgoing; literal=False; score=0.9]
+3. generated answer (ChatBS-NexGen:Generation-id_20260420105659_282-generated_answer) -- hadEntity (provone:hadEntity) -> generated answer (ChatBS-NexGen:Data-id_20260420105659_338-generated_answer) [direction=outgoing; literal=False; score=0.8]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:llm_chat-generated_answer",
+    "object_is_literal": false,
+    "object_label": "LLM Chat output port: generated_answer",
+    "predicate_id": "provone:hasOutPort",
+    "predicate_label": "hasOutPort",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:llm_chat",
+    "subject_label": "LLM Chat"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:llm_chat-generated_answer",
+    "object_is_literal": false,
+    "object_label": "LLM Chat output port: generated_answer",
+    "predicate_id": "provone:hadOutPort",
+    "predicate_label": "hadOutPort",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:Generation-id_20260420105659_282-generated_answer",
+    "subject_label": "generated answer"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:Data-id_20260420105659_338-generated_answer",
+    "object_is_literal": false,
+    "object_label": "generated answer",
+    "predicate_id": "provone:hadEntity",
+    "predicate_label": "hadEntity",
+    "score": 0.8,
+    "subject_id": "ChatBS-NexGen:Generation-id_20260420105659_282-generated_answer",
+    "subject_label": "generated answer"
+  }
+]
+
+Timing
+54.80782872182317 seconds

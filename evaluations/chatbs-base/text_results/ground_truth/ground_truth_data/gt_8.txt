@@ -1,0 +1,133 @@
+Ground Truth ID
+gt_8
+
+Question
+what are the input parameters of the function used in system prompt template step in the pipeline?
+
+Answer
+The input parameters to system prompt template function.
+
+    Funtion name | Function returns
+System Prompt Template Generator@en^^<xsd:string> | Input port for age@en^^<xsd:string>
+System Prompt Template Generator@en^^<xsd:string> | Input port for allergies@en^^<xsd:string>
+System Prompt Template Generator@en^^<xsd:string> | Input port for bodyMassIndex@en^^<xsd:string>
+System Prompt Template Generator@en^^<xsd:string> | Input port for diagnosis@en^^<xsd:string>
+System Prompt Template Generator@en^^<xsd:string> | Input port for foodPreferences@en^^<xsd:string>
+System Prompt Template Generator@en^^<xsd:string> | Input port for gender@en^^<xsd:string>
+System Prompt Template Generator@en^^<xsd:string> | Input port for height@en^^<xsd:string>
+System Prompt Template Generator@en^^<xsd:string> | Input port for weight@en^^<xsd:string>
+
+Question Type
+[
+  "multi",
+  "entity"
+]
+
+Decision
+None
+
+Count
+None
+
+Entities
+[
+  {
+    "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+    "lbl": "Input port for age@en^^<xsd:string>"
+  },
+  {
+    "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+    "lbl": "Input port for allergies@en^^<xsd:string>"
+  },
+  {
+    "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+    "lbl": "Input port for bodyMassIndex@en^^<xsd:string>"
+  },
+  {
+    "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+    "lbl": "Input port for diagnosis@en^^<xsd:string>"
+  },
+  {
+    "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+    "lbl": "Input port for foodPreferences@en^^<xsd:string>"
+  },
+  {
+    "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+    "lbl": "Input port for gender@en^^<xsd:string>"
+  },
+  {
+    "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+    "lbl": "Input port for height@en^^<xsd:string>"
+  },
+  {
+    "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+    "lbl": "Input port for weight@en^^<xsd:string>"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT distinct ?flbl ?lbl\nWHERE {\n     ?obj dc:description ?desc .\n     ?obj rdfs:label ?flbl . \n     ?obj a ?class .\n     FILTER(REGEX(?desc, \"Generates a system prompt\",\"i\"))\n\n     ?obj provone:hasInPort ?port .\n     ?port rdfs:label ?lbl .\n}\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    The input parameters to system prompt template function.\n\n    Funtion name | Function returns\nSystem Prompt Template Generator@en^^<xsd:string> | Input port for age@en^^<xsd:string>\nSystem Prompt Template Generator@en^^<xsd:string> | Input port for allergies@en^^<xsd:string>\nSystem Prompt Template Generator@en^^<xsd:string> | Input port for bodyMassIndex@en^^<xsd:string>\nSystem Prompt Template Generator@en^^<xsd:string> | Input port for diagnosis@en^^<xsd:string>\nSystem Prompt Template Generator@en^^<xsd:string> | Input port for foodPreferences@en^^<xsd:string>\nSystem Prompt Template Generator@en^^<xsd:string> | Input port for gender@en^^<xsd:string>\nSystem Prompt Template Generator@en^^<xsd:string> | Input port for height@en^^<xsd:string>\nSystem Prompt Template Generator@en^^<xsd:string> | Input port for weight@en^^<xsd:string>\n    ",
+  "count": null,
+  "decision": null,
+  "entities": [
+    {
+      "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+      "lbl": "Input port for age@en^^<xsd:string>"
+    },
+    {
+      "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+      "lbl": "Input port for allergies@en^^<xsd:string>"
+    },
+    {
+      "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+      "lbl": "Input port for bodyMassIndex@en^^<xsd:string>"
+    },
+    {
+      "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+      "lbl": "Input port for diagnosis@en^^<xsd:string>"
+    },
+    {
+      "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+      "lbl": "Input port for foodPreferences@en^^<xsd:string>"
+    },
+    {
+      "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+      "lbl": "Input port for gender@en^^<xsd:string>"
+    },
+    {
+      "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+      "lbl": "Input port for height@en^^<xsd:string>"
+    },
+    {
+      "flbl": "System Prompt Template Generator@en^^<xsd:string>",
+      "lbl": "Input port for weight@en^^<xsd:string>"
+    }
+  ],
+  "id": "gt_8",
+  "qtype": [
+    "multi",
+    "entity"
+  ],
+  "question": "\nwhat are the input parameters of the function used in system prompt template step in the pipeline?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT distinct ?flbl ?lbl\nWHERE {\n     ?obj dc:description ?desc .\n     ?obj rdfs:label ?flbl . \n     ?obj a ?class .\n     FILTER(REGEX(?desc, \"Generates a system prompt\",\"i\"))\n\n     ?obj provone:hasInPort ?port .\n     ?port rdfs:label ?lbl .\n}\n"
+    }
+  ],
+  "tags": {}
+}

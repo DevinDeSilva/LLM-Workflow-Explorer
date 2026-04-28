@@ -1,0 +1,77 @@
+Result ID
+gt_53
+
+Question
+What Generative Task generated the data that was used by the execution http://testwebsite/testProgram#id_20260420105703_307?
+
+Answer
+The Generative Task associated with extracting important entities for text, identified by ChatBS-NexGen:Generative_Task-id_20260420105703_307, is related to the data used by the execution ChatBS-NexGen:id_20260420105703_307. <cite, id=0>Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt-4o</cite> <cite, id=1>information extraction 1 1</cite>
+
+Relevant Entities
+1. Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt-4o (ChatBS-NexGen:Generative_Task-id_20260420105703_307) [types=['workflow:Generative_Task']; score=1.0]
+2. information extraction 1 1 (ChatBS-NexGen:id_20260420105703_307) [types=['provone:Execution']; score=0.9]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:Generative_Task-id_20260420105703_307",
+    "label": "Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt-4o",
+    "score": 1.0,
+    "types": [
+      "workflow:Generative_Task"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:id_20260420105703_307",
+    "label": "information extraction 1 1",
+    "score": 0.9,
+    "types": [
+      "provone:Execution"
+    ]
+  }
+]
+
+Evidence
+1. Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt-4o (ChatBS-NexGen:Generative_Task-id_20260420105703_307) -- type (rdf:type) -> Generative Task (workflow:Generative_Task) [direction=outgoing; literal=False; score=1.0]
+2. Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt-4o (ChatBS-NexGen:Generative_Task-id_20260420105703_307) -- is component part of (sio:SIO_000313) -> ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1] [direction=outgoing; literal=True; score=0.9]
+3. text (ChatBS-NexGen:Usage-id_20260420105703_331-text) -- hadInPort (provone:hadInPort) -> ChatBS-NexGen:information_extractor-text [Input port for text] [direction=outgoing; literal=True; score=0.8]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "workflow:Generative_Task",
+    "object_is_literal": false,
+    "object_label": "Generative Task",
+    "predicate_id": "rdf:type",
+    "predicate_label": "type",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:Generative_Task-id_20260420105703_307",
+    "subject_label": "Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt-4o"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]",
+    "predicate_id": "sio:SIO_000313",
+    "predicate_label": "is component part of",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:Generative_Task-id_20260420105703_307",
+    "subject_label": "Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt-4o"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:information_extractor-text [Input port for text]",
+    "predicate_id": "provone:hadInPort",
+    "predicate_label": "hadInPort",
+    "score": 0.8,
+    "subject_id": "ChatBS-NexGen:Usage-id_20260420105703_331-text",
+    "subject_label": "text"
+  }
+]
+
+Timing
+55.28948850603774 seconds

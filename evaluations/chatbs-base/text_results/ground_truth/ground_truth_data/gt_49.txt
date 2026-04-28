@@ -1,0 +1,182 @@
+Ground Truth ID
+gt_49
+
+Question
+What are the outputs of the Generative Task that was a component in the executions of the information extraction function?
+
+Answer
+The inputs to the LLM used for the Generative Task in the executions of the information extraction function
+
+    Function | Execution | Inputs for the Generative Task used within execution
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Yogurt@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Nut@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Avocado@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Sweet Potato@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Egg@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Turkey@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Chicken@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Tuna@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Olive Oil@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Cheese@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Fruit@en^^<xsd:string>
+
+Question Type
+[
+  "multi",
+  "entity"
+]
+
+Decision
+None
+
+Count
+None
+
+Entities
+[
+  {
+    "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+    "flbl": "Information Extractor@en^^<xsd:string>",
+    "lbl": "Yogurt@en^^<xsd:string>"
+  },
+  {
+    "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+    "flbl": "Information Extractor@en^^<xsd:string>",
+    "lbl": "Nut@en^^<xsd:string>"
+  },
+  {
+    "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+    "flbl": "Information Extractor@en^^<xsd:string>",
+    "lbl": "Avocado@en^^<xsd:string>"
+  },
+  {
+    "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+    "flbl": "Information Extractor@en^^<xsd:string>",
+    "lbl": "Sweet Potato@en^^<xsd:string>"
+  },
+  {
+    "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+    "flbl": "Information Extractor@en^^<xsd:string>",
+    "lbl": "Egg@en^^<xsd:string>"
+  },
+  {
+    "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+    "flbl": "Information Extractor@en^^<xsd:string>",
+    "lbl": "Turkey@en^^<xsd:string>"
+  },
+  {
+    "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+    "flbl": "Information Extractor@en^^<xsd:string>",
+    "lbl": "Chicken@en^^<xsd:string>"
+  },
+  {
+    "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+    "flbl": "Information Extractor@en^^<xsd:string>",
+    "lbl": "Tuna@en^^<xsd:string>"
+  },
+  {
+    "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+    "flbl": "Information Extractor@en^^<xsd:string>",
+    "lbl": "Olive Oil@en^^<xsd:string>"
+  },
+  {
+    "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+    "flbl": "Information Extractor@en^^<xsd:string>",
+    "lbl": "Cheese@en^^<xsd:string>"
+  },
+  {
+    "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+    "flbl": "Information Extractor@en^^<xsd:string>",
+    "lbl": "Fruit@en^^<xsd:string>"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT DISTINCT ?flbl ?exe ?lbl\nWHERE {\n    ?obj dc:description ?desc .\n    ?obj rdfs:label ?flbl .\n    FILTER(REGEX(?desc, \"Extracts entities or relevant information\",\"i\"))\n\n    ?asso prov:hadPlan ?obj .\n    ?exe prov:qualifiedAssociation ?asso .\n\n    ?exe sio:SIO_000369 ?llm_gen .\n    ?llm_gen prov:used ?llm .\n    ?llm sio:SIO_000229 ?out .\n    ?out sio:SIO_000202 ?data . \n    ?data prov:value ?lbl . \n}\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    The inputs to the LLM used for the Generative Task in the executions of the information extraction function\n\n    Function | Execution | Inputs for the Generative Task used within execution\nInformation Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Yogurt@en^^<xsd:string>\nInformation Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Nut@en^^<xsd:string>\nInformation Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Avocado@en^^<xsd:string>\nInformation Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Sweet Potato@en^^<xsd:string>\nInformation Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Egg@en^^<xsd:string>\nInformation Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Turkey@en^^<xsd:string>\nInformation Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Chicken@en^^<xsd:string>\nInformation Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Tuna@en^^<xsd:string>\nInformation Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Olive Oil@en^^<xsd:string>\nInformation Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Cheese@en^^<xsd:string>\nInformation Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Fruit@en^^<xsd:string>\n    ",
+  "count": null,
+  "decision": null,
+  "entities": [
+    {
+      "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+      "flbl": "Information Extractor@en^^<xsd:string>",
+      "lbl": "Yogurt@en^^<xsd:string>"
+    },
+    {
+      "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+      "flbl": "Information Extractor@en^^<xsd:string>",
+      "lbl": "Nut@en^^<xsd:string>"
+    },
+    {
+      "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+      "flbl": "Information Extractor@en^^<xsd:string>",
+      "lbl": "Avocado@en^^<xsd:string>"
+    },
+    {
+      "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+      "flbl": "Information Extractor@en^^<xsd:string>",
+      "lbl": "Sweet Potato@en^^<xsd:string>"
+    },
+    {
+      "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+      "flbl": "Information Extractor@en^^<xsd:string>",
+      "lbl": "Egg@en^^<xsd:string>"
+    },
+    {
+      "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+      "flbl": "Information Extractor@en^^<xsd:string>",
+      "lbl": "Turkey@en^^<xsd:string>"
+    },
+    {
+      "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+      "flbl": "Information Extractor@en^^<xsd:string>",
+      "lbl": "Chicken@en^^<xsd:string>"
+    },
+    {
+      "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+      "flbl": "Information Extractor@en^^<xsd:string>",
+      "lbl": "Tuna@en^^<xsd:string>"
+    },
+    {
+      "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+      "flbl": "Information Extractor@en^^<xsd:string>",
+      "lbl": "Olive Oil@en^^<xsd:string>"
+    },
+    {
+      "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+      "flbl": "Information Extractor@en^^<xsd:string>",
+      "lbl": "Cheese@en^^<xsd:string>"
+    },
+    {
+      "exe": "http://testwebsite/testProgram#id_20260420105703_307",
+      "flbl": "Information Extractor@en^^<xsd:string>",
+      "lbl": "Fruit@en^^<xsd:string>"
+    }
+  ],
+  "id": "gt_49",
+  "qtype": [
+    "multi",
+    "entity"
+  ],
+  "question": "\nWhat are the outputs of the Generative Task that was a component in the executions of the information extraction function?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT DISTINCT ?flbl ?exe ?lbl\nWHERE {\n    ?obj dc:description ?desc .\n    ?obj rdfs:label ?flbl .\n    FILTER(REGEX(?desc, \"Extracts entities or relevant information\",\"i\"))\n\n    ?asso prov:hadPlan ?obj .\n    ?exe prov:qualifiedAssociation ?asso .\n\n    ?exe sio:SIO_000369 ?llm_gen .\n    ?llm_gen prov:used ?llm .\n    ?llm sio:SIO_000229 ?out .\n    ?out sio:SIO_000202 ?data . \n    ?data prov:value ?lbl . \n}\n"
+    }
+  ],
+  "tags": {}
+}

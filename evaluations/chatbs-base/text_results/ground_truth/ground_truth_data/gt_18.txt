@@ -1,0 +1,70 @@
+Ground Truth ID
+gt_18
+
+Question
+what are the other function ("program") connected to the function used in system prompt template through port parameters?
+
+Answer
+The connected functions to system prompt template function.
+
+    Funtion URI | Function name
+http://testwebsite/testProgram#llm_chat | LLM Chat@en^^<xsd:string>
+
+Question Type
+[
+  "multi",
+  "entity"
+]
+
+Decision
+None
+
+Count
+None
+
+Entities
+[
+  {
+    "fn2": "http://testwebsite/testProgram#llm_chat",
+    "fn2lbl": "LLM Chat@en^^<xsd:string>"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\n\nSELECT DISTINCT ?fn2 ?fn2lbl\nWHERE {\n    ?obj dc:description ?desc .\n    ?obj rdfs:label ?flbl . \n    ?obj a ?class .\n    FILTER(REGEX(?desc, \"Generates a system prompt\",\"i\"))\n\n    ?obj (provone:hasInPort | provone:hasOutPort) ?port .\n    ?port provone:connectsTo ?channel .\n    ?portt provone:connectsTo ?channel .\n    ?fn2 (provone:hasInPort | provone:hasOutPort) ?portt .\n    FILTER(?obj != ?fn2)\n\n    ?fn2 rdfs:label ?fn2lbl .\n}\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    The connected functions to system prompt template function.\n\n    Funtion URI | Function name\nhttp://testwebsite/testProgram#llm_chat | LLM Chat@en^^<xsd:string>\n    ",
+  "count": null,
+  "decision": null,
+  "entities": [
+    {
+      "fn2": "http://testwebsite/testProgram#llm_chat",
+      "fn2lbl": "LLM Chat@en^^<xsd:string>"
+    }
+  ],
+  "id": "gt_18",
+  "qtype": [
+    "multi",
+    "entity"
+  ],
+  "question": "\nwhat are the other function (\"program\") connected to the function used in system prompt template through port parameters?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\n\nSELECT DISTINCT ?fn2 ?fn2lbl\nWHERE {\n    ?obj dc:description ?desc .\n    ?obj rdfs:label ?flbl . \n    ?obj a ?class .\n    FILTER(REGEX(?desc, \"Generates a system prompt\",\"i\"))\n\n    ?obj (provone:hasInPort | provone:hasOutPort) ?port .\n    ?port provone:connectsTo ?channel .\n    ?portt provone:connectsTo ?channel .\n    ?fn2 (provone:hasInPort | provone:hasOutPort) ?portt .\n    FILTER(?obj != ?fn2)\n\n    ?fn2 rdfs:label ?fn2lbl .\n}\n"
+    }
+  ],
+  "tags": {}
+}

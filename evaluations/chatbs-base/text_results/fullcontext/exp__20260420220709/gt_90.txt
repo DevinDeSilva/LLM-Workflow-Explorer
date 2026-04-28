@@ -1,0 +1,173 @@
+Result ID
+gt_90
+
+Question
+what is the number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 ?
+
+Answer
+The execution http://testwebsite/testProgram#id_20260420105703_307 has 11 data items listed as members of the extracted entities collection. <cite, id=0>extracts</cite> <cite, id=1>extracts</cite> <cite, id=2>extracts</cite> <cite, id=3>extracts</cite> <cite, id=4>extracts</cite> <cite, id=5>extracts</cite>
+
+Relevant Entities
+1. extracts (ChatBS-NexGen:Collection-id_20260420105703_514-extracts) [types=['provone:Collection']; score=1.0]
+2. extracts (ChatBS-NexGen:Data-id_20260420105703_198-extracts) [types=['provone:Data']; score=0.9]
+3. extracts (ChatBS-NexGen:Data-id_20260420105703_218-extracts) [types=['provone:Data']; score=0.8]
+4. extracts (ChatBS-NexGen:Data-id_20260420105703_51-extracts) [types=['provone:Data']; score=0.7]
+5. extracts (ChatBS-NexGen:Data-id_20260420105703_661-extracts) [types=['provone:Data']; score=0.6]
+6. extracts (ChatBS-NexGen:Data-id_20260420105703_678-extracts) [types=['provone:Data']; score=0.5]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:Collection-id_20260420105703_514-extracts",
+    "label": "extracts",
+    "score": 1.0,
+    "types": [
+      "provone:Collection"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Data-id_20260420105703_198-extracts",
+    "label": "extracts",
+    "score": 0.9,
+    "types": [
+      "provone:Data"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Data-id_20260420105703_218-extracts",
+    "label": "extracts",
+    "score": 0.8,
+    "types": [
+      "provone:Data"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Data-id_20260420105703_51-extracts",
+    "label": "extracts",
+    "score": 0.7,
+    "types": [
+      "provone:Data"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Data-id_20260420105703_661-extracts",
+    "label": "extracts",
+    "score": 0.6,
+    "types": [
+      "provone:Data"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Data-id_20260420105703_678-extracts",
+    "label": "extracts",
+    "score": 0.5,
+    "types": [
+      "provone:Data"
+    ]
+  }
+]
+
+Evidence
+1. extracts (ChatBS-NexGen:Collection-id_20260420105703_514-extracts) -- had Member (provone:hadMember) -> ChatBS-NexGen:Data-id_20260420105703_198-extracts [extracts] [direction=outgoing; literal=True; score=1.0]
+2. extracts (ChatBS-NexGen:Collection-id_20260420105703_514-extracts) -- had Member (provone:hadMember) -> ChatBS-NexGen:Data-id_20260420105703_218-extracts [extracts] [direction=outgoing; literal=True; score=0.9]
+3. extracts (ChatBS-NexGen:Collection-id_20260420105703_514-extracts) -- had Member (provone:hadMember) -> ChatBS-NexGen:Data-id_20260420105703_51-extracts [extracts] [direction=outgoing; literal=True; score=0.8]
+4. extracts (ChatBS-NexGen:Collection-id_20260420105703_514-extracts) -- had Member (provone:hadMember) -> ChatBS-NexGen:Data-id_20260420105703_661-extracts [extracts] [direction=outgoing; literal=True; score=0.7]
+5. extracts (ChatBS-NexGen:Collection-id_20260420105703_514-extracts) -- had Member (provone:hadMember) -> ChatBS-NexGen:Data-id_20260420105703_678-extracts [extracts] [direction=outgoing; literal=True; score=0.6]
+6. extracts (ChatBS-NexGen:Collection-id_20260420105703_514-extracts) -- had Member (provone:hadMember) -> ChatBS-NexGen:Data-id_20260420105703_693-extracts [extracts] [direction=outgoing; literal=True; score=0.5]
+7. extracts (ChatBS-NexGen:Collection-id_20260420105703_514-extracts) -- had Member (provone:hadMember) -> ChatBS-NexGen:Data-id_20260420105703_757-extracts [extracts] [direction=outgoing; literal=True; score=0.3999999999999999]
+8. extracts (ChatBS-NexGen:Collection-id_20260420105703_514-extracts) -- had Member (provone:hadMember) -> ChatBS-NexGen:Data-id_20260420105703_886-extracts [extracts] [direction=outgoing; literal=True; score=0.29999999999999993]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:Data-id_20260420105703_198-extracts [extracts]",
+    "predicate_id": "provone:hadMember",
+    "predicate_label": "had Member",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:Collection-id_20260420105703_514-extracts",
+    "subject_label": "extracts"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:Data-id_20260420105703_218-extracts [extracts]",
+    "predicate_id": "provone:hadMember",
+    "predicate_label": "had Member",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:Collection-id_20260420105703_514-extracts",
+    "subject_label": "extracts"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:Data-id_20260420105703_51-extracts [extracts]",
+    "predicate_id": "provone:hadMember",
+    "predicate_label": "had Member",
+    "score": 0.8,
+    "subject_id": "ChatBS-NexGen:Collection-id_20260420105703_514-extracts",
+    "subject_label": "extracts"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:Data-id_20260420105703_661-extracts [extracts]",
+    "predicate_id": "provone:hadMember",
+    "predicate_label": "had Member",
+    "score": 0.7,
+    "subject_id": "ChatBS-NexGen:Collection-id_20260420105703_514-extracts",
+    "subject_label": "extracts"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:Data-id_20260420105703_678-extracts [extracts]",
+    "predicate_id": "provone:hadMember",
+    "predicate_label": "had Member",
+    "score": 0.6,
+    "subject_id": "ChatBS-NexGen:Collection-id_20260420105703_514-extracts",
+    "subject_label": "extracts"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:Data-id_20260420105703_693-extracts [extracts]",
+    "predicate_id": "provone:hadMember",
+    "predicate_label": "had Member",
+    "score": 0.5,
+    "subject_id": "ChatBS-NexGen:Collection-id_20260420105703_514-extracts",
+    "subject_label": "extracts"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:Data-id_20260420105703_757-extracts [extracts]",
+    "predicate_id": "provone:hadMember",
+    "predicate_label": "had Member",
+    "score": 0.3999999999999999,
+    "subject_id": "ChatBS-NexGen:Collection-id_20260420105703_514-extracts",
+    "subject_label": "extracts"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:Data-id_20260420105703_886-extracts [extracts]",
+    "predicate_id": "provone:hadMember",
+    "predicate_label": "had Member",
+    "score": 0.29999999999999993,
+    "subject_id": "ChatBS-NexGen:Collection-id_20260420105703_514-extracts",
+    "subject_label": "extracts"
+  }
+]
+
+Timing
+72.62693441507872 seconds

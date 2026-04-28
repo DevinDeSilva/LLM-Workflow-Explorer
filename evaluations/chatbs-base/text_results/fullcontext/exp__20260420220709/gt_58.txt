@@ -1,0 +1,43 @@
+Result ID
+gt_58
+
+Question
+What Generative Task generated the data that was used by the execution http://testwebsite/testProgram#id_20260420105711_662?
+
+Answer
+*   **answer**: The provided knowledge graph does not contain explicit evidence linking the execution identified by `http://testwebsite/testProgram#id_20260420105711_662` to a specific `Generative_Task`.
+*   **relevant_entities**: []
+*   **evidence**: [] <cite, id=0>Generative Task</cite> <cite, id=1>Execution</cite> <cite, id=2>Program</cite>
+
+Relevant Entities
+1. Generative Task (workflow:Generative_Task) [score=0.5]
+2. Execution (provone:Execution) [score=0.45]
+3. Program (provone:Program) [score=0.4]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "workflow:Generative_Task",
+    "label": "Generative Task",
+    "score": 0.5,
+    "types": []
+  },
+  {
+    "id": "provone:Execution",
+    "label": "Execution",
+    "score": 0.45,
+    "types": []
+  },
+  {
+    "id": "provone:Program",
+    "label": "Program",
+    "score": 0.4,
+    "types": []
+  }
+]
+
+Evidence
+None
+
+Timing
+32.177790071000345 seconds

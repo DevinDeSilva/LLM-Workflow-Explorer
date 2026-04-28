@@ -1,0 +1,116 @@
+Result ID
+gt_96
+
+Question
+what is the number of output for the "Output port for kg_info" in the execution "http://testwebsite/testProgram#id_20260420105711_772" ?
+
+Answer
+The execution generates 2 outputs for the specified port. <cite, id=0>sparql query 1 1 6</cite> <cite, id=1>kg info</cite> <cite, id=2>Output port for kg_info</cite> <cite, id=3>row 1</cite> <cite, id=4>row 0</cite>
+
+Relevant Entities
+1. sparql query 1 1 6 (ChatBS-NexGen:id_20260420105711_772) [types=['provone:Execution']; score=1.0]
+2. kg info (ChatBS-NexGen:Generation-id_20260420105711_565-kg_info) [types=['prov:Generation']; score=0.9]
+3. Output port for kg_info (ChatBS-NexGen:sparql_query_extractor-kg_info) [types=['provone:Port']; score=0.8]
+4. row 1 (ChatBS-NexGen:Data-id_20260420105711_547-kg_info) [types=['provone:Data']; score=0.7]
+5. row 0 (ChatBS-NexGen:Data-id_20260420105711_637-kg_info) [types=['provone:Data']; score=0.6]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:id_20260420105711_772",
+    "label": "sparql query 1 1 6",
+    "score": 1.0,
+    "types": [
+      "provone:Execution"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Generation-id_20260420105711_565-kg_info",
+    "label": "kg info",
+    "score": 0.9,
+    "types": [
+      "prov:Generation"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:sparql_query_extractor-kg_info",
+    "label": "Output port for kg_info",
+    "score": 0.8,
+    "types": [
+      "provone:Port"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Data-id_20260420105711_547-kg_info",
+    "label": "row 1",
+    "score": 0.7,
+    "types": [
+      "provone:Data"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Data-id_20260420105711_637-kg_info",
+    "label": "row 0",
+    "score": 0.6,
+    "types": [
+      "provone:Data"
+    ]
+  }
+]
+
+Evidence
+1. sparql query 1 1 6 (ChatBS-NexGen:id_20260420105711_772) -- qualifiedGeneration (prov:qualifiedGeneration) -> kg info (ChatBS-NexGen:Generation-id_20260420105711_565-kg_info) [direction=outgoing; literal=False; score=1.0]
+2. kg info (ChatBS-NexGen:Generation-id_20260420105711_565-kg_info) -- hadOutPort (provone:hadOutPort) -> Output port for kg_info (ChatBS-NexGen:sparql_query_extractor-kg_info) [direction=outgoing; literal=False; score=0.9]
+3. kg info (ChatBS-NexGen:Generation-id_20260420105711_565-kg_info) -- hadEntity (provone:hadEntity) -> row 1 (ChatBS-NexGen:Data-id_20260420105711_547-kg_info) [direction=outgoing; literal=False; score=0.8]
+4. kg info (ChatBS-NexGen:Generation-id_20260420105711_565-kg_info) -- hadEntity (provone:hadEntity) -> row 0 (ChatBS-NexGen:Data-id_20260420105711_637-kg_info) [direction=outgoing; literal=False; score=0.7]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:Generation-id_20260420105711_565-kg_info",
+    "object_is_literal": false,
+    "object_label": "kg info",
+    "predicate_id": "prov:qualifiedGeneration",
+    "predicate_label": "qualifiedGeneration",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:id_20260420105711_772",
+    "subject_label": "sparql query 1 1 6"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:sparql_query_extractor-kg_info",
+    "object_is_literal": false,
+    "object_label": "Output port for kg_info",
+    "predicate_id": "provone:hadOutPort",
+    "predicate_label": "hadOutPort",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:Generation-id_20260420105711_565-kg_info",
+    "subject_label": "kg info"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:Data-id_20260420105711_547-kg_info",
+    "object_is_literal": false,
+    "object_label": "row 1",
+    "predicate_id": "provone:hadEntity",
+    "predicate_label": "hadEntity",
+    "score": 0.8,
+    "subject_id": "ChatBS-NexGen:Generation-id_20260420105711_565-kg_info",
+    "subject_label": "kg info"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:Data-id_20260420105711_637-kg_info",
+    "object_is_literal": false,
+    "object_label": "row 0",
+    "predicate_id": "provone:hadEntity",
+    "predicate_label": "hadEntity",
+    "score": 0.7,
+    "subject_id": "ChatBS-NexGen:Generation-id_20260420105711_565-kg_info",
+    "subject_label": "kg info"
+  }
+]
+
+Timing
+95.98722800193354 seconds

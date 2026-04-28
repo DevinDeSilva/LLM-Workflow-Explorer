@@ -1,0 +1,798 @@
+Result ID
+gt_4
+
+Original Question
+what are the instructions used by the LLM to generate the sparql query post processing function step in the pipeline?
+
+Sub Questions
+None
+
+Topology Graph
+Nodes:
+[0] what are the instructions used by the LLM to generate the sparql query post processing function step in the pipeline?
+
+Edges:
+(none)
+
+Adjacency:
+(none)
+
+Details Of Question Solving
+Question [0]
+Question: what are the instructions used by the LLM to generate the sparql query post processing function step in the pipeline?
+Depends on: None
+
+Grounding:
+{
+  "candidate_classes": [
+    "workflow:Generative_Task",
+    "workflow:Large_Language_Models",
+    "workflow:Large_Language_Model_Output",
+    "provone:Program",
+    "provone:Execution"
+  ],
+  "candidate_relations": [
+    "dc:description"
+  ],
+  "entity_phrases": [
+    "specific instructions or prompts",
+    "Large Language Model",
+    "Generative Task step",
+    "SPARQL query post-processing function output"
+  ]
+}
+
+Answer Requirements:
+[
+  "The content of the instructions/prompts used by the LLM.",
+  "Confirmation that these instructions govern the generation of a SPARQL query.",
+  "The specific context or stage (post-processing function) where this generation occurs in the pipeline."
+]
+
+Retrieved Objects:
+[
+  "http://testwebsite/testProgram#LLM-id_20260420105659_302",
+  "workflow:Large_Language_Model_Output",
+  "workflow:Large_Language_Models",
+  "http://testwebsite/testProgram#information_extractor",
+  "provone:Program",
+  "http://testwebsite/testProgram#LLM-query_result_post_processor",
+  "http://testwebsite/testProgram#LLM-information_extractor",
+  "http://testwebsite/testProgram#LLM_Output-information_extractor",
+  "ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction",
+  "ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction"
+]
+
+Schema Info Used:
+Workflow schema
+Classes:
+- workflow:Generative_Task (Generative Task): A task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data.
+- workflow:Large_Language_Models (Large Language Models)
+- workflow:Large_Language_Model_Output (Large Language Model Output): An Output Artifact from a AI Task
+- eo:Reasoning_Mode (Reasoning Mode): a process being executed by the system that achieves a particular goal; e.g. inference models such as treatment planning involved in medical diagnosis can be considered...
+- provone:Program (Program): A Program represents a computational task that consumes and produces data through its input and output ports, respectively. It can be atomic or composite, the latter case...
+- provone:Port (Port): A Port enables a Program to send and receive Entities (Data, Visualizations, etc.). When used in a role as an input port, default parameters may be configured for the Port.
+- provone:Channel (Channel): A Channel provides a connection between Ports that are defined for Programs. Typically, a Program with an output Port defined using the provone:hasOutPort object property...
+- provone:Execution (Execution): An Execution represents the execution of a Program. If the Program in question is a Workflow, then the Execution represents a trace of its execution.
+- provone:User (User): A User is the person responsible for the execution of a Program, which in turn can be a Workflow. Its specification serves attribution and accountability purposes.
+- provone:Data (Data): A Data item represents the basic unit of information consumed and produced by a Program. Multiple Data items may be grouped into a Collection.
+- provone:Collection
+- prov:Association (Association): An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity. It further allows for a plan to...
+- prov:Usage (Usage): Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity.
+- prov:Generation (Generation): Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.
+Object properties:
+- sio:SIO_000202; links workflow:Large_Language_Model_Output -> provone:Program, workflow:Large_Language_Model_Output -> provone:Data
+- sio:SIO_000229 (has output); links workflow:Large_Language_Models -> workflow:Large_Language_Model_Output
+- sio:SIO_000232 (is output of); links workflow:Large_Language_Model_Output -> workflow:Large_Language_Models
+- sio:SIO_000313 (is component part of); links workflow:Generative_Task -> provone:Execution
+- sio:SIO_000369 (has component part); links provone:Execution -> workflow:Generative_Task
+- sio:SIO_000230 (has input); links workflow:Large_Language_Models -> provone:Data
+- prov:used (used): A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .; links provone:Execution -> provone:Data, workflow:Generative_Task -> workflow:Large_Language_Models
+- prov:agent (hadPlan): Enables the specification of a particular User in a particular Association. This allows for further qualification of the prov:wasAssociatedWith property in the context of an...; links prov:Association -> provone:User
+- prov:qualifiedAssociation (qualifiedAssociation): If this Activity prov:wasAssociatedWith Agent :ag, then it can qualify the Association using prov:qualifiedAssociation [ a prov:Association; prov:agent :ag; :foo :bar ].; links provone:Execution -> prov:Association
+- prov:qualifiedUsage (qualifiedUsage): Enables the specification of a particular Usage by a particular Execution. This allows for further qualification of the prov:used property in the context of an Execution.; links provone:Execution -> prov:Usage
+- prov:qualifiedGeneration (qualifiedGeneration): If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualifiedGeneration [ a prov:Generation; prov:entity :e; :foo :bar ].; links provone:Execution -> prov:Generation
+- prov:hadPlan (hadPlan): The _optional_ Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.; links prov:Association -> provone:Program
+- provone:hasOutPort (hasOutPort): Enables the specification of a Port as an output port of a particular Program.; links provone:Program -> provone:Port
+- provone:hasInPort (hasInPort): Enables the specification of a Port as an input port of a particular Program.; links provone:Program -> provone:Port
+- provone:connectsTo (connectsTo): Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.; links provone:Port -> provone:Port
+- provone:hadInPort (hadInPort): Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.; links prov:Usage -> provone:Port
+- provone:hadOutPort (hadOutPort): Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:wasGeneratedBy property in the context of...; links prov:Generation -> provone:Port
+- prov:hadMember (hadMember); links provone:Collection -> provone:Data
+- provone:hadEntity (hadEntity): Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and...; links prov:Usage -> provone:Data, prov:Generation -> provone:Data
+- prov:wasInformedBy (wasInformedBy): An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.; links provone:Execution -> provone:Execution
+- prov:wasGeneratedBy (wasGeneratedBy); links provone:Data -> provone:Execution, provone:Collection -> provone:Execution
+- prov:wasAssociatedWith (wasAssociatedWith): An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.; links provone:Execution -> provone:User
+
+Synthetic Question Plan:
+1. round 0
+   Question: What are the specific instructions or prompts provided to the Large Language Model during the Generative Task step within the pipeline that resulted in the SPARQL query post-processing function output?
+To be properly answered, cover: The content of the instructions/prompts used by the LLM.; Confirmation that these instructions govern the generation of a SPARQL query.; The specific context or stage (post-processing function) where this generation occurs in the pipeline.
+   Object URIs (8):
+   - http://testwebsite/testProgram#LLM-id_20260420105659_302
+   - workflow:Large_Language_Model_Output
+   - workflow:Large_Language_Models
+   - http://testwebsite/testProgram#information_extractor
+   - provone:Program
+   - http://testwebsite/testProgram#LLM-query_result_post_processor
+   - http://testwebsite/testProgram#LLM-information_extractor
+   - http://testwebsite/testProgram#LLM_Output-information_extractor
+2. round 1
+   Question: What are the textual contents of the properties labeled 'Input-formatting instruction' (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction`) and 'Input-processing instruction' (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction`) associated with the `http://testwebsite/testProgram#LLM-query_result_post_processor` object?
+   Object URIs (2):
+   - ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction
+   - ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction
+
+Intermediary Results:
+Step 1: step1
+Sub question: What are the specific instructions or prompts provided to the Large Language Model during the Generative Task step within the pipeline that resulted in the SPARQL query post-processing function output?
+To be properly answered, cover: The content of the instructions/prompts used by the LLM.; Confirmation that these instructions govern the generation of a SPARQL query.; The specific context or stage (post-processing function) where this generation occurs in the pipeline.
+Program: retrieval::linked-entities
+Answer:
+Retrieved 8 initial candidate object(s) relevant to the question: What are the specific instructions or prompts provided to the Large Language Model during the Generative Task step within the pipeline that resulted in the SPARQL query post-processing function output?
+To be properly answered, cover: The content of the instructions/prompts used by the LLM.; Confirmation that these instructions govern the generation of a SPARQL query.; The specific context or stage (post-processing function) where this generation occurs in the pipeline. <cite, id=0>http://testwebsite/testProgram#LLM-id_20260420105659_302</cite> <cite, id=1>workflow:Large_Language_Model_Output</cite> <cite, id=2>workflow:Large_Language_Models</cite> <cite, id=3>http://testwebsite/testProgram#information_extractor</cite> <cite, id=4>provone:Program</cite> <cite, id=5>http://testwebsite/testProgram#LLM-query_result_post_processor</cite>
+Important entities:
+- http://testwebsite/testProgram#LLM-id_20260420105659_302
+- workflow:Large_Language_Model_Output
+- workflow:Large_Language_Models
+- http://testwebsite/testProgram#information_extractor
+- provone:Program
+- http://testwebsite/testProgram#LLM-query_result_post_processor
+- http://testwebsite/testProgram#LLM-information_extractor
+- http://testwebsite/testProgram#LLM_Output-information_extractor
+Results:
+{
+  "set_1": [
+    {
+      "metadata": {},
+      "object_class": [
+        "workflow:Large_Language_Model_Output",
+        "workflow:Large_Language_Models"
+      ],
+      "object_description": "Object: ChatBS-NexGen:LLM-id_20260420105659_302. Types: workflow:Large_Language_Model_Output, workflow:Large_Language_Models. Properties: dc:description: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-id_20260420105659_302; sio:SIO_000230: ChatBS-NexGen:Data-id_20260420105652_456-system_prompt; sio:SIO_000230: ChatBS-NexGen:Data-id_20260420105659_811-user_prompt; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-id_20260420105659_302",
+      "object_uri": "http://testwebsite/testProgram#LLM-id_20260420105659_302",
+      "score": 0.6144335269927979,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "provone:Program"
+      ],
+      "object_description": "Object: ChatBS-NexGen:information_extractor. Types: provone:Program. Properties: provone:hasInPort: ChatBS-NexGen:information_extractor-text; provone:hasOutPort: ChatBS-NexGen:information_extractor-extracts; dc:description: Extracts entities or relevant information from the generated text using specified instructions.@en^^<xsd:string>; dcterms:identifier: 2@en^^<xsd:string>; rdfs:label: Information Extractor@en^^<xsd:string>; prov:atTime: 2026-03-05 19:20:19@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:information_extractor",
+      "object_uri": "http://testwebsite/testProgram#information_extractor",
+      "score": 9.145011901855469,
+      "source": "bm25_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "workflow:Large_Language_Models"
+      ],
+      "object_description": "Object: ChatBS-NexGen:LLM-query_result_post_processor. Types: workflow:Large_Language_Models. Properties: dc:description: Generates the post processing Function using Large language models@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-query_result_post_processor; sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction; sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: Query Result Post-Processor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-query_result_post_processor",
+      "object_uri": "http://testwebsite/testProgram#LLM-query_result_post_processor",
+      "score": 0.6029924750328064,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "workflow:Large_Language_Models"
+      ],
+      "object_description": "Object: ChatBS-NexGen:LLM-information_extractor. Types: workflow:Large_Language_Models. Properties: dc:description: Generates the Information Extractor Function using Large language models@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-information_extractor; sio:SIO_000230: ChatBS-NexGen:LLM-information_extractor-Input-builder_llm; sio:SIO_000230: ChatBS-NexGen:LLM-information_extractor-Input-text; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: Information Extractor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-information_extractor",
+      "object_uri": "http://testwebsite/testProgram#LLM-information_extractor",
+      "score": 0.5960193276405334,
+      "source": "vector_results"
+    },
+    {
+      "metadata": {},
+      "object_class": [
+        "workflow:Large_Language_Model_Output"
+      ],
+      "object_description": "Object: ChatBS-NexGen:LLM_Output-information_extractor. Types: workflow:Large_Language_Model_Output. Properties: sio:SIO_000202: ChatBS-NexGen:information_extractor; sio:SIO_000232: ChatBS-NexGen:LLM-information_extractor.",
+      "object_name": "ChatBS-NexGen:LLM_Output-information_extractor",
+      "object_uri": "http://testwebsite/testProgram#LLM_Output-information_extractor",
+      "score": 0.5877792239189148,
+      "source": "vector_results"
+    }
+  ]
+}
+Extra:
+{
+  "execution_mode": "initial-data",
+  "extracted_results": [
+    {
+      "attributes": [
+        {
+          "o": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "ChatBS-NexGen:LLM_Output-id_20260420105659_302",
+          "p": "sio:SIO_000229"
+        },
+        {
+          "o": "ChatBS-NexGen:Data-id_20260420105652_456-system_prompt",
+          "p": "sio:SIO_000230"
+        },
+        {
+          "o": "ChatBS-NexGen:Data-id_20260420105659_811-user_prompt",
+          "p": "sio:SIO_000230"
+        },
+        {
+          "o": "gpt-4o@en^^<xsd:string>",
+          "p": "workflow:llm_model"
+        },
+        {
+          "o": "workflow:Large_Language_Model_Output",
+          "p": "rdf:type"
+        },
+        {
+          "o": "workflow:Large_Language_Models",
+          "p": "rdf:type"
+        },
+        {
+          "o": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+          "p": "rdfs:label"
+        }
+      ],
+      "uri": "http://testwebsite/testProgram#LLM-id_20260420105659_302"
+    },
+    {
+      "attributes": [],
+      "uri": "workflow:Large_Language_Model_Output"
+    },
+    {
+      "attributes": [],
+      "uri": "workflow:Large_Language_Models"
+    },
+    {
+      "attributes": [
+        {
+          "o": "ChatBS-NexGen:information_extractor-text",
+          "p": "provone:hasInPort"
+        },
+        {
+          "o": "ChatBS-NexGen:information_extractor-extracts",
+          "p": "provone:hasOutPort"
+        },
+        {
+          "o": "Extracts entities or relevant information from the generated text using specified instructions.@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "2@en^^<xsd:string>",
+          "p": "dcterms:identifier"
+        },
+        {
+          "o": "provone:Program",
+          "p": "rdf:type"
+        },
+        {
+          "o": "Information Extractor@en^^<xsd:string>",
+          "p": "rdfs:label"
+        },
+        {
+          "o": "2026-03-05 19:20:19@en^^<xsd:string>",
+          "p": "prov:atTime"
+        }
+      ],
+      "uri": "http://testwebsite/testProgram#information_extractor"
+    },
+    {
+      "attributes": [],
+      "uri": "provone:Program"
+    },
+    {
+      "attributes": [
+        {
+          "o": "Generates the post processing Function using Large language models@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "ChatBS-NexGen:LLM_Output-query_result_post_processor",
+          "p": "sio:SIO_000229"
+        },
+        {
+          "o": "ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction",
+          "p": "sio:SIO_000230"
+        },
+        {
+          "o": "ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction",
+          "p": "sio:SIO_000230"
+        },
+        {
+          "o": "gpt-4o@en^^<xsd:string>",
+          "p": "workflow:llm_model"
+        },
+        {
+          "o": "workflow:Large_Language_Models",
+          "p": "rdf:type"
+        },
+        {
+          "o": "Query Result Post-Processor function generator@en^^<xsd:string>",
+          "p": "rdfs:label"
+        },
+        {
+          "o": "2026-03-05 19:21:32@en^^<xsd:string>",
+          "p": "prov:atTime"
+        }
+      ],
+      "uri": "http://testwebsite/testProgram#LLM-query_result_post_processor"
+    },
+    {
+      "attributes": [
+        {
+          "o": "Generates the Information Extractor Function using Large language models@en^^<xsd:string>",
+          "p": "dc:description"
+        },
+        {
+          "o": "ChatBS-NexGen:LLM_Output-information_extractor",
+          "p": "sio:SIO_000229"
+        },
+        {
+          "o": "ChatBS-NexGen:LLM-information_extractor-Input-builder_llm",
+          "p": "sio:SIO_000230"
+        },
+        {
+          "o": "ChatBS-NexGen:LLM-information_extractor-Input-text",
+          "p": "sio:SIO_000230"
+        },
+        {
+          "o": "gpt-4o@en^^<xsd:string>",
+          "p": "workflow:llm_model"
+        },
+        {
+          "o": "workflow:Large_Language_Models",
+          "p": "rdf:type"
+        },
+        {
+          "o": "Information Extractor function generator@en^^<xsd:string>",
+          "p": "rdfs:label"
+        },
+        {
+          "o": "2026-03-05 19:21:32@en^^<xsd:string>",
+          "p": "prov:atTime"
+        }
+      ],
+      "uri": "http://testwebsite/testProgram#LLM-information_extractor"
+    },
+    {
+      "attributes": [
+        {
+          "o": "ChatBS-NexGen:information_extractor",
+          "p": "sio:SIO_000202"
+        },
+        {
+          "o": "ChatBS-NexGen:LLM-information_extractor",
+          "p": "sio:SIO_000232"
+        },
+        {
+          "o": "workflow:Large_Language_Model_Output",
+          "p": "rdf:type"
+        }
+      ],
+      "uri": "http://testwebsite/testProgram#LLM_Output-information_extractor"
+    }
+  ],
+  "parameter_values": [],
+  "strategy": "by_linked_data"
+}
+
+Step 2: step2
+Sub question: What are the textual contents of the properties labeled 'Input-formatting instruction' (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction`) and 'Input-processing instruction' (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction`) associated with the `http://testwebsite/testProgram#LLM-query_result_post_processor` object?
+Program: explore_path_workflow:Large_Language_Models->sio:SIO_000230->provone:Data
+Answer:
+Retrieved 2 initial candidate object(s) relevant to the question: What are the textual contents of the properties labeled 'Input-formatting instruction' (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction`) and 'Input-processing instruction' (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction`) associated with the `http://testwebsite/testProgram#LLM-query_result_post_processor` object? <cite, id=0>ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction</cite> <cite, id=1>ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction</cite>
+Important entities:
+- ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction
+- ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction
+Results:
+{
+  "set_1": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction"
+      },
+      {
+        "value": "ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction"
+      }
+    ],
+    "set_2": [],
+    "set_3": []
+  }
+}
+Extra:
+{
+  "execution_mode": "initial-data",
+  "extracted_results": [
+    {
+      "attributes": [
+        {
+          "o": "provone:Data",
+          "p": "rdf:type"
+        },
+        {
+          "o": "Concat all the rows into single row at each column by '|' concatenation marker.@en^^<xsd:string>",
+          "p": "prov:value"
+        }
+      ],
+      "uri": "ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction"
+    },
+    {
+      "attributes": [
+        {
+          "o": "provone:Data",
+          "p": "rdf:type"
+        },
+        {
+          "o": "If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat` column.@en^^<xsd:string>",
+          "p": "prov:value"
+        }
+      ],
+      "uri": "ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction"
+    }
+  ],
+  "parameter_values": [
+    {
+      "obj": "http://testwebsite/testProgram#LLM-query_result_post_processor"
+    },
+    {
+      "obj": "http://semanticscience.org/resource/SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction"
+    },
+    {
+      "obj": "http://semanticscience.org/resource/SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction"
+    }
+  ],
+  "strategy": "by_program"
+}
+
+Predecessor Context:
+None
+
+Step Context:
+Initial-data retrieval:
+{
+  "question": "What are the specific instructions or prompts provided to the Large Language Model during the Generative Task step within the pipeline that resulted in the SPARQL query post-processing function output?\nTo be properly answered, cover: The content of the instructions/prompts used by the LLM.; Confirmation that these instructions govern the generation of a SPARQL query.; The specific context or stage (post-processing function) where this generation occurs in the pipeline.",
+  "original_question": "What are the specific instructions or prompts provided to the Large Language Model during the Generative Task step within the pipeline that resulted in the SPARQL query post-processing function output?\nTo be properly answered, cover: The content of the instructions/prompts used by the LLM.; Confirmation that these instructions govern the generation of a SPARQL query.; The specific context or stage (post-processing function) where this generation occurs in the pipeline.",
+  "grounding": {
+    "candidate_classes": [
+      "workflow:Generative_Task",
+      "workflow:Large_Language_Models",
+      "workflow:Large_Language_Model_Output",
+      "provone:Program",
+      "provone:Execution"
+    ],
+    "candidate_relations": [
+      "dc:description"
+    ],
+    "entity_phrases": [
+      "specific instructions or prompts",
+      "Large Language Model",
+      "Generative Task step",
+      "SPARQL query post-processing function output"
+    ]
+  },
+  "strategy": "by_linked_data",
+  "linked_entities": [
+    {
+      "score": 0.6144335269927979,
+      "object_description": "Object: ChatBS-NexGen:LLM-id_20260420105659_302. Types: workflow:Large_Language_Model_Output, workflow:Large_Language_Models. Properties: dc:description: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-id_20260420105659_302; sio:SIO_000230: ChatBS-NexGen:Data-id_20260420105652_456-system_prompt; sio:SIO_000230: ChatBS-NexGen:Data-id_20260420105659_811-user_prompt; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-id_20260420105659_302",
+      "object_class": [
+        "workflow:Large_Language_Model_Output",
+        "workflow:Large_Language_Models"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#LLM-id_20260420105659_302",
+      "source": "vector_results"
+    },
+    {
+      "score": 9.145011901855469,
+      "object_description": "Object: ChatBS-NexGen:information_extractor. Types: provone:Program. Properties: provone:hasInPort: ChatBS-NexGen:information_extractor-text; provone:hasOutPort: ChatBS-NexGen:information_extractor-extracts; dc:description: Extracts entities or relevant information from the generated text using specified instructions.@en^^<xsd:string>; dcterms:identifier: 2@en^^<xsd:string>; rdfs:label: Information Extractor@en^^<xsd:string>; prov:atTime: 2026-03-05 19:20:19@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:information_extractor",
+      "object_class": [
+        "provone:Program"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#information_extractor",
+      "source": "bm25_results"
+    },
+    {
+      "score": 0.6029924750328064,
+      "object_description": "Object: ChatBS-NexGen:LLM-query_result_post_processor. Types: workflow:Large_Language_Models. Properties: dc:description: Generates the post processing Function using Large language models@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-query_result_post_processor; sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction; sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: Query Result Post-Processor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-query_result_post_processor",
+      "object_class": [
+        "workflow:Large_Language_Models"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#LLM-query_result_post_processor",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.5960193276405334,
+      "object_description": "Object: ChatBS-NexGen:LLM-information_extractor. Types: workflow:Large_Language_Models. Properties: dc:description: Generates the Information Extractor Function using Large language models@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-information_extractor; sio:SIO_000230: ChatBS-NexGen:LLM-information_extractor-Input-builder_llm; sio:SIO_000230: ChatBS-NexGen:LLM-information_extractor-Input-text; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: Information Extractor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-information_extractor",
+      "object_class": [
+        "workflow:Large_Language_Models"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#LLM-information_extractor",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.5877792239189148,
+      "object_description": "Object: ChatBS-NexGen:LLM_Output-information_extractor. Types: workflow:Large_Language_Model_Output. Properties: sio:SIO_000202: ChatBS-NexGen:information_extractor; sio:SIO_000232: ChatBS-NexGen:LLM-information_extractor.",
+      "object_name": "ChatBS-NexGen:LLM_Output-information_extractor",
+      "object_class": [
+        "workflow:Large_Language_Model_Output"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#LLM_Output-information_extractor",
+      "source": "vector_results"
+    }
+  ]
+}
+
+Answer loop round:
+{
+  "round": 1,
+  "question": "What are the specific instructions or prompts provided to the Large Language Model during the Generative Task step within the pipeline that resulted in the SPARQL query post-processing function output?\nTo be properly answered, cover: The content of the instructions/prompts used by the LLM.; Confirmation that these instructions govern the generation of a SPARQL query.; The specific context or stage (post-processing function) where this generation occurs in the pipeline.",
+  "strategy": "by_linked_data",
+  "program_id": "",
+  "grounding": {
+    "candidate_classes": [
+      "workflow:Generative_Task",
+      "workflow:Large_Language_Models",
+      "workflow:Large_Language_Model_Output",
+      "provone:Program",
+      "provone:Execution"
+    ],
+    "candidate_relations": [
+      "dc:description"
+    ],
+    "entity_phrases": [
+      "specific instructions or prompts",
+      "Large Language Model",
+      "Generative Task step",
+      "SPARQL query post-processing function output"
+    ]
+  },
+  "object_uris": [
+    "http://testwebsite/testProgram#LLM-id_20260420105659_302",
+    "workflow:Large_Language_Model_Output",
+    "workflow:Large_Language_Models",
+    "http://testwebsite/testProgram#information_extractor",
+    "provone:Program",
+    "http://testwebsite/testProgram#LLM-query_result_post_processor",
+    "http://testwebsite/testProgram#LLM-information_extractor",
+    "http://testwebsite/testProgram#LLM_Output-information_extractor"
+  ]
+}
+Step step1: What are the specific instructions or prompts provided to the Large Language Model during the Generative Task step within the pipeline that resulted in the SPARQL query post-processing function output?
+To be properly answered, cover: The content of the instructions/prompts used by the LLM.; Confirmation that these instructions govern the generation of a SPARQL query.; The specific context or stage (post-processing function) where this generation occurs in the pipeline.
+Function: None
+Answer: Retrieved 8 initial candidate object(s) relevant to the question: What are the specific instructions or prompts provided to the Large Language Model during the Generative Task step within the pipeline that resulted in the SPARQL query post-processing function output?
+To be properly answered, cover: The content of the instructions/prompts used by the LLM.; Confirmation that these instructions govern the generation of a SPARQL query.; The specific context or stage (post-processing function) where this generation occurs in the pipeline.
+Important entities: http://testwebsite/testProgram#LLM-id_20260420105659_302: dc:description=LLM Generates an text for 
+system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. 
+
+user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. 
+
+using: gpt-4o@en^^<xsd:string>; sio:SIO_000229=ChatBS-NexGen:LLM_Output-id_20260420105659_302; sio:SIO_000230=ChatBS-NexGen:Data-id_20260420105652_456-system_prompt; sio:SIO_000230=ChatBS-NexGen:Data-id_20260420105659_811-user_prompt; workflow:llm_model=gpt-4o@en^^<xsd:string>; rdf:type=workflow:Large_Language_Model_Output; rdf:type=workflow:Large_Language_Models; rdfs:label=LLM Generates an text for 
+system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. 
+
+user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. 
+
+using: gpt-4o@en^^<xsd:string>
+workflow:Large_Language_Model_Output: 
+workflow:Large_Language_Models: 
+http://testwebsite/testProgram#information_extractor: provone:hasInPort=ChatBS-NexGen:information_extractor-text; provone:hasOutPort=ChatBS-NexGen:information_extractor-extracts; dc:description=Extracts entities or relevant information from the generated text using specified instructions.@en^^<xsd:string>; dcterms:identifier=2@en^^<xsd:string>; rdf:type=provone:Program; rdfs:label=Information Extractor@en^^<xsd:string>; prov:atTime=2026-03-05 19:20:19@en^^<xsd:string>
+provone:Program: 
+http://testwebsite/testProgram#LLM-query_result_post_processor: dc:description=Generates the post processing Function using Large language models@en^^<xsd:string>; sio:SIO_000229=ChatBS-NexGen:LLM_Output-query_result_post_processor; sio:SIO_000230=ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction; sio:SIO_000230=ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction; workflow:llm_model=gpt-4o@en^^<xsd:string>; rdf:type=workflow:Large_Language_Models; rdfs:label=Query Result Post-Processor function generator@en^^<xsd:string>; prov:atTime=2026-03-05 19:21:32@en^^<xsd:string>
+http://testwebsite/testProgram#LLM-information_extractor: dc:description=Generates the Information Extractor Function using Large language models@en^^<xsd:string>; sio:SIO_000229=ChatBS-NexGen:LLM_Output-information_extractor; sio:SIO_000230=ChatBS-NexGen:LLM-information_extractor-Input-builder_llm; sio:SIO_000230=ChatBS-NexGen:LLM-information_extractor-Input-text; workflow:llm_model=gpt-4o@en^^<xsd:string>; rdf:type=workflow:Large_Language_Models; rdfs:label=Information Extractor function generator@en^^<xsd:string>; prov:atTime=2026-03-05 19:21:32@en^^<xsd:string>
+http://testwebsite/testProgram#LLM_Output-information_extractor: sio:SIO_000202=ChatBS-NexGen:information_extractor; sio:SIO_000232=ChatBS-NexGen:LLM-information_extractor; rdf:type=workflow:Large_Language_Model_Output
+Results: {
+  "set_1": [
+    {
+      "score": 0.6144335269927979,
+      "object_description": "Object: ChatBS-NexGen:LLM-id_20260420105659_302. Types: workflow:Large_Language_Model_Output, workflow:Large_Language_Models. Properties: dc:description: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-id_20260420105659_302; sio:SIO_000230: ChatBS-NexGen:Data-id_20260420105652_456-system_prompt; sio:SIO_000230: ChatBS-NexGen:Data-id_20260420105659_811-user_prompt; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: LLM Generates an text for  system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.   user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout.   using: gpt-4o@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-id_20260420105659_302",
+      "object_class": [
+        "workflow:Large_Language_Model_Output",
+        "workflow:Large_Language_Models"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#LLM-id_20260420105659_302",
+      "source": "vector_results"
+    },
+    {
+      "score": 9.145011901855469,
+      "object_description": "Object: ChatBS-NexGen:information_extractor. Types: provone:Program. Properties: provone:hasInPort: ChatBS-NexGen:information_extractor-text; provone:hasOutPort: ChatBS-NexGen:information_extractor-extracts; dc:description: Extracts entities or relevant information from the generated text using specified instructions.@en^^<xsd:string>; dcterms:identifier: 2@en^^<xsd:string>; rdfs:label: Information Extractor@en^^<xsd:string>; prov:atTime: 2026-03-05 19:20:19@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:information_extractor",
+      "object_class": [
+        "provone:Program"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#information_extractor",
+      "source": "bm25_results"
+    },
+    {
+      "score": 0.6029924750328064,
+      "object_description": "Object: ChatBS-NexGen:LLM-query_result_post_processor. Types: workflow:Large_Language_Models. Properties: dc:description: Generates the post processing Function using Large language models@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-query_result_post_processor; sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction; sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: Query Result Post-Processor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-query_result_post_processor",
+      "object_class": [
+        "workflow:Large_Language_Models"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#LLM-query_result_post_processor",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.5960193276405334,
+      "object_description": "Object: ChatBS-NexGen:LLM-information_extractor. Types: workflow:Large_Language_Models. Properties: dc:description: Generates the Information Extractor Function using Large language models@en^^<xsd:string>; sio:SIO_000229: ChatBS-NexGen:LLM_Output-information_extractor; sio:SIO_000230: ChatBS-NexGen:LLM-information_extractor-Input-builder_llm; sio:SIO_000230: ChatBS-NexGen:LLM-information_extractor-Input-text; workflow:llm_model: gpt-4o@en^^<xsd:string>; rdfs:label: Information Extractor function generator@en^^<xsd:string>; prov:atTime: 2026-03-05 19:21:32@en^^<xsd:string>.",
+      "object_name": "ChatBS-NexGen:LLM-information_extractor",
+      "object_class": [
+        "workflow:Large_Language_Models"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#LLM-information_extractor",
+      "source": "vector_results"
+    },
+    {
+      "score": 0.5877792239189148,
+      "object_description": "Object: ChatBS-NexGen:LLM_Output-information_extractor. Types: workflow:Large_Language_Model_Output. Properties: sio:SIO_000202: ChatBS-NexGen:information_extractor; sio:SIO_000232: ChatBS-NexGen:LLM-information_extractor.",
+      "object_name": "ChatBS-NexGen:LLM_Output-information_extractor",
+      "object_class": [
+        "workflow:Large_Language_Model_Output"
+      ],
+      "metadata": {},
+      "object_uri": "http://testwebsite/testProgram#LLM_Output-information_extractor",
+      "source": "vector_results"
+    }
+  ]
+}
+
+Answer loop round:
+{
+  "round": 2,
+  "question": "What are the textual contents of the properties labeled 'Input-formatting instruction' (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction`) and 'Input-processing instruction' (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction`) associated with the `http://testwebsite/testProgram#LLM-query_result_post_processor` object?",
+  "strategy": "by_program",
+  "program_id": "explore_path_workflow:Large_Language_Models->sio:SIO_000230->provone:Data",
+  "grounding": {
+    "candidate_classes": [
+      "workflow:Large_Language_Models",
+      "provone:Program"
+    ],
+    "entity_phrases": [
+      "What",
+      "are",
+      "the",
+      "textual",
+      "contents"
+    ],
+    "candidate_relations": []
+  },
+  "object_uris": [
+    "ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction",
+    "ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction"
+  ]
+}
+Step step2: What are the textual contents of the properties labeled 'Input-formatting instruction' (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction`) and 'Input-processing instruction' (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction`) associated with the `http://testwebsite/testProgram#LLM-query_result_post_processor` object?
+Function: What are the required inputs or data specifications for Large Language Models?
+Answer: Retrieved 2 initial candidate object(s) relevant to the question: What are the textual contents of the properties labeled 'Input-formatting instruction' (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction`) and 'Input-processing instruction' (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction`) associated with the `http://testwebsite/testProgram#LLM-query_result_post_processor` object?
+Important entities: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction: rdf:type=provone:Data; prov:value=Concat all the rows into single row at each column by '|' concatenation marker.@en^^<xsd:string>
+ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction: rdf:type=provone:Data; prov:value=If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat` column.@en^^<xsd:string>
+Results: {
+  "set_1": {
+    "set_1": [
+      {
+        "value": "ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction"
+      },
+      {
+        "value": "ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction"
+      }
+    ],
+    "set_2": [],
+    "set_3": []
+  }
+}
+
+Schema Reasoning:
+{}
+
+Validation / Judge:
+{
+  "answer": "The specific instructions and prompts related to the post-processing function are found within the `http://testwebsite/testProgram#LLM-query_result_post_processor` object, which is designed to generate this post-processing logic using a Large Language Model.\n\n**Content of Instructions/Prompts:**\nThe instructions define two critical data manipulation rules for cleaning and formatting results:\n\n1.  **Input Formatting Instruction (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction`):** The LLM is instructed to \"Concat all the rows into single row at each column by '|' concatenation marker.\" This dictates how multiple records are combined into a single, delimited string.\n2.  **Input Processing Instruction (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction`):** This instruction details data quality rules: \"If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat\\` column.\"\n\n**Confirmation of Governance:**\nThese instructions govern the **post-processing logic** applied to data that has been retrieved or processed, rather than governing the initial generation of a SPARQL query itself. They dictate how raw results (potentially from a SPARQL query) must be formatted and cleaned *after* retrieval.\n\n**Specific Context/Stage:**\nThe generation occurs in the **Query Result Post-Processor function generator** (`http://testwebsite/testProgram#LLM-query_result_post_processor`), which is explicitly identified as generating the post-processing Function using Large Language Models.",
+  "answered": true,
+  "feedback": "The answer successfully covers all three required aspects: it provides the specific content of the instructions retrieved for the post-processing function; it confirms that these instructions govern data *cleaning and formatting* after retrieval, rather than governing the initial SPARQL query generation itself (which is an important clarification); and it correctly identifies the context as the Query Result Post-Processor function generator. The answer is detailed, accurate, and uses concrete data literals from the evidence."
+}
+
+Answer:
+The specific instructions and prompts related to the post-processing function are found within the `http://testwebsite/testProgram#LLM-query_result_post_processor` object, which is designed to generate this post-processing logic using a Large Language Model.
+
+**Content of Instructions/Prompts:**
+The instructions define two critical data manipulation rules for cleaning and formatting results:
+
+1.  **Input Formatting Instruction (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction`):** The LLM is instructed to "Concat all the rows into single row at each column by '|' concatenation marker." This dictates how multiple records are combined into a single, delimited string.
+2.  **Input Processing Instruction (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction`):** This instruction details data quality rules: "If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat\` column."
+
+**Confirmation of Governance:**
+These instructions govern the **post-processing logic** applied to data that has been retrieved or processed, rather than governing the initial generation of a SPARQL query itself. They dictate how raw results (potentially from a SPARQL query) must be formatted and cleaned *after* retrieval.
+
+**Specific Context/Stage:**
+The generation occurs in the **Query Result Post-Processor function generator** (`http://testwebsite/testProgram#LLM-query_result_post_processor`), which is explicitly identified as generating the post-processing Function using Large Language Models. <cite, id=0>http://testwebsite/testProgram#LLM-id_20260420105659_302</cite> <cite, id=1>workflow:Large_Language_Model_Output</cite> <cite, id=2>workflow:Large_Language_Models</cite> <cite, id=3>http://testwebsite/testProgram#information_extractor</cite> <cite, id=4>provone:Program</cite> <cite, id=5>http://testwebsite/testProgram#LLM-query_result_post_processor</cite>
+
+Final Report
+### Overall Answer to the Question:
+The specific instructions and prompts related to the post-processing function are found within the `http://testwebsite/testProgram#LLM-query_result_post_processor` object, which is designed to generate this post-processing logic using a Large Language Model.
+
+**Content of Instructions/Prompts:**
+The instructions define two critical data manipulation rules for cleaning and formatting results:
+
+1.  **Input Formatting Instruction (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction`):** The LLM is instructed to "Concat all the rows into single row at each column by '|' concatenation marker." This dictates how multiple records are combined into a single, delimited string.
+2.  **Input Processing Instruction (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction`):** This instruction details data quality rules: "If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat\` column."
+
+**Confirmation of Governance:**
+These instructions govern the **post-processing logic**...
+
+### Original Question:
+What are the specific instructions or prompts provided to the Large Language Model during the Generative Task step within the pipeline that resulted in the SPARQL query post-processing function output?
+To be properly answered, cover: The content of the instructions/prompts used by the LLM.; Confirmation that these instructions govern the generation of a SPARQL query.; The specific context or stage (post-processing function) where this generation occurs in the pipeline.
+
+### Grounded Reasoning Trace:
+Question [0]: What are the specific instructions or prompts provided to the Large Language Model during the Generative Task step within the pipeline that resulted in the SPARQL query post-processing function output?
+To be properly answered, cover: The content of the instructions/prompts used by the LLM.; Confirmation that these instructions govern the generation of a SPARQL query.; The specific context or stage (post-processing function) where this generation occurs in the pipeline.
+Answer: The specific instructions and prompts related to the post-processing function are found within the `http://testwebsite/testProgram#LLM-query_result_post_processor` object, which is designed to generate this post-processing logic using a Large Language Model.
+
+**Content of Instructions/Prompts:**
+The instructions define two critical data manipulation rules for cleaning and formatting results:
+
+1.  **Input Formatting Instruction (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction`):** The LLM is instructed to "Concat all the rows into single row at each column by '|' concatenation marker." This dictates how multiple records are combined into a single...
+Grounding:
+{
+  "candidate_classes": [
+    "workflow:Generative_Task",
+    "workflow:Large_Language_Models",
+    "workflow:Large_Language_Model_Output",
+    "... 2 more item(s)"
+  ],
+  "candidate_relations": [
+    "dc:description"
+  ],
+  "entity_phrases": [
+    "specific instructions or prompts",
+    "Large Language Model",
+    "Generative Task step",
+    "... 1 more item(s)"
+  ]
+}
+
+Final Answer
+The specific instructions and prompts related to the post-processing function are found within the `http://testwebsite/testProgram#LLM-query_result_post_processor` object, which is designed to generate this post-processing logic using a Large Language Model.
+
+**Content of Instructions/Prompts:**
+The instructions define two critical data manipulation rules for cleaning and formatting results:
+
+1.  **Input Formatting Instruction (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction`):** The LLM is instructed to "Concat all the rows into single row at each column by '|' concatenation marker." This dictates how multiple records are combined into a single, delimited string.
+2.  **Input Processing Instruction (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction`):** This instruction details data quality rules: "If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat\` column."
+
+**Confirmation of Governance:**
+These instructions govern the **post-processing logic** applied to data that has been retrieved or processed, rather than governing the initial generation of a SPARQL query itself. They dictate how raw results (potentially from a SPARQL query) must be formatted and cleaned *after* retrieval.
+
+**Specific Context/Stage:**
+The generation occurs in the **Query Result Post-Processor function generator** (`http://testwebsite/testProgram#LLM-query_result_post_processor`), which is explicitly identified as generating the post-processing Function using Large Language Models. <cite, id=0>http://testwebsite/testProgram#LLM-id_20260420105659_302</cite> <cite, id=1>workflow:Large_Language_Model_Output</cite> <cite, id=2>workflow:Large_Language_Models</cite> <cite, id=3>http://testwebsite/testProgram#information_extractor</cite> <cite, id=4>provone:Program</cite> <cite, id=5>http://testwebsite/testProgram#LLM-query_result_post_processor</cite>
+
+Final Validation
+{
+  "answer": "The specific instructions and prompts related to the post-processing function are found within the `http://testwebsite/testProgram#LLM-query_result_post_processor` object, which is designed to generate this post-processing logic using a Large Language Model.\n\n**Content of Instructions/Prompts:**\nThe instructions define two critical data manipulation rules for cleaning and formatting results:\n\n1.  **Input Formatting Instruction (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction`):** The LLM is instructed to \"Concat all the rows into single row at each column by '|' concatenation marker.\" This dictates how multiple records are combined into a single, delimited string.\n2.  **Input Processing Instruction (`sio:SIO_000230: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction`):** This instruction details data quality rules: \"If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat\\` column.\"\n\n**Confirmation of Governance:**\nThese instructions govern the **post-processing logic** applied to data that has been retrieved or processed, rather than governing the initial generation of a SPARQL query itself. They dictate how raw results (potentially from a SPARQL query) must be formatted and cleaned *after* retrieval.\n\n**Specific Context/Stage:**\nThe generation occurs in the **Query Result Post-Processor function generator** (`http://testwebsite/testProgram#LLM-query_result_post_processor`), which is explicitly identified as generating the post-processing Function using Large Language Models.",
+  "answered": true,
+  "feedback": "The answer successfully covers all three required aspects: it provides the specific content of the instructions retrieved for the post-processing function; it confirms that these instructions govern data *cleaning and formatting* after retrieval, rather than governing the initial SPARQL query generation itself (which is an important clarification); and it correctly identifies the context as the Query Result Post-Processor function generator. The answer is detailed, accurate, and uses concrete data literals from the evidence."
+}
+
+Timing
+205.79783677705564 seconds

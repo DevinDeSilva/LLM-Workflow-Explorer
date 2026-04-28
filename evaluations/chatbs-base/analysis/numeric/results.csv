@@ -1,0 +1,617 @@
+run,prediction_path,prediction_line,prediction_id,ground_truth_found,question,pred_answer,prediction_time_taken,ground_truth_id,ground_truth_qtype,ground_truth_tags,ground_truth_answer,answer_token_precision,answer_token_recall,answer_token_f1,gt_entity_total,gt_entity_covered,gt_entity_coverage,missing_gt_entities,bertscore_precision,bertscore_recall,bertscore_f1,llm_completeness,llm_faithfulness,llm_relevance,llm_understanderbility,nli_entailment_max,nli_pairs_scored,nli_best_premise,nli_best_hypothesis,numeric_ground_truth_count,numeric_predicted_count,numeric_accuracy
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,1,gt_0,True,"
+How many unique ""experiment execution"" are there in this?
+",There are 13 unique experiment executions recorded in the graph.,96.8839396549156,gt_0,"[""multi"", ""numeric""]",{},The answer to the question is 15 unique executions.,0.3,0.3333333333333333,0.3157894736842105,15,0,0.0,"[""system_prompt_execution_1_1@en^^<xsd:string>"", ""llm_chat_1_1@en^^<xsd:string>"", ""information_extraction_1_1@en^^<xsd:string>"", ""sparql_query_1_1_2@en^^<xsd:string>"", ""sparql_query_1_1_1@en^^<xsd:string>"", ""sparql_query_1_1_3@en^^<xsd:string>"", ""sparql_query_1_1_4@en^^<xsd:string>"", ""sparql_query_1_1_5@en^^<xsd:string>"", ""sparql_query_1_1_6@en^^<xsd:string>"", ""sparql_query_1_1_7@en^^<xsd:string>"", ""sparql_query_1_1_8@en^^<xsd:string>"", ""sparql_query_1_1_9@en^^<xsd:string>"", ""sparql_query_1_1_10@en^^<xsd:string>"", ""sparql_query_1_1_11@en^^<xsd:string>"", ""post_processing_1_1@en^^<xsd:string>""]",0.7408372163772583,0.8874481916427612,0.8075423240661621,0.8666666666666667,0.0,1.0,0.9,0.006125129293650389,1,There are 13 unique experiment executions recorded in the graph.,"Question: How many ""experiment execution"" are there in this?
+Answer: The answer to the question is 15 unique executions.",15,13.0,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,89,gt_88,True,"
+what is the number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 ?
+",The provided graph does not contain sufficient information to determine the numerical count of outputs for the specified port within that execution.,30.391676745028235,gt_88,"[""multi"", ""numeric""]",{},"
+    The number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105727_858-post_processed_output
+    ",0.3181818181818182,0.19444444444444445,0.2413793103448276,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105727_858-post_processed_output""]",0.838438868522644,0.8249168395996094,0.8316228985786438,0.0,0.0,0.8,0.9,0.6946050524711609,1,The provided graph does not contain sufficient information to determine the numerical count of outputs for the specified port within that execution.,"Question: what is the number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 ?
+Answer: The number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105727_858-post_processed_output",1,,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,90,gt_89,True,"
+what is the number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 ?
+",The execution has one output port for the System Prompt.,45.78997898392845,gt_89,"[""multi"", ""numeric""]",{},"
+    The number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt
+    ",0.7,0.23333333333333334,0.35,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt""]",0.8101136684417725,0.7906142473220825,0.8002452254295349,0.8,0.9,0.95,0.7,0.1529090255498886,1,The execution has one output port for the System Prompt.,"Question: what is the number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 ?
+Answer: The number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt",1,,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,91,gt_90,True,"
+what is the number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 ?
+",The execution http://testwebsite/testProgram#id_20260420105703_307 has 11 data items listed as members of the extracted entities collection.,72.62693441507872,gt_90,"[""multi"", ""numeric""]",{},"
+    The number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 is 11
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105703_198-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_218-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_51-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_661-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_678-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_693-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_757-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_886-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_891-extracts
+http://testwebsite/testProgram#Data-id_20260420105704_531-extracts
+http://testwebsite/testProgram#Data-id_20260420105704_782-extracts
+    ",0.7,0.12844036697247707,0.2170542635658915,11,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105703_198-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_218-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_51-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_661-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_678-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_693-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_757-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_886-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_891-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105704_531-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105704_782-extracts""]",0.8132718801498413,0.7949692010879517,0.8040164113044739,0.9,0.8,0.9,0.7,0.8237504959106445,1,The execution http://testwebsite/testProgram#id_20260420105703_307 has 11 data items listed as members of the extracted entities collection.,"Question: what is the number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 ?
+Answer: The number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 is 11 Output Data http://testwebsite/testProgram#Data-id_20260420105703_198-extracts http://testwebsite/testProgram#Data-id_20260420105703_218-extracts http://testwebsite/testProgram#Data-id_20260420105703_51-extracts http://testwebsite/testProgram#Data-id_20260420105703_661-extracts http://testwebsite/testProgram#Data-id_20260420105703_678-extracts http://testwebsite/testProgram#Data-id_20260420105703_693-extracts http://testwebsite/testProgram#Data-id_20260420105703_757-extracts http://testwebsite/testProgram#Data-id_20260420105703_886-extracts http://testwebsite/testProgram#Data-id_20260420105703_891-extracts http://testwebsite/testProgram#Data-id_20260420105704_531-extracts http://testwebsite/testProgram#Data-id_20260420105704_782-extracts",11,11.0,1.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,92,gt_91,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 ?
+",The Output port for kg_info on the program associated with that execution has one defined output port.,56.953957961988635,gt_91,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105705_232-kg_info
+http://testwebsite/testProgram#Data-id_20260420105705_670-kg_info
+    ",0.5,0.21428571428571427,0.3,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105705_232-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105705_670-kg_info""]",0.827592134475708,0.7962781190872192,0.8116331696510315,0.5,0.0,0.8,0.9,0.11405488848686218,1,The Output port for kg_info on the program associated with that execution has one defined output port.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105705_232-kg_info http://testwebsite/testProgram#Data-id_20260420105705_670-kg_info",2,,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,93,gt_92,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 ?
+","The execution http://testwebsite/testProgram#id_20260420105705_972 resulted in one collection of knowledge information, as evidenced by the generation of ChatBS-NexGen:Collection-id_20260420105705_846-kg_info.",43.84336976893246,gt_92,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105705_668-kg_info
+    ",0.5172413793103449,0.45454545454545453,0.4838709677419355,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105705_668-kg_info""]",0.838498592376709,0.8940640687942505,0.8653903007507324,0.8,0.7,0.9,0.6,0.44591137766838074,1,"The execution http://testwebsite/testProgram#id_20260420105705_972 resulted in one collection of knowledge information, as evidenced by the generation of ChatBS-NexGen:Collection-id_20260420105705_846-kg_info.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105705_668-kg_info",1,,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,94,gt_93,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 ?
+","The execution http://testwebsite/testProgram#id_20260420105710_61 has one output port, labeled ""Output port for kg_knowledge"".",23.3737578780856,gt_93,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105710_564-kg_info
+http://testwebsite/testProgram#Data-id_20260420105711_94-kg_info
+    ",0.7222222222222222,0.30952380952380953,0.4333333333333334,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105710_564-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105711_94-kg_info""]",0.8368286490440369,0.8611729145050049,0.8488262891769409,0.0,0.0,0.0,0.8,0.553947389125824,1,"The execution http://testwebsite/testProgram#id_20260420105710_61 has one output port, labeled ""Output port for kg_knowledge"".","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105710_564-kg_info http://testwebsite/testProgram#Data-id_20260420105711_94-kg_info",2,,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,95,gt_94,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 ?
+",There is one recorded instance where data was outputted via the Output port for kg_info in the execution identified by http://testwebsite/testProgram#id_20260420105711_320.,28.23980310698971,gt_94,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105711_658-kg_info
+    ",0.6296296296296297,0.5151515151515151,0.5666666666666667,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105711_658-kg_info""]",0.8368449211120605,0.8827996850013733,0.8592082858085632,0.8,0.9,0.95,0.7,0.5074862837791443,1,There is one recorded instance where data was outputted via the Output port for kg_info in the execution identified by http://testwebsite/testProgram#id_20260420105711_320.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105711_658-kg_info",1,,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,96,gt_95,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 ?
+","The provided knowledge graph does not contain explicit information regarding the number of outputs associated with the ""Output port for kg_info"" on the execution identified by http://testwebsite/testProgram#id_20260420105711_662.",36.033914457890205,gt_95,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105711_45-kg_info
+    ",0.5151515151515151,0.5151515151515151,0.5151515151515151,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105711_45-kg_info""]",0.8467423915863037,0.8859075307846069,0.8658823370933533,0.0,0.0,0.8,0.9,0.5576390027999878,1,"The provided knowledge graph does not contain explicit information regarding the number of outputs associated with the ""Output port for kg_info"" on the execution identified by http://testwebsite/testProgram#id_20260420105711_662.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105711_45-kg_info",1,,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,97,gt_96,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 ?
+","The provided knowledge graph indicates that the execution associated with `http://testwebsite/testProgram#id_20260420105711_772` leads to a generation (`ChatBS-NexGen:Generation-id_20260420105711_565-kg_info`) which utilizes the `Output port for kg_info`, but it does not specify the *number* of outputs.",26.60718060506042,gt_96,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105711_547-kg_info
+http://testwebsite/testProgram#Data-id_20260420105711_637-kg_info
+    ",0.4666666666666667,0.5,0.4827586206896552,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105711_547-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105711_637-kg_info""]",0.8296089172363281,0.8729784488677979,0.8507413268089294,0.0,0.0,0.8,0.9,0.2905919551849365,1,"The provided knowledge graph indicates that the execution associated with `http://testwebsite/testProgram#id_20260420105711_772` leads to a generation (`ChatBS-NexGen:Generation-id_20260420105711_565-kg_info`) which utilizes the `Output port for kg_info`, but it does not specify the *number* of outputs.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105711_547-kg_info http://testwebsite/testProgram#Data-id_20260420105711_637-kg_info",2,,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,98,gt_97,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 ?
+",The provided knowledge graph does not contain information detailing the specific number of outputs for the Output port for kg_info in the execution identified as http://testwebsite/testProgram#id_20260420105717_370.,20.200245055020787,gt_97,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105717_899-kg_info
+    ",0.59375,0.5757575757575758,0.5846153846153846,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105717_899-kg_info""]",0.8528701066970825,0.8905159831047058,0.8712866306304932,0.0,0.0,0.8,0.9,0.6031495928764343,1,The provided knowledge graph does not contain information detailing the specific number of outputs for the Output port for kg_info in the execution identified as http://testwebsite/testProgram#id_20260420105717_370.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105717_899-kg_info",1,,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,99,gt_98,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 ?
+",The provided knowledge graph does not contain an explicit count specifying the number of outputs for the Output port for kg_info associated with the execution http://testwebsite/testProgram#id_20260420105719_327.,60.37035212002229,gt_98,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info
+http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info
+    ",0.5625,0.42857142857142855,0.4864864864864864,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info""]",0.8423181772232056,0.8690094351768494,0.8554556965827942,0.0,0.0,0.8,0.9,0.5867047309875488,1,The provided knowledge graph does not contain an explicit count specifying the number of outputs for the Output port for kg_info associated with the execution http://testwebsite/testProgram#id_20260420105719_327.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info",2,,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,100,gt_99,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 ?
+",The provided knowledge graph does not contain information specifying the number of outputs for the Output port for kg_info from the execution identified by http://testwebsite/testProgram#id_20260420105722_117.,29.411327960900962,gt_99,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105722_181-kg_info
+    ",0.5806451612903226,0.5454545454545454,0.5625,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105722_181-kg_info""]",0.8399636745452881,0.889369547367096,0.8639609217643738,0.0,0.0,0.8,0.9,0.4459381103515625,1,The provided knowledge graph does not contain information specifying the number of outputs for the Output port for kg_info from the execution identified by http://testwebsite/testProgram#id_20260420105722_117.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105722_181-kg_info",1,,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,101,gt_100,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 ?
+","The graph indicates one generation event for the execution associated with http://testwebsite/testProgram#id_20260420105723_114, which suggests at least one output result.",35.541696816915646,gt_100,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105723_261-kg_info
+    ",0.4583333333333333,0.3333333333333333,0.38596491228070173,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105723_261-kg_info""]",0.8277626633644104,0.8709875345230103,0.8488251566886902,0.5,0.8,0.9,0.7,0.4348408877849579,1,"The graph indicates one generation event for the execution associated with http://testwebsite/testProgram#id_20260420105723_114, which suggests at least one output result.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105723_261-kg_info",1,,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,102,gt_101,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 ?
+",The provided knowledge graph shows one connection originating from the Output port for kg_info in the execution identified by http://testwebsite/testProgram#id_20260420105727_300.,29.812125514959916,gt_101,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info
+http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info
+    ",0.6153846153846154,0.38095238095238093,0.47058823529411764,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info""]",0.8168995976448059,0.8519211411476135,0.8340429067611694,0.5,0.2,0.8,0.7,0.4549848735332489,1,The provided knowledge graph shows one connection originating from the Output port for kg_info in the execution identified by http://testwebsite/testProgram#id_20260420105727_300.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info",2,,0.0
+fullcontext,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl,103,gt_102,True,"
+what is the number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 ?
+",There is one documented output associated with the LLM Chat output port: generated_answer for the execution http://testwebsite/testProgram#id_20260420105659_302.,34.38427365699317,gt_102,"[""multi"", ""numeric""]",{},"
+    The number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer
+    ",0.782608695652174,0.5294117647058824,0.631578947368421,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer""]",0.8454128503799438,0.8853896260261536,0.8649395704269409,0.8,0.9,0.95,0.7,0.512201726436615,1,There is one documented output associated with the LLM Chat output port: generated_answer for the execution http://testwebsite/testProgram#id_20260420105659_302.,"Question: what is the number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 ?
+Answer: The number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer",1,,0.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,1,gt_0,True,"
+How many unique ""experiment execution"" are there in this?
+","There are 15 unique ""experiment execution"" records.",15.109350195038132,gt_0,"[""multi"", ""numeric""]",{},The answer to the question is 15 unique executions.,0.2857142857142857,0.2222222222222222,0.25,15,0,0.0,"[""system_prompt_execution_1_1@en^^<xsd:string>"", ""llm_chat_1_1@en^^<xsd:string>"", ""information_extraction_1_1@en^^<xsd:string>"", ""sparql_query_1_1_2@en^^<xsd:string>"", ""sparql_query_1_1_1@en^^<xsd:string>"", ""sparql_query_1_1_3@en^^<xsd:string>"", ""sparql_query_1_1_4@en^^<xsd:string>"", ""sparql_query_1_1_5@en^^<xsd:string>"", ""sparql_query_1_1_6@en^^<xsd:string>"", ""sparql_query_1_1_7@en^^<xsd:string>"", ""sparql_query_1_1_8@en^^<xsd:string>"", ""sparql_query_1_1_9@en^^<xsd:string>"", ""sparql_query_1_1_10@en^^<xsd:string>"", ""sparql_query_1_1_11@en^^<xsd:string>"", ""post_processing_1_1@en^^<xsd:string>""]",0.9007159471511841,0.91969895362854,0.9101084470748901,1.0,1.0,1.0,0.9,0.2456713765859604,1,"There are 15 unique ""experiment execution"" records.","Question: How many ""experiment execution"" are there in this?
+Answer: The answer to the question is 15 unique executions.",15,15.0,1.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,89,gt_88,True,"
+what is the number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 ?
+",2,150.24367532890756,gt_88,"[""multi"", ""numeric""]",{},"
+    The number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105727_858-post_processed_output
+    ",0.0,0.0,0.0,1,1,1.0,[],0.8267019391059875,0.7195093631744385,0.7693900465965271,0.0,0.0,1.0,1.0,0.28174492716789246,1,2,"Question: what is the number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 ?
+Answer: The number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105727_858-post_processed_output",1,2.0,0.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,90,gt_89,True,"
+what is the number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 ?
+",The number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 is 24.,38.20094260503538,gt_89,"[""multi"", ""numeric""]",{},"
+    The number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt
+    ",0.9473684210526315,0.6,0.7346938775510204,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt""]",0.9461353421211243,0.8975557088851929,0.9212055206298828,0.0,0.0,1.0,0.8,0.04318036884069443,1,The number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 is 24.,"Question: what is the number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 ?
+Answer: The number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt",1,24.0,0.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,91,gt_90,True,"
+what is the number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 ?
+","The execution http://testwebsite/testProgram#id_20260420105703_307 has 1 output for the Extracted Entities, which is identified by the generation URI ChatBS-NexGen:Generation-id_20260420105703_814-extracts.",74.27592219493818,gt_90,"[""multi"", ""numeric""]",{},"
+    The number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 is 11
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105703_198-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_218-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_51-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_661-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_678-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_693-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_757-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_886-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_891-extracts
+http://testwebsite/testProgram#Data-id_20260420105704_531-extracts
+http://testwebsite/testProgram#Data-id_20260420105704_782-extracts
+    ",0.6206896551724138,0.1651376146788991,0.26086956521739135,11,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105703_198-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_218-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_51-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_661-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_678-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_693-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_757-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_886-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_891-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105704_531-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105704_782-extracts""]",0.8631278872489929,0.8248666524887085,0.8435636162757874,0.0,0.0,0.8,0.9,0.355754554271698,1,"The execution http://testwebsite/testProgram#id_20260420105703_307 has 1 output for the Extracted Entities, which is identified by the generation URI ChatBS-NexGen:Generation-id_20260420105703_814-extracts.","Question: what is the number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 ?
+Answer: The number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 is 11 Output Data http://testwebsite/testProgram#Data-id_20260420105703_198-extracts http://testwebsite/testProgram#Data-id_20260420105703_218-extracts http://testwebsite/testProgram#Data-id_20260420105703_51-extracts http://testwebsite/testProgram#Data-id_20260420105703_661-extracts http://testwebsite/testProgram#Data-id_20260420105703_678-extracts http://testwebsite/testProgram#Data-id_20260420105703_693-extracts http://testwebsite/testProgram#Data-id_20260420105703_757-extracts http://testwebsite/testProgram#Data-id_20260420105703_886-extracts http://testwebsite/testProgram#Data-id_20260420105703_891-extracts http://testwebsite/testProgram#Data-id_20260420105704_531-extracts http://testwebsite/testProgram#Data-id_20260420105704_782-extracts",11,1.0,0.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,92,gt_91,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 ?
+",0,118.2499796160264,gt_91,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105705_232-kg_info
+http://testwebsite/testProgram#Data-id_20260420105705_670-kg_info
+    ",0.0,0.0,0.0,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105705_232-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105705_670-kg_info""]",0.740932285785675,0.6971561908721924,0.7183780074119568,0.0,0.0,0.9,0.8,0.07332821935415268,1,0,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105705_232-kg_info http://testwebsite/testProgram#Data-id_20260420105705_670-kg_info",2,0.0,0.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,93,gt_92,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 ?
+",No answer provided,202.91312610998284,gt_92,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105705_668-kg_info
+    ",0.0,0.0,0.0,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105705_668-kg_info""]",0.8386693000793457,0.7259798049926758,0.7782664895057678,0.0,0.0,0.0,0.0,0.12578646838665009,1,No answer provided,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105705_668-kg_info",1,,0.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,94,gt_93,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 ?
+",The number of outputs for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 is 0.,83.54039899108466,gt_93,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105710_564-kg_info
+http://testwebsite/testProgram#Data-id_20260420105711_94-kg_info
+    ",0.9090909090909091,0.47619047619047616,0.6249999999999999,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105710_564-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105711_94-kg_info""]",0.9365563988685608,0.8810487389564514,0.9079550504684448,0.0,0.0,1.0,1.0,0.821382999420166,1,The number of outputs for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 is 0.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105710_564-kg_info http://testwebsite/testProgram#Data-id_20260420105711_94-kg_info",2,0.0,0.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,95,gt_94,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 ?
+",1,287.3724410260329,gt_94,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105711_658-kg_info
+    ",1.0,0.030303030303030304,0.05882352941176471,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105711_658-kg_info""]",0.8076650500297546,0.720597505569458,0.7616510987281799,1.0,1.0,1.0,0.8,0.8600706458091736,1,1,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105711_658-kg_info",1,1.0,1.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,96,gt_95,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 ?
+",No answer provided,741.777681317064,gt_95,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105711_45-kg_info
+    ",0.0,0.0,0.0,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105711_45-kg_info""]",0.8396555781364441,0.7299772500991821,0.7809845209121704,0.0,0.0,0.0,0.0,0.11953794956207275,1,No answer provided,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105711_45-kg_info",1,,0.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,97,gt_96,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 ?
+",The number of outputs for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 is 0.,79.07108388503548,gt_96,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105711_547-kg_info
+http://testwebsite/testProgram#Data-id_20260420105711_637-kg_info
+    ",0.9090909090909091,0.47619047619047616,0.6249999999999999,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105711_547-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105711_637-kg_info""]",0.9378582239151001,0.8763542175292969,0.9060636758804321,0.0,0.0,1.0,1.0,0.8201059103012085,1,The number of outputs for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 is 0.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105711_547-kg_info http://testwebsite/testProgram#Data-id_20260420105711_637-kg_info",2,0.0,0.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,98,gt_97,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 ?
+",The number of outputs for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 is 0.,115.14432264689822,gt_97,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105717_899-kg_info
+    ",0.9090909090909091,0.6060606060606061,0.7272727272727273,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105717_899-kg_info""]",0.9446549415588379,0.9014966487884521,0.9225713610649109,0.0,0.0,1.0,0.8,0.7512088418006897,1,The number of outputs for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 is 0.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105717_899-kg_info",1,0.0,0.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,99,gt_98,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 ?
+",1,350.4754752899753,gt_98,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info
+http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info
+    ",0.0,0.0,0.0,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info""]",0.8019538521766663,0.7057148814201355,0.7507627606391907,0.0,0.0,0.8,0.9,0.07726507633924484,1,1,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info",2,1.0,0.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,100,gt_99,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 ?
+",The execution http://testwebsite/testProgram#id_20260420105722_117 has 12 associated output values (objects) linked to it through its properties in the knowledge graph.,116.6403295060154,gt_99,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105722_181-kg_info
+    ",0.4583333333333333,0.3333333333333333,0.38596491228070173,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105722_181-kg_info""]",0.8834151029586792,0.8702614903450012,0.8767889738082886,0.0,0.0,0.2,0.8,0.14303795993328094,1,The execution http://testwebsite/testProgram#id_20260420105722_117 has 12 associated output values (objects) linked to it through its properties in the knowledge graph.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105722_181-kg_info",1,12.0,0.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,101,gt_100,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 ?
+",1,84.25965253799222,gt_100,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105723_261-kg_info
+    ",1.0,0.030303030303030304,0.05882352941176471,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105723_261-kg_info""]",0.808311939239502,0.7196067571640015,0.7613843679428101,1.0,1.0,1.0,0.8,0.8579058051109314,1,1,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105723_261-kg_info",1,1.0,1.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,102,gt_101,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 ?
+",The number of output for kg_info associated with the execution http://testwebsite/testProgram#id_20260420105727_300 is 3.,118.74123637902085,gt_101,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info
+http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info
+    ",0.8421052631578947,0.38095238095238093,0.5245901639344263,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info""]",0.918983519077301,0.8662660121917725,0.8918464183807373,0.5,0.0,1.0,0.8,0.2771228551864624,1,The number of output for kg_info associated with the execution http://testwebsite/testProgram#id_20260420105727_300 is 3.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info",2,3.0,0.0
+grasp,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl,103,gt_102,True,"
+what is the number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 ?
+",The number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 is 1.,78.25293238798622,gt_102,"[""multi"", ""numeric""]",{},"
+    The number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer
+    ",1.0,0.6764705882352942,0.8070175438596492,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer""]",0.9478945732116699,0.9057108759880066,0.9263226985931396,1.0,1.0,1.0,0.8,0.8206945061683655,1,The number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 is 1.,"Question: what is the number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 ?
+Answer: The number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer",1,1.0,1.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,1,gt_0,True,"
+How many unique ""experiment execution"" are there in this?
+",The closest grounded entity is Execution.,0.20300970308016986,gt_0,"[""multi"", ""numeric""]",{},The answer to the question is 15 unique executions.,0.3333333333333333,0.2222222222222222,0.26666666666666666,15,0,0.0,"[""system_prompt_execution_1_1@en^^<xsd:string>"", ""llm_chat_1_1@en^^<xsd:string>"", ""information_extraction_1_1@en^^<xsd:string>"", ""sparql_query_1_1_2@en^^<xsd:string>"", ""sparql_query_1_1_1@en^^<xsd:string>"", ""sparql_query_1_1_3@en^^<xsd:string>"", ""sparql_query_1_1_4@en^^<xsd:string>"", ""sparql_query_1_1_5@en^^<xsd:string>"", ""sparql_query_1_1_6@en^^<xsd:string>"", ""sparql_query_1_1_7@en^^<xsd:string>"", ""sparql_query_1_1_8@en^^<xsd:string>"", ""sparql_query_1_1_9@en^^<xsd:string>"", ""sparql_query_1_1_10@en^^<xsd:string>"", ""sparql_query_1_1_11@en^^<xsd:string>"", ""post_processing_1_1@en^^<xsd:string>""]",0.7798012495040894,0.8699667453765869,0.8224201202392578,0.0,0.0,0.2,0.8,0.0015504357870668173,1,The closest grounded entity is Execution.,"Question: How many ""experiment execution"" are there in this?
+Answer: The answer to the question is 15 unique executions.",15,,0.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,89,gt_88,True,"
+what is the number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 ?
+","The closest grounded workflow step is Query Result Post-Processor (post processing 1 1); used ChatBS-NexGen:id_20260420105727_995, row 1; generated ChatBS-NexGen:id_20260420105727_995, post processed output, row 1.",0.5035828900290653,gt_88,"[""multi"", ""numeric""]",{},"
+    The number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105727_858-post_processed_output
+    ",0.36363636363636365,0.3333333333333333,0.34782608695652173,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105727_858-post_processed_output""]",0.7963079214096069,0.839489221572876,0.8173286318778992,0.2,0.1,0.8,0.4,0.6289643049240112,1,"The closest grounded workflow step is Query Result Post-Processor (post processing 1 1); used ChatBS-NexGen:id_20260420105727_995, row 1; generated ChatBS-NexGen:id_20260420105727_995, post processed output, row 1.","Question: what is the number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 ?
+Answer: The number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105727_858-post_processed_output",1,1.0,1.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,90,gt_89,True,"
+what is the number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 ?
+",The system prompt was produced by the LLM Chat execution and then used by LLM Chat to produce generated answer.,0.42663193901535124,gt_89,"[""multi"", ""numeric""]",{},"
+    The number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt
+    ",0.25,0.16666666666666666,0.2,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt""]",0.8017738461494446,0.7896086573600769,0.7956447601318359,0.0,0.0,0.2,0.8,0.1246904656291008,1,The system prompt was produced by the LLM Chat execution and then used by LLM Chat to produce generated answer.,"Question: what is the number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 ?
+Answer: The number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt",1,,0.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,91,gt_90,True,"
+what is the number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 ?
+",The closest grounded entity is Extracted Entities.,0.5032756680157036,gt_90,"[""multi"", ""numeric""]",{},"
+    The number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 is 11
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105703_198-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_218-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_51-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_661-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_678-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_693-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_757-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_886-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_891-extracts
+http://testwebsite/testProgram#Data-id_20260420105704_531-extracts
+http://testwebsite/testProgram#Data-id_20260420105704_782-extracts
+    ",0.5714285714285714,0.03669724770642202,0.06896551724137931,11,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105703_198-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_218-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_51-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_661-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_678-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_693-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_757-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_886-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_891-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105704_531-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105704_782-extracts""]",0.8061333298683167,0.704615592956543,0.7519636154174805,0.0,0.0,0.2,0.8,0.11056486517190933,1,The closest grounded entity is Extracted Entities.,"Question: what is the number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 ?
+Answer: The number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 is 11 Output Data http://testwebsite/testProgram#Data-id_20260420105703_198-extracts http://testwebsite/testProgram#Data-id_20260420105703_218-extracts http://testwebsite/testProgram#Data-id_20260420105703_51-extracts http://testwebsite/testProgram#Data-id_20260420105703_661-extracts http://testwebsite/testProgram#Data-id_20260420105703_678-extracts http://testwebsite/testProgram#Data-id_20260420105703_693-extracts http://testwebsite/testProgram#Data-id_20260420105703_757-extracts http://testwebsite/testProgram#Data-id_20260420105703_886-extracts http://testwebsite/testProgram#Data-id_20260420105703_891-extracts http://testwebsite/testProgram#Data-id_20260420105704_531-extracts http://testwebsite/testProgram#Data-id_20260420105704_782-extracts",11,,0.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,92,gt_91,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 ?
+",The closest grounded entity is Output port for kg_info.,0.49789532006252557,gt_91,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105705_232-kg_info
+http://testwebsite/testProgram#Data-id_20260420105705_670-kg_info
+    ",0.7,0.16666666666666666,0.2692307692307692,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105705_232-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105705_670-kg_info""]",0.8435556292533875,0.7837193012237549,0.8125373125076294,0.0,0.0,0.2,0.8,0.031424056738615036,1,The closest grounded entity is Output port for kg_info.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105705_232-kg_info http://testwebsite/testProgram#Data-id_20260420105705_670-kg_info",2,,0.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,93,gt_92,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 ?
+","The closest grounded workflow step is SPARQL Query Builder (sparql query 1 1 2); used extracts, row 0, row 1; generated extracts, kg info, row 0, row 1.",0.4704081879463047,gt_92,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105705_668-kg_info
+    ",0.17857142857142858,0.15151515151515152,0.16393442622950818,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105705_668-kg_info""]",0.7633227705955505,0.7734957933425903,0.7683756947517395,0.0,0.0,0.2,0.8,0.7103909850120544,1,"The closest grounded workflow step is SPARQL Query Builder (sparql query 1 1 2); used extracts, row 0, row 1; generated extracts, kg info, row 0, row 1.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105705_668-kg_info",1,1.0,1.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,94,gt_93,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 ?
+",The closest grounded entity is Output port for kg_info.,0.46959710808005184,gt_93,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105710_564-kg_info
+http://testwebsite/testProgram#Data-id_20260420105711_94-kg_info
+    ",0.7,0.16666666666666666,0.2692307692307692,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105710_564-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105711_94-kg_info""]",0.8442120552062988,0.7880411148071289,0.8151600360870361,0.0,0.0,0.2,0.8,0.05734670162200928,1,The closest grounded entity is Output port for kg_info.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105710_564-kg_info http://testwebsite/testProgram#Data-id_20260420105711_94-kg_info",2,,0.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,95,gt_94,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 ?
+",The closest grounded entity is Output port for kg_info.,0.4448998268926516,gt_94,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105711_658-kg_info
+    ",0.7,0.21212121212121213,0.3255813953488372,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105711_658-kg_info""]",0.8480967283248901,0.7975849509239197,0.8220657110214233,0.0,0.0,0.2,0.8,0.07689152657985687,1,The closest grounded entity is Output port for kg_info.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105711_658-kg_info",1,,0.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,96,gt_95,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 ?
+",The closest grounded entity is Output port for kg_info.,0.41929628001526,gt_95,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105711_45-kg_info
+    ",0.7,0.21212121212121213,0.3255813953488372,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105711_45-kg_info""]",0.8477270007133484,0.8001341819763184,0.8232433199882507,0.0,0.0,0.2,0.8,0.07868105173110962,1,The closest grounded entity is Output port for kg_info.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105711_45-kg_info",1,,0.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,97,gt_96,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 ?
+",The closest grounded entity is Output port for kg_info.,0.42394393193535507,gt_96,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105711_547-kg_info
+http://testwebsite/testProgram#Data-id_20260420105711_637-kg_info
+    ",0.7,0.16666666666666666,0.2692307692307692,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105711_547-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105711_637-kg_info""]",0.8446027040481567,0.785771369934082,0.8141255974769592,0.0,0.0,0.2,0.8,0.03982199355959892,1,The closest grounded entity is Output port for kg_info.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105711_547-kg_info http://testwebsite/testProgram#Data-id_20260420105711_637-kg_info",2,,0.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,98,gt_97,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 ?
+",The closest grounded entity is Output port for kg_info.,0.4831947030033916,gt_97,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105717_899-kg_info
+    ",0.7,0.21212121212121213,0.3255813953488372,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105717_899-kg_info""]",0.8482533693313599,0.7979447841644287,0.8223303556442261,0.0,0.0,0.2,0.8,0.07885219156742096,1,The closest grounded entity is Output port for kg_info.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105717_899-kg_info",1,,0.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,99,gt_98,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 ?
+",The closest grounded entity is Output port for kg_info.,0.4883083360036835,gt_98,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info
+http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info
+    ",0.7,0.16666666666666666,0.2692307692307692,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info""]",0.8442152142524719,0.7848771810531616,0.8134655356407166,0.0,0.0,0.2,0.8,0.05014357343316078,1,The closest grounded entity is Output port for kg_info.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info",2,,0.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,100,gt_99,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 ?
+",The closest grounded entity is Output port for kg_info.,0.47644881904125214,gt_99,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105722_181-kg_info
+    ",0.7,0.21212121212121213,0.3255813953488372,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105722_181-kg_info""]",0.8496147990226746,0.7987219095230103,0.8233827352523804,0.0,0.0,0.2,0.8,0.09533664584159851,1,The closest grounded entity is Output port for kg_info.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105722_181-kg_info",1,,0.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,101,gt_100,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 ?
+",The closest grounded entity is Output port for kg_info.,0.4679191430332139,gt_100,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105723_261-kg_info
+    ",0.7,0.21212121212121213,0.3255813953488372,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105723_261-kg_info""]",0.8493467569351196,0.7982892990112305,0.8230268955230713,0.0,0.0,0.2,0.8,0.07373761385679245,1,The closest grounded entity is Output port for kg_info.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105723_261-kg_info",1,,0.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,102,gt_101,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 ?
+",The closest grounded entity is Output port for kg_info.,0.4639340719440952,gt_101,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info
+http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info
+    ",0.7,0.16666666666666666,0.2692307692307692,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info""]",0.8453818559646606,0.7840098142623901,0.8135400414466858,0.0,0.0,0.2,0.8,0.0522107370197773,1,The closest grounded entity is Output port for kg_info.,"Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info",2,,0.0
+llmbased,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl,103,gt_102,True,"
+what is the number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 ?
+",The generated answer was produced by the LLM Chat execution and then used by Information Extractor to produce extracts.,0.3905578729463741,gt_102,"[""multi"", ""numeric""]",{},"
+    The number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer
+    ",0.3684210526315789,0.20588235294117646,0.2641509433962264,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer""]",0.7819342613220215,0.7874220013618469,0.7846685647964478,0.0,0.0,0.2,0.8,0.34384727478027344,1,The generated answer was produced by the LLM Chat execution and then used by Information Extractor to produce extracts.,"Question: what is the number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 ?
+Answer: The number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer",1,,0.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,1,gt_0,True,"
+How many ""experiment execution"" are there in this?
+","Based on the provided information, there are a total of 15 distinct entities that have the type `provone:Execution`. These executions represent various steps taken within the application's workflow pipeline, ranging from initial prompt generation to data extraction and final post-processing stages.",0.24235063092783093,gt_0,"[""multi"", ""numeric""]",{},The answer to the question is 15 unique executions.,0.11363636363636363,0.5555555555555556,0.18867924528301888,15,0,0.0,"[""system_prompt_execution_1_1@en^^<xsd:string>"", ""llm_chat_1_1@en^^<xsd:string>"", ""information_extraction_1_1@en^^<xsd:string>"", ""sparql_query_1_1_2@en^^<xsd:string>"", ""sparql_query_1_1_1@en^^<xsd:string>"", ""sparql_query_1_1_3@en^^<xsd:string>"", ""sparql_query_1_1_4@en^^<xsd:string>"", ""sparql_query_1_1_5@en^^<xsd:string>"", ""sparql_query_1_1_6@en^^<xsd:string>"", ""sparql_query_1_1_7@en^^<xsd:string>"", ""sparql_query_1_1_8@en^^<xsd:string>"", ""sparql_query_1_1_9@en^^<xsd:string>"", ""sparql_query_1_1_10@en^^<xsd:string>"", ""sparql_query_1_1_11@en^^<xsd:string>"", ""post_processing_1_1@en^^<xsd:string>""]",0.716833233833313,0.8789777755737305,0.7896680235862732,0.8,0.9,0.95,0.7,0.2511194348335266,1,"Based on the provided information, there are a total of 15 distinct entities that have the type `provone:Execution`. These executions represent various steps taken within the application's workflow pipeline, ranging from initial prompt generation to data extraction and final post-processing stages.","Question: How many ""experiment execution"" are there in this?
+Answer: The answer to the question is 15 unique executions.",15,15.0,1.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,89,gt_88,True,"
+what is the number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 ?
+","Based on the provided provenance data, there is evidence of **one** primary output associated with the post-processing stage for the program execution identified by `http://testwebsite/testProgram#id_20260420105727_835`. This conclusion is drawn from the record showing a single qualified generation event (`ChatBS-NexGen:Generation-id_20260420105727_328-post_processed_output`) and the subsequent usage of a corresponding data item (`ChatBS-NexGen:Data-id_20260420105727_858-post_processed_output`). Although the schema context defines ports, the retrieved information for this specific execution points to one distinct output artifact being generated and utilized.",83.42834361898713,gt_88,"[""multi"", ""numeric""]",{},"
+    The number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105727_858-post_processed_output
+    ",0.2872340425531915,0.75,0.41538461538461546,1,1,1.0,[],0.7968105673789978,0.8901469707489014,0.8408966660499573,0.8,0.9,0.95,0.7,0.7766396999359131,1,"Based on the provided provenance data, there is evidence of **one** primary output associated with the post-processing stage for the program execution identified by `http://testwebsite/testProgram#id_20260420105727_835`. This conclusion is drawn from the record showing a single qualified generation event (`ChatBS-NexGen:Generation-id_20260420105727_328-post_processed_output`) and the subsequent usage of a corresponding data item (`ChatBS-NexGen:Data-id_20260420105727_858-post_processed_output`). Although the schema context defines ports, the retrieved information for this specific execution points to one distinct output artifact being generated and utilized.","Question: what is the number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 ?
+Answer: The number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105727_858-post_processed_output",1,,0.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,90,gt_89,True,"
+what is the number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 ?
+","Based on the provided knowledge graph information, the experiment execution corresponding to the ID `http://testwebsite/testProgram#id_20260420105652_650` (identified as `ChatBS-NexGen:id_20260420105652_650`) shows evidence of **one** output generated specifically from the System Prompt. This is indicated by the presence of a single `prov:qualifiedGeneration` property linked to `ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt`.",26.542325645918027,gt_89,"[""multi"", ""numeric""]",{},"
+    The number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt
+    ",0.31666666666666665,0.6333333333333333,0.4222222222222222,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt""]",0.8311166763305664,0.8875691890716553,0.8584158420562744,1.0,1.0,1.0,0.8,0.21733012795448303,1,"Based on the provided knowledge graph information, the experiment execution corresponding to the ID `http://testwebsite/testProgram#id_20260420105652_650` (identified as `ChatBS-NexGen:id_20260420105652_650`) shows evidence of **one** output generated specifically from the System Prompt. This is indicated by the presence of a single `prov:qualifiedGeneration` property linked to `ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt`.","Question: what is the number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 ?
+Answer: The number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt",1,,0.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,91,gt_90,True,"
+what is the number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 ?
+","The total number of output entities associated with the execution identified by `http://testwebsite/testProgram#id_20260420105703_307` is three (3). To properly answer this question, the system must perform the following steps: 1. **Identify the Execution**: The context indicates that the execution identified by `http://testwebsite/testProgram#id_20260420105703_307` is responsible for generating specific output artifacts (Entities). 2. **Determine Output Artifacts**: By examining the provided knowledge graph snippets, three distinct `provone:Data` entities are explicitly linked as being generated by this execution ID via the `prov:wasGeneratedBy` property. These output entities are: * `http://testwebsite/testProgram#Data-id_20260420105703_693-extracts`, which contains the value ""Turkey"". * `http://testwebsite/testProgram#Data-id_20260420105703_198-extracts`, which contains the value ""Yogurt"". * `http://testwebsite/testProgram#Data-id_20260420105703_218-extracts`, which contains the value ""Nut"". 3. **Provide a Count**: Counting these three identified `provone:Data` artifacts yields a total count of 3 output entities.",64.17329844390042,gt_90,"[""multi"", ""numeric""]",{},"
+    The number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 is 11
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105703_198-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_218-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_51-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_661-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_678-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_693-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_757-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_886-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_891-extracts
+http://testwebsite/testProgram#Data-id_20260420105704_531-extracts
+http://testwebsite/testProgram#Data-id_20260420105704_782-extracts
+    ",0.3223684210526316,0.44954128440366975,0.37547892720306514,11,3,0.2727272727272727,"[""http://testwebsite/testProgram#Data-id_20260420105703_51-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_661-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_678-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_757-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_886-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105703_891-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105704_531-extracts"", ""http://testwebsite/testProgram#Data-id_20260420105704_782-extracts""]",0.8276264667510986,0.9062546491622925,0.8651577830314636,0.2727272727272727,0.0,1.0,0.8,0.048505641520023346,1,"The total number of output entities associated with the execution identified by `http://testwebsite/testProgram#id_20260420105703_307` is three (3). To properly answer this question, the system must perform the following steps: 1. **Identify the Execution**: The context indicates that the execution identified by `http://testwebsite/testProgram#id_20260420105703_307` is responsible for generating specific output artifacts (Entities). 2. **Determine Output Artifacts**: By examining the provided knowledge graph snippets, three distinct `provone:Data` entities are explicitly linked as being generated by this execution ID via the `prov:wasGeneratedBy` property. These output entities are: * `http://testwebsite/testProgram#Data-id_20260420105703_693-extracts`, which contains the value ""Turkey"". * `http://testwebsite/testProgram#Data-id_20260420105703_198-extracts`, which contains the value ""Yogurt"". * `http://testwebsite/testProgram#Data-id_20260420105703_218-extracts`, which contains the value ""Nut"". 3. **Provide a Count**: Counting these three identified `provone:Data` artifacts yields a total count of 3 output entities.","Question: what is the number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 ?
+Answer: The number of output for the Extracted Entities in the execution http://testwebsite/testProgram#id_20260420105703_307 is 11 Output Data http://testwebsite/testProgram#Data-id_20260420105703_198-extracts http://testwebsite/testProgram#Data-id_20260420105703_218-extracts http://testwebsite/testProgram#Data-id_20260420105703_51-extracts http://testwebsite/testProgram#Data-id_20260420105703_661-extracts http://testwebsite/testProgram#Data-id_20260420105703_678-extracts http://testwebsite/testProgram#Data-id_20260420105703_693-extracts http://testwebsite/testProgram#Data-id_20260420105703_757-extracts http://testwebsite/testProgram#Data-id_20260420105703_886-extracts http://testwebsite/testProgram#Data-id_20260420105703_891-extracts http://testwebsite/testProgram#Data-id_20260420105704_531-extracts http://testwebsite/testProgram#Data-id_20260420105704_782-extracts",11,3.0,0.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,92,gt_91,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 ?
+","Based on the provided dialogue and schema context, it is not possible to determine the exact number of outputs associated with a specific output *port* named 'kg_info' within the execution identified by `http://testwebsite/testProgram#id_20260420105705_598`. While the entity record for this execution (`ChatBS-NexGen:id_20260420105705_598`) shows that it performed a `prov:qualifiedGeneration` labeled with `-kg_info`, this indicates that 'kg_info' is likely the *content* or *result* generated by the execution, rather than being defined as an output port named 'kg_info' from which a count can be retrieved. The provided context does not contain explicit information mapping ports on this specific execution to a name 'kg_info' and quantifying its outputs.",81.27677500294521,gt_91,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105705_232-kg_info
+http://testwebsite/testProgram#Data-id_20260420105705_670-kg_info
+    ",0.211864406779661,0.5952380952380952,0.31249999999999994,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105705_232-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105705_670-kg_info""]",0.7959229350090027,0.8609926700592041,0.8271800875663757,0.0,0.0,0.8,0.9,0.7898387312889099,1,"Based on the provided dialogue and schema context, it is not possible to determine the exact number of outputs associated with a specific output *port* named 'kg_info' within the execution identified by `http://testwebsite/testProgram#id_20260420105705_598`. While the entity record for this execution (`ChatBS-NexGen:id_20260420105705_598`) shows that it performed a `prov:qualifiedGeneration` labeled with `-kg_info`, this indicates that 'kg_info' is likely the *content* or *result* generated by the execution, rather than being defined as an output port named 'kg_info' from which a count can be retrieved. The provided context does not contain explicit information mapping ports on this specific execution to a name 'kg_info' and quantifying its outputs.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_598 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105705_232-kg_info http://testwebsite/testProgram#Data-id_20260420105705_670-kg_info",2,,0.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,93,gt_92,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 ?
+","Based on the retrieved information, it can be confirmed that an execution occurred for `http://testwebsite/testProgram#id_20260420105705_972`, and there is a defined output port named 'kg_info' located at `http://testwebsite/testProgram#sparql_query_extractor-kg_info`. Furthermore, the execution trace shows that this execution was related to the generation of content associated with ""kg_info"" (`prov:qualifiedGeneration=ChatBS-NexGen:Generation-id_20260420105705_591-kg_info`). However, while the existence and relationship between the specified execution and the 'kg_info' output port are established, the provided data does not contain a specific attribute or measurement detailing the *total count* of outputs reported for that exact port within the context of that particular execution. Therefore, the precise number cannot be determined from the given information.",40.812375114066526,gt_92,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105705_668-kg_info
+    ",0.2204724409448819,0.8484848484848485,0.35000000000000003,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105705_668-kg_info""]",0.8110091686248779,0.8821813464164734,0.8450993895530701,0.0,0.5,0.8,0.7,0.0024696204345673323,1,"Based on the retrieved information, it can be confirmed that an execution occurred for `http://testwebsite/testProgram#id_20260420105705_972`, and there is a defined output port named 'kg_info' located at `http://testwebsite/testProgram#sparql_query_extractor-kg_info`. Furthermore, the execution trace shows that this execution was related to the generation of content associated with ""kg_info"" (`prov:qualifiedGeneration=ChatBS-NexGen:Generation-id_20260420105705_591-kg_info`). However, while the existence and relationship between the specified execution and the 'kg_info' output port are established, the provided data does not contain a specific attribute or measurement detailing the *total count* of outputs reported for that exact port within the context of that particular execution. Therefore, the precise number cannot be determined from the given information.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105705_972 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105705_668-kg_info",1,,0.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,94,gt_93,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 ?
+","Based on the information gathered from the system's knowledge graph context, there is **one** identified output port associated with the component named `kg_info` relevant to the execution linked to `http://testwebsite/testProgram#id_20260420105710_61`. This specific port is represented by the URI `http://testwebsite/testProgram#sparql_query_extractor-kg_info`, which is described as ""Output port for kg_info in the KG query extraction program.""",62.97764084208757,gt_93,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105710_564-kg_info
+http://testwebsite/testProgram#Data-id_20260420105711_94-kg_info
+    ",0.36764705882352944,0.5952380952380952,0.4545454545454546,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105710_564-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105711_94-kg_info""]",0.8209860324859619,0.886238694190979,0.8523653745651245,0.5,0.2,0.8,0.7,0.2913040518760681,1,"Based on the information gathered from the system's knowledge graph context, there is **one** identified output port associated with the component named `kg_info` relevant to the execution linked to `http://testwebsite/testProgram#id_20260420105710_61`. This specific port is represented by the URI `http://testwebsite/testProgram#sparql_query_extractor-kg_info`, which is described as ""Output port for kg_info in the KG query extraction program.""","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105710_564-kg_info http://testwebsite/testProgram#Data-id_20260420105711_94-kg_info",2,,0.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,95,gt_94,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 ?
+","The specific execution context linked to the URL `http://testwebsite/testProgram#id_20260420105711_320` is identified by the entity `ChatBS-NexGen:id_20260420105711_320`, which represents a SPARQL query execution. Confirmation that 'kg_info' is an output element for this execution is established because the process generated the knowledge graph information via `ChatBS-NexGen:Generation-id_20260420105711_508-kg_info`. The data outputted through this conceptual 'kg_info' port during this specific execution is detailed in a single data record, represented by `ChatBS-NexGen:Data-id_20260420105711_658-kg_info`. This data contains structured information for one ingredient (row_1), specifying that the ingredient category (`ingredientCat`) is 'Tropical fruit', the name is 'Avocado', and it contains 0.66g of sugar.",261.6546039960813,gt_94,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105711_658-kg_info
+    ",0.225,0.8181818181818182,0.35294117647058826,1,1,1.0,[],0.7853528261184692,0.869682252407074,0.825369119644165,0.8,0.9,0.95,0.7,0.0773543044924736,1,"The specific execution context linked to the URL `http://testwebsite/testProgram#id_20260420105711_320` is identified by the entity `ChatBS-NexGen:id_20260420105711_320`, which represents a SPARQL query execution. Confirmation that 'kg_info' is an output element for this execution is established because the process generated the knowledge graph information via `ChatBS-NexGen:Generation-id_20260420105711_508-kg_info`. The data outputted through this conceptual 'kg_info' port during this specific execution is detailed in a single data record, represented by `ChatBS-NexGen:Data-id_20260420105711_658-kg_info`. This data contains structured information for one ingredient (row_1), specifying that the ingredient category (`ingredientCat`) is 'Tropical fruit', the name is 'Avocado', and it contains 0.66g of sugar.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_320 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105711_658-kg_info",1,0.0,0.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,96,gt_95,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 ?
+","Based on the provided dialogue steps and schema context, it is possible to confirm the relationships involved: the execution identified by `http://testwebsite/testProgram#id_20260420105711_662` did generate content related to the 'kg\_info' Output port (`http://testwebsite/testProgram#sparql_query_extractor-kg_info`). The execution is linked to a specific generation event (`ChatBS-NexGen:Generation-id_20260420105711_758-kg_info`) which suggests an output was produced through that port. However, while the dialogue confirms the existence of these components and their connections (Steps 1 and 2), **none of the retrieved information explicitly states the total numerical count** of the output artifacts generated by this specific linkage path within the context of the execution `http://testwebsite/testProgram#id_20260420105711_662`. Therefore, I cannot provide the required numerical count.",294.1542060021311,gt_95,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105711_45-kg_info
+    ",0.20155038759689922,0.7878787878787878,0.32098765432098764,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105711_45-kg_info""]",0.8097995519638062,0.8808743953704834,0.8438430428504944,0.0,0.5,0.8,0.7,0.021411428228020668,1,"Based on the provided dialogue steps and schema context, it is possible to confirm the relationships involved: the execution identified by `http://testwebsite/testProgram#id_20260420105711_662` did generate content related to the 'kg\_info' Output port (`http://testwebsite/testProgram#sparql_query_extractor-kg_info`). The execution is linked to a specific generation event (`ChatBS-NexGen:Generation-id_20260420105711_758-kg_info`) which suggests an output was produced through that port. However, while the dialogue confirms the existence of these components and their connections (Steps 1 and 2), **none of the retrieved information explicitly states the total numerical count** of the output artifacts generated by this specific linkage path within the context of the execution `http://testwebsite/testProgram#id_20260420105711_662`. Therefore, I cannot provide the required numerical count.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_662 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105711_45-kg_info",1,1.0,1.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,97,gt_96,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 ?
+","Based on the provided knowledge graph data, it is possible to identify the relevant components: the execution in question (`http://testwebsite/testProgram#id_20260420105711_772`), and the output port named 'kg\_info' (`http://testwebsite/testProgram#sparql_query_extractor-kg_info`). The evidence confirms that the execution is related to the process associated with this port, as it uses data sources tagged with 'kg\_info'. However, while the structure shows which components are involved (an Execution using data from a KG info source via an output port), there is no specific property or relationship provided in the context that details the *total count* of outputs generated by that named port for that particular execution. Therefore, the final numerical count cannot be explicitly determined from the given information.",98.54032929497771,gt_96,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105711_547-kg_info
+http://testwebsite/testProgram#Data-id_20260420105711_637-kg_info
+    ",0.23015873015873015,0.6904761904761905,0.34523809523809523,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105711_547-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105711_637-kg_info""]",0.8150085210800171,0.8808716535568237,0.8466611504554749,0.0,0.0,0.8,0.9,0.09524229913949966,1,"Based on the provided knowledge graph data, it is possible to identify the relevant components: the execution in question (`http://testwebsite/testProgram#id_20260420105711_772`), and the output port named 'kg\_info' (`http://testwebsite/testProgram#sparql_query_extractor-kg_info`). The evidence confirms that the execution is related to the process associated with this port, as it uses data sources tagged with 'kg\_info'. However, while the structure shows which components are involved (an Execution using data from a KG info source via an output port), there is no specific property or relationship provided in the context that details the *total count* of outputs generated by that named port for that particular execution. Therefore, the final numerical count cannot be explicitly determined from the given information.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105711_772 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105711_547-kg_info http://testwebsite/testProgram#Data-id_20260420105711_637-kg_info",2,,0.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,98,gt_97,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 ?
+","Based on the provided execution trace and schema analysis, here is the step-by-step determination: 1. **Identify the Execution Instance:** The specified execution instance is identified by the URL `http://testwebsite/testProgram#id_20260420105717_370`. This object is confirmed to be a `provone:Execution` record within the trace data. 2. **Locate the Associated Program:** By examining the properties of this execution, we see that it has an association with a process related to SPARQL query extraction, which utilizes data from sources like `ChatBS-NexGen:Data-id_20260420105717_899-kg_info` and generates content indicated by `prov:qualifiedGeneration=ChatBS-NexGen:Generation-id_20260420105717_107-kg_info`. This points to a program responsible for extracting Knowledge Graph information. 3. **Find the Specific Output Port:** The schema context and retrieved results identify a specific `provone:Port` object named `http://testwebsite/testProgram#sparql_query_extractor-kg_info`. This port is explicitly described as the ""Output port for kg\_info in the KG query extraction program,"" matching the requirement. 4. **State the Count of Outputs:** The execution instance (`id_20260420105717_370`) shows evidence of a single, qualified generation event specifically tied to `kg_info` (via `prov:qualifiedGeneration`). In the context of this trace, there is **one** primary output set associated with the specified `kg_info` port for this execution.",117.8969698632136,gt_97,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105717_899-kg_info
+    ",0.14883720930232558,0.9696969696969697,0.25806451612903225,1,1,1.0,[],0.7908527851104736,0.8867508172988892,0.8360608816146851,1.0,1.0,1.0,0.8,0.29148879647254944,1,"Based on the provided execution trace and schema analysis, here is the step-by-step determination: 1. **Identify the Execution Instance:** The specified execution instance is identified by the URL `http://testwebsite/testProgram#id_20260420105717_370`. This object is confirmed to be a `provone:Execution` record within the trace data. 2. **Locate the Associated Program:** By examining the properties of this execution, we see that it has an association with a process related to SPARQL query extraction, which utilizes data from sources like `ChatBS-NexGen:Data-id_20260420105717_899-kg_info` and generates content indicated by `prov:qualifiedGeneration=ChatBS-NexGen:Generation-id_20260420105717_107-kg_info`. This points to a program responsible for extracting Knowledge Graph information. 3. **Find the Specific Output Port:** The schema context and retrieved results identify a specific `provone:Port` object named `http://testwebsite/testProgram#sparql_query_extractor-kg_info`. This port is explicitly described as the ""Output port for kg\_info in the KG query extraction program,"" matching the requirement. 4. **State the Count of Outputs:** The execution instance (`id_20260420105717_370`) shows evidence of a single, qualified generation event specifically tied to `kg_info` (via `prov:qualifiedGeneration`). In the context of this trace, there is **one** primary output set associated with the specified `kg_info` port for this execution.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105717_370 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105717_899-kg_info",1,1.0,1.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,99,gt_98,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 ?
+","Based on the provided QA dialogue and schema context, it is not possible to determine the exact quantitative number of outputs associated with a port named `kg_info` for the execution trace located at `http://testwebsite/testProgram#id_20260420105719_327`. While the records show that this execution (`ChatBS-NexGen:id_20260420105719_327`) is associated with generating and using data related to ""kg\_info"" (indicated by `prov:qualifiedGeneration` and multiple `prov:used` instances), the provided information does not contain a direct mapping or count specifying the number of outputs from an output port explicitly named `kg_info`.",97.54756460618228,gt_98,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info
+http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info
+    ",0.2604166666666667,0.5952380952380952,0.3623188405797102,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info""]",0.7983497381210327,0.8683192729949951,0.8318657875061035,0.0,0.0,0.8,0.9,0.31582528352737427,1,"Based on the provided QA dialogue and schema context, it is not possible to determine the exact quantitative number of outputs associated with a port named `kg_info` for the execution trace located at `http://testwebsite/testProgram#id_20260420105719_327`. While the records show that this execution (`ChatBS-NexGen:id_20260420105719_327`) is associated with generating and using data related to ""kg\_info"" (indicated by `prov:qualifiedGeneration` and multiple `prov:used` instances), the provided information does not contain a direct mapping or count specifying the number of outputs from an output port explicitly named `kg_info`.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105719_327 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info",2,,0.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,100,gt_99,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 ?
+","Based on the retrieved information from the process trace, it can be confirmed that the execution identified by `http://testwebsite/testProgram#id_20260420105722_117` did generate an output associated with the port named `kg_info` (represented by `ChatBS-NexGen:sparql_query_extractor-kg_info`). This link is established through a qualified generation (`prov:qualifiedGeneration`) and the subsequent identification of a generated data object (`ChatBS-NexGen:Data-id_20260420105722_181-kg_info`) in that process. However, while the evidence confirms that an output was produced, **the provided information does not explicitly state the total count or number of outputs** associated with this port within the specified execution. Therefore, the exact numerical count cannot be determined from the given dialogue steps and results.",320.61962662800215,gt_99,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105722_181-kg_info
+    ",0.21487603305785125,0.7878787878787878,0.33766233766233766,1,1,1.0,[],0.8085366487503052,0.9003968238830566,0.8519979119300842,0.0,0.5,0.8,0.7,0.00583129795268178,1,"Based on the retrieved information from the process trace, it can be confirmed that the execution identified by `http://testwebsite/testProgram#id_20260420105722_117` did generate an output associated with the port named `kg_info` (represented by `ChatBS-NexGen:sparql_query_extractor-kg_info`). This link is established through a qualified generation (`prov:qualifiedGeneration`) and the subsequent identification of a generated data object (`ChatBS-NexGen:Data-id_20260420105722_181-kg_info`) in that process. However, while the evidence confirms that an output was produced, **the provided information does not explicitly state the total count or number of outputs** associated with this port within the specified execution. Therefore, the exact numerical count cannot be determined from the given dialogue steps and results.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105722_181-kg_info",1,,0.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,101,gt_100,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 ?
+","Based on the provided information, for the execution identified at `http://testwebsite/testProgram#id_20260420105723_114`, there is a record of one generation event associated with 'kg\_info'. This is explicitly detailed by the property `prov:qualifiedGeneration=ChatBS-NexGen:Generation-id_20260420105723_333-kg_info`. Therefore, the total count of outputs associated with this output stream for the specified execution is 1.",101.69852110999636,gt_100,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105723_261-kg_info
+    ",0.3548387096774194,0.6666666666666666,0.46315789473684216,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105723_261-kg_info""]",0.793683648109436,0.8826707601547241,0.8358153104782104,1.0,1.0,1.0,0.8,0.5198255777359009,1,"Based on the provided information, for the execution identified at `http://testwebsite/testProgram#id_20260420105723_114`, there is a record of one generation event associated with 'kg\_info'. This is explicitly detailed by the property `prov:qualifiedGeneration=ChatBS-NexGen:Generation-id_20260420105723_333-kg_info`. Therefore, the total count of outputs associated with this output stream for the specified execution is 1.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105723_114 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105723_261-kg_info",1,1.0,1.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,102,gt_101,True,"
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 ?
+","Based on the provided information, it is not possible to definitively determine the count of outputs generated by an output port specifically named 'kg_info' within the execution identified by `http://testwebsite/testProgram#id_20260420105727_300`. While the dialogue shows that the execution `ChatBS-NexGen:id_20260420105727_300` has a qualified generation associated with 'kg_info' (specifically, `prov:qualifiedGeneration=ChatBS-NexGen:Generation-id_20260420105727_524-kg_info`), the context does not provide the necessary structural details of the underlying Program to confirm: 1. That an output port named 'kg_info' exists on the Program linked to this execution. 2. The number of outputs associated with such a port.",101.79822785407305,gt_101,"[""multi"", ""numeric""]",{},"
+    The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info
+http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info
+    ",0.25,0.6428571428571429,0.36,2,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info"", ""http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info""]",0.8044318556785583,0.8877031803131104,0.8440185785293579,0.0,0.0,0.8,0.7,0.8351166248321533,1,"Based on the provided information, it is not possible to definitively determine the count of outputs generated by an output port specifically named 'kg_info' within the execution identified by `http://testwebsite/testProgram#id_20260420105727_300`. While the dialogue shows that the execution `ChatBS-NexGen:id_20260420105727_300` has a qualified generation associated with 'kg_info' (specifically, `prov:qualifiedGeneration=ChatBS-NexGen:Generation-id_20260420105727_524-kg_info`), the context does not provide the necessary structural details of the underlying Program to confirm: 1. That an output port named 'kg_info' exists on the Program linked to this execution. 2. The number of outputs associated with such a port.","Question: what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 ?
+Answer: The number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105727_300 is 2 Output Data http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info",2,1.0,0.0
+ours,/home/desild/work/research/LLM-Workflow-Explorer/evaluations/chatbs-base/explainer/results/exp__20260426134725/RESULTS.jsonl,103,gt_102,True,"
+what is the number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 ?
+","Based on the provided QA dialogue, while the necessary components for answering the question have been successfully identified, the precise numerical count of outputs associated with the specified port within that execution could not be retrieved. What is confirmed from Step 1: 1. **Output Port Identification:** The output port is correctly identified as `http://testwebsite/testProgram#llm_chat-generated_answer`. This entity is classified as a `provone:Port` and its metadata confirms it is an ""LLM Chat output port: generated\_answer@en^^<xsd:string>"", satisfying the requirement for the name ('generated\_answer') and confirmation of the component type (LLM Chat output). 2. **Execution Identification:** The relevant execution trace is `http://testwebsite/testProgram#id_20260420105659_302`, which is confirmed to be a `provone:Execution`. However, subsequent steps (Step 2 and Step 3) which attempted to quantify the relationship using functions related to output ports or `provone:hadOutPort` relationships returned no definitive count. Therefore, while we know *which* port and *which* execution are involved, the exact **number of outputs** linked by that specific relationship is not explicitly provided in the dialogue history.",371.86842406494543,gt_102,"[""multi"", ""numeric""]",{},"
+    The number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer
+    ",0.16111111111111112,0.8529411764705882,0.2710280373831776,1,0,0.0,"[""http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer""]",0.7894271612167358,0.8920929431915283,0.8376259207725525,0.5,0.8,0.9,0.7,0.4466369152069092,1,"Based on the provided QA dialogue, while the necessary components for answering the question have been successfully identified, the precise numerical count of outputs associated with the specified port within that execution could not be retrieved. What is confirmed from Step 1: 1. **Output Port Identification:** The output port is correctly identified as `http://testwebsite/testProgram#llm_chat-generated_answer`. This entity is classified as a `provone:Port` and its metadata confirms it is an ""LLM Chat output port: generated\_answer@en^^<xsd:string>"", satisfying the requirement for the name ('generated\_answer') and confirmation of the component type (LLM Chat output). 2. **Execution Identification:** The relevant execution trace is `http://testwebsite/testProgram#id_20260420105659_302`, which is confirmed to be a `provone:Execution`. However, subsequent steps (Step 2 and Step 3) which attempted to quantify the relationship using functions related to output ports or `provone:hadOutPort` relationships returned no definitive count. Therefore, while we know *which* port and *which* execution are involved, the exact **number of outputs** linked by that specific relationship is not explicitly provided in the dialogue history.","Question: what is the number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 ?
+Answer: The number of output for the LLM Chat output port: generated_answer in the execution http://testwebsite/testProgram#id_20260420105659_302 is 1 Output Data http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer",1,1.0,1.0

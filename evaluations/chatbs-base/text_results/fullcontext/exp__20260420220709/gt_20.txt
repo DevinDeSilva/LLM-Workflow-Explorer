@@ -1,0 +1,110 @@
+Result ID
+gt_20
+
+Question
+what are the connected functions to the function used in sparql query function step in the pipeline?
+
+Answer
+The SPARQL query function step is connected to other functions in the pipeline for both input data preparation and output refinement. Specifically, it utilizes information extracted from text via the Information Extractor function (`information_extractor`) as input entities, and its resulting knowledge graph collections are subsequently processed by the Query Result Post-Processor function (`query_result_post_processor`) to refine the final results. <cite, id=0>SPARQL Query Builder</cite> <cite, id=1>Information Extractor</cite> <cite, id=2>Query Result Post-Processor</cite>
+
+Relevant Entities
+1. SPARQL Query Builder (ChatBS-NexGen:sparql_query_extractor) [types=['provone:Program']; score=1.0]
+2. Information Extractor (ChatBS-NexGen:information_extractor) [types=['provone:Program']; score=0.9]
+3. Query Result Post-Processor (ChatBS-NexGen:query_result_post_processor) [types=['provone:Program']; score=0.8]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:sparql_query_extractor",
+    "label": "SPARQL Query Builder",
+    "score": 1.0,
+    "types": [
+      "provone:Program"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:information_extractor",
+    "label": "Information Extractor",
+    "score": 0.9,
+    "types": [
+      "provone:Program"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:query_result_post_processor",
+    "label": "Query Result Post-Processor",
+    "score": 0.8,
+    "types": [
+      "provone:Program"
+    ]
+  }
+]
+
+Evidence
+1. text (ChatBS-NexGen:Usage-id_20260420105703_331-text) -- hadInPort (provone:hadInPort) -> ChatBS-NexGen:information_extractor-text [Input port for text] [direction=outgoing; literal=True; score=1.0]
+2. entity (ChatBS-NexGen:Usage-id_20260420105705_106-entity) -- hadInPort (provone:hadInPort) -> ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity] [direction=outgoing; literal=True; score=0.9]
+3. entity (ChatBS-NexGen:Usage-id_20260420105705_924-entity) -- hadInPort (provone:hadInPort) -> ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity] [direction=outgoing; literal=True; score=0.8]
+4. extracts (ChatBS-NexGen:Collection-id_20260420105703_514-extracts) -- wasGeneratedBy (prov:wasGeneratedBy) -> ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1] [direction=outgoing; literal=True; score=0.7]
+5. kg knowledge (ChatBS-NexGen:Usage-id_20260420105727_857-kg_knowledge) -- hadInPort (provone:hadInPort) -> ChatBS-NexGen:query_result_post_processor-kg_knowledge [Post-processing input port: kg_knowledge] [direction=outgoing; literal=True; score=0.6]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:information_extractor-text [Input port for text]",
+    "predicate_id": "provone:hadInPort",
+    "predicate_label": "hadInPort",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:Usage-id_20260420105703_331-text",
+    "subject_label": "text"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]",
+    "predicate_id": "provone:hadInPort",
+    "predicate_label": "hadInPort",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:Usage-id_20260420105705_106-entity",
+    "subject_label": "entity"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]",
+    "predicate_id": "provone:hadInPort",
+    "predicate_label": "hadInPort",
+    "score": 0.8,
+    "subject_id": "ChatBS-NexGen:Usage-id_20260420105705_924-entity",
+    "subject_label": "entity"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]",
+    "predicate_id": "prov:wasGeneratedBy",
+    "predicate_label": "wasGeneratedBy",
+    "score": 0.7,
+    "subject_id": "ChatBS-NexGen:Collection-id_20260420105703_514-extracts",
+    "subject_label": "extracts"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:query_result_post_processor-kg_knowledge [Post-processing input port: kg_knowledge]",
+    "predicate_id": "provone:hadInPort",
+    "predicate_label": "hadInPort",
+    "score": 0.6,
+    "subject_id": "ChatBS-NexGen:Usage-id_20260420105727_857-kg_knowledge",
+    "subject_label": "kg knowledge"
+  }
+]
+
+Timing
+39.113286952953786 seconds

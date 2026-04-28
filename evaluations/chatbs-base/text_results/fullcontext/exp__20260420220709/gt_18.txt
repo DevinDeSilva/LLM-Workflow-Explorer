@@ -1,0 +1,77 @@
+Result ID
+gt_18
+
+Question
+what are the connected functions to the function used in system prompt template step in the pipeline?
+
+Answer
+The LLM Chat function (`ChatBS-NexGen:llm_chat`) is connected to the System Prompt Template Generator's output, using its input port for the system prompt. <cite, id=0>LLM Chat</cite> <cite, id=1>System Prompt Template Generator</cite>
+
+Relevant Entities
+1. LLM Chat (ChatBS-NexGen:llm_chat) [types=['provone:Program']; score=1.0]
+2. System Prompt Template Generator (ChatBS-NexGen:system_prompt_generator) [types=['provone:Program']; score=0.9]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:llm_chat",
+    "label": "LLM Chat",
+    "score": 1.0,
+    "types": [
+      "provone:Program"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:system_prompt_generator",
+    "label": "System Prompt Template Generator",
+    "score": 0.9,
+    "types": [
+      "provone:Program"
+    ]
+  }
+]
+
+Evidence
+1. LLM Chat (ChatBS-NexGen:llm_chat) -- hasInPort (provone:hasInPort) -> LLM Chat input port: system_prompt (ChatBS-NexGen:llm_chat-system_prompt) [direction=outgoing; literal=False; score=1.0]
+2. LLM Chat input port: system_prompt (ChatBS-NexGen:llm_chat-system_prompt) -- connectsTo (provone:connectsTo) -> Channel for the system prompt (ChatBS-NexGen:channel_system_prompt) [direction=outgoing; literal=False; score=0.9]
+3. System Prompt Template Generator (ChatBS-NexGen:system_prompt_generator) -- hasOutPort (provone:hasOutPort) -> System Prompt (ChatBS-NexGen:system_prompt_generator-system_prompt) [direction=outgoing; literal=False; score=0.8]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:llm_chat-system_prompt",
+    "object_is_literal": false,
+    "object_label": "LLM Chat input port: system_prompt",
+    "predicate_id": "provone:hasInPort",
+    "predicate_label": "hasInPort",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:llm_chat",
+    "subject_label": "LLM Chat"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:channel_system_prompt",
+    "object_is_literal": false,
+    "object_label": "Channel for the system prompt",
+    "predicate_id": "provone:connectsTo",
+    "predicate_label": "connectsTo",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:llm_chat-system_prompt",
+    "subject_label": "LLM Chat input port: system_prompt"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:system_prompt_generator-system_prompt",
+    "object_is_literal": false,
+    "object_label": "System Prompt",
+    "predicate_id": "provone:hasOutPort",
+    "predicate_label": "hasOutPort",
+    "score": 0.8,
+    "subject_id": "ChatBS-NexGen:system_prompt_generator",
+    "subject_label": "System Prompt Template Generator"
+  }
+]
+
+Timing
+28.31836835097056 seconds

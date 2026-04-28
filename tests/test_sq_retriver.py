@@ -1,153 +1,217 @@
 import sys
 from pathlib import Path
 
+import pandas as pd
+import pytest
+
 src_path = Path(__file__).resolve().parent.parent
 
 if str(src_path) not in sys.path:
     sys.path.insert(0, str(src_path))
 
-from src.synthetic_questions.SQRetriver import SQRetriver, SyntheticQuestionCategory
-
-CSV_PATH = "evaluations/calibration/ques_creation/SyntheticQuestionKG.csv"
+from src.synthetic_questions.SQRetriver import SQRetriver
 
 
-def test_init_resolves_default_calibration_location():
-    retriever = SQRetriver()
+@pytest.fixture
+def synthetic_questions_csv(tmp_path):
+    csv_path = tmp_path / "SyntheticQuestionKG.csv"
+    rows = [
+        {
+            "program_id": "from_prop_artist",
+            "solves": "Find programs from artist relation",
+            "category": "object-level|from-prop",
+            "focal_relation": "rel:artist",
+            "focal_node": "class:Song",
+            "start_node": "",
+            "end_node": "",
+        },
+        {
+            "program_id": "from_prop_album",
+            "solves": "Find programs from album relation",
+            "category": "object-level|from-prop",
+            "focal_relation": "rel:album",
+            "focal_node": "class:Album",
+            "start_node": "",
+            "end_node": "",
+        },
+        {
+            "program_id": "from_object_artist",
+            "solves": "Find objects from artist relation",
+            "category": "object-level|from-object",
+            "focal_relation": "rel:artist",
+            "focal_node": "class:Song",
+            "start_node": "",
+            "end_node": "",
+        },
+        {
+            "program_id": "path_song_album",
+            "solves": "Find song to album path",
+            "category": "path-level",
+            "focal_relation": "",
+            "focal_node": "",
+            "start_node": "class:Song",
+            "end_node": "class:Album",
+        },
+        {
+            "program_id": "path_artist_song",
+            "solves": "Find artist to song path",
+            "category": "path-level",
+            "focal_relation": "",
+            "focal_node": "",
+            "start_node": "class:Artist",
+            "end_node": "class:Song",
+        },
+        {
+            "program_id": "path_artist_album",
+            "solves": "Find artist to album path",
+            "category": "path-level",
+            "focal_relation": "",
+            "focal_node": "",
+            "start_node": "class:Artist",
+            "end_node": "class:Album",
+        },
+        {
+            "program_id": "explore_object_of_class",
+            "solves": "List objects of a class",
+            "category": "seed",
+            "focal_relation": "",
+            "focal_node": "",
+            "start_node": "",
+            "end_node": "",
+        },
+        {
+            "program_id": "explore_attr_of_object",
+            "solves": "List data attributes of an object",
+            "category": "seed",
+            "focal_relation": "",
+            "focal_node": "",
+            "start_node": "",
+            "end_node": "",
+        },
+    ]
+    pd.DataFrame(rows).to_csv(csv_path, index=False)
+    return csv_path
 
-    assert retriever.file_path.name == "SyntheticQuestionKG.csv"
-    assert "evaluations/calibration/ques_creation" in str(retriever.file_path)
+
+def record_ids(records):
+    return [record["program_id"] for record in records]
 
 
-def test_category_specific_filters_are_inferred_from_sparse_columns():
-    retriever = SQRetriver(CSV_PATH)
+def test_init_loads_rows_from_location(synthetic_questions_csv):
+    retriever = SQRetriver(str(synthetic_questions_csv))
 
-    assert retriever.get_category_specific_filters("path-level") == (
-        "start_node",
-        "end_node",
+    assert len(retriever.rows) == 8
+    assert list(retriever.rows["program_id"])[:2] == [
+        "from_prop_artist",
+        "from_prop_album",
+    ]
+
+
+def test_get_programs_from_prop_filters_by_relation_and_category(
+    synthetic_questions_csv,
+):
+    retriever = SQRetriver(str(synthetic_questions_csv))
+
+    records = retriever.get_programs_from_prop("rel:artist")
+
+    assert record_ids(records) == ["from_prop_artist"]
+    assert [record["solves"] for record in records] == [
+        "Find programs from artist relation"
+    ]
+
+
+def test_get_programs_from_prop_can_filter_by_class_candidates(
+    synthetic_questions_csv,
+):
+    retriever = SQRetriver(str(synthetic_questions_csv))
+
+    records = retriever.get_programs_from_prop(
+        "rel:artist",
+        class_candidates=["class:Song"],
     )
-    assert retriever.get_category_specific_filters("object-level|from-prop") == (
-        "focal_relation",
-        "focal_node",
-    )
-    assert retriever.get_category_specific_filters("object-level|from-object") == (
-        "focal_relation",
-        "focal_node",
-    )
+
+    assert record_ids(records) == ["from_prop_artist"]
 
 
-def test_retrieve_path_level_filters_by_path_nodes():
-    retriever = SQRetriver(CSV_PATH)
+def test_get_programs_from_prop_returns_only_program_id_and_solves_fields(
+    synthetic_questions_csv,
+):
+    retriever = SQRetriver(str(synthetic_questions_csv))
 
-    result = retriever.retrieve_path_level(
-        start_node="prov:Association",
-        end_node="provone:Program",
-    )
+    records = retriever.get_programs_from_prop("rel:album")
 
-    assert result
-    assert {row["category"] for row in result} == {"path-level"}
-    assert {row["start_node"] for row in result} == {"prov:Association"}
-    assert {row["end_node"] for row in result} == {"provone:Program"}
+    assert records.dtype.names == ("index", "program_id", "solves")
 
 
-def test_retrieve_path_level_filters_by_start_node():
-    retriever = SQRetriver(CSV_PATH)
+def test_get_objects_of_a_class_returns_class_explorer_seed_row(
+    synthetic_questions_csv,
+):
+    retriever = SQRetriver(str(synthetic_questions_csv))
 
-    result = retriever.retrieve_path_level(start_node="workflow:Generative_Task")
+    record = retriever.get_objects_of_a_class("class:Song")
 
-    assert result
-    assert {row["category"] for row in result} == {"path-level"}
-    assert {row["start_node"] for row in result} == {"workflow:Generative_Task"}
-
-
-def test_retrieve_path_level_filters_by_end_node():
-    retriever = SQRetriver(CSV_PATH)
-
-    result = retriever.retrieve_path_level(end_node="provone:Port")
-
-    assert result
-    assert {row["category"] for row in result} == {"path-level"}
-    assert {row["end_node"] for row in result} == {"provone:Port"}
+    assert record["program_id"] == "explore_object_of_class"
+    assert record["solves"] == "List objects of a class"
 
 
-def test_retrieve_object_level_from_object_filters_by_focal_node():
-    retriever = SQRetriver(CSV_PATH)
+def test_get_data_of_object_returns_object_attribute_seed_row(
+    synthetic_questions_csv,
+):
+    retriever = SQRetriver(str(synthetic_questions_csv))
 
-    result = retriever.retrieve_object_level_from_object(focal_node="provone:Channel")
+    record = retriever.get_data_of_object("entity:song-1")
 
-    assert result
-    assert {row["category"] for row in result} == {"object-level|from-object"}
-    assert {row["focal_node"] for row in result} == {"provone:Channel"}
-
-
-def test_retrieve_object_level_from_object_filters_by_focal_relation():
-    retriever = SQRetriver(CSV_PATH)
-
-    result = retriever.retrieve_object_level_from_object(focal_relation="dc:description")
-
-    assert result
-    assert {row["category"] for row in result} == {"object-level|from-object"}
-    assert {row["focal_relation"] for row in result} == {"dc:description"}
+    assert record["program_id"] == "explore_attr_of_object"
+    assert record["solves"] == "List data attributes of an object"
 
 
-def test_retrieve_object_level_from_prop_filters_by_focal_node():
-    retriever = SQRetriver(CSV_PATH)
+def test_get_path_questions_returns_all_path_level_questions(
+    synthetic_questions_csv,
+):
+    retriever = SQRetriver(str(synthetic_questions_csv))
 
-    result = retriever.retrieve_object_level_from_prop(focal_node="provone:Channel")
+    records = retriever.get_path_questions()
 
-    assert result
-    assert {row["category"] for row in result} == {"object-level|from-prop"}
-    assert {row["focal_node"] for row in result} == {"provone:Channel"}
-
-
-def test_retrieve_object_level_from_prop_filters_by_focal_relation():
-    retriever = SQRetriver(CSV_PATH)
-
-    result = retriever.retrieve_object_level_from_prop(focal_relation="dc:description")
-
-    assert result
-    assert {row["category"] for row in result} == {"object-level|from-prop"}
-    assert {row["focal_relation"] for row in result} == {"dc:description"}
+    assert record_ids(records) == [
+        "path_song_album",
+        "path_artist_song",
+        "path_artist_album",
+    ]
 
 
-def test_retrieve_uses_category_aliases():
-    retriever = SQRetriver(CSV_PATH)
+def test_get_path_questions_filters_by_start_nodes(synthetic_questions_csv):
+    retriever = SQRetriver(str(synthetic_questions_csv))
 
-    result = retriever.retrieve("from_prop", focal_node="provone:Channel")
+    records = retriever.get_path_questions(start_nodes=["class:Artist"])
 
-    assert result
-    assert {row["category"] for row in result} == {"object-level|from-prop"}
+    assert record_ids(records) == ["path_artist_song", "path_artist_album"]
 
 
-def test_get_available_categories_returns_known_category_order():
-    retriever = SQRetriver(CSV_PATH)
+def test_get_path_questions_filters_by_end_nodes(synthetic_questions_csv):
+    retriever = SQRetriver(str(synthetic_questions_csv))
 
-    assert retriever.get_available_categories() == (
-        SyntheticQuestionCategory.OBJECT_LEVEL_FROM_OBJECT.value,
-        SyntheticQuestionCategory.OBJECT_LEVEL_FROM_PROP.value,
-        SyntheticQuestionCategory.PATH_LEVEL.value,
+    records = retriever.get_path_questions(end_nodes=["class:Album"])
+
+    assert record_ids(records) == ["path_song_album", "path_artist_album"]
+
+
+def test_get_path_questions_filters_by_start_and_end_nodes(
+    synthetic_questions_csv,
+):
+    retriever = SQRetriver(str(synthetic_questions_csv))
+
+    records = retriever.get_path_questions(
+        start_nodes=["class:Song"],
+        end_nodes=["class:Album"],
     )
 
-
-def test_get_category_description_returns_category_guidance():
-    retriever = SQRetriver(CSV_PATH)
-
-    description = retriever.get_category_description("path-level")
-
-    assert "multi-hop connections" in description
+    assert record_ids(records) == ["path_song_album"]
 
 
-def test_get_program_row_returns_specific_program():
-    retriever = SQRetriver(CSV_PATH)
+def test_get_program_by_id_returns_matching_row(synthetic_questions_csv):
+    retriever = SQRetriver(str(synthetic_questions_csv))
 
-    row = retriever.get_program_row("explore_object_of_class")
+    record = retriever.get_program_by_id("from_prop_album")
 
-    assert row is not None
-    assert row["program_id"] == "explore_object_of_class"
-    assert row["category"] == SyntheticQuestionCategory.OBJECT_LEVEL_FROM_OBJECT.value
-
-
-def test_generic_explorer_helpers_return_seed_programs():
-    retriever = SQRetriver(CSV_PATH)
-
-    assert retriever.get_generic_class_explorer()["program_id"] == "explore_object_of_class"
-    assert retriever.get_generic_object_explorer()["program_id"] == "explore_attr_of_object"
+    assert record["program_id"] == "from_prop_album"
+    assert record["category"] == "object-level|from-prop"

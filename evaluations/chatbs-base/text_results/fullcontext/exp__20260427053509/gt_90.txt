@@ -1,0 +1,42 @@
+Result ID
+gt_90
+
+Question
+what is the number of output for the "Extracted Entities" in the execution "http://testwebsite/testProgram#id_20260420105703_307" ?
+
+Answer
+{
+"answer": "The execution 'http://testwebsite/testProgram#id_20260420105703_307' produced 11 output data items for the 'Extract <cite, id=0>Execution</cite> <cite, id=1>Program</cite> <cite, id=2>Data</cite>
+
+Relevant Entities
+1. Execution (provone:Execution) [score=0.5]
+2. Program (provone:Program) [score=0.45]
+3. Data (provone:Data) [score=0.4]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "provone:Execution",
+    "label": "Execution",
+    "score": 0.5,
+    "types": []
+  },
+  {
+    "id": "provone:Program",
+    "label": "Program",
+    "score": 0.45,
+    "types": []
+  },
+  {
+    "id": "provone:Data",
+    "label": "Data",
+    "score": 0.4,
+    "types": []
+  }
+]
+
+Evidence
+None
+
+Timing
+168.52055931603536 seconds

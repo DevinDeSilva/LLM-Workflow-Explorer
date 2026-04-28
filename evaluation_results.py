@@ -1,12 +1,13 @@
 # %%
 from pathlib import Path
+import argparse
 import asyncio
 import json
 import re
 from collections import Counter
 from collections.abc import Callable, Mapping
-from pathlib import Path
 from typing import Any, Dict, List
+import sys
 
 import dspy
 import pandas as pd
@@ -49,6 +50,8 @@ class AnswerQualityJudgeSignature(dspy.Signature):
 
 
 _judge_llm: Any | None = None
+_nli_model: Any | None = None
+_winrate_judge_llm: Any | None = None
 
 
 def get_judge_llm() -> Any:
@@ -56,10 +59,21 @@ def get_judge_llm() -> Any:
     if _judge_llm is None:
         _judge_llm = LLM(
             JUDGE_LLM["llm_type"],
-            JUDGE_LLM["llm_library"],
+            JUDGE_LLM.get("llm_library", "dspy"),
             **JUDGE_LLM["llm_config"],
         )
     return _judge_llm
+
+
+def get_winrate_judge_llm() -> Any:
+    global _winrate_judge_llm
+    if _winrate_judge_llm is None:
+        _winrate_judge_llm = LLM(
+            WINRATE_JUDGE_LLM["llm_type"],
+            WINRATE_JUDGE_LLM.get("llm_library", "dspy"),
+            **WINRATE_JUDGE_LLM["llm_config"],
+        )
+    return _winrate_judge_llm
 
 
 def metric_answer_token_overlap(pred: dict[str, Any], actual: dict[str, Any]) -> dict[str, Any]:
@@ -123,92 +137,255 @@ def build_llm_answer_quality_metric() -> MetricFn:
 
         validated_scores = AnswerQualityScores(
             completeness=float(scores.completeness),
-            accuracy=float(scores.accuracy),
+            faithfulness=float(scores.faithfulness),
             relevance=float(scores.relevance),
+            understanderbility=float(scores.understanderbility),
         )
         return {
             "llm_completeness": validated_scores.completeness,
-            "llm_accuracy": validated_scores.accuracy,
+            "llm_faithfulness": validated_scores.faithfulness,
             "llm_relevance": validated_scores.relevance,
+            "llm_understanderbility": validated_scores.understanderbility,
         }
 
     metric.__name__ = "llm_answer_quality"
     return metric
 
-def build_nli_metric(pred: dict[str, Any], actual: dict[str, Any]) -> dict[str, Any]:
-    
+def build_nli_premises(pred: dict[str, Any], actual: dict[str, Any]) -> list[str]:
+    report = strip_citations(pred.get("answer", ""))
+    return [report] if report else []
+
+
+def build_nli_hypotheses(actual: dict[str, Any]) -> list[str]:
+    question = str(actual.get("question", "") or "").strip()
+    answer = strip_citations(actual.get("answer", ""))
+    hypothesis = f"Question: {question}\nAnswer: {answer}".strip()
+    return [hypothesis] if hypothesis else []
+
+
+def get_nli_model() -> Any:
+    global _nli_model
+    if _nli_model is None:
+        from sentence_transformers import CrossEncoder
+
+        _nli_model = CrossEncoder(NLI_MODEL_NAME)
+    return _nli_model
+
+
+def get_nli_entailment_index(model: Any) -> int:
+    id2label = getattr(getattr(model, "model", None), "config", None)
+    id2label = getattr(id2label, "id2label", {}) or {}
+    for label_index, label in id2label.items():
+        if "entail" in str(label).lower():
+            return int(label_index)
+    return NLI_ENTAILMENT_FALLBACK_INDEX
+
+
+def score_nli_entailment(premise: str, hypothesis: str) -> float:
+    model = get_nli_model()
+    scores = model.predict([(premise, hypothesis)], apply_softmax=True)
+    entailment_index = get_nli_entailment_index(model)
+    label_scores = scores[0] if getattr(scores, "ndim", 1) > 1 else scores
+    return float(label_scores[entailment_index])
+
+
+def metric_nli_entailment(pred: dict[str, Any], actual: dict[str, Any]) -> dict[str, Any]:
+    premises = build_nli_premises(pred, actual)
+    hypotheses = build_nli_hypotheses(actual)
+    best_score = float("nan")
+    best_premise = ""
+    best_hypothesis = ""
+    scored_pairs = 0
+
+    for premise in premises:
+        for hypothesis in hypotheses:
+            scored_pairs += 1
+            entailment_score = score_nli_entailment(premise, hypothesis)
+            if scored_pairs == 1 or entailment_score > best_score:
+                best_score = entailment_score
+                best_premise = premise
+                best_hypothesis = hypothesis
+
     return {
-        "nli_score":0
-        }
-
-EVALUATION_NAME = "chatbs-base"
-CONFIG_FILENAME = "config.fullcontext.yaml"
-
-PREDICTION_FILES = {
-    "fullcontext": "evaluations/chatbs-base/explainer/fullcontext/exp__20260420220709/RESULTS.jsonl",
-    "llmbased": "evaluations/chatbs-base/explainer/llmbased/exp__20260420235310/RESULTS.jsonl",
-    "grasp": "evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl",
-    "ours":"evaluations/chatbs-base/explainer/results/exp__20260422044127/RESULTS.jsonl"
-}
-
-JUDGE_LLM = {
-    "llm_type": "openai",
-    "llm_library": "dspy",
-    "llm_config": {
-        "model": "gpt-4o-mini",
-        "temperature": 0,
-        "max_tokens": 300,
-    },
-}
+        "nli_entailment_max": best_score,
+        "nli_pairs_scored": scored_pairs,
+        "nli_best_premise": best_premise,
+        "nli_best_hypothesis": best_hypothesis,
+    }
 
 
-ENABLED_METRICS: Dict[str, List[MetricFn]] = {
-    "multi":[
-        metric_answer_token_overlap,
-        metric_ground_truth_entity_coverage,
-        metric_bert_score,
-#        build_llm_answer_quality_metric()
-        ], 
-    "single--bool":[
-        metric_answer_token_overlap,
-        metric_ground_truth_entity_coverage,
-        metric_bert_score,
-#        build_llm_answer_quality_metric()
-        ], 
-    "single--entity":[
-        metric_answer_token_overlap,
-        metric_ground_truth_entity_coverage,
-        metric_bert_score,
-#        build_llm_answer_quality_metric()
-        ]
+def metric_entity_retrieval(pred: dict[str, Any], actual: dict[str, Any]) -> dict[str, Any]:
+    gt_entities = extract_ground_truth_entity_values(actual)
+    final_entities = extract_retrieved_entities(pred, scope="final")
+    total_entities = extract_retrieved_entities(pred, scope="total")
+    final_scores = retrieval_scores(gt_entities, final_entities)
+    total_scores = retrieval_scores(gt_entities, total_entities)
 
-}
-
-MAX_EXAMPLES_PER_RUN = None
-
-SAVE_DIR = REPO_ROOT / "evaluations" / EVALUATION_NAME / "analysis"
+    return {
+        "entity_gt_total": len(entity_key_set(gt_entities)),
+        "entity_retrieved_final_total": len(entity_key_set(final_entities)),
+        "entity_retrieved_total_total": len(entity_key_set(total_entities)),
+        "entity_recall_final": final_scores["recall"],
+        "entity_precision_final": final_scores["precision"],
+        "entity_f1_final": final_scores["f1"],
+        "entity_recall_total": total_scores["recall"],
+        "entity_precision_total": total_scores["precision"],
+        "entity_f1_total": total_scores["f1"],
+        "entity_gt_values": json.dumps(gt_entities, ensure_ascii=True),
+        "entity_retrieved_final_values": json.dumps(final_entities, ensure_ascii=True),
+        "entity_retrieved_total_values": json.dumps(total_entities, ensure_ascii=True),
+    }
 
 
-# %% [markdown]
-# # Evaluation Notebook
-# 
-# Edit the first cell only for normal use:
-# 
-# - Set `EVALUATION_NAME` and `CONFIG_FILENAME` to choose the evaluation folder.
-# - Add one or more `codename -> RESULTS.jsonl` entries to `PREDICTION_FILES`.
-# - Turn on `ENABLE_LLM_JUDGE` if you want the LLM-based grading metric.
-# - Add new metric functions in the metric cell and register them in `METRIC_REGISTRY`.
-# 
+def metric_bool_accuracy(pred: dict[str, Any], actual: dict[str, Any]) -> dict[str, Any]:
+    gt_decision = actual.get("decision")
+    pred_decision = extract_bool_decision(pred.get("answer", ""))
+    accuracy = float(pred_decision == gt_decision) if gt_decision is not None else float("nan")
 
-# %%
+    return {
+        "bool_ground_truth_decision": gt_decision,
+        "bool_predicted_decision": pred_decision,
+        "bool_accuracy": accuracy,
+    }
 
 
-# %%
+def metric_numeric_accuracy(pred: dict[str, Any], actual: dict[str, Any]) -> dict[str, Any]:
+    gt_count = actual.get("count")
+    pred_count = extract_numeric_decision(pred.get("answer", ""))
+    accuracy = float(pred_count == gt_count) if gt_count is not None else float("nan")
+
+    return {
+        "numeric_ground_truth_count": gt_count,
+        "numeric_predicted_count": pred_count,
+        "numeric_accuracy": accuracy,
+    }
+
+
 def resolve_repo_path(path_value: str | Path) -> Path:
     path = Path(path_value)
     if path.is_absolute():
         return path
     return (REPO_ROOT / path).resolve()
+
+
+def _get_evaluation_choices() -> list[str]:
+    evaluations_dir = Path(__file__).resolve().parent / "evaluations"
+    return sorted(
+        path.name
+        for path in evaluations_dir.iterdir()
+        if path.is_dir() and path.name != "test_questions"
+    )
+
+
+def _parse_config_path() -> str:
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument(
+        "--evaluation",
+        choices=_get_evaluation_choices(),
+        default="chatbs-base",
+        help="Evaluation folder under evaluations/ to load config from.",
+    )
+    args, remaining = parser.parse_known_args()
+    sys.argv = [sys.argv[0], *remaining]
+    return str(Path("evaluations") / args.evaluation / "config.evaluation.yaml")
+
+
+CONFIG_PATH = _parse_config_path()
+EVALUATION_CONFIG = load_config(CONFIG_PATH)
+EVALUATION_SETTINGS = EVALUATION_CONFIG.get("evaluation", {})
+
+METRIC_REGISTRY: dict[str, MetricFn] = {
+    "answer_token_overlap": metric_answer_token_overlap,
+    "ground_truth_entity_coverage": metric_ground_truth_entity_coverage,
+    "bert_score": metric_bert_score,
+    "nli_entailment": metric_nli_entailment,
+    "entity_retrieval": metric_entity_retrieval,
+    "bool_accuracy": metric_bool_accuracy,
+    "numeric_accuracy": metric_numeric_accuracy,
+    "llm_answer_quality": build_llm_answer_quality_metric(),
+}
+
+
+def configured_metrics(configured_metric_names: Mapping[str, list[str]]) -> Dict[str, List[MetricFn]]:
+    enabled_metrics: Dict[str, List[MetricFn]] = {}
+    for qtype, metric_names in configured_metric_names.items():
+        enabled_metrics[qtype] = []
+        for metric_name in metric_names:
+            if metric_name not in METRIC_REGISTRY:
+                raise ValueError(f"Unknown evaluation metric in config: {metric_name}")
+            enabled_metrics[qtype].append(METRIC_REGISTRY[metric_name])
+    return enabled_metrics
+
+
+EVALUATION_NAME = EVALUATION_SETTINGS.get("name", "chatbs-base")
+CONFIG_FILENAME = EVALUATION_SETTINGS.get("source_config", "config.fullcontext.yaml")
+PREDICTION_FILENAME = EVALUATION_SETTINGS.get("prediction_filename", "RESULTS.jsonl")
+PREDICTION_DIRS = dict(EVALUATION_SETTINGS.get("prediction_dirs", {}))
+CONFIGURED_PREDICTION_FILES = dict(EVALUATION_SETTINGS.get("prediction_files", {}))
+JUDGE_LLM = dict(EVALUATION_SETTINGS.get("judge_llm", {}))
+NLI_CONFIG = EVALUATION_SETTINGS.get("nli", {})
+NLI_MODEL_NAME = NLI_CONFIG.get("model_name", "cross-encoder/nli-distilroberta-base")
+NLI_ENTAILMENT_FALLBACK_INDEX = NLI_CONFIG.get("entailment_fallback_index", 1)
+ENABLED_METRICS = configured_metrics(
+    EVALUATION_SETTINGS.get("metrics", {}).get("enabled_by_qtype", {})
+)
+MAX_EXAMPLES_PER_RUN = EVALUATION_SETTINGS.get("max_examples_per_run")
+SAVE_DIR = resolve_repo_path(
+    EVALUATION_SETTINGS.get(
+        "save_dir",
+        str(Path("evaluations") / EVALUATION_NAME / "analysis"),
+    )
+)
+
+
+def latest_prediction_file(
+    experiments_dir: str | Path,
+    prediction_filename: str = "RESULTS.jsonl",
+) -> Path:
+    experiments_path = resolve_repo_path(experiments_dir)
+    if not experiments_path.exists():
+        raise FileNotFoundError(f"Prediction directory not found: {experiments_path}")
+    if not experiments_path.is_dir():
+        raise NotADirectoryError(f"Prediction path is not a directory: {experiments_path}")
+
+    experiment_dirs = sorted(
+        (path for path in experiments_path.iterdir() if path.is_dir()),
+        key=lambda path: path.name,
+        reverse=True,
+    )
+    for experiment_dir in experiment_dirs:
+        prediction_file = experiment_dir / prediction_filename
+        if prediction_file.exists():
+            return prediction_file
+
+    raise FileNotFoundError(
+        f"No {prediction_filename} found in experiment folders under {experiments_path}"
+    )
+
+
+def resolve_prediction_files(
+    prediction_dirs: Mapping[str, str | Path],
+    prediction_files: Mapping[str, str | Path],
+    prediction_filename: str = "RESULTS.jsonl",
+) -> dict[str, Path]:
+    resolved = {
+        codename: latest_prediction_file(experiments_dir, prediction_filename)
+        for codename, experiments_dir in prediction_dirs.items()
+    }
+    resolved.update(
+        {
+            codename: resolve_repo_path(file_path)
+            for codename, file_path in prediction_files.items()
+        }
+    )
+    return resolved
+
+
+PREDICTION_FILES = resolve_prediction_files(
+    PREDICTION_DIRS,
+    CONFIGURED_PREDICTION_FILES,
+    PREDICTION_FILENAME,
+)
 
 
 def strip_citations(text: Any) -> str:
@@ -275,7 +452,7 @@ GT_BUNDLE = load_ground_truth_bundle(EVALUATION_NAME, CONFIG_FILENAME)
 
 print(f"Config: {GT_BUNDLE['config_path']}")
 print(f"Ground truth: {GT_BUNDLE['ground_truth_path']}")
-print(f"Ground-truth examples: {len(GT_BUNDLE["records"])}")
+print(f"Ground-truth examples: {len(GT_BUNDLE['records'])}")
 
 display(
     pd.DataFrame(GT_BUNDLE["records"])[["id", "question", "qtype"]].head()
@@ -469,6 +646,246 @@ def text_is_covered(target: str, candidates: list[str]) -> bool:
     return False
 
 
+def clean_entity_value(value: Any) -> str:
+    text = strip_citations(value)
+    text = re.sub(r"@[a-zA-Z-]+(?:\^\^<[^>]+>)?$", "", text)
+    text = re.sub(r"\^\^<[^>]+>$", "", text)
+    text = text.strip().strip("<>").strip()
+    return text
+
+
+def entity_aliases(value: Any) -> set[str]:
+    text = clean_entity_value(value)
+    if not text:
+        return set()
+
+    aliases = {normalize_text(text)}
+    compact_text = text.replace("http://testwebsite/testProgram#", "ChatBS-NexGen:")
+    aliases.add(normalize_text(compact_text))
+
+    for delimiter in ("#", "/", ":"):
+        if delimiter in compact_text:
+            aliases.add(normalize_text(compact_text.rsplit(delimiter, 1)[-1]))
+
+    return {alias for alias in aliases if alias}
+
+
+def entity_key(value: Any) -> str:
+    aliases = entity_aliases(value)
+    if not aliases:
+        return ""
+    return sorted(aliases, key=lambda alias: (len(alias), alias))[0]
+
+
+def entity_key_set(values: list[str]) -> set[str]:
+    return {key for key in (entity_key(value) for value in values) if key}
+
+
+def entities_match(left: Any, right: Any) -> bool:
+    return bool(entity_aliases(left) & entity_aliases(right))
+
+
+def retrieval_scores(gt_values: list[str], retrieved_values: list[str]) -> dict[str, float]:
+    gt_unique = unique_entity_values(gt_values)
+    retrieved_unique = unique_entity_values(retrieved_values)
+
+    gt_matched = [
+        gt_value
+        for gt_value in gt_unique
+        if any(entities_match(gt_value, retrieved_value) for retrieved_value in retrieved_unique)
+    ]
+    retrieved_matched = [
+        retrieved_value
+        for retrieved_value in retrieved_unique
+        if any(entities_match(retrieved_value, gt_value) for gt_value in gt_unique)
+    ]
+
+    recall = len(gt_matched) / len(gt_unique) if gt_unique else float("nan")
+    precision = (
+        len(retrieved_matched) / len(retrieved_unique)
+        if retrieved_unique
+        else float("nan")
+    )
+    f1 = (
+        2 * precision * recall / (precision + recall)
+        if precision == precision and recall == recall and (precision + recall)
+        else float("nan")
+    )
+
+    return {
+        "recall": recall,
+        "precision": precision,
+        "f1": f1,
+    }
+
+
+def unique_entity_values(values: list[str]) -> list[str]:
+    seen: set[str] = set()
+    unique_values: list[str] = []
+    for value in values:
+        key = entity_key(value)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        unique_values.append(clean_entity_value(value))
+    return unique_values
+
+
+def collect_binding_values(value: Any) -> list[str]:
+    values: list[str] = []
+
+    if isinstance(value, dict):
+        if "value" in value and value["value"] is not None:
+            values.append(str(value["value"]))
+
+        for key in (
+            "id",
+            "label",
+            "uri",
+            "object_uri",
+            "object_name",
+            "subject_id",
+            "subject_label",
+            "object_id",
+            "object_label",
+        ):
+            if key in value and value[key] is not None:
+                values.append(str(value[key]))
+
+        if "types" in value:
+            values.extend(str(item) for item in value.get("types") or [] if item is not None)
+        if "object_class" in value:
+            values.extend(str(item) for item in value.get("object_class") or [] if item is not None)
+        if "important_entities" in value:
+            values.extend(str(item) for item in value.get("important_entities") or [] if item is not None)
+
+        if "attributes" in value:
+            for attribute in value.get("attributes") or []:
+                if isinstance(attribute, dict):
+                    for key in ("s", "o", "value"):
+                        if attribute.get(key) is not None:
+                            values.append(str(attribute[key]))
+
+        for nested_key in ("results", "extracted_results", "evidence", "relevant_entities"):
+            if nested_key in value:
+                values.extend(collect_binding_values(value[nested_key]))
+        for key, nested_value in value.items():
+            if key in {
+                "p",
+                "prop",
+                "predicate",
+                "predicate_id",
+                "predicate_label",
+                "object_description",
+                "answer",
+                "report",
+            }:
+                continue
+            if isinstance(nested_value, (dict, list)):
+                values.extend(collect_binding_values(nested_value))
+        return values
+
+    if isinstance(value, list):
+        for item in value:
+            values.extend(collect_binding_values(item))
+        return values
+
+    if isinstance(value, str) and value.strip():
+        return [value]
+
+    return values
+
+
+def extract_step_entities(step: dict[str, Any]) -> list[str]:
+    values: list[str] = []
+    for key in ("important_entities", "results", "extracted_results", "evidence", "relevant_entities"):
+        values.extend(collect_binding_values(step.get(key)))
+    return unique_entity_values(values)
+
+
+def has_raw_sparql_binding_evidence(pred: dict[str, Any]) -> bool:
+    evidence = pred.get("evidence") or []
+    return any(
+        isinstance(row, dict)
+        and any(isinstance(value, dict) and "value" in value for value in row.values())
+        for row in evidence
+    )
+
+
+def extract_retrieved_entities(pred: dict[str, Any], scope: str) -> list[str]:
+    steps = pred.get("intermediary_results") or []
+    if steps:
+        selected_steps = [steps[-1]] if scope == "final" else steps
+        values: list[str] = []
+        for step in selected_steps:
+            if isinstance(step, dict):
+                values.extend(extract_step_entities(step))
+        return unique_entity_values(values)
+
+    if has_raw_sparql_binding_evidence(pred):
+        return unique_entity_values(collect_binding_values(pred.get("evidence")))
+
+    if scope == "final":
+        values = collect_binding_values(pred.get("relevant_entities"))
+        if not values:
+            values = collect_binding_values(pred.get("evidence"))
+        return unique_entity_values(values)
+
+    values = []
+    for key in ("relevant_entities", "evidence"):
+        values.extend(collect_binding_values(pred.get(key)))
+    return unique_entity_values(values)
+
+
+def extract_bool_decision(text: Any) -> bool | None:
+    normalized = normalize_text(text)
+    if not normalized:
+        return None
+
+    false_patterns = (
+        r"\bnot\s+(?:be\s+)?(?:generated|attributed|associated|connected|used)\b",
+        r"\bwas\s+not\b",
+        r"\bis\s+not\b",
+        r"\bwere\s+not\b",
+        r"\bno\b",
+        r"\bfalse\b",
+        r"\bnone\b",
+    )
+    true_patterns = (
+        r"\bwas\s+(?:generated|attributed|associated|connected|used)\b",
+        r"\bis\s+(?:generated|attributed|associated|connected|used)\b",
+        r"\bwere\s+(?:generated|attributed|associated|connected|used)\b",
+        r"\byes\b",
+        r"\btrue\b",
+    )
+
+    if any(re.search(pattern, normalized) for pattern in false_patterns):
+        return False
+    if any(re.search(pattern, normalized) for pattern in true_patterns):
+        return True
+    return None
+
+
+def extract_numeric_decision(text: Any) -> int | None:
+    normalized = strip_citations(text)
+    if not normalized:
+        return None
+
+    priority_patterns = (
+        r"\b(?:is|are|equals?|count(?:s|ed)?|total(?:s)?)\D{0,80}(-?\d+)\b",
+        r"\b(-?\d+)\s+(?:unique\s+)?(?:output|outputs|entities|execution|executions|records)\b",
+    )
+    for pattern in priority_patterns:
+        match = re.search(pattern, normalized, flags=re.IGNORECASE)
+        if match:
+            return int(match.group(1))
+
+    integers = re.findall(r"(?<![A-Za-z0-9_])-?\d+(?![A-Za-z0-9_])", normalized)
+    if not integers:
+        return None
+    return int(integers[0])
+
+
 
 
 
@@ -512,7 +929,7 @@ def evaluate_run(
         for atags, func in metric_functions.items():
             satags = atags.split("--")
             if not actual["qtype"]:
-                ValueError(f"tags is None for quession :{pred.get("id")}")
+                ValueError(f"tags is None for question: {pred.get('id')}")
             if len(set(satags) - set(actual["qtype"]))>0:
                 continue
 
@@ -601,3 +1018,243 @@ for cat, eval_rows in evaluation_rows.items():
     os.makedirs(os.path.join(SAVE_DIR, cat), exist_ok=True)
     RESULTS_DF.to_csv(os.path.join(SAVE_DIR, cat, "results.csv"), index=False)
     RUN_SUMMARY_DF.to_csv(os.path.join(SAVE_DIR, cat, "results_summary.csv"), index=False)
+
+
+# %%
+# Pairwise answer winrate evaluation.
+# Uses PREDICTION_FILES keys as the method names and compares each method pair
+# on examples where both methods have a prediction.
+from itertools import combinations
+
+
+class PairwiseAnswerWinrateSignature(dspy.Signature):
+    """
+    You are a evaluator and your given outputs of two explanation generation systems for AI 
+    Systems. Your job is to identify which method provides a better explanation to the asked question. 
+    A human curated answer is also provided. 
+    
+    Choose which answer is more understandable by a lay user.
+    Be cautious whether the answer is faithful to the human curated answer.
+    """
+
+    question: str = dspy.InputField()
+    ground_truth_answer: str = dspy.InputField()
+    method_a: str = dspy.InputField()
+    answer_a: str = dspy.InputField()
+    method_b: str = dspy.InputField()
+    answer_b: str = dspy.InputField()
+    winner: str = dspy.OutputField(
+        desc="Return exactly one of: method_a, method_b, tie."
+    )
+    rationale: str = dspy.OutputField(
+        desc="Brief reason for the choice, grounded in the reference answer."
+    )
+
+
+WINRATE_CONFIG = EVALUATION_SETTINGS.get("winrate", {})
+WINRATE_JUDGE_LLM = WINRATE_CONFIG.get("judge_llm") or JUDGE_LLM
+WINRATE_METHODS = WINRATE_CONFIG.get("methods") or list(PREDICTION_FILES.keys())
+WINRATE_SAVE_DIR = SAVE_DIR / "answer_winrate"
+WINRATE_TIE_SCORE = WINRATE_CONFIG.get("tie_score", 0.5)
+
+
+def build_prediction_index_by_ground_truth(
+    prediction_runs: Mapping[str, list[dict[str, Any]]],
+) -> tuple[dict[str, dict[str, dict[str, Any]]], dict[str, dict[str, Any]]]:
+    prediction_index: dict[str, dict[str, dict[str, Any]]] = {}
+    ground_truth_index: dict[str, dict[str, Any]] = {}
+
+    for method in WINRATE_METHODS:
+        method_index: dict[str, dict[str, Any]] = {}
+        for pred in prediction_runs.get(method, []):
+            actual = resolve_ground_truth_record(pred)
+            if actual is None:
+                continue
+
+            ground_truth_id = actual.get("id")
+            if not ground_truth_id or ground_truth_id in method_index:
+                continue
+
+            method_index[ground_truth_id] = pred
+            ground_truth_index[ground_truth_id] = actual
+
+        prediction_index[method] = method_index
+
+    return prediction_index, ground_truth_index
+
+
+def normalize_pairwise_winner(
+    winner: Any,
+    method_a: str | None = None,
+    method_b: str | None = None,
+) -> str:
+    normalized = normalize_text(winner)
+    normalized_method_a = normalize_text(method_a)
+    normalized_method_b = normalize_text(method_b)
+    if normalized_method_a and normalized == normalized_method_a:
+        return "method_a"
+    if normalized_method_b and normalized == normalized_method_b:
+        return "method_b"
+    if normalized in {"method a", "a", "answer a", "output 1", "1"}:
+        return "method_a"
+    if normalized in {"method b", "b", "answer b", "output 2", "2"}:
+        return "method_b"
+    if normalized in {"tie", "same", "draw", "equal", "equivalent", "0"}:
+        return "tie"
+    if "method a" in normalized:
+        return "method_a"
+    if "method b" in normalized:
+        return "method_b"
+    if "tie" in normalized or "same" in normalized or "equal" in normalized:
+        return "tie"
+    return "error"
+
+
+def pairwise_answer_scores(winner: str) -> tuple[float, float, str | None]:
+    if winner == "method_a":
+        return 1.0, 0.0, "method_a"
+    if winner == "method_b":
+        return 0.0, 1.0, "method_b"
+    if winner == "tie":
+        return WINRATE_TIE_SCORE, WINRATE_TIE_SCORE, None
+    return float("nan"), float("nan"), None
+
+
+def run_pairwise_answer_winrate(
+    prediction_runs: Mapping[str, list[dict[str, Any]]],
+) -> pd.DataFrame:
+    methods = [method for method in WINRATE_METHODS if method in prediction_runs]
+    if len(methods) < 2:
+        return pd.DataFrame()
+
+    prediction_index, ground_truth_index = build_prediction_index_by_ground_truth(
+        prediction_runs
+    )
+    judge = dspy.Predict(PairwiseAnswerWinrateSignature)
+    rows: list[dict[str, Any]] = []
+
+    for method_a, method_b in combinations(methods, 2):
+        if (method_b != "ours") and (method_a != "ours"):
+            continue
+        
+        shared_ground_truth_ids = sorted(
+            set(prediction_index.get(method_a, {}))
+            & set(prediction_index.get(method_b, {}))
+        )
+        if MAX_EXAMPLES_PER_RUN is not None:
+            shared_ground_truth_ids = shared_ground_truth_ids[:MAX_EXAMPLES_PER_RUN]
+
+        pair_label = f"{method_a} vs {method_b}"
+        for ground_truth_id in tqdm(shared_ground_truth_ids, desc=pair_label):
+            actual = ground_truth_index[ground_truth_id]
+            pred_a = prediction_index[method_a][ground_truth_id]
+            pred_b = prediction_index[method_b][ground_truth_id]
+            answer_a = strip_citations(pred_a.get("answer", ""))
+            answer_b = strip_citations(pred_b.get("answer", ""))
+
+            row: dict[str, Any] = {
+                "ground_truth_id": ground_truth_id,
+                "ground_truth_qtype": json.dumps(actual.get("qtype", []), ensure_ascii=True),
+                "question": actual.get("question", ""),
+                "ground_truth_answer": actual.get("answer", ""),
+                "method_a": method_a,
+                "method_b": method_b,
+                "answer_a": answer_a,
+                "answer_b": answer_b,
+            }
+
+            try:
+                judge_llm = get_winrate_judge_llm()
+                with dspy.context(lm=judge_llm.llm):
+                    preference = judge(
+                        question=actual.get("question", ""),
+                        ground_truth_answer=actual.get("answer", ""),
+                        method_a=method_a,
+                        answer_a=answer_a,
+                        method_b=method_b,
+                        answer_b=answer_b,
+                    )
+
+                winner = normalize_pairwise_winner(
+                    preference.winner,
+                    method_a,
+                    method_b,
+                )
+                row["winner"] = winner
+                row["judge_rationale"] = getattr(preference, "rationale", "")
+            except Exception as exc:
+                winner = "error"
+                row["winner"] = winner
+                row["judge_error"] = str(exc)
+
+            method_a_score, method_b_score, winning_side = pairwise_answer_scores(winner)
+            row["winning_method"] = (
+                row[winning_side] if winning_side is not None else None
+            )
+            row["method_a_score"] = method_a_score
+            row["method_b_score"] = method_b_score
+            rows.append(row)
+
+    return pd.DataFrame(rows)
+
+
+def build_answer_winrate_summary(pairwise_df: pd.DataFrame) -> pd.DataFrame:
+    if pairwise_df.empty:
+        return pd.DataFrame()
+
+    valid_df = pairwise_df[pairwise_df["winner"].isin(["method_a", "method_b", "tie"])]
+    if valid_df.empty:
+        return pd.DataFrame()
+
+    method_rows: list[dict[str, Any]] = []
+    for row in valid_df.to_dict("records"):
+        method_rows.append(
+            {
+                "method": row["method_a"],
+                "opponent": row["method_b"],
+                "score": row["method_a_score"],
+                "win": int(row["winner"] == "method_a"),
+                "loss": int(row["winner"] == "method_b"),
+                "tie": int(row["winner"] == "tie"),
+            }
+        )
+        method_rows.append(
+            {
+                "method": row["method_b"],
+                "opponent": row["method_a"],
+                "score": row["method_b_score"],
+                "win": int(row["winner"] == "method_b"),
+                "loss": int(row["winner"] == "method_a"),
+                "tie": int(row["winner"] == "tie"),
+            }
+        )
+
+    method_df = pd.DataFrame(method_rows)
+    summary_df = (
+        method_df.groupby("method", dropna=False)
+        .agg(
+            comparisons=("score", "size"),
+            wins=("win", "sum"),
+            losses=("loss", "sum"),
+            ties=("tie", "sum"),
+            winrate=("score", "mean"),
+        )
+        .reset_index()
+        .sort_values(["winrate", "wins", "ties"], ascending=[False, False, False])
+        .reset_index(drop=True)
+    )
+    return summary_df
+
+
+ANSWER_WINRATE_DF = run_pairwise_answer_winrate(PREDICTION_RUNS)
+ANSWER_WINRATE_SUMMARY_DF = build_answer_winrate_summary(ANSWER_WINRATE_DF)
+
+display(ANSWER_WINRATE_DF.head())
+display(ANSWER_WINRATE_SUMMARY_DF)
+
+os.makedirs(WINRATE_SAVE_DIR, exist_ok=True)
+ANSWER_WINRATE_DF.to_csv(WINRATE_SAVE_DIR / "pairwise_answer_winrate.csv", index=False)
+ANSWER_WINRATE_SUMMARY_DF.to_csv(
+    WINRATE_SAVE_DIR / "answer_winrate_summary.csv",
+    index=False,
+)

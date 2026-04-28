@@ -1,0 +1,74 @@
+Result ID
+gt_89
+
+Question
+what is the number of output for the System Prompt in the execution http://testwebsite/testProgram#id_20260420105652_650 ?
+
+Answer
+The execution has one output port for the System Prompt. <cite, id=0>system prompt execution 1 1</cite> <cite, id=1>system prompt</cite> <cite, id=2>System Prompt</cite>
+
+Relevant Entities
+1. system prompt execution 1 1 (ChatBS-NexGen:id_20260420105652_650) [types=['provone:Execution']; score=1.0]
+2. system prompt (ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt) [types=['prov:Generation']; score=0.9]
+3. System Prompt (ChatBS-NexGen:system_prompt_generator-system_prompt) [types=['provone:Port']; score=0.8]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:id_20260420105652_650",
+    "label": "system prompt execution 1 1",
+    "score": 1.0,
+    "types": [
+      "provone:Execution"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt",
+    "label": "system prompt",
+    "score": 0.9,
+    "types": [
+      "prov:Generation"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:system_prompt_generator-system_prompt",
+    "label": "System Prompt",
+    "score": 0.8,
+    "types": [
+      "provone:Port"
+    ]
+  }
+]
+
+Evidence
+1. system prompt execution 1 1 (ChatBS-NexGen:id_20260420105652_650) -- qualifiedGeneration (prov:qualifiedGeneration) -> ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt [system prompt] [direction=outgoing; literal=True; score=1.0]
+2. system prompt (ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt) -- hadOutPort (provone:hadOutPort) -> ChatBS-NexGen:system_prompt_generator-system_prompt [System Prompt] [direction=outgoing; literal=True; score=0.9]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt [system prompt]",
+    "predicate_id": "prov:qualifiedGeneration",
+    "predicate_label": "qualifiedGeneration",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:id_20260420105652_650",
+    "subject_label": "system prompt execution 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:system_prompt_generator-system_prompt [System Prompt]",
+    "predicate_id": "provone:hadOutPort",
+    "predicate_label": "hadOutPort",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt",
+    "subject_label": "system prompt"
+  }
+]
+
+Timing
+45.78997898392845 seconds

@@ -1,0 +1,29 @@
+Result ID
+gt_91
+
+Question
+what is the number of output for the "Output port for kg_info" in the execution "http://testwebsite/testProgram#id_20260420105705_598" ?
+
+Answer
+I could not produce an answer from the provided workflow context. <cite, id=0>text</cite>
+
+Relevant Entities
+1. text (ChatBS-NexGen:Usage-id_20260420105703_331-text) [types=['prov:Usage']; score=0.5]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:Usage-id_20260420105703_331-text",
+    "label": "text",
+    "score": 0.5,
+    "types": [
+      "prov:Usage"
+    ]
+  }
+]
+
+Evidence
+None
+
+Timing
+168.3849458489567 seconds

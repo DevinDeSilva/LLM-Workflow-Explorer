@@ -1,0 +1,134 @@
+Result ID
+gt_26
+
+Question
+what are the executions of the llm chat function step in the pipeline?
+
+Answer
+There is one execution identified for the LLM Chat function step in this pipeline run, labeled 'llm_chat_1_1' with identifier id_20260420105659_302. It was executed by test_user between 2026-04-20 10:56:52 and 2026-04-20 10:56:59. <cite, id=0>llm chat 1 1</cite> <cite, id=1>LLM Chat</cite> <cite, id=2>test user</cite>
+
+Relevant Entities
+1. llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) [types=['provone:Execution']; score=1.0]
+2. LLM Chat (ChatBS-NexGen:llm_chat) [types=['provone:Program']; score=0.9]
+3. test user (ChatBS-NexGen:test_user) [types=['prov:Agent']; score=0.8]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:id_20260420105659_302",
+    "label": "llm chat 1 1",
+    "score": 1.0,
+    "types": [
+      "provone:Execution"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:llm_chat",
+    "label": "LLM Chat",
+    "score": 0.9,
+    "types": [
+      "provone:Program"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:test_user",
+    "label": "test user",
+    "score": 0.8,
+    "types": [
+      "prov:Agent"
+    ]
+  }
+]
+
+Evidence
+1. llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) -- type (rdf:type) -> Execution (provone:Execution) [direction=outgoing; literal=False; score=1.0]
+2. llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) -- identifier (dcterms:identifier) -> llm_chat_1_1 [direction=outgoing; literal=True; score=0.9]
+3. llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) -- qualifiedAssociation (prov:qualifiedAssociation) -> llm chat Association (ChatBS-NexGen:ChatBS-NexGen:llm_chat-Association-id_20260420105659_302) [direction=outgoing; literal=False; score=0.8]
+4. llm chat Association (ChatBS-NexGen:ChatBS-NexGen:llm_chat-Association-id_20260420105659_302) -- hadPlan (prov:hadPlan) -> LLM Chat (ChatBS-NexGen:llm_chat) [direction=outgoing; literal=False; score=0.7]
+5. llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) -- wasAssociatedWith (prov:wasAssociatedWith) -> test user (ChatBS-NexGen:test_user) [direction=outgoing; literal=False; score=0.6]
+6. llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) -- started At (prov:startedAt) -> 2026-04-20 10:56:52 [direction=outgoing; literal=True; score=0.5]
+7. llm chat 1 1 (ChatBS-NexGen:id_20260420105659_302) -- ended At (prov:endedAt) -> 2026-04-20 10:56:59 [direction=outgoing; literal=True; score=0.3999999999999999]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "provone:Execution",
+    "object_is_literal": false,
+    "object_label": "Execution",
+    "predicate_id": "rdf:type",
+    "predicate_label": "type",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:id_20260420105659_302",
+    "subject_label": "llm chat 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "llm_chat_1_1",
+    "predicate_id": "dcterms:identifier",
+    "predicate_label": "identifier",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:id_20260420105659_302",
+    "subject_label": "llm chat 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:ChatBS-NexGen:llm_chat-Association-id_20260420105659_302",
+    "object_is_literal": false,
+    "object_label": "llm chat Association",
+    "predicate_id": "prov:qualifiedAssociation",
+    "predicate_label": "qualifiedAssociation",
+    "score": 0.8,
+    "subject_id": "ChatBS-NexGen:id_20260420105659_302",
+    "subject_label": "llm chat 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:llm_chat",
+    "object_is_literal": false,
+    "object_label": "LLM Chat",
+    "predicate_id": "prov:hadPlan",
+    "predicate_label": "hadPlan",
+    "score": 0.7,
+    "subject_id": "ChatBS-NexGen:ChatBS-NexGen:llm_chat-Association-id_20260420105659_302",
+    "subject_label": "llm chat Association"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:test_user",
+    "object_is_literal": false,
+    "object_label": "test user",
+    "predicate_id": "prov:wasAssociatedWith",
+    "predicate_label": "wasAssociatedWith",
+    "score": 0.6,
+    "subject_id": "ChatBS-NexGen:id_20260420105659_302",
+    "subject_label": "llm chat 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "2026-04-20 10:56:52",
+    "predicate_id": "prov:startedAt",
+    "predicate_label": "started At",
+    "score": 0.5,
+    "subject_id": "ChatBS-NexGen:id_20260420105659_302",
+    "subject_label": "llm chat 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "2026-04-20 10:56:59",
+    "predicate_id": "prov:endedAt",
+    "predicate_label": "ended At",
+    "score": 0.3999999999999999,
+    "subject_id": "ChatBS-NexGen:id_20260420105659_302",
+    "subject_label": "llm chat 1 1"
+  }
+]
+
+Timing
+60.81962314597331 seconds

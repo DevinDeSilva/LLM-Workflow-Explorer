@@ -1,40 +1,43 @@
-import argparse
-from pathlib import Path
-import sys
-
 import marimo
 
-__generated_with = "0.22.0"
+__generated_with = "0.23.2"
 app = marimo.App()
-
-
-def _get_evaluation_choices() -> list[str]:
-    evaluations_dir = Path(__file__).resolve().parent / "evaluations"
-    return sorted(
-        path.name
-        for path in evaluations_dir.iterdir()
-        if path.is_dir() and path.name != "test_questions"
-    )
-
-
-def _parse_config_path() -> str:
-    parser = argparse.ArgumentParser(add_help=False)
-    parser.add_argument(
-        "--evaluation",
-        choices=_get_evaluation_choices(),
-        default="calibration",
-        help="Evaluation folder under evaluations/ to load config from.",
-    )
-    args, remaining = parser.parse_known_args()
-    sys.argv = [sys.argv[0], *remaining]
-    return str(Path("evaluations") / args.evaluation / "config.yaml")
-
-
-CONFIG_PATH = _parse_config_path()
 
 
 @app.cell
 def _():
+    import argparse
+    from pathlib import Path
+    import sys
+
+    def _get_evaluation_choices() -> list[str]:
+        evaluations_dir = Path(__file__).resolve().parent / "evaluations"
+        return sorted(
+            path.name
+            for path in evaluations_dir.iterdir()
+            if path.is_dir() and path.name != "test_questions"
+        )
+
+
+    def _parse_config_path() -> str:
+        parser = argparse.ArgumentParser(add_help=False)
+        parser.add_argument(
+            "--evaluation",
+            choices=_get_evaluation_choices(),
+            default="calibration-base",
+            help="Evaluation folder under evaluations/ to load config from.",
+        )
+        args, remaining = parser.parse_known_args()
+        sys.argv = [sys.argv[0], *remaining]
+        return str(Path("evaluations") / args.evaluation / "config.yaml")
+
+
+    CONFIG_PATH = _parse_config_path()
+    return (CONFIG_PATH,)
+
+
+@app.cell
+def _(CONFIG_PATH):
     import logging
     import pandas as pd
     from icecream import ic
@@ -67,10 +70,10 @@ def _():
         common_utils,
         config,
         dspy,
-        os,
-        pd,
         ic,
         logging,
+        os,
+        pd,
         tqdm,
     )
 
@@ -229,7 +232,6 @@ def _(LLM, config):
     llm = LLM(
         config.question_creation_config.llm_type,
         "dspy",
-        model = config.question_creation_config.model,
         **config.question_creation_config.llm_config
     )
     return
@@ -244,16 +246,31 @@ def _(ExecutableProgram, List, common_utils, config):
 
 
 @app.cell
+def _(ExecutableProgram):
+    def pass_executable_program(exp:ExecutableProgram) -> bool:
+        if 'path-level' in exp.tags:
+            if exp.metadata["path"][0] in ["prov:Association", "prov:Generation", "prov:Usage"]:
+                return True
+        return False
+
+    return (pass_executable_program,)
+
+
+@app.cell
 def _(
     compiled_module,
     explorations: "List[ExecutableProgram]",
     logger,
     ontology_triples,
+    pass_executable_program,
     tqdm,
 ):
     exp_list = []
 
     for exp in tqdm(explorations):
+        if pass_executable_program(exp):
+            continue
+        
         if 'path-level' in exp.tags:
             result = compiled_module(
                 path='->'.join(exp.metadata['path']),
@@ -308,8 +325,8 @@ def _(
             exp_dict = exp.to_dict()
             exp_dict.update({
                 "category":'object-level|from-prop',
-                "solves": f"What are the objects of class {_entity} with the given value for {exp.metadata['relation']}?",
-                "statement": f"Returns the objects attribute value of an object of class {_entity}",
+                "solves": exp.solves,
+                "statement": exp.description,
                 "start_node": None,
                 "end_node": None,
                 "focal_relation":exp.metadata['relation'],
@@ -324,8 +341,8 @@ def _(
             exp_dict = exp.to_dict()
             exp_dict.update({
                 "category":'object-level|from-object',
-                "solves": "What are all the objects of class?",
-                "statement": "Returns all the objects of a given class",
+                "solves": exp.solves,
+                "statement": exp.description,
                 "start_node": None,
                 "end_node": None,
                 "focal_relation":None,

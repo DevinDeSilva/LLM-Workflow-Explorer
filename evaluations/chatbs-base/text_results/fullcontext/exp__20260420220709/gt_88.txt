@@ -1,0 +1,53 @@
+Result ID
+gt_88
+
+Question
+what is the number of output for the Post-processed output port: post_processed_output in the execution http://testwebsite/testProgram#id_20260420105727_835 ?
+
+Answer
+The provided graph does not contain sufficient information to determine the numerical count of outputs for the specified port within that execution. <cite, id=0>post processing 1 1</cite> <cite, id=1>Post-processed output port: post_processed_output</cite>
+
+Relevant Entities
+1. post processing 1 1 (ChatBS-NexGen:id_20260420105727_835) [types=['provone:Execution']; score=1.0]
+2. Post-processed output port: post_processed_output (ChatBS-NexGen:query_result_post_processor-post_processed_output) [types=['provone:Port']; score=0.9]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:id_20260420105727_835",
+    "label": "post processing 1 1",
+    "score": 1.0,
+    "types": [
+      "provone:Execution"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:query_result_post_processor-post_processed_output",
+    "label": "Post-processed output port: post_processed_output",
+    "score": 0.9,
+    "types": [
+      "provone:Port"
+    ]
+  }
+]
+
+Evidence
+1. post processed output (ChatBS-NexGen:Generation-id_20260420105727_328-post_processed_output) -- hadOutPort (provone:hadOutPort) -> Post-processed output port: post_processed_output (ChatBS-NexGen:query_result_post_processor-post_processed_output) [direction=outgoing; literal=False; score=1.0]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:query_result_post_processor-post_processed_output",
+    "object_is_literal": false,
+    "object_label": "Post-processed output port: post_processed_output",
+    "predicate_id": "provone:hadOutPort",
+    "predicate_label": "hadOutPort",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:Generation-id_20260420105727_328-post_processed_output",
+    "subject_label": "post processed output"
+  }
+]
+
+Timing
+30.391676745028235 seconds

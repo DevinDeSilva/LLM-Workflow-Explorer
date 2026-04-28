@@ -1,0 +1,65 @@
+Result ID
+gt_13
+
+Question
+what are the output parameters of the function used in system prompt template step in the pipeline?
+
+Answer
+The function used in the system prompt template step generates a System Prompt, which is represented by an output port labeled "System Prompt" (`ChatBS-NexGen:system_prompt_generator-system_prompt`). <cite, id=0>System Prompt</cite> <cite, id=1>System Prompt Template Generator</cite>
+
+Relevant Entities
+1. System Prompt (ChatBS-NexGen:system_prompt_generator-system_prompt) [types=['provone:Port']; score=1.0]
+2. System Prompt Template Generator (ChatBS-NexGen:system_prompt_generator) [types=['provone:Program']; score=0.9]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:system_prompt_generator-system_prompt",
+    "label": "System Prompt",
+    "score": 1.0,
+    "types": [
+      "provone:Port"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:system_prompt_generator",
+    "label": "System Prompt Template Generator",
+    "score": 0.9,
+    "types": [
+      "provone:Program"
+    ]
+  }
+]
+
+Evidence
+1. System Prompt Template Generator (ChatBS-NexGen:system_prompt_generator) -- hasOutPort (provone:hasOutPort) -> System Prompt (ChatBS-NexGen:system_prompt_generator-system_prompt) [direction=outgoing; literal=False; score=1.0]
+2. System Prompt (ChatBS-NexGen:system_prompt_generator-system_prompt) -- label (rdfs:label) -> System Prompt [direction=outgoing; literal=True; score=0.9]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:system_prompt_generator-system_prompt",
+    "object_is_literal": false,
+    "object_label": "System Prompt",
+    "predicate_id": "provone:hasOutPort",
+    "predicate_label": "hasOutPort",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:system_prompt_generator",
+    "subject_label": "System Prompt Template Generator"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "System Prompt",
+    "predicate_id": "rdfs:label",
+    "predicate_label": "label",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:system_prompt_generator-system_prompt",
+    "subject_label": "System Prompt"
+  }
+]
+
+Timing
+30.033038853900507 seconds

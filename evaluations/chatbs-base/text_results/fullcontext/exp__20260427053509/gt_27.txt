@@ -1,0 +1,65 @@
+Result ID
+gt_27
+
+Question
+who were the agents that ran the sparql query post processing step in the pipeline?
+
+Answer
+The agents that ran the sparql query post processing step were identified as the test user. <cite, id=0>test user</cite> <cite, id=1>post processing 1 1</cite>
+
+Relevant Entities
+1. test user (ChatBS-NexGen:test_user) [types=['prov:Agent']; score=1.0]
+2. post processing 1 1 (ChatBS-NexGen:id_20260420105727_835) [types=['provone:Execution']; score=0.9]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:test_user",
+    "label": "test user",
+    "score": 1.0,
+    "types": [
+      "prov:Agent"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:id_20260420105727_835",
+    "label": "post processing 1 1",
+    "score": 0.9,
+    "types": [
+      "provone:Execution"
+    ]
+  }
+]
+
+Evidence
+1. post processing 1 1 (ChatBS-NexGen:id_20260420105727_835) -- wasAssociatedWith (prov:wasAssociatedWith) -> test user (ChatBS-NexGen:test_user) [direction=outgoing; literal=False; score=1.0]
+2. query result post processor Association (ChatBS-NexGen:ChatBS-NexGen:query_result_post_processor-Association-id_20260420105727_835) -- agent (prov:agent) -> test user (ChatBS-NexGen:test_user) [direction=outgoing; literal=False; score=0.9]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:test_user",
+    "object_is_literal": false,
+    "object_label": "test user",
+    "predicate_id": "prov:wasAssociatedWith",
+    "predicate_label": "wasAssociatedWith",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:id_20260420105727_835",
+    "subject_label": "post processing 1 1"
+  },
+  {
+    "direction": "outgoing",
+    "object_id": "ChatBS-NexGen:test_user",
+    "object_is_literal": false,
+    "object_label": "test user",
+    "predicate_id": "prov:agent",
+    "predicate_label": "agent",
+    "score": 0.9,
+    "subject_id": "ChatBS-NexGen:ChatBS-NexGen:query_result_post_processor-Association-id_20260420105727_835",
+    "subject_label": "query result post processor Association"
+  }
+]
+
+Timing
+31.437596580944955 seconds

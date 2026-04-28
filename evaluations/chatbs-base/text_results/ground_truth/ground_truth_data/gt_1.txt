@@ -1,0 +1,129 @@
+Ground Truth ID
+gt_1
+
+Question
+In what places do we utilize AI in this workflow?
+
+Answer
+The ChatBS System utilizes AI for the following
+
+1 => LLM Generates an text for 
+system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. 
+
+user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. 
+
+using: gpt-4o@en^^<xsd:string>
+
+2 => Extracts important entities for 
+text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:
+
+1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.
+
+2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.
+
+3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.
+
+4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.
+
+5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.
+
+Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. 
+
+using: gpt-4o@en^^<xsd:string>
+
+3 => Generates the Information Extractor Function using Large language models@en^^<xsd:string>
+
+4 => Generates the post processing Function using Large language models@en^^<xsd:string>
+
+5 => Generates the System Prompt Template using Large language models@en^^<xsd:string>
+
+Question Type
+[
+  "multi",
+  "entity"
+]
+
+Decision
+None
+
+Count
+None
+
+Entities
+[
+  {
+    "desc": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+    "obj": "ChatBS-NexGen:Generative_Task-id_20260420105659_302"
+  },
+  {
+    "desc": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+    "obj": "ChatBS-NexGen:Generative_Task-id_20260420105703_307"
+  },
+  {
+    "desc": "Generates the Information Extractor Function using Large language models@en^^<xsd:string>",
+    "obj": "ChatBS-NexGen:Generative_Task-information_extractor"
+  },
+  {
+    "desc": "Generates the post processing Function using Large language models@en^^<xsd:string>",
+    "obj": "ChatBS-NexGen:Generative_Task-query_result_post_processor"
+  },
+  {
+    "desc": "Generates the System Prompt Template using Large language models@en^^<xsd:string>",
+    "obj": "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT distinct ?obj ?desc\nWHERE {\n     ?obj a workflow:Generative_Task .\n     ?obj dc:description ?desc .\n}\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\nThe ChatBS System utilizes AI for the following\n\n1 => LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>\n\n2 => Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>\n\n3 => Generates the Information Extractor Function using Large language models@en^^<xsd:string>\n\n4 => Generates the post processing Function using Large language models@en^^<xsd:string>\n\n5 => Generates the System Prompt Template using Large language models@en^^<xsd:string>\n",
+  "count": null,
+  "decision": null,
+  "entities": [
+    {
+      "desc": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+      "obj": "ChatBS-NexGen:Generative_Task-id_20260420105659_302"
+    },
+    {
+      "desc": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+      "obj": "ChatBS-NexGen:Generative_Task-id_20260420105703_307"
+    },
+    {
+      "desc": "Generates the Information Extractor Function using Large language models@en^^<xsd:string>",
+      "obj": "ChatBS-NexGen:Generative_Task-information_extractor"
+    },
+    {
+      "desc": "Generates the post processing Function using Large language models@en^^<xsd:string>",
+      "obj": "ChatBS-NexGen:Generative_Task-query_result_post_processor"
+    },
+    {
+      "desc": "Generates the System Prompt Template using Large language models@en^^<xsd:string>",
+      "obj": "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+    }
+  ],
+  "id": "gt_1",
+  "qtype": [
+    "multi",
+    "entity"
+  ],
+  "question": "\nIn what places do we utilize AI in this workflow?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT distinct ?obj ?desc\nWHERE {\n     ?obj a workflow:Generative_Task .\n     ?obj dc:description ?desc .\n}\n"
+    }
+  ],
+  "tags": {}
+}

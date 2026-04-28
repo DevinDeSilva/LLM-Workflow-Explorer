@@ -1,0 +1,68 @@
+Ground Truth ID
+gt_89
+
+Question
+what is the number of output for the "System Prompt" in the execution "http://testwebsite/testProgram#id_20260420105652_650" ?
+
+Answer
+The number of output for the "System Prompt" in the execution "http://testwebsite/testProgram#id_20260420105652_650" is 1
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt
+
+Question Type
+[
+  "multi",
+  "numeric"
+]
+
+Decision
+None
+
+Count
+1
+
+Entities
+[
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT DISTINCT ?data\n            WHERE {\n                <http://testwebsite/testProgram#id_20260420105652_650> prov:qualifiedGeneration ?generation .\n                ?generation provone:hadOutPort ?port .\n                ?port rdfs:label ?plbl .\n                FILTER(REGEX(?plbl, \"System Prompt\",\"i\"))\n\n                ?generation provone:hadEntity ?data .\n        }\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    The number of output for the \"System Prompt\" in the execution \"http://testwebsite/testProgram#id_20260420105652_650\" is 1\n\n    Output Data\nhttp://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt\n    ",
+  "count": 1,
+  "decision": null,
+  "entities": [
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt"
+    }
+  ],
+  "id": "gt_89",
+  "qtype": [
+    "multi",
+    "numeric"
+  ],
+  "question": "\nwhat is the number of output for the \"System Prompt\" in the execution \"http://testwebsite/testProgram#id_20260420105652_650\" ?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT DISTINCT ?data\n            WHERE {\n                <http://testwebsite/testProgram#id_20260420105652_650> prov:qualifiedGeneration ?generation .\n                ?generation provone:hadOutPort ?port .\n                ?port rdfs:label ?plbl .\n                FILTER(REGEX(?plbl, \"System Prompt\",\"i\"))\n\n                ?generation provone:hadEntity ?data .\n        }\n"
+    }
+  ],
+  "tags": {}
+}

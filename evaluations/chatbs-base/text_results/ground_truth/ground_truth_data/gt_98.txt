@@ -1,0 +1,75 @@
+Ground Truth ID
+gt_98
+
+Question
+what is the number of output for the "Output port for kg_info" in the execution "http://testwebsite/testProgram#id_20260420105719_327" ?
+
+Answer
+The number of output for the "Output port for kg_info" in the execution "http://testwebsite/testProgram#id_20260420105719_327" is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info
+http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info
+
+Question Type
+[
+  "multi",
+  "numeric"
+]
+
+Decision
+None
+
+Count
+2
+
+Entities
+[
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info"
+  },
+  {
+    "data": "http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info"
+  }
+]
+
+SPARQL
+[
+  {
+    "description": "",
+    "inputs": null,
+    "template": "\nSELECT DISTINCT ?data\n            WHERE {\n                <http://testwebsite/testProgram#id_20260420105719_327> prov:qualifiedGeneration ?generation .\n                ?generation provone:hadOutPort ?port .\n                ?port rdfs:label ?plbl .\n                FILTER(REGEX(?plbl, \"Output port for kg_info\",\"i\"))\n\n                ?generation provone:hadEntity ?data .\n        }\n"
+  }
+]
+
+Tags
+{}
+
+Raw Ground Truth
+{
+  "answer": "\n    The number of output for the \"Output port for kg_info\" in the execution \"http://testwebsite/testProgram#id_20260420105719_327\" is 2\n\n    Output Data\nhttp://testwebsite/testProgram#Data-id_20260420105719_258-kg_info\nhttp://testwebsite/testProgram#Data-id_20260420105719_416-kg_info\n    ",
+  "count": 2,
+  "decision": null,
+  "entities": [
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info"
+    },
+    {
+      "data": "http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info"
+    }
+  ],
+  "id": "gt_98",
+  "qtype": [
+    "multi",
+    "numeric"
+  ],
+  "question": "\nwhat is the number of output for the \"Output port for kg_info\" in the execution \"http://testwebsite/testProgram#id_20260420105719_327\" ?\n",
+  "sparql": [
+    {
+      "description": "",
+      "inputs": null,
+      "template": "\nSELECT DISTINCT ?data\n            WHERE {\n                <http://testwebsite/testProgram#id_20260420105719_327> prov:qualifiedGeneration ?generation .\n                ?generation provone:hadOutPort ?port .\n                ?port rdfs:label ?plbl .\n                FILTER(REGEX(?plbl, \"Output port for kg_info\",\"i\"))\n\n                ?generation provone:hadEntity ?data .\n        }\n"
+    }
+  ],
+  "tags": {}
+}

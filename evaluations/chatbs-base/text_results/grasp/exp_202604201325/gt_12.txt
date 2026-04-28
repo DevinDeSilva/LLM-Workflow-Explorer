@@ -1,0 +1,541 @@
+Result ID
+gt_12
+
+Task
+sparql-qa
+
+Row Type
+output
+
+Question
+what are the output parameters of the function used in sparql query post processing step in the pipeline?
+
+Error
+None
+
+Output
+None
+
+Known Items
+[
+  "http://testwebsite/testProgram#channel_sparql_query_extraction",
+  "http://testwebsite/testProgram#Generative_Task-query_result_post_processor",
+  "http://testwebsite/testProgram#batch_sparql_query_extractor",
+  "http://testwebsite/testProgram#channel_query_result_post_processing",
+  "http://testwebsite/testProgram#batch_sparql_query_extractor-entities",
+  "http://semanticscience.org/resource/SIO_001157",
+  "http://semanticscience.org/resource/SIO_010415",
+  "http://semanticscience.org/resource/SIO_000006",
+  "http://semanticscience.org/resource/SIO_000404",
+  "http://semanticscience.org/resource/SIO_010296",
+  "http://testwebsite/testProgram#query_result_post_processor",
+  "http://semanticscience.org/resource/SIO_000708",
+  "http://testwebsite/testProgram#query_result_post_processor-kg_knowledge",
+  "http://semanticscience.org/resource/SIO_000027",
+  "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow",
+  "http://purl.dataone.org/provone/2015/01/15/ontology#Port",
+  "http://semanticscience.org/resource/SIO_000882",
+  "http://testwebsite/testProgram#LLM-query_result_post_processor",
+  "http://testwebsite/testProgram#sparql_query_extractor",
+  "http://semanticscience.org/resource/SIO_010295",
+  "http://testwebsite/testProgram#batch_sparql_query_extractor-query_function",
+  "http://semanticscience.org/resource/SIO_000033"
+]
+
+Messages
+Message 1: system
+Content:
+You are a question answering assistant. Your job is to generate a SPARQL query to answer a given user question.
+
+You should follow a step-by-step approach to generate the SPARQL query:
+1. Determine possible entities and properties implied by the user question.
+2. Search for the entities and properties in the knowledge graphs. Where applicable, constrain the searches with already identified entities and properties.
+3. Gradually build up the SPARQL query using the identified entities and properties. Start with simple queries and add more complexity as needed. Execute intermediate queries to get feedback and to verify your assumptions. You may need to refine or rethink your current plan based on the query results and go back to step 2 if needed, possibly multiple times.
+4. Use the answer or cancel function to finalize your answer and stop the generation process.
+
+Types of knowledge graph indices:
+- "embedding": Retrieves items by cosine similarity between their embeddings and the query embedding. The embedding model used depends on the index and may support text, images, or both.
+- "fuzzy": Retrieves items by overlap between their label words and the query keywords. The query keywords must not match label words exactly, but some fuzziness is allowed. The longer a query keyword is, the more it can deviate from a label word and still be considered a match, though it will also contribute less to the overall score. No special query operators like AND/OR are supported.
+
+Available knowledge graphs:
+- "chatbs" at http://localhost:3030/ds/sparql: chat
+  Search indices:
+    - "entities" index (type="fuzzy"): Searchable entities from the chatbs workflow knowledge graph.
+    - "properties" index (type="embedding", modalities="text"): Searchable properties from the chatbs workflow knowledge graph.
+  SPARQL prefixes:
+    - ChatBS-NexGen: http://testwebsite/testProgram#
+    - DFColumn: http://testwebsite/testDFColumn#
+    - cwfo: http://cwf.tw.rpi.edu/vocab#
+    - dbo: http://dbpedia.org/ontology/
+    - dbp: http://dbpedia.org/property/
+    - dbt: http://dbpedia.org/resource/Template:
+    - dcterms: http://purl.org/dc/terms#
+    - eo: https://purl.org/heals/eo#
+    - ep: http://linkedu.eu/dedalo/explanationPattern.owl#
+    - fno: https://w3id.org/function/vocabulary/core#
+    - fnoc: https://w3id.org/function/vocabulary/composition/0.1.0/
+    - fnoi: https://w3id.org/function/vocabulary/implementation#
+    - fnom: https://w3id.org/function/vocabulary/mapping#
+    - food: http://purl.org/heals/food/
+    - provone: http://purl.dataone.org/provone/2015/01/15/ontology#
+    - ques: http://atomic_questions.org/
+    - sio: http://semanticscience.org/resource/
+    - user: http://testwebsite/testUser#
+    - workflow: http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/
+
+Common SPARQL prefixes:
+- bd: http://www.bigdata.com/rdf#
+- dc: http://purl.org/dc/elements/1.1/
+- dct: http://purl.org/dc/terms/
+- foaf: http://xmlns.com/foaf/0.1/
+- geo: http://www.opengis.net/ont/geosparql#
+- geof: http://www.opengis.net/def/function/geosparql/
+- geosparql: http://www.opengis.net/ont/geosparql#
+- gn: http://www.geonames.org/ontology#
+- hint: http://www.bigdata.com/queryHints#
+- owl: http://www.w3.org/2002/07/owl#
+- prov: http://www.w3.org/ns/prov#
+- qb: http://purl.org/linked-data/cube#
+- rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+- rdfs: http://www.w3.org/2000/01/rdf-schema#
+- schema: http://schema.org/
+- skos: http://www.w3.org/2004/02/skos/core#
+- void: http://rdfs.org/ns/void#
+- wikibase: http://wikiba.se/ontology#
+- xsd: http://www.w3.org/2001/XMLSchema#
+
+All SPARQL prefixes above can be used implicitly in SPARQL queries and function calls.
+
+Additional rules to follow:
+- Explain your thought process before each step and function call.
+- Do not ask the user for clarification, neither on the initial input nor on follow-up inputs or feedback. When the task input is incomplete or ambiguous, proceed based on reasonable assumptions.
+- Use IRIs returned in function call results as is in subsequent function calls. Shortening them to their prefixed form, and escaping or encoding special characters might lead to errors and unexpected or empty results.
+- Do not use "SERVICE wikibase:label { bd:serviceParam wikibase:language ..." in SPARQL queries. It is not SPARQL standard and unsupported by most SPARQL endpoints. Use rdfs:label or similar properties to get labels instead.
+- Always execute your final SPARQL query before giving an answer to make sure it returns the expected results.
+- The SPARQL query should always return the actual identifiers / IRIs of the items in its result. It additionally may return labels or other human-readable information, but they are optional and should be put within optional clauses unless explicitly requested by the user.
+- Do not stop early if there are still obvious improvements to be made to the SPARQL query. For example, keep refining your SPARQL query if its result contains irrelevant items or is missing items you expected.
+- Do not perform additional computation (e.g. filtering, sorting, calculations) on the result of the SPARQL query to determine the answer. All computation should be done solely within SPARQL.
+- For questions with a "True" or "False" answer the SPARQL query should be an ASK query.
+
+Message 2: user
+Content:
+what are the output parameters of the function used in sparql query post processing step in the pipeline?
+
+Message 3: assistant
+Content:
+{
+  "id": "chatcmpl-ldskqy69kfdb8bmn27wk9u",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": "The user is asking about output parameters of functions used in SPARQL query post-processing steps in a pipeline. This seems to be related to understanding how functions work in the context of SPARQL queries and their post-processing within some workflow or pipeline system.\n\nLet me think about what I need to do:\n\n1. First, I should search for information about \"SPARQL\", \"post-processing\", \"output parameters\", or \"function\" concepts in the knowledge graph\n2. The chatbs knowledge graph seems most relevant for this type of question about workflows and query processing\n3. I should look for properties related to functions, SPARQL queries, pipelines, and their output parameters\n\nLet me start by searching for entities or properties related to these terms.",
+    "encrypted_content": null,
+    "id": "c9b04e36f2f14ce0811cf319afc05697",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "entity": "cwfo:Function",
+        "kg": "chatbs",
+        "query": "output parameter"
+      },
+      "error": null,
+      "id": "874363939",
+      "name": "search_property_of_entity",
+      "result": "No properties alternatives found"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 213,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 155,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 3561,
+    "prompt_tokens_details": null,
+    "total_tokens": 3774
+  }
+}
+
+Message 4: assistant
+Content:
+{
+  "id": "chatcmpl-5xneudlteu7q3raqewl13p",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": "Searching for \"post processing\" or similar terms to identify the function used in the pipeline. Let me search with filters related to SPARQL query post-processing steps.",
+    "encrypted_content": null,
+    "id": "aefba1d2811048b8a3dde202fd2bbed2",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "index": "entities",
+        "query": "sparql postprocessing",
+        "sparql": "SELECT DISTINCT ?entity WHERE {\n  ?step a cwfo:PipelineStep .\n  OPTIONAL {\n    FILTER(CONTAINS(STR(?step), \"postprocess\")) || \n    CONTAINS(STR(?step), \"PostProcess\")\n  }\n  ?step wfow:hasOutput ?out .\n} LIMIT 10"
+      },
+      "error": "'kg'",
+      "id": "328846483",
+      "name": "search_with_filter",
+      "result": "Call to function search_with_filter returned an error:\n'kg'"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 158,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 34,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 3638,
+    "prompt_tokens_details": null,
+    "total_tokens": 3796
+  }
+}
+
+Message 5: assistant
+Content:
+{
+  "id": "chatcmpl-akn9qpj6c3jhs4ayzj62sm",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": "The user query is about finding the output parameters of a specific function used in the SPARQL query post-processing step within a pipeline, and it's related to the knowledge graph \"chatbs\".\n\nLet me re-evaluate my approach. I need to:\n1. Find entities with type `cwfo:Pipeline` or similar that might contain the \"postprocessing\" step.\n2. Then identify which function is used in that step.\n3. Determine its output parameters.\n\nFirst, let's try to search for entities related to SPARQL and postprocessing more broadly in the chatbs graph. Let's start by searching for entities with labels containing \"sparql\" or \"postprocess\".\n\nLet me use the `search_with_filter` function with a simpler filter first to find relevant steps/function entities, and then refine from there.",
+    "encrypted_content": null,
+    "id": "4030cc6c17284165b75d13fc35325739",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "query": "SPARQL postprocessing"
+      },
+      "error": null,
+      "id": "229648549",
+      "name": "search_entity",
+      "result": "Top 10 entities alternatives:\n1. SPARQL Query Builder@en^^<xsd:string> (ChatBS-NexGen:sparql_query_extractor):\n  - is a Program\n2. Batch SPARQL Query Extractor@en^^<xsd:string> (ChatBS-NexGen:batch_sparql_query_extractor):\n  - is a Program\n3. Post-processing input port: kg_knowledge@en^^<xsd:string> (ChatBS-NexGen:query_result_post_processor-kg_knowledge):\n  - is a Port\n4. Channel for the SPARQL query extraction@en^^<xsd:string> (ChatBS-NexGen:channel_sparql_query_extraction):\n  - is a Channel"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 217,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 173,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 3791,
+    "prompt_tokens_details": null,
+    "total_tokens": 4008
+  }
+}
+
+Message 6: assistant
+Content:
+{
+  "id": "chatcmpl-af1bex8i6h6ul4a2vruxcq",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": "I found entities related to post-processing. Let me explore the \"Post-processing input port: kg_knowledge\" entity to understand its context and what output parameters it might be associated with. Also, I should check for other entities that might represent the function used in the post-processing step.\n\nBased on the search results, \"ChatBS-NexGen:query_result_post_processor-kg_knowledge\" is an input port (Port). Let me look at this entity and its relations to understand the pipeline structure better.",
+    "encrypted_content": null,
+    "id": "741ef16437db4f38bd4c24995adb0303",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "page": 1,
+        "property": "null",
+        "subject": "ChatBS-NexGen:query_result_post_processor-kg_knowledge",
+        "unclipped": false
+      },
+      "error": "Value \"null\" for property is not a valid IRI. IRIs can be given in prefixed form, like wd:Q937, or in full form, like <http://www.wikidata.org/entity/Q937> or http://www.wikidata.org/entity/Q937. Be aware that not all IRIs can be used in prefixed form due to unsupported characters. If the value comes from a previous function call result, make sure to specify it exactly as given, with proper escaping and quoting.",
+      "id": "235715882",
+      "name": "list",
+      "result": "Call to function list returned an error:\nValue \"null\" for property is not a valid IRI. IRIs can be given in prefixed form, like wd:Q937, or in full form, like <http://www.wikidata.org/entity/Q937> or http://www.wikidata.org/entity/Q937. Be aware that not all IRIs can be used in prefixed form due to unsupported characters. If the value comes from a previous function call result, make sure to specify it exactly as given, with proper escaping and quoting."
+    }
+  ],
+  "usage": {
+    "completion_tokens": 195,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 104,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 4005,
+    "prompt_tokens_details": null,
+    "total_tokens": 4200
+  }
+}
+
+Message 7: assistant
+Content:
+{
+  "id": "chatcmpl-ppq5m9hqjg6lyp6rn6vwg",
+  "message": "Let me check what properties are associated with the \"Post-processing input port\" entity I found:",
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": null,
+    "encrypted_content": null,
+    "id": "42ead50a30304bd9bb602f0e57812a9d",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "page": 1,
+        "property": "http://testwebsite/testProgram#wfo:hasOutput",
+        "subject": "ChatBS-NexGen:query_result_post_processor-kg_knowledge",
+        "unclipped": false
+      },
+      "error": null,
+      "id": "599748871",
+      "name": "list",
+      "result": "Got no rows and 3 columns"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 121,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 4226,
+    "prompt_tokens_details": null,
+    "total_tokens": 4347
+  }
+}
+
+Message 8: assistant
+Content:
+{
+  "id": "chatcmpl-0ip8nv8jupkh1gowpcquvp",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": null,
+    "encrypted_content": null,
+    "id": "91d1ad6615134f948cffc9d3f653acec",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "page": 1,
+        "property": "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow#hasFunctionInstance",
+        "subject": "ChatBS-NexGen:query_result_post_processor-kg_knowledge",
+        "unclipped": false
+      },
+      "error": null,
+      "id": "487400147",
+      "name": "list",
+      "result": "Got no rows and 3 columns"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 115,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 4369,
+    "prompt_tokens_details": null,
+    "total_tokens": 4484
+  }
+}
+
+Message 9: assistant
+Content:
+{
+  "id": "chatcmpl-naa4a18x3whxnt2d1c0gk",
+  "message": "Let's search for the program that performs \"post-processing\" in the pipeline:",
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": null,
+    "encrypted_content": null,
+    "id": "031f9015ec8244c7b9ed4dbe8a08a67c",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "query": "post processor"
+      },
+      "error": null,
+      "id": "203302956",
+      "name": "search_entity",
+      "result": "Top 10 entities alternatives:\n1. Port (provone:Port):\n  - A Port enables a Program to send and receive Entities (Data, ... port, default parameters may be configured for the Port.\n  - is subclass of Entity\n2. professor role (sio:SIO_000708):\n  - is subclass of academic role\n3. professor (sio:SIO_000404):\n  - is subclass of academic\n4. host (sio:SIO_010415):\n  - is subclass of organism\n5. host role (sio:SIO_000882):\n  - is subclass of chemical substance role\n6. process (sio:SIO_000006):\n  - is subclass of entity\n7. process status (sio:SIO_000033):\n  - is subclass of process quality\n8. process up-regulation (sio:SIO_010295):\n  - is subclass of regulation of process\n9. process down-regulation (sio:SIO_010296):\n  - is subclass of regulation of process\n10. process quality (sio:SIO_000027):\n  - is subclass of quality"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 58,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 4506,
+    "prompt_tokens_details": null,
+    "total_tokens": 4564
+  }
+}
+
+Message 10: assistant
+Content:
+{
+  "id": "chatcmpl-9du2k7jmjottbsge2i5n9",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": null,
+    "encrypted_content": null,
+    "id": "8b534cf8bca24da8b16571ae79a08216",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "query": "query result post processor"
+      },
+      "error": null,
+      "id": "377394148",
+      "name": "search_entity",
+      "result": "Top 10 entities alternatives:\n1. Query Result Post-Processor@en^^<xsd:string> (ChatBS-NexGen:query_result_post_processor):\n  - is a Program\n2. Query Result Post-Processor function generator@en^^<xsd:string> (ChatBS-NexGen:LLM-query_result_post_processor):\n  - is a Large Language Models\n3. Query Result Post-Processor function generator@en^^<xsd:string> (ChatBS-NexGen:Generative_Task-query_result_post_processor):\n  - is a Generative Task\n4. Channel for the query result post-processing@en^^<xsd:string> (ChatBS-NexGen:channel_query_result_post_processing):\n  - is a Channel\n5. KG query extraction input port: entities@en^^<xsd:string> (ChatBS-NexGen:batch_sparql_query_extractor-entities):\n  - is a Port\n6. KG query extraction input port: query_function@en^^<xsd:string> (ChatBS-NexGen:batch_sparql_query_extractor-query_function):\n  - is a Port\n7. SPARQL Query Builder@en^^<xsd:string> (ChatBS-NexGen:sparql_query_extractor):\n  - is a Program\n8. is result of (sio:SIO_001157)\n9. W3C PROVenance Interchange Ontology (PROV-O) Dictionary Extension (http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow, matched via \"PROV Access and Query Ontology\"), also known as \"W3C PROVenance Interchange\", \"DataONE PROV Extension for Scientific Workflow Provenance\", \"PROV Access and Query Ontology\", \"Explanation Ontology\", \"Dublin Core extensions of the W3C PROVenance Interchange Ontology (PROV-O)\", etc.:\n  - 0.2\n  - This document describes an extension of the W3C PROV standard ... with and is not supported by any standards organization.\n  - This document is published by the Provenance Working Group ... All feedback is welcome.\n  - This document is published by the Provenance Working Group ... All feedback is welcome.\n  - This document is published by the Provenance Working Group ... All feedback is welcome.\n  - This document is published by the Provenance Working Group ... ). All feedback is welcome.\n10. Port (provone:Port):\n  - A Port enables a Program to send and receive Entities (Data, ... port, default parameters may be configured for the Port.\n  - is subclass of Entity"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 43,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 4866,
+    "prompt_tokens_details": null,
+    "total_tokens": 4909
+  }
+}
+
+Message 11: assistant
+Content:
+{
+  "id": "chatcmpl-3agpvbbwbycgwye5j9299",
+  "message": "Now let's list properties associated with \"query_result_post_processor\" which is an Program:",
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": null,
+    "encrypted_content": null,
+    "id": "5fa4b46bc89d4f608a799d91f9dde17a",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [
+    {
+      "args": {
+        "kg": "chatbs",
+        "page": 1,
+        "property": "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow#hasFunctionInstance",
+        "subject": "ChatBS-NexGen:query_result_post_processor",
+        "unclipped": false
+      },
+      "error": null,
+      "id": "853163725",
+      "name": "list",
+      "result": "Got no rows and 3 columns"
+    }
+  ],
+  "usage": {
+    "completion_tokens": 130,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 5484,
+    "prompt_tokens_details": null,
+    "total_tokens": 5614
+  }
+}
+
+Message 12: assistant
+Content:
+{
+  "id": "chatcmpl-ipbu9a9imupqy8a7497mp",
+  "message": null,
+  "prompt_token_ids": null,
+  "reasoning": {
+    "content": "Let me try to see all properties for this program using different approach:\n\n<tool_call>\n<function=list>\n<parameter=kg>\nchatbs\n</parameter>\n<parameter=page>\n1\n</parameter>\n<parameter=property>\nnull\n</parameter>\n<parameter=subject>\nChatBS-NexGen:query_result_post_processor\n</parameter>\n<parameter=unclipped>\nfalse\n</parameter>\n</function>\n</tool_call>",
+    "encrypted_content": null,
+    "id": "167bca950cbd47ff9a33b7e294587897",
+    "summary": null
+  },
+  "token_ids": null,
+  "token_logprobs": null,
+  "token_texts": null,
+  "tool_calls": [],
+  "usage": {
+    "completion_tokens": 100,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 99,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens": 5636,
+    "prompt_tokens_details": null,
+    "total_tokens": 5736
+  }
+}
+
+Timing
+22.341726765036583 seconds
+
+Elapsed
+22.33555213501677 seconds

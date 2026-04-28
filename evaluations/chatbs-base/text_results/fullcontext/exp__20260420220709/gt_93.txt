@@ -1,0 +1,53 @@
+Result ID
+gt_93
+
+Question
+what is the number of output for the Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105710_61 ?
+
+Answer
+The execution http://testwebsite/testProgram#id_20260420105710_61 has one output port, labeled "Output port for kg_knowledge". <cite, id=0>sparql query 1 1 3</cite> <cite, id=1>Output port for kg_knowledge</cite>
+
+Relevant Entities
+1. sparql query 1 1 3 (ChatBS-NexGen:id_20260420105710_61) [types=['provone:Execution']; score=1.0]
+2. Output port for kg_knowledge (ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge) [types=['provone:Port']; score=0.9]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:id_20260420105710_61",
+    "label": "sparql query 1 1 3",
+    "score": 1.0,
+    "types": [
+      "provone:Execution"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge",
+    "label": "Output port for kg_knowledge",
+    "score": 0.9,
+    "types": [
+      "provone:Port"
+    ]
+  }
+]
+
+Evidence
+1. sparql query 1 1 3 (ChatBS-NexGen:id_20260420105710_61) -- hasOutPort (provone:hasOutPort) -> ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge [Output port for kg_knowledge] [direction=outgoing; literal=True; score=1.0]
+
+Raw Evidence:
+[
+  {
+    "direction": "outgoing",
+    "object_id": null,
+    "object_is_literal": true,
+    "object_label": "ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge [Output port for kg_knowledge]",
+    "predicate_id": "provone:hasOutPort",
+    "predicate_label": "hasOutPort",
+    "score": 1.0,
+    "subject_id": "ChatBS-NexGen:id_20260420105710_61",
+    "subject_label": "sparql query 1 1 3"
+  }
+]
+
+Timing
+23.3737578780856 seconds

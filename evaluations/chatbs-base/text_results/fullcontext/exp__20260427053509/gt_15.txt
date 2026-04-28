@@ -1,0 +1,38 @@
+Result ID
+gt_15
+
+Question
+what are the output parameters of the function used in sparql query function step in the pipeline?
+
+Answer
+The function used in the SPARQL query step is the 'SPARQL Query Builder' (ChatBS-NexGen:sparql_query_extractor), which defines a single output parameter labeled as the 'Output port for kg_info'. <cite, id=0>SPARQL Query Builder</cite> <cite, id=1>Output port for kg_info</cite>
+
+Relevant Entities
+1. SPARQL Query Builder (ChatBS-NexGen:sparql_query_extractor) [types=['provone:Program']; score=1.0]
+2. Output port for kg_info (ChatBS-NexGen:sparql_query_extractor-kg_info) [types=['provone:Port']; score=0.9]
+
+Raw Relevant Entities:
+[
+  {
+    "id": "ChatBS-NexGen:sparql_query_extractor",
+    "label": "SPARQL Query Builder",
+    "score": 1.0,
+    "types": [
+      "provone:Program"
+    ]
+  },
+  {
+    "id": "ChatBS-NexGen:sparql_query_extractor-kg_info",
+    "label": "Output port for kg_info",
+    "score": 0.9,
+    "types": [
+      "provone:Port"
+    ]
+  }
+]
+
+Evidence
+None
+
+Timing
+50.37486895895563 seconds

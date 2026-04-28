@@ -18,7 +18,7 @@ explainer_config:
   save_answer_loc: "evaluations/chatbs-base/explainer/fullcontext"
 
   llm_config:
-    model: "lm_studio/google/gemma-4-e4b"
+    model: "lm_studio/openai/gpt-oss-20b"
     base_url: "http://localhost:1234/v1"
   log_file: "evaluations/chatbs-base/explainer/explainer_fullcontext_log.txt"
 
