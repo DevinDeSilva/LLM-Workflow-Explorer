@@ -11,3 +11,9 @@
 [submodule "baselines/grasp"]
 	path = baselines/grasp
 	url = https://github.com/ad-freiburg/grasp
+[submodule "baselines/HyperGraphRAG"]
+	path = baselines/HyperGraphRAG
+	url = https://github.com/LHRLAB/HyperGraphRAG.git
+[submodule "baselines/HippoRAG"]
+	path = baselines/HippoRAG
+	url = https://github.com/OSU-NLP-Group/HippoRAG.git
