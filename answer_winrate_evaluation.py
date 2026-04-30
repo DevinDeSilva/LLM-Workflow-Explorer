@@ -238,9 +238,30 @@ display(
 
 
 # %%
-def grasp_input_config(record: Dict[str, Any]) -> Dict[str, Any]:
+def grasp_input_config(record:Dict[str, Any]) -> Dict[str, Any]:
     output = record.get("output", {})
-    endpoint = output.get("endpoint")
+    
+    question = ""
+    for message in record.get("messages", []):
+        if message.get("role") == "user":
+            content = message.get("content")
+            if isinstance(content, str):
+                question = content
+                break
+    
+    if not output:
+        return {
+            "_line_number": record["_line_number"],
+            "_prediction_path": record["_prediction_path"],
+            "answer": "",
+            "evidence": [{"sparql_error": "Output Null"}],
+            "id": record.get("id"),
+            "question": question,
+            "relevant_entities": [],
+            "time_taken": record.get("elapsed"),
+        }
+    
+    endpoint = output.get("endpoint", "http://localhost:3030/ds/sparql")
     sparql_query = output.get("sparql")
     evidence: list[dict[str, Any]] = []
     relevant_entities: list[str] = []
@@ -249,7 +270,7 @@ def grasp_input_config(record: Dict[str, Any]) -> Dict[str, Any]:
         try:
             req = requests.post(
                 endpoint,
-                data={"query": sparql_query},
+                data={'query':sparql_query},
             )
             req.raise_for_status()
             sparql_result = req.json()
@@ -270,13 +291,7 @@ def grasp_input_config(record: Dict[str, Any]) -> Dict[str, Any]:
         except requests.RequestException as exc:
             evidence = [{"sparql_error": str(exc)}]
 
-    question = ""
-    for message in record.get("messages", []):
-        if message.get("role") == "user":
-            content = message.get("content")
-            if isinstance(content, str):
-                question = content
-                break
+    
 
     return {
         "_line_number": record["_line_number"],

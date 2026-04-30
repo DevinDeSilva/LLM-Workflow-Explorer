@@ -17,6 +17,7 @@ It mirrors the `LLMbased` request interface and returns a dictionary with:
 - `answer`: the model's grounded answer
 - `relevant_entities`: entities the model cited or that were recovered from the answer
 - `evidence`: supporting triples the model cited when available
+- `token_usage`: provider token counts when available, otherwise an estimated count
 
 ## Usage
 
@@ -36,6 +37,7 @@ result = baseline.request("What happened to the generated answer?")
 print(result["answer"])
 print(result["relevant_entities"])
 print(result["evidence"])
+print(result["token_usage"])
 ```
 
 ## Method

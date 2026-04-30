@@ -435,8 +435,12 @@ def load_ground_truth_bundle(evaluation_name: str, config_filename: str) -> dict
         "by_question": by_question,
     }
 
+from src.synthetic_questions import SQRetriver
 
 GT_BUNDLE = load_ground_truth_bundle(EVALUATION_NAME, CONFIG_FILENAME)
+sq_retriver = SQRetriver(
+    EVALUATION_SETTINGS.get("sq_loc")
+)
 
 print(f"Config: {GT_BUNDLE['config_path']}")
 print(f"Ground truth: {GT_BUNDLE['ground_truth_path']}")
@@ -446,11 +450,180 @@ display(
     pd.DataFrame(GT_BUNDLE["records"])[["id", "question", "qtype"]].head()
 )
 
+# %%
+def attribute_display(uri, attr):
+    entity_rep = ["{}[{}]".format(uri, attr['rdf:type'])]
+    for k,v in attr.items:
+        if k in ["rdf:type"]:
+            continue
+        
+        line = "\t{} -> {}".format(k,v["object"])
+        line += "[{}]".format(v['object_class']) if "-" != v['object_class'] else ""
+        
+        if "-" != v['object_label']:
+            if len(v['object_label'])>20:
+                lbl = v['object_label'][:20]+" ..."
+            else:
+                lbl = v['object_label']
+            line += "({})".format(lbl)
+        entity_rep.append(
+            line
+        )
+        
+    return "\n".join(entity_rep)
+
+
+def build_trace_report(record:Dict[str, Any], max_ent_per_step=3) -> str:  
+    blocks = ["User Question:{}".format(record['question']),
+              "Trace Answers"]
+    for step in record.get('intermediary_results', []):
+        step_rep = []
+        step_rep.append(
+                "Question: {}".format(step.get('sub_question', ""))
+            )
+        
+        if step['strategy'] == 'by_program':
+            program = sq_retriver.get_program_by_id(
+                step["program_id"]
+            )
+            
+            if program:
+                step_rep.append(
+                    "KG Question: {}".format(program["solves"]),
+                )
+                
+        elif step['strategy'] == "by_linked_data":
+            step_rep.append(
+                    "Linked Entities:",
+                )
+            
+        step_rep.append(
+                    "Result Entities:\n{}".format(
+                        ", ".join(step["important_entities"])
+                        )
+                )
+        
+        extracted_entities = step.get("extracted_entities", [])
+        if extracted_entities:
+            step_rep.append(
+                    "Example Entities:"
+                )
+
+            ent_types = {}
+            for ent in extracted_entities:
+                attr_dict = {v['relation']:v  for v in ent["attributes"]}
+                if attr_dict['rdf:type'] in ent_types:
+                    ent_types[attr_dict['rdf:type']]["ent_count"] += 1
+                    ent_types[attr_dict['rdf:type']]["attr_count"] = max(
+                        ent_types[attr_dict['rdf:type']]["attr_count"],
+                        len(attr_dict)
+                    )
+                else:
+                    ent_types[attr_dict['rdf:type']] = {
+                        "ent_count":1,
+                        "attr_count":len(attr_dict)
+                    }
+                    
+            if len(ent_types) == 1:
+                _cls = list(ent_types.keys())[0]
+                if ent_types[_cls]["attr_count"] > 5:
+                    ent = extracted_entities[0]
+                    attr_dict = {v['relation']:v  for v in ent["attributes"]}
+                    step_rep.append(
+                        attribute_display(
+                            ent['uri'], attr_dict
+                        )
+                    )
+                else:
+                    ents_sel = extracted_entities[:max_ent_per_step]
+                    for ent in ents_sel:
+                        attr_dict = {v['relation']:v  for v in ent["attributes"]}
+                        step_rep.append(
+                            attribute_display(
+                                ent['uri'], attr_dict
+                            )
+                        )
+            else:
+                already_visited = set()
+                for ent in extracted_entities:
+                    attr_dict = {v['relation']:v  for v in ent["attributes"]}
+                    if attr_dict["rdf:type"] not in already_visited:
+                        step_rep.append(
+                            attribute_display(
+                                ent['uri'], attr_dict
+                            )
+                        )
+                        
+                    already_visited.add(attr_dict["rdf:type"])    
+                    
+        blocks.append(
+            "\n".join(step_rep)
+        )
+        
+    blocks.append(
+        "Summary Answer:\n{}".format(
+            record.get("answer", "")
+        )
+    )            
+    
+    return "\n\n".join(blocks)
+
+def build_eo_trace_report(record:Dict[str, Any]) -> str:
+    print(record)
+    
+    """
+    ### Knowledge Based System: 
+    {system_name}
+
+    ### What were the system outputs associated with the user query and the system trace?: 
+    (System Recommendation)
+    {system_recommendation}
+
+    ### What are the entities associate with the question: 
+    (wasGeneratedBy)
+    {generated_by}
+
+    ### Traces Associated with the system recommendation:
+    (System Trace)
+    {system_trace}
+    
+    ### Overall Answer to the Question:
+    {overall_answer}
+    """
+    return ""
+
+
+def ours_input_config(record:Dict[str, Any]) -> Dict[str, Any]:
+    record["report"] = build_trace_report(record)
+    record["eo_report"] = build_eo_trace_report(record)
+    record["answer"] = record["report"]
+    
+    return record
 
 # %%
 def grasp_input_config(record:Dict[str, Any]) -> Dict[str, Any]:
     output = record.get("output", {})
-    print(output)
+    
+    question = ""
+    for message in record.get("messages", []):
+        if message.get("role") == "user":
+            content = message.get("content")
+            if isinstance(content, str):
+                question = content
+                break
+    
+    if not output:
+        return {
+            "_line_number": record["_line_number"],
+            "_prediction_path": record["_prediction_path"],
+            "answer": "",
+            "evidence": [{"sparql_error": "Output Null"}],
+            "id": record.get("id"),
+            "question": question,
+            "relevant_entities": [],
+            "time_taken": record.get("elapsed"),
+        }
+    
     endpoint = output.get("endpoint", "http://localhost:3030/ds/sparql")
     sparql_query = output.get("sparql")
     evidence: list[dict[str, Any]] = []
@@ -481,13 +654,7 @@ def grasp_input_config(record:Dict[str, Any]) -> Dict[str, Any]:
         except requests.RequestException as exc:
             evidence = [{"sparql_error": str(exc)}]
 
-    question = ""
-    for message in record.get("messages", []):
-        if message.get("role") == "user":
-            content = message.get("content")
-            if isinstance(content, str):
-                question = content
-                break
+    
 
     return {
         "_line_number": record["_line_number"],
@@ -502,7 +669,8 @@ def grasp_input_config(record:Dict[str, Any]) -> Dict[str, Any]:
 
 
 INPUT_AUGMENTATION_MAP = {
-    "grasp":grasp_input_config
+    "grasp":grasp_input_config,
+    "ours": ours_input_config
 }
 
 

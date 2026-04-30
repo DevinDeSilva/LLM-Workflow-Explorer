@@ -13,12 +13,14 @@ class LMStudio(BaseLLM):
     def __init__(self, config:LMStudioConfig, library:str):
         super().__init__(config, library)
         
+    def _model_name(self) -> str:
+        return self.config.model.removeprefix("lm_studio/")
 
     def _create_client(self):
         kwargs = {
             "api_key": "dummy_key",  # LMStudio doesn't require an API key, but the ChatOpenAI wrapper expects one. We can use a dummy value.
             "base_url": self.config.base_url,
-            "model": self.config.model,
+            "model": self._model_name(),
             "temperature": self.config.temperature,
             "max_tokens": self.config.max_tokens,
         }

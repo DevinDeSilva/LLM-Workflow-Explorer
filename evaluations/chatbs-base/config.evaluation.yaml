@@ -8,14 +8,16 @@ evaluation:
   prediction_dirs:
     fullcontext: "evaluations/chatbs-base/explainer/fullcontext"
     llmbased: "evaluations/chatbs-base/explainer/llmbased"
+    vectorsimilarity: "evaluations/chatbs-base/explainer/vectorsimilarity"
     grasp: "evaluations/chatbs-base/explainer/grasp"
     ours: "evaluations/chatbs-base/explainer/results"
+  sq_loc : "evaluations/chatbs-base/ques_creation/SyntheticQuestionKG.csv"
 
   judge_llm:
     llm_type: "lmstudio"
     llm_library: "dspy"
     llm_config:
-      model: "lm_studio/meta-llama/llama-3.3-70b-instruct"
+      model: "llama-3.3-70b-instruct"
       base_url: "http://localhost:1234/v1"
       temperature: 0
 
@@ -52,7 +54,7 @@ evaluation:
       llm_type: "lmstudio"
       llm_library: "dspy"
       llm_config:
-        model: "lm_studio/meta-llama/llama-3.3-70b-instruct"
+        model: "llama-3.3-70b-instruct"
         base_url: "http://localhost:1234/v1"
         temperature: 0
         max_tokens: 300

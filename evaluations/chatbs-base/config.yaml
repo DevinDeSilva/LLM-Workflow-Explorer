@@ -27,7 +27,7 @@ question_creation_config:
   log_file: "evaluations/chatbs-base/ques_creation/question_creation_log.txt"
   llm_type: "lmstudio"
   llm_config:
-    model: "lm_studio/openai/gpt-oss-20b"
+    model: "openai/gpt-oss-20b"
     base_url: "http://localhost:1234/v1"
 
 explainer_config:
@@ -37,7 +37,7 @@ explainer_config:
   save_answer_loc: "evaluations/chatbs-base/explainer/results"
 
   llm_config:
-    model: "lm_studio/openai/gpt-oss-20b"
+    model: "openai/gpt-oss-20b"
     base_url: "http://localhost:1234/v1"
   
   vectordb_config:
