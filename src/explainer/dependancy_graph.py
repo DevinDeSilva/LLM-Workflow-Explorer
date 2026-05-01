@@ -210,30 +210,6 @@ class QuestionNode(BaseModel):
                     or executed_question
                 )
 
-                # selected_entities = runtime.select_important_entities_for_next_step(
-                #     original_question=self.question,
-                #     current_question=executed_question,
-                #     application_context=resolved_application_context,
-                #     step_context=step_context,
-                #     judge_context=latest_feedback,
-                #     latest_steps=latest_steps,
-                #     candidate_entities=step_objects,
-                # )
-                # if selected_entities["important_entities"]:
-                #     latest_steps[0]["important_entities"] = selected_entities[
-                #         "important_entities"
-                #     ]
-                #     step_context = "\n\n".join(
-                #         block
-                #         for block in [
-                #             step_context,
-                #             runtime.format_selected_entities_context(
-                #                 selected_entities
-                #             ),
-                #         ]
-                #         if block
-                #     ).strip()
-
         solution["step_context"] = step_context
         solution["context"] = final_evidence_context
         solution["answered"] = answered
@@ -2796,11 +2772,16 @@ class DependencyGraphRuntime:
                         lookup_phrases + self.extract_literal_phrases(question)
                     )
                 )
-
-        return {
+            
+        return_vals= {
             key: clean_string_list(values)
             for key, values in candidates.items()
         }
+        
+        for k,v in return_vals.items():
+            if question in v:
+                v.remove(question)
+        return return_vals
 
     def ensure_answer_quality(
         self,

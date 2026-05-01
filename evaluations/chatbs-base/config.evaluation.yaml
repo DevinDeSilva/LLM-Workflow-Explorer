@@ -9,6 +9,8 @@ evaluation:
     fullcontext: "evaluations/chatbs-base/explainer/fullcontext"
     llmbased: "evaluations/chatbs-base/explainer/llmbased"
     vectorsimilarity: "evaluations/chatbs-base/explainer/vectorsimilarity"
+    hipporag: "evaluations/chatbs-base/explainer/hipporag"
+    hypergraphrag: "evaluations/chatbs-base/explainer/hypergraphrag"
     grasp: "evaluations/chatbs-base/explainer/grasp"
     ours: "evaluations/chatbs-base/explainer/results"
   sq_loc : "evaluations/chatbs-base/ques_creation/SyntheticQuestionKG.csv"

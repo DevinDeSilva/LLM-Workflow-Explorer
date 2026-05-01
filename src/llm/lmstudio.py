@@ -16,6 +16,12 @@ class LMStudio(BaseLLM):
     def _model_name(self) -> str:
         return self.config.model.removeprefix("lm_studio/")
 
+    def _dspy_model_name(self) -> str:
+        model_name = self._model_name()
+        if model_name.startswith("openai/"):
+            return model_name
+        return f"openai/{model_name}"
+
     def _create_client(self):
         kwargs = {
             "api_key": "dummy_key",  # LMStudio doesn't require an API key, but the ChatOpenAI wrapper expects one. We can use a dummy value.
@@ -32,6 +38,7 @@ class LMStudio(BaseLLM):
             return ChatOpenAI(**kwargs)
         elif self.library == "dspy":
             kwargs["api_base"] = self.config.base_url
+            kwargs["model"] = self._dspy_model_name()
             del kwargs["base_url"]
             
             # Create OpenAI LLM wrapper

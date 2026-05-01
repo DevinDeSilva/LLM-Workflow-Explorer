@@ -58,7 +58,8 @@ class SummarySignature(dspy.Signature):
     """
     Answer the original question using the provided relevant information.
     Be explanatory in your answer. If the given infomration is not enough to answer please
-    explicitly say as such.
+    explicitly say as such. You are encouraged to analyse the schema and request additional information
+    if you need to answer the question (Specially for Yes and No answers).
     """
 
     qa_dialog: str = dspy.InputField(
