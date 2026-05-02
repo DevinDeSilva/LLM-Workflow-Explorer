@@ -16,5 +16,5 @@ class ExplorerConfig(BaseModel):
 class QuestionCreationConfig(BaseModel):
     save_questions:str
     llm_type:str
-    llm_config:Dict[str, Union[str, int, float]] = {}
+    llm_config:Dict[str, Union[str, int, float, bool]] = {}
     log_file: str

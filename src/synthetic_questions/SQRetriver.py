@@ -70,8 +70,12 @@ class SQRetriver:
         start_nodes = self._as_list(start_nodes)
         end_nodes = self._as_list(end_nodes)
         
-        focal_nodes = list(set(start_nodes+end_nodes))
+        if start_nodes:
+            select_row = select_row[select_row["start_node"].isin(start_nodes)]
 
+        
+        focal_nodes = list(set(start_nodes+end_nodes))
+        
         if focal_nodes:
             select_row = select_row[select_row["start_node"].isin(focal_nodes) | select_row["end_node"].isin(focal_nodes)]
 

@@ -10,3 +10,5 @@ class LMStudioConfig(BaseLLMConfig):
     base_url: str = Field(
         default_factory=lambda: os.getenv("LMSTUDIO_URL", "http://localhost:1234/v1")
         )
+    dspy_adapter: str = "chat"
+    dspy_json_adapter_fallback: bool = False

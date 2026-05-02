@@ -11,6 +11,7 @@ from icecream import ic
 from pydantic import BaseModel
 import pandas as pd
 import logging
+from rdflib import Graph, URIRef
 
 from src.config.experiment import ApplicationInfo, TTLConfig
 from src.config.object_search import ObjectSearchConfig
@@ -24,6 +25,7 @@ from src.templates.demos.dependancy_graph import (
 )
 from src.templates.dependancy_graph import (
     BuildTopologyGraphSignature,
+    ContextSufficiencySignature,
     ImportantEntitySelectionSignature,
     SummarySignature,
     InitialDataSyntheticQuestion,
@@ -59,6 +61,7 @@ class QuestionNode(BaseModel):
         runtime: DependencyGraphRuntime,
         max_rounds: int = 3,
         application_context: Optional[str] = None,
+        fallback_classes: Optional[List[str]] = None,
     ) -> Dict[str, Any]:
 
         logger.info(
@@ -79,6 +82,9 @@ class QuestionNode(BaseModel):
             "grounding": {},
             "candidate_synthetic_questions": [],
             "execution": [],
+            "important_entities": [],
+            "fallback_important_entities": [],
+            "fallback_entity_selection": {},
             "judge": [],
             "answer": "",
             "context": "",
@@ -96,13 +102,13 @@ class QuestionNode(BaseModel):
         question = self.question
         solution["step_details"]["initial-data"] = initial_data
         solution["grounding"] = initial_data.get("grounding", {})
-        
+
         for step in range(max(max_rounds, 1)):
             executed_question = question
 
             if step == 0:
                 step_data = initial_data
-                
+
 
             else:
                 step_data = runtime.run_synthetic_question_path(
@@ -158,7 +164,6 @@ class QuestionNode(BaseModel):
                 original_question=self.question,
                 current_question=executed_question,
                 schema_context=schema_info,
-              #  steps=solution["execution"],
                 step_context=step_context,
                 application_context=resolved_application_context,
             )
@@ -178,16 +183,10 @@ class QuestionNode(BaseModel):
             solution["judge"] = judged_answer
             solution["answer"] = judged_answer["answer"]
             if judged_answer["answered"]:
-                # should_break = True
-                # if step == 0 and 'extracted_results' in _step:
-                #     for v in _step['extracted_results']:
-                #         for v1 in v['attributes']:
-                #             if  v1["relation"] == "rdf:type" and v1['object'] == "provone:Data":
-                #                 should_break = False
-                                
-                # if should_break:
-                break
-            
+                if step>0:
+                    answered = True
+                    break
+
             step += 1
 
             latest_feedback = str(
@@ -210,9 +209,119 @@ class QuestionNode(BaseModel):
                     or executed_question
                 )
 
+        _fallback = False
+        if not answered and fallback_classes:
+            fallback_data = runtime.build_class_ttl_fallback_data(
+                class_uris=fallback_classes,
+                schema_context=schema_info,
+                application_context=resolved_application_context,
+            )
+            fallback_context = str(fallback_data.get("context", "")).strip()
+            if fallback_context:
+                _fallback = True
+                fallback_candidate_entities = clean_string_list(
+                    fallback_data.get("object_uris", [])
+                )
+                fallback_entity_selection = {
+                    "important_entities": fallback_candidate_entities,
+                    "selection_reasoning": "",
+                }
+                if fallback_candidate_entities:
+                    fallback_entity_selection = (
+                        runtime.select_important_entities_for_next_step(
+                            original_question=self.question,
+                            current_question=self.question,
+                            application_context=resolved_application_context,
+                            step_context="\n\n".join(
+                                block
+                                for block in [step_context, fallback_context]
+                                if block
+                            ).strip(),
+                            judge_context=json.dumps(
+                                solution.get("judge", {}),
+                                default=str,
+                            ),
+                            latest_steps=[],
+                            candidate_entities=fallback_candidate_entities,
+                        )
+                    )
+
+                fallback_important_entities = clean_string_list(
+                    fallback_entity_selection.get("important_entities", [])
+                )
+                if not fallback_important_entities:
+                    fallback_important_entities = fallback_candidate_entities
+
+                solution["fallback_important_entities"] = (
+                    fallback_important_entities
+                )
+                solution["fallback_entity_selection"] = fallback_entity_selection
+                solution["execution"].append(
+                    {
+                        "step_id": f"step{len(solution['execution']) + 1}",
+                        "sub_question": self.question,
+                        "program_id": "fallback::class-ttl",
+                        "execution_mode": "fallback-class-ttl",
+                        "strategy": "class-ttl",
+                        "parameter_values": [
+                            {
+                                "fallback_classes": fallback_data.get(
+                                    "classes",
+                                    clean_string_list(fallback_classes),
+                                )
+                            }
+                        ],
+                        "results": {
+                            "fallback_classes": fallback_data.get(
+                                "classes",
+                                clean_string_list(fallback_classes),
+                            ),
+                            "object_uris": fallback_candidate_entities,
+                        },
+                        "answer": (
+                            "Loaded fallback KG context for "
+                            f"{len(fallback_candidate_entities)} object(s)."
+                        ),
+                        "important_entities": fallback_important_entities,
+                        "selection_reasoning": fallback_entity_selection.get(
+                            "selection_reasoning",
+                            "",
+                        ),
+                    }
+                )
+                step_context = "\n\n".join(
+                    block for block in [step_context, fallback_context] if block
+                ).strip()
+                final_evidence_context = step_context
+                draft_answer = runtime.summarize_answer_from_execution(
+                    original_question=self.question,
+                    current_question=self.question,
+                    schema_context=schema_info,
+                    step_context=step_context,
+                    application_context=resolved_application_context,
+                )
+                solution["draft_answer"] = draft_answer
+                judged_answer = runtime.ensure_answer_quality(
+                    question=self.question,
+                    answer=draft_answer,
+                    evidence_context=final_evidence_context,
+                    application_context=resolved_application_context,
+                )
+                solution["judge"] = judged_answer
+                solution["answer"] = judged_answer["answer"]
+                answered = bool(judged_answer["answered"])
+
+        solution["important_entities"] = clean_string_list(
+            [
+                entity
+                for execution_step in solution.get("execution", [])
+                for entity in execution_step.get("important_entities", [])
+            ]
+        )
         solution["step_context"] = step_context
         solution["context"] = final_evidence_context
         solution["answered"] = answered
+        solution["fallback"] = _fallback
         return solution
 
 
@@ -270,6 +379,9 @@ class DependencyGraphRuntime:
 
         self.build_topology_graph_predictor = dspy.Predict(
             BuildTopologyGraphSignature
+        )
+        self.context_sufficiency_predictor = dspy.Predict(
+            ContextSufficiencySignature
         )
         self.summary_predictor = dspy.Predict(SummarySignature)
         self.synthetic_question_grounding_predictor = dspy.Predict(
@@ -608,6 +720,7 @@ class DependencyGraphRuntime:
         cache: Optional[Dict[str, Dict[str, Any]]] = None,
         application_context: Optional[str] = None,
         active_path: Optional[List[str]] = None,
+        fallback_classes: Optional[List[str]] = None,
     ) -> Dict[str, Any]:
         if cache is None:
             cache = {}
@@ -622,6 +735,7 @@ class DependencyGraphRuntime:
             schema_info,
             runtime=runtime,
             application_context=application_context,
+            fallback_classes=fallback_classes,
         )
         current_retrieved_objects = clean_string_list(
             [
@@ -641,9 +755,12 @@ class DependencyGraphRuntime:
         retrieved_objects = clean_string_list(
             current_retrieved_objects + predecessor_retrieved_objects
         )
+        node_important_entities = clean_string_list(
+            node_data.get("important_entities", []) or current_retrieved_objects
+        )
         answer_entities = (
-            current_retrieved_objects
-            if current_retrieved_objects
+            node_important_entities
+            if node_important_entities
             else predecessor_retrieved_objects
         )
         intermediary_results = [
@@ -661,6 +778,7 @@ class DependencyGraphRuntime:
             "schema_info_used": schema_info,
             "schema_reasoning": node_data.get("schema_reasoning", {}),
             "retrieved_objects": retrieved_objects,
+            "important_entities": node_important_entities,
             "synthetic_questions_plan": node_data.get("plan"),
             "intermediary_results": intermediary_results,
             "answer": runtime.attach_entity_citations(
@@ -678,6 +796,7 @@ class DependencyGraphRuntime:
         user_query: str,
         schema_context: str,
         application_context: Optional[str] = None,
+        fallback_classes: Optional[List[str]] = None,
     ) -> Dict[str, Any]:
         lm_history_start = len(getattr(self.llm.llm, "history", []) or [])
         with track_usage() as token_tracker:
@@ -685,6 +804,7 @@ class DependencyGraphRuntime:
                 user_query=user_query,
                 schema_context=schema_context,
                 application_context=application_context,
+                fallback_classes=fallback_classes,
             )
 
         token_usage = self.summarize_token_usage(
@@ -703,6 +823,7 @@ class DependencyGraphRuntime:
         user_query:str,
         schema_context: str,
         application_context: Optional[str] = None,
+        fallback_classes: Optional[List[str]] = None,
     ) -> Dict[str, Any]:
         resolved_application_context = self.resolve_application_context(
             application_context
@@ -743,6 +864,7 @@ class DependencyGraphRuntime:
             self.vertices,
             runtime=self,
             application_context=resolved_application_context,
+            fallback_classes=fallback_classes,
         )
         solved["original_question"] = user_query
         # solved["answer_requirements"] = answer_requirements
@@ -880,31 +1002,35 @@ class DependencyGraphRuntime:
         lines = []
         for step in steps:
             solves = self.synthetic_question_retriever.get_program_by_id(
-                step.get('program_id', ''),
-                solves_only=True
+                step.get('program_id', '')
             )
 
             #imp_entities = step.get("important_entities", [])
-            
+
             if "extracted_results" in step and len(step["extracted_results"]) > 0:
-                
+
                 entity_attr = {x['uri']:x['attributes'] for x in step["extracted_results"]}
                 entity_str = ""
+
                 for k,v in entity_attr.items():
                     _i = ""
+                    entity_cls = ""
                     for x in v:
                         #if "-" == x['object_class'] or "rdf:type" == x['relation']:
                         _i += "{}={}".format(x['relation'], x['object'])
-                        # if "-" != x['object_class']:
-                        #     _i += "[{}]".format(x['object_class'])
+                        if "-" != x['object_class']:
+                            _i += "[{}]".format(x['object_class'])
 
                         # if "-" != x['object_label']:
                         #     _i += "({})".format(x['object_label'])
 
                         _i += '; '
 
-                    entity_str += k + " =>" +_i + "\n"
-                    
+                        if x['relation'] == "rdf:type":
+                            entity_cls += x['object']
+
+                    entity_str += k+"[{}]".format(entity_cls) + " =>" +_i + "\n"
+
             else:
                 entity_str = json.dumps(step.get("results", {}), indent=2)
 
@@ -912,8 +1038,9 @@ class DependencyGraphRuntime:
 
 
             lines.append(f"Step {step.get('step_id', '')}: {step.get('sub_question', '')}")
-            lines.append(f"Function: {solves}")
-            lines.append(f"Answer: {step.get('answer', '')}")
+            if solves:
+                lines.append(f"Function: {solves['solves']}[{solves['program_id']}]")
+            #lines.append(f"Answer: {step.get('answer', '')}")
             lines.append(
                "Important entities: \n"
                + entity_str
@@ -1263,6 +1390,93 @@ class DependencyGraphRuntime:
 
         return steps
 
+    def build_class_ttl_fallback_data(
+        self,
+        class_uris: List[str],
+        schema_context: str,
+        application_context: str,
+        object_limit_per_class: Optional[int] = None,
+    ) -> Dict[str, Any]:
+        fallback_graph = Graph()
+        source_graph = self.graph_manager.graph
+        object_uris: List[str] = []
+        cleaned_classes = clean_string_list(class_uris)
+
+        for prefix, namespace in getattr(self.graph_manager, "config", {}).get(
+            "namespaces",
+            {},
+        ).items():
+            fallback_graph.bind(prefix, namespace)
+
+        for class_uri in cleaned_classes:
+            class_objects = self.object_db.get_objects_of_class(
+                class_uri,
+                limit=object_limit_per_class,
+            )
+            for class_object in class_objects:
+                object_uri = str(class_object.get("object_uri", "")).strip()
+                if object_uri:
+                    object_uris.append(object_uri)
+
+        object_uris = clean_string_list(object_uris)
+        for object_uri in object_uris:
+            object_ref = URIRef(
+                self.graph_manager.resolve_curie(object_uri, allow_bare=True)
+            )
+            for triple in source_graph.triples((object_ref, None, None)):
+                fallback_graph.add(triple)
+            for triple in source_graph.triples((None, None, object_ref)):
+                fallback_graph.add(triple)
+
+        if len(fallback_graph) == 0:
+            return {
+                "context": "",
+                "classes": cleaned_classes,
+                "object_uris": object_uris,
+                "ttl": "",
+            }
+
+        ttl_payload = fallback_graph.serialize(format="turtle")
+        if isinstance(ttl_payload, bytes):
+            ttl_payload = ttl_payload.decode("utf-8")
+
+        ttl_payload = ttl_payload.strip()
+        context = "\n".join(
+            [
+                "Fallback KG context:",
+                "Application context:",
+                application_context.strip(),
+                "Schema context:",
+                schema_context.strip(),
+                "Fallback classes:",
+                ", ".join(cleaned_classes),
+                "Turtle:",
+                ttl_payload,
+            ]
+        ).strip()
+        return {
+            "context": context,
+            "classes": cleaned_classes,
+            "object_uris": object_uris,
+            "ttl": ttl_payload,
+        }
+
+    def build_class_ttl_fallback_context(
+        self,
+        class_uris: List[str],
+        schema_context: str,
+        application_context: str,
+        object_limit_per_class: Optional[int] = None,
+    ) -> str:
+        return str(
+            self.build_class_ttl_fallback_data(
+                class_uris=class_uris,
+                schema_context=schema_context,
+                application_context=application_context,
+                object_limit_per_class=object_limit_per_class,
+            ).get("context", "")
+        ).strip()
+
     def format_answer_loop_round_context(
         self,
         round_number: int,
@@ -1385,22 +1599,22 @@ class DependencyGraphRuntime:
             parsed = json.loads(payload)
         except json.JSONDecodeError:
             return []
-        
+
         if isinstance(parsed, dict):
             collect = []
             for k,v in parsed.items():
                 if isinstance(v, list):
                     for i in v:
                         collect.append({k:i})
-                
+
                 else:
                     collect.append({k:v})
             parsed = collect
-            
+
         return [item for item in parsed if isinstance(item, dict)]
 
     @staticmethod
-    def extract_json_payload(raw_text: str) -> Optional[str]:   
+    def extract_json_payload(raw_text: str) -> Optional[str]:
         stripped_text = raw_text.strip()
         if not stripped_text:
             return None
@@ -1603,11 +1817,20 @@ class DependencyGraphRuntime:
             judge_context = judge_context,
         )
 
+        prev_step_candidates = []
+        for step in step_data:
+            if 'extracted_results' in step:
+                for v in step['extracted_results']:
+                    for rel in v['attributes']:
+                        if (rel["relation"] == "rdf:type"):
+                            prev_step_candidates.append(rel["object"])
+
         program_data = self.synthetic_question_path_run(
             question=normalized_question,
             step_num=step_num,
             schema_context=schema_context,
-            candidate_classes=grounding["candidate_classes"],
+            candidate_classes=  grounding["candidate_classes"],
+            prev_step_classes = prev_step_candidates,
             entity_phrases=grounding["entity_phrases"],
             application_context=resolved_application_context,
             step_context = step_context,
@@ -1706,6 +1929,32 @@ class DependencyGraphRuntime:
             **data_details
         }
 
+    def judge_context_sufficiency(
+        self,
+        question: str,
+        schema_context: str,
+        evidence_context: str,
+        application_context: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        resolved_application_context = self.resolve_application_context(
+            application_context
+        )
+        with dspy.context(lm=self.llm.llm):
+            prediction = self.context_sufficiency_predictor(
+                question=question,
+                application_context=resolved_application_context,
+                schema_context=schema_context,
+                evidence_context=evidence_context,
+            )
+
+        answerable = bool(getattr(prediction, "answerable", False))
+        feedback = str(getattr(prediction, "feedback", "")).strip()
+        return {
+            "answer": "",
+            "answered": answerable,
+            "feedback": feedback,
+        }
+
     def summarize_answer_from_execution(
         self,
         original_question: str,
@@ -1756,18 +2005,18 @@ class DependencyGraphRuntime:
         )
         next_question = ""
 
-        with dspy.context(lm=self.llm.llm):
-            prediction = self.synthetic_question_next_step_predictor(
-                original_question=original_question,
-                current_question=current_question,
-                application_context=resolved_application_context,
-                schema_context=schema_context,
-                step_context=step_context,
-                # latest_step_results=latest_step_results,
-                partial_answer=partial_answer,
-                judge_feedback=judge_feedback,
-            )
-        next_question = str(getattr(prediction, "next_question", "")).strip()
+        # with dspy.context(lm=self.llm.llm):
+        #     prediction = self.synthetic_question_next_step_predictor(
+        #         original_question=original_question,
+        #         current_question=current_question,
+        #         application_context=resolved_application_context,
+        #         schema_context=schema_context,
+        #         step_context=step_context,
+        #         # latest_step_results=latest_step_results,
+        #         partial_answer=partial_answer,
+        #         judge_feedback=judge_feedback,
+        #     )
+        # next_question = str(getattr(prediction, "next_question", "")).strip()
 
         if not next_question:
             latest_focus = judge_feedback.strip() #or latest_step_results.strip()
@@ -1940,7 +2189,8 @@ class DependencyGraphRuntime:
             getattr(prediction, "candidate_classes", [])
         )
         entity_phrases = clean_string_list(
-            getattr(prediction, "entity_phrases", [])
+            getattr(prediction, "entitys", [])
+            or getattr(prediction, "entity_phrases", [])
         )
 
         available_class_set = set(available_classes)
@@ -2143,6 +2393,7 @@ class DependencyGraphRuntime:
         question:str,
         schema_context:str,
         candidate_classes:List[str],
+        prev_step_classes:List[str],
         entity_phrases:List[str],
         application_context:str,
         step_context:str,
@@ -2157,16 +2408,15 @@ class DependencyGraphRuntime:
         objects_data_function = self.synthetic_question_retriever.get_attr_of_object()
 
         function_rows = self.synthetic_question_retriever.get_path_questions(
-                start_nodes=candidate_classes,
+                start_nodes=prev_step_classes,
                 end_nodes=candidate_classes
             )
 
-        functions = [f'{x["program_id"]}=>{x["solves"]}' for x in function_rows]
-
+        #functions = [f'{x["program_id"]}=>{x["solves"]}' for x in function_rows]
+        functions = [f'{x["program_id"]}' for x in function_rows]
 
         functions.append(
-            f'{objects_data_function["program_id"]}=>'
-            f'{objects_data_function["solves"]}'
+            f'{objects_data_function["program_id"]}'#=>{objects_data_function["solves"]}'
         )
 
         with dspy.context(lm=self.llm.llm):
@@ -2203,7 +2453,7 @@ class DependencyGraphRuntime:
                         candidate_program_id
                     )
                     break
-        
+
         if not program:
 
             return {
@@ -2625,7 +2875,7 @@ class DependencyGraphRuntime:
             key: direct_candidates.get(key, []) + linked_candidates.get(key, [])
             for key in placeholders
         }
-        
+
         for k,v in candidate_parameter_values.items():
             candidate_parameter_values[k] = list(set(v))
 
@@ -2692,7 +2942,7 @@ class DependencyGraphRuntime:
                     # candidates[placeholder].extend(
                     #     previous_step.get("important_entities", [])
                     # )
-                    
+
                     if 'extracted_results' in previous_step:
                         for v in previous_step['extracted_results']:
                             candidates[placeholder].append(
@@ -2772,12 +3022,12 @@ class DependencyGraphRuntime:
                         lookup_phrases + self.extract_literal_phrases(question)
                     )
                 )
-            
+
         return_vals= {
             key: clean_string_list(values)
             for key, values in candidates.items()
         }
-        
+
         for k,v in return_vals.items():
             if question in v:
                 v.remove(question)

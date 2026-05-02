@@ -2,12 +2,30 @@ from src.llm.base import BaseLLM
 from src.config.llm.lmstudio import LMStudioConfig
 from icecream import ic
 import dspy
+import re
+from dspy.utils.exceptions import AdapterParseError
 
 
 try:
     from langchain_openai import ChatOpenAI
 except ModuleNotFoundError:
     raise ModuleNotFoundError("Please install langchain_openai")
+
+
+class FlexibleChatAdapter(dspy.ChatAdapter):
+    def parse(self, signature, completion):
+        try:
+            return super().parse(signature, completion)
+        except AdapterParseError:
+            normalized_completion = re.sub(
+                r"\[\[\s*##\s*(\w+)\s*##\s*\]\]",
+                r"[[ ## \1 ## ]]",
+                completion,
+            )
+            if normalized_completion == completion:
+                raise
+            return super().parse(signature, normalized_completion)
+
 
 class LMStudio(BaseLLM):
     def __init__(self, config:LMStudioConfig, library:str):
@@ -21,6 +39,18 @@ class LMStudio(BaseLLM):
         if model_name.startswith("openai/"):
             return model_name
         return f"openai/{model_name}"
+
+    def _dspy_adapter(self):
+        adapter_name = (self.config.dspy_adapter or "chat").strip().lower()
+        if adapter_name == "default":
+            return None
+        if adapter_name == "json":
+            return dspy.JSONAdapter()
+        if adapter_name == "chat":
+            return FlexibleChatAdapter(
+                use_json_adapter_fallback=self.config.dspy_json_adapter_fallback
+            )
+        raise ValueError(f"Unsupported DSPy adapter for LMStudio: {adapter_name}")
 
     def _create_client(self):
         kwargs = {
@@ -46,8 +76,13 @@ class LMStudio(BaseLLM):
                 **kwargs
             )
 
+            adapter = self._dspy_adapter()
+            configure_kwargs = {"lm": lm, "trace": []}
+            if adapter is not None:
+                configure_kwargs["adapter"] = adapter
+
             # Register it globally
-            dspy.settings.configure(lm=lm, trace=[])
+            dspy.settings.configure(**configure_kwargs)
             return lm
         
         else:

@@ -70,6 +70,22 @@ class Explainer:
             user_query,
             schema_context=self.format_schema(),
             application_context=application_context,
+            fallback_classes=[
+                "workflow:Generative_Task",
+                "workflow:Large_Language_Models",
+                "workflow:Large_Language_Model_Output",
+                "eo:Reasoning_Mode",
+                "provone:Program",
+                "provone:Port",
+                "provone:Channel",
+                "provone:Execution",
+                "provone:User",
+                "provone:Data",
+                "provone:Collection",
+                "prov:Association",
+                "prov:Usage",
+                "prov:Generation"
+            ]
         )
         
     def rquest_to_eo_report(self, data:Dict[str, Any]):

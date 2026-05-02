@@ -27,38 +27,40 @@ SPARQL_OBJ_OF_CLASS_TEMPLATE = """SELECT DISTINCT ?value WHERE {
                             
 # Get all propertiess of a object
 SPARQL_PROP_OF_OBJ_TEMPLATE = """
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX prov: <http://www.w3.org/ns/prov#>
-        PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX prov: <http://www.w3.org/ns/prov#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 
-        SELECT DISTINCT 
-            ?p 
-            ?o 
-            (COALESCE(?olbl, "-") AS ?o_label)
-            (COALESCE(?raw_o_class, "-") AS ?o_class)
-            ?c_p 
-            ?c_o 
-            (COALESCE(?c_o_lbl, "-") AS ?c_o_label)
-        WHERE {
-            {obj_uri} ?p ?o .
+SELECT DISTINCT 
+    ?p 
+    ?o 
+    (COALESCE(?olbl, "-") AS ?o_label) 
+    (COALESCE(?raw_o_class, "-") AS ?o_class) 
+    ?c_p 
+    ?c_o 
+    (COALESCE(?c_o_lbl, "-") AS ?c_o_label) 
+    (COALESCE(?raw_c_o_class, "-") AS ?c_o_class)
 
-            OPTIONAL { ?o rdfs:label ?olbl . }
+WHERE { 
+    <{obj_uri}> ?p ?o . 
+    
+    OPTIONAL { ?o rdfs:label ?olbl . } 
+    OPTIONAL { ?o rdf:type ?raw_o_class . } 
+    
+    OPTIONAL { 
+        <{obj_uri}> rdf:type prov:Collection . 
+        BIND(TRUE AS ?isCollection) 
+        } 
 
-            OPTIONAL { ?o rdf:type ?raw_o_class . }
-
-            OPTIONAL {
-                {obj_uri} rdf:type prov:Collection .
-                BIND(TRUE AS ?isCollection)
-            }
-
-            OPTIONAL {
-                FILTER(bound(?isCollection))
-
-                {obj_uri} prov:hadMember ?member .
-                ?member ?c_p ?c_o .
-
-                OPTIONAL { ?c_o rdfs:label ?c_o_lbl . }
-            }
+    OPTIONAL { 
+        FILTER(bound(?isCollection)) 
+        
+        <{obj_uri}> prov:hadMember ?member . 
+        ?member ?c_p ?c_o . 
+        
+        OPTIONAL { ?c_o rdfs:label ?c_o_lbl . } 
+        
+        OPTIONAL { ?c_o rdf:type ?raw_c_o_class . } } 
         }"""
                 
 # Find objects that have a specific relationship to a given object
@@ -165,7 +167,7 @@ def end_to_start_path_processing(
     ) -> ExecutableProgram:
     
     logger.debug(f"Converting path to graph reversal: {str_representation}")
-
+    path = path[::-1]
     # Create nodes
     str_query = "SELECT distinct ?value where {\n" 
     for i in range(1, len(path) -1, 2):
@@ -174,28 +176,28 @@ def end_to_start_path_processing(
         obj = path[i + 1]
         
         if len(path) == 3:
-            str_query += "  ?value"+f" {pred} "+"  <{obj}> .\n"
+            str_query += "  ?value"+f" {pred} "+"<{obj}> .\n"
             break
         
         if i == 1:
-            str_query += "  ?value"+f" {pred} "+f"?a{i}  .\n"
+            str_query += f"  ?a{i}"+f" {pred} "+"<{obj}>  .\n"
         elif i == len(path) - 2:
-            str_query += f"  ?a{i-2}"+f" {pred} "+" <{obj}>  .\n"
+            str_query += "?value  "+f" {pred} "+f" ?a{i-2}  .\n"
         else:
-            str_query += f"  ?a{i-2}"+f" {pred} "+f"?a{i}  .\n"
+            str_query += f" ?a{i}"+f" {pred} "+f" ?a{i-2} .\n"
     str_query += "}"
 
     #get objects for the class path
     query_df = graph_manager.query(
         regex_add_strings(
             SPARQL_OBJ_OF_CLASS_TEMPLATE,
-            class_uri=graph_manager.resolve_curie(path[-1])
+            class_uri=graph_manager.resolve_curie(path[0])
         )
     )
 
     objs = list(set(query_df['value'].to_list()))
     if len(objs) == 0:
-        logger.debug(f"No objects found for class: {path[-1]} in path: {str_representation}")
+        logger.debug(f"No objects found for class: {path[0]} in path: {str_representation}")
         return None
     
     example_output = None
@@ -221,7 +223,8 @@ def end_to_start_path_processing(
         return None
 
     question = f"What objects leads to this path: {str_representation}?"
-
+    str_representation = "->".join(path)
+    
     return ExecutableProgram(
         program_id=f"explore_path_{str_representation}_reversed",
         name=f"Explore Path {str_representation} reversed",
@@ -362,7 +365,7 @@ def path_to_graph(
                 temp_folder=temp_folder
             )
         
-        progs = [prog1] #[prog1, prog2]
+        progs = [prog1, prog2] #[prog1, prog2]
         
         if prog1 is None or prog2 is None:
             ic(str_representation)
@@ -397,7 +400,7 @@ class BFSExplorer:
                  ):
         self.kg_name: str = kg_name
         self.graph_manager: GraphManager = graph_manager
-        self.parallel_execution: bool = parallel_execution
+        self.parallel_execution: bool = False #parallel_execution
         self.ontology_info_triples: pd.DataFrame = ontology_info_triples
         self.temp_folder: str = temp_folder
         self.entity_length = entity_length
@@ -465,7 +468,10 @@ class BFSExplorer:
                 domain = conn["domain"]
                 range_ = conn["range"]
 
-                self.schema_dr[rel] = (domain, range_)
+                if rel in self.schema_dr:
+                    self.schema_dr[rel].append((domain, range_))
+                else:
+                    self.schema_dr[rel] = [(domain, range_)]
                 self.out_relations_cls[domain].add(rel)
                 self.in_relations_cls[range_].add(rel)
 
@@ -511,24 +517,25 @@ class BFSExplorer:
                 logger.warning(f"Error indexing class {cls}: {e}")
 
         # Index Literals by (domain_class, relation)
-        for rel, (domain, range_) in tqdm(
+        for rel, conn in tqdm(
             self.schema_dr.items(), desc="Indexing literals"
         ):
-            if not range_.startswith("type."):  # Skip non-literal ranges
-                continue
+            for (domain, range_) in conn:
+                if not range_.startswith("type."):  # Skip non-literal ranges
+                    continue
 
-            try:
-                domain_uri = URIRef(domain)
-                rel_uri = URIRef(rel)
+                try:
+                    domain_uri = URIRef(domain)
+                    rel_uri = URIRef(rel)
 
-                # Find all subjects of the domain type
-                for s_uri in g.subjects(RDF.type, domain_uri):
-                    # For each subject, get the literal objects for this relation
-                    for o_lit in g.objects(s_uri, rel_uri):
-                        if isinstance(o_lit, Literal):
-                            self.literals_by_cls_rel[(domain, rel)].add(str(o_lit))
-            except Exception as e:
-                logger.warning(f"Error indexing literals for relation {rel}: {e}")
+                    # Find all subjects of the domain type
+                    for s_uri in g.subjects(RDF.type, domain_uri):
+                        # For each subject, get the literal objects for this relation
+                        for o_lit in g.objects(s_uri, rel_uri):
+                            if isinstance(o_lit, Literal):
+                                self.literals_by_cls_rel[(domain, rel)].add(str(o_lit))
+                except Exception as e:
+                    logger.warning(f"Error indexing literals for relation {rel}: {e}")
 
         logger.info("Finished processing graph and schema.")
 
@@ -795,13 +802,14 @@ class BFSExplorer:
             if current_class in self.out_relations_cls:
                 for relation in self.out_relations_cls[current_class]:
                     # The range is the neighbor class
-                    _, neighbor_class = self.schema_dr[relation]
-                    if neighbor_class not in [c for c in current_path]:
-                        new_path = current_path + [relation] + [self.graph_manager.reverse_curie(neighbor_class)]
-                        all_paths.append(new_path)
-                        
-                        if len(new_path) // 2 < entity_length:
-                            queue.append((neighbor_class, new_path))
+                    for conn in self.schema_dr[relation]:
+                        _, neighbor_class = self.schema_dr[relation]
+                        if neighbor_class not in [c for c in current_path]:
+                            new_path = current_path + [relation] + [self.graph_manager.reverse_curie(neighbor_class)]
+                            all_paths.append(new_path)
+                            
+                            if len(new_path) // 2 < entity_length:
+                                queue.append((neighbor_class, new_path))
 
         
         all_paths = [x for x in all_paths if len(x) <= 2*self.entity_length - 1]

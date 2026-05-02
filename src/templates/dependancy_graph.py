@@ -60,6 +60,11 @@ class SummarySignature(dspy.Signature):
     Be explanatory in your answer. If the given infomration is not enough to answer please
     explicitly say as such. You are encouraged to analyse the schema and request additional information
     if you need to answer the question (Specially for Yes and No answers).
+    
+    Instructions to follow.
+    1. If an workflow:Large_Language_Model_Output, workflow:Large_Language_Model class object exist 
+       has an `sio:SIO_000202 (sio:contains)` in Important entities that means they were created 
+       by AI if not No
     """
 
     qa_dialog: str = dspy.InputField(
@@ -79,6 +84,32 @@ class SummarySignature(dspy.Signature):
     )
     important_entities:str = dspy.OutputField(
         desc = "What are the KG entities used to come to this conclusion"
+    )
+
+
+class ContextSufficiencySignature(dspy.Signature):
+    """
+    Decide whether the collected evidence context is sufficient to answer the
+    original question. Do not write the final answer here.
+    """
+
+    question: str = dspy.InputField(
+        desc="The original question that must eventually be answered."
+    )
+    application_context: str = dspy.InputField(
+        desc="Description of the application and its functional scope."
+    )
+    schema_context: str = dspy.InputField(
+        desc="Compact ontology and schema summary relevant to the question."
+    )
+    evidence_context: str = dspy.InputField(
+        desc="Collected retrieval evidence and step context so far."
+    )
+    answerable: bool = dspy.OutputField(
+        desc="True if the evidence_context contains enough concrete information to answer the question."
+    )
+    feedback: str = dspy.OutputField(
+        desc="If not answerable, describe the missing information to retrieve next. If answerable, briefly say why."
     )
 
 
