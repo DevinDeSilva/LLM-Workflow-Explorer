@@ -482,7 +482,7 @@ def augment_ours_record_with_reports(
     record: Dict[str, Any],
     synthetic_question_retriever: Any = None,
     application_name: Optional[str] = None,
-    answer_report: Optional[str] = None,
+    answer_report: str = "original",
 ) -> Dict[str, Any]:
     augmented_record = dict(record)
     augmented_record["report"] = build_trace_report(
@@ -499,5 +499,9 @@ def augment_ours_record_with_reports(
         augmented_record["answer"] = augmented_record["eo_report"]
     elif answer_report == "trace":
         augmented_record["answer"] = augmented_record["report"]
-
+    elif answer_report == "original":
+        augmented_record["answer"] = record["answer"]
+    else:
+        ValueError("Wrong answer report value: {}".format(answer_report))
+        
     return augmented_record

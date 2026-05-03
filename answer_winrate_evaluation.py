@@ -18,8 +18,10 @@ from IPython.display import display
 from tqdm import tqdm
 
 from src.config.experiment import FullContextExperimentConfig
+from src.evaluation.report_builders import augment_ours_record_with_reports
 from src.experiment.ground_truth import GTInfo
 from src.llm import LLM
+from src.synthetic_questions import SQRetriver
 from src.utils.utils import load_config
 
 REPO_ROOT = Path.cwd()
@@ -153,6 +155,15 @@ PREDICTION_FILES = resolve_prediction_files(
     PREDICTION_FILENAME,
 )
 WINRATE_METHODS = WINRATE_CONFIG.get("methods") or list(PREDICTION_FILES.keys())
+WINRATE_METHOD_LABELS = {
+    "ours": "LWE",
+    "our": "LWE",
+}
+
+
+def winrate_method_label(method: Any) -> str:
+    method_name = str(method or "")
+    return WINRATE_METHOD_LABELS.get(method_name, method_name)
 
 
 def get_winrate_judge_llm() -> Any:
@@ -227,6 +238,9 @@ def load_ground_truth_bundle(evaluation_name: str, config_filename: str) -> dict
 
 
 GT_BUNDLE = load_ground_truth_bundle(EVALUATION_NAME, CONFIG_FILENAME)
+sq_retriver = SQRetriver(
+    EVALUATION_SETTINGS.get("sq_loc")
+)
 
 print(f"Config: {GT_BUNDLE['config_path']}")
 print(f"Ground truth: {GT_BUNDLE['ground_truth_path']}")
@@ -305,8 +319,17 @@ def grasp_input_config(record:Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def ours_input_config(record: Dict[str, Any]) -> Dict[str, Any]:
+    return augment_ours_record_with_reports(
+        record,
+        synthetic_question_retriever=sq_retriver,
+        answer_report="trace",
+    )
+
+
 INPUT_AUGMENTATION_MAP = {
     "grasp": grasp_input_config,
+    "ours": ours_input_config,
 }
 
 
@@ -465,7 +488,9 @@ def run_pairwise_answer_winrate(
         if MAX_EXAMPLES_PER_RUN is not None:
             shared_ground_truth_ids = shared_ground_truth_ids[:MAX_EXAMPLES_PER_RUN]
 
-        pair_label = f"{method_a} vs {method_b}"
+        method_a_label = winrate_method_label(method_a)
+        method_b_label = winrate_method_label(method_b)
+        pair_label = f"{method_a_label} vs {method_b_label}"
         for ground_truth_id in tqdm(shared_ground_truth_ids, desc=pair_label):
             actual = ground_truth_index[ground_truth_id]
             pred_a = prediction_index[method_a][ground_truth_id]
@@ -478,8 +503,10 @@ def run_pairwise_answer_winrate(
                 "ground_truth_qtype": json.dumps(actual.get("qtype", []), ensure_ascii=True),
                 "question": actual.get("question", ""),
                 "ground_truth_answer": actual.get("answer", ""),
-                "method_a": method_a,
-                "method_b": method_b,
+                "method_a": method_a_label,
+                "method_b": method_b_label,
+                "method_a_key": method_a,
+                "method_b_key": method_b,
                 "answer_a": answer_a,
                 "answer_b": answer_b,
             }
@@ -490,16 +517,16 @@ def run_pairwise_answer_winrate(
                     preference = judge(
                         question=actual.get("question", ""),
                         ground_truth_answer=actual.get("answer", ""),
-                        method_a=method_a,
+                        method_a=method_a_label,
                         answer_a=answer_a,
-                        method_b=method_b,
+                        method_b=method_b_label,
                         answer_b=answer_b,
                     )
 
                 winner = normalize_pairwise_winner(
                     preference.winner,
-                    method_a,
-                    method_b,
+                    method_a_label,
+                    method_b_label,
                 )
                 row["winner"] = winner
                 row["judge_rationale"] = getattr(preference, "rationale", "")

@@ -21,6 +21,11 @@ import requests
 from bert_score import score as bertscore
 
 from src.config.experiment import FullContextExperimentConfig
+from src.evaluation.report_builders import (
+    augment_ours_record_with_reports,
+    build_eo_trace_report,
+    build_trace_report,
+)
 from src.experiment.ground_truth import GTInfo, GT
 from src.llm import LLM
 from src.utils.utils import load_config
@@ -58,8 +63,18 @@ def get_judge_llm() -> Any:
     if _judge_llm is None:
         _judge_llm = LLM(
             JUDGE_LLM["llm_type"],
-            JUDGE_LLM.get("llm_library", "dspy"),
+               JUDGE_LLM.get("llm_library", "dspy"),
             **JUDGE_LLM["llm_config"],
+        )
+        judge_client = getattr(_judge_llm, "llm", None)
+        judge_kwargs = getattr(judge_client, "kwargs", {}) or {}
+        print(
+            "Judge LLM configured: "
+            f"type={JUDGE_LLM['llm_type']} "
+            f"config_model={JUDGE_LLM['llm_config'].get('model')} "
+            f"client_model={getattr(judge_client, 'model', None)} "
+            f"api_base={judge_kwargs.get('api_base') or judge_kwargs.get('base_url')}",
+            flush=True,
         )
     return _judge_llm
 
@@ -129,7 +144,12 @@ def build_llm_answer_quality_metric() -> MetricFn:
             relevance=float(scores.relevance),
             understanderbility=float(scores.understanderbility),
         )
+        judge_client = getattr(judge_llm, "llm", None)
+        judge_kwargs = getattr(judge_client, "kwargs", {}) or {}
         return {
+            "llm_judge_config_model": getattr(getattr(judge_llm, "config", None), "model", ""),
+            "llm_judge_client_model": getattr(judge_client, "model", ""),
+            "llm_judge_api_base": judge_kwargs.get("api_base") or judge_kwargs.get("base_url") or "",
             "llm_completeness": validated_scores.completeness,
             "llm_faithfulness": validated_scores.faithfulness,
             "llm_relevance": validated_scores.relevance,
@@ -141,6 +161,13 @@ def build_llm_answer_quality_metric() -> MetricFn:
 
 def build_nli_premises(pred: dict[str, Any], actual: dict[str, Any]) -> list[str]:
     report = strip_citations(pred.get("answer", ""))
+    return [report] if report else []
+
+def build_nli_report(pred: dict[str, Any], actual: dict[str, Any]) -> list[str]:
+    if 'report' in pred:
+        report = strip_citations(pred.get("report", ""))
+    else:
+        report = strip_citations(pred.get("answer", ""))
     return [report] if report else []
 
 
@@ -196,9 +223,27 @@ def metric_nli_entailment(pred: dict[str, Any], actual: dict[str, Any]) -> dict[
 
     return {
         "nli_entailment_max": best_score,
-        "nli_pairs_scored": scored_pairs,
-        "nli_best_premise": best_premise,
-        "nli_best_hypothesis": best_hypothesis,
+    }
+
+def metric_nli_entailment_report(pred: dict[str, Any], actual: dict[str, Any]) -> dict[str, Any]:
+    premises = build_nli_report(pred, actual)
+    hypotheses = build_nli_hypotheses(actual)
+    best_score = float("nan")
+    best_premise = ""
+    best_hypothesis = ""
+    scored_pairs = 0
+
+    for premise in premises:
+        for hypothesis in hypotheses:
+            scored_pairs += 1
+            entailment_score = score_nli_entailment(premise, hypothesis)
+            if scored_pairs == 1 or entailment_score > best_score:
+                best_score = entailment_score
+                best_premise = premise
+                best_hypothesis = hypothesis
+
+    return {
+        "nli_entailment_max_report": best_score,
     }
 
 
@@ -451,154 +496,14 @@ display(
 )
 
 # %%
-def attribute_display(uri, attr):
-    entity_rep = ["{}[{}]".format(uri, attr['rdf:type'])]
-    for k,v in attr.items:
-        if k in ["rdf:type"]:
-            continue
-        
-        line = "\t{} -> {}".format(k,v["object"])
-        line += "[{}]".format(v['object_class']) if "-" != v['object_class'] else ""
-        
-        if "-" != v['object_label']:
-            if len(v['object_label'])>20:
-                lbl = v['object_label'][:20]+" ..."
-            else:
-                lbl = v['object_label']
-            line += "({})".format(lbl)
-        entity_rep.append(
-            line
-        )
-        
-    return "\n".join(entity_rep)
-
-
-def build_trace_report(record:Dict[str, Any], max_ent_per_step=3) -> str:  
-    blocks = ["User Question:{}".format(record['question']),
-              "Trace Answers"]
-    for step in record.get('intermediary_results', []):
-        step_rep = []
-        step_rep.append(
-                "Question: {}".format(step.get('sub_question', ""))
-            )
-        
-        if step['strategy'] == 'by_program':
-            program = sq_retriver.get_program_by_id(
-                step["program_id"]
-            )
-            
-            if program:
-                step_rep.append(
-                    "KG Question: {}".format(program["solves"]),
-                )
-                
-        elif step['strategy'] == "by_linked_data":
-            step_rep.append(
-                    "Linked Entities:",
-                )
-            
-        step_rep.append(
-                    "Result Entities:\n{}".format(
-                        ", ".join(step["important_entities"])
-                        )
-                )
-        
-        extracted_entities = step.get("extracted_entities", [])
-        if extracted_entities:
-            step_rep.append(
-                    "Example Entities:"
-                )
-
-            ent_types = {}
-            for ent in extracted_entities:
-                attr_dict = {v['relation']:v  for v in ent["attributes"]}
-                if attr_dict['rdf:type'] in ent_types:
-                    ent_types[attr_dict['rdf:type']]["ent_count"] += 1
-                    ent_types[attr_dict['rdf:type']]["attr_count"] = max(
-                        ent_types[attr_dict['rdf:type']]["attr_count"],
-                        len(attr_dict)
-                    )
-                else:
-                    ent_types[attr_dict['rdf:type']] = {
-                        "ent_count":1,
-                        "attr_count":len(attr_dict)
-                    }
-                    
-            if len(ent_types) == 1:
-                _cls = list(ent_types.keys())[0]
-                if ent_types[_cls]["attr_count"] > 5:
-                    ent = extracted_entities[0]
-                    attr_dict = {v['relation']:v  for v in ent["attributes"]}
-                    step_rep.append(
-                        attribute_display(
-                            ent['uri'], attr_dict
-                        )
-                    )
-                else:
-                    ents_sel = extracted_entities[:max_ent_per_step]
-                    for ent in ents_sel:
-                        attr_dict = {v['relation']:v  for v in ent["attributes"]}
-                        step_rep.append(
-                            attribute_display(
-                                ent['uri'], attr_dict
-                            )
-                        )
-            else:
-                already_visited = set()
-                for ent in extracted_entities:
-                    attr_dict = {v['relation']:v  for v in ent["attributes"]}
-                    if attr_dict["rdf:type"] not in already_visited:
-                        step_rep.append(
-                            attribute_display(
-                                ent['uri'], attr_dict
-                            )
-                        )
-                        
-                    already_visited.add(attr_dict["rdf:type"])    
-                    
-        blocks.append(
-            "\n".join(step_rep)
-        )
-        
-    blocks.append(
-        "Summary Answer:\n{}".format(
-            record.get("answer", "")
-        )
-    )            
-    
-    return "\n\n".join(blocks)
-
-def build_eo_trace_report(record:Dict[str, Any]) -> str:
-    print(record)
-    
-    """
-    ### Knowledge Based System: 
-    {system_name}
-
-    ### What were the system outputs associated with the user query and the system trace?: 
-    (System Recommendation)
-    {system_recommendation}
-
-    ### What are the entities associate with the question: 
-    (wasGeneratedBy)
-    {generated_by}
-
-    ### Traces Associated with the system recommendation:
-    (System Trace)
-    {system_trace}
-    
-    ### Overall Answer to the Question:
-    {overall_answer}
-    """
-    return ""
-
+# Report builders are shared from src.evaluation.report_builders.
 
 def ours_input_config(record:Dict[str, Any]) -> Dict[str, Any]:
-    record["report"] = build_trace_report(record)
-    record["eo_report"] = build_eo_trace_report(record)
-    record["answer"] = record["report"]
-    
-    return record
+    return augment_ours_record_with_reports(
+        record,
+        synthetic_question_retriever=sq_retriver,
+        answer_report="original"
+    )
 
 # %%
 def grasp_input_config(record:Dict[str, Any]) -> Dict[str, Any]:

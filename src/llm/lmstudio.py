@@ -32,7 +32,11 @@ class LMStudio(BaseLLM):
         super().__init__(config, library)
         
     def _model_name(self) -> str:
-        return self.config.model.removeprefix("lm_studio/")
+        return (
+            self.config.model
+            .removeprefix("lm_studio/")
+            .removeprefix("lmstudio/")
+        )
 
     def _dspy_model_name(self) -> str:
         model_name = self._model_name()
