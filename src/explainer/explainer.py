@@ -63,19 +63,34 @@ class Explainer:
         user_query = user_query.strip()
         application_context = (self.app_info.description or "").strip()
         
-        try:
-            self.dependancy_graph.user_query_to_requirements(
-                user_query,
-                schema_context=self.format_schema(),
-                application_context=application_context,
-                )
+
+
             
-            return self.dependancy_graph.process_dependancy_graph(
-                schema_context=self.format_schema(),
-                application_context=application_context,
-            )
-        except ValueError as e:
-            return {"error": str(e)}
+        return self.dependancy_graph.process_dependancy_graph(
+            user_query,
+            schema_context=self.format_schema(),
+            application_context=application_context,
+            fallback_classes=[
+                "workflow:Generative_Task",
+                "workflow:Large_Language_Models",
+                "workflow:Large_Language_Model_Output",
+                "eo:Reasoning_Mode",
+                "provone:Program",
+                "provone:Port",
+                "provone:Channel",
+                "provone:Execution",
+                "provone:User",
+                "provone:Data",
+                "provone:Collection",
+                "prov:Association",
+                "prov:Usage",
+                "prov:Generation"
+            ]
+        )
+        
+    def rquest_to_eo_report(self, data:Dict[str, Any]):
+        # TODO: Format answer to EO Trace based explanation 
+        pass
         
     def request_to_report(self, data:Dict[str, Any]):
         def truncate_text(value: Any, limit: int = 1200) -> str:

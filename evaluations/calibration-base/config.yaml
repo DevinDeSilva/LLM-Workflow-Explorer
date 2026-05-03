@@ -26,7 +26,7 @@ question_creation_config:
   log_file: "evaluations/calibration-base/ques_creation/question_creation_log.txt"
   llm_type: "lmstudio"
   llm_config:
-    model: "lm_studio/qwen/qwen3.5-4b"
+    model: "qwen/qwen3.5-4b"
     base_url: "http://localhost:1234/v1"
 
 explainer_config:
@@ -36,7 +36,7 @@ explainer_config:
   save_answer_loc: "evaluations/calibration-base/explainer/LMWE"
 
   llm_config:
-    model: "lm_studio/qwen/qwen3.5-4b"
+    model: "qwen/qwen3.5-4b"
     base_url: "http://localhost:1234/v1"
   
   vectordb_config:

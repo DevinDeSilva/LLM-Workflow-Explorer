@@ -90,6 +90,119 @@ STOPWORDS = {
 }
 
 
+def _empty_token_usage() -> dict[str, Any]:
+    return {
+        "total_tokens": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "models": {},
+        "calls": [],
+        "estimated": False,
+        "source": "none",
+    }
+
+
+def _token_count_from_usage(usage: dict[str, Any], *keys: str) -> int:
+    for key in keys:
+        value = usage.get(key)
+        if isinstance(value, (int, float)):
+            return int(value)
+    return 0
+
+
+def _stringify_for_token_count(value: Any) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value
+    if isinstance(value, dict):
+        prioritized_parts = [
+            _stringify_for_token_count(value[key])
+            for key in ("role", "content", "text", "reasoning_content")
+            if key in value
+        ]
+        if prioritized_parts:
+            return "\n".join(part for part in prioritized_parts if part)
+        return json.dumps(value, default=str, ensure_ascii=False)
+    if isinstance(value, (list, tuple)):
+        return "\n".join(_stringify_for_token_count(item) for item in value)
+    return str(value)
+
+
+def _count_text_tokens(value: Any, model: str = "") -> int:
+    text = _stringify_for_token_count(value)
+    if not text:
+        return 0
+
+    try:
+        import tiktoken
+
+        model_name = str(model).split("/", 1)[-1]
+        try:
+            encoding = tiktoken.encoding_for_model(model_name)
+        except KeyError:
+            encoding = tiktoken.get_encoding("cl100k_base")
+        return len(encoding.encode(text))
+    except Exception:
+        return len(re.findall(r"\w+|[^\w\s]", text))
+
+
+def _plain_usage_dict(value: Any) -> dict[str, Any]:
+    if not value:
+        return {}
+    if isinstance(value, dict):
+        return dict(value)
+    if hasattr(value, "model_dump"):
+        try:
+            return dict(value.model_dump())
+        except Exception:
+            return {}
+    try:
+        return dict(value)
+    except Exception:
+        return {}
+
+
+def _normalize_usage(usage: dict[str, Any]) -> dict[str, Any]:
+    prompt_tokens = _token_count_from_usage(usage, "prompt_tokens", "input_tokens")
+    completion_tokens = _token_count_from_usage(
+        usage,
+        "completion_tokens",
+        "output_tokens",
+    )
+    total_tokens = _token_count_from_usage(usage, "total_tokens")
+    if not total_tokens:
+        total_tokens = prompt_tokens + completion_tokens
+
+    normalized: dict[str, Any] = {
+        "prompt_tokens": prompt_tokens,
+        "completion_tokens": completion_tokens,
+        "total_tokens": total_tokens,
+    }
+    for details_key in (
+        "prompt_tokens_details",
+        "completion_tokens_details",
+        "input_token_details",
+        "output_token_details",
+    ):
+        if details_key in usage:
+            normalized[details_key] = usage[details_key]
+    return normalized
+
+
+def _has_token_counts(usage: dict[str, Any]) -> bool:
+    return bool(
+        _token_count_from_usage(
+            usage,
+            "total_tokens",
+            "prompt_tokens",
+            "completion_tokens",
+            "input_tokens",
+            "output_tokens",
+        )
+    )
+
+
 def _unique(items: list[Any]) -> list[Any]:
     seen: set[Any] = set()
     result: list[Any] = []
@@ -177,12 +290,14 @@ class ExplanationResponse:
     answer: str
     relevant_entities: list[RelevantEntity]
     evidence: list[EvidenceTriple] = field(default_factory=list)
+    token_usage: dict[str, Any] = field(default_factory=_empty_token_usage)
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "answer": self.answer,
             "relevant_entities": [asdict(entity) for entity in self.relevant_entities],
             "evidence": [asdict(triple) for triple in self.evidence],
+            "token_usage": self.token_usage,
         }
 
 
@@ -283,6 +398,7 @@ class GroundedWorkflowBaseline:
             from src.llm import LLM
 
             self.llm = LLM(llm_type, llm_library, **llm_config)
+        self.last_token_usage = _empty_token_usage()
 
     def request(self, user_query: str) -> dict[str, Any]:
         return self.answer(user_query).to_dict()
@@ -294,9 +410,11 @@ class GroundedWorkflowBaseline:
                 answer="The question is empty, so there is no answer to return.",
                 relevant_entities=[],
                 evidence=[],
+                token_usage=_empty_token_usage(),
             )
 
         answer_text, relevant_entities, evidence = self._answer_grounded(question)
+        self.last_token_usage = _empty_token_usage()
         if self.llm is not None:
             answer_text = self._rewrite_with_llm(
                 question=question,
@@ -311,6 +429,7 @@ class GroundedWorkflowBaseline:
             answer=answer_text,
             relevant_entities=relevant_entities,
             evidence=evidence[: self.max_evidence],
+            token_usage=self.last_token_usage,
         )
 
     def _attach_entity_citations(
@@ -565,6 +684,12 @@ class GroundedWorkflowBaseline:
         )
 
         try:
+            rewritten = self._rewrite_with_langchain_structured(
+                prompt=prompt,
+                system_prompt=system_prompt,
+            )
+            if rewritten:
+                return rewritten
             if hasattr(self.llm, "structured_generate"):
                 response = _run_async(
                     self.llm.structured_generate(
@@ -575,15 +700,223 @@ class GroundedWorkflowBaseline:
                 )
                 rewritten = LLMRewritePayload.model_validate(response).answer.strip()
                 if rewritten:
+                    self.last_token_usage = self._token_usage_for_call(
+                        system_prompt=system_prompt,
+                        prompt=prompt,
+                        completion_text=self._payload_text({"answer": rewritten}),
+                        response=response,
+                    )
                     return rewritten
+            rewritten = self._rewrite_with_langchain_raw(
+                prompt=prompt,
+                system_prompt=system_prompt,
+            )
+            if rewritten:
+                return rewritten
             if hasattr(self.llm, "generate"):
                 raw = _run_async(self.llm.generate(prompt=prompt, system_prompt=system_prompt)).strip()
                 if raw:
+                    self.last_token_usage = self._token_usage_for_call(
+                        system_prompt=system_prompt,
+                        prompt=prompt,
+                        completion_text=raw,
+                    )
                     return raw
         except Exception:
             return answer_text
 
         return answer_text
+
+    def _langchain_messages(self, prompt: str, system_prompt: str) -> list[Any]:
+        from langchain_core.messages import HumanMessage, SystemMessage
+
+        messages: list[Any] = []
+        if system_prompt:
+            messages.append(SystemMessage(content=system_prompt))
+        messages.append(HumanMessage(content=prompt))
+        return messages
+
+    def _response_text(self, response: Any) -> str:
+        content = getattr(response, "content", response)
+        if isinstance(content, str):
+            return content
+        return _stringify_for_token_count(content)
+
+    def _payload_text(self, payload: Any) -> str:
+        if isinstance(payload, BaseModel):
+            return payload.model_dump_json()
+        if isinstance(payload, dict):
+            return json.dumps(payload, default=str, ensure_ascii=False)
+        return _stringify_for_token_count(payload)
+
+    def _extract_usage_from_response(self, response: Any) -> dict[str, Any]:
+        if response is None:
+            return {}
+
+        candidates: list[Any] = []
+        response_metadata: Any = None
+        additional_kwargs: Any = None
+        if isinstance(response, dict):
+            candidates.extend([response.get("usage_metadata"), response.get("usage")])
+            response_metadata = response.get("response_metadata")
+            additional_kwargs = response.get("additional_kwargs")
+        else:
+            candidates.extend(
+                [
+                    getattr(response, "usage_metadata", None),
+                    getattr(response, "usage", None),
+                ]
+            )
+            response_metadata = getattr(response, "response_metadata", None)
+            additional_kwargs = getattr(response, "additional_kwargs", None)
+
+        metadata = _plain_usage_dict(response_metadata)
+        if metadata:
+            candidates.extend([metadata.get("token_usage"), metadata.get("usage"), metadata])
+
+        kwargs = _plain_usage_dict(additional_kwargs)
+        if kwargs:
+            candidates.extend([kwargs.get("usage"), kwargs.get("token_usage")])
+
+        for candidate in candidates:
+            usage = _plain_usage_dict(candidate)
+            if not usage:
+                continue
+            normalized = _normalize_usage(usage)
+            if _has_token_counts(normalized):
+                return normalized
+        return {}
+
+    def _extract_model_name(self, response: Any = None) -> str:
+        if isinstance(response, dict):
+            metadata = _plain_usage_dict(response.get("response_metadata"))
+        else:
+            metadata = _plain_usage_dict(getattr(response, "response_metadata", None))
+        for key in ("model_name", "model", "model_id"):
+            value = metadata.get(key)
+            if value:
+                return str(value)
+
+        config = getattr(self.llm, "config", None)
+        value = getattr(config, "model", None)
+        if value:
+            return str(value)
+
+        client = getattr(self.llm, "llm", None)
+        for attr in ("model_name", "model", "model_id"):
+            value = getattr(client, attr, None)
+            if value:
+                return str(value)
+        return "unknown"
+
+    def _token_usage_for_call(
+        self,
+        *,
+        system_prompt: str,
+        prompt: str,
+        completion_text: Any,
+        response: Any = None,
+    ) -> dict[str, Any]:
+        model = self._extract_model_name(response)
+        usage = self._extract_usage_from_response(response)
+        estimated = False
+        source = "provider"
+
+        if not _has_token_counts(usage):
+            prompt_tokens = _count_text_tokens([system_prompt, prompt], model=model)
+            completion_tokens = _count_text_tokens(completion_text, model=model)
+            usage = {
+                "prompt_tokens": prompt_tokens,
+                "completion_tokens": completion_tokens,
+                "total_tokens": prompt_tokens + completion_tokens,
+            }
+            estimated = True
+            source = "estimate"
+
+        return {
+            "total_tokens": _token_count_from_usage(usage, "total_tokens"),
+            "prompt_tokens": _token_count_from_usage(usage, "prompt_tokens"),
+            "completion_tokens": _token_count_from_usage(usage, "completion_tokens"),
+            "models": {model: usage},
+            "calls": [
+                {
+                    "model": model,
+                    "usage": usage,
+                    "estimated": estimated,
+                    "source": source,
+                }
+            ],
+            "estimated": estimated,
+            "source": source,
+        }
+
+    def _rewrite_with_langchain_structured(
+        self,
+        *,
+        prompt: str,
+        system_prompt: str,
+    ) -> str:
+        chat_model = getattr(self.llm, "llm", None)
+        if chat_model is None or not hasattr(chat_model, "with_structured_output"):
+            return ""
+
+        try:
+            structured_llm = chat_model.with_structured_output(
+                LLMRewritePayload,
+                method="function_calling",
+                include_raw=True,
+            )
+            response = _run_async(
+                structured_llm.ainvoke(self._langchain_messages(prompt, system_prompt))
+            )
+            if not isinstance(response, dict):
+                return ""
+
+            raw_response = response.get("raw")
+            parsed = response.get("parsed")
+            if parsed is None:
+                parsing_error = response.get("parsing_error")
+                if parsing_error:
+                    raise parsing_error
+                return ""
+
+            rewritten = LLMRewritePayload.model_validate(parsed).answer.strip()
+            if rewritten:
+                self.last_token_usage = self._token_usage_for_call(
+                    system_prompt=system_prompt,
+                    prompt=prompt,
+                    completion_text=self._payload_text({"answer": rewritten}),
+                    response=raw_response,
+                )
+            return rewritten
+        except Exception:
+            return ""
+
+    def _rewrite_with_langchain_raw(
+        self,
+        *,
+        prompt: str,
+        system_prompt: str,
+    ) -> str:
+        chat_model = getattr(self.llm, "llm", None)
+        if chat_model is None or not hasattr(chat_model, "ainvoke"):
+            return ""
+
+        try:
+            response = _run_async(
+                chat_model.ainvoke(self._langchain_messages(prompt, system_prompt))
+            )
+            raw_response = self._response_text(response).strip()
+            if raw_response:
+                self.last_token_usage = self._token_usage_for_call(
+                    system_prompt=system_prompt,
+                    prompt=prompt,
+                    completion_text=raw_response,
+                    response=response,
+                )
+            return raw_response
+        except Exception:
+            return ""
 
     def _detect_intent(self, question: str) -> str:
         normalized = _normalize_text(question)

@@ -27,27 +27,41 @@ SPARQL_OBJ_OF_CLASS_TEMPLATE = """SELECT DISTINCT ?value WHERE {
                             
 # Get all propertiess of a object
 SPARQL_PROP_OF_OBJ_TEMPLATE = """
-        PREFIX prov: <http://www.w3.org/ns/prov#>
-        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX prov: <http://www.w3.org/ns/prov#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 
-        SELECT DISTINCT ?p ?o ?pe ?po
-                WHERE {
-                    # 1. Start with the properties of the target object
-                    <{obj_uri}> ?p ?o .
-                    
-                    # 2. Check if the object is a prov:Collection
-                    # This pattern only binds ?isCollection if <{obj_uri}> is a prov:Collection
-                    OPTIONAL {
-                        <{obj_uri}> rdf:type prov:Collection .
-                        BIND(TRUE AS ?isCollection)
-                    }
-                    
-                    OPTIONAL {
-                        FILTER (bound(?isCollection))
-                        <{obj_uri}> prov:hadMember ?member .
-                        ?member ?pe ?po .
-                    }
-                }"""
+SELECT DISTINCT 
+    ?p 
+    ?o 
+    (COALESCE(?olbl, "-") AS ?o_label) 
+    (COALESCE(?raw_o_class, "-") AS ?o_class) 
+    ?c_p 
+    ?c_o 
+    (COALESCE(?c_o_lbl, "-") AS ?c_o_label) 
+    (COALESCE(?raw_c_o_class, "-") AS ?c_o_class)
+
+WHERE { 
+    <{obj_uri}> ?p ?o . 
+    
+    OPTIONAL { ?o rdfs:label ?olbl . } 
+    OPTIONAL { ?o rdf:type ?raw_o_class . } 
+    
+    OPTIONAL { 
+        <{obj_uri}> rdf:type prov:Collection . 
+        BIND(TRUE AS ?isCollection) 
+        } 
+
+    OPTIONAL { 
+        FILTER(bound(?isCollection)) 
+        
+        <{obj_uri}> prov:hadMember ?member . 
+        ?member ?c_p ?c_o . 
+        
+        OPTIONAL { ?c_o rdfs:label ?c_o_lbl . } 
+        
+        OPTIONAL { ?c_o rdf:type ?raw_c_o_class . } } 
+        }"""
                 
 # Find objects that have a specific relationship to a given object
 SPARQL_FIND_BY_OBJ_REL_TEMPLATE = """SELECT DISTINCT ?value WHERE {
@@ -153,7 +167,7 @@ def end_to_start_path_processing(
     ) -> ExecutableProgram:
     
     logger.debug(f"Converting path to graph reversal: {str_representation}")
-
+    path = path[::-1]
     # Create nodes
     str_query = "SELECT distinct ?value where {\n" 
     for i in range(1, len(path) -1, 2):
@@ -162,28 +176,28 @@ def end_to_start_path_processing(
         obj = path[i + 1]
         
         if len(path) == 3:
-            str_query += "  ?value"+f" {pred} "+"  <{obj}> .\n"
+            str_query += "  ?value"+f" {pred} "+"<{obj}> .\n"
             break
         
         if i == 1:
-            str_query += "  ?value"+f" {pred} "+f"?a{i}  .\n"
+            str_query += f"  ?a{i}"+f" {pred} "+"<{obj}>  .\n"
         elif i == len(path) - 2:
-            str_query += f"  ?a{i-2}"+f" {pred} "+" <{obj}>  .\n"
+            str_query += "?value  "+f" {pred} "+f" ?a{i-2}  .\n"
         else:
-            str_query += f"  ?a{i-2}"+f" {pred} "+f"?a{i}  .\n"
+            str_query += f" ?a{i}"+f" {pred} "+f" ?a{i-2} .\n"
     str_query += "}"
 
     #get objects for the class path
     query_df = graph_manager.query(
         regex_add_strings(
             SPARQL_OBJ_OF_CLASS_TEMPLATE,
-            class_uri=graph_manager.resolve_curie(path[-1])
+            class_uri=graph_manager.resolve_curie(path[0])
         )
     )
 
     objs = list(set(query_df['value'].to_list()))
     if len(objs) == 0:
-        logger.debug(f"No objects found for class: {path[-1]} in path: {str_representation}")
+        logger.debug(f"No objects found for class: {path[0]} in path: {str_representation}")
         return None
     
     example_output = None
@@ -209,7 +223,8 @@ def end_to_start_path_processing(
         return None
 
     question = f"What objects leads to this path: {str_representation}?"
-
+    str_representation = "->".join(path)
+    
     return ExecutableProgram(
         program_id=f"explore_path_{str_representation}_reversed",
         name=f"Explore Path {str_representation} reversed",
@@ -350,7 +365,7 @@ def path_to_graph(
                 temp_folder=temp_folder
             )
         
-        progs = [prog1, prog2]
+        progs = [prog1, prog2] #[prog1, prog2]
         
         if prog1 is None or prog2 is None:
             ic(str_representation)
@@ -379,14 +394,16 @@ class BFSExplorer:
                  kg_name: str, 
                  graph_manager: GraphManager, 
                  ontology_info_triples: pd.DataFrame,
-                 parallel_execution: bool = False,
-                 temp_folder: str = "tmp/programs"
+                 parallel_execution: bool,
+                 temp_folder: str,
+                 entity_length: int 
                  ):
         self.kg_name: str = kg_name
         self.graph_manager: GraphManager = graph_manager
-        self.parallel_execution: bool = parallel_execution
+        self.parallel_execution: bool = False #parallel_execution
         self.ontology_info_triples: pd.DataFrame = ontology_info_triples
         self.temp_folder: str = temp_folder
+        self.entity_length = entity_length
         self.schema: Optional[Dict[str, Any]] = None
         self.schema_dr: Dict[str, Tuple[str, str]] = {}
         self.classes: Set[str] = set()
@@ -451,7 +468,10 @@ class BFSExplorer:
                 domain = conn["domain"]
                 range_ = conn["range"]
 
-                self.schema_dr[rel] = (domain, range_)
+                if rel in self.schema_dr:
+                    self.schema_dr[rel].append((domain, range_))
+                else:
+                    self.schema_dr[rel] = [(domain, range_)]
                 self.out_relations_cls[domain].add(rel)
                 self.in_relations_cls[range_].add(rel)
 
@@ -497,24 +517,25 @@ class BFSExplorer:
                 logger.warning(f"Error indexing class {cls}: {e}")
 
         # Index Literals by (domain_class, relation)
-        for rel, (domain, range_) in tqdm(
+        for rel, conn in tqdm(
             self.schema_dr.items(), desc="Indexing literals"
         ):
-            if not range_.startswith("type."):  # Skip non-literal ranges
-                continue
+            for (domain, range_) in conn:
+                if not range_.startswith("type."):  # Skip non-literal ranges
+                    continue
 
-            try:
-                domain_uri = URIRef(domain)
-                rel_uri = URIRef(rel)
+                try:
+                    domain_uri = URIRef(domain)
+                    rel_uri = URIRef(rel)
 
-                # Find all subjects of the domain type
-                for s_uri in g.subjects(RDF.type, domain_uri):
-                    # For each subject, get the literal objects for this relation
-                    for o_lit in g.objects(s_uri, rel_uri):
-                        if isinstance(o_lit, Literal):
-                            self.literals_by_cls_rel[(domain, rel)].add(str(o_lit))
-            except Exception as e:
-                logger.warning(f"Error indexing literals for relation {rel}: {e}")
+                    # Find all subjects of the domain type
+                    for s_uri in g.subjects(RDF.type, domain_uri):
+                        # For each subject, get the literal objects for this relation
+                        for o_lit in g.objects(s_uri, rel_uri):
+                            if isinstance(o_lit, Literal):
+                                self.literals_by_cls_rel[(domain, rel)].add(str(o_lit))
+                except Exception as e:
+                    logger.warning(f"Error indexing literals for relation {rel}: {e}")
 
         logger.info("Finished processing graph and schema.")
 
@@ -550,8 +571,8 @@ class BFSExplorer:
         
         exe1 = ExecutableProgram(
             program_id="explore_object_of_class",
-            name="Explore Objects of Class",
-            description="Explores objects of a given class in the RDF graph.",
+            name="What are all the objects of a given class?",
+            description="Returns all the objects of a given class",
             input_spec={"class_uri": "The URI of the class to explore."},
             output_spec={"objects": "A list of objects belonging to the specified class."},
             code=SPARQL_OBJ_OF_CLASS_TEMPLATE,
@@ -563,7 +584,7 @@ class BFSExplorer:
 
         
         # example  execution of SPARQL query
-        obj_Name = self.graph_manager.resolve_curie('http://testwebsite/testProgram#AI_Task-information_extractor')
+        obj_Name = self.graph_manager.resolve_curie('http://testwebsite/testProgram#Generative_Task-system_prompt_generator')
         run_query = regex_add_strings(SPARQL_PROP_OF_OBJ_TEMPLATE, obj_uri=obj_Name)
         
         question_df = self.graph_manager.query(run_query)
@@ -572,11 +593,11 @@ class BFSExplorer:
         exe2 = ExecutableProgram(
             program_id="explore_attr_of_object",
             name="Explore Attributes of Object",
-            description="Explores Attributes of a given object in the RDF graph.",
+            description="Returns all the attributes and values of a given object",
             input_spec={"obj_uri": "The URI of the object to explore."},
             output_spec={"attributes": "A list of attributes belonging to the specified object."},
             code=SPARQL_PROP_OF_OBJ_TEMPLATE,
-            solves="What are all the ATTRIBUTES AND VALUES of a given object?",
+            solves="What are all the attributes and values of a given object?",
             example_usage=regex_add_strings(SPARQL_PROP_OF_OBJ_TEMPLATE, obj_uri=obj_Name),
             example_output=question_df.head(10),
             tags=["class-level"]
@@ -659,11 +680,22 @@ class BFSExplorer:
                     }
                 )
 
-                programs.append(p)
+                #programs.append(p)
                 
                 example_output = None
                 example_query = None
                 for sub in raw_data:
+                    if isinstance(sub, str):
+                        if "\n" in sub:
+                            sub = sub.split("\n")[0]
+                        elif len(sub)>100:
+                            sub = sub[:100]
+                            
+                        if "@en^^<xsd:string>" in sub:
+                            sub = sub.replace("@en^^<xsd:string>", "")
+                        
+                        
+                        
                     example_query = regex_add_strings(
                             SPARQL_FIND_BY_PROP_VAL_TEMPLATE,
                             prop_value=sub,
@@ -677,7 +709,9 @@ class BFSExplorer:
                         break
                     
                 if example_output is None or example_output.empty or example_query is None:
+                    ic(example_output)
                     continue
+                
                 
                 p = ExecutableProgram(
                     program_id="explore_object_of_class {c} | find by prop value | relation:{relation}".format(
@@ -685,7 +719,7 @@ class BFSExplorer:
                         relation=self.graph_manager.reverse_curie(relations)
                         ),
                     name="Explore Objects of Class",
-                    description="For a given prop value of class {c}, find all {relation} prop value of the object.".format(
+                    description="Return all the objects of class {c} of a given value for the relation/prop {relation}".format(
                         c=self.graph_manager.reverse_curie(c),
                         relation=self.graph_manager.reverse_curie(relations)
                         ),
@@ -693,11 +727,14 @@ class BFSExplorer:
                     output_spec={"relation_uri": "Relation of interest."},
                     code=self.graph_manager.add_sparql_header_tail(
                         regex_add_strings(
-                            SPARQL_FIND_BY_OBJ_REL_TEMPLATE,
+                            SPARQL_FIND_BY_PROP_VAL_TEMPLATE,
                             relation_uri=relations
                         )
                     ),
-                    solves="What are all the objects of a given class?",
+                    solves="What are all the objects of class {c} with a given value for the relation/prop {relation}?".format(
+                        c=self.graph_manager.reverse_curie(c),
+                        relation=self.graph_manager.reverse_curie(relations)
+                        ),
                     example_usage=example_query,
                     example_output=example_output,
                     tags=["object-level", 'from-prop', self.graph_manager.reverse_curie(c)],
@@ -765,15 +802,17 @@ class BFSExplorer:
             if current_class in self.out_relations_cls:
                 for relation in self.out_relations_cls[current_class]:
                     # The range is the neighbor class
-                    _, neighbor_class = self.schema_dr[relation]
-                    if neighbor_class not in [c for c in current_path]:
-                        new_path = current_path + [relation] + [self.graph_manager.reverse_curie(neighbor_class)]
-                        all_paths.append(new_path)
-                        
-                        if len(new_path) // 2 < entity_length:
-                            queue.append((neighbor_class, new_path))
+                    for conn in self.schema_dr[relation]:
+                        _, neighbor_class = self.schema_dr[relation]
+                        if neighbor_class not in [c for c in current_path]:
+                            new_path = current_path + [relation] + [self.graph_manager.reverse_curie(neighbor_class)]
+                            all_paths.append(new_path)
+                            
+                            if len(new_path) // 2 < entity_length:
+                                queue.append((neighbor_class, new_path))
 
         
+        all_paths = [x for x in all_paths if len(x) <= 2*self.entity_length - 1]
         logger.info(f"BFS from '{start_class}' found {len(all_paths)} simple schema paths.")
         return all_paths
                
@@ -789,7 +828,10 @@ class BFSExplorer:
                 continue
             
             # We can start BFS from the class URI itself to find paths in the schema
-            paths = self.breadth_first_search(c)
+            paths = self.breadth_first_search(
+                c,
+                entity_length=self.entity_length
+                )
             
             params = {k:[v, self.graph_manager, self.temp_folder] for k,v in enumerate(paths)}
             

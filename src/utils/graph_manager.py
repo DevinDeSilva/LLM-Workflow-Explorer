@@ -3,6 +3,7 @@ import logging
 from rdflib import Graph, Literal, URIRef
 from rdflib.namespace import RDF
 import pandas as pd
+from icecream import ic
 from functools import partial
 from src.utils.utils import regex_add_strings
 from src.config.experiment import TTLConfig
@@ -171,6 +172,9 @@ def reverse_curie(iri: str, ns: dict) -> str:
     Converts a full IRI back to a CURIE using the provided namespaces.
     R: reverse_curie
     """
+    if not isinstance(iri, str):
+        return None
+    
     for prefix, uri in ns.items():
         if iri.startswith(uri):
             local_part = iri[len(uri):]
@@ -244,8 +248,10 @@ def query_func(g: Graph, sparql_query: str, *args) -> pd.DataFrame:
             return pd.DataFrame(columns=[str(v) for v in results.vars])
             
         return pd.DataFrame(data)
-    except Exception as e:
+    except Exception as e:        
         logger.error(f"Failed to execute SPARQL query: {e}")
+        logger.error(sparql_query, args)
+        ic("error:", sparql_query, args)
         return pd.DataFrame()
 
 class GraphManager:

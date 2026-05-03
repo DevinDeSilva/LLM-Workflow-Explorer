@@ -1,0 +1,947 @@
+{
+    "id": "gt_37",
+    "question": "\nDoes any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?\n",
+    "predecessor_info": {},
+    "predecessor_context": "",
+    "step_context": "Answer loop round:\n{\n  \"round\": 1,\n  \"question\": \"Does any of the executions of the \\\"Post-processes the query results\\\" function made has a Generative Task as a component within?\",\n  \"program_id\": \"explore_object_of_class\",\n  \"object_uris\": [\n    \"ChatBS-NexGen:Generative_Task-id_20260420105659_302\",\n    \"ChatBS-NexGen:Generative_Task-id_20260420105703_307\",\n    \"ChatBS-NexGen:Generative_Task-information_extractor\",\n    \"ChatBS-NexGen:Generative_Task-query_result_post_processor\",\n    \"ChatBS-NexGen:Generative_Task-system_prompt_generator\"\n  ]\n}\nStep step1: Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?\nFunction: What are all the objects of a given class?[explore_object_of_class]\nImportant entities: \nChatBS-NexGen:Generative_Task-id_20260420105659_302[workflow:Generative_Task] =>dc:description=LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>; sio:SIO_000313=ChatBS-NexGen:id_20260420105659_302[provone:Execution]; rdf:type=workflow:Generative_Task; rdfs:label=LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-id_20260420105659_302[workflow:Large_Language_Model_Output]; prov:used=ChatBS-NexGen:LLM-id_20260420105659_302[workflow:Large_Language_Models]; \nChatBS-NexGen:Generative_Task-id_20260420105703_307[workflow:Generative_Task] =>dc:description=Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>; sio:SIO_000313=ChatBS-NexGen:id_20260420105703_307[provone:Execution]; rdf:type=workflow:Generative_Task; rdfs:label=Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-id_20260420105703_307[workflow:Large_Language_Model_Output]; prov:used=ChatBS-NexGen:LLM-id_20260420105703_307[workflow:Large_Language_Models]; \nChatBS-NexGen:Generative_Task-information_extractor[workflow:Generative_Task] =>dc:description=Generates the Information Extractor Function using Large language models@en^^<xsd:string>; rdf:type=workflow:Generative_Task; rdfs:label=Information Extractor function generator@en^^<xsd:string>; prov:atTime=2026-03-05 19:21:32@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-information_extractor[workflow:Large_Language_Models]; \nChatBS-NexGen:Generative_Task-query_result_post_processor[workflow:Generative_Task] =>dc:description=Generates the post processing Function using Large language models@en^^<xsd:string>; rdf:type=workflow:Generative_Task; rdfs:label=Query Result Post-Processor function generator@en^^<xsd:string>; prov:atTime=2026-03-05 19:21:32@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-query_result_post_processor[workflow:Large_Language_Models]; \nChatBS-NexGen:Generative_Task-system_prompt_generator[workflow:Generative_Task] =>dc:description=Generates the System Prompt Template using Large language models@en^^<xsd:string>; rdf:type=workflow:Generative_Task; rdfs:label=System Prompt Template function generator@en^^<xsd:string>; prov:atTime=2026-03-05 19:21:32@en^^<xsd:string>; prov:used=ChatBS-NexGen:LLM-system_prompt_generator[workflow:Large_Language_Models];\n\nAnswer loop round:\n{\n  \"round\": 2,\n  \"question\": \"Given the current evidence, what should be retrieved next to answer 'Does any of the executions of the \\\"Post-processes the query results\\\" function made has a Generative Task as a component within?'? Focus on: The answer states that there is no evidence of a Generative Task component within any execution of the \\u201cPost\\u2011processes the query results\\u201d function, but it does not provide literal data (e.g., specific execution identifiers or timestamps) to substantiate this claim. The evidence context lists several `Generative_Task` objects and their descriptions; however, it does not explicitly link an execution of the post\\u2011processing function to a Generative Task component. To satisfy the question fully, the answer should include concrete literals indicating whether such an execution exists (e.g., an execution URI with a referenced Generative Task) or clarify that the data is incomplete and further retrieval is needed.\",\n  \"program_id\": \"explore_path_workflow:Generative_Task->sio:SIO_000369->provone:Execution->prov:wasGeneratedBy->provone:Data->sio:SIO_000202->workflow:Large_Language_Model_Output_reversed\",\n  \"object_uris\": [\n    \"ChatBS-NexGen:LLM_Output-id_20260420105659_302\",\n    \"ChatBS-NexGen:LLM_Output-id_20260420105703_307\"\n  ]\n}\nStep step2: Given the current evidence, what should be retrieved next to answer 'Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?'? Focus on: The answer states that there is no evidence of a Generative Task component within any execution of the \u201cPost\u2011processes the query results\u201d function, but it does not provide literal data (e.g., specific execution identifiers or timestamps) to substantiate this claim. The evidence context lists several `Generative_Task` objects and their descriptions; however, it does not explicitly link an execution of the post\u2011processing function to a Generative Task component. To satisfy the question fully, the answer should include concrete literals indicating whether such an execution exists (e.g., an execution URI with a referenced Generative Task) or clarify that the data is incomplete and further retrieval is needed.\nFunction: Which Large Language Model Output artifacts were generated as part of an execution that is a component of a given Generative Task?[explore_path_workflow:Generative_Task->sio:SIO_000369->provone:Execution->prov:wasGeneratedBy->provone:Data->sio:SIO_000202->workflow:Large_Language_Model_Output_reversed]\nImportant entities: \nChatBS-NexGen:LLM_Output-id_20260420105659_302[] =>sio:SIO_000202=ChatBS-NexGen:Data-id_20260420105659_338-generated_answer[provone:Data]; sio:SIO_000232=ChatBS-NexGen:LLM-id_20260420105659_302[workflow:Large_Language_Model_Output]; sio:SIO_000232=ChatBS-NexGen:LLM-id_20260420105659_302[workflow:Large_Language_Models]; \nChatBS-NexGen:LLM_Output-id_20260420105703_307[] =>sio:SIO_000202=ChatBS-NexGen:Data-id_20260420105703_198-extracts[provone:Data]; sio:SIO_000202=ChatBS-NexGen:Data-id_20260420105703_218-extracts[provone:Data]; sio:SIO_000202=ChatBS-NexGen:Data-id_20260420105703_51-extracts[provone:Data]; sio:SIO_000202=ChatBS-NexGen:Data-id_20260420105703_661-extracts[provone:Data]; sio:SIO_000202=ChatBS-NexGen:Data-id_20260420105703_678-extracts[provone:Data]; sio:SIO_000202=ChatBS-NexGen:Data-id_20260420105703_693-extracts[provone:Data]; sio:SIO_000202=ChatBS-NexGen:Data-id_20260420105703_757-extracts[provone:Data]; sio:SIO_000202=ChatBS-NexGen:Data-id_20260420105703_886-extracts[provone:Data]; sio:SIO_000202=ChatBS-NexGen:Data-id_20260420105703_891-extracts[provone:Data]; sio:SIO_000202=ChatBS-NexGen:Data-id_20260420105704_531-extracts[provone:Data]; sio:SIO_000202=ChatBS-NexGen:Data-id_20260420105704_782-extracts[provone:Data]; sio:SIO_000232=ChatBS-NexGen:LLM-id_20260420105703_307[workflow:Large_Language_Model_Output]; sio:SIO_000232=ChatBS-NexGen:LLM-id_20260420105703_307[workflow:Large_Language_Models];\n\nAnswer loop round:\n{\n  \"round\": 3,\n  \"question\": \"Given the current evidence, what should be retrieved next to answer 'Does any of the executions of the \\\"Post-processes the query results\\\" function made has a Generative Task as a component within?'? Focus on: The answer asserts that there is no evidence of a Generative_Task component within any execution of the \\u201cPost-processes the query results\\u201d function, but it does not provide concrete literal data (such as specific execution identifiers, timestamps, or explicit provenance links) to substantiate this claim. To fully satisfy the question, the answer should include actual literals indicating whether such an execution exists\\u2014for example, an execution URI that references a `workflow:Generative_Task` via `sio:SIO_000369`, along with relevant timestamps\\u2014or explicitly state that the necessary provenance data is incomplete and further retrieval is required.\",\n  \"program_id\": \"explore_path_workflow:Generative_Task->sio:SIO_000369->provone:Execution_reversed\",\n  \"object_uris\": []\n}\nStep step3: Given the current evidence, what should be retrieved next to answer 'Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?'? Focus on: The answer asserts that there is no evidence of a Generative_Task component within any execution of the \u201cPost-processes the query results\u201d function, but it does not provide concrete literal data (such as specific execution identifiers, timestamps, or explicit provenance links) to substantiate this claim. To fully satisfy the question, the answer should include actual literals indicating whether such an execution exists\u2014for example, an execution URI that references a `workflow:Generative_Task` via `sio:SIO_000369`, along with relevant timestamps\u2014or explicitly state that the necessary provenance data is incomplete and further retrieval is required.\nFunction: Which execution(s) involve a generative task as a component part?[explore_path_workflow:Generative_Task->sio:SIO_000369->provone:Execution_reversed]\nImportant entities: \n{\n  \"set_1\": {\n    \"set_1\": []\n  }\n}\n\nFallback KG context:\nApplication context:\nThe application that utilizes a functional approach to support unittesting of LLMs on user designed prompts. This application contains functions generated by LLMs and functions that utilizes LLM generated output within the system. In this experiments are represented as provone:Executions of provone:Programs (a step of the experiment pipeline). All the functions of the system are represented provone:Programs while some of these provone:Programs are generated by LLM as Generative_Tasks. dc:identifier represents the unique experiment id.\nSchema context:\nWorkflow schema\nClasses:\n- workflow:Generative_Task (Generative Task): A task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data.\n- workflow:Large_Language_Models (Large Language Models)\n- workflow:Large_Language_Model_Output (Large Language Model Output): An Output Artifact from a AI Task\n- eo:Reasoning_Mode (Reasoning Mode): a process being executed by the system that achieves a particular goal; e.g. inference models such as treatment planning involved in medical diagnosis can be considered...\n- provone:Program (Program): A Program represents a computational task that consumes and produces data through its input and output ports, respectively. It can be atomic or composite, the latter case...\n- provone:Port (Port): A Port enables a Program to send and receive Entities (Data, Visualizations, etc.). When used in a role as an input port, default parameters may be configured for the Port.\n- provone:Channel (Channel): A Channel provides a connection between Ports that are defined for Programs. Typically, a Program with an output Port defined using the provone:hasOutPort object property...\n- provone:Execution (Execution): An Execution represents the execution of a Program. If the Program in question is a Workflow, then the Execution represents a trace of its execution.\n- provone:User (User): A User is the person responsible for the execution of a Program, which in turn can be a Workflow. Its specification serves attribution and accountability purposes.\n- provone:Data (Data): A Data item represents the basic unit of information consumed and produced by a Program. Multiple Data items may be grouped into a Collection.\n- provone:Collection\n- prov:Association (Association): An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity. It further allows for a plan to...\n- prov:Usage (Usage): Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity.\n- prov:Generation (Generation): Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.\nObject properties:\n- sio:SIO_000202; links workflow:Large_Language_Model_Output -> provone:Program, workflow:Large_Language_Model_Output -> provone:Data\n- sio:SIO_000229 (has output); links workflow:Large_Language_Models -> workflow:Large_Language_Model_Output\n- sio:SIO_000232 (is output of); links workflow:Large_Language_Model_Output -> workflow:Large_Language_Models\n- sio:SIO_000313 (is component part of); links workflow:Generative_Task -> provone:Execution\n- sio:SIO_000369 (has component part); links provone:Execution -> workflow:Generative_Task\n- sio:SIO_000230 (has input); links workflow:Large_Language_Models -> provone:Data\n- prov:used (used): A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .; links provone:Execution -> provone:Data, workflow:Generative_Task -> workflow:Large_Language_Models\n- prov:agent (hadPlan): Enables the specification of a particular User in a particular Association. This allows for further qualification of the prov:wasAssociatedWith property in the context of an...; links prov:Association -> provone:User\n- prov:qualifiedAssociation (qualifiedAssociation): If this Activity prov:wasAssociatedWith Agent :ag, then it can qualify the Association using prov:qualifiedAssociation [ a prov:Association; prov:agent :ag; :foo :bar ].; links provone:Execution -> prov:Association\n- prov:qualifiedUsage (qualifiedUsage): Enables the specification of a particular Usage by a particular Execution. This allows for further qualification of the prov:used property in the context of an Execution.; links provone:Execution -> prov:Usage\n- prov:qualifiedGeneration (qualifiedGeneration): If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualifiedGeneration [ a prov:Generation; prov:entity :e; :foo :bar ].; links provone:Execution -> prov:Generation\n- prov:hadPlan (hadPlan): The _optional_ Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.; links prov:Association -> provone:Program\n- provone:hasOutPort (hasOutPort): Enables the specification of a Port as an output port of a particular Program.; links provone:Program -> provone:Port\n- provone:hasInPort (hasInPort): Enables the specification of a Port as an input port of a particular Program.; links provone:Program -> provone:Port\n- provone:connectsTo (connectsTo): Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.; links provone:Port -> provone:Port\n- provone:hadInPort (hadInPort): Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.; links prov:Usage -> provone:Port\n- provone:hadOutPort (hadOutPort): Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:wasGeneratedBy property in the context of...; links prov:Generation -> provone:Port\n- prov:hadMember (hadMember); links provone:Collection -> provone:Data\n- provone:hadEntity (hadEntity): Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and...; links prov:Usage -> provone:Data, prov:Generation -> provone:Data\n- prov:wasInformedBy (wasInformedBy): An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.; links provone:Execution -> provone:Execution\n- prov:wasGeneratedBy (wasGeneratedBy); links provone:Data -> provone:Execution, provone:Collection -> provone:Execution\n- prov:wasAssociatedWith (wasAssociatedWith): An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.; links provone:Execution -> provone:User\nFallback classes:\nworkflow:Generative_Task, workflow:Large_Language_Models, workflow:Large_Language_Model_Output, eo:Reasoning_Mode, provone:Program, provone:Port, provone:Channel, provone:Execution, provone:User, provone:Data, provone:Collection, prov:Association, prov:Usage, prov:Generation\nTurtle:\n@prefix ChatBS-NexGen: <http://testwebsite/testProgram#> .\n@prefix DFColumn: <http://testwebsite/testDFColumn#> .\n@prefix dc: <http://purl.org/dc/elements/1.1/> .\n@prefix dcterms1: <http://purl.org/dc/terms#> .\n@prefix prov: <http://www.w3.org/ns/prov#> .\n@prefix provone: <http://purl.dataone.org/provone/2015/01/15/ontology#> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix sio: <http://semanticscience.org/resource/> .\n@prefix workflow: <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/> .\n\nChatBS-NexGen:Collection-id_20260420105703_514-extracts a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105703_198-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_218-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_51-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_661-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_678-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_693-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_757-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_886-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_891-extracts,\n        ChatBS-NexGen:Data-id_20260420105704_531-extracts,\n        ChatBS-NexGen:Data-id_20260420105704_782-extracts ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105703_307 .\n\nChatBS-NexGen:Collection-id_20260420105705_846-kg_info a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105705_668-kg_info ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105705_972 .\n\nChatBS-NexGen:Collection-id_20260420105705_972-kg_info a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105705_232-kg_info,\n        ChatBS-NexGen:Data-id_20260420105705_670-kg_info ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105705_598 .\n\nChatBS-NexGen:Collection-id_20260420105710_94-kg_info a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105710_564-kg_info,\n        ChatBS-NexGen:Data-id_20260420105711_94-kg_info ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105710_61 .\n\nChatBS-NexGen:Collection-id_20260420105711_381-kg_info a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105711_547-kg_info,\n        ChatBS-NexGen:Data-id_20260420105711_637-kg_info ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105711_772 .\n\nChatBS-NexGen:Collection-id_20260420105711_610-kg_info a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105711_45-kg_info ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105711_662 .\n\nChatBS-NexGen:Collection-id_20260420105711_635-kg_info a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105711_658-kg_info ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105711_320 .\n\nChatBS-NexGen:Collection-id_20260420105717_260-kg_info a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105717_899-kg_info ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105717_370 .\n\nChatBS-NexGen:Collection-id_20260420105719_81-kg_info a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105719_258-kg_info,\n        ChatBS-NexGen:Data-id_20260420105719_416-kg_info ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105719_327 .\n\nChatBS-NexGen:Collection-id_20260420105722_768-kg_info a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105722_181-kg_info ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105722_117 .\n\nChatBS-NexGen:Collection-id_20260420105723_274-kg_info a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105723_261-kg_info ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105723_114 .\n\nChatBS-NexGen:Collection-id_20260420105727_469-post_processed_output a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105727_858-post_processed_output ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:Collection-id_20260420105727_932-kg_info a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105727_306-kg_info,\n        ChatBS-NexGen:Data-id_20260420105727_801-kg_info ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105727_300 .\n\nChatBS-NexGen:Generative_Task-information_extractor a workflow:Generative_Task ;\n    rdfs:label \"Information Extractor function generator@en^^<xsd:string>\" ;\n    dc:description \"Generates the Information Extractor Function using Large language models@en^^<xsd:string>\" ;\n    prov:atTime \"2026-03-05 19:21:32@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:LLM-information_extractor .\n\nChatBS-NexGen:Generative_Task-query_result_post_processor a workflow:Generative_Task ;\n    rdfs:label \"Query Result Post-Processor function generator@en^^<xsd:string>\" ;\n    dc:description \"Generates the post processing Function using Large language models@en^^<xsd:string>\" ;\n    prov:atTime \"2026-03-05 19:21:32@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:LLM-query_result_post_processor .\n\nChatBS-NexGen:Generative_Task-system_prompt_generator a workflow:Generative_Task ;\n    rdfs:label \"System Prompt Template function generator@en^^<xsd:string>\" ;\n    dc:description \"Generates the System Prompt Template using Large language models@en^^<xsd:string>\" ;\n    prov:atTime \"2026-03-05 19:21:32@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:LLM-system_prompt_generator .\n\nChatBS-NexGen:batch_sparql_query_extractor a provone:Program ;\n    rdfs:label \"Batch SPARQL Query Extractor@en^^<xsd:string>\" ;\n    provone:hasInPort ChatBS-NexGen:batch_sparql_query_extractor-entities,\n        ChatBS-NexGen:batch_sparql_query_extractor-query_function ;\n    provone:hasOutPort ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge ;\n    provone:hasSubProgram ChatBS-NexGen:DF_combine,\n        ChatBS-NexGen:sparql_query_extractor ;\n    dc:description \"Extracts information about the entities from the knowledge graph in batch mode.@en^^<xsd:string>\" ;\n    dcterms1:identifier \"3@en^^<xsd:string>\" ;\n    prov:atTime \"2026-03-05 19:20:56@en^^<xsd:string>\" .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:information_extractor-Association-id_20260420105703_307> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:information_extractor .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:llm_chat-Association-id_20260420105659_302> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:llm_chat .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:query_result_post_processor-Association-id_20260420105727_835> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:query_result_post_processor .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_598> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:sparql_query_extractor .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_972> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:sparql_query_extractor .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105710_61> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:sparql_query_extractor .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_320> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:sparql_query_extractor .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_662> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:sparql_query_extractor .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_772> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:sparql_query_extractor .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105717_370> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:sparql_query_extractor .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105719_327> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:sparql_query_extractor .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105722_117> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:sparql_query_extractor .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105723_114> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:sparql_query_extractor .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105727_300> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:sparql_query_extractor .\n\n<http://testwebsite/testProgram#ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650> a prov:Association ;\n    prov:agent ChatBS-NexGen:test_user ;\n    prov:hadPlan ChatBS-NexGen:system_prompt_generator .\n\nChatBS-NexGen:DF_combine a provone:Program ;\n    rdfs:label \"Data Frame Combiner@en^^<xsd:string>\" ;\n    provone:hasInPort ChatBS-NexGen:DF_combine-kg_queries ;\n    provone:hasOutPort ChatBS-NexGen:DF_combine-kg_knowledge ;\n    dc:description \"Combines multiple data frames resulting from SPARQL queries into a single data frame.@en^^<xsd:string>\" ;\n    dcterms1:identifier \"3@en^^<xsd:string>\" .\n\nChatBS-NexGen:DF_combine-kg_knowledge a provone:Port ;\n    rdfs:label \"Output port for kg_knowledge@en^^<xsd:string>\" ;\n    dc:description \"Output port for kg_knowledge in the DF combine program@en^^<xsd:string>\" .\n\nChatBS-NexGen:DF_combine-kg_queries a provone:Port ;\n    rdfs:label \"Input port for kg_queries@en^^<xsd:string>\" ;\n    dc:description \"Input port for kg_queries in the DF combine program@en^^<xsd:string>\" .\n\nChatBS-NexGen:Generation-id_20260420105652_907-system_prompt a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105652_456-system_prompt ;\n    provone:hadOutPort ChatBS-NexGen:system_prompt_generator-system_prompt .\n\nChatBS-NexGen:Generation-id_20260420105659_282-generated_answer a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105659_338-generated_answer ;\n    provone:hadOutPort ChatBS-NexGen:llm_chat-generated_answer .\n\nChatBS-NexGen:Generation-id_20260420105703_814-extracts a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105703_198-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_218-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_51-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_661-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_678-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_693-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_757-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_886-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_891-extracts,\n        ChatBS-NexGen:Data-id_20260420105704_531-extracts,\n        ChatBS-NexGen:Data-id_20260420105704_782-extracts ;\n    provone:hadOutPort ChatBS-NexGen:information_extractor-extracts .\n\nChatBS-NexGen:Generation-id_20260420105705_591-kg_info a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105705_668-kg_info ;\n    provone:hadOutPort ChatBS-NexGen:sparql_query_extractor-kg_info .\n\nChatBS-NexGen:Generation-id_20260420105705_633-kg_info a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105705_232-kg_info,\n        ChatBS-NexGen:Data-id_20260420105705_670-kg_info ;\n    provone:hadOutPort ChatBS-NexGen:sparql_query_extractor-kg_info .\n\nChatBS-NexGen:Generation-id_20260420105710_897-kg_info a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105710_564-kg_info,\n        ChatBS-NexGen:Data-id_20260420105711_94-kg_info ;\n    provone:hadOutPort ChatBS-NexGen:sparql_query_extractor-kg_info .\n\nChatBS-NexGen:Generation-id_20260420105711_508-kg_info a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105711_658-kg_info ;\n    provone:hadOutPort ChatBS-NexGen:sparql_query_extractor-kg_info .\n\nChatBS-NexGen:Generation-id_20260420105711_565-kg_info a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105711_547-kg_info,\n        ChatBS-NexGen:Data-id_20260420105711_637-kg_info ;\n    provone:hadOutPort ChatBS-NexGen:sparql_query_extractor-kg_info .\n\nChatBS-NexGen:Generation-id_20260420105711_758-kg_info a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105711_45-kg_info ;\n    provone:hadOutPort ChatBS-NexGen:sparql_query_extractor-kg_info .\n\nChatBS-NexGen:Generation-id_20260420105717_107-kg_info a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105717_899-kg_info ;\n    provone:hadOutPort ChatBS-NexGen:sparql_query_extractor-kg_info .\n\nChatBS-NexGen:Generation-id_20260420105719_298-kg_info a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105719_258-kg_info,\n        ChatBS-NexGen:Data-id_20260420105719_416-kg_info ;\n    provone:hadOutPort ChatBS-NexGen:sparql_query_extractor-kg_info .\n\nChatBS-NexGen:Generation-id_20260420105722_463-kg_info a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105722_181-kg_info ;\n    provone:hadOutPort ChatBS-NexGen:sparql_query_extractor-kg_info .\n\nChatBS-NexGen:Generation-id_20260420105723_333-kg_info a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105723_261-kg_info ;\n    provone:hadOutPort ChatBS-NexGen:sparql_query_extractor-kg_info .\n\nChatBS-NexGen:Generation-id_20260420105727_328-post_processed_output a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105727_858-post_processed_output ;\n    provone:hadOutPort ChatBS-NexGen:query_result_post_processor-post_processed_output .\n\nChatBS-NexGen:Generation-id_20260420105727_524-kg_info a prov:Generation ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105727_306-kg_info,\n        ChatBS-NexGen:Data-id_20260420105727_801-kg_info ;\n    provone:hadOutPort ChatBS-NexGen:sparql_query_extractor-kg_info .\n\nChatBS-NexGen:Generative_Task-id_20260420105659_302 a workflow:Generative_Task ;\n    rdfs:label \"\"\"LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>\"\"\" ;\n    dc:description \"\"\"LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>\"\"\" ;\n    sio:SIO_000313 ChatBS-NexGen:id_20260420105659_302 ;\n    prov:used ChatBS-NexGen:LLM-id_20260420105659_302 .\n\nChatBS-NexGen:Generative_Task-id_20260420105703_307 a workflow:Generative_Task ;\n    rdfs:label \"\"\"Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>\"\"\" ;\n    dc:description \"\"\"Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>\"\"\" ;\n    sio:SIO_000313 ChatBS-NexGen:id_20260420105703_307 ;\n    prov:used ChatBS-NexGen:LLM-id_20260420105703_307 .\n\nChatBS-NexGen:LLM-information_extractor-Input-builder_llm a provone:Data ;\n    prov:value \"gpt-4o@en^^<xsd:string>\" .\n\nChatBS-NexGen:LLM-information_extractor-Input-text a provone:Data ;\n    prov:value \"Extract all the main ingredients without any subsidiary; return in singular noun form and First letter capital. Extract mean and dairy product in its' base form. (e.g., from 'egg white' extract 'Egg')@en^^<xsd:string>\" .\n\nChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction a provone:Data ;\n    prov:value \"Concat all the rows into single row at each column by '|' concatenation marker.@en^^<xsd:string>\" .\n\nChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction a provone:Data ;\n    prov:value \"If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat` column.@en^^<xsd:string>\" .\n\nChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt a provone:Data ;\n    prov:value \"You are a health care assistant@en^^<xsd:string>\" .\n\nChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm a provone:Data ;\n    prov:value \"gpt-4o@en^^<xsd:string>\" .\n\nChatBS-NexGen:LLM_Output-id_20260420105659_302 sio:SIO_000202 ChatBS-NexGen:Data-id_20260420105659_338-generated_answer ;\n    sio:SIO_000232 ChatBS-NexGen:LLM-id_20260420105659_302 .\n\nChatBS-NexGen:LLM_Output-id_20260420105703_307 sio:SIO_000202 ChatBS-NexGen:Data-id_20260420105703_198-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_218-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_51-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_661-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_678-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_693-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_757-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_886-extracts,\n        ChatBS-NexGen:Data-id_20260420105703_891-extracts,\n        ChatBS-NexGen:Data-id_20260420105704_531-extracts,\n        ChatBS-NexGen:Data-id_20260420105704_782-extracts ;\n    sio:SIO_000232 ChatBS-NexGen:LLM-id_20260420105703_307 .\n\nChatBS-NexGen:LLM_Output-information_extractor a workflow:Large_Language_Model_Output ;\n    sio:SIO_000202 ChatBS-NexGen:information_extractor ;\n    sio:SIO_000232 ChatBS-NexGen:LLM-information_extractor .\n\nChatBS-NexGen:LLM_Output-query_result_post_processor a workflow:Large_Language_Model_Output ;\n    sio:SIO_000202 ChatBS-NexGen:query_result_post_processor ;\n    sio:SIO_000232 ChatBS-NexGen:LLM-query_result_post_processor .\n\nChatBS-NexGen:LLM_Output-system_prompt_generator a workflow:Large_Language_Model_Output ;\n    sio:SIO_000202 ChatBS-NexGen:system_prompt_generator ;\n    sio:SIO_000232 ChatBS-NexGen:LLM-system_prompt_generator .\n\nChatBS-NexGen:Usage-id_20260420105652_112-foodPreferences a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105652_112-foodPreferences ;\n    provone:hadInPort ChatBS-NexGen:system_prompt_generator-foodPreferences .\n\nChatBS-NexGen:Usage-id_20260420105652_420-weight a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105652_420-weight ;\n    provone:hadInPort ChatBS-NexGen:system_prompt_generator-weight .\n\nChatBS-NexGen:Usage-id_20260420105652_470-bodyMassIndex a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105652_470-bodyMassIndex ;\n    provone:hadInPort ChatBS-NexGen:system_prompt_generator-bodyMassIndex .\n\nChatBS-NexGen:Usage-id_20260420105652_604-allergies a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105652_604-allergies ;\n    provone:hadInPort ChatBS-NexGen:system_prompt_generator-allergies .\n\nChatBS-NexGen:Usage-id_20260420105652_753-diagnosis a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105652_753-diagnosis ;\n    provone:hadInPort ChatBS-NexGen:system_prompt_generator-diagnosis .\n\nChatBS-NexGen:Usage-id_20260420105652_79-age a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105652_79-age ;\n    provone:hadInPort ChatBS-NexGen:system_prompt_generator-age .\n\nChatBS-NexGen:Usage-id_20260420105652_838-height a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105652_838-height ;\n    provone:hadInPort ChatBS-NexGen:system_prompt_generator-height .\n\nChatBS-NexGen:Usage-id_20260420105652_904-gender a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105652_904-gender ;\n    provone:hadInPort ChatBS-NexGen:system_prompt_generator-gender .\n\nChatBS-NexGen:Usage-id_20260420105659_579-system_prompt a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105652_456-system_prompt ;\n    provone:hadInPort ChatBS-NexGen:llm_chat-system_prompt .\n\nChatBS-NexGen:Usage-id_20260420105659_811-user_prompt a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105659_811-user_prompt ;\n    provone:hadInPort ChatBS-NexGen:llm_chat-user_prompt .\n\nChatBS-NexGen:Usage-id_20260420105703_331-text a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105659_338-generated_answer ;\n    provone:hadInPort ChatBS-NexGen:information_extractor-text .\n\nChatBS-NexGen:Usage-id_20260420105705_106-entity a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105703_757-extracts ;\n    provone:hadInPort ChatBS-NexGen:sparql_query_extractor-entity .\n\nChatBS-NexGen:Usage-id_20260420105705_924-entity a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105703_661-extracts ;\n    provone:hadInPort ChatBS-NexGen:sparql_query_extractor-entity .\n\nChatBS-NexGen:Usage-id_20260420105710_626-entity a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105703_678-extracts ;\n    provone:hadInPort ChatBS-NexGen:sparql_query_extractor-entity .\n\nChatBS-NexGen:Usage-id_20260420105711_611-entity a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105703_51-extracts ;\n    provone:hadInPort ChatBS-NexGen:sparql_query_extractor-entity .\n\nChatBS-NexGen:Usage-id_20260420105711_726-entity a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105703_218-extracts ;\n    provone:hadInPort ChatBS-NexGen:sparql_query_extractor-entity .\n\nChatBS-NexGen:Usage-id_20260420105711_768-entity a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105703_198-extracts ;\n    provone:hadInPort ChatBS-NexGen:sparql_query_extractor-entity .\n\nChatBS-NexGen:Usage-id_20260420105717_534-entity a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105703_886-extracts ;\n    provone:hadInPort ChatBS-NexGen:sparql_query_extractor-entity .\n\nChatBS-NexGen:Usage-id_20260420105719_544-entity a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105703_891-extracts ;\n    provone:hadInPort ChatBS-NexGen:sparql_query_extractor-entity .\n\nChatBS-NexGen:Usage-id_20260420105722_418-entity a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105703_693-extracts ;\n    provone:hadInPort ChatBS-NexGen:sparql_query_extractor-entity .\n\nChatBS-NexGen:Usage-id_20260420105723_195-entity a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105704_531-extracts ;\n    provone:hadInPort ChatBS-NexGen:sparql_query_extractor-entity .\n\nChatBS-NexGen:Usage-id_20260420105727_373-entity a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:Data-id_20260420105704_782-extracts ;\n    provone:hadInPort ChatBS-NexGen:sparql_query_extractor-entity .\n\nChatBS-NexGen:Usage-id_20260420105727_857-kg_knowledge a prov:Usage ;\n    provone:hadEntity ChatBS-NexGen:id_20260420105727_995 ;\n    provone:hadInPort ChatBS-NexGen:query_result_post_processor-kg_knowledge .\n\nChatBS-NexGen:batch_sparql_query_extractor-entities a provone:Port ;\n    rdfs:label \"KG query extraction input port: entities@en^^<xsd:string>\" ;\n    provone:connectsTo ChatBS-NexGen:channel_sparql_query_extraction ;\n    dc:description \"KG query extraction input port: entities@en^^<xsd:string>\" .\n\nChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge a provone:Port ;\n    rdfs:label \"Output port for kg_knowledge@en^^<xsd:string>\" ;\n    provone:connectsTo ChatBS-NexGen:channel_query_result_post_processing ;\n    dc:description \"Output port for kg_knowledge in the batch SPARQL query extraction program@en^^<xsd:string>\" .\n\nChatBS-NexGen:batch_sparql_query_extractor-query_function a provone:Port ;\n    rdfs:label \"KG query extraction input port: query_function@en^^<xsd:string>\" ;\n    dc:description \"KG query extraction input port: query_function@en^^<xsd:string>\" .\n\nChatBS-NexGen:id_20260420105652_650 a provone:Execution ;\n    rdfs:label \"system_prompt_execution_1_1@en^^<xsd:string>\" ;\n    dcterms1:identifier \"system_prompt_execution_1_1@en^^<xsd:string>\" ;\n    prov:endedAt \"2026-04-20 10:56:51@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105652_112-foodPreferences,\n        ChatBS-NexGen:Usage-id_20260420105652_420-weight,\n        ChatBS-NexGen:Usage-id_20260420105652_470-bodyMassIndex,\n        ChatBS-NexGen:Usage-id_20260420105652_604-allergies,\n        ChatBS-NexGen:Usage-id_20260420105652_753-diagnosis,\n        ChatBS-NexGen:Usage-id_20260420105652_79-age,\n        ChatBS-NexGen:Usage-id_20260420105652_838-height,\n        ChatBS-NexGen:Usage-id_20260420105652_904-gender ;\n    prov:startedAt \"2026-04-20 10:56:51@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105652_112-foodPreferences,\n        ChatBS-NexGen:Data-id_20260420105652_420-weight,\n        ChatBS-NexGen:Data-id_20260420105652_470-bodyMassIndex,\n        ChatBS-NexGen:Data-id_20260420105652_604-allergies,\n        ChatBS-NexGen:Data-id_20260420105652_753-diagnosis,\n        ChatBS-NexGen:Data-id_20260420105652_79-age,\n        ChatBS-NexGen:Data-id_20260420105652_838-height,\n        ChatBS-NexGen:Data-id_20260420105652_904-gender ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105659_302 .\n\nChatBS-NexGen:llm_chat a provone:Program ;\n    rdfs:label \"LLM Chat@en^^<xsd:string>\" ;\n    provone:hasInPort ChatBS-NexGen:llm_chat-system_prompt,\n        ChatBS-NexGen:llm_chat-user_prompt ;\n    provone:hasOutPort ChatBS-NexGen:llm_chat-generated_answer ;\n    dc:description \"Chat with the LLM.@en^^<xsd:string>\" .\n\nChatBS-NexGen:Data-id_20260420105652_112-foodPreferences a provone:Data ;\n    rdfs:label \"foodPreferences@en^^<xsd:string>\" ;\n    prov:value \"Carnivore@en^^<xsd:string>\" .\n\nChatBS-NexGen:Data-id_20260420105652_420-weight a provone:Data ;\n    rdfs:label \"weight@en^^<xsd:string>\" ;\n    prov:value \"95.2@en^^<xsd:string>\" .\n\nChatBS-NexGen:Data-id_20260420105652_470-bodyMassIndex a provone:Data ;\n    rdfs:label \"bodyMassIndex@en^^<xsd:string>\" ;\n    prov:value \"28.6@en^^<xsd:string>\" .\n\nChatBS-NexGen:Data-id_20260420105652_604-allergies a provone:Data ;\n    rdfs:label \"allergies@en^^<xsd:string>\" ;\n    prov:value \"None@en^^<xsd:string>\" .\n\nChatBS-NexGen:Data-id_20260420105652_753-diagnosis a provone:Data ;\n    rdfs:label \"diagnosis@en^^<xsd:string>\" ;\n    prov:value \"Diabetic@en^^<xsd:string>\" .\n\nChatBS-NexGen:Data-id_20260420105652_79-age a provone:Data ;\n    rdfs:label \"age@en^^<xsd:string>\" ;\n    prov:value \"30@en^^<xsd:string>\" .\n\nChatBS-NexGen:Data-id_20260420105652_838-height a provone:Data ;\n    rdfs:label \"height@en^^<xsd:string>\" ;\n    prov:value \"182.3@en^^<xsd:string>\" .\n\nChatBS-NexGen:Data-id_20260420105652_904-gender a provone:Data ;\n    rdfs:label \"gender@en^^<xsd:string>\" ;\n    prov:value \"Male@en^^<xsd:string>\" .\n\nChatBS-NexGen:LLM-id_20260420105659_302 a workflow:Large_Language_Model_Output,\n        workflow:Large_Language_Models ;\n    rdfs:label \"\"\"LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>\"\"\" ;\n    dc:description \"\"\"LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>\"\"\" ;\n    sio:SIO_000229 ChatBS-NexGen:LLM_Output-id_20260420105659_302 ;\n    sio:SIO_000230 ChatBS-NexGen:Data-id_20260420105652_456-system_prompt,\n        ChatBS-NexGen:Data-id_20260420105659_811-user_prompt ;\n    workflow:llm_model \"gpt-4o@en^^<xsd:string>\" .\n\nChatBS-NexGen:LLM-id_20260420105703_307 a workflow:Large_Language_Model_Output,\n        workflow:Large_Language_Models ;\n    rdfs:label \"\"\"Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>\"\"\" ;\n    dc:description \"\"\"Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>\"\"\" ;\n    sio:SIO_000229 ChatBS-NexGen:LLM_Output-id_20260420105703_307 ;\n    sio:SIO_000230 ChatBS-NexGen:Data-id_20260420105659_338-generated_answer ;\n    workflow:llm_model \"gpt-4o@en^^<xsd:string>\" .\n\nChatBS-NexGen:LLM-information_extractor a workflow:Large_Language_Models ;\n    rdfs:label \"Information Extractor function generator@en^^<xsd:string>\" ;\n    dc:description \"Generates the Information Extractor Function using Large language models@en^^<xsd:string>\" ;\n    sio:SIO_000229 ChatBS-NexGen:LLM_Output-information_extractor ;\n    sio:SIO_000230 ChatBS-NexGen:LLM-information_extractor-Input-builder_llm,\n        ChatBS-NexGen:LLM-information_extractor-Input-text ;\n    workflow:llm_model \"gpt-4o@en^^<xsd:string>\" ;\n    prov:atTime \"2026-03-05 19:21:32@en^^<xsd:string>\" .\n\nChatBS-NexGen:LLM-query_result_post_processor a workflow:Large_Language_Models ;\n    rdfs:label \"Query Result Post-Processor function generator@en^^<xsd:string>\" ;\n    dc:description \"Generates the post processing Function using Large language models@en^^<xsd:string>\" ;\n    sio:SIO_000229 ChatBS-NexGen:LLM_Output-query_result_post_processor ;\n    sio:SIO_000230 ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction,\n        ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction ;\n    workflow:llm_model \"gpt-4o@en^^<xsd:string>\" ;\n    prov:atTime \"2026-03-05 19:21:32@en^^<xsd:string>\" .\n\nChatBS-NexGen:LLM-system_prompt_generator a workflow:Large_Language_Models ;\n    rdfs:label \"System Prompt Template function generator@en^^<xsd:string>\" ;\n    dc:description \"Generates the System Prompt Template using Large language models@en^^<xsd:string>\" ;\n    sio:SIO_000229 ChatBS-NexGen:LLM_Output-system_prompt_generator ;\n    sio:SIO_000230 ChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt,\n        ChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm ;\n    workflow:llm_model \"gpt-4o@en^^<xsd:string>\" ;\n    prov:atTime \"2026-03-05 19:21:32@en^^<xsd:string>\" .\n\nChatBS-NexGen:channel_generated_answer a provone:Channel ;\n    rdfs:label \"Channel for the generated answer@en^^<xsd:string>\" ;\n    dc:description \"Channel for the information extraction generated by the program.@en^^<xsd:string>\" .\n\nChatBS-NexGen:channel_query_result_post_processing a provone:Channel ;\n    rdfs:label \"Channel for the query result post-processing@en^^<xsd:string>\" ;\n    dc:description \"Channel for the query result post-processing generated by the program.@en^^<xsd:string>\" .\n\nChatBS-NexGen:channel_sparql_query_extraction a provone:Channel ;\n    rdfs:label \"Channel for the SPARQL query extraction@en^^<xsd:string>\" ;\n    dc:description \"Channel for the SPARQL query extraction generated by the program.@en^^<xsd:string>\" .\n\nChatBS-NexGen:channel_system_prompt a provone:Channel ;\n    rdfs:label \"Channel for the system prompt@en^^<xsd:string>\" ;\n    dc:description \"Channel for the system prompt generated by the program.@en^^<xsd:string>\" .\n\nChatBS-NexGen:id_20260420105727_995 a provone:Collection ;\n    provone:hadMember ChatBS-NexGen:Data-id_20260420105705_232-kg_info,\n        ChatBS-NexGen:Data-id_20260420105705_668-kg_info,\n        ChatBS-NexGen:Data-id_20260420105705_670-kg_info,\n        ChatBS-NexGen:Data-id_20260420105710_564-kg_info,\n        ChatBS-NexGen:Data-id_20260420105711_45-kg_info,\n        ChatBS-NexGen:Data-id_20260420105711_547-kg_info,\n        ChatBS-NexGen:Data-id_20260420105711_637-kg_info,\n        ChatBS-NexGen:Data-id_20260420105711_658-kg_info,\n        ChatBS-NexGen:Data-id_20260420105711_94-kg_info,\n        ChatBS-NexGen:Data-id_20260420105717_899-kg_info,\n        ChatBS-NexGen:Data-id_20260420105719_258-kg_info,\n        ChatBS-NexGen:Data-id_20260420105719_416-kg_info,\n        ChatBS-NexGen:Data-id_20260420105722_181-kg_info,\n        ChatBS-NexGen:Data-id_20260420105723_261-kg_info,\n        ChatBS-NexGen:Data-id_20260420105727_306-kg_info,\n        ChatBS-NexGen:Data-id_20260420105727_801-kg_info ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:information_extractor a provone:Program ;\n    rdfs:label \"Information Extractor@en^^<xsd:string>\" ;\n    provone:hasInPort ChatBS-NexGen:information_extractor-text ;\n    provone:hasOutPort ChatBS-NexGen:information_extractor-extracts ;\n    dc:description \"Extracts entities or relevant information from the generated text using specified instructions.@en^^<xsd:string>\" ;\n    dcterms1:identifier \"2@en^^<xsd:string>\" ;\n    prov:atTime \"2026-03-05 19:20:19@en^^<xsd:string>\" .\n\nChatBS-NexGen:information_extractor-extracts a provone:Port ;\n    rdfs:label \"Extracted Entities@en^^<xsd:string>\" ;\n    provone:connectsTo ChatBS-NexGen:channel_sparql_query_extraction ;\n    dc:description \"The list of entities extracted from the text@en^^<xsd:string>\" .\n\nChatBS-NexGen:information_extractor-text a provone:Port ;\n    rdfs:label \"Input port for text@en^^<xsd:string>\" ;\n    provone:connectsTo ChatBS-NexGen:channel_generated_answer ;\n    dc:description \"Input port for text in the information extraction program@en^^<xsd:string>\" .\n\nChatBS-NexGen:llm_chat-generated_answer a provone:Port ;\n    rdfs:label \"LLM Chat output port: generated_answer@en^^<xsd:string>\" ;\n    provone:connectsTo ChatBS-NexGen:channel_generated_answer ;\n    dc:description \"LLM Chat output port: generated_answer@en^^<xsd:string>\" .\n\nChatBS-NexGen:llm_chat-system_prompt a provone:Port ;\n    rdfs:label \"LLM Chat input port: system_prompt@en^^<xsd:string>\" ;\n    provone:connectsTo ChatBS-NexGen:channel_system_prompt ;\n    dc:description \"LLM Chat input port: system_prompt@en^^<xsd:string>\" .\n\nChatBS-NexGen:llm_chat-user_prompt a provone:Port ;\n    rdfs:label \"LLM Chat input port: user_prompt@en^^<xsd:string>\" ;\n    dc:description \"LLM Chat input port: user_prompt@en^^<xsd:string>\" .\n\nChatBS-NexGen:query_result_post_processor a provone:Program ;\n    rdfs:label \"Query Result Post-Processor@en^^<xsd:string>\" ;\n    provone:hasInPort ChatBS-NexGen:query_result_post_processor-kg_knowledge ;\n    provone:hasOutPort ChatBS-NexGen:query_result_post_processor-post_processed_output ;\n    dc:description \"Post-processes the query results from the knowledge graph.@en^^<xsd:string>\" ;\n    dcterms1:identifier \"4@en^^<xsd:string>\" ;\n    prov:atTime \"2026-03-05 19:21:32@en^^<xsd:string>\" .\n\nChatBS-NexGen:query_result_post_processor-kg_knowledge a provone:Port ;\n    rdfs:label \"Post-processing input port: kg_knowledge@en^^<xsd:string>\" ;\n    provone:connectsTo ChatBS-NexGen:channel_query_result_post_processing ;\n    dc:description \"Post-processing input port: kg_knowledge@en^^<xsd:string>\" .\n\nChatBS-NexGen:query_result_post_processor-post_processed_output a provone:Port ;\n    rdfs:label \"Post-processed output port: post_processed_output@en^^<xsd:string>\" ;\n    dc:description \"Post-processed output port: post_processed_output@en^^<xsd:string>\" .\n\nChatBS-NexGen:system_prompt_generator a provone:Program ;\n    rdfs:label \"System Prompt Template Generator@en^^<xsd:string>\" ;\n    provone:hasInPort ChatBS-NexGen:system_prompt_generator-age,\n        ChatBS-NexGen:system_prompt_generator-allergies,\n        ChatBS-NexGen:system_prompt_generator-bodyMassIndex,\n        ChatBS-NexGen:system_prompt_generator-diagnosis,\n        ChatBS-NexGen:system_prompt_generator-foodPreferences,\n        ChatBS-NexGen:system_prompt_generator-gender,\n        ChatBS-NexGen:system_prompt_generator-height,\n        ChatBS-NexGen:system_prompt_generator-weight ;\n    provone:hasOutPort ChatBS-NexGen:system_prompt_generator-system_prompt ;\n    dc:description \"Generates a system prompt based on the provided dataset structure and user input.@en^^<xsd:string>\" ;\n    dcterms1:identifier \"1@en^^<xsd:string>\" ;\n    prov:atTime \"2026-03-05 19:19:23@en^^<xsd:string>\" .\n\nChatBS-NexGen:system_prompt_generator-age a provone:Port ;\n    rdfs:label \"Input port for age@en^^<xsd:string>\" ;\n    dc:description \"Input port for age in the system prompt generation program@en^^<xsd:string>\" .\n\nChatBS-NexGen:system_prompt_generator-allergies a provone:Port ;\n    rdfs:label \"Input port for allergies@en^^<xsd:string>\" ;\n    dc:description \"Input port for allergies in the system prompt generation program@en^^<xsd:string>\" .\n\nChatBS-NexGen:system_prompt_generator-bodyMassIndex a provone:Port ;\n    rdfs:label \"Input port for bodyMassIndex@en^^<xsd:string>\" ;\n    dc:description \"Input port for bodyMassIndex in the system prompt generation program@en^^<xsd:string>\" .\n\nChatBS-NexGen:system_prompt_generator-diagnosis a provone:Port ;\n    rdfs:label \"Input port for diagnosis@en^^<xsd:string>\" ;\n    dc:description \"Input port for diagnosis in the system prompt generation program@en^^<xsd:string>\" .\n\nChatBS-NexGen:system_prompt_generator-foodPreferences a provone:Port ;\n    rdfs:label \"Input port for foodPreferences@en^^<xsd:string>\" ;\n    dc:description \"Input port for foodPreferences in the system prompt generation program@en^^<xsd:string>\" .\n\nChatBS-NexGen:system_prompt_generator-gender a provone:Port ;\n    rdfs:label \"Input port for gender@en^^<xsd:string>\" ;\n    dc:description \"Input port for gender in the system prompt generation program@en^^<xsd:string>\" .\n\nChatBS-NexGen:system_prompt_generator-height a provone:Port ;\n    rdfs:label \"Input port for height@en^^<xsd:string>\" ;\n    dc:description \"Input port for height in the system prompt generation program@en^^<xsd:string>\" .\n\nChatBS-NexGen:system_prompt_generator-system_prompt a provone:Port ;\n    rdfs:label \"System Prompt@en^^<xsd:string>\" ;\n    provone:connectsTo ChatBS-NexGen:channel_system_prompt ;\n    dc:description \"The system prompt generated by the program based on the dataset structure and user input.@en^^<xsd:string>\" .\n\nChatBS-NexGen:system_prompt_generator-weight a provone:Port ;\n    rdfs:label \"Input port for weight@en^^<xsd:string>\" ;\n    dc:description \"Input port for weight in the system prompt generation program@en^^<xsd:string>\" .\n\nChatBS-NexGen:Data-id_20260420105659_811-user_prompt a provone:Data ;\n    rdfs:label \"user_prompt@en^^<xsd:string>\" ;\n    prov:value \"I need suggestions for light and energy-boosting foods to eat before my gym workout.@en^^<xsd:string>\" .\n\nChatBS-NexGen:Data-id_20260420105727_858-post_processed_output a provone:Data ;\n    rdfs:label \"row_1@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"Tropical fruit|Articles containing video clips|Animal taxa named by Carl Linnaeus|Commercial fish|Republics|Desserts@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"Avocado|Cheese|Chicken|Tuna|Turkey|Yogurt@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"0.66|0|0|0|0|4@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:Data-id_20260420105652_456-system_prompt a provone:Data ;\n    rdfs:label \"system_prompt@en^^<xsd:string>\" ;\n    prov:value \"You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105652_650,\n        ChatBS-NexGen:id_20260420105659_302 .\n\nChatBS-NexGen:Data-id_20260420105705_232-kg_info a provone:Data ;\n    rdfs:label \"row_1@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"NA@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"NA@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"NA@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105705_598 .\n\nChatBS-NexGen:Data-id_20260420105705_668-kg_info a provone:Data ;\n    rdfs:label \"row_1@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"Animal taxa named by Carl Linnaeus@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"Chicken@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"NA@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105705_972 .\n\nChatBS-NexGen:Data-id_20260420105705_670-kg_info a provone:Data ;\n    rdfs:label \"row_0@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105705_598 .\n\nChatBS-NexGen:Data-id_20260420105710_564-kg_info a provone:Data ;\n    rdfs:label \"row_1@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"NA@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"NA@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"NA@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105710_61 .\n\nChatBS-NexGen:Data-id_20260420105711_45-kg_info a provone:Data ;\n    rdfs:label \"row_1@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"Desserts@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"Yogurt@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"4@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105711_662 .\n\nChatBS-NexGen:Data-id_20260420105711_547-kg_info a provone:Data ;\n    rdfs:label \"row_1@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"NA@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"NA@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"NA@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105711_772 .\n\nChatBS-NexGen:Data-id_20260420105711_637-kg_info a provone:Data ;\n    rdfs:label \"row_0@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105711_772 .\n\nChatBS-NexGen:Data-id_20260420105711_658-kg_info a provone:Data ;\n    rdfs:label \"row_1@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"Tropical fruit@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"Avocado@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"0.66@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105711_320 .\n\nChatBS-NexGen:Data-id_20260420105711_94-kg_info a provone:Data ;\n    rdfs:label \"row_0@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105710_61 .\n\nChatBS-NexGen:Data-id_20260420105717_899-kg_info a provone:Data ;\n    rdfs:label \"row_1@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"Commercial fish@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"Tuna@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"NA@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105717_370 .\n\nChatBS-NexGen:Data-id_20260420105719_258-kg_info a provone:Data ;\n    rdfs:label \"row_0@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105719_327 .\n\nChatBS-NexGen:Data-id_20260420105719_416-kg_info a provone:Data ;\n    rdfs:label \"row_1@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"NA@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"NA@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"NA@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105719_327 .\n\nChatBS-NexGen:Data-id_20260420105722_181-kg_info a provone:Data ;\n    rdfs:label \"row_1@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"Republics@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"Turkey@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"NA@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105722_117 .\n\nChatBS-NexGen:Data-id_20260420105723_261-kg_info a provone:Data ;\n    rdfs:label \"row_1@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"Articles containing video clips@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"Cheese@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"NA@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105723_114 .\n\nChatBS-NexGen:Data-id_20260420105727_306-kg_info a provone:Data ;\n    rdfs:label \"row_1@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"NA@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"NA@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"NA@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105727_300 .\n\nChatBS-NexGen:Data-id_20260420105727_801-kg_info a provone:Data ;\n    rdfs:label \"row_0@en^^<xsd:string>\" ;\n    DFColumn:ingredientCat \"@en^^<xsd:string>\" ;\n    DFColumn:ingredientName \"@en^^<xsd:string>\" ;\n    DFColumn:sugarG \"@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105727_300 .\n\nChatBS-NexGen:id_20260420105659_302 a provone:Execution ;\n    rdfs:label \"llm_chat_1_1@en^^<xsd:string>\" ;\n    dcterms1:identifier \"llm_chat_1_1@en^^<xsd:string>\" ;\n    sio:SIO_000369 ChatBS-NexGen:Generative_Task-id_20260420105659_302 ;\n    prov:endedAt \"2026-04-20 10:56:59@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:llm_chat-Association-id_20260420105659_302> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105659_282-generated_answer ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105659_579-system_prompt,\n        ChatBS-NexGen:Usage-id_20260420105659_811-user_prompt ;\n    prov:startedAt \"2026-04-20 10:56:52@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105652_456-system_prompt,\n        ChatBS-NexGen:Data-id_20260420105659_811-user_prompt ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105703_307 .\n\nChatBS-NexGen:id_20260420105705_972 a provone:Execution ;\n    rdfs:label \"sparql_query_1_1_1@en^^<xsd:string>\" ;\n    dcterms1:identifier \"1_1_1@en^^<xsd:string>\" ;\n    prov:endedAt \"2026-04-20 10:57:04@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_972> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105705_591-kg_info ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105705_106-entity ;\n    prov:startedAt \"2026-04-20 10:57:04@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105703_757-extracts,\n        ChatBS-NexGen:Data-id_20260420105705_668-kg_info ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:id_20260420105711_320 a provone:Execution ;\n    rdfs:label \"sparql_query_1_1_4@en^^<xsd:string>\" ;\n    dcterms1:identifier \"1_1_4@en^^<xsd:string>\" ;\n    prov:endedAt \"2026-04-20 10:57:11@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_320> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105711_508-kg_info ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105711_611-entity ;\n    prov:startedAt \"2026-04-20 10:57:11@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105703_51-extracts,\n        ChatBS-NexGen:Data-id_20260420105711_658-kg_info ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:id_20260420105711_662 a provone:Execution ;\n    rdfs:label \"sparql_query_1_1_5@en^^<xsd:string>\" ;\n    dcterms1:identifier \"1_1_5@en^^<xsd:string>\" ;\n    prov:endedAt \"2026-04-20 10:57:11@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_662> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105711_758-kg_info ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105711_768-entity ;\n    prov:startedAt \"2026-04-20 10:57:11@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105703_198-extracts,\n        ChatBS-NexGen:Data-id_20260420105711_45-kg_info ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:id_20260420105717_370 a provone:Execution ;\n    rdfs:label \"sparql_query_1_1_7@en^^<xsd:string>\" ;\n    dcterms1:identifier \"1_1_7@en^^<xsd:string>\" ;\n    prov:endedAt \"2026-04-20 10:57:17@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105717_370> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105717_107-kg_info ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105717_534-entity ;\n    prov:startedAt \"2026-04-20 10:57:11@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105703_886-extracts,\n        ChatBS-NexGen:Data-id_20260420105717_899-kg_info ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:id_20260420105722_117 a provone:Execution ;\n    rdfs:label \"sparql_query_1_1_9@en^^<xsd:string>\" ;\n    dcterms1:identifier \"1_1_9@en^^<xsd:string>\" ;\n    prov:endedAt \"2026-04-20 10:57:22@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105722_117> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105722_463-kg_info ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105722_418-entity ;\n    prov:startedAt \"2026-04-20 10:57:19@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105703_693-extracts,\n        ChatBS-NexGen:Data-id_20260420105722_181-kg_info ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:id_20260420105723_114 a provone:Execution ;\n    rdfs:label \"sparql_query_1_1_10@en^^<xsd:string>\" ;\n    dcterms1:identifier \"1_1_10@en^^<xsd:string>\" ;\n    prov:endedAt \"2026-04-20 10:57:23@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105723_114> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105723_333-kg_info ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105723_195-entity ;\n    prov:startedAt \"2026-04-20 10:57:22@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105704_531-extracts,\n        ChatBS-NexGen:Data-id_20260420105723_261-kg_info ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:Data-id_20260420105659_338-generated_answer a provone:Data ;\n    rdfs:label \"generated_answer@en^^<xsd:string>\" ;\n    prov:value \"\"\"To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response.@en^^<xsd:string>\"\"\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105659_302,\n        ChatBS-NexGen:id_20260420105703_307 .\n\nChatBS-NexGen:Data-id_20260420105703_198-extracts a provone:Data ;\n    rdfs:label \"extracts@en^^<xsd:string>\" ;\n    prov:value \"Yogurt@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105703_307,\n        ChatBS-NexGen:id_20260420105711_662 .\n\nChatBS-NexGen:Data-id_20260420105703_218-extracts a provone:Data ;\n    rdfs:label \"extracts@en^^<xsd:string>\" ;\n    prov:value \"Nut@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105703_307,\n        ChatBS-NexGen:id_20260420105711_772 .\n\nChatBS-NexGen:Data-id_20260420105703_51-extracts a provone:Data ;\n    rdfs:label \"extracts@en^^<xsd:string>\" ;\n    prov:value \"Avocado@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105703_307,\n        ChatBS-NexGen:id_20260420105711_320 .\n\nChatBS-NexGen:Data-id_20260420105703_661-extracts a provone:Data ;\n    rdfs:label \"extracts@en^^<xsd:string>\" ;\n    prov:value \"Sweet Potato@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105703_307,\n        ChatBS-NexGen:id_20260420105705_598 .\n\nChatBS-NexGen:Data-id_20260420105703_678-extracts a provone:Data ;\n    rdfs:label \"extracts@en^^<xsd:string>\" ;\n    prov:value \"Egg@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105703_307,\n        ChatBS-NexGen:id_20260420105710_61 .\n\nChatBS-NexGen:Data-id_20260420105703_693-extracts a provone:Data ;\n    rdfs:label \"extracts@en^^<xsd:string>\" ;\n    prov:value \"Turkey@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105703_307,\n        ChatBS-NexGen:id_20260420105722_117 .\n\nChatBS-NexGen:Data-id_20260420105703_757-extracts a provone:Data ;\n    rdfs:label \"extracts@en^^<xsd:string>\" ;\n    prov:value \"Chicken@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105703_307,\n        ChatBS-NexGen:id_20260420105705_972 .\n\nChatBS-NexGen:Data-id_20260420105703_886-extracts a provone:Data ;\n    rdfs:label \"extracts@en^^<xsd:string>\" ;\n    prov:value \"Tuna@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105703_307,\n        ChatBS-NexGen:id_20260420105717_370 .\n\nChatBS-NexGen:Data-id_20260420105703_891-extracts a provone:Data ;\n    rdfs:label \"extracts@en^^<xsd:string>\" ;\n    prov:value \"Olive Oil@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105703_307,\n        ChatBS-NexGen:id_20260420105719_327 .\n\nChatBS-NexGen:Data-id_20260420105704_531-extracts a provone:Data ;\n    rdfs:label \"extracts@en^^<xsd:string>\" ;\n    prov:value \"Cheese@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105703_307,\n        ChatBS-NexGen:id_20260420105723_114 .\n\nChatBS-NexGen:Data-id_20260420105704_782-extracts a provone:Data ;\n    rdfs:label \"extracts@en^^<xsd:string>\" ;\n    prov:value \"Fruit@en^^<xsd:string>\" ;\n    prov:wasGeneratedBy ChatBS-NexGen:id_20260420105703_307,\n        ChatBS-NexGen:id_20260420105727_300 .\n\nChatBS-NexGen:id_20260420105705_598 a provone:Execution ;\n    rdfs:label \"sparql_query_1_1_2@en^^<xsd:string>\" ;\n    dcterms1:identifier \"1_1_2@en^^<xsd:string>\" ;\n    prov:endedAt \"2026-04-20 10:57:05@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_598> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105705_633-kg_info ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105705_924-entity ;\n    prov:startedAt \"2026-04-20 10:57:05@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105703_661-extracts,\n        ChatBS-NexGen:Data-id_20260420105705_232-kg_info,\n        ChatBS-NexGen:Data-id_20260420105705_670-kg_info ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:id_20260420105710_61 a provone:Execution ;\n    rdfs:label \"sparql_query_1_1_3@en^^<xsd:string>\" ;\n    dcterms1:identifier \"1_1_3@en^^<xsd:string>\" ;\n    prov:endedAt \"2026-04-20 10:57:10@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105710_61> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105710_897-kg_info ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105710_626-entity ;\n    prov:startedAt \"2026-04-20 10:57:05@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105703_678-extracts,\n        ChatBS-NexGen:Data-id_20260420105710_564-kg_info,\n        ChatBS-NexGen:Data-id_20260420105711_94-kg_info ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:id_20260420105711_772 a provone:Execution ;\n    rdfs:label \"sparql_query_1_1_6@en^^<xsd:string>\" ;\n    dcterms1:identifier \"1_1_6@en^^<xsd:string>\" ;\n    prov:endedAt \"2026-04-20 10:57:11@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_772> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105711_565-kg_info ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105711_726-entity ;\n    prov:startedAt \"2026-04-20 10:57:11@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105703_218-extracts,\n        ChatBS-NexGen:Data-id_20260420105711_547-kg_info,\n        ChatBS-NexGen:Data-id_20260420105711_637-kg_info ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:id_20260420105719_327 a provone:Execution ;\n    rdfs:label \"sparql_query_1_1_8@en^^<xsd:string>\" ;\n    dcterms1:identifier \"1_1_8@en^^<xsd:string>\" ;\n    prov:endedAt \"2026-04-20 10:57:19@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105719_327> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105719_298-kg_info ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105719_544-entity ;\n    prov:startedAt \"2026-04-20 10:57:17@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105703_891-extracts,\n        ChatBS-NexGen:Data-id_20260420105719_258-kg_info,\n        ChatBS-NexGen:Data-id_20260420105719_416-kg_info ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:id_20260420105727_300 a provone:Execution ;\n    rdfs:label \"sparql_query_1_1_11@en^^<xsd:string>\" ;\n    dcterms1:identifier \"1_1_11@en^^<xsd:string>\" ;\n    prov:endedAt \"2026-04-20 10:57:27@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105727_300> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105727_524-kg_info ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105727_373-entity ;\n    prov:startedAt \"2026-04-20 10:57:23@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105704_782-extracts,\n        ChatBS-NexGen:Data-id_20260420105727_306-kg_info,\n        ChatBS-NexGen:Data-id_20260420105727_801-kg_info ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105727_835 .\n\nChatBS-NexGen:sparql_query_extractor a provone:Program ;\n    rdfs:label \"SPARQL Query Builder@en^^<xsd:string>\" ;\n    provone:hasInPort ChatBS-NexGen:sparql_query_extractor-entity ;\n    provone:hasOutPort ChatBS-NexGen:sparql_query_extractor-kg_info ;\n    dc:description \"Builds SPARQL queries to extract information about the entities from the knowledge graph.@en^^<xsd:string>\" ;\n    dcterms1:identifier \"3@en^^<xsd:string>\" ;\n    prov:atTime \"2026-03-05 19:20:56@en^^<xsd:string>\" .\n\nChatBS-NexGen:sparql_query_extractor-entity a provone:Port ;\n    rdfs:label \"Input port for entity@en^^<xsd:string>\" ;\n    dc:description \"Input port for entity in the KG query extraction program@en^^<xsd:string>\" .\n\nChatBS-NexGen:sparql_query_extractor-kg_info a provone:Port ;\n    rdfs:label \"Output port for kg_info@en^^<xsd:string>\" ;\n    dc:description \"Output port for kg_info in the KG query extraction program@en^^<xsd:string>\" .\n\nChatBS-NexGen:id_20260420105727_835 a provone:Execution ;\n    rdfs:label \"post_processing_1_1@en^^<xsd:string>\" ;\n    dcterms1:identifier \"post_processing_1_1@en^^<xsd:string>\" ;\n    prov:endedAt \"2026-04-20 10:57:27@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:query_result_post_processor-Association-id_20260420105727_835> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105727_328-post_processed_output ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105727_857-kg_knowledge ;\n    prov:startedAt \"2026-04-20 10:57:27@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105727_858-post_processed_output,\n        ChatBS-NexGen:id_20260420105727_995 ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user .\n\nChatBS-NexGen:id_20260420105703_307 a provone:Execution ;\n    rdfs:label \"information_extraction_1_1@en^^<xsd:string>\" ;\n    dcterms1:identifier \"information_extraction_1_1@en^^<xsd:string>\" ;\n    sio:SIO_000369 ChatBS-NexGen:Generative_Task-id_20260420105703_307 ;\n    prov:endedAt \"2026-04-20 10:57:03@en^^<xsd:string>\" ;\n    prov:qualifiedAssociation <http://testwebsite/testProgram#ChatBS-NexGen:information_extractor-Association-id_20260420105703_307> ;\n    prov:qualifiedGeneration ChatBS-NexGen:Generation-id_20260420105703_814-extracts ;\n    prov:qualifiedUsage ChatBS-NexGen:Usage-id_20260420105703_331-text ;\n    prov:startedAt \"2026-04-20 10:56:59@en^^<xsd:string>\" ;\n    prov:used ChatBS-NexGen:Data-id_20260420105659_338-generated_answer ;\n    prov:wasAssociatedWith ChatBS-NexGen:test_user ;\n    prov:wasInformedBy ChatBS-NexGen:id_20260420105705_598,\n        ChatBS-NexGen:id_20260420105705_972,\n        ChatBS-NexGen:id_20260420105710_61,\n        ChatBS-NexGen:id_20260420105711_320,\n        ChatBS-NexGen:id_20260420105711_662,\n        ChatBS-NexGen:id_20260420105711_772,\n        ChatBS-NexGen:id_20260420105717_370,\n        ChatBS-NexGen:id_20260420105719_327,\n        ChatBS-NexGen:id_20260420105722_117,\n        ChatBS-NexGen:id_20260420105723_114,\n        ChatBS-NexGen:id_20260420105727_300 .",
+    "schema_info_used": "Workflow schema\nClasses:\n- workflow:Generative_Task (Generative Task): A task involving in using artificial intelligence to create new, original content such as text, images, code, or music based on patterns learned from existing data.\n- workflow:Large_Language_Models (Large Language Models)\n- workflow:Large_Language_Model_Output (Large Language Model Output): An Output Artifact from a AI Task\n- eo:Reasoning_Mode (Reasoning Mode): a process being executed by the system that achieves a particular goal; e.g. inference models such as treatment planning involved in medical diagnosis can be considered...\n- provone:Program (Program): A Program represents a computational task that consumes and produces data through its input and output ports, respectively. It can be atomic or composite, the latter case...\n- provone:Port (Port): A Port enables a Program to send and receive Entities (Data, Visualizations, etc.). When used in a role as an input port, default parameters may be configured for the Port.\n- provone:Channel (Channel): A Channel provides a connection between Ports that are defined for Programs. Typically, a Program with an output Port defined using the provone:hasOutPort object property...\n- provone:Execution (Execution): An Execution represents the execution of a Program. If the Program in question is a Workflow, then the Execution represents a trace of its execution.\n- provone:User (User): A User is the person responsible for the execution of a Program, which in turn can be a Workflow. Its specification serves attribution and accountability purposes.\n- provone:Data (Data): A Data item represents the basic unit of information consumed and produced by a Program. Multiple Data items may be grouped into a Collection.\n- provone:Collection\n- prov:Association (Association): An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity. It further allows for a plan to...\n- prov:Usage (Usage): Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity.\n- prov:Generation (Generation): Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.\nObject properties:\n- sio:SIO_000202; links workflow:Large_Language_Model_Output -> provone:Program, workflow:Large_Language_Model_Output -> provone:Data\n- sio:SIO_000229 (has output); links workflow:Large_Language_Models -> workflow:Large_Language_Model_Output\n- sio:SIO_000232 (is output of); links workflow:Large_Language_Model_Output -> workflow:Large_Language_Models\n- sio:SIO_000313 (is component part of); links workflow:Generative_Task -> provone:Execution\n- sio:SIO_000369 (has component part); links provone:Execution -> workflow:Generative_Task\n- sio:SIO_000230 (has input); links workflow:Large_Language_Models -> provone:Data\n- prov:used (used): A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .; links provone:Execution -> provone:Data, workflow:Generative_Task -> workflow:Large_Language_Models\n- prov:agent (hadPlan): Enables the specification of a particular User in a particular Association. This allows for further qualification of the prov:wasAssociatedWith property in the context of an...; links prov:Association -> provone:User\n- prov:qualifiedAssociation (qualifiedAssociation): If this Activity prov:wasAssociatedWith Agent :ag, then it can qualify the Association using prov:qualifiedAssociation [ a prov:Association; prov:agent :ag; :foo :bar ].; links provone:Execution -> prov:Association\n- prov:qualifiedUsage (qualifiedUsage): Enables the specification of a particular Usage by a particular Execution. This allows for further qualification of the prov:used property in the context of an Execution.; links provone:Execution -> prov:Usage\n- prov:qualifiedGeneration (qualifiedGeneration): If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualifiedGeneration [ a prov:Generation; prov:entity :e; :foo :bar ].; links provone:Execution -> prov:Generation\n- prov:hadPlan (hadPlan): The _optional_ Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.; links prov:Association -> provone:Program\n- provone:hasOutPort (hasOutPort): Enables the specification of a Port as an output port of a particular Program.; links provone:Program -> provone:Port\n- provone:hasInPort (hasInPort): Enables the specification of a Port as an input port of a particular Program.; links provone:Program -> provone:Port\n- provone:connectsTo (connectsTo): Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.; links provone:Port -> provone:Port\n- provone:hadInPort (hadInPort): Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.; links prov:Usage -> provone:Port\n- provone:hadOutPort (hadOutPort): Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:wasGeneratedBy property in the context of...; links prov:Generation -> provone:Port\n- prov:hadMember (hadMember); links provone:Collection -> provone:Data\n- provone:hadEntity (hadEntity): Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and...; links prov:Usage -> provone:Data, prov:Generation -> provone:Data\n- prov:wasInformedBy (wasInformedBy): An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.; links provone:Execution -> provone:Execution\n- prov:wasGeneratedBy (wasGeneratedBy); links provone:Data -> provone:Execution, provone:Collection -> provone:Execution\n- prov:wasAssociatedWith (wasAssociatedWith): An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.; links provone:Execution -> provone:User",
+    "schema_reasoning": {},
+    "retrieved_objects": [
+        "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+        "ChatBS-NexGen:Generative_Task-id_20260420105703_307",
+        "ChatBS-NexGen:Generative_Task-information_extractor",
+        "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+        "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+        "ChatBS-NexGen:LLM_Output-id_20260420105659_302",
+        "ChatBS-NexGen:LLM_Output-id_20260420105703_307",
+        "http://testwebsite/testProgram#id_20260420105727_835",
+        "http://testwebsite/testProgram#Generative_Task-query_result_post_processor"
+    ],
+    "important_entities": [
+        "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+        "ChatBS-NexGen:Generative_Task-id_20260420105703_307",
+        "ChatBS-NexGen:Generative_Task-information_extractor",
+        "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+        "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+        "ChatBS-NexGen:LLM_Output-id_20260420105659_302",
+        "ChatBS-NexGen:LLM_Output-id_20260420105703_307",
+        "http://testwebsite/testProgram#id_20260420105727_835",
+        "http://testwebsite/testProgram#Generative_Task-query_result_post_processor"
+    ],
+    "synthetic_questions_plan": [
+        {
+            "round": 0,
+            "question": "Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?",
+            "object_uris": [
+                "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+                "ChatBS-NexGen:Generative_Task-id_20260420105703_307",
+                "ChatBS-NexGen:Generative_Task-information_extractor",
+                "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+                "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+            ]
+        },
+        {
+            "round": 1,
+            "question": "Given the current evidence, what should be retrieved next to answer 'Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?'? Focus on: The answer states that there is no evidence of a Generative Task component within any execution of the \u201cPost\u2011processes the query results\u201d function, but it does not provide literal data (e.g., specific execution identifiers or timestamps) to substantiate this claim. The evidence context lists several `Generative_Task` objects and their descriptions; however, it does not explicitly link an execution of the post\u2011processing function to a Generative Task component. To satisfy the question fully, the answer should include concrete literals indicating whether such an execution exists (e.g., an execution URI with a referenced Generative Task) or clarify that the data is incomplete and further retrieval is needed.",
+            "object_uris": [
+                "ChatBS-NexGen:LLM_Output-id_20260420105659_302",
+                "ChatBS-NexGen:LLM_Output-id_20260420105703_307"
+            ]
+        },
+        {
+            "round": 2,
+            "question": "Given the current evidence, what should be retrieved next to answer 'Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?'? Focus on: The answer asserts that there is no evidence of a Generative_Task component within any execution of the \u201cPost-processes the query results\u201d function, but it does not provide concrete literal data (such as specific execution identifiers, timestamps, or explicit provenance links) to substantiate this claim. To fully satisfy the question, the answer should include actual literals indicating whether such an execution exists\u2014for example, an execution URI that references a `workflow:Generative_Task` via `sio:SIO_000369`, along with relevant timestamps\u2014or explicitly state that the necessary provenance data is incomplete and further retrieval is required.",
+            "object_uris": []
+        }
+    ],
+    "intermediary_results": [
+        {
+            "step_id": "step1",
+            "sub_question": "Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?",
+            "program_id": "explore_object_of_class",
+            "execution_mode": "initial-data",
+            "strategy": "by_program",
+            "parameter_values": [
+                {
+                    "class_uri": "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/Generative_Task"
+                }
+            ],
+            "results": {
+                "set_1": {
+                    "set_1": [
+                        {
+                            "value": "ChatBS-NexGen:Generative_Task-id_20260420105659_302"
+                        },
+                        {
+                            "value": "ChatBS-NexGen:Generative_Task-id_20260420105703_307"
+                        },
+                        {
+                            "value": "ChatBS-NexGen:Generative_Task-information_extractor"
+                        },
+                        {
+                            "value": "ChatBS-NexGen:Generative_Task-query_result_post_processor"
+                        },
+                        {
+                            "value": "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+                        }
+                    ]
+                }
+            },
+            "answer": "Retrieved 5 initial candidate object(s) relevant to the question: Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within? <cite, id=0>ChatBS-NexGen:Generative_Task-id_20260420105659_302</cite> <cite, id=1>ChatBS-NexGen:Generative_Task-id_20260420105703_307</cite> <cite, id=2>ChatBS-NexGen:Generative_Task-information_extractor</cite> <cite, id=3>ChatBS-NexGen:Generative_Task-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:Generative_Task-system_prompt_generator</cite>",
+            "important_entities": [
+                "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+                "ChatBS-NexGen:Generative_Task-id_20260420105703_307",
+                "ChatBS-NexGen:Generative_Task-information_extractor",
+                "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+                "ChatBS-NexGen:Generative_Task-system_prompt_generator"
+            ],
+            "extracted_results": [
+                {
+                    "uri": "ChatBS-NexGen:Generative_Task-id_20260420105659_302",
+                    "attributes": [
+                        {
+                            "relation": "dc:description",
+                            "object": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "sio:SIO_000313",
+                            "object": "ChatBS-NexGen:id_20260420105659_302",
+                            "object_label": "llm_chat_1_1@en^^<xsd:string>",
+                            "object_class": "provone:Execution"
+                        },
+                        {
+                            "relation": "rdf:type",
+                            "object": "workflow:Generative_Task",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "rdfs:label",
+                            "object": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "prov:used",
+                            "object": "ChatBS-NexGen:LLM-id_20260420105659_302",
+                            "object_label": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+                            "object_class": "workflow:Large_Language_Model_Output"
+                        },
+                        {
+                            "relation": "prov:used",
+                            "object": "ChatBS-NexGen:LLM-id_20260420105659_302",
+                            "object_label": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+                            "object_class": "workflow:Large_Language_Models"
+                        }
+                    ]
+                },
+                {
+                    "uri": "ChatBS-NexGen:Generative_Task-id_20260420105703_307",
+                    "attributes": [
+                        {
+                            "relation": "dc:description",
+                            "object": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "sio:SIO_000313",
+                            "object": "ChatBS-NexGen:id_20260420105703_307",
+                            "object_label": "information_extraction_1_1@en^^<xsd:string>",
+                            "object_class": "provone:Execution"
+                        },
+                        {
+                            "relation": "rdf:type",
+                            "object": "workflow:Generative_Task",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "rdfs:label",
+                            "object": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "prov:used",
+                            "object": "ChatBS-NexGen:LLM-id_20260420105703_307",
+                            "object_label": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+                            "object_class": "workflow:Large_Language_Model_Output"
+                        },
+                        {
+                            "relation": "prov:used",
+                            "object": "ChatBS-NexGen:LLM-id_20260420105703_307",
+                            "object_label": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+                            "object_class": "workflow:Large_Language_Models"
+                        }
+                    ]
+                },
+                {
+                    "uri": "ChatBS-NexGen:Generative_Task-information_extractor",
+                    "attributes": [
+                        {
+                            "relation": "dc:description",
+                            "object": "Generates the Information Extractor Function using Large language models@en^^<xsd:string>",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "rdf:type",
+                            "object": "workflow:Generative_Task",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "rdfs:label",
+                            "object": "Information Extractor function generator@en^^<xsd:string>",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "prov:atTime",
+                            "object": "2026-03-05 19:21:32@en^^<xsd:string>",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "prov:used",
+                            "object": "ChatBS-NexGen:LLM-information_extractor",
+                            "object_label": "Information Extractor function generator@en^^<xsd:string>",
+                            "object_class": "workflow:Large_Language_Models"
+                        }
+                    ]
+                },
+                {
+                    "uri": "ChatBS-NexGen:Generative_Task-query_result_post_processor",
+                    "attributes": [
+                        {
+                            "relation": "dc:description",
+                            "object": "Generates the post processing Function using Large language models@en^^<xsd:string>",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "rdf:type",
+                            "object": "workflow:Generative_Task",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "rdfs:label",
+                            "object": "Query Result Post-Processor function generator@en^^<xsd:string>",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "prov:atTime",
+                            "object": "2026-03-05 19:21:32@en^^<xsd:string>",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "prov:used",
+                            "object": "ChatBS-NexGen:LLM-query_result_post_processor",
+                            "object_label": "Query Result Post-Processor function generator@en^^<xsd:string>",
+                            "object_class": "workflow:Large_Language_Models"
+                        }
+                    ]
+                },
+                {
+                    "uri": "ChatBS-NexGen:Generative_Task-system_prompt_generator",
+                    "attributes": [
+                        {
+                            "relation": "dc:description",
+                            "object": "Generates the System Prompt Template using Large language models@en^^<xsd:string>",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "rdf:type",
+                            "object": "workflow:Generative_Task",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "rdfs:label",
+                            "object": "System Prompt Template function generator@en^^<xsd:string>",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "prov:atTime",
+                            "object": "2026-03-05 19:21:32@en^^<xsd:string>",
+                            "object_label": "-",
+                            "object_class": "-"
+                        },
+                        {
+                            "relation": "prov:used",
+                            "object": "ChatBS-NexGen:LLM-system_prompt_generator",
+                            "object_label": "System Prompt Template function generator@en^^<xsd:string>",
+                            "object_class": "workflow:Large_Language_Models"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "step_id": "step2",
+            "sub_question": "Given the current evidence, what should be retrieved next to answer 'Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?'? Focus on: The answer states that there is no evidence of a Generative Task component within any execution of the \u201cPost\u2011processes the query results\u201d function, but it does not provide literal data (e.g., specific execution identifiers or timestamps) to substantiate this claim. The evidence context lists several `Generative_Task` objects and their descriptions; however, it does not explicitly link an execution of the post\u2011processing function to a Generative Task component. To satisfy the question fully, the answer should include concrete literals indicating whether such an execution exists (e.g., an execution URI with a referenced Generative Task) or clarify that the data is incomplete and further retrieval is needed.",
+            "program_id": "explore_path_workflow:Generative_Task->sio:SIO_000369->provone:Execution->prov:wasGeneratedBy->provone:Data->sio:SIO_000202->workflow:Large_Language_Model_Output_reversed",
+            "execution_mode": "initial-data",
+            "strategy": "by_program",
+            "parameter_values": [
+                {
+                    "obj": "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302"
+                },
+                {
+                    "obj": "http://testwebsite/testProgram#Generative_Task-id_20260420105703_307"
+                },
+                {
+                    "obj": "http://testwebsite/testProgram#Generative_Task-query_result_post_processor"
+                },
+                {
+                    "obj": "http://testwebsite/testProgram#Generative_Task-information_extractor"
+                },
+                {
+                    "obj": "http://testwebsite/testProgram#Generative_Task-system_prompt_generator"
+                }
+            ],
+            "results": {
+                "set_1": {
+                    "set_1": [
+                        {
+                            "value": "ChatBS-NexGen:LLM_Output-id_20260420105659_302"
+                        }
+                    ],
+                    "set_2": [
+                        {
+                            "value": "ChatBS-NexGen:LLM_Output-id_20260420105659_302"
+                        },
+                        {
+                            "value": "ChatBS-NexGen:LLM_Output-id_20260420105703_307"
+                        }
+                    ],
+                    "set_3": [],
+                    "set_4": [],
+                    "set_5": []
+                }
+            },
+            "answer": "Retrieved 2 initial candidate object(s) relevant to the question: Given the current evidence, what should be retrieved next to answer 'Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?'? Focus on: The answer states that there is no evidence of a Generative Task component within any execution of the \u201cPost\u2011processes the query results\u201d function, but it does not provide literal data (e.g., specific execution identifiers or timestamps) to substantiate this claim. The evidence context lists several `Generative_Task` objects and their descriptions; however, it does not explicitly link an execution of the post\u2011processing function to a Generative Task component. To satisfy the question fully, the answer should include concrete literals indicating whether such an execution exists (e.g., an execution URI with a referenced Generative Task) or clarify that the data is incomplete and further retrieval is needed. <cite, id=0>ChatBS-NexGen:LLM_Output-id_20260420105659_302</cite> <cite, id=1>ChatBS-NexGen:LLM_Output-id_20260420105703_307</cite>",
+            "important_entities": [
+                "ChatBS-NexGen:LLM_Output-id_20260420105659_302",
+                "ChatBS-NexGen:LLM_Output-id_20260420105703_307"
+            ],
+            "extracted_results": [
+                {
+                    "uri": "ChatBS-NexGen:LLM_Output-id_20260420105659_302",
+                    "attributes": [
+                        {
+                            "relation": "sio:SIO_000202",
+                            "object": "ChatBS-NexGen:Data-id_20260420105659_338-generated_answer",
+                            "object_label": "generated_answer@en^^<xsd:string>",
+                            "object_class": "provone:Data"
+                        },
+                        {
+                            "relation": "sio:SIO_000232",
+                            "object": "ChatBS-NexGen:LLM-id_20260420105659_302",
+                            "object_label": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+                            "object_class": "workflow:Large_Language_Model_Output"
+                        },
+                        {
+                            "relation": "sio:SIO_000232",
+                            "object": "ChatBS-NexGen:LLM-id_20260420105659_302",
+                            "object_label": "LLM Generates an text for \nsystem prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. \n\nuser prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. \n\nusing: gpt-4o@en^^<xsd:string>",
+                            "object_class": "workflow:Large_Language_Models"
+                        }
+                    ]
+                },
+                {
+                    "uri": "ChatBS-NexGen:LLM_Output-id_20260420105703_307",
+                    "attributes": [
+                        {
+                            "relation": "sio:SIO_000202",
+                            "object": "ChatBS-NexGen:Data-id_20260420105703_198-extracts",
+                            "object_label": "extracts@en^^<xsd:string>",
+                            "object_class": "provone:Data"
+                        },
+                        {
+                            "relation": "sio:SIO_000202",
+                            "object": "ChatBS-NexGen:Data-id_20260420105703_218-extracts",
+                            "object_label": "extracts@en^^<xsd:string>",
+                            "object_class": "provone:Data"
+                        },
+                        {
+                            "relation": "sio:SIO_000202",
+                            "object": "ChatBS-NexGen:Data-id_20260420105703_51-extracts",
+                            "object_label": "extracts@en^^<xsd:string>",
+                            "object_class": "provone:Data"
+                        },
+                        {
+                            "relation": "sio:SIO_000202",
+                            "object": "ChatBS-NexGen:Data-id_20260420105703_661-extracts",
+                            "object_label": "extracts@en^^<xsd:string>",
+                            "object_class": "provone:Data"
+                        },
+                        {
+                            "relation": "sio:SIO_000202",
+                            "object": "ChatBS-NexGen:Data-id_20260420105703_678-extracts",
+                            "object_label": "extracts@en^^<xsd:string>",
+                            "object_class": "provone:Data"
+                        },
+                        {
+                            "relation": "sio:SIO_000202",
+                            "object": "ChatBS-NexGen:Data-id_20260420105703_693-extracts",
+                            "object_label": "extracts@en^^<xsd:string>",
+                            "object_class": "provone:Data"
+                        },
+                        {
+                            "relation": "sio:SIO_000202",
+                            "object": "ChatBS-NexGen:Data-id_20260420105703_757-extracts",
+                            "object_label": "extracts@en^^<xsd:string>",
+                            "object_class": "provone:Data"
+                        },
+                        {
+                            "relation": "sio:SIO_000202",
+                            "object": "ChatBS-NexGen:Data-id_20260420105703_886-extracts",
+                            "object_label": "extracts@en^^<xsd:string>",
+                            "object_class": "provone:Data"
+                        },
+                        {
+                            "relation": "sio:SIO_000202",
+                            "object": "ChatBS-NexGen:Data-id_20260420105703_891-extracts",
+                            "object_label": "extracts@en^^<xsd:string>",
+                            "object_class": "provone:Data"
+                        },
+                        {
+                            "relation": "sio:SIO_000202",
+                            "object": "ChatBS-NexGen:Data-id_20260420105704_531-extracts",
+                            "object_label": "extracts@en^^<xsd:string>",
+                            "object_class": "provone:Data"
+                        },
+                        {
+                            "relation": "sio:SIO_000202",
+                            "object": "ChatBS-NexGen:Data-id_20260420105704_782-extracts",
+                            "object_label": "extracts@en^^<xsd:string>",
+                            "object_class": "provone:Data"
+                        },
+                        {
+                            "relation": "sio:SIO_000232",
+                            "object": "ChatBS-NexGen:LLM-id_20260420105703_307",
+                            "object_label": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+                            "object_class": "workflow:Large_Language_Model_Output"
+                        },
+                        {
+                            "relation": "sio:SIO_000232",
+                            "object": "ChatBS-NexGen:LLM-id_20260420105703_307",
+                            "object_label": "Extracts important entities for \ntext: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you:\n\n1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels.\n\n2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience.\n\n3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy.\n\n4. **Tuna Salad:** Made with olive oil, this can be a great pre-workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes.\n\n5. **Turkey and Cheese Roll-ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy-to-digest source of protein and fat. Pair them with a small serving of fruit to add some carbs.\n\nRemember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. \n\nusing: gpt-4o@en^^<xsd:string>",
+                            "object_class": "workflow:Large_Language_Models"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "step_id": "step3",
+            "sub_question": "Given the current evidence, what should be retrieved next to answer 'Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?'? Focus on: The answer asserts that there is no evidence of a Generative_Task component within any execution of the \u201cPost-processes the query results\u201d function, but it does not provide concrete literal data (such as specific execution identifiers, timestamps, or explicit provenance links) to substantiate this claim. To fully satisfy the question, the answer should include actual literals indicating whether such an execution exists\u2014for example, an execution URI that references a `workflow:Generative_Task` via `sio:SIO_000369`, along with relevant timestamps\u2014or explicitly state that the necessary provenance data is incomplete and further retrieval is required.",
+            "program_id": "explore_path_workflow:Generative_Task->sio:SIO_000369->provone:Execution_reversed",
+            "execution_mode": "initial-data",
+            "strategy": "by_program",
+            "parameter_values": [
+                {
+                    "obj": "http://testwebsite/testProgram#Data-id_20260420105703_757-extracts"
+                }
+            ],
+            "results": {
+                "set_1": {
+                    "set_1": []
+                }
+            },
+            "answer": "No initial candidate objects were retrieved.",
+            "important_entities": [],
+            "extracted_results": []
+        },
+        {
+            "step_id": "step4",
+            "sub_question": "Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?",
+            "program_id": "fallback::class-ttl",
+            "execution_mode": "fallback-class-ttl",
+            "strategy": "class-ttl",
+            "parameter_values": [
+                {
+                    "fallback_classes": [
+                        "workflow:Generative_Task",
+                        "workflow:Large_Language_Models",
+                        "workflow:Large_Language_Model_Output",
+                        "eo:Reasoning_Mode",
+                        "provone:Program",
+                        "provone:Port",
+                        "provone:Channel",
+                        "provone:Execution",
+                        "provone:User",
+                        "provone:Data",
+                        "provone:Collection",
+                        "prov:Association",
+                        "prov:Usage",
+                        "prov:Generation"
+                    ]
+                }
+            ],
+            "results": {
+                "fallback_classes": [
+                    "workflow:Generative_Task",
+                    "workflow:Large_Language_Models",
+                    "workflow:Large_Language_Model_Output",
+                    "eo:Reasoning_Mode",
+                    "provone:Program",
+                    "provone:Port",
+                    "provone:Channel",
+                    "provone:Execution",
+                    "provone:User",
+                    "provone:Data",
+                    "provone:Collection",
+                    "prov:Association",
+                    "prov:Usage",
+                    "prov:Generation"
+                ],
+                "object_uris": [
+                    "http://testwebsite/testProgram#Generative_Task-id_20260420105659_302",
+                    "http://testwebsite/testProgram#Generative_Task-id_20260420105703_307",
+                    "http://testwebsite/testProgram#Generative_Task-information_extractor",
+                    "http://testwebsite/testProgram#Generative_Task-query_result_post_processor",
+                    "http://testwebsite/testProgram#Generative_Task-system_prompt_generator",
+                    "http://testwebsite/testProgram#LLM-id_20260420105659_302",
+                    "http://testwebsite/testProgram#LLM-id_20260420105703_307",
+                    "http://testwebsite/testProgram#LLM-information_extractor",
+                    "http://testwebsite/testProgram#LLM-query_result_post_processor",
+                    "http://testwebsite/testProgram#LLM-system_prompt_generator",
+                    "http://testwebsite/testProgram#LLM_Output-information_extractor",
+                    "http://testwebsite/testProgram#LLM_Output-query_result_post_processor",
+                    "http://testwebsite/testProgram#LLM_Output-system_prompt_generator",
+                    "http://testwebsite/testProgram#DF_combine",
+                    "http://testwebsite/testProgram#batch_sparql_query_extractor",
+                    "http://testwebsite/testProgram#information_extractor",
+                    "http://testwebsite/testProgram#llm_chat",
+                    "http://testwebsite/testProgram#query_result_post_processor",
+                    "http://testwebsite/testProgram#sparql_query_extractor",
+                    "http://testwebsite/testProgram#system_prompt_generator",
+                    "http://testwebsite/testProgram#DF_combine-kg_knowledge",
+                    "http://testwebsite/testProgram#DF_combine-kg_queries",
+                    "http://testwebsite/testProgram#batch_sparql_query_extractor-entities",
+                    "http://testwebsite/testProgram#batch_sparql_query_extractor-kg_knowledge",
+                    "http://testwebsite/testProgram#batch_sparql_query_extractor-query_function",
+                    "http://testwebsite/testProgram#information_extractor-extracts",
+                    "http://testwebsite/testProgram#information_extractor-text",
+                    "http://testwebsite/testProgram#llm_chat-generated_answer",
+                    "http://testwebsite/testProgram#llm_chat-system_prompt",
+                    "http://testwebsite/testProgram#llm_chat-user_prompt",
+                    "http://testwebsite/testProgram#query_result_post_processor-kg_knowledge",
+                    "http://testwebsite/testProgram#query_result_post_processor-post_processed_output",
+                    "http://testwebsite/testProgram#sparql_query_extractor-entity",
+                    "http://testwebsite/testProgram#sparql_query_extractor-kg_info",
+                    "http://testwebsite/testProgram#system_prompt_generator-age",
+                    "http://testwebsite/testProgram#system_prompt_generator-allergies",
+                    "http://testwebsite/testProgram#system_prompt_generator-bodyMassIndex",
+                    "http://testwebsite/testProgram#system_prompt_generator-diagnosis",
+                    "http://testwebsite/testProgram#system_prompt_generator-foodPreferences",
+                    "http://testwebsite/testProgram#system_prompt_generator-gender",
+                    "http://testwebsite/testProgram#system_prompt_generator-height",
+                    "http://testwebsite/testProgram#system_prompt_generator-system_prompt",
+                    "http://testwebsite/testProgram#system_prompt_generator-weight",
+                    "http://testwebsite/testProgram#channel_generated_answer",
+                    "http://testwebsite/testProgram#channel_query_result_post_processing",
+                    "http://testwebsite/testProgram#channel_sparql_query_extraction",
+                    "http://testwebsite/testProgram#channel_system_prompt",
+                    "http://testwebsite/testProgram#id_20260420105652_650",
+                    "http://testwebsite/testProgram#id_20260420105659_302",
+                    "http://testwebsite/testProgram#id_20260420105703_307",
+                    "http://testwebsite/testProgram#id_20260420105705_598",
+                    "http://testwebsite/testProgram#id_20260420105705_972",
+                    "http://testwebsite/testProgram#id_20260420105710_61",
+                    "http://testwebsite/testProgram#id_20260420105711_320",
+                    "http://testwebsite/testProgram#id_20260420105711_662",
+                    "http://testwebsite/testProgram#id_20260420105711_772",
+                    "http://testwebsite/testProgram#id_20260420105717_370",
+                    "http://testwebsite/testProgram#id_20260420105719_327",
+                    "http://testwebsite/testProgram#id_20260420105722_117",
+                    "http://testwebsite/testProgram#id_20260420105723_114",
+                    "http://testwebsite/testProgram#id_20260420105727_300",
+                    "http://testwebsite/testProgram#id_20260420105727_835",
+                    "http://testwebsite/testProgram#Data-id_20260420105652_112-foodPreferences",
+                    "http://testwebsite/testProgram#Data-id_20260420105652_420-weight",
+                    "http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt",
+                    "http://testwebsite/testProgram#Data-id_20260420105652_470-bodyMassIndex",
+                    "http://testwebsite/testProgram#Data-id_20260420105652_604-allergies",
+                    "http://testwebsite/testProgram#Data-id_20260420105652_753-diagnosis",
+                    "http://testwebsite/testProgram#Data-id_20260420105652_79-age",
+                    "http://testwebsite/testProgram#Data-id_20260420105652_838-height",
+                    "http://testwebsite/testProgram#Data-id_20260420105652_904-gender",
+                    "http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer",
+                    "http://testwebsite/testProgram#Data-id_20260420105659_811-user_prompt",
+                    "http://testwebsite/testProgram#Data-id_20260420105703_198-extracts",
+                    "http://testwebsite/testProgram#Data-id_20260420105703_218-extracts",
+                    "http://testwebsite/testProgram#Data-id_20260420105703_51-extracts",
+                    "http://testwebsite/testProgram#Data-id_20260420105703_661-extracts",
+                    "http://testwebsite/testProgram#Data-id_20260420105703_678-extracts",
+                    "http://testwebsite/testProgram#Data-id_20260420105703_693-extracts",
+                    "http://testwebsite/testProgram#Data-id_20260420105703_757-extracts",
+                    "http://testwebsite/testProgram#Data-id_20260420105703_886-extracts",
+                    "http://testwebsite/testProgram#Data-id_20260420105703_891-extracts",
+                    "http://testwebsite/testProgram#Data-id_20260420105704_531-extracts",
+                    "http://testwebsite/testProgram#Data-id_20260420105704_782-extracts",
+                    "http://testwebsite/testProgram#Data-id_20260420105705_232-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105705_668-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105705_670-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105710_564-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105711_45-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105711_547-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105711_637-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105711_658-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105711_94-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105717_899-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105722_181-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105723_261-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info",
+                    "http://testwebsite/testProgram#Data-id_20260420105727_858-post_processed_output",
+                    "http://testwebsite/testProgram#LLM-information_extractor-Input-builder_llm",
+                    "http://testwebsite/testProgram#LLM-information_extractor-Input-text",
+                    "http://testwebsite/testProgram#LLM-query_result_post_processor-Input-formatting_instruction",
+                    "http://testwebsite/testProgram#LLM-query_result_post_processor-Input-processing_instruction",
+                    "http://testwebsite/testProgram#LLM-system_prompt_generator-Input-base_sys_prompt",
+                    "http://testwebsite/testProgram#LLM-system_prompt_generator-Input-builder_llm",
+                    "http://testwebsite/testProgram#Collection-id_20260420105703_514-extracts",
+                    "http://testwebsite/testProgram#Collection-id_20260420105705_846-kg_info",
+                    "http://testwebsite/testProgram#Collection-id_20260420105705_972-kg_info",
+                    "http://testwebsite/testProgram#Collection-id_20260420105710_94-kg_info",
+                    "http://testwebsite/testProgram#Collection-id_20260420105711_381-kg_info",
+                    "http://testwebsite/testProgram#Collection-id_20260420105711_610-kg_info",
+                    "http://testwebsite/testProgram#Collection-id_20260420105711_635-kg_info",
+                    "http://testwebsite/testProgram#Collection-id_20260420105717_260-kg_info",
+                    "http://testwebsite/testProgram#Collection-id_20260420105719_81-kg_info",
+                    "http://testwebsite/testProgram#Collection-id_20260420105722_768-kg_info",
+                    "http://testwebsite/testProgram#Collection-id_20260420105723_274-kg_info",
+                    "http://testwebsite/testProgram#Collection-id_20260420105727_469-post_processed_output",
+                    "http://testwebsite/testProgram#Collection-id_20260420105727_932-kg_info",
+                    "http://testwebsite/testProgram#id_20260420105727_995",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:information_extractor-Association-id_20260420105703_307",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:llm_chat-Association-id_20260420105659_302",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:query_result_post_processor-Association-id_20260420105727_835",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_598",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_972",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105710_61",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_320",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_662",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_772",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105717_370",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105719_327",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105722_117",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105723_114",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105727_300",
+                    "http://testwebsite/testProgram#ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650",
+                    "http://testwebsite/testProgram#Usage-id_20260420105652_112-foodPreferences",
+                    "http://testwebsite/testProgram#Usage-id_20260420105652_420-weight",
+                    "http://testwebsite/testProgram#Usage-id_20260420105652_470-bodyMassIndex",
+                    "http://testwebsite/testProgram#Usage-id_20260420105652_604-allergies",
+                    "http://testwebsite/testProgram#Usage-id_20260420105652_753-diagnosis",
+                    "http://testwebsite/testProgram#Usage-id_20260420105652_79-age",
+                    "http://testwebsite/testProgram#Usage-id_20260420105652_838-height",
+                    "http://testwebsite/testProgram#Usage-id_20260420105652_904-gender",
+                    "http://testwebsite/testProgram#Usage-id_20260420105659_579-system_prompt",
+                    "http://testwebsite/testProgram#Usage-id_20260420105659_811-user_prompt",
+                    "http://testwebsite/testProgram#Usage-id_20260420105703_331-text",
+                    "http://testwebsite/testProgram#Usage-id_20260420105705_106-entity",
+                    "http://testwebsite/testProgram#Usage-id_20260420105705_924-entity",
+                    "http://testwebsite/testProgram#Usage-id_20260420105710_626-entity",
+                    "http://testwebsite/testProgram#Usage-id_20260420105711_611-entity",
+                    "http://testwebsite/testProgram#Usage-id_20260420105711_726-entity",
+                    "http://testwebsite/testProgram#Usage-id_20260420105711_768-entity",
+                    "http://testwebsite/testProgram#Usage-id_20260420105717_534-entity",
+                    "http://testwebsite/testProgram#Usage-id_20260420105719_544-entity",
+                    "http://testwebsite/testProgram#Usage-id_20260420105722_418-entity",
+                    "http://testwebsite/testProgram#Usage-id_20260420105723_195-entity",
+                    "http://testwebsite/testProgram#Usage-id_20260420105727_373-entity",
+                    "http://testwebsite/testProgram#Usage-id_20260420105727_857-kg_knowledge",
+                    "http://testwebsite/testProgram#Generation-id_20260420105652_907-system_prompt",
+                    "http://testwebsite/testProgram#Generation-id_20260420105659_282-generated_answer",
+                    "http://testwebsite/testProgram#Generation-id_20260420105703_814-extracts",
+                    "http://testwebsite/testProgram#Generation-id_20260420105705_591-kg_info",
+                    "http://testwebsite/testProgram#Generation-id_20260420105705_633-kg_info",
+                    "http://testwebsite/testProgram#Generation-id_20260420105710_897-kg_info",
+                    "http://testwebsite/testProgram#Generation-id_20260420105711_508-kg_info",
+                    "http://testwebsite/testProgram#Generation-id_20260420105711_565-kg_info",
+                    "http://testwebsite/testProgram#Generation-id_20260420105711_758-kg_info",
+                    "http://testwebsite/testProgram#Generation-id_20260420105717_107-kg_info",
+                    "http://testwebsite/testProgram#Generation-id_20260420105719_298-kg_info",
+                    "http://testwebsite/testProgram#Generation-id_20260420105722_463-kg_info",
+                    "http://testwebsite/testProgram#Generation-id_20260420105723_333-kg_info",
+                    "http://testwebsite/testProgram#Generation-id_20260420105727_328-post_processed_output",
+                    "http://testwebsite/testProgram#Generation-id_20260420105727_524-kg_info"
+                ]
+            },
+            "answer": "Loaded fallback KG context for 174 object(s). <cite, id=0>http://testwebsite/testProgram#id_20260420105727_835</cite> <cite, id=1>http://testwebsite/testProgram#Generative_Task-query_result_post_processor</cite>",
+            "important_entities": [
+                "http://testwebsite/testProgram#id_20260420105727_835",
+                "http://testwebsite/testProgram#Generative_Task-query_result_post_processor"
+            ],
+            "selection_reasoning": "The question asks whether any execution of the \u201cPost\u2011processes the query results\u201d function contains a Generative Task as a component. The only execution currently identified for that function is `id_20260420105727_835`. To determine if it has a `workflow:Generative_Task` component, we need to inspect its provenance record (specifically the `sio:SIO_000369` property). Additionally, passing the URI of the Generative Task program itself (`Generative_Task-query_result_post_processor`) allows verification of any potential link between this task and the execution. Thus these two entities are selected for the next retrieval step."
+        }
+    ],
+    "answer": "The execution trace for the function that \u201cPost\u2011processes the query results\u201d is represented by the provone:Execution\n`ChatBS-NexGen:id_20260420105727_835`.  \nIn the provenance graph this execution has the following properties:\n\n* `prov:qualifiedAssociation`, `prov:qualifiedGeneration`, and `prov:used` links to data produced by the post\u2011processing program, but **there is no** link of type `sio:SIO_000369` (has component part) that points to any instance of a `workflow:Generative_Task`.  \n* The only execution that shows such a relationship is `ChatBS-NexGen:id_20260420105703_307`, which belongs to the *Information Extractor* function, not to the post\u2011processing function.\n\nBecause the provenance data we have contains no literal evidence (execution URI, timestamp, or explicit `sio:SIO_000369` link) that an execution of the \u201cPost\u2011processes the query results\u201d function includes a Generative Task component, we must conclude that **there is no documented evidence that any such execution has a Generative Task as a component**.  \n\nIf additional provenance records exist that were not captured here, they would need to be examined; otherwise, based on the current evidence, the answer is negative. <cite, id=0>ChatBS-NexGen:Generative_Task-id_20260420105659_302</cite> <cite, id=1>ChatBS-NexGen:Generative_Task-id_20260420105703_307</cite> <cite, id=2>ChatBS-NexGen:Generative_Task-information_extractor</cite> <cite, id=3>ChatBS-NexGen:Generative_Task-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:Generative_Task-system_prompt_generator</cite> <cite, id=5>ChatBS-NexGen:LLM_Output-id_20260420105659_302</cite>",
+    "judge": {
+        "answer": "The execution trace for the function that \u201cPost\u2011processes the query results\u201d is represented by the provone:Execution\n`ChatBS-NexGen:id_20260420105727_835`.  \nIn the provenance graph this execution has the following properties:\n\n* `prov:qualifiedAssociation`, `prov:qualifiedGeneration`, and `prov:used` links to data produced by the post\u2011processing program, but **there is no** link of type `sio:SIO_000369` (has component part) that points to any instance of a `workflow:Generative_Task`.  \n* The only execution that shows such a relationship is `ChatBS-NexGen:id_20260420105703_307`, which belongs to the *Information Extractor* function, not to the post\u2011processing function.\n\nBecause the provenance data we have contains no literal evidence (execution URI, timestamp, or explicit `sio:SIO_000369` link) that an execution of the \u201cPost\u2011processes the query results\u201d function includes a Generative Task component, we must conclude that **there is no documented evidence that any such execution has a Generative Task as a component**.  \n\nIf additional provenance records exist that were not captured here, they would need to be examined; otherwise, based on the current evidence, the answer is negative.",
+        "answered": false,
+        "feedback": "The response correctly notes that there is no recorded `sio:SIO_000369` link from the post\u2011processing execution to a `workflow:Generative_Task`. However, it does not provide any concrete literals (e.g., an explicit execution URI such as `ChatBS-NexGen:id_20260420105727_835`, its timestamp, or any other provenance value) that would substantiate this claim. According to the instructions, when an answer asserts non\u2011existence without presenting literal evidence, it should be marked as **False** because data likely remains unretrieved. Ensure future answers include such literals or explicitly state that further retrieval is needed."
+    },
+    "grounding": {
+        "candidate_classes": [
+            "workflow:Generative_Task",
+            "provone:Execution"
+        ],
+        "candidate_relations": [],
+        "entity_phrases": [
+            "Post-processes the query results",
+            "Generative Task"
+        ]
+    },
+    "original_question": "Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?",
+    "token_usage": {
+        "total_tokens": 134776,
+        "prompt_tokens": 131238,
+        "completion_tokens": 3538,
+        "models": {
+            "openai/lmstudio/gpt-oss-20b": {
+                "completion_tokens": 3538,
+                "prompt_tokens": 131238,
+                "total_tokens": 134776,
+                "completion_tokens_details": {
+                    "accepted_prediction_tokens": null,
+                    "audio_tokens": null,
+                    "reasoning_tokens": 1395,
+                    "rejected_prediction_tokens": null,
+                    "text_tokens": null,
+                    "image_tokens": null
+                },
+                "prompt_tokens_details": null
+            }
+        },
+        "calls": [
+            {
+                "model": "openai/lmstudio/gpt-oss-20b",
+                "usage": {
+                    "completion_tokens": 375,
+                    "prompt_tokens": 5025,
+                    "total_tokens": 5400,
+                    "completion_tokens_details": {
+                        "accepted_prediction_tokens": null,
+                        "audio_tokens": null,
+                        "reasoning_tokens": 256,
+                        "rejected_prediction_tokens": null,
+                        "text_tokens": null,
+                        "image_tokens": null
+                    },
+                    "prompt_tokens_details": null
+                },
+                "estimated": false,
+                "source": "provider"
+            },
+            {
+                "model": "openai/lmstudio/gpt-oss-20b",
+                "usage": {
+                    "completion_tokens": 406,
+                    "prompt_tokens": 4888,
+                    "total_tokens": 5294,
+                    "completion_tokens_details": {
+                        "accepted_prediction_tokens": null,
+                        "audio_tokens": null,
+                        "reasoning_tokens": 10,
+                        "rejected_prediction_tokens": null,
+                        "text_tokens": null,
+                        "image_tokens": null
+                    },
+                    "prompt_tokens_details": null
+                },
+                "estimated": false,
+                "source": "provider"
+            },
+            {
+                "model": "openai/lmstudio/gpt-oss-20b",
+                "usage": {
+                    "completion_tokens": 184,
+                    "prompt_tokens": 3857,
+                    "total_tokens": 4041,
+                    "completion_tokens_details": {
+                        "accepted_prediction_tokens": null,
+                        "audio_tokens": null,
+                        "reasoning_tokens": 36,
+                        "rejected_prediction_tokens": null,
+                        "text_tokens": null,
+                        "image_tokens": null
+                    },
+                    "prompt_tokens_details": null
+                },
+                "estimated": false,
+                "source": "provider"
+            },
+            {
+                "model": "openai/lmstudio/gpt-oss-20b",
+                "usage": {
+                    "completion_tokens": 116,
+                    "prompt_tokens": 7018,
+                    "total_tokens": 7134,
+                    "completion_tokens_details": {
+                        "accepted_prediction_tokens": null,
+                        "audio_tokens": null,
+                        "reasoning_tokens": 82,
+                        "rejected_prediction_tokens": null,
+                        "text_tokens": null,
+                        "image_tokens": null
+                    },
+                    "prompt_tokens_details": null
+                },
+                "estimated": false,
+                "source": "provider"
+            },
+            {
+                "model": "openai/lmstudio/gpt-oss-20b",
+                "usage": {
+                    "completion_tokens": 181,
+                    "prompt_tokens": 7264,
+                    "total_tokens": 7445,
+                    "completion_tokens_details": {
+                        "accepted_prediction_tokens": null,
+                        "audio_tokens": null,
+                        "reasoning_tokens": 60,
+                        "rejected_prediction_tokens": null,
+                        "text_tokens": null,
+                        "image_tokens": null
+                    },
+                    "prompt_tokens_details": null
+                },
+                "estimated": false,
+                "source": "provider"
+            },
+            {
+                "model": "openai/lmstudio/gpt-oss-20b",
+                "usage": {
+                    "completion_tokens": 94,
+                    "prompt_tokens": 6406,
+                    "total_tokens": 6500,
+                    "completion_tokens_details": {
+                        "accepted_prediction_tokens": null,
+                        "audio_tokens": null,
+                        "reasoning_tokens": 71,
+                        "rejected_prediction_tokens": null,
+                        "text_tokens": null,
+                        "image_tokens": null
+                    },
+                    "prompt_tokens_details": null
+                },
+                "estimated": false,
+                "source": "provider"
+            },
+            {
+                "model": "openai/lmstudio/gpt-oss-20b",
+                "usage": {
+                    "completion_tokens": 532,
+                    "prompt_tokens": 5352,
+                    "total_tokens": 5884,
+                    "completion_tokens_details": {
+                        "accepted_prediction_tokens": null,
+                        "audio_tokens": null,
+                        "reasoning_tokens": 89,
+                        "rejected_prediction_tokens": null,
+                        "text_tokens": null,
+                        "image_tokens": null
+                    },
+                    "prompt_tokens_details": null
+                },
+                "estimated": false,
+                "source": "provider"
+            },
+            {
+                "model": "openai/lmstudio/gpt-oss-20b",
+                "usage": {
+                    "completion_tokens": 150,
+                    "prompt_tokens": 4324,
+                    "total_tokens": 4474,
+                    "completion_tokens_details": {
+                        "accepted_prediction_tokens": null,
+                        "audio_tokens": null,
+                        "reasoning_tokens": 15,
+                        "rejected_prediction_tokens": null,
+                        "text_tokens": null,
+                        "image_tokens": null
+                    },
+                    "prompt_tokens_details": null
+                },
+                "estimated": false,
+                "source": "provider"
+            },
+            {
+                "model": "openai/lmstudio/gpt-oss-20b",
+                "usage": {
+                    "completion_tokens": 653,
+                    "prompt_tokens": 31163,
+                    "total_tokens": 31816,
+                    "completion_tokens_details": {
+                        "accepted_prediction_tokens": null,
+                        "audio_tokens": null,
+                        "reasoning_tokens": 461,
+                        "rejected_prediction_tokens": null,
+                        "text_tokens": null,
+                        "image_tokens": null
+                    },
+                    "prompt_tokens_details": null
+                },
+                "estimated": false,
+                "source": "provider"
+            },
+            {
+                "model": "openai/lmstudio/gpt-oss-20b",
+                "usage": {
+                    "completion_tokens": 631,
+                    "prompt_tokens": 28504,
+                    "total_tokens": 29135,
+                    "completion_tokens_details": {
+                        "accepted_prediction_tokens": null,
+                        "audio_tokens": null,
+                        "reasoning_tokens": 261,
+                        "rejected_prediction_tokens": null,
+                        "text_tokens": null,
+                        "image_tokens": null
+                    },
+                    "prompt_tokens_details": null
+                },
+                "estimated": false,
+                "source": "provider"
+            },
+            {
+                "model": "openai/lmstudio/gpt-oss-20b",
+                "usage": {
+                    "completion_tokens": 216,
+                    "prompt_tokens": 27437,
+                    "total_tokens": 27653,
+                    "completion_tokens_details": {
+                        "accepted_prediction_tokens": null,
+                        "audio_tokens": null,
+                        "reasoning_tokens": 54,
+                        "rejected_prediction_tokens": null,
+                        "text_tokens": null,
+                        "image_tokens": null
+                    },
+                    "prompt_tokens_details": null
+                },
+                "estimated": false,
+                "source": "provider"
+            }
+        ],
+        "estimated": false,
+        "source": "provider"
+    },
+    "report": "### Overall Answer to the Question:\nThe execution trace for the function that \u201cPost\u2011processes the query results\u201d is represented by the provone:Execution\n`ChatBS-NexGen:id_20260420105727_835`.  \nIn the provenance graph this execution has the following properties:\n\n* `prov:qualifiedAssociation`, `prov:qualifiedGeneration`, and `prov:used` links to data produced by the post\u2011processing program, but **there is no** link of type `sio:SIO_000369` (has component part) that points to any instance of a `workflow:Generative_Task`.  \n* The only execution that shows such a relationship is `ChatBS-NexGen:id_20260420105703_307`, which belongs to the *Information Extractor* function, not to the post\u2011processing function.\n\nBecause the provenance data we have contains no literal evidence (execution URI, timestamp, or explicit `sio:SIO_000369` link) that an execution of the \u201cPost\u2011processes the query results\u201d function includes a Generative Task component, we must conclude that **there is no documented evidence that any such execution has a Generative Task as a component**.  \n\nIf additional provenance records exist that were not captured here, they would need to be examined; otherwise, based on the current evidence, the answer is negat...\n\n### Original Question:\nDoes any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?\n\n### Grounded Reasoning Trace:\nQuestion [0]: Does any of the executions of the \"Post-processes the query results\" function made has a Generative Task as a component within?\nAnswer: The execution trace for the function that \u201cPost\u2011processes the query results\u201d is represented by the provone:Execution\n`ChatBS-NexGen:id_20260420105727_835`.  \nIn the provenance graph this execution has the following properties:\n\n* `prov:qualifiedAssociation`, `prov:qualifiedGeneration`, and `prov:used` links to data produced by the post\u2011processing program, but **there is no** link of type `sio:SIO_000369` (has component part) that points to any instance of a `workflow:Generative_Task`.  \n* The only execution that shows such a relationship is `ChatBS-NexGen:id_20260420105703_307`, which belongs to the *Information Extractor* function, not to the post\u2011processing function.\n\nBecause the proven...\nGrounding:\n{\n  \"candidate_classes\": [\n    \"workflow:Generative_Task\",\n    \"provone:Execution\"\n  ],\n  \"candidate_relations\": [],\n  \"entity_phrases\": [\n    \"Post-processes the query results\",\n    \"Generative Task\"\n  ]\n}",
+    "time_taken": 113.74080185196362
+}

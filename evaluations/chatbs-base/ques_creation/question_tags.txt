@@ -1,0 +1,588 @@
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+   # | Question                                                                                                                                 | Tags                                      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+   1 | What are all the objects of a given class?                                                                                               | class-level                               
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+   2 | What are all the attributes and values of a given object?                                                                                | class-level                               
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+   3 | What are all the objects of class workflow:Large_Language_Model_Output with a given value for the relation/prop dc:description?          | object-level, from-prop,                  
+     |                                                                                                                                          | workflow:Large_Language_Model_Output      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+   4 | What are all the objects of class workflow:Large_Language_Model_Output with a given value for the relation/prop workflow:llm_model?      | object-level, from-prop,                  
+     |                                                                                                                                          | workflow:Large_Language_Model_Output      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+   5 | What are all the objects of class workflow:Large_Language_Model_Output with a given value for the relation/prop rdfs:label?              | object-level, from-prop,                  
+     |                                                                                                                                          | workflow:Large_Language_Model_Output      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+   6 | What are all the objects of class workflow:Large_Language_Models with a given value for the relation/prop dc:description?                | object-level, from-prop,                  
+     |                                                                                                                                          | workflow:Large_Language_Models            
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+   7 | What are all the objects of class workflow:Large_Language_Models with a given value for the relation/prop workflow:llm_model?            | object-level, from-prop,                  
+     |                                                                                                                                          | workflow:Large_Language_Models            
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+   8 | What are all the objects of class workflow:Large_Language_Models with a given value for the relation/prop rdfs:label?                    | object-level, from-prop,                  
+     |                                                                                                                                          | workflow:Large_Language_Models            
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+   9 | What are all the objects of class workflow:Large_Language_Models with a given value for the relation/prop prov:atTime?                   | object-level, from-prop,                  
+     |                                                                                                                                          | workflow:Large_Language_Models            
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  10 | What are all the objects of class workflow:Generative_Task with a given value for the relation/prop dc:description?                      | object-level, from-prop,                  
+     |                                                                                                                                          | workflow:Generative_Task                  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  11 | What are all the objects of class workflow:Generative_Task with a given value for the relation/prop rdfs:label?                          | object-level, from-prop,                  
+     |                                                                                                                                          | workflow:Generative_Task                  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  12 | What are all the objects of class workflow:Generative_Task with a given value for the relation/prop prov:atTime?                         | object-level, from-prop,                  
+     |                                                                                                                                          | workflow:Generative_Task                  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  13 | What are all the objects of class provone:Data with a given value for the relation/prop DFColumn:ingredientCat?                          | object-level, from-prop, provone:Data     
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  14 | What are all the objects of class provone:Data with a given value for the relation/prop DFColumn:ingredientName?                         | object-level, from-prop, provone:Data     
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  15 | What are all the objects of class provone:Data with a given value for the relation/prop DFColumn:sugarG?                                 | object-level, from-prop, provone:Data     
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  16 | What are all the objects of class provone:Data with a given value for the relation/prop rdfs:label?                                      | object-level, from-prop, provone:Data     
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  17 | What are all the objects of class provone:Data with a given value for the relation/prop prov:value?                                      | object-level, from-prop, provone:Data     
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  18 | What are all the objects of class provone:Port with a given value for the relation/prop dc:description?                                  | object-level, from-prop, provone:Port     
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  19 | What are all the objects of class provone:Port with a given value for the relation/prop rdfs:label?                                      | object-level, from-prop, provone:Port     
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  20 | What are all the objects of class provone:Execution with a given value for the relation/prop dcterms:identifier?                         | object-level, from-prop, provone:Execution
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  21 | What are all the objects of class provone:Execution with a given value for the relation/prop rdfs:label?                                 | object-level, from-prop, provone:Execution
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  22 | What are all the objects of class provone:Execution with a given value for the relation/prop prov:endedAt?                               | object-level, from-prop, provone:Execution
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  23 | What are all the objects of class provone:Execution with a given value for the relation/prop prov:startedAt?                             | object-level, from-prop, provone:Execution
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  24 | What are all the objects of class provone:Channel with a given value for the relation/prop dc:description?                               | object-level, from-prop, provone:Channel  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  25 | What are all the objects of class provone:Channel with a given value for the relation/prop rdfs:label?                                   | object-level, from-prop, provone:Channel  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  26 | What are all the objects of class provone:Program with a given value for the relation/prop dc:description?                               | object-level, from-prop, provone:Program  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  27 | What are all the objects of class provone:Program with a given value for the relation/prop dcterms:identifier?                           | object-level, from-prop, provone:Program  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  28 | What are all the objects of class provone:Program with a given value for the relation/prop rdfs:label?                                   | object-level, from-prop, provone:Program  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  29 | What are all the objects of class provone:Program with a given value for the relation/prop prov:atTime?                                  | object-level, from-prop, provone:Program  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  30 | What are the input data specifications required for processes that generate Large Language Model Outputs?                                | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Model_Output,     
+     |                                                                                                                                          | sio:SIO_000232,                           
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000230, provone:Data              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  31 | What large language models are related as outputs in context of a general "Large Language Model Output" artifact?                        | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Model_Output,     
+     |                                                                                                                                          | sio:SIO_000232,                           
+     |                                                                                                                                          | workflow:Large_Language_Models            
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  32 | What types of data or entities are associated with a "Large Language Model Output" according to the relationship defined by              | path-level,                               
+     | sio:SIO_000202?                                                                                                                          | workflow:Large_Language_Model_Output,     
+     |                                                                                                                                          | sio:SIO_000202, provone:Data              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  33 | What are the specific usages (details on how entities were utilized) associated with an execution that was generated by or related to a  | path-level, provone:Collection,           
+     | particular collection?                                                                                                                   | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  34 | Who is responsible (associated) with the execution that generated a specific collection or entity?                                       | path-level, provone:Collection,           
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:wasAssociatedWith, provone:User      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  35 | What executions or activities were generated by the specified collection?                                                                | path-level, provone:Collection,           
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution    
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  36 | What component parts are associated with an execution that generated a collection?                                                       | path-level, provone:Collection,           
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | sio:SIO_000369, workflow:Generative_Task  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  37 | What Program/function is planned or associated with an execution that generated this collection?                                         | path-level, provone:Collection,           
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:hadPlan,           
+     |                                                                                                                                          | provone:Program                           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  38 | What specific instances of Generation were produced by an execution traceable back to a given collection or initial source?              | path-level, provone:Collection,           
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  39 | What specific association or responsibility was established by the execution that generated this collection?                             | path-level, provone:Collection,           
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association                          
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  40 | What specific Data entities are associated with a Collection, tracing back through its generation execution and subsequent qualified     | path-level, provone:Collection,           
+     | usages?                                                                                                                                  | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage,          
+     |                                                                                                                                          | provone:hadEntity, provone:Data           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  41 | What is the User who is credited as the agent associated with the association that links an execution to a collection generated by it?   | path-level, provone:Collection,           
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:agent, provone:User
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  42 | What output port(s) are associated with the generation process of a specific entity, tracing back through the activity/execution that    | path-level, provone:Collection,           
+     | caused the generation?                                                                                                                   | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation,
+     |                                                                                                                                          |  provone:hadOutPort, provone:Port         
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  43 | What input ports were used in the process or workflow execution responsible for generating the object specified by `<{obj}>`?            | path-level, provone:Collection,           
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage,          
+     |                                                                                                                                          | provone:hadInPort, provone:Port           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  44 | What are the output ports of a program whose processing context is derived from an activity associated with an execution, and for which  | path-level, provone:Collection,           
+     | a specific plan has been defined?                                                                                                        | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:hadPlan,           
+     |                                                                                                                                          | provone:Program, provone:hasOutPort,      
+     |                                                                                                                                          | provone:Port                              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  45 | What resources (like LLMs) are used by an execution that was generated as part of the specified collection/process?                      | path-level, provone:Collection,           
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  46 | What specific pieces of data are generated or associated with an execution process that originated from a collection?                    | path-level, provone:Collection,           
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation,
+     |                                                                                                                                          |  provone:hadEntity, provone:Data          
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  47 | What are the specific input data ports required by a program whose plan is derived from an activity associated with an execution, which  | path-level, provone:Collection,           
+     | in turn was generated by a given collection?                                                                                             | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:hadPlan,           
+     |                                                                                                                                          | provone:Program, provone:hasInPort,       
+     |                                                                                                                                          | provone:Port                              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  48 | What large language models or data sources were used as inputs/components when generating a collection derived from an execution         | path-level, provone:Collection,           
+     | involving component parts and generative tasks?                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | sio:SIO_000369, workflow:Generative_Task, 
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  49 | What is the final output artifact generated by an entity used as part of a generative task component within a broader process?           | path-level, provone:Collection,           
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | sio:SIO_000369, workflow:Generative_Task, 
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000229,                          
+     |                                                                                                                                          | workflow:Large_Language_Model_Output      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  50 | What specific data elements are required or utilized as inputs for a generated collection that results from a workflow involving         | path-level, provone:Collection,           
+     | Generative Tasks and Large Language Models?                                                                                              | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | sio:SIO_000369, workflow:Generative_Task, 
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000230, provone:Data             
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  51 | What kind of output artifacts are generated by Large Language Models?                                                                    | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000229,                           
+     |                                                                                                                                          | workflow:Large_Language_Model_Output      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  52 | What execution generated the data associated with a Large Language Model output?                                                         | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000229,                           
+     |                                                                                                                                          | workflow:Large_Language_Model_Output,     
+     |                                                                                                                                          | sio:SIO_000202, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution    
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  53 | Who is the User associated with the execution (trace) that was generated using the data/process required by a Large Language Model?      | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000230, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:wasAssociatedWith, provone:User      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  54 | Who is the user responsible for the execution associated with data generated from a Large Language Model's output?                       | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000229,                           
+     |                                                                                                                                          | workflow:Large_Language_Model_Output,     
+     |                                                                                                                                          | sio:SIO_000202, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:wasAssociatedWith, provone:User      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  55 | What is the plan associated with an activity context derived from using Large Language Models as input data sources?                     | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000230, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:hadPlan,           
+     |                                                                                                                                          | provone:Program                           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  56 | What input ports are used in the workflow process related to Large Language Models?                                                      | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000230, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage,          
+     |                                                                                                                                          | provone:hadInPort, provone:Port           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  57 | Who is the user responsible for the process or activity that generated the necessary input data for a Large Language Model?              | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000230, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:agent, provone:User
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  58 | What are the output ports specified for a system or function whose operational data inputs originate from Large Language Models (LLM)    | path-level,                               
+     | and are traceable through generation events?                                                                                             | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000230, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation,
+     |                                                                                                                                          |  provone:hadOutPort, provone:Port         
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  59 | What are the component parts of an entity or process that was responsible for generating data derived from a Large Language Model?       | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000230, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | sio:SIO_000369, workflow:Generative_Task  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  60 | What formal association or responsibility is established when data originating from a Large Language Model process is generated through  | path-level,                               
+     | an execution trace?                                                                                                                      | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000229,                           
+     |                                                                                                                                          | workflow:Large_Language_Model_Output,     
+     |                                                                                                                                          | sio:SIO_000202, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association                          
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  61 | What specific documented usages (instances of `prov:Usage`) are recorded for executions that utilize Large Language Models as inputs?    | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000230, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  62 | What execution was responsible for generating the data that serves as an input for Large Language Models?                                | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000230, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution    
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  63 | What is the record of data generation (`prov:Generation`) that results from a process involving Large Language Models?                   | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000229,                           
+     |                                                                                                                                          | workflow:Large_Language_Model_Output,     
+     |                                                                                                                                          | sio:SIO_000202, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  64 | What generative task constitutes an inherent component part of the execution that resulted in data, originating from a Large Language    | path-level,                               
+     | Model output?                                                                                                                            | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000229,                           
+     |                                                                                                                                          | workflow:Large_Language_Model_Output,     
+     |                                                                                                                                          | sio:SIO_000202, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | sio:SIO_000369, workflow:Generative_Task  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  65 | What formal association is recorded for the process responsible for generating the input data required by Large Language Models?         | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000230, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association                          
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  66 | What specific usage details (Usage instances) are associated with Data that is generated by processes related to Large Language Models?  | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000229,                           
+     |                                                                                                                                          | workflow:Large_Language_Model_Output,     
+     |                                                                                                                                          | sio:SIO_000202, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  67 | What are the required inputs or data specifications for Large Language Models?                                                           | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000230, provone:Data              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  68 | What kind of data results from the output process associated with Large Language Models?                                                 | path-level,                               
+     |                                                                                                                                          | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000229,                           
+     |                                                                                                                                          | workflow:Large_Language_Model_Output,     
+     |                                                                                                                                          | sio:SIO_000202, provone:Data              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  69 | What are the recorded generation events (provenance records) that resulted from processing data inputs required by Large Language        | path-level,                               
+     | Models?                                                                                                                                  | workflow:Large_Language_Models,           
+     |                                                                                                                                          | sio:SIO_000230, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  70 | What external resources or data models are required or utilized by a Generative Task?                                                    | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  71 | What execution(s) represent a component part of a Generative Task?                                                                       | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | sio:SIO_000313, provone:Execution         
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  72 | What execution traces were responsible for generating the data inputs required when a Generative Task utilizes Large Language Models?    | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000230, provone:Data,            
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution    
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  73 | What is the user who is attributed as having a role or responsibility (agent) within an association linked to the execution of a         | path-level, workflow:Generative_Task,     
+     | workflow that involves a Generative Task?                                                                                                | sio:SIO_000313, provone:Execution,        
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:agent, provone:User
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  74 | What type of output artifact is produced when a Generative Task uses Large Language Models?                                              | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000229,                          
+     |                                                                                                                                          | workflow:Large_Language_Model_Output      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  75 | Who is credited with performing the execution trace associated with a Generative AI task?                                                | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | sio:SIO_000313, provone:Execution,        
+     |                                                                                                                                          | prov:wasAssociatedWith, provone:User      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  76 | Who is the user responsible for the execution that generated the data utilized by a Large Language Model in a generative task?           | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000230, provone:Data,            
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:wasAssociatedWith, provone:User      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  77 | What specific usage details (`prov:Usage`) are recorded for the execution components that constitute a Generative Task?                  | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | sio:SIO_000313, provone:Execution,        
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  78 | What specific execution or process was responsible for generating the data resulting from a generative task utilizing large language     | path-level, workflow:Generative_Task,     
+     | models?                                                                                                                                  | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000229,                          
+     |                                                                                                                                          | workflow:Large_Language_Model_Output,     
+     |                                                                                                                                          | sio:SIO_000202, provone:Data,             
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution    
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  79 | What are the specific responsibilities or associations defined for an execution that is identified as a component part of a Generative   | path-level, workflow:Generative_Task,     
+     | Task?                                                                                                                                    | sio:SIO_000313, provone:Execution,        
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association                          
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  80 | What Program is planned for an activity that is a component part of a Generative Task's execution?                                       | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | sio:SIO_000313, provone:Execution,        
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:hadPlan,           
+     |                                                                                                                                          | provone:Program                           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  81 | What specific responsibility or association links to an Execution that generated Data, where that Data is related to Models used by a    | path-level, workflow:Generative_Task,     
+     | Generative Task?                                                                                                                         | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000230, provone:Data,            
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association                          
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  82 | What Data entities were involved or used during the execution trace that constitutes this generative task?                               | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | sio:SIO_000313, provone:Execution,        
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage,          
+     |                                                                                                                                          | provone:hadEntity, provone:Data           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  83 | What data inputs (Ports) are required by the Program that was executed in the context of this Generative Task?                           | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | sio:SIO_000313, provone:Execution,        
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:hadPlan,           
+     |                                                                                                                                          | provone:Program, provone:hasInPort,       
+     |                                                                                                                                          | provone:Port                              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  84 | What data items were generated or used during an execution that constitutes a component part of a Generative Task?                       | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | sio:SIO_000313, provone:Execution,        
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation,
+     |                                                                                                                                          |  provone:hadEntity, provone:Data          
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  85 | What specific details about the usage (`prov:Usage`) can be retrieved for data that was generated by an execution, where that generation | path-level, workflow:Generative_Task,     
+     |  was related to a Large Language Model being utilized in a Generative Task?                                                              | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000230, provone:Data,            
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  86 | What input ports are associated with an execution component derived from a Generative Task?                                              | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | sio:SIO_000313, provone:Execution,        
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage,          
+     |                                                                                                                                          | provone:hadInPort, provone:Port           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  87 | What is the resulting data artifact when a generative task utilizes large language models, according to the specified semantic           | path-level, workflow:Generative_Task,     
+     | relationships?                                                                                                                           | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000229,                          
+     |                                                                                                                                          | workflow:Large_Language_Model_Output,     
+     |                                                                                                                                          | sio:SIO_000202, provone:Data              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  88 | What entities are used or required as components when executing a generative task (like those involving Large Language Models)?          | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | sio:SIO_000313, provone:Execution,        
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  89 | What specific input data is required for a Generative Task that utilizes Large Language Models?                                          | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000230, provone:Data             
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  90 | What specific qualified generation events (`prov:Generation`) are associated with an execution that is a component part of a Generative  | path-level, workflow:Generative_Task,     
+     | Task?                                                                                                                                    | sio:SIO_000313, provone:Execution,        
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  91 | What specific generation event ($\text{prov:Generation}$) results when a Generative Task utilizes Large Language Models, where the input | path-level, workflow:Generative_Task,     
+     |  data for these models is linked to a particular execution trace?                                                                        | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000230, provone:Data,            
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  92 | What output ports are associated with a Generation that results from a process involving a Generative Task?                              | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | sio:SIO_000313, provone:Execution,        
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation,
+     |                                                                                                                                          |  provone:hadOutPort, provone:Port         
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  93 | What are the output ports associated with a program that was used in the execution trace derived from a generative task?                 | path-level, workflow:Generative_Task,     
+     |                                                                                                                                          | sio:SIO_000313, provone:Execution,        
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:hadPlan,           
+     |                                                                                                                                          | provone:Program, provone:hasOutPort,      
+     |                                                                                                                                          | provone:Port                              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  94 | What formal responsibilities (Associations) are linked to the execution that generated this specific piece of data?                      | path-level, provone:Data,                 
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association                          
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  95 | What execution instance was responsible for generating this piece of data?                                                               | path-level, provone:Data,                 
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution    
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  96 | Who is the user responsible for the association or activity that led to the generation of this specific data item?                       | path-level, provone:Data,                 
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:agent, provone:User
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  97 | What are the required input ports (Ports) for the Program associated with the Plan, when this entire sequence is traced back through an  | path-level, provone:Data,                 
+     | Execution that generated a specific piece of Data?                                                                                       | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:hadPlan,           
+     |                                                                                                                                          | provone:Program, provone:hasInPort,       
+     |                                                                                                                                          | provone:Port                              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  98 | What specific ways or contexts (usages) were utilized by the process/execution responsible for generating this piece of data?            | path-level, provone:Data,                 
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+  99 | Who is the user associated with the execution that generated this specific data item?                                                    | path-level, provone:Data,                 
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:wasAssociatedWith, provone:User      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 100 | For a given piece of data, what is the program associated with the plan that defined the responsibility for its creation?                | path-level, provone:Data,                 
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:hadPlan,           
+     |                                                                                                                                          | provone:Program                           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 101 | What details characterize the formal generation record (prov:Generation) for a piece of data that was produced through a specific        | path-level, provone:Data,                 
+     | execution trace?                                                                                                                         | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 102 | What specific output artifacts (Large Language Model Outputs) are generated and utilized as components within a Generative Task, tracing | path-level, provone:Data,                 
+     |  dependencies from an initial data source or execution context?                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | sio:SIO_000369, workflow:Generative_Task, 
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000229,                          
+     |                                                                                                                                          | workflow:Large_Language_Model_Output      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 103 | What input ports are associated with the usage pattern recorded for an execution that was generated by a specific data item?             | path-level, provone:Data,                 
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage,          
+     |                                                                                                                                          | provone:hadInPort, provone:Port           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 104 | What specific Large Language Models or resources were used to generate the piece of data being described?                                | path-level, provone:Data,                 
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | sio:SIO_000369, workflow:Generative_Task, 
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 105 | What external resources, models, or components were utilized during the execution that resulted in the creation of this specific piece   | path-level, provone:Data,                 
+     | of data?                                                                                                                                 | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 106 | What are the potential output ports associated with the program whose plan was involved in processing this specific piece of data?       | path-level, provone:Data,                 
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:hadPlan,           
+     |                                                                                                                                          | provone:Program, provone:hasOutPort,      
+     |                                                                                                                                          | provone:Port                              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 107 | What component part or related entity (`?value`) is associated with an execution that generated a piece of data, particularly when this  | path-level, provone:Data,                 
+     | relationship involves a Generative Task?                                                                                                 | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | sio:SIO_000369, workflow:Generative_Task  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 108 | What output ports are associated with a piece of data that was generated through an execution trace?                                     | path-level, provone:Data,                 
+     |                                                                                                                                          | prov:wasGeneratedBy, provone:Execution,   
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation,
+     |                                                                                                                                          |  provone:hadOutPort, provone:Port         
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 109 | What user was associated with or responsible for a given execution trace?                                                                | path-level, provone:Execution,            
+     |                                                                                                                                          | prov:wasAssociatedWith, provone:User      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 110 | What specific generation(s) are associated with (or qualified by) a given execution?                                                     | path-level, provone:Execution,            
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 111 | What specific usages or ways were resources utilized during the execution represented by this instance?                                  | path-level, provone:Execution,            
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 112 | What specific entities were used during a given execution?                                                                               | path-level, provone:Execution, prov:used, 
+     |                                                                                                                                          | workflow:Large_Language_Models            
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 113 | Who is identified as the user responsible for the outcome represented by this specific executed process or activity?                     | path-level, provone:Execution,            
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:agent, provone:User
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 114 | What specific input Ports were utilized or connected during the execution trace of a given program/workflow?                             | path-level, provone:Execution,            
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage,          
+     |                                                                                                                                          | provone:hadInPort, provone:Port           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 115 | What specific data entities were used or involved during the process represented by this execution?                                      | path-level, provone:Execution,            
+     |                                                                                                                                          | prov:qualifiedUsage, prov:Usage,          
+     |                                                                                                                                          | provone:hadEntity, provone:Data           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 116 | What specific roles, responsibilities, or associations are documented for a particular executed process or activity?                     | path-level, provone:Execution,            
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association                          
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 117 | For a specific execution or activity context, following an assigned responsibility and associated plan, what are the required input      | path-level, provone:Execution,            
+     | ports (data/inputs) for the program involved?                                                                                            | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:hadPlan,           
+     |                                                                                                                                          | provone:Program, provone:hasInPort,       
+     |                                                                                                                                          | provone:Port                              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 118 | What generative tasks constitute a particular execution trace?                                                                           | path-level, provone:Execution,            
+     |                                                                                                                                          | sio:SIO_000369, workflow:Generative_Task  
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 119 | What large language models (or other resources) were used as components within a Generative Task that was executed?                      | path-level, provone:Execution,            
+     |                                                                                                                                          | sio:SIO_000369, workflow:Generative_Task, 
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models 
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 120 | What program was planned for the association derived from this specific execution?                                                       | path-level, provone:Execution,            
+     |                                                                                                                                          | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:hadPlan,           
+     |                                                                                                                                          | provone:Program                           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 121 | What output ports are defined for programs whose operations are documented via an execution trace, where that trace involves a specific  | path-level, provone:Execution,            
+     | association and has an associated plan?                                                                                                  | prov:qualifiedAssociation,                
+     |                                                                                                                                          | prov:Association, prov:hadPlan,           
+     |                                                                                                                                          | provone:Program, provone:hasOutPort,      
+     |                                                                                                                                          | provone:Port                              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 122 | What kind of data is generated or utilized as an outcome when an execution involves generative tasks derived from Large Language Models? | path-level, provone:Execution,            
+     |                                                                                                                                          | sio:SIO_000369, workflow:Generative_Task, 
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000229,                          
+     |                                                                                                                                          | workflow:Large_Language_Model_Output,     
+     |                                                                                                                                          | sio:SIO_000202, provone:Data              
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 123 | What data items were generated or involved in the process associated with a particular execution of a program?                           | path-level, provone:Execution,            
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation,
+     |                                                                                                                                          |  provone:hadEntity, provone:Data          
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 124 | What are the output ports (data/visualizations) that were generated as a result of an execution trace?                                   | path-level, provone:Execution,            
+     |                                                                                                                                          | prov:qualifiedGeneration, prov:Generation,
+     |                                                                                                                                          |  provone:hadOutPort, provone:Port         
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 125 | What output artifact is generated by a Large Language Model when it serves as a component part within a Generative Task, which itself    | path-level, provone:Execution,            
+     | contributes to an overall Execution?                                                                                                     | sio:SIO_000369, workflow:Generative_Task, 
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000229,                          
+     |                                                                                                                                          | workflow:Large_Language_Model_Output      
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 126 | What prerequisite data items were supplied as inputs for Large Language Models utilized within a Generative Task component of an         | path-level, provone:Execution,            
+     | execution?                                                                                                                               | sio:SIO_000369, workflow:Generative_Task, 
+     |                                                                                                                                          | prov:used, workflow:Large_Language_Models,
+     |                                                                                                                                          |  sio:SIO_000230, provone:Data             
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 127 | What ports does a specific program/function produce as outputs?                                                                          | path-level, provone:Program,              
+     |                                                                                                                                          | provone:hasOutPort, provone:Port          
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------
+ 128 | What input ports (data/visualizations) are required for a specific Program or function instance?                                         | path-level, provone:Program,              
+     |                                                                                                                                          | provone:hasInPort, provone:Port           
+-----+------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------

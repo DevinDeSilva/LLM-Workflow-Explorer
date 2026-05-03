@@ -9,11 +9,12 @@ class ExplorerConfig(BaseModel):
     use_cache: bool = False
     explorer_metadata_loc: str
     exeprog_save_loc: str
+    entity_length:int = 7
     log_file: str
 
 
 class QuestionCreationConfig(BaseModel):
     save_questions:str
     llm_type:str
-    llm_config:Dict[str, Union[str, int, float]] = {}
+    llm_config:Dict[str, Union[str, int, float, bool]] = {}
     log_file: str

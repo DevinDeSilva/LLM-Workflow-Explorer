@@ -111,7 +111,6 @@ class OntologyInfoRetriever:
             metadata_index = self.build_metadata_index([term])
 
         label = self._first_value(term, self.LABEL_PREDICATES, metadata_index)
-        alias = self._first_value(term, self.ALIAS_PREDICATES, metadata_index)
         description = self._first_value(
             term,
             self.DESCRIPTION_PREDICATES,
@@ -123,8 +122,8 @@ class OntologyInfoRetriever:
 
         if label and label != term:
             details.append(label)
-        if alias:
-            details.append(f"alias={alias}")
+        # if alias:
+        #     details.append(f"alias={alias}")
 
         if details:
             summary = f"{summary} ({'; '.join(details)})"

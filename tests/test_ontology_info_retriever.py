@@ -83,8 +83,8 @@ def test_format_schema_prompt_returns_compact_prompt_context(tmp_path):
     assert prompt.splitlines() == [
         "Workflow schema",
         "Classes:",
-        "- workflow:Task (Generative Task): Represents a user-facing task completed with generative AI support.",
-        "- workflow:Model (Large Language Model; alias=LLM): A model used to generate or transform text.",
+        "- workflow:Task",
+        "- workflow:Model",
         "Object properties:",
-        "- workflow:usesModel (usesModel): Connects a task to the model selected to perform it while keeping...; links workflow:Task -> workflow:Model",
+        "- workflow:usesModel: workflow:Task -> workflow:Model",
     ]

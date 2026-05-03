@@ -7,8 +7,8 @@ class ExplainerConfig(BaseModel):
     vectordb_type:str
     save_answer_loc:str
     
-    llm_config:Dict[str, Union[str, int, float]] = {}
-    embedding_config:Dict[str, Union[str, int, float]] = {}
-    vectordb_config:Dict[str, Union[str, int, float]] = {}
-    object_search_config:Dict[str, Union[str, int, float]] = {}
+    llm_config:Dict[str, Union[str, int, float, bool]] = {}
+    embedding_config:Dict[str, Union[str, int, float, bool]] = {}
+    vectordb_config:Dict[str, Union[str, int, float, bool]] = {}
+    object_search_config:Dict[str, Union[str, int, float, bool]] = {}
     log_file: str
