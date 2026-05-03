@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyexplannotator"
+version = "0.1.0"
+description = "Build RDF/PROV-One knowledge graphs from provenance execution traces."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Devin Yasith De Silva" }
+]
+keywords = [
+    "annotation",
+    "knowledge-graph",
+    "provenance",
+    "provone",
+    "rdf",
+    "workflow",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "pandas>=1.5",
+    "PyYAML>=6.0",
+    "rdflib>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "build>=1.2",
+    "twine>=5.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/DevinDeSilva/LLM-Workflow-Explorer"
+Repository = "https://github.com/DevinDeSilva/LLM-Workflow-Explorer"
+Issues = "https://github.com/DevinDeSilva/LLM-Workflow-Explorer/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["expl_annotator*"]

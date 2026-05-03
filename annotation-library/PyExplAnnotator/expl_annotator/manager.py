@@ -6,10 +6,7 @@ from rdflib import Graph, Literal, URIRef, Namespace
 from rdflib.namespace import RDF, XSD
 import json
 import os
-
-import os
 import random
-import datetime
 import re
 
 def get_files_to_check(root, folder, ignore):
