@@ -11,7 +11,7 @@ pip install .
 ## Usage
 
 ```python
-from workflow_annotator import ProvOneManager
+from expl_annotator import ProvOneManager
 
 # Initialize with config
 manager = ProvOneManager("config.yaml")
