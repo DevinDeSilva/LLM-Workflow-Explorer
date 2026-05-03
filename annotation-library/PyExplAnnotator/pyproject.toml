@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyexplannotator"
-version = "0.1.0"
+version = "0.1.1"
 description = "Build RDF/PROV-One knowledge graphs from provenance execution traces."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -44,8 +44,12 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "build>=1.2",
+    "pytest>=8.0",
     "twine>=5.0",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [project.urls]
 Homepage = "https://github.com/DevinDeSilva/LLM-Workflow-Explorer"

@@ -86,6 +86,7 @@ class ProvOneManager:
         
         self.graph = Graph()
         self.namespaces = self._make_ttl_namespace()
+        self.config['namespaces'] = self.namespaces
         
         # Bind namespaces to rdflib graph for cleaner output
         for prefix, uri in self.namespaces.items():
@@ -176,19 +177,76 @@ class ProvOneManager:
         self.graph.add((s_uri, p_uri, o_node))
 
     def add_metadata_to_object(self, object_name, metadata):
+        if metadata is None:
+            return
+
         if not isinstance(metadata, dict):
             raise ValueError("Metadata must be a dict")
 
         for n, value in metadata.items():
-            if not isinstance(value, str):
-                value = str(value)
-            
             if not isinstance(value, str):
                 raise ValueError(f"Metadata values must be strings. Key: {n}")
             
             self.add_to_graph(object_name, n, value, literal=True, lang="en", dtype='xsd:string')
 
     # --- ProvOne Specific Functions ---
+
+    def _add_program_ai_task(self, name, prog_name, ai_task):
+        if not isinstance(ai_task, dict):
+            raise ValueError("AI tasks must be a dict")
+
+        if 'llm_model' not in ai_task:
+            raise ValueError("AI task metadata must include 'llm_model'")
+
+        print("AI Task Details:")
+
+        ai_task_name = entity_marking(name_concat("Generative_Task", name), self.config)
+        self.add_to_graph(ai_task_name, "a", "workflow:Generative_Task")
+
+        ai_method_name = entity_marking(name_concat("LLM", name), self.config)
+        self.add_to_graph(ai_method_name, "a", "workflow:Large_Language_Models")
+
+        self.add_to_graph(ai_task_name, "prov:used", ai_method_name)
+        self.add_to_graph(
+            ai_method_name,
+            "workflow:llm_model",
+            ai_task['llm_model'],
+            literal=True,
+            lang="en",
+            dtype='xsd:string',
+        )
+
+        ai_task_input = {}
+        for inp_key, inp_val in ai_task.get('input', {}).items():
+            inp_name = entity_marking(name_concat("LLM", name, "Input", inp_key), self.config)
+
+            self.add_to_graph(inp_name, "a", "provone:Data")
+            self.add_to_graph(ai_method_name, "sio:SIO_000230", inp_name)
+            self.add_to_graph(inp_name, "prov:value", inp_val, literal=True, lang="en", dtype='xsd:string')
+
+            ai_task_input[inp_key] = {
+                "name": inp_name,
+                "value": inp_val,
+                "metadata": {}
+            }
+
+        ai_output_name = entity_marking(name_concat("LLM_Output", name), self.config)
+        self.add_to_graph(ai_output_name, "a", "workflow:Large_Language_Model_Output")
+
+        self.add_to_graph(ai_method_name, "sio:SIO_000229", ai_output_name)
+        self.add_to_graph(ai_output_name, "sio:SIO_000232", ai_method_name)
+        self.add_to_graph(ai_output_name, "sio:SIO_000202", prog_name)
+
+        if ai_task.get('metadata') is not None:
+            self.add_metadata_to_object(ai_method_name, ai_task['metadata'])
+            self.add_metadata_to_object(ai_task_name, ai_task['metadata'])
+
+        return {
+            "name": ai_task_name,
+            "method": ai_method_name,
+            "output": ai_output_name,
+            "input": ai_task_input,
+        }
     
     def prov_ai_task(self, name, input, output, details):
         print("AI Task Details:")
@@ -230,7 +288,16 @@ class ProvOneManager:
         return details
 
 
-    def prov_program(self, name, has_in_port, has_out_port, has_sub_program=None, metadata=None, ai_task=None):
+    def prov_program(
+        self,
+        name,
+        has_in_port,
+        has_out_port,
+        has_sub_program=None,
+        metadata=None,
+        ai_task=None,
+        is_ai_task=False,
+    ):
         print(f"Creating program: {name}")
         if 'program' not in self.config or 'name' not in self.config['program']:
             raise ValueError("No program name defined in the config")
@@ -245,11 +312,6 @@ class ProvOneManager:
 
         self.add_to_graph(prog_name, "a", "provone:Program")
         
-        if ai_task:
-            if not isinstance(ai_task, dict):
-                raise ValueError("AI tasks must be a dict")
-            self.add_to_graph(prog_name, "a", "eo:SystemRecommendation")
-
         # Process InPorts
         for port_key, port in has_in_port.items():
             port_ident = name_concat(prog_name, port['name'])
@@ -289,35 +351,9 @@ class ProvOneManager:
         if metadata:
             self.add_metadata_to_object(prog_name, metadata)
 
-        # Process AI Task
-        # if ai_task:
-            # print("AI Task Details:")
-            # ai_task_name = entity_marking(name_concat("AI_Task", name), self.config)
-            # self.add_to_graph(ai_task_name, "a", "eo:AITask")
-
-            # ai_task_input = {}
-            # if 'input' in ai_task:
-            #     for inp_key, inp_val in ai_task['input'].items():
-            #         inp_name = entity_marking(name_concat("AI_Task", name, "Input", inp_key), self.config)
-                    
-            #         self.add_to_graph(ai_task_name, "sio:SIO_000230", inp_name)
-            #         self.add_to_graph(inp_name, "prov:value", inp_val, literal=True, lang="en", dtype='xsd:string')
-                    
-            #         ai_task_input[inp_key] = {
-            #             "name": inp_name,
-            #             "value": inp_val,
-            #             "metadata": {}
-            #         }
-
-            
-            # details['aiTask'] = ai_task
-            # details['aiTask'] = self.prov_AITask(
-            #     name, 
-            #     ai_task['input'], 
-            #     ai_task['output'], 
-            #     ai_task['details'],
-            #     function_output=True
-            # )
+        if is_ai_task and ai_task is not None:
+            self._add_program_ai_task(name, prog_name, ai_task)
+            details['aiTask'] = ai_task
 
         return details
     
@@ -357,6 +393,7 @@ class ProvOneManager:
         
         # Common Data Node creation
         self.add_to_graph(data_name, "a", "provone:Data")
+        self.add_to_graph(data_name, "rdfs:label", flow, literal=True, lang="en", dtype='xsd:string')
         self.add_to_graph(data_name, "prov:value", str(flow_data[flow]['value']), literal=True, lang="en", dtype='xsd:string')
 
         if direction == "input":
@@ -382,27 +419,28 @@ class ProvOneManager:
     def _function_collection_entry(self, flow_data, flow, prog, execution_name, direction):
         data_id = get_unq_id()
         data_name = entity_marking(name_concat("Collection", data_id, flow), self.config)
+        components = {}
 
-        self.add_to_graph(data_name, "a", "prov:Collection")
+        self.add_to_graph(data_name, "a", "provone:Collection")
 
         if direction == "input":
             usage_name = entity_marking(name_concat("Usage", data_id, flow), self.config)
             self.add_to_graph(usage_name, "a", "prov:Usage")
             self.add_to_graph(usage_name, "provone:hadInPort", prog['hasInPort'][flow]['name'])
-            self.add_to_graph(usage_name, "provone:hadEntity", data_name)
             
             self.add_to_graph(execution_name, "prov:qualifiedUsage", usage_name)
             self.add_to_graph(execution_name, "prov:used", data_name)
+            components["usage_name"] = usage_name
         else:
             generation_name = entity_marking(name_concat("Generation", data_id, flow), self.config)
             self.add_to_graph(generation_name, "a", "prov:Generation")
             self.add_to_graph(generation_name, "provone:hadOutPort", prog['hasOutPort'][flow]['name'])
-            self.add_to_graph(generation_name, "provone:hadEntity", data_name)
             
             self.add_to_graph(execution_name, "prov:qualifiedGeneration", generation_name)
             self.add_to_graph(data_name, "prov:wasGeneratedBy", execution_name)
+            components["generation_name"] = generation_name
 
-        return {"id": data_id, "name": data_name}
+        return {"id": data_id, "name": data_name, "components": components}
 
     def _function_process_exe_list(self, flow_data, flow, prog, execution_name, direction):
         collection_name = self._function_collection_entry(flow_data, flow, prog, execution_name, direction)
@@ -413,8 +451,15 @@ class ProvOneManager:
             data_name = entity_marking(name_concat("Data", data_id, flow), self.config)
             
             self.add_to_graph(data_name, "a", "provone:Data")
+            self.add_to_graph(data_name, "rdfs:label", flow, literal=True, lang="en", dtype='xsd:string')
             self.add_to_graph(data_name, "prov:value", str(d), literal=True, lang="en", dtype='xsd:string')
-            self.add_to_graph(collection_name['name'], "prov:hadMember", data_name)
+            self.add_to_graph(collection_name['name'], "provone:hadMember", data_name)
+            self.add_to_graph(data_name, "prov:wasGeneratedBy", execution_name)
+
+            if direction == "input":
+                self.add_to_graph(collection_name['components']['usage_name'], "provone:hadEntity", data_name)
+            else:
+                self.add_to_graph(collection_name['components']['generation_name'], "provone:hadEntity", data_name)
             
             data_names_list.append({"id": data_id, "name": data_name})
             
@@ -433,6 +478,7 @@ class ProvOneManager:
             
             self.add_to_graph(execution_name, "prov:qualifiedUsage", usage_name)
             self.add_to_graph(execution_name, "prov:used", data_name)
+            self.add_to_graph(data_name, "prov:wasGeneratedBy", execution_name)
         else:
             raise ValueError("Output data is not supported for prov-data type in this logic")
 
@@ -452,22 +498,126 @@ class ProvOneManager:
                 semantic_map[col] = f"DFColumn:{col}"
 
         data_names_list = []
-        for index, row in df_value.iterrows():
+        for index, row in enumerate(df_value.itertuples(index=False), start=1):
             data_id = get_unq_id()
             data_name = entity_marking(name_concat("Data", data_id, flow), self.config)
             
             self.add_to_graph(data_name, "a", "provone:Data")
-            self.add_to_graph(collection_name['name'], "prov:hadMember", data_name)
+            self.add_to_graph(data_name, "rdfs:label", f"row_{index}", literal=True, lang="en", dtype='xsd:string')
+            self.add_to_graph(collection_name['name'], "provone:hadMember", data_name)
+            self.add_to_graph(execution_name, "prov:used", data_name)
+            self.add_to_graph(data_name, "prov:wasGeneratedBy", execution_name)
+
+            if direction == "input":
+                self.add_to_graph(collection_name['components']['usage_name'], "provone:hadEntity", data_name)
+            else:
+                self.add_to_graph(collection_name['components']['generation_name'], "provone:hadEntity", data_name)
             
-            for col in df_value.columns:
+            for col, value in zip(df_value.columns, row):
                 pred = semantic_map.get(col, f"DFColumn:{col}")
-                self.add_to_graph(data_name, pred, str(row[col]), literal=True, lang="en", dtype='xsd:string')
+                self.add_to_graph(data_name, pred, str(value), literal=True, lang="en", dtype='xsd:string')
             
             data_names_list.append(data_name)
 
         return {"collection": collection_name, "members": data_names_list}
 
-    def prov_program_execution(self, prog, inputs, outputs, user, semantic_map=None, metadata=None):
+    def _member_names(self, record):
+        for member in record.get('members', []):
+            if isinstance(member, dict):
+                yield member.get('name')
+            else:
+                yield member
+
+    def _add_execution_ai_usage(
+        self,
+        execution_id,
+        execution_name,
+        inputs,
+        outputs,
+        records_inputs,
+        records_outputs,
+        used_ai_info,
+    ):
+        if not isinstance(used_ai_info, dict):
+            raise ValueError("AI tasks must be a dict")
+
+        if 'llm_model' not in used_ai_info:
+            raise ValueError("AI usage metadata must include 'llm_model'")
+
+        print("usedAIInfo Details:")
+
+        ai_task_name = entity_marking(name_concat("Generative_Task", execution_id), self.config)
+        self.add_to_graph(ai_task_name, "a", "workflow:Generative_Task")
+
+        ai_method_name = entity_marking(name_concat("LLM", execution_id), self.config)
+        self.add_to_graph(ai_method_name, "a", "workflow:Large_Language_Models")
+
+        self.add_to_graph(ai_task_name, "prov:used", ai_method_name)
+        self.add_to_graph(
+            ai_method_name,
+            "workflow:llm_model",
+            used_ai_info['llm_model'],
+            literal=True,
+            lang="en",
+            dtype='xsd:string',
+        )
+
+        self.add_to_graph(ai_task_name, "sio:SIO_000313", execution_name)
+        self.add_to_graph(execution_name, "sio:SIO_000369", ai_task_name)
+
+        for inp_key in used_ai_info.get('input', {}):
+            if inp_key not in inputs:
+                raise ValueError(f"AI input '{inp_key}' was not found in execution inputs")
+
+            dt = inputs[inp_key].get('data_type')
+            if dt in ("literal", "prov-data"):
+                self.add_to_graph(ai_method_name, "sio:SIO_000230", records_inputs[inp_key]['name'])
+            elif dt in ("data_frame", "list"):
+                for member_name in self._member_names(records_inputs[inp_key]):
+                    self.add_to_graph(ai_method_name, "sio:SIO_000230", member_name)
+            else:
+                raise ValueError(f"Unsupported data type: {dt}")
+
+        ai_output_name = entity_marking(name_concat("LLM_Output", execution_id), self.config)
+        self.add_to_graph(ai_output_name, "a", "workflow:Large_Language_Model_Output")
+
+        self.add_to_graph(ai_method_name, "sio:SIO_000229", ai_output_name)
+        self.add_to_graph(ai_output_name, "sio:SIO_000232", ai_method_name)
+
+        for out_key in used_ai_info.get('output', {}):
+            if out_key not in outputs:
+                raise ValueError(f"AI output '{out_key}' was not found in execution outputs")
+
+            dt = outputs[out_key].get('data_type')
+            if dt == "literal":
+                self.add_to_graph(ai_output_name, "sio:SIO_000202", records_outputs[out_key]['name'])
+            elif dt in ("data_frame", "list"):
+                for member_name in self._member_names(records_outputs[out_key]):
+                    self.add_to_graph(ai_output_name, "sio:SIO_000202", member_name)
+            else:
+                raise ValueError(f"Unsupported data type: {dt}")
+
+        if used_ai_info.get('metadata') is not None:
+            self.add_metadata_to_object(ai_method_name, used_ai_info['metadata'])
+            self.add_metadata_to_object(ai_task_name, used_ai_info['metadata'])
+
+        return {
+            "name": ai_task_name,
+            "method": ai_method_name,
+            "output": ai_output_name,
+        }
+
+    def prov_program_execution(
+        self,
+        prog,
+        inputs,
+        outputs,
+        user,
+        semantic_map=None,
+        metadata=None,
+        uses_ai=False,
+        used_ai_info=None,
+    ):
         print(f"Creating program execution for: {prog['name']}")
         if not prog.get('name'):
             raise ValueError("No program name defined in the input program object")
@@ -475,7 +625,7 @@ class ProvOneManager:
         execution_id = get_unq_id()
         execution_name = entity_marking(execution_id, self.config)
         user_name = entity_marking(user, self.config)
-        association_name = name_concat(prog['name'], "Association")
+        association_name = entity_marking(name_concat(prog['name'], "Association", execution_id), self.config)
 
         self.add_to_graph(execution_name, "a", "provone:Execution")
         self.add_to_graph(user_name, "a", "prov:Agent")
@@ -518,6 +668,19 @@ class ProvOneManager:
                 
             records_outputs[out_key] = data_name
 
+        if uses_ai:
+            if used_ai_info is None:
+                raise ValueError("used_ai_info is required when uses_ai=True")
+            self._add_execution_ai_usage(
+                execution_id,
+                execution_name,
+                inputs,
+                outputs,
+                records_inputs,
+                records_outputs,
+                used_ai_info,
+            )
+
         if metadata:
             self.add_metadata_to_object(execution_name, metadata)
 
@@ -532,9 +695,9 @@ class ProvOneManager:
         collection_id = get_unq_id()
         collection_name = entity_marking(collection_id, self.config)
 
-        self.add_to_graph(collection_name, "a", "prov:Collection")
+        self.add_to_graph(collection_name, "a", "provone:Collection")
         for ent in entities:
-            self.add_to_graph(collection_name, "prov:hadMember", ent)
+            self.add_to_graph(collection_name, "provone:hadMember", ent)
 
         return {
             "collection": {
@@ -562,6 +725,7 @@ class ProvOneManager:
             return
         
         self.namespaces[prefix] = uri
+        self.config['namespaces'] = self.namespaces
         self.graph.bind(prefix, Namespace(uri))
         self._validate_namespaces(self.namespaces)
 

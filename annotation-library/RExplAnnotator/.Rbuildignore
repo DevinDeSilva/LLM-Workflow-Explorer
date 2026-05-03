@@ -1,0 +1,6 @@
+^gen_provone\.R$
+^decorator_func\.R$
+^utils\.R$
+^.*\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$

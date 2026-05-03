@@ -122,6 +122,7 @@ provProgram <- function(
     hasOutPort, 
     hasSubProgram=NULL,
     metadata=list(),
+    isAITask=FALSE,
     aiTask=list(),
     ...) {
     # Process the input text and generate the appropriate TTL content
@@ -139,14 +140,13 @@ provProgram <- function(
         )
 
     config$add_to_graph(prog_name, "a", "provone:Program")
-    if (!is.null(aiTask)) {
-        if (!is.list(aiTask)) {
-            stop("AI tasks must be a list")
-        }
-        config$add_to_graph(prog_name, "a", "eo:SystemRecommendation")
-    }
-
-
+    # if (!is.null(aiTask)) {
+    #     if (!is.list(aiTask)) {
+    #         stop("AI tasks must be a list")
+    #     }
+    #     config$add_to_graph(prog_name, "a", "eo:SystemRecommendation")
+    # }
+     
     for (port_key in names(hasInPort)) {
         port <- hasInPort[[port_key]]
         port_ident <- name_concat(prog_name, port$name)
@@ -193,23 +193,29 @@ provProgram <- function(
         add_metadata_to_object(prog_name, metadata, config)
     }
 
-    print("AI Task Details:")
-    if (!is.null(aiTask)) {
+    if (isAITask && !is.null(aiTask)) {
         if (!is.list(aiTask)) {
             stop("AI tasks must be a list")
         }
 
+        print("AI Task Details:")
 
-        ai_task_name <- entity_marking(name_concat("AI_Task", name), config)
-        config$add_to_graph(ai_task_name, "a", "eo:AITask")
-        #config$add_to_graph(ai_task_name, "a", "provone:Program")
+
+        ai_task_name <- entity_marking(name_concat("Generative_Task", name), config)
+        config$add_to_graph(ai_task_name, "a", "workflow:Generative_Task")
+    
+        ai_method_name <- entity_marking(name_concat("LLM", name), config)
+        config$add_to_graph(ai_method_name, "a", "workflow:Large_Language_Models")
+
+        config$add_to_graph(ai_task_name, "prov:used", ai_method_name)
+        config$add_to_graph(ai_method_name, "workflow:llm_model", aiTask$llm_model, literal = TRUE, lang = "en", dtype = 'xsd:string')
 
         ai_task_input <- list()
         for (inp in names(aiTask$input)) {
-            inp_name <- entity_marking(name_concat("AI_Task", name, "Input", inp), config)
+            inp_name <- entity_marking(name_concat("LLM", name, "Input", inp), config)
 
-            #config$add_to_graph(inp_name, "a", 'eo:ObjectRecord')
-            config$add_to_graph(ai_task_name, "sio:SIO_000230", inp_name)
+            config$add_to_graph(inp_name, "a", 'provone:Data')
+            config$add_to_graph(ai_method_name, "sio:SIO_000230", inp_name)
             config$add_to_graph(inp_name, "prov:value", aiTask$input[[inp]], literal = TRUE, lang = "en", dtype = 'xsd:string')
 
             ai_task_input[[inp]] <- list(
@@ -219,25 +225,19 @@ provProgram <- function(
             )
         }
 
-        # eo:systemRRecommendation
-        #ai_task_output <- list()
-        #for (out in names(aiTask$output)) {
-        #    out_name <- entity_marking(name_concat("AI_Task", name, "Output", out), config)
+        ai_output_name <- entity_marking(name_concat("LLM_Output", name), config)
+        config$add_to_graph(ai_output_name, "a", "workflow:Large_Language_Model_Output")
 
-        #    config$add_to_graph(out_name, "a", 'eo:SystemRecommendation')
-        #    config$add_to_graph(out_name, "sio:SIO_000229", ai_task_name)
-        #    config$add_to_graph(out_name, "prov:value", aiTask$output[[out]], literal = TRUE, lang = "en")
+        config$add_to_graph(ai_method_name, "sio:SIO_000229", ai_output_name)
+        config$add_to_graph(ai_output_name, "sio:SIO_000232", ai_method_name)
 
-        #    ai_task_output[[out]] <- list( 
-        #        name = out_name,
-        #        value = aiTask$output[[out]],
-        #        metadata = list()
-        #    )
-        #}
+        config$add_to_graph(ai_output_name, "sio:SIO_000202", prog_name)
 
+        if (!is.null(aiTask$metadata)) {
+            add_metadata_to_object(ai_method_name, aiTask$metadata, config)
+            add_metadata_to_object(ai_task_name, aiTask$metadata, config)
+        }
 
-        config$add_to_graph(ai_task_name, "sio:SIO_000229", prog_name)
-        config$add_to_graph(prog_name, "eo:generatedBy", ai_task_name)
         details$aiTask <- aiTask
     }
 
@@ -287,7 +287,7 @@ function_process_exe_literal <- function(flow_data, flow, prog, execution_name, 
         usage_name <- entity_marking(name_concat("Usage", data_id, flow), config)
 
         config$add_to_graph(data_name, "a", "provone:Data")
-        #config$add_to_graph(data_name, "a", "eo:ObjectRecord")
+        config$add_to_graph(data_name, "rdfs:label", flow, literal = TRUE, lang = "en", dtype = 'xsd:string')
         config$add_to_graph(data_name, "prov:value", flow_data[[flow]]$value, literal = TRUE, lang = "en", dtype = 'xsd:string')
 
         config$add_to_graph(usage_name, "a", "prov:Usage")
@@ -301,7 +301,7 @@ function_process_exe_literal <- function(flow_data, flow, prog, execution_name, 
         generation_name <- entity_marking(name_concat("Generation", data_id, flow), config)
 
         config$add_to_graph(data_name, "a", "provone:Data")
-        #config$add_to_graph(data_name, "a", "eo:ObjectRecord")
+        config$add_to_graph(data_name, "rdfs:label", flow, literal = TRUE, lang = "en", dtype = 'xsd:string')
         config$add_to_graph(data_name, "prov:value", flow_data[[flow]]$value, literal = TRUE, lang = "en", dtype = 'xsd:string')
 
         config$add_to_graph(generation_name, "a", "prov:Generation")
@@ -323,34 +323,40 @@ function_collection_entry <- function(flow_data, flow, prog, execution_name, con
     data_id <- get_unq_id()
     data_name <- entity_marking(name_concat("Collection", data_id, flow), config)
 
+    components <- list()
     if(direction == "input") {
         usage_name <- entity_marking(name_concat("Usage", data_id, flow), config)
 
-        config$add_to_graph(data_name, "a", "prov:Collection")
+        config$add_to_graph(data_name, "a", "provone:Collection")
 
         config$add_to_graph(usage_name, "a", "prov:Usage")
         config$add_to_graph(usage_name, "provone:hadInPort", prog$hasInPort[[flow]]$name)
-        config$add_to_graph(usage_name, "provone:hadEntity", data_name)
+        #config$add_to_graph(usage_name, "provone:hadEntity", data_name)
 
         config$add_to_graph(execution_name, "prov:qualifiedUsage", usage_name)
         config$add_to_graph(execution_name, "prov:used", data_name)
+
+        components$usage_name <- usage_name
     }else{
         data_id <- get_unq_id()
         generation_name <- entity_marking(name_concat("Generation", data_id, flow), config)
 
-        config$add_to_graph(data_name, "a", "prov:Collection")
+        config$add_to_graph(data_name, "a", "provone:Collection")
 
         config$add_to_graph(generation_name, "a", "prov:Generation")
         config$add_to_graph(generation_name, "provone:hadOutPort", prog$hasOutPort[[flow]]$name)
-        config$add_to_graph(generation_name, "provone:hadEntity", data_name)
+        #config$add_to_graph(generation_name, "provone:hadEntity", data_name)
 
         config$add_to_graph(execution_name, "prov:qualifiedGeneration", generation_name)
         config$add_to_graph(data_name, "prov:wasGeneratedBy", execution_name)
+
+        components$generation_name <- generation_name
     }
 
     return(list(
         id = data_id,
-        name = data_name
+        name = data_name,
+        components = components
     ))
 }
 
@@ -365,9 +371,17 @@ function_process_exe_list <- function(flow_data, flow, prog, execution_name, con
         data_name <- entity_marking(name_concat("Data", data_id, flow), config)
 
         config$add_to_graph(data_name, "a", "provone:Data")
-        #config$add_to_graph(data_name, "a", "eo:ObjectRecord")
+        config$add_to_graph(data_name, "rdfs:label", flow, literal = TRUE, lang = "en", dtype = 'xsd:string')
         config$add_to_graph(data_name, "prov:value", d, literal = TRUE, lang = "en", dtype = 'xsd:string')
-        config$add_to_graph(collection_name$name, "prov:hadMember", data_name)
+        config$add_to_graph(collection_name$name, "provone:hadMember", data_name)
+        config$add_to_graph(data_name, "prov:wasGeneratedBy", execution_name)
+
+        if(direction == "input") {
+            config$add_to_graph(collection_name$components$usage_name, "provone:hadEntity", data_name)
+        }else{
+            print(sprintf("%s -> %s -> %s", collection_name$components$generation_name, "provone:hadEntity", data_name))
+            config$add_to_graph(collection_name$components$generation_name, "provone:hadEntity", data_name)
+        }
         data_names_list <- list.append(data_names_list, list(
             id = data_id,
             name = data_name
@@ -391,6 +405,7 @@ function_process_exe_prov_data <- function(flow_data, flow, prog, execution_name
 
         config$add_to_graph(execution_name, "prov:qualifiedUsage", usage_name)
         config$add_to_graph(execution_name, "prov:used", data_name)
+        config$add_to_graph(data_name, "prov:wasGeneratedBy", execution_name)
     }else{
         stop("Output data is not supported")
     }
@@ -421,8 +436,17 @@ function_process_exe_df <- function(flow_data, flow, prog, execution_name, confi
         data_id <- get_unq_id()
         data_name <- entity_marking(name_concat("Data", data_id, flow), config)
         config$add_to_graph(data_name, "a", "provone:Data")
-        #config$add_to_graph(data_name, "a", "eo:ObjectRecord")
-        config$add_to_graph(collection_name$name, "prov:hadMember", data_name)
+        config$add_to_graph(data_name, "rdfs:label", paste0("row_", i), literal = TRUE, lang = "en", dtype = 'xsd:string')
+        config$add_to_graph(collection_name$name, "provone:hadMember", data_name)
+        config$add_to_graph(execution_name, "prov:used", data_name)
+        config$add_to_graph(data_name, "prov:wasGeneratedBy", execution_name)
+
+        if(direction == "input") {
+            config$add_to_graph(collection_name$components$usage_name, "provone:hadEntity", data_name)
+        }else{
+            print(sprintf("%s -> %s -> %s", collection_name$components$generation_name, "provone:hadEntity", data_name))
+            config$add_to_graph(collection_name$components$generation_name, "provone:hadEntity", data_name)
+        }
 
         for (col in names(sel_df)) {
             pred <- ifelse(!is.null(semantic_map[[col]]), semantic_map[[col]], sprintf("DFColumn:%s", col))
@@ -444,9 +468,9 @@ provMakeList <- function(
     collection_id <- get_unq_id()
     collection_name <- entity_marking(collection_id, config)
 
-    config$add_to_graph(collection_name, "a", "prov:Collection")
+    config$add_to_graph(collection_name, "a", "provone:Collection")
     for(ent in entities){
-        config$add_to_graph(collection_name, "prov:hadMember", ent)
+        config$add_to_graph(collection_name, "provone:hadMember", ent)
     }
 
     return(list(
@@ -464,7 +488,9 @@ provProgramExecution <- function(
     inputs, 
     outputs, 
     user, 
-    semantic_map=NULL, 
+    semantic_map=NULL,
+    usesAI=FALSE,
+    usedAIInfo=list(), 
     metadata=list(),
     ...) {
 
@@ -476,7 +502,7 @@ provProgramExecution <- function(
     execution_id <- get_unq_id()
     execution_name <- entity_marking(execution_id, config)
     user_name <- entity_marking(user, config)
-    association_name <- name_concat(prog$name, "Association")
+    association_name <- entity_marking(name_concat(prog$name, "Association", execution_id), config)
 
     config$add_to_graph(execution_name, "a", "provone:Execution")
     config$add_to_graph(user_name, "a", "prov:Agent")
@@ -535,6 +561,90 @@ provProgramExecution <- function(
         }
 
         recordsOutputs[[out]] <- data_name
+    }
+
+    if (usesAI && !is.null(usedAIInfo)) {
+        if (!is.list(usedAIInfo)) {
+            stop("AI tasks must be a list")
+        }
+
+        print("usedAIInfo Details:")
+
+
+        ai_task_name <- entity_marking(name_concat("Generative_Task", execution_id), config)
+        config$add_to_graph(ai_task_name, "a", "workflow:Generative_Task")
+
+        ai_method_name <- entity_marking(name_concat("LLM", execution_id), config)
+        config$add_to_graph(ai_method_name, "a", "workflow:Large_Language_Models")
+
+        config$add_to_graph(ai_task_name, "prov:used", ai_method_name)
+        config$add_to_graph(ai_method_name, "workflow:llm_model", usedAIInfo$llm_model, literal = TRUE, lang = "en", dtype = 'xsd:string')
+
+        config$add_to_graph(ai_task_name, "sio:SIO_000313", execution_name)
+        config$add_to_graph(execution_name, "sio:SIO_000369", ai_task_name)
+
+        ai_task_input <- list()
+        for (inp in names(usedAIInfo$input)) {
+            if (inputs[[inp]]$data_type == "literal") {
+                config$add_to_graph(ai_method_name, "sio:SIO_000230", recordsInputs[[inp]]$name)
+            }
+            else if (inputs[[inp]]$data_type == "prov-data") {
+                config$add_to_graph(ai_method_name, "sio:SIO_000230", recordsInputs[[inp]]$name)
+            }
+            else if (inputs[[inp]]$data_type == "data_frame") {
+                for(mem in recordsInputs[[inp]]$members){
+                    config$add_to_graph(ai_method_name, "sio:SIO_000230", mem$name)
+                }
+            }
+            else if (inputs[[inp]]$data_type == "list"){
+                for(mem in recordsInputs[[inp]]$members){
+                    config$add_to_graph(ai_method_name, "sio:SIO_000230", mem$name)
+                }
+            }
+            else {
+                stop("Unsupported data type")
+            }
+            
+
+            ai_task_input[[inp]] <- list(
+                name = recordsInputs[[inp]]$name
+                )
+        }
+
+        ai_output_name <- entity_marking(name_concat("LLM_Output", execution_id), config)
+        config$add_to_graph(ai_method_name, "a", "workflow:Large_Language_Model_Output")
+
+        config$add_to_graph(ai_method_name, "sio:SIO_000229", ai_output_name)
+        config$add_to_graph(ai_output_name, "sio:SIO_000232", ai_method_name)
+
+        ai_task_output <- list()
+        for (out in names(usedAIInfo$output)) {
+            if (outputs[[out]]$data_type == "literal") {
+                config$add_to_graph(ai_output_name, "sio:SIO_000202", recordsOutputs[[out]]$name)
+            }
+            else if (outputs[[out]]$data_type == "data_frame") {
+                for(mem in recordsOutputs[[out]]$members){
+                    config$add_to_graph(ai_output_name, "sio:SIO_000202", mem$name)
+                }
+            }
+            else if (outputs[[out]]$data_type == "list"){
+                for(mem in recordsOutputs[[out]]$members){
+                    config$add_to_graph(ai_output_name, "sio:SIO_000202", mem$name)
+                }
+            }
+            else {
+                stop("Unsupported data type")
+            }
+
+            ai_task_output[[out]] <- list(
+                name = recordsOutputs[[out]]$name
+            )
+        }
+
+        if (!is.null(usedAIInfo$metadata)) {
+            add_metadata_to_object(ai_method_name, usedAIInfo$metadata, config)
+            add_metadata_to_object(ai_task_name, usedAIInfo$metadata, config)
+        }
     }
 
     if (!is.null(metadata)) {
