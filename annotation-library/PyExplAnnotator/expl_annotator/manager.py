@@ -668,10 +668,11 @@ class ProvOneManager:
                 
             records_outputs[out_key] = data_name
 
+        ai_task_details = None
         if uses_ai:
             if used_ai_info is None:
                 raise ValueError("used_ai_info is required when uses_ai=True")
-            self._add_execution_ai_usage(
+            ai_task_details = self._add_execution_ai_usage(
                 execution_id,
                 execution_name,
                 inputs,
@@ -684,12 +685,16 @@ class ProvOneManager:
         if metadata:
             self.add_metadata_to_object(execution_name, metadata)
 
-        return {
+        execution_details = {
             "name": execution_name,
             "inputs": records_inputs,
             "outputs": records_outputs,
             "user": user_name
         }
+        if ai_task_details is not None:
+            execution_details["aiTask"] = ai_task_details
+
+        return execution_details
 
     def prov_make_list(self, entities, metadata=None):
         collection_id = get_unq_id()
@@ -730,8 +735,6 @@ class ProvOneManager:
         self._validate_namespaces(self.namespaces)
 
     def save_prov_graph(self):
-        print(self.namespaces)
-        
         # Save Metadata sidecar
         metadata = {
             "generatedBy": self.config['program']['name'],

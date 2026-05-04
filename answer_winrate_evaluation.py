@@ -28,7 +28,7 @@ REPO_ROOT = Path.cwd()
 load_dotenv(REPO_ROOT / ".env")
 
 _winrate_judge_llm: Any | None = None
-
+ANSWER_REPORT = "original"
 
 class PairwiseAnswerWinrateSignature(dspy.Signature):
     """
@@ -103,7 +103,7 @@ SAVE_DIR = resolve_repo_path(
 WINRATE_CONFIG = EVALUATION_SETTINGS.get("winrate", {})
 WINRATE_JUDGE_LLM = WINRATE_CONFIG.get("judge_llm") or JUDGE_LLM
 WINRATE_TIE_SCORE = WINRATE_CONFIG.get("tie_score", 0.5)
-WINRATE_SAVE_DIR = SAVE_DIR / "answer_winrate"
+WINRATE_SAVE_DIR = SAVE_DIR / f"answer_winrate-{ANSWER_REPORT}"
 
 
 def latest_prediction_file(
@@ -323,7 +323,7 @@ def ours_input_config(record: Dict[str, Any]) -> Dict[str, Any]:
     return augment_ours_record_with_reports(
         record,
         synthetic_question_retriever=sq_retriver,
-        answer_report="trace",
+        answer_report=ANSWER_REPORT,
     )
 
 

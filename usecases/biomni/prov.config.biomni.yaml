@@ -30,6 +30,7 @@ ttl:
     { name: "eo", uri: "https://purl.org/heals/eo#" },
     { name: "ep", uri: "http://linkedu.eu/dedalo/explanationPattern.owl#" },
     { name: "sio", uri: "http://semanticscience.org/resource/" },
+    { name: "workflow", uri: "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/" },
     { name: "dc", uri: "http://purl.org/dc/elements/1.1/" },
     { name: "DFColumn", uri: "http://testwebsite/testDFColumn#" },
     { name: "xsd", uri: "http://www.w3.org/2001/XMLSchema#" },
@@ -38,4 +39,3 @@ ttl:
     { name: "dbp", uri: "http://dbpedia.org/property/" },
     { name: "dbt", uri: "http://dbpedia.org/resource/Template:" }
   ]
-
