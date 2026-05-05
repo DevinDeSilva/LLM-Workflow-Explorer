@@ -803,7 +803,7 @@ class BFSExplorer:
                 for relation in self.out_relations_cls[current_class]:
                     # The range is the neighbor class
                     for conn in self.schema_dr[relation]:
-                        _, neighbor_class = self.schema_dr[relation]
+                        _, neighbor_class = conn
                         if neighbor_class not in [c for c in current_path]:
                             new_path = current_path + [relation] + [self.graph_manager.reverse_curie(neighbor_class)]
                             all_paths.append(new_path)

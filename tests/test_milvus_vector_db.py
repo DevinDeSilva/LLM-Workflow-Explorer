@@ -313,6 +313,22 @@ def test_normalize_records_supports_batch_input(build_milvus_db):
     ]
 
 
+def test_normalize_records_truncates_object_description_to_configured_limit(build_milvus_db):
+    db = build_milvus_db(object_description_max_length=12)
+
+    records = db._normalize_records(
+        object_name="object_alpha",
+        object_class="alpha",
+        object_vector=[1, 0, 0, 0],
+        metadata={"kind": "alpha"},
+        object_description="Alpha object description that is too long.",
+        records=None,
+    )
+
+    assert records[0]["object_description"] == "Alpha object"
+    assert len(records[0]["object_description"]) == 12
+
+
 def test_validate_vector_dim_raises_for_wrong_dimension(build_milvus_db):
     db = build_milvus_db(vector_dim=4)
 

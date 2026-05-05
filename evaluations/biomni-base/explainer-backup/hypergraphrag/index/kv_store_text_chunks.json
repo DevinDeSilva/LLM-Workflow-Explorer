@@ -1,0 +1,1064 @@
+{
+  "chunk-1f5107c3700db63a7f85d7263fcf34a9": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:information_extractor-Association-id_20260420105703_307 [Chat BS Nex Gen:information extractor Association]\nObject: ChatBS-NexGen:information_extractor-Association-id_20260420105703_307 [Chat BS Nex Gen:information extractor Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:information_extractor [Information Extractor]",
+    "full_doc_id": "doc-1f5107c3700db63a7f85d7263fcf34a9",
+    "chunk_order_index": 0
+  },
+  "chunk-499c6c61bfd65bb8931b01b3a0d39b27": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:llm_chat-Association-id_20260420105659_302 [Chat BS Nex Gen:llm chat Association]\nObject: ChatBS-NexGen:llm_chat-Association-id_20260420105659_302 [Chat BS Nex Gen:llm chat Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:llm_chat [LLM Chat]",
+    "full_doc_id": "doc-499c6c61bfd65bb8931b01b3a0d39b27",
+    "chunk_order_index": 1
+  },
+  "chunk-49a00bca2078f1e8b7b2e992a11ec0cb": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:query_result_post_processor-Association-id_20260420105727_835 [Chat BS Nex Gen:query result post processor Association]\nObject: ChatBS-NexGen:query_result_post_processor-Association-id_20260420105727_835 [Chat BS Nex Gen:query result post processor Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:query_result_post_processor [Query Result Post Processor]",
+    "full_doc_id": "doc-49a00bca2078f1e8b7b2e992a11ec0cb",
+    "chunk_order_index": 2
+  },
+  "chunk-e9d3712896432de1d730f3bc600aaedf": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_598 [Chat BS Nex Gen:sparql query extractor Association]\nObject: ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_598 [Chat BS Nex Gen:sparql query extractor Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder]",
+    "full_doc_id": "doc-e9d3712896432de1d730f3bc600aaedf",
+    "chunk_order_index": 3
+  },
+  "chunk-37543d1ad31c8e3e33991ba563e7444d": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_972 [Chat BS Nex Gen:sparql query extractor Association]\nObject: ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_972 [Chat BS Nex Gen:sparql query extractor Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder]",
+    "full_doc_id": "doc-37543d1ad31c8e3e33991ba563e7444d",
+    "chunk_order_index": 4
+  },
+  "chunk-647b5329087295a750499be510a0c0db": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105710_61 [Chat BS Nex Gen:sparql query extractor Association]\nObject: ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105710_61 [Chat BS Nex Gen:sparql query extractor Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder]",
+    "full_doc_id": "doc-647b5329087295a750499be510a0c0db",
+    "chunk_order_index": 5
+  },
+  "chunk-c94417bc9e4c5fb15022188ea82ce0e2": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_320 [Chat BS Nex Gen:sparql query extractor Association]\nObject: ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_320 [Chat BS Nex Gen:sparql query extractor Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder]",
+    "full_doc_id": "doc-c94417bc9e4c5fb15022188ea82ce0e2",
+    "chunk_order_index": 6
+  },
+  "chunk-3c930fd5a1ad0af4e6a52252c900187f": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_662 [Chat BS Nex Gen:sparql query extractor Association]\nObject: ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_662 [Chat BS Nex Gen:sparql query extractor Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder]",
+    "full_doc_id": "doc-3c930fd5a1ad0af4e6a52252c900187f",
+    "chunk_order_index": 7
+  },
+  "chunk-45e9b3e419abbc13422a92c9cb69fbf2": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_772 [Chat BS Nex Gen:sparql query extractor Association]\nObject: ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_772 [Chat BS Nex Gen:sparql query extractor Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder]",
+    "full_doc_id": "doc-45e9b3e419abbc13422a92c9cb69fbf2",
+    "chunk_order_index": 8
+  },
+  "chunk-17c61b3bb2125047a06e2c68e75f467c": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105717_370 [Chat BS Nex Gen:sparql query extractor Association]\nObject: ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105717_370 [Chat BS Nex Gen:sparql query extractor Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder]",
+    "full_doc_id": "doc-17c61b3bb2125047a06e2c68e75f467c",
+    "chunk_order_index": 9
+  },
+  "chunk-4249493ae4c6d3082d1e7e0f075c6bd5": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105719_327 [Chat BS Nex Gen:sparql query extractor Association]\nObject: ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105719_327 [Chat BS Nex Gen:sparql query extractor Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder]",
+    "full_doc_id": "doc-4249493ae4c6d3082d1e7e0f075c6bd5",
+    "chunk_order_index": 10
+  },
+  "chunk-cd8008055473d7a59be5bd46965a6b55": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105722_117 [Chat BS Nex Gen:sparql query extractor Association]\nObject: ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105722_117 [Chat BS Nex Gen:sparql query extractor Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder]",
+    "full_doc_id": "doc-cd8008055473d7a59be5bd46965a6b55",
+    "chunk_order_index": 11
+  },
+  "chunk-2bc15594c09f84abf1b1954e1585a372": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105723_114 [Chat BS Nex Gen:sparql query extractor Association]\nObject: ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105723_114 [Chat BS Nex Gen:sparql query extractor Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder]",
+    "full_doc_id": "doc-2bc15594c09f84abf1b1954e1585a372",
+    "chunk_order_index": 12
+  },
+  "chunk-6e05b07d465bce23d8836f7426d0d773": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105727_300 [Chat BS Nex Gen:sparql query extractor Association]\nObject: ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105727_300 [Chat BS Nex Gen:sparql query extractor Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder]",
+    "full_doc_id": "doc-6e05b07d465bce23d8836f7426d0d773",
+    "chunk_order_index": 13
+  },
+  "chunk-a34aa5d817132c564877fe253e2d30e3": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650 [Chat BS Nex Gen:system prompt generator Association]\nObject: ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650 [Chat BS Nex Gen:system prompt generator Association].\nTypes: prov:Association.\nProperties:\n- prov:agent (Enables the specification of a particular Program as a Plan in a particular Association. This allows for further qualification of the prov:was Associated With property in the context of an Execution.): ChatBS-NexGen:test_user [test user]\n- prov:hadPlan (The optional Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.): ChatBS-NexGen:system_prompt_generator [System Prompt Template Generator]",
+    "full_doc_id": "doc-a34aa5d817132c564877fe253e2d30e3",
+    "chunk_order_index": 14
+  },
+  "chunk-a5491a3150ad5021423d8f10d1b0ff24": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Collection-id_20260420105703_514-extracts [Collection extracts]\nObject: ChatBS-NexGen:Collection-id_20260420105703_514-extracts [Collection extracts].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105703_198-extracts [extracts]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105703_218-extracts [extracts]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105703_51-extracts [extracts]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105703_661-extracts [extracts]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105703_678-extracts [extracts]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105703_693-extracts [extracts]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105703_757-extracts [extracts]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105703_886-extracts [extracts]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105703_891-extracts [extracts]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105704_531-extracts [extracts]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105704_782-extracts [extracts]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]",
+    "full_doc_id": "doc-a5491a3150ad5021423d8f10d1b0ff24",
+    "chunk_order_index": 15
+  },
+  "chunk-96212b81092c038bf55999b600d72897": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Collection-id_20260420105705_846-kg_info [Collection kg info]\nObject: ChatBS-NexGen:Collection-id_20260420105705_846-kg_info [Collection kg info].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105705_668-kg_info [row 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105705_972 [sparql query 1 1 1]",
+    "full_doc_id": "doc-96212b81092c038bf55999b600d72897",
+    "chunk_order_index": 16
+  },
+  "chunk-28d0bb7603ff85db0622a49b3cab90a9": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Collection-id_20260420105705_972-kg_info [Collection kg info]\nObject: ChatBS-NexGen:Collection-id_20260420105705_972-kg_info [Collection kg info].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105705_232-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105705_670-kg_info [row 0]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105705_598 [sparql query 1 1 2]",
+    "full_doc_id": "doc-28d0bb7603ff85db0622a49b3cab90a9",
+    "chunk_order_index": 17
+  },
+  "chunk-f0966445094909c9b57152b14bd67f0c": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Collection-id_20260420105710_94-kg_info [Collection kg info]\nObject: ChatBS-NexGen:Collection-id_20260420105710_94-kg_info [Collection kg info].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105710_564-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105711_94-kg_info [row 0]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105710_61 [sparql query 1 1 3]",
+    "full_doc_id": "doc-f0966445094909c9b57152b14bd67f0c",
+    "chunk_order_index": 18
+  },
+  "chunk-9bc6bd6283dbcde5780277c50cd81b90": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Collection-id_20260420105711_381-kg_info [Collection kg info]\nObject: ChatBS-NexGen:Collection-id_20260420105711_381-kg_info [Collection kg info].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105711_547-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105711_637-kg_info [row 0]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105711_772 [sparql query 1 1 6]",
+    "full_doc_id": "doc-9bc6bd6283dbcde5780277c50cd81b90",
+    "chunk_order_index": 19
+  },
+  "chunk-14796c89aed768e6f54a934e5bbf3933": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Collection-id_20260420105711_610-kg_info [Collection kg info]\nObject: ChatBS-NexGen:Collection-id_20260420105711_610-kg_info [Collection kg info].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105711_45-kg_info [row 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105711_662 [sparql query 1 1 5]",
+    "full_doc_id": "doc-14796c89aed768e6f54a934e5bbf3933",
+    "chunk_order_index": 20
+  },
+  "chunk-457e00c7bd3f18d425d4f4d2d204102c": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Collection-id_20260420105711_635-kg_info [Collection kg info]\nObject: ChatBS-NexGen:Collection-id_20260420105711_635-kg_info [Collection kg info].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105711_658-kg_info [row 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105711_320 [sparql query 1 1 4]",
+    "full_doc_id": "doc-457e00c7bd3f18d425d4f4d2d204102c",
+    "chunk_order_index": 21
+  },
+  "chunk-90930a21e7475924405ffd977a767f3a": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Collection-id_20260420105717_260-kg_info [Collection kg info]\nObject: ChatBS-NexGen:Collection-id_20260420105717_260-kg_info [Collection kg info].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105717_899-kg_info [row 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105717_370 [sparql query 1 1 7]",
+    "full_doc_id": "doc-90930a21e7475924405ffd977a767f3a",
+    "chunk_order_index": 22
+  },
+  "chunk-23bb0a135f6e65e6f4f86140ff22054e": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Collection-id_20260420105719_81-kg_info [Collection kg info]\nObject: ChatBS-NexGen:Collection-id_20260420105719_81-kg_info [Collection kg info].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105719_258-kg_info [row 0]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105719_416-kg_info [row 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105719_327 [sparql query 1 1 8]",
+    "full_doc_id": "doc-23bb0a135f6e65e6f4f86140ff22054e",
+    "chunk_order_index": 23
+  },
+  "chunk-934043401fc32bffb99cba7688ca84c9": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Collection-id_20260420105722_768-kg_info [Collection kg info]\nObject: ChatBS-NexGen:Collection-id_20260420105722_768-kg_info [Collection kg info].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105722_181-kg_info [row 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105722_117 [sparql query 1 1 9]",
+    "full_doc_id": "doc-934043401fc32bffb99cba7688ca84c9",
+    "chunk_order_index": 24
+  },
+  "chunk-56af43c3ea3913a1eb689334766680ea": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Collection-id_20260420105723_274-kg_info [Collection kg info]\nObject: ChatBS-NexGen:Collection-id_20260420105723_274-kg_info [Collection kg info].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105723_261-kg_info [row 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105723_114 [sparql query 1 1 10]",
+    "full_doc_id": "doc-56af43c3ea3913a1eb689334766680ea",
+    "chunk_order_index": 25
+  },
+  "chunk-992ef1adff71a68b4d0959702abf179d": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Collection-id_20260420105727_469-post_processed_output [Collection post processed output]\nObject: ChatBS-NexGen:Collection-id_20260420105727_469-post_processed_output [Collection post processed output].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105727_858-post_processed_output [row 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-992ef1adff71a68b4d0959702abf179d",
+    "chunk_order_index": 26
+  },
+  "chunk-322c2712431a442ee189470c011e77ac": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Collection-id_20260420105727_932-kg_info [Collection kg info]\nObject: ChatBS-NexGen:Collection-id_20260420105727_932-kg_info [Collection kg info].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105727_306-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105727_801-kg_info [row 0]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105727_300 [sparql query 1 1 11]",
+    "full_doc_id": "doc-322c2712431a442ee189470c011e77ac",
+    "chunk_order_index": 27
+  },
+  "chunk-c894fb75548886fff2898d64bb9cff70": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:DF_combine [Data Frame Combiner]\nObject: ChatBS-NexGen:DF_combine [Data Frame Combiner].\nTypes: provone:Program.\nProperties:\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:DF_combine-kg_queries [Input port for kg queries]\n- provone:hasOutPort (Enables the specification of a Port as an output port of a particular Program.): ChatBS-NexGen:DF_combine-kg_knowledge [Output port for kg knowledge]\n- dc:description (description): \"Combines multiple data frames resulting from SPARQL queries into a single data frame.\"\n- dcterms:identifier (identifier): \"3\"\n- rdfs:label (label): \"Data Frame Combiner\"",
+    "full_doc_id": "doc-c894fb75548886fff2898d64bb9cff70",
+    "chunk_order_index": 28
+  },
+  "chunk-aa618864c286e603bda95ba6613a8cbc": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:DF_combine-kg_knowledge [Output port for kg knowledge]\nObject: ChatBS-NexGen:DF_combine-kg_knowledge [Output port for kg knowledge].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"Output port for kg_knowledge in the DF combine program\"\n- rdfs:label (label): \"Output port for kg_knowledge\"",
+    "full_doc_id": "doc-aa618864c286e603bda95ba6613a8cbc",
+    "chunk_order_index": 29
+  },
+  "chunk-d40af5dd562f007d63e0d163361e882f": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:DF_combine-kg_queries [Input port for kg queries]\nObject: ChatBS-NexGen:DF_combine-kg_queries [Input port for kg queries].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"Input port for kg_queries in the DF combine program\"\n- rdfs:label (label): \"Input port for kg_queries\"",
+    "full_doc_id": "doc-d40af5dd562f007d63e0d163361e882f",
+    "chunk_order_index": 30
+  },
+  "chunk-aec281d97f5101b2e625459aef7da9dd": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105652_112-foodPreferences [food Preferences]\nObject: ChatBS-NexGen:Data-id_20260420105652_112-foodPreferences [food Preferences].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"foodPreferences\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Carnivore\"",
+    "full_doc_id": "doc-aec281d97f5101b2e625459aef7da9dd",
+    "chunk_order_index": 31
+  },
+  "chunk-f9fd49e22eab47cd31a71f51b62cb715": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105652_420-weight [weight]\nObject: ChatBS-NexGen:Data-id_20260420105652_420-weight [weight].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"weight\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"95.2\"",
+    "full_doc_id": "doc-f9fd49e22eab47cd31a71f51b62cb715",
+    "chunk_order_index": 32
+  },
+  "chunk-dd1975121d42d36c023779baa73939a8": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105652_456-system_prompt [system prompt]\nObject: ChatBS-NexGen:Data-id_20260420105652_456-system_prompt [system prompt].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"system_prompt\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline.\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105652_650 [system prompt execution 1 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105659_302 [llm chat 1 1]",
+    "full_doc_id": "doc-dd1975121d42d36c023779baa73939a8",
+    "chunk_order_index": 33
+  },
+  "chunk-58a2a0cbfb3215469d901f98e6587595": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105652_470-bodyMassIndex [body Mass Index]\nObject: ChatBS-NexGen:Data-id_20260420105652_470-bodyMassIndex [body Mass Index].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"bodyMassIndex\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"28.6\"",
+    "full_doc_id": "doc-58a2a0cbfb3215469d901f98e6587595",
+    "chunk_order_index": 34
+  },
+  "chunk-894746aeb5dd28a0c625da3357d24918": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105652_604-allergies [allergies]\nObject: ChatBS-NexGen:Data-id_20260420105652_604-allergies [allergies].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"allergies\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"None\"",
+    "full_doc_id": "doc-894746aeb5dd28a0c625da3357d24918",
+    "chunk_order_index": 35
+  },
+  "chunk-af6907960fb4ab55250aec0a032a1bb5": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105652_753-diagnosis [diagnosis]\nObject: ChatBS-NexGen:Data-id_20260420105652_753-diagnosis [diagnosis].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"diagnosis\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Diabetic\"",
+    "full_doc_id": "doc-af6907960fb4ab55250aec0a032a1bb5",
+    "chunk_order_index": 36
+  },
+  "chunk-039cf0b899a3ab85d0938d7443c23673": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105652_79-age [age]\nObject: ChatBS-NexGen:Data-id_20260420105652_79-age [age].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"age\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"30\"",
+    "full_doc_id": "doc-039cf0b899a3ab85d0938d7443c23673",
+    "chunk_order_index": 37
+  },
+  "chunk-8aca9226f7780efe2f7b71354b0f9803": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105652_838-height [height]\nObject: ChatBS-NexGen:Data-id_20260420105652_838-height [height].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"height\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"182.3\"",
+    "full_doc_id": "doc-8aca9226f7780efe2f7b71354b0f9803",
+    "chunk_order_index": 38
+  },
+  "chunk-6804c9943b33c629c44de16138b60cb1": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105652_904-gender [gender]\nObject: ChatBS-NexGen:Data-id_20260420105652_904-gender [gender].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"gender\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Male\"",
+    "full_doc_id": "doc-6804c9943b33c629c44de16138b60cb1",
+    "chunk_order_index": 39
+  },
+  "chunk-eda1aca31a721cec7d61435dbd0ddf5a": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105659_338-generated_answer [generated answer]\nObject: ChatBS-NexGen:Data-id_20260420105659_338-generated_answer [generated answer].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"generated_answer\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats...\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105659_302 [llm chat 1 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]",
+    "full_doc_id": "doc-eda1aca31a721cec7d61435dbd0ddf5a",
+    "chunk_order_index": 40
+  },
+  "chunk-1e6571cbe601c8b4820e005393efe795": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105659_811-user_prompt [user prompt]\nObject: ChatBS-NexGen:Data-id_20260420105659_811-user_prompt [user prompt].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"user_prompt\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"I need suggestions for light and energy-boosting foods to eat before my gym workout.\"",
+    "full_doc_id": "doc-1e6571cbe601c8b4820e005393efe795",
+    "chunk_order_index": 41
+  },
+  "chunk-fa5fc2b698e97dd3d97c472c831f186a": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105703_198-extracts [extracts]\nObject: ChatBS-NexGen:Data-id_20260420105703_198-extracts [extracts].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"extracts\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Yogurt\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105711_662 [sparql query 1 1 5]",
+    "full_doc_id": "doc-fa5fc2b698e97dd3d97c472c831f186a",
+    "chunk_order_index": 42
+  },
+  "chunk-a759327a76f74e4004f0d65d866d5462": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105703_218-extracts [extracts]\nObject: ChatBS-NexGen:Data-id_20260420105703_218-extracts [extracts].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"extracts\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Nut\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105711_772 [sparql query 1 1 6]",
+    "full_doc_id": "doc-a759327a76f74e4004f0d65d866d5462",
+    "chunk_order_index": 43
+  },
+  "chunk-597b0cd91373152d8e38b895edd87a11": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105703_51-extracts [extracts]\nObject: ChatBS-NexGen:Data-id_20260420105703_51-extracts [extracts].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"extracts\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Avocado\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105711_320 [sparql query 1 1 4]",
+    "full_doc_id": "doc-597b0cd91373152d8e38b895edd87a11",
+    "chunk_order_index": 44
+  },
+  "chunk-0460b857e1b5dcec8dd588a188520fba": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105703_661-extracts [extracts]\nObject: ChatBS-NexGen:Data-id_20260420105703_661-extracts [extracts].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"extracts\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Sweet Potato\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105705_598 [sparql query 1 1 2]",
+    "full_doc_id": "doc-0460b857e1b5dcec8dd588a188520fba",
+    "chunk_order_index": 45
+  },
+  "chunk-e880eb0f8b47dc4cedc7ca629231b80f": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105703_678-extracts [extracts]\nObject: ChatBS-NexGen:Data-id_20260420105703_678-extracts [extracts].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"extracts\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Egg\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105710_61 [sparql query 1 1 3]",
+    "full_doc_id": "doc-e880eb0f8b47dc4cedc7ca629231b80f",
+    "chunk_order_index": 46
+  },
+  "chunk-1d10c76dffd108d61f2cb85ae7137207": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105703_693-extracts [extracts]\nObject: ChatBS-NexGen:Data-id_20260420105703_693-extracts [extracts].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"extracts\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Turkey\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105722_117 [sparql query 1 1 9]",
+    "full_doc_id": "doc-1d10c76dffd108d61f2cb85ae7137207",
+    "chunk_order_index": 47
+  },
+  "chunk-894cb8fd291efc8b88cbb89c24205557": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105703_757-extracts [extracts]\nObject: ChatBS-NexGen:Data-id_20260420105703_757-extracts [extracts].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"extracts\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Chicken\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105705_972 [sparql query 1 1 1]",
+    "full_doc_id": "doc-894cb8fd291efc8b88cbb89c24205557",
+    "chunk_order_index": 48
+  },
+  "chunk-868c6614604d446435a7d7c15f1cf708": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105703_886-extracts [extracts]\nObject: ChatBS-NexGen:Data-id_20260420105703_886-extracts [extracts].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"extracts\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Tuna\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105717_370 [sparql query 1 1 7]",
+    "full_doc_id": "doc-868c6614604d446435a7d7c15f1cf708",
+    "chunk_order_index": 49
+  },
+  "chunk-e231acf80c863cec58b91449dd8c4bcf": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105703_891-extracts [extracts]\nObject: ChatBS-NexGen:Data-id_20260420105703_891-extracts [extracts].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"extracts\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Olive Oil\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105719_327 [sparql query 1 1 8]",
+    "full_doc_id": "doc-e231acf80c863cec58b91449dd8c4bcf",
+    "chunk_order_index": 50
+  },
+  "chunk-cf1ffb301cc66e27d37f52a1d3c6b755": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105704_531-extracts [extracts]\nObject: ChatBS-NexGen:Data-id_20260420105704_531-extracts [extracts].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"extracts\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Cheese\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105723_114 [sparql query 1 1 10]",
+    "full_doc_id": "doc-cf1ffb301cc66e27d37f52a1d3c6b755",
+    "chunk_order_index": 51
+  },
+  "chunk-e422e1211146524f9197c7be001a3e88": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105704_782-extracts [extracts]\nObject: ChatBS-NexGen:Data-id_20260420105704_782-extracts [extracts].\nTypes: provone:Data.\nProperties:\n- rdfs:label (label): \"extracts\"\n- prov:value (Provides a value that is a direct representation of an entity.): \"Fruit\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105727_300 [sparql query 1 1 11]",
+    "full_doc_id": "doc-e422e1211146524f9197c7be001a3e88",
+    "chunk_order_index": 52
+  },
+  "chunk-0d2960fc9e367710ef0ca4c68bb09349": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105705_232-kg_info [row 1]\nObject: ChatBS-NexGen:Data-id_20260420105705_232-kg_info [row 1].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"NA\"\n- DFColumn:ingredientName (ingredient Name): \"NA\"\n- DFColumn:sugarG (sugar G): \"NA\"\n- rdfs:label (label): \"row_1\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105705_598 [sparql query 1 1 2]",
+    "full_doc_id": "doc-0d2960fc9e367710ef0ca4c68bb09349",
+    "chunk_order_index": 53
+  },
+  "chunk-b38f1896d6c384ad5271ae8f222bd913": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105705_668-kg_info [row 1]\nObject: ChatBS-NexGen:Data-id_20260420105705_668-kg_info [row 1].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"Animal taxa named by Carl Linnaeus\"\n- DFColumn:ingredientName (ingredient Name): \"Chicken\"\n- DFColumn:sugarG (sugar G): \"NA\"\n- rdfs:label (label): \"row_1\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105705_972 [sparql query 1 1 1]",
+    "full_doc_id": "doc-b38f1896d6c384ad5271ae8f222bd913",
+    "chunk_order_index": 54
+  },
+  "chunk-a7aef41c368427e28f49bdc65e525012": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105705_670-kg_info [row 0]\nObject: ChatBS-NexGen:Data-id_20260420105705_670-kg_info [row 0].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"\"\n- DFColumn:ingredientName (ingredient Name): \"\"\n- DFColumn:sugarG (sugar G): \"\"\n- rdfs:label (label): \"row_0\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105705_598 [sparql query 1 1 2]",
+    "full_doc_id": "doc-a7aef41c368427e28f49bdc65e525012",
+    "chunk_order_index": 55
+  },
+  "chunk-4dbdd5c24d99e2838875f9d57c4b8a01": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105710_564-kg_info [row 1]\nObject: ChatBS-NexGen:Data-id_20260420105710_564-kg_info [row 1].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"NA\"\n- DFColumn:ingredientName (ingredient Name): \"NA\"\n- DFColumn:sugarG (sugar G): \"NA\"\n- rdfs:label (label): \"row_1\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105710_61 [sparql query 1 1 3]",
+    "full_doc_id": "doc-4dbdd5c24d99e2838875f9d57c4b8a01",
+    "chunk_order_index": 56
+  },
+  "chunk-1c907e69b9621cf0e5ccf61c021215bf": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105711_45-kg_info [row 1]\nObject: ChatBS-NexGen:Data-id_20260420105711_45-kg_info [row 1].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"Desserts\"\n- DFColumn:ingredientName (ingredient Name): \"Yogurt\"\n- DFColumn:sugarG (sugar G): \"4\"\n- rdfs:label (label): \"row_1\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105711_662 [sparql query 1 1 5]",
+    "full_doc_id": "doc-1c907e69b9621cf0e5ccf61c021215bf",
+    "chunk_order_index": 57
+  },
+  "chunk-01376580d83ff871f7dfb43ce8b80473": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105711_547-kg_info [row 1]\nObject: ChatBS-NexGen:Data-id_20260420105711_547-kg_info [row 1].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"NA\"\n- DFColumn:ingredientName (ingredient Name): \"NA\"\n- DFColumn:sugarG (sugar G): \"NA\"\n- rdfs:label (label): \"row_1\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105711_772 [sparql query 1 1 6]",
+    "full_doc_id": "doc-01376580d83ff871f7dfb43ce8b80473",
+    "chunk_order_index": 58
+  },
+  "chunk-f99ac357a01f8bce2b40938cd4e7a466": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105711_637-kg_info [row 0]\nObject: ChatBS-NexGen:Data-id_20260420105711_637-kg_info [row 0].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"\"\n- DFColumn:ingredientName (ingredient Name): \"\"\n- DFColumn:sugarG (sugar G): \"\"\n- rdfs:label (label): \"row_0\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105711_772 [sparql query 1 1 6]",
+    "full_doc_id": "doc-f99ac357a01f8bce2b40938cd4e7a466",
+    "chunk_order_index": 59
+  },
+  "chunk-2e1162c2ccaa7c14014f0accaacf1e5b": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105711_658-kg_info [row 1]\nObject: ChatBS-NexGen:Data-id_20260420105711_658-kg_info [row 1].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"Tropical fruit\"\n- DFColumn:ingredientName (ingredient Name): \"Avocado\"\n- DFColumn:sugarG (sugar G): \"0.66\"\n- rdfs:label (label): \"row_1\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105711_320 [sparql query 1 1 4]",
+    "full_doc_id": "doc-2e1162c2ccaa7c14014f0accaacf1e5b",
+    "chunk_order_index": 60
+  },
+  "chunk-a07dc21d578b253f9febbc9e938f0ee4": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105711_94-kg_info [row 0]\nObject: ChatBS-NexGen:Data-id_20260420105711_94-kg_info [row 0].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"\"\n- DFColumn:ingredientName (ingredient Name): \"\"\n- DFColumn:sugarG (sugar G): \"\"\n- rdfs:label (label): \"row_0\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105710_61 [sparql query 1 1 3]",
+    "full_doc_id": "doc-a07dc21d578b253f9febbc9e938f0ee4",
+    "chunk_order_index": 61
+  },
+  "chunk-c32d364a87b816d830ea9374b646ddbf": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105717_899-kg_info [row 1]\nObject: ChatBS-NexGen:Data-id_20260420105717_899-kg_info [row 1].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"Commercial fish\"\n- DFColumn:ingredientName (ingredient Name): \"Tuna\"\n- DFColumn:sugarG (sugar G): \"NA\"\n- rdfs:label (label): \"row_1\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105717_370 [sparql query 1 1 7]",
+    "full_doc_id": "doc-c32d364a87b816d830ea9374b646ddbf",
+    "chunk_order_index": 62
+  },
+  "chunk-336472359f862559bb289bb2db1a4119": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105719_258-kg_info [row 0]\nObject: ChatBS-NexGen:Data-id_20260420105719_258-kg_info [row 0].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"\"\n- DFColumn:ingredientName (ingredient Name): \"\"\n- DFColumn:sugarG (sugar G): \"\"\n- rdfs:label (label): \"row_0\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105719_327 [sparql query 1 1 8]",
+    "full_doc_id": "doc-336472359f862559bb289bb2db1a4119",
+    "chunk_order_index": 63
+  },
+  "chunk-b8f9c17cbe8653ece6857514fb28a1dd": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105719_416-kg_info [row 1]\nObject: ChatBS-NexGen:Data-id_20260420105719_416-kg_info [row 1].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"NA\"\n- DFColumn:ingredientName (ingredient Name): \"NA\"\n- DFColumn:sugarG (sugar G): \"NA\"\n- rdfs:label (label): \"row_1\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105719_327 [sparql query 1 1 8]",
+    "full_doc_id": "doc-b8f9c17cbe8653ece6857514fb28a1dd",
+    "chunk_order_index": 64
+  },
+  "chunk-cb608e393ad9e70f85a6c6b3064ea0a7": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105722_181-kg_info [row 1]\nObject: ChatBS-NexGen:Data-id_20260420105722_181-kg_info [row 1].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"Republics\"\n- DFColumn:ingredientName (ingredient Name): \"Turkey\"\n- DFColumn:sugarG (sugar G): \"NA\"\n- rdfs:label (label): \"row_1\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105722_117 [sparql query 1 1 9]",
+    "full_doc_id": "doc-cb608e393ad9e70f85a6c6b3064ea0a7",
+    "chunk_order_index": 65
+  },
+  "chunk-15d9419183d38c35a9992dce426f91c8": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105723_261-kg_info [row 1]\nObject: ChatBS-NexGen:Data-id_20260420105723_261-kg_info [row 1].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"Articles containing video clips\"\n- DFColumn:ingredientName (ingredient Name): \"Cheese\"\n- DFColumn:sugarG (sugar G): \"NA\"\n- rdfs:label (label): \"row_1\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105723_114 [sparql query 1 1 10]",
+    "full_doc_id": "doc-15d9419183d38c35a9992dce426f91c8",
+    "chunk_order_index": 66
+  },
+  "chunk-925c70463aa47b99ba5a24e630ea7387": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105727_306-kg_info [row 1]\nObject: ChatBS-NexGen:Data-id_20260420105727_306-kg_info [row 1].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"NA\"\n- DFColumn:ingredientName (ingredient Name): \"NA\"\n- DFColumn:sugarG (sugar G): \"NA\"\n- rdfs:label (label): \"row_1\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105727_300 [sparql query 1 1 11]",
+    "full_doc_id": "doc-925c70463aa47b99ba5a24e630ea7387",
+    "chunk_order_index": 67
+  },
+  "chunk-52e22af618286a7cd7381420060218ea": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105727_801-kg_info [row 0]\nObject: ChatBS-NexGen:Data-id_20260420105727_801-kg_info [row 0].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"\"\n- DFColumn:ingredientName (ingredient Name): \"\"\n- DFColumn:sugarG (sugar G): \"\"\n- rdfs:label (label): \"row_0\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105727_300 [sparql query 1 1 11]",
+    "full_doc_id": "doc-52e22af618286a7cd7381420060218ea",
+    "chunk_order_index": 68
+  },
+  "chunk-a88713caa57d15872edb719a3ffbf2e8": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Data-id_20260420105727_858-post_processed_output [row 1]\nObject: ChatBS-NexGen:Data-id_20260420105727_858-post_processed_output [row 1].\nTypes: provone:Data.\nProperties:\n- DFColumn:ingredientCat (ingredient Cat): \"Tropical fruit|Articles containing video clips|Animal taxa named by Carl Linnaeus|Commercial fish|Republics|Desserts\"\n- DFColumn:ingredientName (ingredient Name): \"Avocado|Cheese|Chicken|Tuna|Turkey|Yogurt\"\n- DFColumn:sugarG (sugar G): \"0.66|0|0|0|0|4\"\n- rdfs:label (label): \"row_1\"\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-a88713caa57d15872edb719a3ffbf2e8",
+    "chunk_order_index": 69
+  },
+  "chunk-c518f5596318e2c15cb3681a4f1955de": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt [Generation system prompt]\nObject: ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt [Generation system prompt].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105652_456-system_prompt [system prompt]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:system_prompt_generator-system_prompt [System Prompt]",
+    "full_doc_id": "doc-c518f5596318e2c15cb3681a4f1955de",
+    "chunk_order_index": 70
+  },
+  "chunk-15c8c94866a39fc00e984437f1ed6eb3": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105659_282-generated_answer [Generation generated answer]\nObject: ChatBS-NexGen:Generation-id_20260420105659_282-generated_answer [Generation generated answer].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105659_338-generated_answer [generated answer]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:llm_chat-generated_answer [LLM Chat output port: generated answer]",
+    "full_doc_id": "doc-15c8c94866a39fc00e984437f1ed6eb3",
+    "chunk_order_index": 71
+  },
+  "chunk-d7656f42e2be187eb45853c7d16a71d4": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105703_814-extracts [Generation extracts]\nObject: ChatBS-NexGen:Generation-id_20260420105703_814-extracts [Generation extracts].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_198-extracts [extracts]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_218-extracts [extracts]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_51-extracts [extracts]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_661-extracts [extracts]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_678-extracts [extracts]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_693-extracts [extracts]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_757-extracts [extracts]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_886-extracts [extracts]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_891-extracts [extracts]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105704_531-extracts [extracts]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105704_782-extracts [extracts]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:information_extractor-extracts [Extracted Entities]",
+    "full_doc_id": "doc-d7656f42e2be187eb45853c7d16a71d4",
+    "chunk_order_index": 72
+  },
+  "chunk-fab4fafa09720ad31b0860e7c806f878": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105705_591-kg_info [Generation kg info]\nObject: ChatBS-NexGen:Generation-id_20260420105705_591-kg_info [Generation kg info].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105705_668-kg_info [row 1]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info]",
+    "full_doc_id": "doc-fab4fafa09720ad31b0860e7c806f878",
+    "chunk_order_index": 73
+  },
+  "chunk-8b1711eb3aa4b52a2379870701741199": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105705_633-kg_info [Generation kg info]\nObject: ChatBS-NexGen:Generation-id_20260420105705_633-kg_info [Generation kg info].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105705_232-kg_info [row 1]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105705_670-kg_info [row 0]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info]",
+    "full_doc_id": "doc-8b1711eb3aa4b52a2379870701741199",
+    "chunk_order_index": 74
+  },
+  "chunk-323cfd74b7158fe3ae4a275cc28ac5fd": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105710_897-kg_info [Generation kg info]\nObject: ChatBS-NexGen:Generation-id_20260420105710_897-kg_info [Generation kg info].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105710_564-kg_info [row 1]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105711_94-kg_info [row 0]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info]",
+    "full_doc_id": "doc-323cfd74b7158fe3ae4a275cc28ac5fd",
+    "chunk_order_index": 75
+  },
+  "chunk-f9671a075677ad49cc08b8188e37fbbb": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105711_508-kg_info [Generation kg info]\nObject: ChatBS-NexGen:Generation-id_20260420105711_508-kg_info [Generation kg info].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105711_658-kg_info [row 1]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info]",
+    "full_doc_id": "doc-f9671a075677ad49cc08b8188e37fbbb",
+    "chunk_order_index": 76
+  },
+  "chunk-6717f70ccf4663349c9d7db89281411a": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105711_565-kg_info [Generation kg info]\nObject: ChatBS-NexGen:Generation-id_20260420105711_565-kg_info [Generation kg info].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105711_547-kg_info [row 1]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105711_637-kg_info [row 0]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info]",
+    "full_doc_id": "doc-6717f70ccf4663349c9d7db89281411a",
+    "chunk_order_index": 77
+  },
+  "chunk-11bd2b094b09b54285fe11fbefb2b687": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105711_758-kg_info [Generation kg info]\nObject: ChatBS-NexGen:Generation-id_20260420105711_758-kg_info [Generation kg info].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105711_45-kg_info [row 1]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info]",
+    "full_doc_id": "doc-11bd2b094b09b54285fe11fbefb2b687",
+    "chunk_order_index": 78
+  },
+  "chunk-7e18f1d438f1da5809b3b0bdd5e3be62": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105717_107-kg_info [Generation kg info]\nObject: ChatBS-NexGen:Generation-id_20260420105717_107-kg_info [Generation kg info].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105717_899-kg_info [row 1]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info]",
+    "full_doc_id": "doc-7e18f1d438f1da5809b3b0bdd5e3be62",
+    "chunk_order_index": 79
+  },
+  "chunk-d356242a3cbf4a91a282cc0ad198bc82": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105719_298-kg_info [Generation kg info]\nObject: ChatBS-NexGen:Generation-id_20260420105719_298-kg_info [Generation kg info].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105719_258-kg_info [row 0]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105719_416-kg_info [row 1]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info]",
+    "full_doc_id": "doc-d356242a3cbf4a91a282cc0ad198bc82",
+    "chunk_order_index": 80
+  },
+  "chunk-e534279c37193f19915537093082e78b": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105722_463-kg_info [Generation kg info]\nObject: ChatBS-NexGen:Generation-id_20260420105722_463-kg_info [Generation kg info].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105722_181-kg_info [row 1]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info]",
+    "full_doc_id": "doc-e534279c37193f19915537093082e78b",
+    "chunk_order_index": 81
+  },
+  "chunk-00e5a8471f3d6e03c49e5f92ccc8b0a9": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105723_333-kg_info [Generation kg info]\nObject: ChatBS-NexGen:Generation-id_20260420105723_333-kg_info [Generation kg info].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105723_261-kg_info [row 1]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info]",
+    "full_doc_id": "doc-00e5a8471f3d6e03c49e5f92ccc8b0a9",
+    "chunk_order_index": 82
+  },
+  "chunk-2402da2ede9e5c8d42494ac2cc3d3af7": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105727_328-post_processed_output [Generation post processed output]\nObject: ChatBS-NexGen:Generation-id_20260420105727_328-post_processed_output [Generation post processed output].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105727_858-post_processed_output [row 1]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:query_result_post_processor-post_processed_output [Post processed output port: post processed output]",
+    "full_doc_id": "doc-2402da2ede9e5c8d42494ac2cc3d3af7",
+    "chunk_order_index": 83
+  },
+  "chunk-e0f3634e2c7e6063b9e0b7f1d000bde0": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generation-id_20260420105727_524-kg_info [Generation kg info]\nObject: ChatBS-NexGen:Generation-id_20260420105727_524-kg_info [Generation kg info].\nTypes: prov:Generation.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105727_306-kg_info [row 1]\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105727_801-kg_info [row 0]\n- provone:hadOutPort (Enables the specification of a Port as an output port of a particular Generation. This allows for further qualification of the prov:was Generated By property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info]",
+    "full_doc_id": "doc-e0f3634e2c7e6063b9e0b7f1d000bde0",
+    "chunk_order_index": 84
+  },
+  "chunk-5382fc3c031e9c74167de72a60ad948b": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generative_Task-id_20260420105659_302 [LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy boosting foods to eat before my gym workout. using: gpt 4o]\nObject: ChatBS-NexGen:Generative_Task-id_20260420105659_302 [LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy boosting foods to eat before my gym workout. using: gpt 4o].\nTypes: workflow:Generative_Task.\nProperties:\n- dc:description (description): \"LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. using: gpt-4o\"\n- sio:SIO_000313 (is component part of): ChatBS-NexGen:id_20260420105659_302 [llm chat 1 1]\n- rdfs:label (label): \"LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. using: gpt-4o\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:LLM-id_20260420105659_302 [LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy boosting foods to eat before my gym workout. using: gpt 4o]",
+    "full_doc_id": "doc-5382fc3c031e9c74167de72a60ad948b",
+    "chunk_order_index": 85
+  },
+  "chunk-07ea1dee437b77759f6e962d2af5f9f2": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generative_Task-id_20260420105703_307 [Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy to digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt 4o]\nObject: ChatBS-NexGen:Generative_Task-id_20260420105703_307 [Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy to digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt 4o].\nTypes: workflow:Generative_Task.\nProperties:\n- dc:description (description): \"Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts ca...\"\n- sio:SIO_000313 (is component part of): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]\n- rdfs:label (label): \"Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts ca...\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:LLM-id_20260420105703_307 [Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy to digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt 4o]",
+    "full_doc_id": "doc-07ea1dee437b77759f6e962d2af5f9f2",
+    "chunk_order_index": 86
+  },
+  "chunk-8f60e0e485cbe2b8e615b463f03adc50": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generative_Task-information_extractor [Information Extractor function generator]\nObject: ChatBS-NexGen:Generative_Task-information_extractor [Information Extractor function generator].\nTypes: workflow:Generative_Task.\nProperties:\n- dc:description (description): \"Generates the Information Extractor Function using Large language models\"\n- rdfs:label (label): \"Information Extractor function generator\"\n- prov:atTime (The time at which an Instantaneous Event occurred, in the form of xsd:date Time.): \"2026-03-05 19:21:32\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:LLM-information_extractor [Information Extractor function generator]",
+    "full_doc_id": "doc-8f60e0e485cbe2b8e615b463f03adc50",
+    "chunk_order_index": 87
+  },
+  "chunk-508b34a8b8085e0eacde7246db415518": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generative_Task-query_result_post_processor [Query Result Post Processor function generator]\nObject: ChatBS-NexGen:Generative_Task-query_result_post_processor [Query Result Post Processor function generator].\nTypes: workflow:Generative_Task.\nProperties:\n- dc:description (description): \"Generates the post processing Function using Large language models\"\n- rdfs:label (label): \"Query Result Post-Processor function generator\"\n- prov:atTime (The time at which an Instantaneous Event occurred, in the form of xsd:date Time.): \"2026-03-05 19:21:32\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:LLM-query_result_post_processor [Query Result Post Processor function generator]",
+    "full_doc_id": "doc-508b34a8b8085e0eacde7246db415518",
+    "chunk_order_index": 88
+  },
+  "chunk-6c75111d21c92c77df8e5265c351648c": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Generative_Task-system_prompt_generator [System Prompt Template function generator]\nObject: ChatBS-NexGen:Generative_Task-system_prompt_generator [System Prompt Template function generator].\nTypes: workflow:Generative_Task.\nProperties:\n- dc:description (description): \"Generates the System Prompt Template using Large language models\"\n- rdfs:label (label): \"System Prompt Template function generator\"\n- prov:atTime (The time at which an Instantaneous Event occurred, in the form of xsd:date Time.): \"2026-03-05 19:21:32\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:LLM-system_prompt_generator [System Prompt Template function generator]",
+    "full_doc_id": "doc-6c75111d21c92c77df8e5265c351648c",
+    "chunk_order_index": 89
+  },
+  "chunk-45871fccdd6118a58f04f88643ec84e0": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM-id_20260420105659_302 [LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy boosting foods to eat before my gym workout. using: gpt 4o]\nObject: ChatBS-NexGen:LLM-id_20260420105659_302 [LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy boosting foods to eat before my gym workout. using: gpt 4o].\nTypes: workflow:Large_Language_Model_Output, workflow:Large_Language_Models.\nProperties:\n- dc:description (description): \"LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. using: gpt-4o\"\n- sio:SIO_000229 (has output): ChatBS-NexGen:LLM_Output-id_20260420105659_302 [LLM Output]\n- sio:SIO_000230 (has input): ChatBS-NexGen:Data-id_20260420105652_456-system_prompt [system prompt]\n- sio:SIO_000230 (has input): ChatBS-NexGen:Data-id_20260420105659_811-user_prompt [user prompt]\n- workflow:llm_model (llm model): \"gpt-4o\"\n- rdfs:label (label): \"LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. using: gpt-4o\"",
+    "full_doc_id": "doc-45871fccdd6118a58f04f88643ec84e0",
+    "chunk_order_index": 90
+  },
+  "chunk-143b15069f7777fe7eca3e31ba2c67de": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM-id_20260420105703_307 [Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy to digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt 4o]\nObject: ChatBS-NexGen:LLM-id_20260420105703_307 [Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy to digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt 4o].\nTypes: workflow:Large_Language_Model_Output, workflow:Large_Language_Models.\nProperties:\n- dc:description (description): \"Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts ca...\"\n- sio:SIO_000229 (has output): ChatBS-NexGen:LLM_Output-id_20260420105703_307 [LLM Output]\n- sio:SIO_000230 (has input): ChatBS-NexGen:Data-id_20260420105659_338-generated_answer [generated answer]\n- workflow:llm_model (llm model): \"gpt-4o\"\n- rdfs:label (label): \"Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high-quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts ca...\"",
+    "full_doc_id": "doc-143b15069f7777fe7eca3e31ba2c67de",
+    "chunk_order_index": 91
+  },
+  "chunk-01c4698fcc9f8581be0d18db4e24c7f8": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM-information_extractor [Information Extractor function generator]\nObject: ChatBS-NexGen:LLM-information_extractor [Information Extractor function generator].\nTypes: workflow:Large_Language_Models.\nProperties:\n- dc:description (description): \"Generates the Information Extractor Function using Large language models\"\n- sio:SIO_000229 (has output): ChatBS-NexGen:LLM_Output-information_extractor [LLM Output information extractor]\n- sio:SIO_000230 (has input): ChatBS-NexGen:LLM-information_extractor-Input-builder_llm [LLM information extractor Input builder llm]\n- sio:SIO_000230 (has input): ChatBS-NexGen:LLM-information_extractor-Input-text [LLM information extractor Input text]\n- workflow:llm_model (llm model): \"gpt-4o\"\n- rdfs:label (label): \"Information Extractor function generator\"\n- prov:atTime (The time at which an Instantaneous Event occurred, in the form of xsd:date Time.): \"2026-03-05 19:21:32\"",
+    "full_doc_id": "doc-01c4698fcc9f8581be0d18db4e24c7f8",
+    "chunk_order_index": 92
+  },
+  "chunk-d2e6d4eafb5f056ace6feec8d21abef0": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM-information_extractor-Input-builder_llm [LLM information extractor Input builder llm]\nObject: ChatBS-NexGen:LLM-information_extractor-Input-builder_llm [LLM information extractor Input builder llm].\nTypes: provone:Data.\nProperties:\n- prov:value (Provides a value that is a direct representation of an entity.): \"gpt-4o\"",
+    "full_doc_id": "doc-d2e6d4eafb5f056ace6feec8d21abef0",
+    "chunk_order_index": 93
+  },
+  "chunk-721bbd3bc19669076cf4d6aa134ac414": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM-information_extractor-Input-text [LLM information extractor Input text]\nObject: ChatBS-NexGen:LLM-information_extractor-Input-text [LLM information extractor Input text].\nTypes: provone:Data.\nProperties:\n- prov:value (Provides a value that is a direct representation of an entity.): \"Extract all the main ingredients without any subsidiary; return in singular noun form and First letter capital. Extract mean and dairy product in its' base form. (e.g., from 'egg white' extract 'Egg')\"",
+    "full_doc_id": "doc-721bbd3bc19669076cf4d6aa134ac414",
+    "chunk_order_index": 94
+  },
+  "chunk-5d578ea58cf7b247ba862c2b08a352a8": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM-query_result_post_processor [Query Result Post Processor function generator]\nObject: ChatBS-NexGen:LLM-query_result_post_processor [Query Result Post Processor function generator].\nTypes: workflow:Large_Language_Models.\nProperties:\n- dc:description (description): \"Generates the post processing Function using Large language models\"\n- sio:SIO_000229 (has output): ChatBS-NexGen:LLM_Output-query_result_post_processor [LLM Output query result post processor]\n- sio:SIO_000230 (has input): ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction [LLM query result post processor Input formatting instruction]\n- sio:SIO_000230 (has input): ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction [LLM query result post processor Input processing instruction]\n- workflow:llm_model (llm model): \"gpt-4o\"\n- rdfs:label (label): \"Query Result Post-Processor function generator\"\n- prov:atTime (The time at which an Instantaneous Event occurred, in the form of xsd:date Time.): \"2026-03-05 19:21:32\"",
+    "full_doc_id": "doc-5d578ea58cf7b247ba862c2b08a352a8",
+    "chunk_order_index": 95
+  },
+  "chunk-b79fa2d363a7b61a77405ddb0219654f": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction [LLM query result post processor Input formatting instruction]\nObject: ChatBS-NexGen:LLM-query_result_post_processor-Input-formatting_instruction [LLM query result post processor Input formatting instruction].\nTypes: provone:Data.\nProperties:\n- prov:value (Provides a value that is a direct representation of an entity.): \"Concat all the rows into single row at each column by '|' concatenation marker.\"",
+    "full_doc_id": "doc-b79fa2d363a7b61a77405ddb0219654f",
+    "chunk_order_index": 96
+  },
+  "chunk-5d8ba337be8599584290913753c2af35": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction [LLM query result post processor Input processing instruction]\nObject: ChatBS-NexGen:LLM-query_result_post_processor-Input-processing_instruction [LLM query result post processor Input processing instruction].\nTypes: provone:Data.\nProperties:\n- prov:value (Provides a value that is a direct representation of an entity.): \"If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat` column.\"",
+    "full_doc_id": "doc-5d8ba337be8599584290913753c2af35",
+    "chunk_order_index": 97
+  },
+  "chunk-14a05103d8137ab32a815d02722a9234": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM-system_prompt_generator [System Prompt Template function generator]\nObject: ChatBS-NexGen:LLM-system_prompt_generator [System Prompt Template function generator].\nTypes: workflow:Large_Language_Models.\nProperties:\n- dc:description (description): \"Generates the System Prompt Template using Large language models\"\n- sio:SIO_000229 (has output): ChatBS-NexGen:LLM_Output-system_prompt_generator [LLM Output system prompt generator]\n- sio:SIO_000230 (has input): ChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt [LLM system prompt generator Input base sys prompt]\n- sio:SIO_000230 (has input): ChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm [LLM system prompt generator Input builder llm]\n- workflow:llm_model (llm model): \"gpt-4o\"\n- rdfs:label (label): \"System Prompt Template function generator\"\n- prov:atTime (The time at which an Instantaneous Event occurred, in the form of xsd:date Time.): \"2026-03-05 19:21:32\"",
+    "full_doc_id": "doc-14a05103d8137ab32a815d02722a9234",
+    "chunk_order_index": 98
+  },
+  "chunk-9704295171235f3b372039df0a1128f1": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt [LLM system prompt generator Input base sys prompt]\nObject: ChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt [LLM system prompt generator Input base sys prompt].\nTypes: provone:Data.\nProperties:\n- prov:value (Provides a value that is a direct representation of an entity.): \"You are a health care assistant\"",
+    "full_doc_id": "doc-9704295171235f3b372039df0a1128f1",
+    "chunk_order_index": 99
+  },
+  "chunk-b499981a64e43e0cf0d8686a38b802df": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm [LLM system prompt generator Input builder llm]\nObject: ChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm [LLM system prompt generator Input builder llm].\nTypes: provone:Data.\nProperties:\n- prov:value (Provides a value that is a direct representation of an entity.): \"gpt-4o\"",
+    "full_doc_id": "doc-b499981a64e43e0cf0d8686a38b802df",
+    "chunk_order_index": 100
+  },
+  "chunk-5b3fd4913039c6635d167e83150296bf": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM_Output-id_20260420105659_302 [LLM Output]\nObject: ChatBS-NexGen:LLM_Output-id_20260420105659_302 [LLM Output].\nProperties:\n- sio:SIO_000202 (contains): ChatBS-NexGen:Data-id_20260420105659_338-generated_answer [generated answer]\n- sio:SIO_000232 (is output of): ChatBS-NexGen:LLM-id_20260420105659_302 [LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy boosting foods to eat before my gym workout. using: gpt 4o]",
+    "full_doc_id": "doc-5b3fd4913039c6635d167e83150296bf",
+    "chunk_order_index": 101
+  },
+  "chunk-9e7c7528b0dab6a61f7744c26b1ce595": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM_Output-id_20260420105703_307 [LLM Output]\nObject: ChatBS-NexGen:LLM_Output-id_20260420105703_307 [LLM Output].\nProperties:\n- sio:SIO_000202 (contains): ChatBS-NexGen:Data-id_20260420105703_198-extracts [extracts]\n- sio:SIO_000202 (contains): ChatBS-NexGen:Data-id_20260420105703_218-extracts [extracts]\n- sio:SIO_000202 (contains): ChatBS-NexGen:Data-id_20260420105703_51-extracts [extracts]\n- sio:SIO_000202 (contains): ChatBS-NexGen:Data-id_20260420105703_661-extracts [extracts]\n- sio:SIO_000202 (contains): ChatBS-NexGen:Data-id_20260420105703_678-extracts [extracts]\n- sio:SIO_000202 (contains): ChatBS-NexGen:Data-id_20260420105703_693-extracts [extracts]\n- sio:SIO_000202 (contains): ChatBS-NexGen:Data-id_20260420105703_757-extracts [extracts]\n- sio:SIO_000202 (contains): ChatBS-NexGen:Data-id_20260420105703_886-extracts [extracts]\n- sio:SIO_000202 (contains): ChatBS-NexGen:Data-id_20260420105703_891-extracts [extracts]\n- sio:SIO_000202 (contains): ChatBS-NexGen:Data-id_20260420105704_531-extracts [extracts]\n- sio:SIO_000202 (contains): ChatBS-NexGen:Data-id_20260420105704_782-extracts [extracts]\n- sio:SIO_000232 (is output of): ChatBS-NexGen:LLM-id_20260420105703_307 [Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy to digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt 4o]",
+    "full_doc_id": "doc-9e7c7528b0dab6a61f7744c26b1ce595",
+    "chunk_order_index": 102
+  },
+  "chunk-b2403642b4a81c52c2962ea4be5f6354": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM_Output-information_extractor [LLM Output information extractor]\nObject: ChatBS-NexGen:LLM_Output-information_extractor [LLM Output information extractor].\nTypes: workflow:Large_Language_Model_Output.\nProperties:\n- sio:SIO_000202 (contains): ChatBS-NexGen:information_extractor [Information Extractor]\n- sio:SIO_000232 (is output of): ChatBS-NexGen:LLM-information_extractor [Information Extractor function generator]",
+    "full_doc_id": "doc-b2403642b4a81c52c2962ea4be5f6354",
+    "chunk_order_index": 103
+  },
+  "chunk-c0d00903dd6faeb9109478de96047bfa": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM_Output-query_result_post_processor [LLM Output query result post processor]\nObject: ChatBS-NexGen:LLM_Output-query_result_post_processor [LLM Output query result post processor].\nTypes: workflow:Large_Language_Model_Output.\nProperties:\n- sio:SIO_000202 (contains): ChatBS-NexGen:query_result_post_processor [Query Result Post Processor]\n- sio:SIO_000232 (is output of): ChatBS-NexGen:LLM-query_result_post_processor [Query Result Post Processor function generator]",
+    "full_doc_id": "doc-c0d00903dd6faeb9109478de96047bfa",
+    "chunk_order_index": 104
+  },
+  "chunk-e01108e0eda455135d19a91be1b76c9d": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:LLM_Output-system_prompt_generator [LLM Output system prompt generator]\nObject: ChatBS-NexGen:LLM_Output-system_prompt_generator [LLM Output system prompt generator].\nTypes: workflow:Large_Language_Model_Output.\nProperties:\n- sio:SIO_000202 (contains): ChatBS-NexGen:system_prompt_generator [System Prompt Template Generator]\n- sio:SIO_000232 (is output of): ChatBS-NexGen:LLM-system_prompt_generator [System Prompt Template function generator]",
+    "full_doc_id": "doc-e01108e0eda455135d19a91be1b76c9d",
+    "chunk_order_index": 105
+  },
+  "chunk-ecc544895c7a76c402dca891b81437aa": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105652_112-foodPreferences [Usage food Preferences]\nObject: ChatBS-NexGen:Usage-id_20260420105652_112-foodPreferences [Usage food Preferences].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105652_112-foodPreferences [food Preferences]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:system_prompt_generator-foodPreferences [Input port for food Preferences]",
+    "full_doc_id": "doc-ecc544895c7a76c402dca891b81437aa",
+    "chunk_order_index": 106
+  },
+  "chunk-5995b8590667a44925b7d77bc8d8657c": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105652_420-weight [Usage weight]\nObject: ChatBS-NexGen:Usage-id_20260420105652_420-weight [Usage weight].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105652_420-weight [weight]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:system_prompt_generator-weight [Input port for weight]",
+    "full_doc_id": "doc-5995b8590667a44925b7d77bc8d8657c",
+    "chunk_order_index": 107
+  },
+  "chunk-9e695c74e510a4c8a4fd4871782f0466": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105652_470-bodyMassIndex [Usage body Mass Index]\nObject: ChatBS-NexGen:Usage-id_20260420105652_470-bodyMassIndex [Usage body Mass Index].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105652_470-bodyMassIndex [body Mass Index]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:system_prompt_generator-bodyMassIndex [Input port for body Mass Index]",
+    "full_doc_id": "doc-9e695c74e510a4c8a4fd4871782f0466",
+    "chunk_order_index": 108
+  },
+  "chunk-93b9dbe415686bd7cf09661b87359f03": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105652_604-allergies [Usage allergies]\nObject: ChatBS-NexGen:Usage-id_20260420105652_604-allergies [Usage allergies].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105652_604-allergies [allergies]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:system_prompt_generator-allergies [Input port for allergies]",
+    "full_doc_id": "doc-93b9dbe415686bd7cf09661b87359f03",
+    "chunk_order_index": 109
+  },
+  "chunk-ce502a093a5142316483f3ba7e909a42": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105652_753-diagnosis [Usage diagnosis]\nObject: ChatBS-NexGen:Usage-id_20260420105652_753-diagnosis [Usage diagnosis].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105652_753-diagnosis [diagnosis]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:system_prompt_generator-diagnosis [Input port for diagnosis]",
+    "full_doc_id": "doc-ce502a093a5142316483f3ba7e909a42",
+    "chunk_order_index": 110
+  },
+  "chunk-745a79b7506bae77d034e097ee2bf735": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105652_79-age [Usage age]\nObject: ChatBS-NexGen:Usage-id_20260420105652_79-age [Usage age].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105652_79-age [age]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:system_prompt_generator-age [Input port for age]",
+    "full_doc_id": "doc-745a79b7506bae77d034e097ee2bf735",
+    "chunk_order_index": 111
+  },
+  "chunk-95909f768a1921de888de6d0c8c78cf8": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105652_838-height [Usage height]\nObject: ChatBS-NexGen:Usage-id_20260420105652_838-height [Usage height].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105652_838-height [height]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:system_prompt_generator-height [Input port for height]",
+    "full_doc_id": "doc-95909f768a1921de888de6d0c8c78cf8",
+    "chunk_order_index": 112
+  },
+  "chunk-2696d6977cd517cb27ef52a19f270b85": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105652_904-gender [Usage gender]\nObject: ChatBS-NexGen:Usage-id_20260420105652_904-gender [Usage gender].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105652_904-gender [gender]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:system_prompt_generator-gender [Input port for gender]",
+    "full_doc_id": "doc-2696d6977cd517cb27ef52a19f270b85",
+    "chunk_order_index": 113
+  },
+  "chunk-cb4bcfbf55897bfa13c57bd5445f99b8": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105659_579-system_prompt [Usage system prompt]\nObject: ChatBS-NexGen:Usage-id_20260420105659_579-system_prompt [Usage system prompt].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105652_456-system_prompt [system prompt]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:llm_chat-system_prompt [LLM Chat input port: system prompt]",
+    "full_doc_id": "doc-cb4bcfbf55897bfa13c57bd5445f99b8",
+    "chunk_order_index": 114
+  },
+  "chunk-8317efb782f9f7ad0f84390d4770ff5f": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105659_811-user_prompt [Usage user prompt]\nObject: ChatBS-NexGen:Usage-id_20260420105659_811-user_prompt [Usage user prompt].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105659_811-user_prompt [user prompt]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:llm_chat-user_prompt [LLM Chat input port: user prompt]",
+    "full_doc_id": "doc-8317efb782f9f7ad0f84390d4770ff5f",
+    "chunk_order_index": 115
+  },
+  "chunk-aac13c4f9fc791cf79654fb39097cb54": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105703_331-text [Usage text]\nObject: ChatBS-NexGen:Usage-id_20260420105703_331-text [Usage text].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105659_338-generated_answer [generated answer]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:information_extractor-text [Input port for text]",
+    "full_doc_id": "doc-aac13c4f9fc791cf79654fb39097cb54",
+    "chunk_order_index": 116
+  },
+  "chunk-ecf7ec613588623fdc8629f885bab6bc": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105705_106-entity [Usage entity]\nObject: ChatBS-NexGen:Usage-id_20260420105705_106-entity [Usage entity].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_757-extracts [extracts]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]",
+    "full_doc_id": "doc-ecf7ec613588623fdc8629f885bab6bc",
+    "chunk_order_index": 117
+  },
+  "chunk-44361c50a95d9bc6b3bba7bc8ad623a9": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105705_924-entity [Usage entity]\nObject: ChatBS-NexGen:Usage-id_20260420105705_924-entity [Usage entity].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_661-extracts [extracts]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]",
+    "full_doc_id": "doc-44361c50a95d9bc6b3bba7bc8ad623a9",
+    "chunk_order_index": 118
+  },
+  "chunk-c931a41a608fa94b408b3b1bfbde4e24": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105710_626-entity [Usage entity]\nObject: ChatBS-NexGen:Usage-id_20260420105710_626-entity [Usage entity].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_678-extracts [extracts]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]",
+    "full_doc_id": "doc-c931a41a608fa94b408b3b1bfbde4e24",
+    "chunk_order_index": 119
+  },
+  "chunk-0a89971669858b8305a37e4407489df2": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105711_611-entity [Usage entity]\nObject: ChatBS-NexGen:Usage-id_20260420105711_611-entity [Usage entity].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_51-extracts [extracts]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]",
+    "full_doc_id": "doc-0a89971669858b8305a37e4407489df2",
+    "chunk_order_index": 120
+  },
+  "chunk-891e2a2dc2d7fd502d29fe7a6f585782": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105711_726-entity [Usage entity]\nObject: ChatBS-NexGen:Usage-id_20260420105711_726-entity [Usage entity].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_218-extracts [extracts]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]",
+    "full_doc_id": "doc-891e2a2dc2d7fd502d29fe7a6f585782",
+    "chunk_order_index": 121
+  },
+  "chunk-317daec33b9a94020a936677426c17ec": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105711_768-entity [Usage entity]\nObject: ChatBS-NexGen:Usage-id_20260420105711_768-entity [Usage entity].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_198-extracts [extracts]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]",
+    "full_doc_id": "doc-317daec33b9a94020a936677426c17ec",
+    "chunk_order_index": 122
+  },
+  "chunk-d3fb7a64ba9c01c6ebfa7bd6e82623ee": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105717_534-entity [Usage entity]\nObject: ChatBS-NexGen:Usage-id_20260420105717_534-entity [Usage entity].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_886-extracts [extracts]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]",
+    "full_doc_id": "doc-d3fb7a64ba9c01c6ebfa7bd6e82623ee",
+    "chunk_order_index": 123
+  },
+  "chunk-681eaef58a24076c20ff4af9eafc1cf8": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105719_544-entity [Usage entity]\nObject: ChatBS-NexGen:Usage-id_20260420105719_544-entity [Usage entity].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_891-extracts [extracts]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]",
+    "full_doc_id": "doc-681eaef58a24076c20ff4af9eafc1cf8",
+    "chunk_order_index": 124
+  },
+  "chunk-889dca69d0671477123ebba80b6a3b8f": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105722_418-entity [Usage entity]\nObject: ChatBS-NexGen:Usage-id_20260420105722_418-entity [Usage entity].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105703_693-extracts [extracts]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]",
+    "full_doc_id": "doc-889dca69d0671477123ebba80b6a3b8f",
+    "chunk_order_index": 125
+  },
+  "chunk-5aac0d788868f0e2819753f0a637578c": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105723_195-entity [Usage entity]\nObject: ChatBS-NexGen:Usage-id_20260420105723_195-entity [Usage entity].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105704_531-extracts [extracts]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]",
+    "full_doc_id": "doc-5aac0d788868f0e2819753f0a637578c",
+    "chunk_order_index": 126
+  },
+  "chunk-7436e18111cd150242b6746da4f27e26": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105727_373-entity [Usage entity]\nObject: ChatBS-NexGen:Usage-id_20260420105727_373-entity [Usage entity].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:Data-id_20260420105704_782-extracts [extracts]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]",
+    "full_doc_id": "doc-7436e18111cd150242b6746da4f27e26",
+    "chunk_order_index": 127
+  },
+  "chunk-ebb224ea19051479af0ae546c4214c1a": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:Usage-id_20260420105727_857-kg_knowledge [Usage kg knowledge]\nObject: ChatBS-NexGen:Usage-id_20260420105727_857-kg_knowledge [Usage kg knowledge].\nTypes: prov:Usage.\nProperties:\n- provone:hadEntity (Enables the specification of an Entity used by a particular Usage or generated by a particular Generation. This allows for further qualification of the prov:used and prov:was Generated By properties in the context of an Execution.): ChatBS-NexGen:id_20260420105727_995 [ChatBS-NexGen:id_20260420105727_995]\n- provone:hadInPort (Enables the specification of a Port as an input port of a particular Usage. This allows for further qualification of the prov:used property in the context of an Execution.): ChatBS-NexGen:query_result_post_processor-kg_knowledge [Post processing input port: kg knowledge]",
+    "full_doc_id": "doc-ebb224ea19051479af0ae546c4214c1a",
+    "chunk_order_index": 128
+  },
+  "chunk-6dfe44f5f30542070d050d27ecddafec": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:batch_sparql_query_extractor [Batch SPARQL Query Extractor]\nObject: ChatBS-NexGen:batch_sparql_query_extractor [Batch SPARQL Query Extractor].\nTypes: provone:Program.\nProperties:\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:batch_sparql_query_extractor-entities [KG query extraction input port: entities]\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:batch_sparql_query_extractor-query_function [KG query extraction input port: query function]\n- provone:hasOutPort (Enables the specification of a Port as an output port of a particular Program.): ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge [Output port for kg knowledge]\n- provone:hasSubProgram (Specifies the recursive composition of Programs, where a parent Program includes a child Program as part of its specification.): ChatBS-NexGen:DF_combine [Data Frame Combiner]\n- provone:hasSubProgram (Specifies the recursive composition of Programs, where a parent Program includes a child Program as part of its specification.): ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder]\n- dc:description (description): \"Extracts information about the entities from the knowledge graph in batch mode.\"\n- dcterms:identifier (identifier): \"3\"\n- rdfs:label (label): \"Batch SPARQL Query Extractor\"\n- prov:atTime (The time at which an Instantaneous Event occurred, in the form of xsd:date Time.): \"2026-03-05 19:20:56\"",
+    "full_doc_id": "doc-6dfe44f5f30542070d050d27ecddafec",
+    "chunk_order_index": 129
+  },
+  "chunk-0941aa8517347ee4e215c18d153f9f65": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:batch_sparql_query_extractor-entities [KG query extraction input port: entities]\nObject: ChatBS-NexGen:batch_sparql_query_extractor-entities [KG query extraction input port: entities].\nTypes: provone:Port.\nProperties:\n- provone:connectsTo (Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.): ChatBS-NexGen:channel_sparql_query_extraction [Channel for the SPARQL query extraction]\n- dc:description (description): \"KG query extraction input port: entities\"\n- rdfs:label (label): \"KG query extraction input port: entities\"",
+    "full_doc_id": "doc-0941aa8517347ee4e215c18d153f9f65",
+    "chunk_order_index": 130
+  },
+  "chunk-26dd9d3b8f299b52efdd6331d8576a03": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge [Output port for kg knowledge]\nObject: ChatBS-NexGen:batch_sparql_query_extractor-kg_knowledge [Output port for kg knowledge].\nTypes: provone:Port.\nProperties:\n- provone:connectsTo (Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.): ChatBS-NexGen:channel_query_result_post_processing [Channel for the query result post processing]\n- dc:description (description): \"Output port for kg_knowledge in the batch SPARQL query extraction program\"\n- rdfs:label (label): \"Output port for kg_knowledge\"",
+    "full_doc_id": "doc-26dd9d3b8f299b52efdd6331d8576a03",
+    "chunk_order_index": 131
+  },
+  "chunk-af87d992b4c073d29fff16c65accf0d3": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:batch_sparql_query_extractor-query_function [KG query extraction input port: query function]\nObject: ChatBS-NexGen:batch_sparql_query_extractor-query_function [KG query extraction input port: query function].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"KG query extraction input port: query_function\"\n- rdfs:label (label): \"KG query extraction input port: query_function\"",
+    "full_doc_id": "doc-af87d992b4c073d29fff16c65accf0d3",
+    "chunk_order_index": 132
+  },
+  "chunk-2c9c336098b5ef488aebe8d976a0c28e": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:channel_generated_answer [Channel for the generated answer]\nObject: ChatBS-NexGen:channel_generated_answer [Channel for the generated answer].\nTypes: provone:Channel.\nProperties:\n- dc:description (description): \"Channel for the information extraction generated by the program.\"\n- rdfs:label (label): \"Channel for the generated answer\"",
+    "full_doc_id": "doc-2c9c336098b5ef488aebe8d976a0c28e",
+    "chunk_order_index": 133
+  },
+  "chunk-cd3c4390c65510404cdff2d09139df4e": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:channel_query_result_post_processing [Channel for the query result post processing]\nObject: ChatBS-NexGen:channel_query_result_post_processing [Channel for the query result post processing].\nTypes: provone:Channel.\nProperties:\n- dc:description (description): \"Channel for the query result post-processing generated by the program.\"\n- rdfs:label (label): \"Channel for the query result post-processing\"",
+    "full_doc_id": "doc-cd3c4390c65510404cdff2d09139df4e",
+    "chunk_order_index": 134
+  },
+  "chunk-09bc31f44b82113c8de7a05147f999e1": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:channel_sparql_query_extraction [Channel for the SPARQL query extraction]\nObject: ChatBS-NexGen:channel_sparql_query_extraction [Channel for the SPARQL query extraction].\nTypes: provone:Channel.\nProperties:\n- dc:description (description): \"Channel for the SPARQL query extraction generated by the program.\"\n- rdfs:label (label): \"Channel for the SPARQL query extraction\"",
+    "full_doc_id": "doc-09bc31f44b82113c8de7a05147f999e1",
+    "chunk_order_index": 135
+  },
+  "chunk-a0d97fa0c94de1e9eaaefdf7bf679981": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:channel_system_prompt [Channel for the system prompt]\nObject: ChatBS-NexGen:channel_system_prompt [Channel for the system prompt].\nTypes: provone:Channel.\nProperties:\n- dc:description (description): \"Channel for the system prompt generated by the program.\"\n- rdfs:label (label): \"Channel for the system prompt\"",
+    "full_doc_id": "doc-a0d97fa0c94de1e9eaaefdf7bf679981",
+    "chunk_order_index": 136
+  },
+  "chunk-dae022844cdc3e60127b2ed9de94912c": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105652_650 [system prompt execution 1 1]\nObject: ChatBS-NexGen:id_20260420105652_650 [system prompt execution 1 1].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"system_prompt_execution_1_1\"\n- rdfs:label (label): \"system_prompt_execution_1_1\"\n- prov:endedAt (ended At): \"2026-04-20 10:56:51\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650 [Chat BS Nex Gen:system prompt generator Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105652_907-system_prompt [Generation system prompt]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105652_112-foodPreferences [Usage food Preferences]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105652_420-weight [Usage weight]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105652_470-bodyMassIndex [Usage body Mass Index]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105652_604-allergies [Usage allergies]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105652_753-diagnosis [Usage diagnosis]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105652_79-age [Usage age]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105652_838-height [Usage height]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105652_904-gender [Usage gender]\n- prov:startedAt (started At): \"2026-04-20 10:56:51\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105652_112-foodPreferences [food Preferences]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105652_420-weight [weight]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105652_470-bodyMassIndex [body Mass Index]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105652_604-allergies [allergies]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105652_753-diagnosis [diagnosis]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105652_79-age [age]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105652_838-height [height]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105652_904-gender [gender]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105659_302 [llm chat 1 1]",
+    "full_doc_id": "doc-dae022844cdc3e60127b2ed9de94912c",
+    "chunk_order_index": 137
+  },
+  "chunk-8e71e1e5320c90e6020a567274024038": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105659_302 [llm chat 1 1]\nObject: ChatBS-NexGen:id_20260420105659_302 [llm chat 1 1].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"llm_chat_1_1\"\n- sio:SIO_000369 (has component part): ChatBS-NexGen:Generative_Task-id_20260420105659_302 [LLM Generates an text for system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. user prompt: I need suggestions for light and energy boosting foods to eat before my gym workout. using: gpt 4o]\n- rdfs:label (label): \"llm_chat_1_1\"\n- prov:endedAt (ended At): \"2026-04-20 10:56:59\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:llm_chat-Association-id_20260420105659_302 [Chat BS Nex Gen:llm chat Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105659_282-generated_answer [Generation generated answer]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105659_579-system_prompt [Usage system prompt]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105659_811-user_prompt [Usage user prompt]\n- prov:startedAt (started At): \"2026-04-20 10:56:52\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105652_456-system_prompt [system prompt]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105659_811-user_prompt [user prompt]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]",
+    "full_doc_id": "doc-8e71e1e5320c90e6020a567274024038",
+    "chunk_order_index": 138
+  },
+  "chunk-54e332a94f3e1c58e9fc18c1b03d4195": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1]\nObject: ChatBS-NexGen:id_20260420105703_307 [information extraction 1 1].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"information_extraction_1_1\"\n- sio:SIO_000369 (has component part): ChatBS-NexGen:Generative_Task-id_20260420105703_307 [Extracts important entities for text: To fuel your body effectively before a gym workout, especially given your diabetes and dietary preferences, it's important to balance carbohydrates, protein, and healthy fats. Here are some suggestions that should work well for you: 1. **Grilled Chicken with Sweet Potato:** Lean protein from chicken can provide sustained energy, while sweet potatoes offer complex carbohydrates and fiber, which are beneficial for maintaining blood sugar levels. 2. **Eggs with Avocado:** Eggs are a high quality protein source, and avocados provide healthy fats that help keep energy levels stable. Consider preparing a scrambled egg and avocado wrap for convenience. 3. **Greek Yogurt with Nuts:** Greek yogurt is packed with protein and carbs. Adding a handful of nuts can give you a good dose of healthy fats and additional protein, helping to sustain your energy. 4. **Tuna Salad:** Made with olive oil, this can be a great pre workout choice. The protein in tuna, along with healthy fats from olive oil, provide a steady energy supply without causing blood sugar spikes. 5. **Turkey and Cheese Roll ups:** The combination of turkey breast and a slice of cheese can provide a quick and easy to digest source of protein and fat. Pair them with a small serving of fruit to add some carbs. Remember to eat about 30 to 60 minutes before your workout, and stay hydrated. Monitor your blood sugar levels to see how these foods affect you personally, and adjust portion sizes as needed based on your energy requirements and your body's response. using: gpt 4o]\n- rdfs:label (label): \"information_extraction_1_1\"\n- prov:endedAt (ended At): \"2026-04-20 10:57:03\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:information_extractor-Association-id_20260420105703_307 [Chat BS Nex Gen:information extractor Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105703_814-extracts [Generation extracts]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105703_331-text [Usage text]\n- prov:startedAt (started At): \"2026-04-20 10:56:59\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105659_338-generated_answer [generated answer]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105705_598 [sparql query 1 1 2]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105705_972 [sparql query 1 1 1]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105710_61 [sparql query 1 1 3]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105711_320 [sparql query 1 1 4]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105711_662 [sparql query 1 1 5]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105711_772 [sparql query 1 1 6]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105717_370 [sparql query 1 1 7]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105719_327 [sparql query 1 1 8]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105722_117 [sparql query 1 1 9]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105723_114 [sparql query 1 1 10]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105727_300 [sparql query 1 1 11]",
+    "full_doc_id": "doc-54e332a94f3e1c58e9fc18c1b03d4195",
+    "chunk_order_index": 139
+  },
+  "chunk-964134919c94349069b2f9af37e29421": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105705_598 [sparql query 1 1 2]\nObject: ChatBS-NexGen:id_20260420105705_598 [sparql query 1 1 2].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"1_1_2\"\n- rdfs:label (label): \"sparql_query_1_1_2\"\n- prov:endedAt (ended At): \"2026-04-20 10:57:05\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_598 [Chat BS Nex Gen:sparql query extractor Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105705_633-kg_info [Generation kg info]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105705_924-entity [Usage entity]\n- prov:startedAt (started At): \"2026-04-20 10:57:05\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105703_661-extracts [extracts]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105705_232-kg_info [row 1]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105705_670-kg_info [row 0]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-964134919c94349069b2f9af37e29421",
+    "chunk_order_index": 140
+  },
+  "chunk-b0e2f6fa0791df7cb6a9e631e829c0dc": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105705_972 [sparql query 1 1 1]\nObject: ChatBS-NexGen:id_20260420105705_972 [sparql query 1 1 1].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"1_1_1\"\n- rdfs:label (label): \"sparql_query_1_1_1\"\n- prov:endedAt (ended At): \"2026-04-20 10:57:04\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105705_972 [Chat BS Nex Gen:sparql query extractor Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105705_591-kg_info [Generation kg info]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105705_106-entity [Usage entity]\n- prov:startedAt (started At): \"2026-04-20 10:57:04\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105703_757-extracts [extracts]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105705_668-kg_info [row 1]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-b0e2f6fa0791df7cb6a9e631e829c0dc",
+    "chunk_order_index": 141
+  },
+  "chunk-dba53a92fe014b49eae0e67db9ddb09c": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105710_61 [sparql query 1 1 3]\nObject: ChatBS-NexGen:id_20260420105710_61 [sparql query 1 1 3].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"1_1_3\"\n- rdfs:label (label): \"sparql_query_1_1_3\"\n- prov:endedAt (ended At): \"2026-04-20 10:57:10\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105710_61 [Chat BS Nex Gen:sparql query extractor Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105710_897-kg_info [Generation kg info]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105710_626-entity [Usage entity]\n- prov:startedAt (started At): \"2026-04-20 10:57:05\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105703_678-extracts [extracts]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105710_564-kg_info [row 1]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105711_94-kg_info [row 0]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-dba53a92fe014b49eae0e67db9ddb09c",
+    "chunk_order_index": 142
+  },
+  "chunk-52305d957f30b551b0a0c872d75c1b61": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105711_320 [sparql query 1 1 4]\nObject: ChatBS-NexGen:id_20260420105711_320 [sparql query 1 1 4].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"1_1_4\"\n- rdfs:label (label): \"sparql_query_1_1_4\"\n- prov:endedAt (ended At): \"2026-04-20 10:57:11\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_320 [Chat BS Nex Gen:sparql query extractor Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105711_508-kg_info [Generation kg info]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105711_611-entity [Usage entity]\n- prov:startedAt (started At): \"2026-04-20 10:57:11\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105703_51-extracts [extracts]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105711_658-kg_info [row 1]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-52305d957f30b551b0a0c872d75c1b61",
+    "chunk_order_index": 143
+  },
+  "chunk-285213f12c9b77844f2bc306430c6c37": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105711_662 [sparql query 1 1 5]\nObject: ChatBS-NexGen:id_20260420105711_662 [sparql query 1 1 5].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"1_1_5\"\n- rdfs:label (label): \"sparql_query_1_1_5\"\n- prov:endedAt (ended At): \"2026-04-20 10:57:11\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_662 [Chat BS Nex Gen:sparql query extractor Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105711_758-kg_info [Generation kg info]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105711_768-entity [Usage entity]\n- prov:startedAt (started At): \"2026-04-20 10:57:11\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105703_198-extracts [extracts]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105711_45-kg_info [row 1]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-285213f12c9b77844f2bc306430c6c37",
+    "chunk_order_index": 144
+  },
+  "chunk-47f2dd2b7e654c06be35a905afbfe726": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105711_772 [sparql query 1 1 6]\nObject: ChatBS-NexGen:id_20260420105711_772 [sparql query 1 1 6].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"1_1_6\"\n- rdfs:label (label): \"sparql_query_1_1_6\"\n- prov:endedAt (ended At): \"2026-04-20 10:57:11\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105711_772 [Chat BS Nex Gen:sparql query extractor Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105711_565-kg_info [Generation kg info]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105711_726-entity [Usage entity]\n- prov:startedAt (started At): \"2026-04-20 10:57:11\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105703_218-extracts [extracts]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105711_547-kg_info [row 1]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105711_637-kg_info [row 0]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-47f2dd2b7e654c06be35a905afbfe726",
+    "chunk_order_index": 145
+  },
+  "chunk-46d470852422c6e0c568f3f9ce52abb1": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105717_370 [sparql query 1 1 7]\nObject: ChatBS-NexGen:id_20260420105717_370 [sparql query 1 1 7].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"1_1_7\"\n- rdfs:label (label): \"sparql_query_1_1_7\"\n- prov:endedAt (ended At): \"2026-04-20 10:57:17\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105717_370 [Chat BS Nex Gen:sparql query extractor Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105717_107-kg_info [Generation kg info]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105717_534-entity [Usage entity]\n- prov:startedAt (started At): \"2026-04-20 10:57:11\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105703_886-extracts [extracts]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105717_899-kg_info [row 1]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-46d470852422c6e0c568f3f9ce52abb1",
+    "chunk_order_index": 146
+  },
+  "chunk-18375ff55e009c21db0de65722a737f1": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105719_327 [sparql query 1 1 8]\nObject: ChatBS-NexGen:id_20260420105719_327 [sparql query 1 1 8].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"1_1_8\"\n- rdfs:label (label): \"sparql_query_1_1_8\"\n- prov:endedAt (ended At): \"2026-04-20 10:57:19\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105719_327 [Chat BS Nex Gen:sparql query extractor Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105719_298-kg_info [Generation kg info]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105719_544-entity [Usage entity]\n- prov:startedAt (started At): \"2026-04-20 10:57:17\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105703_891-extracts [extracts]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105719_258-kg_info [row 0]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105719_416-kg_info [row 1]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-18375ff55e009c21db0de65722a737f1",
+    "chunk_order_index": 147
+  },
+  "chunk-59fb11ed8114b7a4cab9b75b4b805157": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105722_117 [sparql query 1 1 9]\nObject: ChatBS-NexGen:id_20260420105722_117 [sparql query 1 1 9].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"1_1_9\"\n- rdfs:label (label): \"sparql_query_1_1_9\"\n- prov:endedAt (ended At): \"2026-04-20 10:57:22\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105722_117 [Chat BS Nex Gen:sparql query extractor Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105722_463-kg_info [Generation kg info]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105722_418-entity [Usage entity]\n- prov:startedAt (started At): \"2026-04-20 10:57:19\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105703_693-extracts [extracts]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105722_181-kg_info [row 1]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-59fb11ed8114b7a4cab9b75b4b805157",
+    "chunk_order_index": 148
+  },
+  "chunk-2221beff3da7e87f4160d330700ad268": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105723_114 [sparql query 1 1 10]\nObject: ChatBS-NexGen:id_20260420105723_114 [sparql query 1 1 10].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"1_1_10\"\n- rdfs:label (label): \"sparql_query_1_1_10\"\n- prov:endedAt (ended At): \"2026-04-20 10:57:23\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105723_114 [Chat BS Nex Gen:sparql query extractor Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105723_333-kg_info [Generation kg info]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105723_195-entity [Usage entity]\n- prov:startedAt (started At): \"2026-04-20 10:57:22\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105704_531-extracts [extracts]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105723_261-kg_info [row 1]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-2221beff3da7e87f4160d330700ad268",
+    "chunk_order_index": 149
+  },
+  "chunk-0cbcbd320283bf161c6f55694951e804": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105727_300 [sparql query 1 1 11]\nObject: ChatBS-NexGen:id_20260420105727_300 [sparql query 1 1 11].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"1_1_11\"\n- rdfs:label (label): \"sparql_query_1_1_11\"\n- prov:endedAt (ended At): \"2026-04-20 10:57:27\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:sparql_query_extractor-Association-id_20260420105727_300 [Chat BS Nex Gen:sparql query extractor Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105727_524-kg_info [Generation kg info]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105727_373-entity [Usage entity]\n- prov:startedAt (started At): \"2026-04-20 10:57:23\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105704_782-extracts [extracts]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105727_306-kg_info [row 1]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105727_801-kg_info [row 0]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]\n- prov:wasInformedBy (An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-0cbcbd320283bf161c6f55694951e804",
+    "chunk_order_index": 150
+  },
+  "chunk-c48834a0a080996dc0be1cc1540fb9b8": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]\nObject: ChatBS-NexGen:id_20260420105727_835 [post processing 1 1].\nTypes: provone:Execution.\nProperties:\n- dcterms:identifier (identifier): \"post_processing_1_1\"\n- rdfs:label (label): \"post_processing_1_1\"\n- prov:endedAt (ended At): \"2026-04-20 10:57:27\"\n- prov:qualifiedAssociation (If this Activity prov:was Associated With Agent :ag, then it can qualify the Association using prov:qualified Association [ a prov:Association; prov:agent :ag; :foo :bar ].): ChatBS-NexGen:query_result_post_processor-Association-id_20260420105727_835 [Chat BS Nex Gen:query result post processor Association]\n- prov:qualifiedGeneration (If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualified Generation [ a prov:Generation; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Generation-id_20260420105727_328-post_processed_output [Generation post processed output]\n- prov:qualifiedUsage (If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualified Usage [ a prov:Usage; prov:entity :e; :foo :bar ].): ChatBS-NexGen:Usage-id_20260420105727_857-kg_knowledge [Usage kg knowledge]\n- prov:startedAt (started At): \"2026-04-20 10:57:27\"\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:Data-id_20260420105727_858-post_processed_output [row 1]\n- prov:used (A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .): ChatBS-NexGen:id_20260420105727_995 [ChatBS-NexGen:id_20260420105727_995]\n- prov:wasAssociatedWith (An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.): ChatBS-NexGen:test_user [test user]",
+    "full_doc_id": "doc-c48834a0a080996dc0be1cc1540fb9b8",
+    "chunk_order_index": 151
+  },
+  "chunk-f654e35084ef5a8566eee5abe20c4e43": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:id_20260420105727_995 [ChatBS-NexGen:id_20260420105727_995]\nObject: ChatBS-NexGen:id_20260420105727_995 [ChatBS-NexGen:id_20260420105727_995].\nTypes: provone:Collection.\nProperties:\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105705_232-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105705_668-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105705_670-kg_info [row 0]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105710_564-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105711_45-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105711_547-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105711_637-kg_info [row 0]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105711_658-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105711_94-kg_info [row 0]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105717_899-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105719_258-kg_info [row 0]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105719_416-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105722_181-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105723_261-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105727_306-kg_info [row 1]\n- provone:hadMember (had Member): ChatBS-NexGen:Data-id_20260420105727_801-kg_info [row 0]\n- prov:wasGeneratedBy (was Generated By): ChatBS-NexGen:id_20260420105727_835 [post processing 1 1]",
+    "full_doc_id": "doc-f654e35084ef5a8566eee5abe20c4e43",
+    "chunk_order_index": 152
+  },
+  "chunk-020a9d104ae565b26221ed245fa505e8": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:information_extractor [Information Extractor]\nObject: ChatBS-NexGen:information_extractor [Information Extractor].\nTypes: provone:Program.\nProperties:\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:information_extractor-text [Input port for text]\n- provone:hasOutPort (Enables the specification of a Port as an output port of a particular Program.): ChatBS-NexGen:information_extractor-extracts [Extracted Entities]\n- dc:description (description): \"Extracts entities or relevant information from the generated text using specified instructions.\"\n- dcterms:identifier (identifier): \"2\"\n- rdfs:label (label): \"Information Extractor\"\n- prov:atTime (The time at which an Instantaneous Event occurred, in the form of xsd:date Time.): \"2026-03-05 19:20:19\"",
+    "full_doc_id": "doc-020a9d104ae565b26221ed245fa505e8",
+    "chunk_order_index": 153
+  },
+  "chunk-0568c4c79720cca5b1fb01ab375870b6": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:information_extractor-extracts [Extracted Entities]\nObject: ChatBS-NexGen:information_extractor-extracts [Extracted Entities].\nTypes: provone:Port.\nProperties:\n- provone:connectsTo (Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.): ChatBS-NexGen:channel_sparql_query_extraction [Channel for the SPARQL query extraction]\n- dc:description (description): \"The list of entities extracted from the text\"\n- rdfs:label (label): \"Extracted Entities\"",
+    "full_doc_id": "doc-0568c4c79720cca5b1fb01ab375870b6",
+    "chunk_order_index": 154
+  },
+  "chunk-352178692008684df890f2f27624ab86": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:information_extractor-text [Input port for text]\nObject: ChatBS-NexGen:information_extractor-text [Input port for text].\nTypes: provone:Port.\nProperties:\n- provone:connectsTo (Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.): ChatBS-NexGen:channel_generated_answer [Channel for the generated answer]\n- dc:description (description): \"Input port for text in the information extraction program\"\n- rdfs:label (label): \"Input port for text\"",
+    "full_doc_id": "doc-352178692008684df890f2f27624ab86",
+    "chunk_order_index": 155
+  },
+  "chunk-2996cae218f352cf0024ebd9d04ec65b": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:llm_chat [LLM Chat]\nObject: ChatBS-NexGen:llm_chat [LLM Chat].\nTypes: provone:Program.\nProperties:\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:llm_chat-system_prompt [LLM Chat input port: system prompt]\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:llm_chat-user_prompt [LLM Chat input port: user prompt]\n- provone:hasOutPort (Enables the specification of a Port as an output port of a particular Program.): ChatBS-NexGen:llm_chat-generated_answer [LLM Chat output port: generated answer]\n- dc:description (description): \"Chat with the LLM.\"\n- rdfs:label (label): \"LLM Chat\"",
+    "full_doc_id": "doc-2996cae218f352cf0024ebd9d04ec65b",
+    "chunk_order_index": 156
+  },
+  "chunk-218716afa805fca0b27bebdb9e9d4568": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:llm_chat-generated_answer [LLM Chat output port: generated answer]\nObject: ChatBS-NexGen:llm_chat-generated_answer [LLM Chat output port: generated answer].\nTypes: provone:Port.\nProperties:\n- provone:connectsTo (Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.): ChatBS-NexGen:channel_generated_answer [Channel for the generated answer]\n- dc:description (description): \"LLM Chat output port: generated_answer\"\n- rdfs:label (label): \"LLM Chat output port: generated_answer\"",
+    "full_doc_id": "doc-218716afa805fca0b27bebdb9e9d4568",
+    "chunk_order_index": 157
+  },
+  "chunk-9cbb0a93e923d57d94ccd4a69ef9c74a": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:llm_chat-system_prompt [LLM Chat input port: system prompt]\nObject: ChatBS-NexGen:llm_chat-system_prompt [LLM Chat input port: system prompt].\nTypes: provone:Port.\nProperties:\n- provone:connectsTo (Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.): ChatBS-NexGen:channel_system_prompt [Channel for the system prompt]\n- dc:description (description): \"LLM Chat input port: system_prompt\"\n- rdfs:label (label): \"LLM Chat input port: system_prompt\"",
+    "full_doc_id": "doc-9cbb0a93e923d57d94ccd4a69ef9c74a",
+    "chunk_order_index": 158
+  },
+  "chunk-39065d4b323a0bf7eea7c48bece395d5": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:llm_chat-user_prompt [LLM Chat input port: user prompt]\nObject: ChatBS-NexGen:llm_chat-user_prompt [LLM Chat input port: user prompt].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"LLM Chat input port: user_prompt\"\n- rdfs:label (label): \"LLM Chat input port: user_prompt\"",
+    "full_doc_id": "doc-39065d4b323a0bf7eea7c48bece395d5",
+    "chunk_order_index": 159
+  },
+  "chunk-66b0324368d8b65afad72a7587b39916": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:query_result_post_processor [Query Result Post Processor]\nObject: ChatBS-NexGen:query_result_post_processor [Query Result Post Processor].\nTypes: provone:Program.\nProperties:\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:query_result_post_processor-kg_knowledge [Post processing input port: kg knowledge]\n- provone:hasOutPort (Enables the specification of a Port as an output port of a particular Program.): ChatBS-NexGen:query_result_post_processor-post_processed_output [Post processed output port: post processed output]\n- dc:description (description): \"Post-processes the query results from the knowledge graph.\"\n- dcterms:identifier (identifier): \"4\"\n- rdfs:label (label): \"Query Result Post-Processor\"\n- prov:atTime (The time at which an Instantaneous Event occurred, in the form of xsd:date Time.): \"2026-03-05 19:21:32\"",
+    "full_doc_id": "doc-66b0324368d8b65afad72a7587b39916",
+    "chunk_order_index": 160
+  },
+  "chunk-16405176d59c5d52df7b0d39fbcc3c7d": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:query_result_post_processor-kg_knowledge [Post processing input port: kg knowledge]\nObject: ChatBS-NexGen:query_result_post_processor-kg_knowledge [Post processing input port: kg knowledge].\nTypes: provone:Port.\nProperties:\n- provone:connectsTo (Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.): ChatBS-NexGen:channel_query_result_post_processing [Channel for the query result post processing]\n- dc:description (description): \"Post-processing input port: kg_knowledge\"\n- rdfs:label (label): \"Post-processing input port: kg_knowledge\"",
+    "full_doc_id": "doc-16405176d59c5d52df7b0d39fbcc3c7d",
+    "chunk_order_index": 161
+  },
+  "chunk-bdc24da93e7dde58e235f2c1aac961a2": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:query_result_post_processor-post_processed_output [Post processed output port: post processed output]\nObject: ChatBS-NexGen:query_result_post_processor-post_processed_output [Post processed output port: post processed output].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"Post-processed output port: post_processed_output\"\n- rdfs:label (label): \"Post-processed output port: post_processed_output\"",
+    "full_doc_id": "doc-bdc24da93e7dde58e235f2c1aac961a2",
+    "chunk_order_index": 162
+  },
+  "chunk-346a91122192a7fc5ec719ed7e9178ce": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder]\nObject: ChatBS-NexGen:sparql_query_extractor [SPARQL Query Builder].\nTypes: provone:Program.\nProperties:\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]\n- provone:hasOutPort (Enables the specification of a Port as an output port of a particular Program.): ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info]\n- dc:description (description): \"Builds SPARQL queries to extract information about the entities from the knowledge graph.\"\n- dcterms:identifier (identifier): \"3\"\n- rdfs:label (label): \"SPARQL Query Builder\"\n- prov:atTime (The time at which an Instantaneous Event occurred, in the form of xsd:date Time.): \"2026-03-05 19:20:56\"",
+    "full_doc_id": "doc-346a91122192a7fc5ec719ed7e9178ce",
+    "chunk_order_index": 163
+  },
+  "chunk-d73cb4728bc1a5d38e65c41edea338ce": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity]\nObject: ChatBS-NexGen:sparql_query_extractor-entity [Input port for entity].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"Input port for entity in the KG query extraction program\"\n- rdfs:label (label): \"Input port for entity\"",
+    "full_doc_id": "doc-d73cb4728bc1a5d38e65c41edea338ce",
+    "chunk_order_index": 164
+  },
+  "chunk-a327df982ef5c97daa806a5514f82314": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info]\nObject: ChatBS-NexGen:sparql_query_extractor-kg_info [Output port for kg info].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"Output port for kg_info in the KG query extraction program\"\n- rdfs:label (label): \"Output port for kg_info\"",
+    "full_doc_id": "doc-a327df982ef5c97daa806a5514f82314",
+    "chunk_order_index": 165
+  },
+  "chunk-e91e8bc4056534206e162ee59ff14c7e": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:system_prompt_generator [System Prompt Template Generator]\nObject: ChatBS-NexGen:system_prompt_generator [System Prompt Template Generator].\nTypes: provone:Program.\nProperties:\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:system_prompt_generator-age [Input port for age]\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:system_prompt_generator-allergies [Input port for allergies]\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:system_prompt_generator-bodyMassIndex [Input port for body Mass Index]\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:system_prompt_generator-diagnosis [Input port for diagnosis]\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:system_prompt_generator-foodPreferences [Input port for food Preferences]\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:system_prompt_generator-gender [Input port for gender]\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:system_prompt_generator-height [Input port for height]\n- provone:hasInPort (Enables the specification of a Port as an input port of a particular Program.): ChatBS-NexGen:system_prompt_generator-weight [Input port for weight]\n- provone:hasOutPort (Enables the specification of a Port as an output port of a particular Program.): ChatBS-NexGen:system_prompt_generator-system_prompt [System Prompt]\n- dc:description (description): \"Generates a system prompt based on the provided dataset structure and user input.\"\n- dcterms:identifier (identifier): \"1\"\n- rdfs:label (label): \"System Prompt Template Generator\"\n- prov:atTime (The time at which an Instantaneous Event occurred, in the form of xsd:date Time.): \"2026-03-05 19:19:23\"",
+    "full_doc_id": "doc-e91e8bc4056534206e162ee59ff14c7e",
+    "chunk_order_index": 166
+  },
+  "chunk-588b4c7ec6d06d85fa10f582e3b1a728": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:system_prompt_generator-age [Input port for age]\nObject: ChatBS-NexGen:system_prompt_generator-age [Input port for age].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"Input port for age in the system prompt generation program\"\n- rdfs:label (label): \"Input port for age\"",
+    "full_doc_id": "doc-588b4c7ec6d06d85fa10f582e3b1a728",
+    "chunk_order_index": 167
+  },
+  "chunk-ed50acf2c9b900fea16bb7dc57825cf5": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:system_prompt_generator-allergies [Input port for allergies]\nObject: ChatBS-NexGen:system_prompt_generator-allergies [Input port for allergies].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"Input port for allergies in the system prompt generation program\"\n- rdfs:label (label): \"Input port for allergies\"",
+    "full_doc_id": "doc-ed50acf2c9b900fea16bb7dc57825cf5",
+    "chunk_order_index": 168
+  },
+  "chunk-9d720cf14de944feb581bc8cd6605107": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:system_prompt_generator-bodyMassIndex [Input port for body Mass Index]\nObject: ChatBS-NexGen:system_prompt_generator-bodyMassIndex [Input port for body Mass Index].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"Input port for bodyMassIndex in the system prompt generation program\"\n- rdfs:label (label): \"Input port for bodyMassIndex\"",
+    "full_doc_id": "doc-9d720cf14de944feb581bc8cd6605107",
+    "chunk_order_index": 169
+  },
+  "chunk-63409483eb67d34d133ef0fb91ebc825": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:system_prompt_generator-diagnosis [Input port for diagnosis]\nObject: ChatBS-NexGen:system_prompt_generator-diagnosis [Input port for diagnosis].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"Input port for diagnosis in the system prompt generation program\"\n- rdfs:label (label): \"Input port for diagnosis\"",
+    "full_doc_id": "doc-63409483eb67d34d133ef0fb91ebc825",
+    "chunk_order_index": 170
+  },
+  "chunk-9d2d85caeacde333eb61916149512b50": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:system_prompt_generator-foodPreferences [Input port for food Preferences]\nObject: ChatBS-NexGen:system_prompt_generator-foodPreferences [Input port for food Preferences].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"Input port for foodPreferences in the system prompt generation program\"\n- rdfs:label (label): \"Input port for foodPreferences\"",
+    "full_doc_id": "doc-9d2d85caeacde333eb61916149512b50",
+    "chunk_order_index": 171
+  },
+  "chunk-ac031be79a1d5fb67f263ac6f31391ab": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:system_prompt_generator-gender [Input port for gender]\nObject: ChatBS-NexGen:system_prompt_generator-gender [Input port for gender].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"Input port for gender in the system prompt generation program\"\n- rdfs:label (label): \"Input port for gender\"",
+    "full_doc_id": "doc-ac031be79a1d5fb67f263ac6f31391ab",
+    "chunk_order_index": 172
+  },
+  "chunk-d4fe3c12c73209925c3d272a5b75fcd5": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:system_prompt_generator-height [Input port for height]\nObject: ChatBS-NexGen:system_prompt_generator-height [Input port for height].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"Input port for height in the system prompt generation program\"\n- rdfs:label (label): \"Input port for height\"",
+    "full_doc_id": "doc-d4fe3c12c73209925c3d272a5b75fcd5",
+    "chunk_order_index": 173
+  },
+  "chunk-0e62170386428a79ec4c645fdfc09d03": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:system_prompt_generator-system_prompt [System Prompt]\nObject: ChatBS-NexGen:system_prompt_generator-system_prompt [System Prompt].\nTypes: provone:Port.\nProperties:\n- provone:connectsTo (Specifies the Channel that the given Port connects to, typically with an output Port connected to an input Port.): ChatBS-NexGen:channel_system_prompt [Channel for the system prompt]\n- dc:description (description): \"The system prompt generated by the program based on the dataset structure and user input.\"\n- rdfs:label (label): \"System Prompt\"",
+    "full_doc_id": "doc-0e62170386428a79ec4c645fdfc09d03",
+    "chunk_order_index": 174
+  },
+  "chunk-c8b04874bd0277ce9f32d94ae095b705": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:system_prompt_generator-weight [Input port for weight]\nObject: ChatBS-NexGen:system_prompt_generator-weight [Input port for weight].\nTypes: provone:Port.\nProperties:\n- dc:description (description): \"Input port for weight in the system prompt generation program\"\n- rdfs:label (label): \"Input port for weight\"",
+    "full_doc_id": "doc-c8b04874bd0277ce9f32d94ae095b705",
+    "chunk_order_index": 175
+  },
+  "chunk-56e76fd84f8891369e3bce47b257f140": {
+    "tokens": 0,
+    "content": "ChatBS-NexGen:test_user [test user]\nObject: ChatBS-NexGen:test_user [test user].\nTypes: prov:Agent.",
+    "full_doc_id": "doc-56e76fd84f8891369e3bce47b257f140",
+    "chunk_order_index": 176
+  }
+}

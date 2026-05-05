@@ -599,3 +599,99 @@
 2026-05-01 16:03:37 - INFO - Function breadth_first_search Took 0.0000 seconds
 2026-05-01 16:03:37 - INFO - Generated 204 query graphs from all class paths.
 2026-05-01 16:03:37 - INFO - Total programs after generating queries from paths: 314
+2026-05-04 03:14:14 - INFO - Initializing GraphManager...
+2026-05-04 03:14:14 - INFO - Graph loaded with 895 triples.
+2026-05-04 03:14:14 - INFO - Processing schema from schema/schemaV2.json
+2026-05-04 03:14:14 - INFO - Loading RDF graph from usecases/chatbs/data/1_sample_graph/chatbs_sample.ttl...
+2026-05-04 03:14:14 - INFO - Graph loaded with 895 triples. Indexing entities...
+2026-05-04 03:14:14 - INFO - Finished processing graph and schema.
+2026-05-04 03:14:15 - INFO -                                                  p  ... c_o_class
+0      http://purl.org/dc/elements/1.1/description  ...         -
+1  http://www.w3.org/1999/02/22-rdf-syntax-ns#type  ...         -
+2       http://www.w3.org/2000/01/rdf-schema#label  ...         -
+3                 http://www.w3.org/ns/prov#atTime  ...         -
+4                   http://www.w3.org/ns/prov#used  ...         -
+
+[5 rows x 6 columns]
+2026-05-04 03:14:15 - INFO - Total programs after object of class: 2
+2026-05-04 03:14:15 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/elements/1.1/description> ?value .
+    }
+2026-05-04 03:14:15 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/2000/01/rdf-schema#label> ?value .
+    }
+2026-05-04 03:14:15 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://testwebsite/testDFColumn#ingredientCat> ?value .
+    }
+2026-05-04 03:14:15 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://testwebsite/testDFColumn#ingredientName> ?value .
+    }
+2026-05-04 03:14:15 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://testwebsite/testDFColumn#sugarG> ?value .
+    }
+2026-05-04 03:14:16 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/2000/01/rdf-schema#label> ?value .
+    }
+2026-05-04 03:14:16 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/ns/prov#value> ?value .
+    }
+2026-05-04 03:14:16 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/elements/1.1/description> ?value .
+    }
+2026-05-04 03:14:16 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/terms#identifier> ?value .
+    }
+2026-05-04 03:14:16 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/2000/01/rdf-schema#label> ?value .
+    }
+2026-05-04 03:14:16 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/ns/prov#atTime> ?value .
+    }
+2026-05-04 03:14:17 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/terms#identifier> ?value .
+    }
+2026-05-04 03:14:17 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/2000/01/rdf-schema#label> ?value .
+    }
+2026-05-04 03:14:17 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/ns/prov#endedAt> ?value .
+    }
+2026-05-04 03:14:17 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/ns/prov#startedAt> ?value .
+    }
+2026-05-04 03:14:17 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/elements/1.1/description> ?value .
+    }
+2026-05-04 03:14:17 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/llm_model> ?value .
+    }
+2026-05-04 03:14:17 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/2000/01/rdf-schema#label> ?value .
+    }
+2026-05-04 03:14:18 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/elements/1.1/description> ?value .
+    }
+2026-05-04 03:14:18 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/llm_model> ?value .
+    }
+2026-05-04 03:14:18 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/2000/01/rdf-schema#label> ?value .
+    }
+2026-05-04 03:14:18 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/ns/prov#atTime> ?value .
+    }
+2026-05-04 03:14:18 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/elements/1.1/description> ?value .
+    }
+2026-05-04 03:14:18 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/2000/01/rdf-schema#label> ?value .
+    }
+2026-05-04 03:14:19 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/ns/prov#atTime> ?value .
+    }
+2026-05-04 03:14:19 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://purl.org/dc/elements/1.1/description> ?value .
+    }
+2026-05-04 03:14:19 - INFO - SELECT DISTINCT ?value WHERE {
+    <{obj_uri}> <http://www.w3.org/2000/01/rdf-schema#label> ?value .
+    }

@@ -123,14 +123,20 @@ def _(
 ):
     for qinfo in tqdm(ground_truth.gt_info):
         start_time = time.perf_counter()
-        pred = explainer.request(qinfo.question)
-        report = explainer.request_to_report(pred)
-        end_time = time.perf_counter()
+        try:
+            pred = explainer.request(qinfo.question)
+            report = explainer.request_to_report(pred)
+            
+            end_time = time.perf_counter()
 
-        pred["question"] = qinfo.question
-        pred["id"] = qinfo.id
-        pred["report"] = report
-        pred["time_taken"] = end_time - start_time
+            pred["question"] = qinfo.question
+            pred["id"] = qinfo.id
+            pred["report"] = report
+            pred["time_taken"] = end_time - start_time
+        except Exception as e:
+            pred = {}
+            pred["error"] = str(e)
+            
         common_utils.serialization.save_jsonl_append(
             os.path.join(
                 config.explainer_config.save_answer_loc, timestamp_exp, "RESULTS.jsonl"

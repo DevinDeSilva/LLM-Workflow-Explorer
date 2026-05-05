@@ -252,7 +252,9 @@ class MilvusVectorDB(BaseVectorDB):
                     "object_class": self._normalize_object_class(record.get("object_class")),
                     "object_vector": self._normalize_vector(record["object_vector"]),
                     "metadata": record.get("metadata", {}),
-                    "object_description": record.get("object_description", ""),
+                    "object_description": self._normalize_object_description(
+                        record.get("object_description", "")
+                    ),
                 }
                 for record in records
             ]
@@ -268,9 +270,18 @@ class MilvusVectorDB(BaseVectorDB):
                 "object_class": self._normalize_object_class(object_class),
                 "object_vector": self._normalize_vector(object_vector),
                 "metadata": metadata or {},
-                "object_description": object_description,
+                "object_description": self._normalize_object_description(object_description),
             }
         ]
+
+    def _normalize_object_description(self, object_description: Any) -> str:
+        normalized_description = str(object_description or "")
+        max_length = self.config.object_description_max_length - 2*1024
+
+        if len(normalized_description) <= max_length:
+            return normalized_description
+
+        return normalized_description[:max_length]
 
     def _normalize_object_class(
         self,

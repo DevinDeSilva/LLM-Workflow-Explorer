@@ -1,0 +1,106 @@
+application:
+  description: |
+    The Biomni application is an LLM-driven biomedical agent that plans, reasons,
+    executes generated code, and optionally critiques intermediate answers to solve
+    user-provided biomedical tasks. The provenance captures the user input, system
+    prompt generation, each agent generation iteration, code execution, execution
+    observations, final solution, and optional critic feedback as intermediary
+    states of the agent run.
+    Agent stages are represented as provone:Executions of provone:Programs,
+    including user input recording, system prompt generation, LLM response
+    generation, generated code execution, and critic review. LLM usage within the
+    agent is represented as workflow:Generative_Task activity using
+    workflow:Large_Language_Models. Generated responses, executable code,
+    observations, critic feedback, and final solutions are connected across the
+    workflow using provone:Channel and prov:wasInformedBy relations.
+    dcterms:identifier represents the unique identifier for each recorded agent
+    stage or experiment step.
+
+file_paths:
+  schema_loc: "schema/schemaV2.json"
+  execution_kg_loc: "usecases/biomni/data/task3/biomni_sample.ttl"
+  metadata_loc: "usecases/biomni/data/task3/biomni_sample_metadata.json"
+  ontology_path: "schema/WorkFlow.ttl"
+
+explorer_config:
+  kg_name: "Biomni-Task3"
+  ontology_triples_path: "schema/extracted_ontology_triples.csv"
+  parallel: True
+  temp_folder: "evaluations/biomni-base/exeprog_creation/tmp/programs"
+  use_cache: False
+  entity_length: 5
+  explorer_metadata_loc: "evaluations/biomni-base/exeprog_creation/exeplorer_metadata.pkl"
+  exeprog_save_loc: "evaluations/biomni-base/exeprog_creation/exeplored_programs.pkl"
+  log_file: "evaluations/biomni-base/exeprog_creation/explorer_log.txt"
+
+question_creation_config:
+  save_questions: "evaluations/biomni-base/ques_creation/SyntheticQuestionKG.csv"
+  log_file: "evaluations/biomni-base/ques_creation/question_creation_log.txt"
+  llm_type: "lmstudio"
+  llm_config:
+    model: "openai/gpt-oss-20b"
+    base_url: "http://localhost:1234/v1"
+
+explainer_config:
+  llm_type: "lmstudio"
+  embedding_type: "lmstudio"
+  vectordb_type: "milvus"
+  save_answer_loc: "evaluations/biomni-base/explainer/results"
+
+  llm_config:
+    model: "openai/gpt-oss-20b"
+    base_url: "http://localhost:1234/v1"
+
+  vectordb_config:
+    vector_dim: 1024
+    collection_name: "biomni"
+
+  embedding_config:
+    model: "text-embedding-bge-large-en-v1.5"
+
+  object_search_config:
+    search_limit: 3
+  log_file: "evaluations/biomni-base/explainer/explainer_log.txt"
+
+gt:
+  log_file: "evaluations/biomni-base/ground_truth/ground_truth_log.txt"
+  save_loc: "evaluations/biomni-base/ground_truth/ground_truth_data.jsonl"
+
+ttl:
+  prefixes:
+    [
+      {
+          name: "provone",
+          uri: "http://purl.dataone.org/provone/2015/01/15/ontology#",
+        },
+      { name: "skos", uri: "http://www.w3.org/2004/02/skos/core#" },
+      { name: "prov", uri: "http://www.w3.org/ns/prov#" },
+      { name: "rdfs", uri: "http://www.w3.org/2000/01/rdf-schema#" },
+      { name: "rdf", uri: "http://www.w3.org/1999/02/22-rdf-syntax-ns#" },
+      { name: "cwfo", uri: "http://cwf.tw.rpi.edu/vocab#" },
+      { name: "dcterms", uri: "http://purl.org/dc/terms#" },
+      { name: "Biomni", uri: "http://testwebsite/testProgram#" },
+      { name: "user", uri: "http://testwebsite/testUser#" },
+      { name: "eo", uri: "https://purl.org/heals/eo#" },
+      { name: "ep", uri: "http://linkedu.eu/dedalo/explanationPattern.owl#" },
+      { name: "sio", uri: "http://semanticscience.org/resource/" },
+      { name: "dc", uri: "http://purl.org/dc/elements/1.1/" },
+      { name: "DFColumn", uri: "http://testwebsite/testDFColumn#" },
+      { name: "fnom", uri: "https://w3id.org/function/vocabulary/mapping#" },
+      { name: "fnoi", uri: "https://w3id.org/function/vocabulary/implementation#" },
+      {
+          name: "fnoc",
+          uri: "https://w3id.org/function/vocabulary/composition/0.1.0/",
+        },
+      { name: "food", uri: "http://purl.org/heals/food/" },
+      { name: "dbo", uri: "http://dbpedia.org/ontology/" },
+      { name: "dbp", uri: "http://dbpedia.org/property/" },
+      { name: "dbt", uri: "http://dbpedia.org/resource/Template:" },
+      { name: "ques", uri: "http://atomic_questions.org/" },
+      { name: "xsd", uri: "http://www.w3.org/2001/XMLSchema#" },
+      { name: "fno", uri: "https://w3id.org/function/vocabulary/core#" },
+      {
+          name: "workflow",
+          uri: "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/",
+        },
+    ]
