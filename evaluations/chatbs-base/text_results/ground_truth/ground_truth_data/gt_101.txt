@@ -1,0 +1,6 @@
+Answer
+The number of output for the "Output port for kg_info" in the execution "http://testwebsite/testProgram#id_20260420105727_300" is 2
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105727_306-kg_info
+http://testwebsite/testProgram#Data-id_20260420105727_801-kg_info

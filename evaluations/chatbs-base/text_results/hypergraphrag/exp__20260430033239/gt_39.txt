@@ -1,0 +1,2 @@
+Answer
+Yes – the execution **`information_extraction_1_1`** (ID `ChatBS-NexGen:id_20260420105703_307`) contains a component part labeled **`Generative_Task-id_20260420105703_307`**, which is an instance of a generative task workflow. This relationship is recorded in the provenance data where the execution’s `sio:SIO_000369 (has component part)` property points to that generative‑task entity, confirming that the extraction run was built on top of a generative task component.

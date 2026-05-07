@@ -1,0 +1,2 @@
+Answer
+The llm_chat function outputs the port named **generated_answer**. <cite, id=0>LLM Chat</cite> <cite, id=1>LLM Chat output port: generated_answer</cite>

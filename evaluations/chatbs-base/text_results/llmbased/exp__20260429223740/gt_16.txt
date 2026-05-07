@@ -1,0 +1,2 @@
+Answer
+The closest grounded workflow step is LLM Chat (llm chat 1 1); used user prompt, system prompt; generated system prompt, generated answer. <cite, id=0>llm chat 1 1</cite> <cite, id=1>LLM Chat</cite> <cite, id=2>system prompt</cite> <cite, id=3>user prompt</cite> <cite, id=4>generated answer</cite>

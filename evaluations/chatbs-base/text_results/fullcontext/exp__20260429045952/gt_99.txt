@@ -1,0 +1,2 @@
+Answer
+The Output port for kg_info in the execution http://testwebsite/testProgram#id_20260420105722_117 produced a single output. <cite, id=0>sparql query 1 1 9</cite> <cite, id=1>kg info</cite> <cite, id=2>row 1</cite>

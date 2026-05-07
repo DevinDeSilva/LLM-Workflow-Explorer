@@ -1,0 +1,2 @@
+Answer
+The system‑prompt template step produces a single output parameter – the generated **system prompt**. <cite, id=0>System Prompt Template Generator</cite> <cite, id=1>System Prompt</cite>

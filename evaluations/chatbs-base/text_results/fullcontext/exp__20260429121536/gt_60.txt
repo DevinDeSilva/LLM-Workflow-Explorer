@@ -1,0 +1,2 @@
+Answer
+The data used by execution 20260420105717_370 were created by the Generative Task that generated the information extractor output – the task identified as `workflow:Generative_Task-information_extractor` (id #20260420105703_307). <cite, id=0>Information Extractor function generator</cite>

@@ -1,0 +1,2 @@
+Answer
+No, none of the executions of the system‑prompt template function include a Generative Task as a component. <cite, id=0>system prompt execution 1 1</cite> <cite, id=1>system prompt</cite>

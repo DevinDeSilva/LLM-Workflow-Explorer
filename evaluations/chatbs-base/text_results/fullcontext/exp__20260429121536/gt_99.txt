@@ -1,0 +1,2 @@
+Answer
+The execution produced one output on the "Output port for kg_info". <cite, id=0>Output port for kg_info</cite> <cite, id=1>row 1</cite>

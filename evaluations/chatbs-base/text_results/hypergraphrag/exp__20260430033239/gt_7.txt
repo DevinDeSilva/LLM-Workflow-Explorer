@@ -1,0 +1,10 @@
+Answer
+**Input Parameters for the Post‑Processing Function**
+
+| Step | Function / Program | Input Port(s) | Description |
+|------|-------------------|---------------|-------------|
+| **SPARQL Query Post‑Processing** | `ChatBS-NexGen:query_result_post_processor` (Program) | `kg_knowledge` (input port) | The function receives the raw knowledge‑graph results produced by the preceding SPARQL query executions. |
+|  | `ChatBS-NexGen:LLM-query_result_post_processor` (Large‑Language‑Model generator) | *Formatting instruction* and *Processing instruction* (inputs to the LLM) | These two textual instructions guide the LLM in transforming the raw KG output into a cleaned, structured form. |
+|  | `ChatBS-NexGen:query_result_post_processor-kg_knowledge` (input port) | The aggregated KG data from all SPARQL queries (`sparql_query_*`) | This is the primary payload that the post‑processing function consumes to produce the final, user‑friendly output. |
+
+In short, the post‑processing step takes as its main input the **KG knowledge** produced by the batch SPARQL query extractor, along with optional formatting and processing instructions supplied to the LLM that generates the post‑processing routine.

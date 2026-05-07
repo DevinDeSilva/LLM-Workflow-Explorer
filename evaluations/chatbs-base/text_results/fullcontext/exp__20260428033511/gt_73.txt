@@ -1,0 +1,2 @@
+Answer
+No – the gender input for that execution came from pre‑existing user data, not from a Generative Task. <cite, id=0>system prompt execution 1 1</cite> <cite, id=1>gender</cite> <cite, id=2>gender</cite>

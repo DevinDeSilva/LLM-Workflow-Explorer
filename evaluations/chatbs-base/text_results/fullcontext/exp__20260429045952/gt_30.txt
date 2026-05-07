@@ -1,0 +1,2 @@
+Answer
+The only agent that executed the SPARQL query function step was the test user. <cite, id=0>test user</cite>

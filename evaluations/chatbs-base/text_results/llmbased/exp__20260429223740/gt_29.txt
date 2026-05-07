@@ -1,0 +1,2 @@
+Answer
+The age was used by System Prompt Template Generator to produce system prompt. <cite, id=0>age</cite> <cite, id=1>System Prompt Template Generator</cite> <cite, id=2>system prompt execution 1 1</cite>

@@ -1,0 +1,2 @@
+Answer
+The Information Extractor program is linked, via its input and output ports, to two other programs: the LLM Chat program (which supplies the generated text) and the SPARQL Query Builder program (which receives the extracted entities for graph lookup). <cite, id=0>Information Extractor</cite> <cite, id=1>LLM Chat</cite> <cite, id=2>SPARQL Query Builder</cite>

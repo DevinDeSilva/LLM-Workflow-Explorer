@@ -1,0 +1,2 @@
+Answer
+Yes – the system prompt supplied to the LLM Chat was produced by a Generative Task (the System Prompt Template Generator). <cite, id=0>system prompt</cite> <cite, id=1>system prompt</cite> <cite, id=2>System Prompt Template Generator</cite>

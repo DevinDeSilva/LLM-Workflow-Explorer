@@ -1,0 +1,2 @@
+Answer
+The Generative Task’s inputs are the LLM information‑extractor input builder and the input text port (LLM-information_extractor-Input-builder_llm and LLM-information_extractor-Input-text). <cite, id=0>Information Extractor function generator</cite> <cite, id=1>Query Result Post Processor function generator</cite> <cite, id=2>System Prompt Template function generator</cite> <cite, id=3>Information Extractor function generator</cite> <cite, id=4>Input port for text</cite>

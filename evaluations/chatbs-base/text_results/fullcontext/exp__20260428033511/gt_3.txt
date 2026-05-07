@@ -1,0 +1,2 @@
+Answer
+In the final data‑frame some ingredients have empty "sugarG" or "ingredientCat" because the SPARQL queries returned no value for those properties for those entities. The post‑processing step then replaces any missing values with a default of 0 for sugarG and a dash ("-") for ingredientCat. <cite, id=0>row 0</cite> <cite, id=1>row 1</cite> <cite, id=2>row 0</cite> <cite, id=3>row 1</cite> <cite, id=4>row 0</cite>

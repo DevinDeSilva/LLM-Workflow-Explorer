@@ -1,0 +1,45 @@
+Answer
+**Answer**  
+The only program that is directly wired to the `sparql_query_extractor` through its input‑ or output‑ports is the **Batch SPARQL Query Extractor** (`batch_sparql_query_extractor`). This “batch” program bundles several executions of `sparql_query_extractor`, pulls together their `kg_info` outputs, and forwards them to downstream programs. In particular:
+
+* `batch_sparql_query_extractor` has an output port `kg_knowledge`.  
+* That port is connected (via the channel `channel_query_result_post_processing`) to the input of the **Query Result Post‑Processor** (`query_result_post_processor`).  
+
+Thus, through port connections, the two programs that interact with `sparql_query_extractor` are:
+
+1. **Batch SPARQL Query Extractor** – collects and aggregates the individual `kg_info` results.  
+2. **Query Result Post‑Processor** – receives the aggregated knowledge (`kg_knowledge`) for post‑processing.
+
+---
+
+**Relevant entities**
+
+| Entity | URI / CURIE |
+|--------|-------------|
+| `batch_sparql_query_extractor` | `<http://testwebsite/testProgram#batch_sparql_query_extractor>` |
+| `query_result_post_processor` | `<http://testwebsite/testProgram#query_result_post_processor>` |
+| `sparql_query_extractor` | `<http://testwebsite/testProgram#sparql_query_extractor>` |
+
+---
+
+**Evidence (supporting triples)**  
+
+1. **Connection from batch to post‑processor**
+
+   * Subject: `<http://testwebsite/testProgram#batch_sparql_query_extractor-kg_knowledge>`
+   * Predicate: `provone:connectsTo`
+   * Object: `<http://testwebsite/testProgram#channel_query_result_post_processing>`
+
+2. **Post‑processor input port**
+
+   * Subject: `<http://testwebsite/testProgram#query_result_post_processor-kg_knowledge>`
+   * Predicate: `provone:connectsTo`
+   * Object: `<http://testwebsite/testProgram#channel_query_result_post_processing>`
+
+3. **Batch program definition (shows sub‑programs)**
+
+   * Subject: `<http://testwebsite/testProgram#batch_sparql_query_extractor>`
+   * Predicate: `provone:hasSubProgram`
+   * Object: `<http://testwebsite/testProgram#sparql_query_extractor>`
+
+These triples show that the only program wired to the output of `sparql_query_extractor` is the batch aggregator, which in turn forwards its result to the post‑processor. <cite, id=0>Batch SPARQL Query Extractor</cite> <cite, id=1>Query Result Post-Processor</cite> <cite, id=2>kg knowledge</cite> <cite, id=3>Execution</cite> <cite, id=4>kg info</cite> <cite, id=5>kg info</cite>

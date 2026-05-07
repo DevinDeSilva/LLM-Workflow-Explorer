@@ -1,0 +1,20 @@
+Answer
+**Answer**
+
+The execution identified by `http://testwebsite/testProgram#id_20260420105703_307` produced **11 distinct output entities** in its *Extracted Entities* port. These correspond to the following extracted values:
+
+| Entity ID | Value |
+|-----------|-------|
+| 198‑extracts | Yogurt |
+| 218‑extracts | Nut |
+| 51‑extracts  | Avocado |
+| 661‑extracts | Sweet Potato |
+| 678‑extracts | Egg |
+| 693‑extracts | Turkey |
+| 757‑extracts | Chicken |
+| 886‑extracts | Tuna |
+| 891‑extracts | Olive Oil |
+| 531‑extracts | Cheese |
+| 782‑extracts | Fruit |
+
+Thus, the total count of outputs for the *Extracted Entities* port in that execution is **11**.

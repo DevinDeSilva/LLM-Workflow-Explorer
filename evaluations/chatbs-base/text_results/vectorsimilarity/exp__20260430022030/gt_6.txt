@@ -1,0 +1,2 @@
+Answer
+The Large Language Model receives two inputs when generating the information‑extractor function: (1) an LLM input builder port (ChatBS-NexGen:LLM-information_extractor-Input-builder_llm) and (2) an LLM input text port (ChatBS-NexGen:LLM-information_extractor-Input-text). <cite, id=0>Information Extractor function generator</cite> <cite, id=1>LLM Output information extractor</cite> <cite, id=2>Information Extractor function generator</cite> <cite, id=3>KG query extraction input port: query function</cite> <cite, id=4>Input port for text</cite>

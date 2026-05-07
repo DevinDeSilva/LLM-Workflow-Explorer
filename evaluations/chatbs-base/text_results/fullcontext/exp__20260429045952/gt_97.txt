@@ -1,0 +1,2 @@
+Answer
+The execution produces a single output on its *Output port for kg_info* – one result row. <cite, id=0>sparql query 1 1 7</cite> <cite, id=1>kg info</cite> <cite, id=2>Output port for kg_info</cite> <cite, id=3>row 1</cite>

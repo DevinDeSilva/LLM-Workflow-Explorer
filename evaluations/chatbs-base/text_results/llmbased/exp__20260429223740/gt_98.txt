@@ -1,0 +1,2 @@
+Answer
+The closest grounded entity is Output port for kg_info. <cite, id=0>Output port for kg_info</cite>

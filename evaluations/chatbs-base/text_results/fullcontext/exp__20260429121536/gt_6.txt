@@ -1,0 +1,2 @@
+Answer
+The Large Language Model that generates the Information Extraction function receives two inputs: a specification of the language model to use (the builder) and the instruction text describing how to extract entities from generated answers. <cite, id=0>LLM information extractor Input builder llm</cite> <cite, id=1>LLM information extractor Input text</cite>

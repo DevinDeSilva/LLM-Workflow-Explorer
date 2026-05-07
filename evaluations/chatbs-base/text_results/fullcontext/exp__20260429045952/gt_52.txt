@@ -1,0 +1,18 @@
+Answer
+**Answer**  
+The only execution that produced the data consumed by the generative task `http://testwebsite/testProgram#id_20260420105659_302` is the **system‑prompt generation execution** `http://testwebsite/testProgram#id_20260420105652_650`. This execution created the data node `ChatBS-NexGen:Data-id_20260420105652_456-system_prompt`, which was used as the *system prompt* input to the LLM chat (generative) task. The user‑prompt data (`ChatBS‑NexGen:Data-id_20260420105659_811-user_prompt`) is supplied directly by the user and not produced by any execution in the graph.
+
+**Relevant entities**
+- `http://testwebsite/testProgram#id_20260420105652_650`  
+- `http://testwebsite/testProgram#ChatBS-NexGen:Data-id_20260420105652_456-system_prompt`
+
+**Evidence**
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `http://testwebsite/testProgram#id_20260420105652_650` | `prov:qualifiedGeneration` | `http://testwebsite/testProgram#Generation-id_20260420105652_907-system_prompt` |
+| `http://testwebsite/testProgram#Generation-id_20260420105652_907-system_prompt` | `sio:SIO_000202` | `http://testwebsite/testProgram#ChatBS-NexGen:Data-id_20260420105652_456-system_prompt` |
+| `http://testwebsite/testProgram#id_20260420105659_302` | `prov:qualifiedUsage` | `http://testwebsite/testProgram#Usage-id_20260420105659_579-system_prompt` |
+| `http://testwebsite/testProgram#Usage-id_20260420105659_579-system_prompt` | `provone:hadEntity` | `http://testwebsite/testProgram#ChatBS-NexGen:Data-id_20260420105652_456-system_prompt` |
+
+These triples show that the system‑prompt data created by execution `id_20260420105652_650` was used as an input to the generative task in execution `id_20260420105659_302`. <cite, id=0>Generative Task</cite> <cite, id=1>system prompt</cite> <cite, id=2>system prompt</cite> <cite, id=3>System Prompt</cite> <cite, id=4>system prompt</cite> <cite, id=5>user prompt</cite>

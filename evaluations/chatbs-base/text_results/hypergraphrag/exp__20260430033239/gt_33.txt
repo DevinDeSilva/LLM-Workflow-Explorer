@@ -1,0 +1,2 @@
+Answer
+Yes – the **System Prompt Template function generator** is defined as a `workflow:Generative_Task` that explicitly “generates the System Prompt Template using Large language models” (see entity 1 and its description). It relies on an LLM—specifically GPT‑4o (entity 4)—to produce the template, confirming that the function is indeed a generative task powered by AI.

@@ -1,0 +1,20 @@
+Answer
+**Answer:**  
+The two pieces of data that execution `http://testwebsite/testProgram#id_20260420105711_662` used were produced by the **Generative Task `Extracts important entities for text` (ID 20260420105703_307)**.  
+
+**Relevant entities**  
+- `ChatBS-NexGen:Generative_Task-id_20260420105703_307`  
+- `ChatBS-NexGen:id_20260420105711_662`
+
+**Evidence triples**
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS-NexGen:id_20260420105711_662` | `prov:used` | `ChatBS-NexGen:Data-id_20260420105703_198-extracts` |
+| `ChatBS-NexGen:id_20260420105703_307` | `prov:qualifiedGeneration` | `ChatBS-NexGen:Generation-id_20260420105703_814-extracts` |
+| `ChatBS-NexGen:Generation-id_20260420105703_814-extracts` | `provone:hadEntity` | `ChatBS-NexGen:Data-id_20260420105703_198-extracts` |
+| `ChatBS-NexGen:id_20260420105711_662` | `prov:used` | `ChatBS-NexGen:Data-id_20260420105711_45-kg_info` |
+| `ChatBS-NexGen:id_20260420105703_307` | `prov:qualifiedGeneration` | `ChatBS-NexGen:Generation-id_20260420105711_758-kg_info` |
+| `ChatBS-NexGen:Generation-id_20260420105711_758-kg_info` | `provone:hadEntity` | `ChatBS-NexGen:Data-id_20260420105711_45-kg_info` |
+
+These triples show that the data used by execution `id_20260420105711_662` were generated in the earlier **Generative Task** `Extracts important entities for text` (ID 20260420105703_307). <cite, id=0>Generative Task</cite> <cite, id=1>Generation</cite> <cite, id=2>Execution</cite> <cite, id=3>extracts</cite> <cite, id=4>extracts</cite> <cite, id=5>extracts</cite>

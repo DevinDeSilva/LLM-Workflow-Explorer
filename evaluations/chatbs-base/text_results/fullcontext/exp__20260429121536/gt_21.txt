@@ -1,0 +1,2 @@
+Answer
+The only other program that feeds a port of the **llm_chat** function is the *System Prompt Template Generator* (system_prompt_generator). <cite, id=0>System Prompt Template Generator</cite> <cite, id=1>LLM Chat</cite>

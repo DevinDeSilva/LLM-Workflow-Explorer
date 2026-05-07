@@ -1,0 +1,5 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+<|channel|>final <|constrain|>answer<|message|>{"kg":"chatbs","sparql":"PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX prov:<http://www.w3.org/ns/prov#> PREFIX workflow:<http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/> ASK { <ChatBS-NexGen:Generative_Task-information_extractor> rdf:type workflow:Generative_Task . <ChatBS-NexGen:Generative_Task-information_extractor> prov:used ?llm . ?llm rdf:type workflow:Large_Language_Models . }","answer":"Yes, the Information Extractor function is implemented by a Generative Task that uses AI via large language models."}

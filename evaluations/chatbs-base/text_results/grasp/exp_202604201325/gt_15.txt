@@ -1,0 +1,5 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+The function that executes a SPARQL query (the `execute` function) returns either the query results as a table of rows and columns or an error message if the query failed.

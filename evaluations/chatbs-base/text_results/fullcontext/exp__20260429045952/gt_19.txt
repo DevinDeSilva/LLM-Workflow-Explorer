@@ -1,0 +1,2 @@
+Answer
+The only other program linked to the Information Extractor through its ports is the SPARQL Query Builder. <cite, id=0>SPARQL Query Builder</cite>

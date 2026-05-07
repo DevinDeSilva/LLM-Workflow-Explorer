@@ -1,0 +1,4 @@
+Answer
+The function used in the system prompt template step takes two input parameters:
+- A *base system prompt* (e.g., "You are a health care assistant" from `LLM-system_prompt_generator-Input-base_sys_prompt`).
+- An *LLM builder prompt* provided by `LLM-system_prompt_generator-Input-builder_llm`. <cite, id=0>System Prompt Template function generator</cite> <cite, id=1>System Prompt Template function generator</cite> <cite, id=2>LLM Output system prompt generator</cite> <cite, id=3>System Prompt</cite> <cite, id=4>LLM system prompt generator Input base sys prompt</cite>

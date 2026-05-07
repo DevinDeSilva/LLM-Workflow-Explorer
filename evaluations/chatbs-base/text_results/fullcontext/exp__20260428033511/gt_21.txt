@@ -1,0 +1,2 @@
+Answer
+The only programs directly connected to the LLM chat through its ports are the **System Prompt Template Generator** (via the system‑prompt input port) and the **Information Extractor** (via the generated‑answer output port). <cite, id=0>System Prompt Template Generator</cite> <cite, id=1>Information Extractor</cite>

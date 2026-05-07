@@ -1,0 +1,5 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+No.

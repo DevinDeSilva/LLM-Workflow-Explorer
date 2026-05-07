@@ -1,0 +1,9 @@
+Result
+Got 2 rows and 1 column in 0.00s:
+| input                                                     |
+| --------------------------------------------------------- |
+| ChatBS-NexGen:LLM-information_extractor-Input-builder_llm |
+| ChatBS-NexGen:LLM-information_extractor-Input-text        |
+
+Answer
+<|channel|>final <|constrain|>answer<|message|>The information‑extraction function receives two input parameters: ChatBS‑NexGen:LLM-information_extractor-Input-builder_llm and ChatBS‑NexGen:LLM-information_extractor-Input-text.

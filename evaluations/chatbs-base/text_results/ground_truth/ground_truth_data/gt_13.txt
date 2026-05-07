@@ -1,0 +1,5 @@
+Answer
+The input parameters to system prompt template function.
+
+    Funtion name | Function returns
+System Prompt Template Generator@en^^<xsd:string> | System Prompt@en^^<xsd:string>

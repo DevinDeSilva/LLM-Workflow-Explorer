@@ -1,0 +1,2 @@
+Answer
+The execution with ID http://testwebsite/testProgram#id_20260420105711_320 produced two data items on the Output port for kg_info. <cite, id=0>sparql query 1 1 4</cite> <cite, id=1>row 1</cite> <cite, id=2>row 1</cite>

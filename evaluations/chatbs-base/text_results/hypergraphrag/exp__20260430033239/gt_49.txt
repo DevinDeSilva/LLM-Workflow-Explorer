@@ -1,0 +1,8 @@
+Answer
+**Outputs of the Generative Task that powered the Information‑Extraction execution**
+
+| Generative Task | Output Entity | Description |
+|-----------------|---------------|-------------|
+| **ChatBS‑NexGen:Generative_Task-information_extractor** (the *Information Extractor function generator*) | **ChatBS‑NexGen:LLM_Output-information_extractor** | The LLM output produced by the GPT‑4o model, which contains the fully‑generated `Information Extractor` program. This output is then used as the executable component that actually parses the generated answer text and extracts entities such as “Chicken”, “Yogurt”, etc. |
+
+In short, the only direct output of the Generative Task that served as a component in the information‑extraction execution was the **LLM Output Information Extractor** (`ChatBS‑NexGen:LLM_Output-information_extractor`). This LLM output encapsulates the `Information Extractor` program that performs the entity extraction.

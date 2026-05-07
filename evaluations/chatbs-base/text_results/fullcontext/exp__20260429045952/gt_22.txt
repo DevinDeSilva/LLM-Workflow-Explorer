@@ -1,0 +1,2 @@
+Answer
+The pipeline contains a single execution of the SPARQL‑query post‑processing step, identified as `ChatBS-NexGen:id_20260420105727_835` (label: "post_processing_1_1"). <cite, id=0>post processing 1 1</cite>

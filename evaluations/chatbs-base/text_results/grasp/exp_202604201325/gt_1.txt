@@ -1,0 +1,23 @@
+Result
+Got 5 rows and 1 column in 0.00s:
+| subject                                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Information Extractor function generator@en^^<xsd:string> (ChatBS-NexGen:LLM-information_extractor)                                                                  |
+| Query Result Post-Processor function generator@en^^<xsd:string> (ChatBS-NexGen:LLM-query_result_post_processor)                                                      |
+| System Prompt Template function generator@en^^<xsd:string> (ChatBS-NexGen:LLM-system_prompt_generator)                                                               |
+| LLM Generates an text for 
+system prompt: You are a health ... eat before my gym workout. 
+
+using: gpt-4o@en^^<xsd:string> (ChatBS-NexGen:LLM-id_20260420105659_302) |
+| Extracts important entities for 
+text: To fuel your body ... and your body's response. 
+
+using: gpt-4o@en^^<xsd:string> (ChatBS-NexGen:LLM-id_20260420105703_307)    |
+
+Answer
+The places where AI is utilized in this workflow are:
+- Information Extractor function generator (LLM-information_extractor)
+- Query Result Post-Processor function generator (LLM-query_result_post_processor)
+- System Prompt Template function generator (LLM-system_prompt_generator)
+- LLM Generates an text for system prompt (LLM-id_20260420105659_302)
+- Extracts important entities for text (LLM-id_20260420105703_307)

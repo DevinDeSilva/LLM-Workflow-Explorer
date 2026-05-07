@@ -1,0 +1,5 @@
+Answer
+The Extracts entities function is made by a Generative Task.
+
+    fnlbl | Generative Task used to generate function
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#Generative_Task-information_extractor

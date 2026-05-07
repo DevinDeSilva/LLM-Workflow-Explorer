@@ -1,0 +1,2 @@
+Answer
+No – the value supplied to the **LLM Chat input port: user_prompt** during the execution `http://testwebsite/testProgram#id_20260420105659_302` came from an external data entity (`ChatBS‑NexGen:Data-id_20260420105659_811-user_prompt`) and was not produced by a generative task. The generative task referenced in that execution (`Generative_Task-id_20260420105659_302`) generated the system prompt, not the user prompt.

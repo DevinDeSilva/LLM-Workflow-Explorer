@@ -3,13 +3,28 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import re
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
+from src.evaluation.report_builders import augment_ours_record_with_reports
+
 REPO_ROOT = Path(__file__).resolve().parent
 EVALUATIONS_DIR = REPO_ROOT / "evaluations"
+
+
+class SyntheticQuestionReportLookup:
+    def __init__(self, path: Path) -> None:
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            self.rows = list(csv.DictReader(handle))
+
+    def get_program_by_id(self, program_id: str, solves_only: bool = False) -> Any:
+        for row in self.rows:
+            if row.get("program_id") == program_id:
+                return row.get("solves", "") if solves_only else row
+        return None
 
 
 def parse_args() -> argparse.Namespace:
@@ -18,8 +33,9 @@ def parse_args() -> argparse.Namespace:
     )
     parser = argparse.ArgumentParser(
         description=(
-            "Render explainer RESULTS.jsonl entries into readable text files, "
-            "one file per answer."
+            "Render explainer RESULTS.jsonl entries into concise text files: "
+            "ours-style rows show original, trace, and EO report views; other "
+            "rows show only the result and answer."
         )
     )
     parser.add_argument(
@@ -78,6 +94,15 @@ def parse_args() -> argparse.Namespace:
         ),
     )
     parser.add_argument(
+        "--synthetic-questions",
+        default=None,
+        help=(
+            "Path to SyntheticQuestionKG.csv used when building trace reports. "
+            "Defaults to evaluations/<evaluation>/ques_creation/SyntheticQuestionKG.csv "
+            "when it exists."
+        ),
+    )
+    parser.add_argument(
         "--skip-ground-truth",
         action="store_true",
         help="When using --all, do not render the separate ground_truth text set.",
@@ -120,6 +145,36 @@ def resolve_ground_truth_path(input_paths: List[Path], args: argparse.Namespace)
         / "ground_truth"
         / "ground_truth_data.jsonl"
     )
+
+
+def resolve_synthetic_questions_path(
+    input_paths: List[Path],
+    args: argparse.Namespace,
+) -> Path | None:
+    if args.synthetic_questions:
+        return Path(args.synthetic_questions)
+
+    candidate_path = (
+        infer_evaluation_dir(input_paths, args)
+        / "ques_creation"
+        / "SyntheticQuestionKG.csv"
+    )
+    return candidate_path if candidate_path.exists() else None
+
+
+def load_synthetic_question_retriever(
+    input_paths: List[Path],
+    args: argparse.Namespace,
+) -> Any:
+    synthetic_questions_path = resolve_synthetic_questions_path(input_paths, args)
+    if synthetic_questions_path is None:
+        return None
+    if not synthetic_questions_path.exists():
+        raise FileNotFoundError(
+            f"Synthetic questions file not found: {synthetic_questions_path}"
+        )
+
+    return SyntheticQuestionReportLookup(synthetic_questions_path)
 
 
 def resolve_input_path(args: argparse.Namespace) -> Path:
@@ -821,6 +876,72 @@ def render_generic_entry(entry: Dict[str, Any]) -> str:
     return "\n".join(sections).strip() + "\n"
 
 
+def is_report_buildable_entry(entry: Dict[str, Any]) -> bool:
+    return any(
+        key in entry
+        for key in {
+            "grounding",
+            "predecessor_info",
+            "synthetic_questions_plan",
+            "intermediary_results",
+            "schema_reasoning",
+            "report",
+            "eo_report",
+            "judge",
+        }
+    )
+
+
+def extract_result(entry: Dict[str, Any]) -> Any:
+    output = entry.get("output")
+    if isinstance(output, dict):
+        for key in ("result", "formatted"):
+            if output.get(key):
+                return output.get(key)
+    return entry.get("result")
+
+
+def extract_answer(entry: Dict[str, Any]) -> Any:
+    if entry.get("answer"):
+        return entry.get("answer")
+
+    output = entry.get("output")
+    if isinstance(output, dict):
+        for key in ("answer", "formatted", "result"):
+            if output.get(key):
+                return output.get(key)
+
+    return None
+
+
+def render_report_views_entry(
+    entry: Dict[str, Any],
+    synthetic_question_retriever: Any = None,
+) -> str:
+    sections: List[str] = []
+
+    if is_report_buildable_entry(entry):
+        try:
+            entry = augment_ours_record_with_reports(
+                entry,
+                synthetic_question_retriever=synthetic_question_retriever,
+                answer_report="original",
+            )
+        except Exception:
+            entry = dict(entry)
+
+        append_section(sections, "Original Answer", entry.get("answer"))
+        append_section(sections, "Trace Report", entry.get("report"))
+        append_section(sections, "EO Report", entry.get("eo_report"))
+        return "\n".join(sections).strip() + "\n"
+
+    result = extract_result(entry)
+    if result:
+        append_section(sections, "Result", result)
+    append_section(sections, "Answer", extract_answer(entry))
+    return "\n".join(sections).strip() + "\n"
+
+
 def render_entry(entry: Dict[str, Any]) -> str:
     if any(
         key in entry
@@ -912,6 +1033,10 @@ def write_text_rows(
 def main() -> None:
     args = parse_args()
     input_paths = resolve_input_paths(args)
+    synthetic_question_retriever = load_synthetic_question_retriever(
+        input_paths,
+        args,
+    )
 
     total_rows = 0
     for input_path in input_paths:
@@ -924,7 +1049,14 @@ def main() -> None:
             args.output_dir,
             nest_explicit_output=len(input_paths) > 1,
         )
-        write_text_rows(rows, output_dir, render_entry)
+        write_text_rows(
+            rows,
+            output_dir,
+            lambda entry: render_report_views_entry(
+                entry,
+                synthetic_question_retriever=synthetic_question_retriever,
+            ),
+        )
         total_rows += len(rows)
         print(f"Wrote {len(rows)} text file(s) to {output_dir}")
 
@@ -949,7 +1081,7 @@ def main() -> None:
         write_text_rows(
             ground_truth_rows,
             ground_truth_output_dir,
-            render_ground_truth_entry,
+            render_report_views_entry,
         )
         print(
             f"Wrote {len(ground_truth_rows)} ground truth text file(s) to "

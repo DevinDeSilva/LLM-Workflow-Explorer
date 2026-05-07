@@ -1,0 +1,2 @@
+Answer
+The only other program connected via a port parameter to the system‑prompt generator is the LLM Chat component (via its system_prompt input port). <cite, id=0>System Prompt</cite> <cite, id=1>LLM Chat input port: system prompt</cite> <cite, id=2>Input port for weight</cite> <cite, id=3>Input port for age</cite> <cite, id=4>Input port for height</cite>

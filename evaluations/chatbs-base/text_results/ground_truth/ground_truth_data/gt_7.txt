@@ -1,0 +1,5 @@
+Answer
+The input parameters to sparql query post processing function.
+
+    Funtion name | Function returns
+Query Result Post-Processor@en^^<xsd:string> | Post-processing input port: kg_knowledge@en^^<xsd:string>

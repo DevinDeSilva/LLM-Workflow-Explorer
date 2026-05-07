@@ -1,0 +1,2 @@
+Answer
+The data that the execution **`http://testwebsite/testProgram#id_20260420105711_662`** used (the row 1 entry for “Desserts – Yogurt”) was produced by that very SPARQL query itself; it has no provenance link to a separate generative‑task workflow. In other words, the data was created by the **SPARQL query execution `id_20260420105711_662`** rather than by any distinct generative task.

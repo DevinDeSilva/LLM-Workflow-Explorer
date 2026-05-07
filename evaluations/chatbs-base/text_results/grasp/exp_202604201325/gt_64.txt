@@ -1,0 +1,5 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+The data was produced by a **Generation** activity that generated the *system_prompt* entity, i.e., it came from the Generative Task that created the system prompt.

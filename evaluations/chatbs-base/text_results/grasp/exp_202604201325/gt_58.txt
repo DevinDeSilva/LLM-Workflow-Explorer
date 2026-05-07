@@ -1,0 +1,5 @@
+Result
+Got no rows and 2 columns in 0.00s
+
+Answer
+<|channel|>final <|constrain|>answer<|message|>{"kg":"chatbs","sparql":"PREFIX prov:<http://www.w3.org/ns/prov#>\nPREFIX wf:<http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/#>\nSELECT DISTINCT ?task WHERE {\n  <http://testwebsite/testProgram#id_20260420105711_662> prov:wasGeneratedBy ?gen .\n  ?gen prov:activity ?act .\n  ?act a wf:Information_Extraction_Task .\n  BIND(?act AS ?task)\n}","answer":"The data were created by an Information Extraction Task, not a Generative Task."}

@@ -1,0 +1,2 @@
+Answer
+The only execution of the SPARQL query post‑processing step in this pipeline is the execution with identifier `id_20260420105727_835`, which represents the ‘post_processing 1 1’ activity. <cite, id=0>post processing 1 1</cite>

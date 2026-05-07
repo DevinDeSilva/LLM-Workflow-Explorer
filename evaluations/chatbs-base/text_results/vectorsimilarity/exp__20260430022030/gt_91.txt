@@ -1,0 +1,2 @@
+Answer
+Insufficient information to determine the number of output ports for "Output port for kg_info" from the provided object descriptions. <cite, id=0>Output port for kg info</cite> <cite, id=1>Output port for kg knowledge</cite> <cite, id=2>Output port for kg knowledge</cite> <cite, id=3>Post processing input port: kg knowledge</cite> <cite, id=4>Post processed output port: post processed output</cite>

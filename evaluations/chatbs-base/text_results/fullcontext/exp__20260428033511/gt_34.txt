@@ -1,0 +1,2 @@
+Answer
+Yes – the Information Extractor program was produced by a Generative Task that employed an LLM. <cite, id=0>Information Extractor function generator</cite> <cite, id=1>Information Extractor</cite> <cite, id=2>Information Extractor function generator</cite>

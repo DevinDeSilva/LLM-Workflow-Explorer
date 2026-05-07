@@ -1,0 +1,2 @@
+Answer
+The function connected to the query result post‑processor via its port parameters is the **Batch SPARQL Query Extractor**. <cite, id=0>Query Result Post Processor</cite> <cite, id=1>KG query extraction input port: query function</cite> <cite, id=2>Batch SPARQL Query Extractor</cite> <cite, id=3>Output port for kg knowledge</cite> <cite, id=4>SPARQL Query Builder</cite>

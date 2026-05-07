@@ -1,0 +1,2 @@
+Answer
+The only agent that ran the SPARQL query function step in this pipeline was **test_user**. <cite, id=0>test user</cite>

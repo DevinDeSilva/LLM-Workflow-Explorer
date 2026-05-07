@@ -1,0 +1,5 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+<|channel|>final <|constrain|>answer<|message|>{"kg":"chatbs","sparql":"PREFIX provone: <http://purl.dataone.org/provone/2015/01/15/ontology#> PREFIX ChatBS-NexGen: <http://testwebsite/testProgram#> PREFIX workflow: <http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/> ASK { ?e a provone:Execution ; provone:hasFunction ChatBS-NexGen:LLM-information_extractor . ?e provone:includesTask workflow:Generative_Task }","answer":"False"}

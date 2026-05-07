@@ -1,0 +1,16 @@
+Answer
+**Answer**  
+The post‑processing step is performed by the program **`ChatBS‑NexGen:query_result_post_processor`**, and it receives a single input parameter named **`kg_knowledge`** (the knowledge‑graph results to be processed).
+
+**Relevant entities**  
+- `ChatBS-NexGen:query_result_post_processor`  
+- `ChatBS-NexGen:query_result_post_processor-kg_knowledge`
+
+**Evidence**  
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS‑NexGen:query_result_post_processor` | `provone:hasInPort` | `ChatBS‑NexGen:query_result_post_processor-kg_knowledge` |
+| `ChatBS‑NexGen:query_result_post_processor-kg_knowledge` | `provone:connectsTo` | `ChatBS‑NexGen:channel_query_result_post_processing` |
+
+These triples show that the function’s sole input port is `kg_knowledge`. <cite, id=0>Query Result Post-Processor</cite> <cite, id=1>kg knowledge</cite> <cite, id=2>Channel</cite> <cite, id=3>Program</cite> <cite, id=4>Port</cite>

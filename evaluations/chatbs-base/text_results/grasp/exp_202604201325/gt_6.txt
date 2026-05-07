@@ -1,0 +1,7 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+The Large Language Model takes two inputs: 
+- ChatBS-NexGen:LLM-information_extractor-Input-builder_llm
+- ChatBS-NexGen:LLM-information_extractor-Input-text

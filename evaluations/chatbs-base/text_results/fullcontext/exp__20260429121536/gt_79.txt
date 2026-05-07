@@ -1,0 +1,2 @@
+Answer
+Yes – the entity fed into that port was produced by a Generative Task (the Information Extractor). <cite, id=0>extracts</cite> <cite, id=1>extracts</cite> <cite, id=2>information extraction 1 1</cite> <cite, id=3>Information Extractor function generator</cite>

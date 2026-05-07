@@ -1,0 +1,2 @@
+Answer
+The SPARQL query execution identified as **`http://testwebsite/testProgram#id_20260420105711_320`** (SPARQL Query 1 1 4) pulled in data that originated from the *information extraction* step. Those extracted values—such as “Avocado” and “Tuna”—were produced by the **Information Extractor function generator**, a generative task that uses a large‑language model to extract relevant entities from raw text.

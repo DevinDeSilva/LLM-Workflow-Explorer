@@ -1,0 +1,2 @@
+Answer
+The only other program that feeds into or receives output from the `query_result_post_processor` through its ports is the **Batch SPARQL Query Extractor** (`http://testwebsite/testProgram#batch_sparql_query_extractor`). <cite, id=0>Batch SPARQL Query Extractor</cite> <cite, id=1>Query Result Post-Processor</cite>

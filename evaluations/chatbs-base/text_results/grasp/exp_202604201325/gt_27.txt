@@ -1,0 +1,5 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+to=functions.cancel?commentary…??<|channel|>final <|constrain|>answer<|message|>{"kg":"chatbs","sparql":"SELECT DISTINCT ?agent WHERE { ?prog a <http://testwebsite/testProgram#query_result_post_processor> ; prov:wasAssociatedWith ?agent . }","answer":"No agents were recorded as running the post‑processing step for the SPARQL query in this pipeline."}

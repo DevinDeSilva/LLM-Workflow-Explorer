@@ -1,0 +1,2 @@
+Answer
+The data that the execution **`http://testwebsite/testProgram#id_20260420105717_370`** used (the row containing *Tuna*) was produced by a SPARQL query that itself was generated as part of the **“Query Result Post‑Processor function generator”** workflow. This generative task, identified in the provenance as `ChatBS-NexGen:Generative_Task-query_result_post_processor`, is responsible for generating the post‑processing functions (and the associated SPARQL queries) that ultimately produce the KG information rows used by the execution.

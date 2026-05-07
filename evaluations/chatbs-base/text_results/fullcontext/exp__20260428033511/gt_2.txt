@@ -1,0 +1,2 @@
+Answer
+The SPARQL Query Builder produced a collection of `workflow:Large_Language_Model_Output` entities, each containing a row of ingredient information. These are the data items with identifiers shown in the provenance graph. <cite, id=0>row 1</cite> <cite, id=1>row 1</cite> <cite, id=2>row 0</cite> <cite, id=3>row 1</cite> <cite, id=4>row 1</cite> <cite, id=5>row 1</cite>

@@ -1,0 +1,17 @@
+Answer
+**Answer**  
+The only agent that executed the SPARQL query post‑processing step is **`test_user`** (the user running the workflow).  
+
+**Relevant entities**  
+- `ChatBS-NexGen:test_user`  
+- `ChatBS-NexGen:id_20260420105727_835`
+
+**Evidence**  
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS-NexGen:id_20260420105727_835` | `prov:wasAssociatedWith` | `ChatBS‑NexGen:test_user` |
+| `ChatBS-NexGen:id_20260420105727_835` | `prov:qualifiedAssociation` | `ChatBS‑NexGen:query_result_post_processor-Association-id_20260420105727_835` |
+| `ChatBS‑NexGen:query_result_post_processor-Association-id_20260420105727_835` | `prov:used` | `ChatBS‑NexGen:id_20260420105727_835` (execution) |
+
+These triples show that the execution of the post‑processing program was carried out by the test user. <cite, id=0>query result post processor Association</cite> <cite, id=1>Query Result Post-Processor</cite> <cite, id=2>Association</cite> <cite, id=3>Execution</cite> <cite, id=4>test user</cite> <cite, id=5>Program</cite>

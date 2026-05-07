@@ -1,0 +1,2 @@
+Answer
+The system prompt template function receives eight input parameters: age, allergies, bodyMassIndex, diagnosis, foodPreferences, gender, height and weight. <cite, id=0>Input port for age</cite> <cite, id=1>Input port for allergies</cite> <cite, id=2>Input port for bodyMassIndex</cite> <cite, id=3>Input port for diagnosis</cite> <cite, id=4>Input port for foodPreferences</cite> <cite, id=5>Input port for gender</cite>

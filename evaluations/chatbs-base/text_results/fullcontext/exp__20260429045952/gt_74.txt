@@ -1,0 +1,2 @@
+Answer
+Yes – the text supplied to the information‑extraction program comes from a generated answer that was produced by the LLM Generative Task. <cite, id=0>information extraction 1 1</cite> <cite, id=1>generated answer</cite> <cite, id=2>llm chat 1 1</cite>

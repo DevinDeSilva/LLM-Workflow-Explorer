@@ -1,0 +1,2 @@
+Answer
+The Generative Task produced the LLM output that contains an Information Extractor. <cite, id=0>Information Extractor function generator</cite> <cite, id=1>Query Result Post Processor function generator</cite> <cite, id=2>System Prompt Template function generator</cite> <cite, id=3>Information Extractor function generator</cite> <cite, id=4>LLM Output information extractor</cite>

@@ -1,0 +1,16 @@
+Answer
+**answer:**  
+The data that execution **id_20260420105719_327** uses (e.g., `Data-id_20260420105703_891-extracts`) was created by the generation step **Generation‑id_20260420105711_772**, which is produced by the SPARQL Query Builder program.
+
+**relevant_entities:**  
+- `ChatBS-NexGen:Generation-id_20260420105711_772`  
+- `ChatBS-NexGen:Data-id_20260420105703_891-extracts`
+
+**evidence:**  
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS‑NexGen:Execution-id_20260420105719_327` | `prov:used` | `ChatBS‑NexGen:Data-id_20260420105703_891-extracts` |
+| `ChatBS‑NexGen:Generation-id_20260420105711_772` | `prov:hadEntity` | `ChatBS‑NexGen:Data-id_20260420105703_891-extracts` |
+| `ChatBS‑NexGen:Generation-id_20260420105711_772` | `prov:hasOutPort` | `ChatBS‑NexGen:sparql_query_extractor-kg_info` (indicating it is produced by the SPARQL Query Builder) |
+
+These triples show that the data used by execution id_20260420105719_327 was generated in generation id_20260420105711_772, which originates from the SPARQL Query Builder program. <cite, id=0>SPARQL Query Builder</cite> <cite, id=1>Generation</cite> <cite, id=2>Execution</cite> <cite, id=3>extracts</cite> <cite, id=4>extracts</cite> <cite, id=5>extracts</cite>

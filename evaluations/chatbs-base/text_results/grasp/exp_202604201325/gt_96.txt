@@ -1,0 +1,5 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+<|channel|>final <|constrain|>answer<|message|>{"kg":"chatbs","sparql":"SELECT ?count WHERE { <ChatBS-NexGen:Generation-id_20260420105711_565-kg_info> <http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort> ?port . OPTIONAL { ?port <http://example.com/hasOutput> [] } . BIND (1 AS ?count) }","answer":"0"}

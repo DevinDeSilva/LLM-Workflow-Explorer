@@ -1,0 +1,2 @@
+Answer
+No. The allergy value supplied to the system‑prompt generator’s allergies input was not produced by a Generative Task – it comes directly from the user data. <cite, id=0>system prompt execution 1 1</cite> <cite, id=1>allergies</cite>

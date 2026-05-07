@@ -1,0 +1,2 @@
+Answer
+The SPARQL query function takes a single input parameter named **`entity`**. <cite, id=0>Input port for entity</cite>

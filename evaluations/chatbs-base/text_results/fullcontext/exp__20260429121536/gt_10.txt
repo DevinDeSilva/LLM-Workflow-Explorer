@@ -1,0 +1,2 @@
+Answer
+The SPARQL query builder function receives the list of entity identifiers extracted from the generated text as its sole input parameter. <cite, id=0>Input port for entity</cite>

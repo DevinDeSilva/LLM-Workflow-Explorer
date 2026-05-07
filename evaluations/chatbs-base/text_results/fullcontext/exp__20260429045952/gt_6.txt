@@ -1,0 +1,4 @@
+Answer
+The Large Language Model that generated the "information extraction" function received two inputs:
+1. The model name/identifier – "gpt‑4o", supplied via the Input‑builder_llm port.
+2. A text instruction describing how to extract entities from a passage, supplied via the Input‑text port. <cite, id=0>Port</cite> <cite, id=1>text</cite> <cite, id=2>age</cite> <cite, id=3>age</cite>

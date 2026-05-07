@@ -1,0 +1,36 @@
+Answer
+{
+  "answer": "The Output port for kg_info in execution http://testwebsite/testProgram#id_20260420105719_327 produced two data items.",
+  "relevant_entities": [
+    "ChatBS-NexGen:id_20260420105719_327",
+    "ChatBS-NexGen:Generation-id_20260420105719_298-kg_info",
+    "ChatBS-NexGen:query_result_post_processor-kg_knowledge",
+    "ChatBS-NexGen:Data-id_20260420105719_258-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105719_416-kg_info"
+  ],
+  "evidence": [
+    {
+      "subject": "ChatBS-NexGen:id_20260420105719_327",
+      "predicate": "prov:qualifiedGeneration",
+      "object": "ChatBS-NexGen:Generation-id_20260420105719_298-kg_info"
+    },
+    {
+      "subject": "ChatBS-NexGen:Generation-id_20260420105719_298-kg_info",
+      "predicate": "provone:hadOutPort",
+      "object": "ChatBS-NexGen:query_result_post_processor-kg_knowledge"
+    },
+    {
+      "subject": "ChatBS-NexGen:query_result_post_processor-kg_knowledge",
+      "predicate": "provone:connectsTo",
+      "object": "ChatBS-NexGen:channel_query_result_post_processing"
+    },
+    {
+      "subject": "ChatBS-NexGen:id_20260420105719_298-kg_info",
+      "predicate": "prov:hasEntity",
+      "object": [
+        "ChatBS-NexGen:Data-id_20260420105719_258-kg_info",
+        "ChatBS-NexGen:Data-id_20260420105719_416-kg_info"
+      ]
+    }
+  ]
+} <cite, id=0>Query Result Post-Processor</cite> <cite, id=1>Output port for kg_info</cite> <cite, id=2>kg knowledge</cite> <cite, id=3>Generation</cite> <cite, id=4>Execution</cite> <cite, id=5>kg info</cite>

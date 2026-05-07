@@ -1,0 +1,2 @@
+Answer
+The Large Language Model that generated the SPARQL query post‑processing function received two instruction texts as input: a *formatting instruction* telling it to concatenate rows with ‘|’, and a *processing instruction* describing how to handle duplicate ingredients and missing values. The LLM used for this task was the gpt‑4o model. <cite, id=0>LLM query result post processor Input formatting instruction</cite> <cite, id=1>LLM query result post processor Input processing instruction</cite> <cite, id=2>Query Result Post-Processor function generator</cite>

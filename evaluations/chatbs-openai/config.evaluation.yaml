@@ -4,6 +4,17 @@ evaluation:
   save_dir: "evaluations/chatbs-openai/analysis"
   max_examples_per_run:
 
+  # Recompute only this selected slice; leave null to recompute all.
+  # metrics.recompute or winrate.recompute may override this block.
+  # Cached rows outside the selected slice are loaded from existing results.csv files.
+  # Use methods: [] to recompute nothing and rebuild from cache only.
+  recompute:
+    reuse_existing: true
+    methods:
+    question_ids:
+    qtypes:
+    existing_results_dir:
+
   prediction_filename: "RESULTS.jsonl"
   prediction_dirs:
     fullcontext: "evaluations/chatbs-openai/explainer/fullcontext"
@@ -24,6 +35,7 @@ evaluation:
     entailment_fallback_index: 1
 
   metrics:
+    answer_report: "original"
     enabled_by_qtype:
       entity:
         - "answer_token_overlap"
@@ -48,6 +60,7 @@ evaluation:
         - "numeric_accuracy"
 
   winrate:
+    answer_report: "eo"
     judge_llm:
       llm_type: "lmstudio"
       llm_library: "dspy"

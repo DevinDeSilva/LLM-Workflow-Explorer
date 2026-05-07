@@ -1,0 +1,5 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+to=Functions? We need final answer. The ASK returned false meaning generation not Generative_Task. So answer: No. Provide final.<|channel|>final<|constrain|>answer<|constrain|>{"kg":"chatbs","sparql":"ASK {\n  <http://testwebsite/testProgram#id_20260420105652_650> provone:qualifiedGeneration ?gen .\n  ?gen a workflow:Generative_Task .\n}","answer":"No"}

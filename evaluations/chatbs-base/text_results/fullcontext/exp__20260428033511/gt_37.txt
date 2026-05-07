@@ -1,0 +1,20 @@
+Answer
+**Answer:**  
+No – the execution of the SPARQL‑query post‑processing function (ID `ChatBS-NexGen:id_20260420105727_835`) does not contain a Generative Task as one of its component parts.
+
+**Relevant entities**
+
+```json
+[
+  "ChatBS-NexGen:id_20260420105727_835",
+  "ChatBS-NexGen:query_result_post_processor"
+]
+```
+
+**Evidence**
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS-NexGen:id_20260420105727_835` | `sio:SIO_000369` | `ChatBS-NexGen:query_result_post_processor` |
+
+This triple shows that the component part of the post‑processing execution is the *Query Result Post‑Processor* program, not a Generative Task. No other triples link this execution to any `workflow:Generative_Task`. <cite, id=0>Query Result Post-Processor</cite> <cite, id=1>Generative Task</cite> <cite, id=2>Execution</cite> <cite, id=3>Program</cite>

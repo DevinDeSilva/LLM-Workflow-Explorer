@@ -1,0 +1,2 @@
+Answer
+Yes – the data fed into the Input port for entity in execution **id_20260420105705_972** was produced by a Generative Task. <cite, id=0>extracts</cite> <cite, id=1>extracts</cite> <cite, id=2>information extraction 1 1</cite>

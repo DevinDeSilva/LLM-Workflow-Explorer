@@ -1,0 +1,24 @@
+Answer
+**Answer:**  
+Yes – the entity data fed into the “Input port for entity” of the execution `http://testwebsite/testProgram#id_20260420105723_114` was produced by a Generative Task (`workflow:Generative_Task-id_20260420105703_307`).  
+
+**Relevant entities:**  
+- `ChatBS-NexGen:id_20260420105723_114` (sparql query execution)  
+- `ChatBS-NexGen:sparql_query_extractor-entity` (input port for entity)  
+- `ChatBS-NexGen:Usage-id_20260420105723_195-entity` (usage of the input)  
+- `ChatBS-NexGen:Data-id_20260420105704_531-extracts` (the data passed in)  
+- `ChatBS-NexGen:Information Extractor` (program that produced the data)  
+- `ChatBS-NexGen:Generative_Task-id_20260420105703_307` (generative task that generated the extraction program)
+
+**Evidence triples:**  
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS-NexGen:id_20260420105723_114` | `prov:qualifiedUsage` | `ChatBS-NexGen:Usage-id_20260420105723_195-entity` |
+| `ChatBS-NexGen:Usage-id_20260420105723_195-entity` | `provone:hadEntity` | `ChatBS-NexGen:Data-id_20260420105704_531-extracts` |
+| `ChatBS-NexGen:id_20260420105703_307` | `sio:SIO_000313` | `ChatBS-NexGen:Generative_Task-id_20260420105703_307` |
+| `ChatBS-NexGen:Data-id_20260420105704_531-extracts` | `prov:wasGeneratedBy` | `ChatBS-NexGen:Generation-id_20260420105703_814-extracts` |
+| `ChatBS-NexGen:Generation-id_20260420105703_814-extracts` | `prov:hadEntity` | `ChatBS-NexGen:information_extractor-extracts` |
+| `ChatBS-NexGen:information_extractor-extracts` | `provone:connectsTo` | `ChatBS-NexGen:sparql_query_extractor-entity` |
+
+These triples show that the entity data (`Data-id_20260420105704_531-extracts`) was produced by the Information Extractor program, whose execution (`id_20260420105703_307`) is a component part of the Generative Task `Generative_Task-id_20260420105703_307`. Therefore the input came from a Generative Task. <cite, id=0>Input port for entity</cite> <cite, id=1>Information Extractor</cite> <cite, id=2>Generative Task</cite> <cite, id=3>Generation</cite> <cite, id=4>Execution</cite> <cite, id=5>extracts</cite>

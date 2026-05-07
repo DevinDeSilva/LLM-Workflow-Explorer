@@ -1,0 +1,4 @@
+Answer
+The Large‑Language‑Model was prompted with two specific pieces of information when generating the SPARQL‑query post‑processing function:
+1. A *formatting instruction* that told it to concatenate all rows into a single row per column using ‘|’ as the separator.
+2. An *input‑processing instruction* that guided it to deduplicate ingredients, prioritise rows with the most complete `sugarG` and `ingredientCat` values, and fill missing fields (`0` for `sugarG`, ‘-’ for `ingredientCat`). <cite, id=0>LLM query result post processor Input formatting instruction</cite> <cite, id=1>LLM query result post processor Input processing instruction</cite>

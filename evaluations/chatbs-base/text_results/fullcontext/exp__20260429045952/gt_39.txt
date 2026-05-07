@@ -1,0 +1,2 @@
+Answer
+No – the information‑extraction executions do not list a Generative_Task as one of their components. <cite, id=0>information extraction 1 1</cite> <cite, id=1>llm chat 1 1</cite>

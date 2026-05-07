@@ -1,0 +1,12 @@
+Answer
+**Answer**
+
+The *LLM Chat* program is the sole program that is directly linked to it through its defined ports:
+
+| Port type | Connected entity |
+|-----------|------------------|
+| **Input – system prompt** (`llm_chat-system_prompt`) | `channel_system_prompt` (the channel carrying the system‑prompt data) |
+| **Input – user prompt** (`llm_chat-user_prompt`) | `channel_user_prompt` (the channel carrying the user’s question) |
+| **Output – generated answer** (`llm_chat-generated_answer`) | `channel_generated_answer` (the channel that receives the LLM’s reply) |
+
+No other program is specified in the provenance data as being connected to these ports. All other programs listed—such as *Batch SPARQL Query Extractor*, *Information Extractor*, and *Query Result Post‑Processor*—are linked to different ports or channels, but they do not directly interface with the LLM Chat function via its input/output ports.

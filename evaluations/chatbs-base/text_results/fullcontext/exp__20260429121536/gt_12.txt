@@ -1,0 +1,2 @@
+Answer
+The SPARQL query post‑processing step produces a single output parameter: the *post‑processed output* port of the `Query Result Post‑Processor` program (identified by the IRI `<http://testwebsite/testProgram#query_result_post_processor-post_processed_output>`). <cite, id=0>Query Result Post-Processor</cite> <cite, id=1>Post-processed output port: post_processed_output</cite>

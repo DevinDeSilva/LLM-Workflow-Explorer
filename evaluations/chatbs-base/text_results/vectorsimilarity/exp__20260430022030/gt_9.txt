@@ -1,0 +1,2 @@
+Answer
+The function in the information‑extraction step receives two inputs: an LLM information extractor input builder (LLM-information_extractor-Input-builder_llm) and an input text (LLM-information_extractor-Input-text / information_extractor-text). <cite, id=0>KG query extraction input port: query function</cite> <cite, id=1>Information Extractor function generator</cite> <cite, id=2>LLM Output information extractor</cite> <cite, id=3>Information Extractor function generator</cite> <cite, id=4>Input port for text</cite>

@@ -1,0 +1,22 @@
+Answer
+**Answer**  
+The only output produced by the SPARQL‑Query‑Post‑Processing function is the *post‑processed output* port, which carries the combined, formatted result set.
+
+**Relevant entities**  
+```json
+[
+  "ChatBS-NexGen:query_result_post_processor-post_processed_output"
+]
+```
+
+**Evidence**  
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| ChatBS-NexGen:query_result_post_processor | provone:hasOutPort | ChatBS‑NexGen:query_result_post_processor‑post_processed_output |
+| ChatBS-NexGen:query_result_post_processor-post_processed_output | rdf:type | provone:Port |
+| ChatBS-NexGen:query_result_post_processor-post_processed_output | rdfs:label | "Post-processed output port: post_processed_output" |
+| ChatBS-NexGen:query_result_post_processor | rdf:type | provone:Program |
+| ChatBS-NexGen:query_result_post_processor | rdfs:label | "Query Result Post‑Processor" |
+
+These triples from the provenance graph show that the *Query Result Post‑Processor* program has a single output port named **post_processed_output**, which is the function’s output parameter. <cite, id=0>Post-processed output port: post_processed_output</cite> <cite, id=1>Query Result Post-Processor</cite> <cite, id=2>post processed output</cite> <cite, id=3>post processed output</cite> <cite, id=4>Program</cite> <cite, id=5>Port</cite>

@@ -1,0 +1,2 @@
+Answer
+The SPARQL‑query post‑processing program is connected, through its port parameters, to two other programs: the Batch SPARQL Query Extractor (providing the kg_info data) and the Post‑Processing execution itself that receives the processed output. <cite, id=0>Batch SPARQL Query Extractor</cite> <cite, id=1>Query Result Post-Processor</cite> <cite, id=2>post processing 1 1</cite>

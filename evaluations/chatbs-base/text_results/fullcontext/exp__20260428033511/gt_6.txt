@@ -1,0 +1,2 @@
+Answer
+The system prompt template generator feeds the LLM‑Information Extractor with two inputs: a builder instruction that selects the model (`gpt‑4o`) and the extraction instruction text (“Extract all the main ingredients …”). <cite, id=0>LLM information extractor Input builder llm</cite> <cite, id=1>LLM information extractor Input text</cite>

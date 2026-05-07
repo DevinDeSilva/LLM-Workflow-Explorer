@@ -1,0 +1,2 @@
+Answer
+The retrieved descriptions do not contain any information about specific executions of a SPARQL query post‑processing function, nor do they indicate that such an execution includes a Generative Task component. <cite, id=0>Query Result Post Processor function generator</cite> <cite, id=1>Query Result Post Processor function generator</cite> <cite, id=2>Information Extractor function generator</cite> <cite, id=3>Query Result Post Processor</cite> <cite, id=4>KG query extraction input port: query function</cite>

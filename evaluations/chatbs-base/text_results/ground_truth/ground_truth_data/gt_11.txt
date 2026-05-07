@@ -1,0 +1,6 @@
+Answer
+The input parameters to llm chat function function.
+
+    Funtion name | Function returns
+LLM Chat@en^^<xsd:string> | LLM Chat input port: system_prompt@en^^<xsd:string>
+LLM Chat@en^^<xsd:string> | LLM Chat input port: user_prompt@en^^<xsd:string>

@@ -1,0 +1,2 @@
+Answer
+5 <cite, id=0>extracts</cite> <cite, id=1>extracts</cite> <cite, id=2>extracts</cite> <cite, id=3>extracts</cite> <cite, id=4>extracts</cite>

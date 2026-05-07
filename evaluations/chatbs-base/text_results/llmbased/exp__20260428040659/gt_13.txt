@@ -1,0 +1,2 @@
+Answer
+The system prompt was produced by the LLM Chat execution and then used by LLM Chat to produce generated answer. <cite, id=0>system prompt</cite> <cite, id=1>LLM Chat</cite> <cite, id=2>llm chat 1 1</cite>

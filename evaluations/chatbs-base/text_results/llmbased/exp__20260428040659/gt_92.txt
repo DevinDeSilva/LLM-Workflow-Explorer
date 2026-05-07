@@ -1,0 +1,2 @@
+Answer
+The kg info was produced by the SPARQL Query Builder execution. <cite, id=0>kg info</cite> <cite, id=1>SPARQL Query Builder</cite> <cite, id=2>sparql query 1 1 2</cite>

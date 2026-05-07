@@ -1,0 +1,5 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+<|channel|>final <|constrain|>answer<|message|>There are no other programs that share an input or output port with the **System Prompt Template Generator** – no additional “functions” are directly connected to it via the defined port parameters.

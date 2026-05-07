@@ -1,0 +1,2 @@
+Answer
+Yes – the Information Extractor program was produced by a workflow:Generative_Task that uses an AI language model. <cite, id=0>Information Extractor</cite> <cite, id=1>Information Extractor function generator</cite>

@@ -1,0 +1,6 @@
+Answer
+We utilize the following input instructions to generate the function responsible for system prompt template.
+
+    Funtion | Instruction for function generation
+http://testwebsite/testProgram#system_prompt_generator | You are a health care assistant@en^^<xsd:string>
+http://testwebsite/testProgram#system_prompt_generator | gpt-4o@en^^<xsd:string>

@@ -1,0 +1,2 @@
+Answer
+No, the text that went into the LLM Chat’s user‑prompt port was supplied directly and was not produced by any Generative Task. <cite, id=0>llm chat 1 1</cite> <cite, id=1>LLM Chat input port: user_prompt</cite> <cite, id=2>user prompt</cite>

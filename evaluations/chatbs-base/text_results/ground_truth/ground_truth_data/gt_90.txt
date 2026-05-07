@@ -1,0 +1,15 @@
+Answer
+The number of output for the "Extracted Entities" in the execution "http://testwebsite/testProgram#id_20260420105703_307" is 11
+
+    Output Data
+http://testwebsite/testProgram#Data-id_20260420105703_198-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_218-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_51-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_661-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_678-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_693-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_757-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_886-extracts
+http://testwebsite/testProgram#Data-id_20260420105703_891-extracts
+http://testwebsite/testProgram#Data-id_20260420105704_531-extracts
+http://testwebsite/testProgram#Data-id_20260420105704_782-extracts

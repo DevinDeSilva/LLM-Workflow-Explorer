@@ -1,0 +1,5 @@
+Answer
+The Generative_Task components that were part of the llm chat executions receive the following inputs:
+- For the Query Result Post‑Processor function generator: a formatting instruction and an input processing instruction.
+- For the Information Extractor function generator: a builder LLM prompt and the raw input text. 
+(The System Prompt Template function generator has no explicit input properties listed in the retrieved data.) <cite, id=0>Query Result Post Processor function generator</cite> <cite, id=1>Information Extractor function generator</cite> <cite, id=2>System Prompt Template function generator</cite> <cite, id=3>Query Result Post Processor function generator</cite> <cite, id=4>Information Extractor function generator</cite>

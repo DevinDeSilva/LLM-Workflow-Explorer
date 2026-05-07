@@ -1,0 +1,2 @@
+Answer
+No – the data fed into the "Post‑processing input port: kg_knowledge" during execution **id_20260420105727_835** comes from a collection that was assembled by SPARQL query executions, not from a Generative Task. <cite, id=0>post processing 1 1</cite> <cite, id=1>kg knowledge</cite> <cite, id=2>ChatBS-NexGen:id_20260420105727_995</cite> <cite, id=3>Collection</cite>

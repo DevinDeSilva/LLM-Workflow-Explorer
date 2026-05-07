@@ -1,0 +1,2 @@
+Answer
+The LLM Chat function takes two input ports: a **system prompt** (LLM Chat input port: system prompt) and a **user prompt** (LLM Chat input port: user prompt). <cite, id=0>LLM Output information extractor</cite> <cite, id=1>Query Result Post Processor function generator</cite> <cite, id=2>Information Extractor function generator</cite> <cite, id=3>LLM Output query result post processor</cite> <cite, id=4>LLM Chat</cite>

@@ -1,0 +1,148 @@
+Original Answer
+AI is employed in several distinct stages of this workflow:
+
+1. **System Prompt Generation** –  
+   The object `ChatBS‑NexGen:LLM-system_prompt_generator` (dc:description = *“Generates the System Prompt Template using Large language models@en^^<xsd:string>”*) creates a system prompt that instructs the LLM on how to respond to user queries.
+
+2. **Information Extraction** –  
+   The object `ChatBS‑NexGen:LLM-information_extractor` (dc:description = *“Generates the Information Extractor Function using Large language models@en^^<xsd:string>”*) builds a function that extracts key entities from raw text supplied by the user or other sources.
+
+3. **Post‑Processing of Query Results** –  
+   The object `ChatBS‑NexGen:LLM-query_result_post_processor` (dc:description = *“Generates the post processing Function using Large language models@en^^<xsd:string>”*) produces a routine that formats and cleans up the LLM’s raw output before it is used downstream.
+
+4. **Initial Prompt Generation** –  
+   The object `ChatBS‑NexGen:LLM-id_20260420105659_302` (dc:description = *“LLM Generates an text for system prompt … user prompt: I need suggestions for light and energy‑boosting foods to eat before my gym workout.”*) represents the LLM’s generation of a combined system + user prompt that is fed into the main language model.
+
+5. **Primary Content Generation** –  
+   The object `ChatBS‑NexGen:LLM-id_20260420105703_307` (dc:description = *“Extracts important entities for text: To fuel your body effectively before a gym workout … using: gpt-4o@en^^<xsd:string>”*) is the core LLM output that contains the actual dietary suggestions and entity extraction results.
+
+In summary, AI (large language models) is used at every step that involves creating prompts, extracting information, post‑processing outputs, and generating the final content. Each of these steps corresponds to a distinct object in the workflow, all linked through the `workflow:Large_Language_Models` class. <cite, id=0>ChatBS-NexGen:LLM-id_20260420105659_302</cite> <cite, id=1>ChatBS-NexGen:LLM-id_20260420105703_307</cite> <cite, id=2>ChatBS-NexGen:LLM-information_extractor</cite> <cite, id=3>ChatBS-NexGen:LLM-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:LLM-system_prompt_generator</cite>
+
+Trace Report
+User Question:
+In what places do we utilize AI in this workflow?
+
+
+Trace Answers
+
+Question: In what places do we utilize AI in this workflow?
+KG Question: What are all the objects of a given class?
+Result Entities:
+ChatBS-NexGen:LLM-id_20260420105659_302, ChatBS-NexGen:LLM-id_20260420105703_307, ChatBS-NexGen:LLM-information_extractor, ChatBS-NexGen:LLM-query_result_post_processor, ChatBS-NexGen:LLM-system_prompt_generator
+Example Entities:
+ChatBS-NexGen:LLM-id_20260420105659_302[workflow:Large_Language_Models]
+	dc:description -> LLM Generates an text for 
+system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. 
+
+user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. 
+
+using: gpt-4o@en^^<xsd:string>
+	sio:SIO_000229 -> ChatBS-NexGen:LLM_Output-id_20260420105659_302
+	sio:SIO_000230 -> ChatBS-NexGen:Data-id_20260420105659_811-user_prompt[provone:Data](user_prompt@en^^<xsd ...)
+	workflow:llm_model -> gpt-4o@en^^<xsd:string>
+	rdfs:label -> LLM Generates an text for 
+system prompt: You are a health care assistant and you will respond to the user who is 30 years old, identifies as Male, diagnosed with Diabetic. Consider their height: 182.3, weight: 95.2, body mass index: 28.6, food preferences: Carnivore, and allergies: None when providing a dietary guideline. 
+
+user prompt: I need suggestions for light and energy-boosting foods to eat before my gym workout. 
+
+using: gpt-4o@en^^<xsd:string>
+
+Question: Please retrieve the literal values (e.g., dc:description, system prompt text, extracted entities) associated with each of the following URIs:
+- ChatBS‑NexGen:LLM-id_20260420105659_302
+- ChatBS‑NexGen:LLM-id_20260420105703_307
+- ChatBS-NexGen:LLM-information_extractor
+- ChatBS-NexGen:LLM-query_result_post_processor
+- ChatBS-NexGen:LLM-system_prompt_generator
+
+These literals should be extracted from the evidence context so that the answer can include concrete data instead of just URIs.
+KG Question: What are all the attributes and values of a given object?
+Result Entities:
+
+
+Summary Answer:
+AI is employed in several distinct stages of this workflow:
+
+1. **System Prompt Generation** –  
+   The object `ChatBS‑NexGen:LLM-system_prompt_generator` (dc:description = *“Generates the System Prompt Template using Large language models@en^^<xsd:string>”*) creates a system prompt that instructs the LLM on how to respond to user queries.
+
+2. **Information Extraction** –  
+   The object `ChatBS‑NexGen:LLM-information_extractor` (dc:description = *“Generates the Information Extractor Function using Large language models@en^^<xsd:string>”*) builds a function that extracts key entities from raw text supplied by the user or other sources.
+
+3. **Post‑Processing of Query Results** –  
+   The object `ChatBS‑NexGen:LLM-query_result_post_processor` (dc:description = *“Generates the post processing Function using Large language models@en^^<xsd:string>”*) produces a routine that formats and cleans up the LLM’s raw output before it is used downstream.
+
+4. **Initial Prompt Generation** –  
+   The object `ChatBS‑NexGen:LLM-id_20260420105659_302` (dc:description = *“LLM Generates an text for system prompt … user prompt: I need suggestions for light and energy‑boosting foods to eat before my gym workout.”*) represents the LLM’s generation of a combined system + user prompt that is fed into the main language model.
+
+5. **Primary Content Generation** –  
+   The object `ChatBS‑NexGen:LLM-id_20260420105703_307` (dc:description = *“Extracts important entities for text: To fuel your body effectively before a gym workout … using: gpt-4o@en^^<xsd:string>”*) is the core LLM output that contains the actual dietary suggestions and entity extraction results.
+
+In summary, AI (large language models) is used at every step that involves creating prompts, extracting information, post‑processing outputs, and generating the final content. Each of these steps corresponds to a distinct object in the workflow, all linked through the `workflow:Large_Language_Models` class. <cite, id=0>ChatBS-NexGen:LLM-id_20260420105659_302</cite> <cite, id=1>ChatBS-NexGen:LLM-id_20260420105703_307</cite> <cite, id=2>ChatBS-NexGen:LLM-information_extractor</cite> <cite, id=3>ChatBS-NexGen:LLM-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:LLM-system_prompt_generator</cite>
+
+EO Report
+### Knowledge Based System:
+ChatBS
+
+### What were the system outputs associated with the user query and the system trace?:
+(System Recommendation)
+AI is employed in several distinct stages of this workflow:
+
+1. **System Prompt Generation** –  
+   The object `ChatBS‑NexGen:LLM-system_prompt_generator` (dc:description = *“Generates the System Prompt Template using Large language models@en^^<xsd:string>”*) creates a system prompt that instructs the LLM on how to respond to user queries.
+
+2. **Information Extraction** –  
+   The object `ChatBS‑NexGen:LLM-information_extractor` (dc:description = *“Generates the Information Extractor Function using Large language models@en^^<xsd:string>”*) builds a function that extracts key entities from raw text supplied by the user or other sources.
+
+3. **Post‑Processing of Query Results** –  
+   The object `ChatBS‑NexGen:LLM-query_result_post_processor` (dc:description = *“Generates the post processing Function using Large language models@en^^<xsd:string>”*) produces a routine that formats and cleans up the LLM’s raw output before it is used downstream.
+
+4. **Initial Prompt Generation** –  
+   The object `ChatBS‑NexGen:LLM-id_20260420105659_302` (dc:description = *“LLM Generates an text for system prompt … user prompt: I need suggestions for light and energy‑boosting foods to eat before my gym workout.”*) represents the LLM’s generation of a combined system + user prompt that is fed into the main language model.
+
+5. **Primary Content Generation** –  
+   The object `ChatBS‑NexGen:LLM-id_20260420105703_307` (dc:description = *“Extracts important entities for text: To fuel your body effectively before a gym workout … using: gpt-4o@en^^<xsd:string>”*) is the core LLM output that contains the actual dietary suggestions and entity extraction results.
+
+In summary, AI (large language models) is used at every step that involves creating prompts, extracting information, post‑processing outputs, and generating the final content. Each of these steps corresponds to a distinct object in the workflow, all linked through the `workflow:Large_Language_Models` class. <cite, id=0>ChatBS-NexGen:LLM-id_20260420105659_302</cite> <cite, id=1>ChatBS-NexGen:LLM-id_20260420105703_307</cite> <cite, id=2>ChatBS-NexGen:LLM-information_extractor</cite> <cite, id=3>ChatBS-NexGen:LLM-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:LLM-system_prompt_generator</cite>
+
+### What are the entities associate with the question:
+(wasGeneratedBy)
+ChatBS-NexGen:LLM-id_20260420105659_302, ChatBS-NexGen:LLM-id_20260420105703_307, ChatBS-NexGen:LLM_Output-information_extractor, ChatBS-NexGen:LLM-information_extractor, ChatBS-NexGen:LLM_Output-query_result_post_processor, ChatBS-NexGen:LLM-query_result_post_processor, ChatBS-NexGen:LLM_Output-system_prompt_generator, ChatBS-NexGen:LLM-system_prompt_generator
+
+### Traces Associated with the system recommendation:
+(System Trace)
+Question: In what places do we utilize AI in this workflow?
+KG Question: What are all the objects of a given class?
+Important Entities:
+ChatBS-NexGen:LLM-id_20260420105659_302, ChatBS-NexGen:LLM-id_20260420105703_307, ChatBS-NexGen:LLM-information_extractor, ChatBS-NexGen:LLM-query_result_post_processor, ChatBS-NexGen:LLM-system_prompt_generator
+
+Question: Please retrieve the literal values (e.g., dc:description, system prompt text, extracted entities) associated with each of the following URIs:
+- ChatBS‑NexGen:LLM-id_20260420105659_302
+- ChatBS‑NexGen:LLM-id_20260420105703_307
+- ChatBS-NexGen:LLM-information_extractor
+- ChatBS-NexGen:LLM-query_result_post_processor
+- ChatBS-NexGen:LLM-system_prompt_generator
+
+These literals should be extracted from the evidence context so that the answer can include concrete data instead of just URIs.
+KG Question: What are all the attributes and values of a given object?
+Important Entities:
+
+
+### Overall Answer to the Question:
+AI is employed in several distinct stages of this workflow:
+
+1. **System Prompt Generation** –  
+   The object `ChatBS‑NexGen:LLM-system_prompt_generator` (dc:description = *“Generates the System Prompt Template using Large language models@en^^<xsd:string>”*) creates a system prompt that instructs the LLM on how to respond to user queries.
+
+2. **Information Extraction** –  
+   The object `ChatBS‑NexGen:LLM-information_extractor` (dc:description = *“Generates the Information Extractor Function using Large language models@en^^<xsd:string>”*) builds a function that extracts key entities from raw text supplied by the user or other sources.
+
+3. **Post‑Processing of Query Results** –  
+   The object `ChatBS‑NexGen:LLM-query_result_post_processor` (dc:description = *“Generates the post processing Function using Large language models@en^^<xsd:string>”*) produces a routine that formats and cleans up the LLM’s raw output before it is used downstream.
+
+4. **Initial Prompt Generation** –  
+   The object `ChatBS‑NexGen:LLM-id_20260420105659_302` (dc:description = *“LLM Generates an text for system prompt … user prompt: I need suggestions for light and energy‑boosting foods to eat before my gym workout.”*) represents the LLM’s generation of a combined system + user prompt that is fed into the main language model.
+
+5. **Primary Content Generation** –  
+   The object `ChatBS‑NexGen:LLM-id_20260420105703_307` (dc:description = *“Extracts important entities for text: To fuel your body effectively before a gym workout … using: gpt-4o@en^^<xsd:string>”*) is the core LLM output that contains the actual dietary suggestions and entity extraction results.
+
+In summary, AI (large language models) is used at every step that involves creating prompts, extracting information, post‑processing outputs, and generating the final content. Each of these steps corresponds to a distinct object in the workflow, all linked through the `workflow:Large_Language_Models` class. <cite, id=0>ChatBS-NexGen:LLM-id_20260420105659_302</cite> <cite, id=1>ChatBS-NexGen:LLM-id_20260420105703_307</cite> <cite, id=2>ChatBS-NexGen:LLM-information_extractor</cite> <cite, id=3>ChatBS-NexGen:LLM-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:LLM-system_prompt_generator</cite>

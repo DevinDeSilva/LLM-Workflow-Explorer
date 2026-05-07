@@ -1,0 +1,2 @@
+Answer
+No – the executions of the SPARQL query post‑processing (e.g., `id_20260420105727_835`) are plain **provone:Execution** activities that invoke the *Query Result Post‑Processor* program; they do not themselves contain a `workflow:Generative_Task` component. The generative task is only present in the separate *Query Result Post Processor function generator* workflow, which produces the post‑processing function but is not part of the execution itself.

@@ -1,0 +1,2 @@
+Answer
+Yes – the System Prompt Template function is produced by a Generative Task that uses an LLM. <cite, id=0>System Prompt Template Generator</cite> <cite, id=1>System Prompt Template function generator</cite> <cite, id=2>System Prompt Template function generator</cite>

@@ -1,0 +1,2 @@
+Answer
+The retrieved object descriptions do not contain any information about agents that performed the SPARQL query post‑processing step. <cite, id=0>Query Result Post Processor</cite> <cite, id=1>Chat BS Nex Gen:sparql query extractor Association</cite> <cite, id=2>Chat BS Nex Gen:sparql query extractor Association</cite> <cite, id=3>Chat BS Nex Gen:sparql query extractor Association</cite> <cite, id=4>Chat BS Nex Gen:sparql query extractor Association</cite>

@@ -1,0 +1,2 @@
+Answer
+The execution http://testwebsite/testProgram#id_20260420105727_300 produced two outputs on its 'Output port for kg_info'. <cite, id=0>kg info</cite> <cite, id=1>row 1</cite> <cite, id=2>row 0</cite>

@@ -1,0 +1,4 @@
+Answer
+The Large Language Model receives two inputs when creating the System Prompt Template function:
+1. A base system prompt (ChatBS‑NexGen:LLM-system_prompt_generator‑Input‑base_sys_prompt).
+2. A builder language model specification (ChatBS‑NexGen:LLM-system_prompt_generator‑Input‑builder_llm). <cite, id=0>System Prompt Template function generator</cite> <cite, id=1>LLM Output system prompt generator</cite> <cite, id=2>System Prompt Template function generator</cite> <cite, id=3>Channel for the system prompt</cite> <cite, id=4>System Prompt</cite>

@@ -1,0 +1,44 @@
+Answer
+**Answer**  
+The two Generative Tasks that are components of the `llm_chat` executions receive the following inputs:  
+
+1. **System‑Prompt Generation Task (`Generative_Task-id_20260420105659_302`)** – it takes six demographic / medical attributes and the user’s age, gender, height, weight, body‑mass index, food preferences, diagnosis and allergies as its input ports.  
+2. **Information‑Extraction Task (`Generative_Task-id_20260420105703_307`)** – it receives the LLM’s generated answer text through its single “text” input port.
+
+These are the only inputs that feed those two Generative Tasks in the recorded executions of the `llm_chat` function.
+
+---
+
+**Relevant entities**
+
+- `ChatBS-NexGen:Generative_Task-id_20260420105659_302`
+- `ChatBS-NexGen:system_prompt_generator-age`
+- `ChatBS-NexGen:system_prompt_generator-allergies`
+- `ChatBS-NexGen:system_prompt_generator-bodyMassIndex`
+- `ChatBS-NexGen:system_prompt_generator-diagnosis`
+- `ChatBS-NexGen:system_prompt_generator-foodPreferences`
+- `ChatBS-NexGen:system_prompt_generator-gender`
+- `ChatBS-NexGen:system_prompt_generator-height`
+- `ChatBS-NexGen:system_prompt_generator-weight`
+- `ChatBS-NexGen:Generative_Task-id_20260420105703_307`
+- `ChatBS-NexGen:information_extractor-text`
+
+---
+
+**Evidence (selected triples)**  
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS‑NexGen:Generative_Task-id_20260420105659_302` | `sio:SIO_000313` | `ChatBS‑NexGen:id_20260420105659_302` (`llm_chat 1 1`) |
+| `ChatBS‑NexGen:Generative_Task-id_20260420105703_307` | `sio:SIO_000313` | `ChatBS‑NexGen:id_20260420105703_307` (`information_extraction 1 1`) |
+| `ChatBS‑NexGen:system_prompt_generator-age` | `provone:hasInPort` | `...` (connected to system prompt generator) |
+| `ChatBS‑NexGen:system_prompt_generator-allergies` | `provone:hasInPort` | `...` |
+| `ChatBS‑NexGen:system_prompt_generator-bodyMassIndex` | `provone:hasInPort` | `...` |
+| `ChatBS‑NexGen:system_prompt_generator-diagnosis` | `provone:hasInPort` | `...` |
+| `ChatBS‑NexGen:system_prompt_generator-foodPreferences` | `provone:hasInPort` | `...` |
+| `ChatBS‑NexGen:system_prompt_generator-gender` | `provone:hasInPort` | `...` |
+| `ChatBS‑NexGen:system_prompt_generator-height` | `provone:hasInPort` | `...` |
+| `ChatBS‑NexGen:system_prompt_generator-weight` | `provone:hasInPort` | `...` |
+| `ChatBS‑NexGen:information_extractor-text` | `provone:hasInPort` | connected to the information extractor |
+
+These triples confirm that the system‑prompt generation task uses the eight demographic/medical inputs, and the information extraction task uses only the generated answer text. <cite, id=0>information extraction 1 1</cite> <cite, id=1>Information Extractor</cite> <cite, id=2>generated answer</cite> <cite, id=3>food Preferences</cite> <cite, id=4>generated answer</cite> <cite, id=5>foodPreferences</cite>

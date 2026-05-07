@@ -1,0 +1,11 @@
+Result
+Got 2 rows and 1 column in 0.00s:
+| input                                                           |
+| --------------------------------------------------------------- |
+| ChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt |
+| ChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm     |
+
+Answer
+The Large Language Model for the System Prompt Template function takes two inputs:
+1. ChatBS‑NexGen:LLM-system_prompt_generator-Input-base_sys_prompt
+2. ChatBS‑NexGen:LLM-system_prompt_generator-Input-builder_llm

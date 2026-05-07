@@ -1,0 +1,2 @@
+Answer
+The Information Extractor program receives a single input – the generated answer text from the LLM chat step. <cite, id=0>Information Extractor</cite> <cite, id=1>Input port for text</cite>

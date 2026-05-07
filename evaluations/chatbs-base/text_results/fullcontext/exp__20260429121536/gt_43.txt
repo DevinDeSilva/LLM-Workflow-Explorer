@@ -1,0 +1,22 @@
+Answer
+```json
+{
+  "answer": "No. The execution that runs the System Prompt Template function (id_20260420105652_650) is not linked to any Generative_Task component, and the System Prompt Template program itself is not produced by a Generative_Task.",
+  "relevant_entities": [
+    "<http://testwebsite/testProgram#id_20260420105652_650>",
+    "<http://testwebsite/testProgram#system_prompt_generator>"
+  ],
+  "evidence": [
+    {
+      "subject": "<http://testwebsite/testProgram#id_20260420105652_650>",
+      "predicate": "<http://www.w3.org/ns/prov#qualifiedAssociation>",
+      "object": "<http://testwebsite/testProgram#ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650>"
+    },
+    {
+      "subject": "<http://testwebsite/testProgram#id_20260420105652_650>",
+      "predicate": "<http://semanticscience.org/resource/SIO_000313>",
+      "object": null
+    }
+  ]
+}
+``` <cite, id=0>system prompt generator Association</cite> <cite, id=1>Generative Task</cite> <cite, id=2>system prompt</cite> <cite, id=3>system prompt</cite> <cite, id=4>system prompt</cite> <cite, id=5>System Prompt</cite>

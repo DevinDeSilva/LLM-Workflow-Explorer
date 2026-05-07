@@ -1,0 +1,18 @@
+Answer
+**Answer**  
+The Generative Task “information_extractor” (ID 20260420105703_307) receives as its sole input the LLM‑generated answer produced by the chat step – the data object `<http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer>`.
+
+**Relevant entities**  
+- `<http://testwebsite/testProgram#Generative_Task-id_20260420105703_307>` (information_extractor)  
+- `<http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer>` (generated answer)
+
+**Evidence**
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `<http://testwebsite/testProgram#id_20260420105703_307>` | `prov:qualifiedUsage` | `<http://testwebsite/testProgram#Usage-id_20260420105703_331-text>` |
+| `<http://testwebsite/testProgram#Usage-id_20260420105703_331-text>` | `prov:hadEntity` | `<http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer>` |
+| `<http://testwebsite/testProgram#Generative_Task-id_20260420105703_307>` | `sio:SIO_000313` | `<http://testwebsite/testProgram#id_20260420105703_307>` |
+| `<http://testwebsite/testProgram#LLM-id_20260420105659_302>` | `prov:used` | `<http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer>` |
+
+These triples show that the information‑extraction generative task takes the LLM‑generated answer as its input. <cite, id=0>Information Extractor</cite> <cite, id=1>generated answer</cite> <cite, id=2>generated answer</cite> <cite, id=3>Generative Task</cite> <cite, id=4>Program</cite> <cite, id=5>entity</cite>

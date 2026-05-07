@@ -1,0 +1,2 @@
+Answer
+Insufficient information <cite, id=0>Input port for age</cite> <cite, id=1>Input port for gender</cite> <cite, id=2>Input port for weight</cite> <cite, id=3>Input port for height</cite> <cite, id=4>Usage age</cite>

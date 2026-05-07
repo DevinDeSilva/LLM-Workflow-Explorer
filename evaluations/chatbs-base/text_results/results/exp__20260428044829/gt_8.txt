@@ -1,0 +1,103 @@
+Original Answer
+The system‑prompt template step is driven by the **ChatBS‑NexGen:LLM-system_prompt_generator** program, which is a Large Language Model task that consumes two input data items:
+
+| Input parameter | Data URI | Description |
+|-----------------|----------|-------------|
+| **base_sys_prompt** | `ChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt` | The literal text that serves as the starting system prompt (e.g., “You are a health care assistant”). |
+| **builder_llm** | `ChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm` | A reference to the LLM that will build/augment the template. Its *workflow:llm_model* property specifies the exact model identifier, here **gpt‑4o**. |
+
+Thus, the function’s input parameters are the base system prompt text and the builder LLM (identified by the `gpt‑4o` model). No other input ports are used for this step. <cite, id=0>ChatBS-NexGen:Generative_Task-information_extractor</cite> <cite, id=1>ChatBS-NexGen:LLM-information_extractor</cite> <cite, id=2>ChatBS-NexGen:Generative_Task-query_result_post_processor</cite> <cite, id=3>ChatBS-NexGen:LLM-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:Generative_Task-system_prompt_generator</cite> <cite, id=5>ChatBS-NexGen:LLM-system_prompt_generator</cite>
+
+Trace Report
+User Question:
+what are the input parameters of the function used in system prompt template step in the pipeline?
+
+
+Trace Answers
+
+Question: what are the input parameters of the function used in system prompt template step in the pipeline?
+KG Question: What are all the objects of class provone:Program with a given value for the relation/prop rdfs:label?
+Result Entities:
+ChatBS-NexGen:Generative_Task-information_extractor, ChatBS-NexGen:LLM-information_extractor, ChatBS-NexGen:Generative_Task-query_result_post_processor, ChatBS-NexGen:LLM-query_result_post_processor, ChatBS-NexGen:Generative_Task-system_prompt_generator, ChatBS-NexGen:LLM-system_prompt_generator, ChatBS-NexGen:batch_sparql_query_extractor-query_function
+Example Entities:
+ChatBS-NexGen:Generative_Task-information_extractor[workflow:Generative_Task]
+	dc:description -> Generates the Information Extractor Function using Large language models@en^^<xsd:string>
+	rdfs:label -> Information Extractor function generator@en^^<xsd:string>
+	prov:atTime -> 2026-03-05 19:21:32@en^^<xsd:string>
+	prov:used -> ChatBS-NexGen:LLM-information_extractor[workflow:Large_Language_Models](Information Extracto ...)
+ChatBS-NexGen:LLM-information_extractor[workflow:Large_Language_Models]
+	dc:description -> Generates the Information Extractor Function using Large language models@en^^<xsd:string>
+	sio:SIO_000229 -> ChatBS-NexGen:LLM_Output-information_extractor[workflow:Large_Language_Model_Output]
+	sio:SIO_000230 -> ChatBS-NexGen:LLM-information_extractor-Input-text[provone:Data]
+	workflow:llm_model -> gpt-4o@en^^<xsd:string>
+	rdfs:label -> Information Extractor function generator@en^^<xsd:string>
+	prov:atTime -> 2026-03-05 19:21:32@en^^<xsd:string>
+ChatBS-NexGen:batch_sparql_query_extractor-query_function[provone:Port]
+	dc:description -> KG query extraction input port: query_function@en^^<xsd:string>
+	rdfs:label -> KG query extraction input port: query_function@en^^<xsd:string>
+
+Question: What is the literal value of the base_sys_prompt input parameter for ChatBS-NexGen:LLM-system_prompt_generator, and what is the exact model identifier used by its builder_llm input?
+KG Question: What are all the attributes and values of a given object?
+Result Entities:
+
+
+Question: What is the literal text stored in the data object ChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt, and what is the exact workflow:llm_model value specified on the data object ChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm?
+KG Question: What are all the attributes and values of a given object?
+Result Entities:
+
+
+Summary Answer:
+The system‑prompt template step is driven by the **ChatBS‑NexGen:LLM-system_prompt_generator** program, which is a Large Language Model task that consumes two input data items:
+
+| Input parameter | Data URI | Description |
+|-----------------|----------|-------------|
+| **base_sys_prompt** | `ChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt` | The literal text that serves as the starting system prompt (e.g., “You are a health care assistant”). |
+| **builder_llm** | `ChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm` | A reference to the LLM that will build/augment the template. Its *workflow:llm_model* property specifies the exact model identifier, here **gpt‑4o**. |
+
+Thus, the function’s input parameters are the base system prompt text and the builder LLM (identified by the `gpt‑4o` model). No other input ports are used for this step. <cite, id=0>ChatBS-NexGen:Generative_Task-information_extractor</cite> <cite, id=1>ChatBS-NexGen:LLM-information_extractor</cite> <cite, id=2>ChatBS-NexGen:Generative_Task-query_result_post_processor</cite> <cite, id=3>ChatBS-NexGen:LLM-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:Generative_Task-system_prompt_generator</cite> <cite, id=5>ChatBS-NexGen:LLM-system_prompt_generator</cite>
+
+EO Report
+### Knowledge Based System:
+ChatBS
+
+### What were the system outputs associated with the user query and the system trace?:
+(System Recommendation)
+The system‑prompt template step is driven by the **ChatBS‑NexGen:LLM-system_prompt_generator** program, which is a Large Language Model task that consumes two input data items:
+
+| Input parameter | Data URI | Description |
+|-----------------|----------|-------------|
+| **base_sys_prompt** | `ChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt` | The literal text that serves as the starting system prompt (e.g., “You are a health care assistant”). |
+| **builder_llm** | `ChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm` | A reference to the LLM that will build/augment the template. Its *workflow:llm_model* property specifies the exact model identifier, here **gpt‑4o**. |
+
+Thus, the function’s input parameters are the base system prompt text and the builder LLM (identified by the `gpt‑4o` model). No other input ports are used for this step. <cite, id=0>ChatBS-NexGen:Generative_Task-information_extractor</cite> <cite, id=1>ChatBS-NexGen:LLM-information_extractor</cite> <cite, id=2>ChatBS-NexGen:Generative_Task-query_result_post_processor</cite> <cite, id=3>ChatBS-NexGen:LLM-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:Generative_Task-system_prompt_generator</cite> <cite, id=5>ChatBS-NexGen:LLM-system_prompt_generator</cite>
+
+### What are the entities associate with the question:
+(wasGeneratedBy)
+ChatBS-NexGen:Generative_Task-information_extractor, ChatBS-NexGen:LLM-information_extractor, ChatBS-NexGen:LLM_Output-information_extractor, ChatBS-NexGen:Generative_Task-query_result_post_processor, ChatBS-NexGen:LLM-query_result_post_processor, ChatBS-NexGen:LLM_Output-query_result_post_processor, ChatBS-NexGen:Generative_Task-system_prompt_generator, ChatBS-NexGen:LLM-system_prompt_generator, ChatBS-NexGen:LLM_Output-system_prompt_generator
+
+### Traces Associated with the system recommendation:
+(System Trace)
+Question: what are the input parameters of the function used in system prompt template step in the pipeline?
+KG Question: What are all the objects of class provone:Program with a given value for the relation/prop rdfs:label?
+Important Entities:
+ChatBS-NexGen:Generative_Task-information_extractor, ChatBS-NexGen:LLM-information_extractor, ChatBS-NexGen:Generative_Task-query_result_post_processor, ChatBS-NexGen:LLM-query_result_post_processor, ChatBS-NexGen:Generative_Task-system_prompt_generator, ChatBS-NexGen:LLM-system_prompt_generator, ChatBS-NexGen:batch_sparql_query_extractor-query_function
+
+Question: What is the literal value of the base_sys_prompt input parameter for ChatBS-NexGen:LLM-system_prompt_generator, and what is the exact model identifier used by its builder_llm input?
+KG Question: What are all the attributes and values of a given object?
+Important Entities:
+
+
+Question: What is the literal text stored in the data object ChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt, and what is the exact workflow:llm_model value specified on the data object ChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm?
+KG Question: What are all the attributes and values of a given object?
+Important Entities:
+
+
+### Overall Answer to the Question:
+The system‑prompt template step is driven by the **ChatBS‑NexGen:LLM-system_prompt_generator** program, which is a Large Language Model task that consumes two input data items:
+
+| Input parameter | Data URI | Description |
+|-----------------|----------|-------------|
+| **base_sys_prompt** | `ChatBS-NexGen:LLM-system_prompt_generator-Input-base_sys_prompt` | The literal text that serves as the starting system prompt (e.g., “You are a health care assistant”). |
+| **builder_llm** | `ChatBS-NexGen:LLM-system_prompt_generator-Input-builder_llm` | A reference to the LLM that will build/augment the template. Its *workflow:llm_model* property specifies the exact model identifier, here **gpt‑4o**. |
+
+Thus, the function’s input parameters are the base system prompt text and the builder LLM (identified by the `gpt‑4o` model). No other input ports are used for this step. <cite, id=0>ChatBS-NexGen:Generative_Task-information_extractor</cite> <cite, id=1>ChatBS-NexGen:LLM-information_extractor</cite> <cite, id=2>ChatBS-NexGen:Generative_Task-query_result_post_processor</cite> <cite, id=3>ChatBS-NexGen:LLM-query_result_post_processor</cite> <cite, id=4>ChatBS-NexGen:Generative_Task-system_prompt_generator</cite> <cite, id=5>ChatBS-NexGen:LLM-system_prompt_generator</cite>

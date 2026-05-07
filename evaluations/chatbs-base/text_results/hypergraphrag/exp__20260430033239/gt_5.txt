@@ -1,0 +1,6 @@
+Answer
+The **Large Language Model (LLM) that generates the “system prompt template” function receives two primary inputs**:  
+1. **`LLM system prompt generator Input base sys prompt`** – a data object containing the literal string *“You are a health care assistant”* (the foundational context for the assistant).  
+2. **`LLM system prompt generator Input builder llm`** – a data object specifying the LLM to be used, here *“gpt‑4o”*.  
+
+These inputs feed into the `ChatBS-NexGen:LLM-system_prompt_generator`, which then produces the system prompt template via its output port.

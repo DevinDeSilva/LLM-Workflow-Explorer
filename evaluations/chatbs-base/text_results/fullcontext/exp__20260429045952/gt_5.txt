@@ -1,0 +1,2 @@
+Answer
+The Large Language Model receives the user’s age, gender, height, weight, body‑mass index, diagnosis, food preferences and allergies to generate the system prompt template. <cite, id=0>age</cite> <cite, id=1>gender</cite> <cite, id=2>height</cite> <cite, id=3>weight</cite> <cite, id=4>bodyMassIndex</cite> <cite, id=5>diagnosis</cite>

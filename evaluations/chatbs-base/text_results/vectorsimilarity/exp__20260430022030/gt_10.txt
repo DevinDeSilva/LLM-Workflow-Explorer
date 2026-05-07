@@ -1,0 +1,2 @@
+Answer
+<|channel|>final <|constrain|>json<|message|>{"answer":"The SPARQL query function step receives two input parameters: an *entities* port that supplies the list of entities to be queried and a *query_function* port that provides the function or template used for constructing the SPARQL queries."} <cite, id=0>KG query extraction input port: query function</cite> <cite, id=1>Output port for kg knowledge</cite> <cite, id=2>KG query extraction input port: entities</cite> <cite, id=3>Batch SPARQL Query Extractor</cite> <cite, id=4>Input port for entity</cite>

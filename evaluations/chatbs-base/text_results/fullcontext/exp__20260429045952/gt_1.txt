@@ -1,0 +1,6 @@
+Answer
+Artificial intelligence is used in the workflow at four program stages:
+1. Generating the system‑prompt template (system_prompt_generator) – an LLM produces the prompt text.
+2. Producing the user’s answer (llm_chat) – an LLM generates a response to the user prompt.
+3. Extracting key entities from that answer (information_extractor) – an LLM extracts ingredient names.
+4. Post‑processing the query results (query_result_post_processor) – an LLM formats and deduplicates the KG data. <cite, id=0>System Prompt Template Generator</cite> <cite, id=1>LLM Chat</cite> <cite, id=2>Information Extractor</cite> <cite, id=3>Query Result Post-Processor</cite>

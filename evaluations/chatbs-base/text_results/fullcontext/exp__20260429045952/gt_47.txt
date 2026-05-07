@@ -1,0 +1,2 @@
+Answer
+The Generative Task that performed the information extraction received as its sole input the LLM‑generated answer text (the string produced by the llm_chat program). <cite, id=0>generated answer</cite>

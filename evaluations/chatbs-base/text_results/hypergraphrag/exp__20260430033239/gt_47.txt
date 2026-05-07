@@ -1,0 +1,7 @@
+Answer
+The **Information Extractor Function Generator** (`ChatBS‑NexGen:Generative_Task-information_extractor`) is the generative task that underlies every execution of the information‑extractor program. According to its provenance record, this workflow takes exactly two inputs:  
+
+1. **LLM‑information_extractor‑Input‑builder_llm** – a data entity containing the name of the large language model used (here `gpt-4o`).  
+2. **LLM‑information_extractor‑Input‑text** – the raw text to be processed, supplied as a provone:Data entity with the prompt “Extract all the main ingredients …”.  
+
+These two inputs are wired into the generator’s input ports (`ChatBS‑NexGen:LLM-information_extractor-Input-builder_llm` and `ChatBS‑NexGen:LLM-information_extractor-Input-text`) before the LLM produces the output that feeds the downstream information‑extractor program.

@@ -1,0 +1,2 @@
+Answer
+The SPARQL Query Builder (Sparql_Query_Extractor) is the other program connected to the query function input port of the Batch SPARQL Query Extractor. <cite, id=0>KG query extraction input port: query function</cite> <cite, id=1>Output port for kg knowledge</cite> <cite, id=2>Batch SPARQL Query Extractor</cite> <cite, id=3>Output port for kg info</cite> <cite, id=4>SPARQL Query Builder</cite>

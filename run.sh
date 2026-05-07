@@ -1,11 +1,11 @@
 source .venv/bin/activate
 
 # python baseline_FullContextAnswer.py --evaluation biomni-base
-# python baseline_LLMbased.py --evaluation biomni-base
-# python explainer_experiment.py --evaluation biomni-base
-# python baseline_VectorSimilarityAnswer.py --evaluation biomni-base
-# python baseline_HippoRAG.py --evaluation biomni-base
-# python baseline_HyperGraphRAG.py --evaluation biomni-base
+#python baseline_LLMbased.py --evaluation biomni-base
+#python explainer_experiment.py --evaluation biomni-base
+#python baseline_VectorSimilarityAnswer.py --evaluation biomni-base
+#python baseline_HippoRAG.py --evaluation biomni-base
+python baseline_HyperGraphRAG.py --evaluation biomni-base
 # python explainer_experiment.py --evaluation biomni-base
 
 # cd baselines/grasp

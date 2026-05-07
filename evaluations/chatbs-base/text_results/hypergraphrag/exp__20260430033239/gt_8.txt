@@ -1,0 +1,13 @@
+Answer
+The **System Prompt Template** function is driven by a set of eight input parameters that feed the `system_prompt_generator` program:  
+
+- **age** – the user’s age (e.g., 30 years).  
+- **gender** – the user’s gender identity (e.g., Male).  
+- **diagnosis** – medical condition(s) relevant to the prompt (e.g., Diabetic).  
+- **height** – the user’s height in centimeters or inches (e.g., 182.3 cm).  
+- **weight** – the user’s weight in kilograms or pounds (e.g., 95.2 kg).  
+- **bodyMassIndex** – calculated BMI value (e.g., 28.6).  
+- **foodPreferences** – dietary preference category (e.g., Carnivore).  
+- **allergies** – any food allergies the user has (e.g., None).  
+
+These ports are defined in the `system_prompt_generator` program and collectively provide the contextual data that the LLM uses to generate a tailored system prompt.

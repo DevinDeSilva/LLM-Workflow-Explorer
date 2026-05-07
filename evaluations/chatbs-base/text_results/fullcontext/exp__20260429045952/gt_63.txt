@@ -1,0 +1,18 @@
+Answer
+**Answer**  
+The execution `http://testwebsite/testProgram#id_20260420105723_114` used two pieces of data – `Data-id_20260420105704_531-extracts` and `Data-id_20260420105723_261-kg_info`.  
+The KG‑information row (`Data-id_20260420105723_261-kg_info`) was produced by the Generative Task with ID `20260420105723_114`, which generated the SPARQL query that returned this data.  
+
+**Relevant entities**  
+```json
+["ChatBS-NexGen:Generative_Task-id_20260420105723_114"]
+```
+
+**Evidence**  
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS-NexGen:Generation-id_20260420105723_333-kg_info` | `prov:qualifiedGeneration` | `ChatBS-NexGen:Generative_Task-id_20260420105723_114` |
+| `ChatBS-NexGen:id_20260420105723_114` | `prov:used` | `ChatBS-NexGen:Data-id_20260420105704_531-extracts` |
+| `ChatBS-NexGen:id_20260420105723_114` | `prov:used` | `ChatBS-NexGen:Data-id_20260420105723_261-kg_info` |
+
+These triples show that the data used by execution #id_20260420105723_114 were created by Generative Task #id_20260420105723_114. <cite, id=0>Generative Task</cite> <cite, id=1>Generation</cite> <cite, id=2>Execution</cite> <cite, id=3>extracts</cite> <cite, id=4>extracts</cite> <cite, id=5>extracts</cite>

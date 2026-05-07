@@ -1,0 +1,5 @@
+Answer
+The connected functions to system prompt template function.
+
+    Funtion URI | Function name
+http://testwebsite/testProgram#llm_chat | LLM Chat@en^^<xsd:string>

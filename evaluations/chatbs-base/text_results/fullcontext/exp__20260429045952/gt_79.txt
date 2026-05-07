@@ -1,0 +1,2 @@
+Answer
+No – the entity fed into the SPARQL query extractor in execution 20260420105711_662 comes from the extraction output of the Information Extractor program, not from a Generative Task. <cite, id=0>sparql query 1 1 5</cite> <cite, id=1>extracts</cite>

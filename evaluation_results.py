@@ -21,6 +21,14 @@ import requests
 from bert_score import score as bertscore
 
 from src.config.experiment import FullContextExperimentConfig
+from src.evaluation.recompute import (
+    RecomputeConfig,
+    build_recompute_config,
+    parse_qtypes,
+    qtypes_match,
+    selected_ground_truth_ids,
+    validate_selected_methods,
+)
 from src.evaluation.report_builders import (
     augment_ours_record_with_reports,
     build_eo_trace_report,
@@ -359,8 +367,13 @@ JUDGE_LLM = dict(EVALUATION_SETTINGS.get("judge_llm", {}))
 NLI_CONFIG = EVALUATION_SETTINGS.get("nli", {})
 NLI_MODEL_NAME = NLI_CONFIG.get("model_name", "cross-encoder/nli-distilroberta-base")
 NLI_ENTAILMENT_FALLBACK_INDEX = NLI_CONFIG.get("entailment_fallback_index", 1)
+METRICS_CONFIG = EVALUATION_SETTINGS.get("metrics", {})
 ENABLED_METRICS = configured_metrics(
-    EVALUATION_SETTINGS.get("metrics", {}).get("enabled_by_qtype", {})
+    METRICS_CONFIG.get("enabled_by_qtype", {})
+)
+ANSWER_REPORT = METRICS_CONFIG.get(
+    "answer_report",
+    EVALUATION_SETTINGS.get("answer_report", "original"),
 )
 MAX_EXAMPLES_PER_RUN = EVALUATION_SETTINGS.get("max_examples_per_run")
 SAVE_DIR = resolve_repo_path(
@@ -368,6 +381,17 @@ SAVE_DIR = resolve_repo_path(
         "save_dir",
         str(Path("evaluations") / EVALUATION_NAME / "analysis"),
     )
+)
+METRICS_RECOMPUTE_CONFIG = build_recompute_config(
+    EVALUATION_SETTINGS.get("recompute", {}),
+    METRICS_CONFIG.get("recompute", {}),
+    SAVE_DIR,
+    resolve_repo_path,
+)
+validate_selected_methods(
+    METRICS_RECOMPUTE_CONFIG.methods,
+    set(PREDICTION_DIRS) | set(CONFIGURED_PREDICTION_FILES),
+    "metric",
 )
 
 
@@ -400,15 +424,18 @@ def resolve_prediction_files(
     prediction_dirs: Mapping[str, str | Path],
     prediction_files: Mapping[str, str | Path],
     prediction_filename: str = "RESULTS.jsonl",
+    selected_methods: set[str] | None = None,
 ) -> dict[str, Path]:
     resolved = {
         codename: latest_prediction_file(experiments_dir, prediction_filename)
         for codename, experiments_dir in prediction_dirs.items()
+        if selected_methods is None or codename in selected_methods
     }
     resolved.update(
         {
             codename: resolve_repo_path(file_path)
             for codename, file_path in prediction_files.items()
+            if selected_methods is None or codename in selected_methods
         }
     )
     return resolved
@@ -418,6 +445,7 @@ PREDICTION_FILES = resolve_prediction_files(
     PREDICTION_DIRS,
     CONFIGURED_PREDICTION_FILES,
     PREDICTION_FILENAME,
+    METRICS_RECOMPUTE_CONFIG.methods,
 )
 
 
@@ -495,6 +523,12 @@ display(
     pd.DataFrame(GT_BUNDLE["records"])[["id", "question", "qtype"]].head()
 )
 
+
+METRICS_RECOMPUTE_GROUND_TRUTH_IDS = selected_ground_truth_ids(
+    GT_BUNDLE["records"],
+    METRICS_RECOMPUTE_CONFIG,
+)
+
 # %%
 # Report builders are shared from src.evaluation.report_builders.
 
@@ -502,7 +536,7 @@ def ours_input_config(record:Dict[str, Any]) -> Dict[str, Any]:
     return augment_ours_record_with_reports(
         record,
         synthetic_question_retriever=sq_retriver,
-        answer_report="original"
+        answer_report=ANSWER_REPORT,
     )
 
 # %%
@@ -603,11 +637,17 @@ def load_prediction_runs(
     data_augmentations: dict[str, Callable]
     ) -> dict[str, list[dict[str, Any]]]:
     if not prediction_files:
-        raise ValueError("Add at least one entry to PREDICTION_FILES in the first cell.")
+        return {}
 
     runs: dict[str, list[dict[str, Any]]] = {}
     for codename, file_path in prediction_files.items():
         records = read_jsonl(file_path)
+        if METRICS_RECOMPUTE_GROUND_TRUTH_IDS is not None:
+            records = [
+                record
+                for record in records
+                if str(record.get("id") or "") in METRICS_RECOMPUTE_GROUND_TRUTH_IDS
+            ]
         if MAX_EXAMPLES_PER_RUN is not None:
             records = records[:MAX_EXAMPLES_PER_RUN]
             
@@ -618,8 +658,21 @@ def load_prediction_runs(
     return runs
 
 
+def prediction_files_for_metric_recompute(
+    prediction_files: Mapping[str, Path],
+    recompute_config: RecomputeConfig,
+) -> dict[str, Path]:
+    if recompute_config.methods is None:
+        return dict(prediction_files)
+    return {
+        method: file_path
+        for method, file_path in prediction_files.items()
+        if method in recompute_config.methods
+    }
+
+
 PREDICTION_RUNS = load_prediction_runs(
-    PREDICTION_FILES,
+    prediction_files_for_metric_recompute(PREDICTION_FILES, METRICS_RECOMPUTE_CONFIG),
     INPUT_AUGMENTATION_MAP
     )
 
@@ -963,9 +1016,24 @@ def resolve_ground_truth_record(pred: dict[str, Any]) -> Dict[str, Any]:
     gt = GT_BUNDLE["by_question"].get(question_key)
     
     if not gt:
-        ValueError("No GT found.")
+        raise ValueError(f"No GT found for prediction: {pred.get('id')}")
         
     return gt
+
+
+def ground_truth_matches_recompute(actual: dict[str, Any]) -> bool:
+    if METRICS_RECOMPUTE_CONFIG.question_ids is not None:
+        ground_truth_id = str(actual.get("id") or "")
+        if ground_truth_id not in METRICS_RECOMPUTE_CONFIG.question_ids:
+            return False
+
+    if METRICS_RECOMPUTE_CONFIG.qtypes is not None and not qtypes_match(
+        actual.get("qtype", []),
+        METRICS_RECOMPUTE_CONFIG.qtypes,
+    ):
+        return False
+
+    return True
 
 
 def evaluate_run(
@@ -977,6 +1045,8 @@ def evaluate_run(
 
     for pred in tqdm(predictions):
         actual = resolve_ground_truth_record(pred)
+        if not ground_truth_matches_recompute(actual):
+            continue
         row: dict[str, Any] = {
             "run": run_name,
             "prediction_path": pred.get("_prediction_path"),
@@ -991,7 +1061,7 @@ def evaluate_run(
         for atags, func in metric_functions.items():
             satags = atags.split("--")
             if not actual["qtype"]:
-                ValueError(f"tags is None for question: {pred.get('id')}")
+                raise ValueError(f"tags is None for question: {pred.get('id')}")
             if len(set(satags) - set(actual["qtype"]))>0:
                 continue
 
@@ -1015,6 +1085,60 @@ def evaluate_run(
             rows_cat[atags].append(row)
 
     return rows_cat
+
+
+def cached_metric_row_matches_recompute(row: pd.Series, category: str) -> bool:
+    method = str(row.get("run") or "")
+    if METRICS_RECOMPUTE_CONFIG.methods is not None and method not in METRICS_RECOMPUTE_CONFIG.methods:
+        return False
+
+    if METRICS_RECOMPUTE_CONFIG.question_ids is not None:
+        ground_truth_id = str(row.get("ground_truth_id") or row.get("prediction_id") or "")
+        if ground_truth_id not in METRICS_RECOMPUTE_CONFIG.question_ids:
+            return False
+
+    if METRICS_RECOMPUTE_CONFIG.qtypes is not None:
+        qtypes = row.get("ground_truth_qtype")
+        if not parse_qtypes(qtypes):
+            qtypes = category.split("--")
+        if not qtypes_match(qtypes, METRICS_RECOMPUTE_CONFIG.qtypes):
+            return False
+
+    return True
+
+
+def load_cached_metric_results(category: str) -> pd.DataFrame:
+    cached_path = METRICS_RECOMPUTE_CONFIG.existing_results_dir / category / "results.csv"
+    if not cached_path.exists():
+        if METRICS_RECOMPUTE_CONFIG.reuse_existing:
+            print(f"No cached metric rows found at {cached_path}")
+        return pd.DataFrame()
+    return pd.read_csv(cached_path)
+
+
+def merge_cached_metric_results(category: str, new_results_df: pd.DataFrame) -> pd.DataFrame:
+    if not METRICS_RECOMPUTE_CONFIG.reuse_existing:
+        return new_results_df
+
+    cached_df = load_cached_metric_results(category)
+    if cached_df.empty:
+        return new_results_df
+
+    keep_cached_df = cached_df[
+        ~cached_df.apply(
+            lambda row: cached_metric_row_matches_recompute(row, category),
+            axis=1,
+        )
+    ]
+    combined_df = pd.concat([keep_cached_df, new_results_df], ignore_index=True)
+    dedupe_columns = [
+        column
+        for column in ("run", "ground_truth_id")
+        if column in combined_df.columns
+    ]
+    if len(dedupe_columns) == 2:
+        combined_df = combined_df.drop_duplicates(subset=dedupe_columns, keep="last")
+    return combined_df
 
 
 evaluation_rows: dict[str, List[dict[str, Any]]] = {}
@@ -1063,14 +1187,24 @@ def build_run_summary(results_df: pd.DataFrame) -> pd.DataFrame:
 
     return counts_df.merge(summary_df, on="run", how="left")
 
-for cat, eval_rows in evaluation_rows.items():
+categories_to_write = sorted(set(ENABLED_METRICS) | set(evaluation_rows))
+for cat in categories_to_write:
+    eval_rows = evaluation_rows.get(cat, [])
     print(cat)
-    RESULTS_DF = pd.DataFrame(eval_rows)
+    RESULTS_DF = merge_cached_metric_results(cat, pd.DataFrame(eval_rows))
     if not RESULTS_DF.empty:
-        RESULTS_DF = RESULTS_DF.sort_values(
-            ["run", "ground_truth_found", "prediction_line"],
-            ascending=[True, False, True],
-        ).reset_index(drop=True)
+        sort_columns = [
+            column
+            for column in ("run", "ground_truth_found", "prediction_line")
+            if column in RESULTS_DF.columns
+        ]
+        if sort_columns:
+            RESULTS_DF = RESULTS_DF.sort_values(
+                sort_columns,
+                ascending=[True, False, True][: len(sort_columns)],
+            ).reset_index(drop=True)
+        else:
+            RESULTS_DF = RESULTS_DF.reset_index(drop=True)
 
     display(RESULTS_DF.head())
     RUN_SUMMARY_DF = build_run_summary(RESULTS_DF)

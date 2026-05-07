@@ -1,0 +1,2 @@
+Answer
+No – the Query Result Post‑Processor is a standard provone:Program, not an instance of workflow:Generative_Task. <cite, id=0>Query Result Post-Processor</cite>

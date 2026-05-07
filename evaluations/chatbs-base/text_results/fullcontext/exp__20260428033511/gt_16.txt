@@ -1,0 +1,2 @@
+Answer
+The LLM‑Chat program returns a single output parameter – the generated answer text. <cite, id=0>LLM Chat</cite> <cite, id=1>LLM Chat output port: generated_answer</cite>

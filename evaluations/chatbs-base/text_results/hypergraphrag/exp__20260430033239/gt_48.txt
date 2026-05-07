@@ -1,0 +1,11 @@
+Answer
+**Inputs of the Generative Task that was a component in the executions of the LLM Chat function**
+
+| Input | Source / Port | Description |
+|-------|---------------|-------------|
+| **System Prompt** | `llm_chat-system_prompt` (port) | The text that sets the context for the LLM, e.g., “You are a health‑care assistant …” |
+| **User Prompt** | `llm_chat-user_prompt` (port) | The user’s question or request (“I need suggestions for light and energy‑boosting foods to eat before my gym workout.”) |
+| **Base System Prompt Template** | `LLM-system_prompt_generator-Input-base_sys_prompt` | The template that the system prompt generator uses as a starting point. |
+| **Builder LLM** | `LLM-system_prompt_generator-Input-builder_llm` (value: *gpt‑4o*) | The language model specified for building the system prompt. |
+
+These four inputs are wired into the **Generative Task** (`id_20260420105659_302`) that is a component of the LLM Chat execution (`llm_chat-1-1`). They provide the contextual, user‑specific, and template information needed for the LLM to generate an answer.

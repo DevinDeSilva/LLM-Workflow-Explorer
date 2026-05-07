@@ -1,0 +1,2 @@
+Answer
+The function in the SPARQL query post‑processing step receives a single input parameter: the KG knowledge (i.e., the query result data) fed through its input port `kg_knowledge`. <cite, id=0>KG query extraction input port: query function</cite> <cite, id=1>Query Result Post Processor function generator</cite> <cite, id=2>Query Result Post Processor function generator</cite> <cite, id=3>Output port for kg knowledge</cite> <cite, id=4>Query Result Post Processor</cite>

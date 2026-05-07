@@ -1,0 +1,2 @@
+Answer
+ChatBS-NexGen:test_user <cite, id=0>System Prompt Template function generator</cite> <cite, id=1>System Prompt Template function generator</cite> <cite, id=2>LLM Output system prompt generator</cite> <cite, id=3>Chat BS Nex Gen:system prompt generator Association</cite> <cite, id=4>Channel for the system prompt</cite>

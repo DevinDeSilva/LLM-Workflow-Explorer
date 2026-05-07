@@ -1,0 +1,5 @@
+Answer
+The two generative‑tasks that are part of the llm_chat execution receive three inputs in total:
+1. A **system prompt** (the LLM system message). 
+2. A **user prompt** (the user’s question). 
+3. The **generated answer text** produced by the first task, which is then fed into the second task for entity extraction. <cite, id=0>system prompt</cite> <cite, id=1>user prompt</cite> <cite, id=2>generated answer</cite>

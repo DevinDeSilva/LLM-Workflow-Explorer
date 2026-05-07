@@ -1,0 +1,5 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+<|channel|>final to=functions.cancel<|constrain|>commentary json<|message|>{"explanation":"Unable to locate a specific function entity representing the information extraction step within the pipeline and determine its output parameters. No matching triples were found for the presumed LLM-information_extractor entity, and no context linking it to a pipeline step was available in the graph.","best_attempt":null}

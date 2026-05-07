@@ -1,0 +1,12 @@
+Answer
+**Answer:**  
+No, the SPARQL query builder program (`ChatBS‑NexGen:sparql_query_extractor`) is not a Generative Task; it is simply a normal program that constructs queries from input entities.  
+
+**Relevant entities**  
+- `ChatBS-NexGen:sparql_query_extractor`  
+
+**Evidence**  
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS‑NexGen:sparql_query_extractor` | `rdf:type` | `provone:Program` | <cite, id=0>SPARQL Query Builder</cite> <cite, id=1>Generative Task</cite> <cite, id=2>Program</cite>

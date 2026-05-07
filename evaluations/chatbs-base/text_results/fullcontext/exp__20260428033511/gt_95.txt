@@ -1,0 +1,20 @@
+Answer
+**Answer:**  
+The execution *id_20260420105711_662* produced **two** data items on its “Output port for kg_info”.
+
+**Relevant entities**
+
+- `ChatBS-NexGen:id_20260420105711_662` (Execution)
+- `ChatBS‑NexGen:sparql_query_extractor‑kg_info` (Output port)
+- `ChatBS‑NexGen:Data-id_20260420105703_198-extracts`
+- `ChatBS‑NexGen:Data-id_20260420105711_45-kg_info`
+
+**Evidence**
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS-NexGen:Generation-id_20260420105711_662` | `provone:hadOutPort` | `ChatBS-NexGen:sparql_query_extractor‑kg_info` |
+| `ChatBS-NexGen:Generation-id_20260420105711_662` | `provone:hadEntity` | `ChatBS-NexGen:Data-id_20260420105703_198-extracts` |
+| `ChatBS-NexGen:Generation-id_20260420105711_662` | `provone:hadEntity` | `ChatBS-NexGen:Data-id_20260420105711_45-kg_info` |
+
+These triples show that the execution generated two distinct data entities via the output port. <cite, id=0>Output port for kg_info</cite> <cite, id=1>Generation</cite> <cite, id=2>Execution</cite> <cite, id=3>extracts</cite> <cite, id=4>extracts</cite> <cite, id=5>extracts</cite>

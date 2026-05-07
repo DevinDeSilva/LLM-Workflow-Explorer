@@ -1,0 +1,2 @@
+Answer
+No <cite, id=0>Query Result Post Processor function generator</cite> <cite, id=1>Information Extractor function generator</cite> <cite, id=2>KG query extraction input port: query function</cite> <cite, id=3>Batch SPARQL Query Extractor</cite> <cite, id=4>System Prompt Template function generator</cite>

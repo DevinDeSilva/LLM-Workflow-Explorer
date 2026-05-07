@@ -1,0 +1,6 @@
+Answer
+The connected functions to information extraction function.
+
+    Funtion URI | Function name
+http://testwebsite/testProgram#llm_chat | LLM Chat@en^^<xsd:string>
+http://testwebsite/testProgram#batch_sparql_query_extractor | Batch SPARQL Query Extractor@en^^<xsd:string>

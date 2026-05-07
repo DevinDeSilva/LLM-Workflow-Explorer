@@ -1,0 +1,2 @@
+Answer
+The Large Language Model that generates the system‑prompt template function receives eight pieces of user and demographic data: age, allergies, body‑mass index, diagnosis, food preferences, gender, height, and weight. <cite, id=0>age</cite> <cite, id=1>allergies</cite> <cite, id=2>bodyMassIndex</cite> <cite, id=3>diagnosis</cite> <cite, id=4>foodPreferences</cite> <cite, id=5>gender</cite>

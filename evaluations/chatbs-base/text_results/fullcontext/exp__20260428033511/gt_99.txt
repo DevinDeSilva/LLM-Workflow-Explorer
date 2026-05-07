@@ -1,0 +1,17 @@
+Answer
+**Answer:**  
+The *Output port for kg_info* of the execution `http://testwebsite/testProgram#id_20260420105722_117` produced **two output items**.
+
+**Relevant entities**
+- `ChatBS-NexGen:id_20260420105727-524-kg_info`
+
+**Evidence**
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS-NexGen:id_20260420105722_117` | provone:hasOutPort | `ChatBS-NexGen:sparql_query_extractor-kg_info` |
+| `ChatBS-NexGen:id_20260420105727-524-kg_info` | prov:wasGeneratedBy | `ChatBS-NexGen:Generation-id_20260420105722_117` |
+| `ChatBS-NexGen:id_20260420105727-524-kg_info` | provone:hadMember | `ChatBS-NexGen:Data-id_20260420105727-306-kg_info` |
+| `ChatBS-NexGen:id_20260420105727-524-kg_info` | provone:hadMember | `ChatBS-NexGen:Data-id_20260420105727-801-kg_info` |
+
+These two members constitute the output produced by that execution. <cite, id=0>Output port for kg_info</cite> <cite, id=1>Generation</cite> <cite, id=2>Execution</cite> <cite, id=3>kg info</cite> <cite, id=4>kg info</cite> <cite, id=5>kg info</cite>

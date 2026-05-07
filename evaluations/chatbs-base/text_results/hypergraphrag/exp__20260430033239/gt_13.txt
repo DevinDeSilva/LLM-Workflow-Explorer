@@ -1,0 +1,9 @@
+Answer
+**Output Parameters of the “System Prompt Template” Step**
+
+| Function | Output Parameter(s) | Description |
+|----------|---------------------|-------------|
+| **ChatBS‑NexGen:LLM‑system_prompt_generator** (the *System Prompt Template function generator*) | `ChatBS-NexGen:system_prompt_generator-system_prompt` | The generated system prompt text that will be fed to the LLM chat. This port is produced by the *System Prompt Template Generator* program and contains a fully‑formed instruction string such as “You are a health care assistant …”. |
+| **LLM Output – System Prompt Generator** (`ChatBS-NexGen:LLM_Output-system_prompt_generator`) | `ChatBS-NexGen:system_prompt_generator` (the *System Prompt Template Generator* program) | This output bundles the generated prompt into the higher‑level LLM output object, which is then consumed by downstream components (e.g., the chat or query modules). |
+
+In short, the pipeline’s system‑prompt step emits a single textual output—the system prompt—via the `system_prompt` port of the *System Prompt Template Generator* program. This prompt is subsequently wrapped in an LLM output object for use by later stages.

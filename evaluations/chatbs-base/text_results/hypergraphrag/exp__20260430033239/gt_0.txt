@@ -1,0 +1,6 @@
+Answer
+There are **three** distinct “experiment execution” activities recorded in the data:
+
+1. **System Prompt Execution 1 1** – the initial prompt generation step (ID 4).  
+2. **LLM Chat 1 1** – the language‑model chat that produced the answer (ID 7).  
+3. **Post Processing 1 1** – the post‑processing step that refined the extracted results (ID 21).

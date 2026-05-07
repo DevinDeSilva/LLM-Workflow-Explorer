@@ -1,0 +1,2 @@
+Answer
+The only output produced by the System Prompt Template function in this workflow is the generated system prompt itself, exposed through the output port named `system_prompt_generator-system_prompt`. <cite, id=0>System Prompt</cite>

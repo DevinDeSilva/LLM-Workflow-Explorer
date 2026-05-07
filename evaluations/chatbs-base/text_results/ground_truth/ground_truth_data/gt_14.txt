@@ -1,0 +1,5 @@
+Answer
+The input parameters to information extraction function.
+
+    Funtion name | Function returns
+Information Extractor@en^^<xsd:string> | Extracted Entities@en^^<xsd:string>

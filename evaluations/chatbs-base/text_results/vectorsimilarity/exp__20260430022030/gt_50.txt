@@ -1,0 +1,2 @@
+Answer
+The retrieved descriptions do not specify any explicit outputs for the Generative_Task activities. <cite, id=0>Query Result Post Processor function generator</cite> <cite, id=1>Information Extractor function generator</cite> <cite, id=2>System Prompt Template function generator</cite> <cite, id=3>Query Result Post Processor function generator</cite> <cite, id=4>LLM Output query result post processor</cite>

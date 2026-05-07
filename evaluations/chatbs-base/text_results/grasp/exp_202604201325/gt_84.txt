@@ -1,0 +1,18 @@
+Result
+Got 15 rows and 1 column in 0.00s, showing the first 5 and last 5 rows below:
+| x                                                                                  |
+| ---------------------------------------------------------------------------------- |
+| information_extraction_1_1@en^^<xsd:string> (ChatBS-NexGen:id_20260420105703_307)  |
+| sparql_query_1_1_1@en^^<xsd:string> (ChatBS-NexGen:id_20260420105705_972)          |
+| sparql_query_1_1_2@en^^<xsd:string> (ChatBS-NexGen:id_20260420105705_598)          |
+| sparql_query_1_1_3@en^^<xsd:string> (ChatBS-NexGen:id_20260420105710_61)           |
+| sparql_query_1_1_6@en^^<xsd:string> (ChatBS-NexGen:id_20260420105711_772)          |
+| ...                                                                                |
+| sparql_query_1_1_10@en^^<xsd:string> (ChatBS-NexGen:id_20260420105723_114)         |
+| post_processing_1_1@en^^<xsd:string> (ChatBS-NexGen:id_20260420105727_835)         |
+| sparql_query_1_1_11@en^^<xsd:string> (ChatBS-NexGen:id_20260420105727_300)         |
+| system_prompt_execution_1_1@en^^<xsd:string> (ChatBS-NexGen:id_20260420105652_650) |
+| llm_chat_1_1@en^^<xsd:string> (ChatBS-NexGen:id_20260420105659_302)                |
+
+Answer
+No

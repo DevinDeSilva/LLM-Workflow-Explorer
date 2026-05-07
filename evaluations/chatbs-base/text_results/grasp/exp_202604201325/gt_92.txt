@@ -1,0 +1,8 @@
+Result
+Got 1 row and 1 column in 0.00s:
+| outputCount     |
+| --------------- |
+| 0 (xsd:integer) |
+
+Answer
+1

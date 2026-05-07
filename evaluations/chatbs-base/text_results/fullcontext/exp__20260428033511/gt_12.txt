@@ -1,0 +1,2 @@
+Answer
+The function used in the SPARQL query post‑processing step outputs a single port named **post_processed_output**. <cite, id=0>Query Result Post-Processor</cite> <cite, id=1>Post-processed output port: post_processed_output</cite>

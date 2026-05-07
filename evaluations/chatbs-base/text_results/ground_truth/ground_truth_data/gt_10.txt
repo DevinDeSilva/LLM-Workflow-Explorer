@@ -1,0 +1,5 @@
+Answer
+The input parameters to sparql query function function.
+
+    Funtion name | Function returns
+SPARQL Query Builder@en^^<xsd:string> | Input port for entity@en^^<xsd:string>

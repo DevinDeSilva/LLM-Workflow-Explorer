@@ -1,0 +1,2 @@
+Answer
+The LLM Chat step takes a system prompt and a user prompt as inputs. <cite, id=0>system prompt</cite> <cite, id=1>user prompt</cite>

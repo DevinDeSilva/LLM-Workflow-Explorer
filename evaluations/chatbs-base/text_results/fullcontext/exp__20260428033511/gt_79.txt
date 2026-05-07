@@ -1,0 +1,2 @@
+Answer
+Yes – the entity fed into the "Input port for entity" of execution id_20260420105711_662 was produced by a Generative Task (the information‑extraction LLM step). <cite, id=0>extracts</cite>

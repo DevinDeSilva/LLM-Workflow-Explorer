@@ -1,0 +1,2 @@
+Answer
+The retrieved object descriptions do not specify the output parameters of the information extraction function. <cite, id=0>LLM Output information extractor</cite> <cite, id=1>Information Extractor function generator</cite> <cite, id=2>Information Extractor function generator</cite> <cite, id=3>KG query extraction input port: query function</cite> <cite, id=4>LLM information extractor Input text</cite>

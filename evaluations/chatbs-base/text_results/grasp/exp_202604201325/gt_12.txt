@@ -1,0 +1,5 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+The output parameters of the **Query Result Post‑Processor** program are – the post‑processed output port named post_processed_output.

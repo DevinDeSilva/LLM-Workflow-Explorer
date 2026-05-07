@@ -1,0 +1,16 @@
+Answer
+**Answer**  
+The only explicit input port for the SPARQL‑query post‑processing program (`query_result_post_processor`) is **`kg_knowledge`** – the knowledge‑graph data that it receives from the preceding SPARQL query extraction step.
+
+**Relevant entities**  
+- `ChatBS-NexGen:query_result_post_processor`  
+- `ChatBS-NexGen:query_result_post_processor-kg_knowledge`
+
+**Evidence (triples)**  
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| ChatBS‑NexGen:query_result_post_processor | provone:hasInPort | ChatBS‑NexGen:query_result_post_processor‑kg_knowledge |
+| ChatBS‑NexGen:query_result_post_processor‑kg_knowledge | rdf:type | provone:Port |
+
+These triples show that the post‑processing function receives the KG knowledge through its `kg_knowledge` input port. <cite, id=0>Query Result Post-Processor</cite> <cite, id=1>kg knowledge</cite> <cite, id=2>Program</cite> <cite, id=3>Data</cite> <cite, id=4>Port</cite>

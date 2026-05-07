@@ -1,0 +1,17 @@
+Answer
+**Answer**  
+The information‑extraction function in the pipeline has a single output parameter: the *Extracted Entities* port, which emits the list of entities extracted from the generated answer.
+
+**Relevant entities**  
+- `ChatBS-NexGen:information_extractor-extracts` (the output port)  
+- `ChatBS-NexGen:Information Extractor` (the program that produces it)
+
+**Evidence**  
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS‑NexGen:information_extractor` | provone:hasOutPort | `ChatBS‑NexGen:information_extractor‑extracts` |
+| `ChatBS‑NexGen:information_extractor‑extracts` | rdf:type | `provone:Port` |
+| `ChatBS‑NexGen:information_extractor‑extracts` | rdfs:label | `"Extracted Entities"` |
+
+These triples show that the Information Extractor program outputs its results through the *Extracted Entities* port. <cite, id=0>Information Extractor</cite> <cite, id=1>Extracted Entities</cite> <cite, id=2>generated answer</cite> <cite, id=3>generated answer</cite> <cite, id=4>extracts</cite> <cite, id=5>extracts</cite>

@@ -1,0 +1,4 @@
+Answer
+The Information Extractor program (ChatBS‑NexGen:information_extractor) is connected to two other programs via its ports:
+1. It receives the generated answer from the LLM Chat program (ChatBS‑NexGen:llm_chat) through the channel channel_generated_answer.
+2. Its extracted entities are sent to the SPARQL Query Builder program (ChatBS‑NexGen:sparql_query_extractor) via the channel channel_sparql_query_extraction. <cite, id=0>Information Extractor</cite> <cite, id=1>LLM Chat</cite> <cite, id=2>SPARQL Query Builder</cite>

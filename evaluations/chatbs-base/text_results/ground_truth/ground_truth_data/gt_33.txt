@@ -1,0 +1,5 @@
+Answer
+The Generates a system prompt function is made by a Generative Task.
+
+    fnlbl | Generative Task used to generate function
+System Prompt Template Generator@en^^<xsd:string> | http://testwebsite/testProgram#Generative_Task-system_prompt_generator

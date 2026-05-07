@@ -1,0 +1,2 @@
+Answer
+The function used in the system‑prompt template step outputs a single entity of type ChatBS‑NexGen:LLM_Output-system_prompt_generator, which contains the generated System Prompt (ChatBS‑NexGen:system_prompt_generator-system_prompt). <cite, id=0>LLM Output system prompt generator</cite> <cite, id=1>System Prompt Template function generator</cite> <cite, id=2>System Prompt Template function generator</cite> <cite, id=3>System Prompt</cite> <cite, id=4>LLM Output query result post processor</cite>

@@ -1,0 +1,2 @@
+Answer
+The function that performs SPARQL‑query post‑processing (the `query_result_post_processor` program) receives a single input parameter: the collection of knowledge‑graph information produced by the batch SPARQL query extraction step, referenced as the port `query_result_post_processor-kg_knowledge`. <cite, id=0>Query Result Post-Processor</cite> <cite, id=1>Post-processing input port: kg_knowledge</cite>

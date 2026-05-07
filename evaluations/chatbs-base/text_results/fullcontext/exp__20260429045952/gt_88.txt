@@ -1,0 +1,2 @@
+Answer
+The post‑processed output port produces a single data item (one row). <cite, id=0>Post-processed output port: post_processed_output</cite> <cite, id=1>post processing 1 1</cite> <cite, id=2>post processed output</cite> <cite, id=3>row 1</cite>

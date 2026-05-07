@@ -1,0 +1,2 @@
+Answer
+The only other program that uses the output port of the System Prompt Template Generator (via its `system_prompt` port) is **LLM Chat**. <cite, id=0>System Prompt Template Generator</cite> <cite, id=1>LLM Chat</cite>

@@ -1,0 +1,8 @@
+Answer
+The **Information Extractor** program is wired to several other programs through its input and output ports:
+
+- Its *input port for text* feeds the **Channel for the generated answer**, which in turn connects to the **LLM‑Information Extractor function generator** (the LLM that produces the extractor’s code).  
+- The *output port for extracted entities* sends data to the **Channel for SPARQL query extraction**, where it is consumed by the **Batch SPARQL Query Extractor**.  
+  - This batch extractor internally composes two sub‑programs: the **DF Combine** (a Data‑Frame combiner) and the **SPARQL Query Builder** that builds queries for each entity.
+
+Thus, through port parameters the Information Extractor is linked to the LLM‑Information Extractor function generator, the Batch SPARQL Query Extractor, and its two sub‑programs DF Combine and SPARQL Query Builder.

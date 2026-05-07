@@ -1,0 +1,5 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+<|channel|>final to=functions.cancel<|constrain|>json<|message|>{"explanation":"Unable to locate any provenance triples indicating which agents performed a ‘sparql query function step’ in the workflow. No relevant entities, properties or activities were found that link an agent to that step.","best_attempt":null}

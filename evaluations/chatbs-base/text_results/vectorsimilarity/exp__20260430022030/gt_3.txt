@@ -1,0 +1,2 @@
+Answer
+Some ingredients were missing "sugarG" and "ingredientCat" values in the final output because the workflow’s post‑processing rule explicitly handles such cases: when an ingredient is duplicated, it selects the row with the most information on those columns; any remaining missing entries are filled with a default value of 0 for "sugarG" and "-" for "ingredientCat". <cite, id=0>row 1</cite> <cite, id=1>row 1</cite> <cite, id=2>LLM query result post processor Input processing instruction</cite> <cite, id=3>row 0</cite> <cite, id=4>row 1</cite>

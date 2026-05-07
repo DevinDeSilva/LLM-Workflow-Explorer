@@ -1,0 +1,5 @@
+Answer
+The Post-processes the query results function is made by a Generative Task.
+
+    fnlbl | Generative Task used to generate function
+Query Result Post-Processor@en^^<xsd:string> | http://testwebsite/testProgram#Generative_Task-query_result_post_processor

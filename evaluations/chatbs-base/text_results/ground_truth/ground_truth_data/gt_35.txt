@@ -1,0 +1,5 @@
+Answer
+The Builds SPARQL queries function is not made by a Generative Task.
+
+    fnlbl | Generative Task used to generate function
+SPARQL Query Builder@en^^<xsd:string> | None

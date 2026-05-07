@@ -1,0 +1,2 @@
+Answer
+The function that is executed in the "llm_chat" step produces one output parameter – the LLM‑generated response, represented by the port <http://testwebsite/testProgram#llm_chat-generated_answer>. <cite, id=0>LLM Chat</cite> <cite, id=1>LLM Chat output port: generated_answer</cite>

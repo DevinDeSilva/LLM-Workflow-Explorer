@@ -1,0 +1,9 @@
+Result
+Got 2 rows and 1 column in 0.00s:
+| data                                                                          |
+| ----------------------------------------------------------------------------- |
+| extracts@en^^<xsd:string> (ChatBS-NexGen:Data-id_20260420105703_693-extracts) |
+| row_1@en^^<xsd:string> (ChatBS-NexGen:Data-id_20260420105722_181-kg_info)     |
+
+Answer
+to=...???

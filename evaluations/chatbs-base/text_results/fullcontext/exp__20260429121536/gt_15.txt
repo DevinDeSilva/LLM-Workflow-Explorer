@@ -1,0 +1,2 @@
+Answer
+The SPARQL query builder step produces a single output called **kg_info** – a collection of knowledge‑graph information rows. <cite, id=0>Output port for kg_info</cite>

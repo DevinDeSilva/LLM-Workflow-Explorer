@@ -1,0 +1,2 @@
+Answer
+The closest grounded workflow step is System Prompt Template Generator (system prompt execution 1 1); used age, allergies, bodyMassIndex, diagnosis, foodPreferences, gender, height, weight; generated system prompt. <cite, id=0>system prompt execution 1 1</cite> <cite, id=1>System Prompt Template Generator</cite> <cite, id=2>foodPreferences</cite> <cite, id=3>weight</cite> <cite, id=4>bodyMassIndex</cite> <cite, id=5>allergies</cite>

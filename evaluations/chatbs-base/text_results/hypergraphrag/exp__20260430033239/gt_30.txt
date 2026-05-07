@@ -1,0 +1,2 @@
+Answer
+The only agent recorded as executing the **SPARQL query function** in every step of the pipeline is **`test_user`** (ChatBS‑NexGen:test_user). Each `provone:Execution` instance for queries 1_1_1 through 1_1_11 lists this agent under the `prov:wasAssociatedWith` property, and all corresponding association records likewise identify the same user as the responsible agent.

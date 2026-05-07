@@ -1,0 +1,96 @@
+Answer
+```json
+{
+  "answer": "The SPARQL Query Builder produced a set of KG‑information datasets (each named …‑kg_info) that contain the extracted attributes for every entity it queried.",
+  "relevant_entities": [
+    "ChatBS-NexGen:Data-id_20260420105705_668-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105705_232-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105705_670-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105710_564-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105711_45-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105711_658-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105711_547-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105711_637-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105717_899-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105719_258-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105719_416-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105722_181-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105723_261-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105727_306-kg_info",
+    "ChatBS-NexGen:Data-id_20260420105727_801-kg_info"
+  ],
+  "evidence": [
+    {
+      "subject": "ChatBS-NexGen:sparql_query_extractor",
+      "predicate": "provone:hasOutPort",
+      "object": "ChatBS-NexGen:sparql_query_extractor-kg_info"
+    },
+    {
+      "subject": "ChatBS-NexGen:Generation-id_20260420105705_591-kg_info",
+      "predicate": "sio:SIO_000232",
+      "object": "ChatBS-NexGen:id_20260420105705_972 [sparql query 1 1 1]"
+    },
+    {
+      "subject": "ChatBS-NexGen:Generation-id_20260420105705_633-kg_info",
+      "predicate": "sio:SIO_000232",
+      "object": "ChatBS-NexGen:id_20260420105705_598 [sparql query 1 1 2]"
+    },
+    {
+      "subject": "ChatBS-NexGen:Generation-id_20260420105710_897-kg_info",
+      "predicate": "sio:SIO_000232",
+      "object": "ChatBS-NexGen:id_20260420105710_61 [sparql query 1 1 3]"
+    },
+    {
+      "subject": "ChatBS-NexGen:Generation-id_20260420105711_508-kg_info",
+      "predicate": "sio:SIO_000232",
+      "object": "ChatBS-NexGen:id_20260420105711_320 [sparql query 1 1 4]"
+    },
+    {
+      "subject": "ChatBS-NexGen:Generation-id_20260420105711_758-kg_info",
+      "predicate": "sio:SIO_000232",
+      "object": "ChatBS-NexGen:id_20260420105711_662 [sparql query 1 1 5]"
+    },
+    {
+      "subject": "ChatBS-NexGen:Generation-id_20260420105711_565-kg_info",
+      "predicate": "sio:SIO_000232",
+      "object": "ChatBS-NexGen:id_20260420105711_772 [sparql query 1 1 6]"
+    },
+    {
+      "subject": "ChatBS-NexGen:Generation-id_20260420105717-107-kg_info",
+      "predicate": "sio:SIO_000232",
+      "object": "ChatBS-NexGen:id_20260420105717_370 [sparql query 1 1 7]"
+    },
+    {
+      "subject": "ChatBS-NexGen:Generation-id_20260420105719-298-kg_info",
+      "predicate": "sio:SIO_000232",
+      "object": "ChatBS-NexGen:id_20260420105719_327 [sparql query 1 1 8]"
+    },
+    {
+      "subject": "ChatBS-NexGen:Generation-id_20260420105722-463-kg_info",
+      "predicate": "sio:SIO_000232",
+      "object": "ChatBS-NexGen:id_20260420105722_117 [sparql query 1 1 9]"
+    },
+    {
+      "subject": "ChatBS-NexGen:Generation-id_20260420105723-333-kg_info",
+      "predicate": "sio:SIO_000232",
+      "object": "ChatBS-NexGen:id_20260420105723_114 [sparql query 1 1 10]"
+    },
+    {
+      "subject": "ChatBS-NexGen:Generation-id_20260420105727-524-kg_info",
+      "predicate": "sio:SIO_000232",
+      "object": "ChatBS-NexGen:id_20260420105727_300 [sparql query 1 1 11]"
+    },
+    {
+      "subject": "ChatBS-NexGen:Data-id_20260420105705_668-kg_info",
+      "predicate": "rdf:type",
+      "object": "provone:Data"
+    },
+    {
+      "subject": "ChatBS-NexGen:Data-id_20260420105705_232-kg_info",
+      "predicate": "rdf:type",
+      "object": "provone:Data"
+    }
+    // ... (additional triples for each Data‑id_…‑kg_info showing rdf:type provone:Data and their member rows)
+  ]
+}
+``` <cite, id=0>SPARQL Query Builder</cite> <cite, id=1>sparql query 1 1 11</cite> <cite, id=2>sparql query 1 1 10</cite> <cite, id=3>sparql query 1 1 5</cite> <cite, id=4>sparql query 1 1 2</cite> <cite, id=5>sparql query 1 1 9</cite>

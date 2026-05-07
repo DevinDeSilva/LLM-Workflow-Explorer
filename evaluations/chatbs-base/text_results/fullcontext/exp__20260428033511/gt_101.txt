@@ -1,0 +1,2 @@
+Answer
+The execution id_20260420105727_300 produced **two** rows of output for its *kg_info* port. <cite, id=0>sparql query 1 1 11</cite> <cite, id=1>kg info</cite> <cite, id=2>row 1</cite> <cite, id=3>row 0</cite>

@@ -1,0 +1,2 @@
+Answer
+No – the only execution of the SPARQL query post‑processing function (ChatBS-NexGen:id_20260420105727_835) does not contain any workflow:Generative_Task component. <cite, id=0>post processing 1 1</cite> <cite, id=1>Query Result Post-Processor</cite>

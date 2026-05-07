@@ -1,0 +1,2 @@
+Answer
+The only function that receives the output of the System Prompt Template Generator via a port is the LLM Chat program. <cite, id=0>System Prompt Template Generator</cite> <cite, id=1>LLM Chat</cite>

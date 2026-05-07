@@ -1,0 +1,26 @@
+Answer
+**Answer:**  
+The “System Prompt Template Generator” receives eight input parameters: **age**, **allergies**, **bodyMassIndex**, **diagnosis**, **foodPreferences**, **gender**, **height**, and **weight**.
+
+**Relevant entities**  
+- `ChatBS-NexGen:system_prompt_generator-age`  
+- `ChatBS-NexGen:system_prompt_generator-allergies`  
+- `ChatBS-NexGen:system_prompt_generator-bodyMassIndex`  
+- `ChatBS-NexGen:system_prompt_generator-diagnosis`  
+- `ChatBS-NexGen:system_prompt_generator-foodPreferences`  
+- `ChatBS-NexGen:system_prompt_generator-gender`  
+- `ChatBS-NexGen:system_prompt_generator-height`  
+- `ChatBS-NexGen:system_prompt_generator-weight`
+
+**Evidence**  
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS-NexGen:system_prompt_generator` | `provone:hasInPort` | `ChatBS-NexGen:system_prompt_generator-age` |
+| `ChatBS-NexGen:system_prompt_generator` | `provone:hasInPort` | `ChatBS-NexGen:system_prompt_generator-allergies` |
+| `ChatBS-NexGen:system_prompt_generator` | `provone:hasInPort` | `ChatBS-NexGen:system_prompt_generator-bodyMassIndex` |
+| `ChatBS-NexGen:system_prompt_generator` | `provone:hasInPort` | `ChatBS-NexGen:system_prompt_generator-diagnosis` |
+| `ChatBS-NexGen:system_prompt_generator` | `provone:hasInPort` | `ChatBS-NexGen:system_prompt_generator-foodPreferences` |
+| `ChatBS-NexGen:system_prompt_generator` | `provone:hasInPort` | `ChatBS-NexGen:system_prompt_generator-gender` |
+| `ChatBS-NexGen:system_prompt_generator` | `provone:hasInPort` | `ChatBS-NexGen:system_prompt_generator-height` |
+| `ChatBS-NexGen:system_prompt_generator` | `provone:hasInPort` | `ChatBS-NexGen:system_prompt_generator-weight` | <cite, id=0>System Prompt Template Generator</cite> <cite, id=1>foodPreferences</cite> <cite, id=2>system prompt</cite> <cite, id=3>bodyMassIndex</cite> <cite, id=4>system prompt</cite> <cite, id=5>system prompt</cite>

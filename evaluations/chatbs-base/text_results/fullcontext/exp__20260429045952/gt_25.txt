@@ -1,0 +1,60 @@
+Answer
+**Answer**
+
+The pipeline executed the SPARQL‑query extractor program at **ten distinct times**.  
+These executions (provone:Execution) are identified by the following CURIEs:
+
+- `ChatBS-NexGen:id_20260420105705_598`  *(sparql_query_1_1_2)*  
+- `ChatBS-NexGen:id_20260420105705_972`  *(sparql_query_1_1_1)*  
+- `ChatBS-NexGen:id_20260420105710_61`   *(sparql_query_1_1_3)*  
+- `ChatBS-NexGen:id_20260420105711_320`  *(sparql_query_1_1_4)*  
+- `ChatBS-NexGen:id_20260420105711_662`  *(sparql_query_1_1_5)*  
+- `ChatBS-NexGen:id_20260420105711_772`  *(sparql_query_1_1_6)*  
+- `ChatBS-NexGen:id_20260420105717_370`  *(sparql_query_1_1_7)*  
+- `ChatBS-NexGen:id_20260420105719_327`  *(sparql_query_1_1_8)*  
+- `ChatBS-NexGen:id_20260420105722_117`  *(sparql_query_1_1_9)*  
+- `ChatBS-NexGen:id_20260420105723_114`  *(sparql_query_1_1_10)*
+
+**Relevant entities**
+
+```json
+[
+  "ChatBS-NexGen:id_20260420105705_598",
+  "ChatBS-NexGen:id_20260420105705_972",
+  "ChatBS-NexGen:id_20260420105710_61",
+  "ChatBS-NexGen:id_20260420105711_320",
+  "ChatBS-NexGen:id_20260420105711_662",
+  "ChatBS-NexGen:id_20260420105711_772",
+  "ChatBS-NexGen:id_20260420105717_370",
+  "ChatBS-NexGen:id_20260420105719_327",
+  "ChatBS-NexGen:id_20260420105722_117",
+  "ChatBS-NexGen:id_20260420105723_114"
+]
+```
+
+**Evidence**
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS-NexGen:id_20260420105705_598` | `rdf:type` | `provone:Execution` |
+| `ChatBS-NexGen:id_20260420105705_598` | `sio:SIO_000369` | `ChatBS-NexGen:sparql_query_extractor-kg_info` |
+| `ChatBS-NexGen:id_20260420105705_972` | `rdf:type` | `provone:Execution` |
+| `ChatBS-NexGen:id_20260420105705_972` | `sio:SIO_000369` | `ChatBS-NexGen:sparql_query_extractor-kg_info` |
+| `ChatBS-NexGen:id_20260420105710_61` | `rdf:type` | `provone:Execution` |
+| `ChatBS-NexGen:id_20260420105710_61` | `sio:SIO_000369` | `ChatBS-NexGen:sparql_query_extractor-kg_info` |
+| `ChatBS-NexGen:id_20260420105711_320` | `rdf:type` | `provone:Execution` |
+| `ChatBS-NexGen:id_20260420105711_320` | `sio:SIO_000369` | `ChatBS-NexGen:sparql_query_extractor-kg_info` |
+| `ChatBS-NexGen:id_20260420105711_662` | `rdf:type` | `provone:Execution` |
+| `ChatBS-NexGen:id_20260420105711_662` | `sio:SIO_000369` | `ChatBS-NexGen:sparql_query_extractor-kg_info` |
+| `ChatBS-NexGen:id_20260420105711_772` | `rdf:type` | `provone:Execution` |
+| `ChatBS-NexGen:id_20260420105711_772` | `sio:SIO_000369` | `ChatBS-NexGen:sparql_query_extractor-kg_info` |
+| `ChatBS-NexGen:id_20260420105717_370` | `rdf:type` | `provone:Execution` |
+| `ChatBS-NexGen:id_20260420105717_370` | `sio:SIO_000369` | `ChatBS-NexGen:sparql_query_extractor-kg_info` |
+| `ChatBS-NexGen:id_20260420105719_327` | `rdf:type` | `provone:Execution` |
+| `ChatBS-NexGen:id_20260420105719_327` | `sio:SIO_000369` | `ChatBS-NexGen:sparql_query_extractor-kg_info` |
+| `ChatBS-NexGen:id_20260420105722_117` | `rdf:type` | `provone:Execution` |
+| `ChatBS-NexGen:id_20260420105722_117` | `sio:SIO_000369` | `ChatBS-NexGen:sparql_query_extractor-kg_info` |
+| `ChatBS-NexGen:id_20260420105723_114` | `rdf:type` | `provone:Execution` |
+| `ChatBS-NexGen:id_20260420105723_114` | `sio:SIO_000369` | `ChatBS-NexGen:sparql_query_extractor-kg_info` |
+
+These triples confirm that each listed execution is a step where the SPARQL query function (`sparql_query_extractor`) was invoked during the overall workflow. <cite, id=0>sparql query 1 1 10</cite> <cite, id=1>sparql query 1 1 5</cite> <cite, id=2>sparql query 1 1 2</cite> <cite, id=3>sparql query 1 1 9</cite> <cite, id=4>sparql query 1 1 6</cite> <cite, id=5>sparql query 1 1 3</cite>

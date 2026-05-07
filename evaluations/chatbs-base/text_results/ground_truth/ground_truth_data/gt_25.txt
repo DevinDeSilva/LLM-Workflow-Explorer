@@ -1,0 +1,15 @@
+Answer
+The executions of the  sparql query function function are.
+
+    Executions
+http://testwebsite/testProgram#id_20260420105705_598
+http://testwebsite/testProgram#id_20260420105705_972
+http://testwebsite/testProgram#id_20260420105710_61
+http://testwebsite/testProgram#id_20260420105711_320
+http://testwebsite/testProgram#id_20260420105711_662
+http://testwebsite/testProgram#id_20260420105711_772
+http://testwebsite/testProgram#id_20260420105717_370
+http://testwebsite/testProgram#id_20260420105719_327
+http://testwebsite/testProgram#id_20260420105722_117
+http://testwebsite/testProgram#id_20260420105723_114
+http://testwebsite/testProgram#id_20260420105727_300

@@ -1,0 +1,15 @@
+Answer
+The inputs to the LLM used for the Generative Task in the executions of the Extracts entities function
+
+    Function | Execution | Inputs for the Generative Task used within execution
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Yogurt@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Nut@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Avocado@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Sweet Potato@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Egg@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Turkey@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Chicken@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Tuna@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Olive Oil@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Cheese@en^^<xsd:string>
+Information Extractor@en^^<xsd:string> | http://testwebsite/testProgram#id_20260420105703_307 | Fruit@en^^<xsd:string>

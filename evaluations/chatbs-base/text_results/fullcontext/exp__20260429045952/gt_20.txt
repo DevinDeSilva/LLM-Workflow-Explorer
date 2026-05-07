@@ -1,0 +1,2 @@
+Answer
+The SPARQL Query Builder program receives its input entity from the Information Extractor’s output port, and sends its KG‑information output to the Query Result Post‑Processor via a channel. Therefore, the two other programs directly connected to the SPARQL Query Builder through ports are **Information Extractor** and **Query Result Post‑Processor**. <cite, id=0>Information Extractor</cite> <cite, id=1>Query Result Post-Processor</cite>

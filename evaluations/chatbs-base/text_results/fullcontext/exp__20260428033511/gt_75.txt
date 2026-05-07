@@ -1,0 +1,2 @@
+Answer
+Yes – the entity input to execution id_20260420105705_598 was supplied by a Data item that was produced by the Information Extractor Generative Task. <cite, id=0>sparql query 1 1 2</cite> <cite, id=1>extracts</cite> <cite, id=2>Information Extractor function generator</cite>

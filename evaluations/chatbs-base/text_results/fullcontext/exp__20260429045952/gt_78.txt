@@ -1,0 +1,2 @@
+Answer
+No – the entity fed into the sparql_query_extractor’s input port comes from a prior extraction execution, not from a workflow:Generative_Task. <cite, id=0>sparql query 1 1 4</cite> <cite, id=1>extracts</cite> <cite, id=2>information extraction 1 1</cite> <cite, id=3>extracts</cite>

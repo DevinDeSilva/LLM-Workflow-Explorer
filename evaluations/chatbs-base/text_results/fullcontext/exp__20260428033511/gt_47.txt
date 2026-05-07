@@ -1,0 +1,18 @@
+Answer
+**Answer:**  
+The only input to the *Extracts important entities for text* generative task (ID `20260420105703_307`) is the generated answer produced by the LLM chat, represented in the graph as the data entity `ChatBS-NexGen:Data-id_20260420105659_338-generated_answer`.
+
+**Relevant entities**  
+- `ChatBS‑NexGen:Generative_Task-id_20260420105703_307` (Extracts important entities for text)  
+- `ChatBS‑NexGen:Data-id_20260420105659_338-generated_answer` (generated answer)
+
+**Evidence**
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS-NexGen:Usage-id_20260420105703_331-text` | `provone:hadInPort` | `ChatBS-NexGen:information_extractor-text` |
+| `ChatBS-NexGen:usage-id_20260420105703_331-text` | `provone:hadEntity` | `ChatBS‑NexGen:Data-id_20260420105659_338-generated_answer` |
+| `ChatBS-NexGen:information_extractor-text` | `provone:connectsTo` | `ChatBS‑NexGen:channel_generated_answer` |
+| `ChatBS‑NexGen:channel_generated_answer` | (holds) | `ChatBS‑NexGen:Data-id_20260420105659_338-generated_answer` |
+
+These triples show that the generative task receives as its input the data item containing the LLM’s generated answer. <cite, id=0>Information Extractor</cite> <cite, id=1>generated answer</cite> <cite, id=2>generated answer</cite> <cite, id=3>Generative Task</cite> <cite, id=4>extracts</cite> <cite, id=5>extracts</cite>

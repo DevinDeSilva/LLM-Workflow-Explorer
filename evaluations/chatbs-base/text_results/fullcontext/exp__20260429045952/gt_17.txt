@@ -1,0 +1,4 @@
+Answer
+The SPARQL query extraction program (ChatBS‑NexGen:sparql_query_extractor) is linked through its ports to two other programs:
+1. **Information Extractor** – the extractor’s output port `information_extractor-extracts` feeds the channel that carries the results of the SPARQL queries.
+2. **Batch SPARQL Query Extractor** – this higher‑level program contains `sparql_query_extractor` as a subprogram, so its ports are used when the batch extractor runs. <cite, id=0>Information Extractor</cite> <cite, id=1>Batch SPARQL Query Extractor</cite> <cite, id=2>SPARQL Query Builder</cite>

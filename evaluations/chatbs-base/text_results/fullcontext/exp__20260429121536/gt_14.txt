@@ -1,0 +1,2 @@
+Answer
+The Information Extractor step produces a single output parameter named **information_extractor‑extracts**, which contains the list of entities extracted from the input text. <cite, id=0>Extracted Entities</cite>

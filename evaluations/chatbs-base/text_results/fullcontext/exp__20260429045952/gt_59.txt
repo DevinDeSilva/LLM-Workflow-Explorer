@@ -1,0 +1,2 @@
+Answer
+The data that execution http://testwebsite/testProgram#id_20260420105711_772 used were produced by the generative task that extracts entities from the LLM’s answer – the Generative_Task‑id_20260420105703_307 ("Extracts important entities for text"). <cite, id=0>sparql query 1 1 6</cite> <cite, id=1>information extraction 1 1</cite> <cite, id=2>Information Extractor</cite>

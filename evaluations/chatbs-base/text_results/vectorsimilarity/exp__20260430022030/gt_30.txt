@@ -1,0 +1,11 @@
+Answer
+```json
+{
+  "answer": [
+    {
+      "name": "ChatBS-NexGen:test_user",
+      "role": "Agent that executed the SPARQL query function step in the pipeline"
+    }
+  ]
+}
+``` <cite, id=0>Chat BS Nex Gen:sparql query extractor Association</cite> <cite, id=1>Chat BS Nex Gen:sparql query extractor Association</cite> <cite, id=2>Chat BS Nex Gen:sparql query extractor Association</cite> <cite, id=3>Chat BS Nex Gen:sparql query extractor Association</cite> <cite, id=4>Chat BS Nex Gen:sparql query extractor Association</cite>

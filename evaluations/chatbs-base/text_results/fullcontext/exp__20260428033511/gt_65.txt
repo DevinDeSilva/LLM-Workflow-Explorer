@@ -1,0 +1,2 @@
+Answer
+No, the data fed into the `kg_knowledge` input port of execution `http://testwebsite/testProgram#id_20260420105727_835` was produced by a post‑processing program, not by a Generative Task. <cite, id=0>post processing 1 1</cite> <cite, id=1>kg knowledge</cite> <cite, id=2>ChatBS-NexGen:id_20260420105727_995</cite>

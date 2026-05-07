@@ -1,0 +1,52 @@
+Answer
+```json
+{
+  "answer": "No – the entity input to the SPARQL query extractor in execution `id_20260420105705_598` was produced by an extraction program, not a generative task.",
+  "relevant_entities": [
+    "http://testwebsite/testProgram#id_20260420105705_598",
+    "http://testwebsite/testProgram#sparql_query_extractor-entity",
+    "http://testwebsite/testProgram#Data-id_20260420105703_661-extracts",
+    "http://testwebsite/testProgram#Generation-id_20260420105703_814-extracts",
+    "http://testwebsite/testProgram#id_20260420105703_307"
+  ],
+  "evidence": [
+    {
+      "subject": "http://testwebsite/testProgram#id_20260420105705_598",
+      "predicate": "<http://www.w3.org/ns/prov#qualifiedUsage>",
+      "object": "http://testwebsite/testProgram#Usage-id_20260420105705_924-entity"
+    },
+    {
+      "subject": "http://testwebsite/testProgram#Usage-id_20260420105705_924-entity",
+      "predicate": "<http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity>",
+      "object": "http://testwebsite/testProgram#Data-id_20260420105703_661-extracts"
+    },
+    {
+      "subject": "http://testwebsite/testProgram#Data-id_20260420105703_661-extracts",
+      "predicate": "<http://www.w3.org/ns/prov#wasGeneratedBy>",
+      "object": "http://testwebsite/testProgram#Generation-id_20260420105703_814-extracts"
+    },
+    {
+      "subject": "http://testwebsite/testProgram#Generation-id_20260420105703_814-extracts",
+      "predicate": "<http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity>",
+      "object": [
+        "http://testwebsite/testProgram#Data-id_20260420105703_198-extracts",
+        "http://testwebsite/testProgram#Data-id_20260420105703_218-extracts",
+        "http://testwebsite/testProgram#Data-id_20260420105703_51-extracts",
+        "http://testwebsite/testProgram#Data-id_20260420105703_661-extracts",
+        "http://testwebsite/testProgram#Data-id_20260420105703_678-extracts",
+        "http://testwebsite/testProgram#Data-id_20260420105703-693-extracts",
+        "http://testwebsite/testProgram#Data-id_20260420105703_757-extracts",
+        "http://testwebsite/testProgram#Data-id_20260420105703_886-extracts",
+        "http://testwebsite/testProgram#Data-id_20260420105703_891-extracts",
+        "http://testwebsite/testProgram#Data-id_20260420105704_531-extracts",
+        "http://testwebsite/testProgram#Data-id_20260420105704_782-extracts"
+      ]
+    },
+    {
+      "subject": "http://testwebsite/testProgram#Generation-id_20260420105703_814-extracts",
+      "predicate": "<http://www.w3.org/ns/prov#qualifiedGeneration>",
+      "object": "http://testwebsite/testProgram#information_extractor"
+    }
+  ]
+}
+``` <cite, id=0>Information Extractor</cite> <cite, id=1>Generative Task</cite> <cite, id=2>Generation</cite> <cite, id=3>Execution</cite> <cite, id=4>extracts</cite> <cite, id=5>extracts</cite>

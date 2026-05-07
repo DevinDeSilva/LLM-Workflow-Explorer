@@ -1,0 +1,19 @@
+Answer
+**Answer**
+
+The information‑extraction function has a single output port named **“Extracted Entities”** (`ChatBS-NexGen:information_extractor-extracts`).
+
+**Relevant entities**
+
+- `ChatBS-NexGen:information_extractor`
+- `ChatBS-NexGen:information_extractor-extracts`
+
+**Evidence**
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| ChatBS‑NexGen:information_extractor | provone:hasOutPort | ChatBS‑NexGen:information_extractor‑extracts |
+| ChatBS‑NexGen:information_extractor‑extracts | rdf:type | provone:Port |
+| ChatBS‑NexGen:information_extractor‑extracts | rdfs:label | “Extracted Entities” |
+
+These triples show that the `information_extractor` program outputs its results through the port called **“Extracted Entities.”** <cite, id=0>Information Extractor</cite> <cite, id=1>Extracted Entities</cite> <cite, id=2>extracts</cite> <cite, id=3>extracts</cite> <cite, id=4>extracts</cite> <cite, id=5>extracts</cite>

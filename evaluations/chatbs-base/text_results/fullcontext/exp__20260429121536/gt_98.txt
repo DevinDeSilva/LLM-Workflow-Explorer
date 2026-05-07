@@ -1,0 +1,32 @@
+Answer
+```json
+{
+  "answer": "The execution produces three outputs on its \"Output port for kg_info\".",
+  "relevant_entities": [
+    "http://testwebsite/testProgram#Data-id_20260420105703_891-extracts",
+    "http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info",
+    "http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info"
+  ],
+  "evidence": [
+    {
+      "subject": "http://testwebsite/testProgram#id_20260420105719_327",
+      "predicate": "<http://purl.org/dc/terms#identifier>",
+      "object": "\"1_1_8@en^^<xsd:string>\""
+    },
+    {
+      "subject": "http://testwebsite/testProgram#id_20260420105719_327",
+      "predicate": "<http://www.w3.org/ns/prov#qualifiedGeneration>",
+      "object": "http://testwebsite/testProgram#Generation-id_20260420105719_298-kg_info"
+    },
+    {
+      "subject": "http://testwebsite/testProgram#Generation-id_20260420105719_298-kg_info",
+      "predicate": "<http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity>",
+      "object": [
+        "\"http://testwebsite/testProgram#Data-id_20260420105703_891-extracts\"",
+        "\"http://testwebsite/testProgram#Data-id_20260420105719_258-kg_info\"",
+        "\"http://testwebsite/testProgram#Data-id_20260420105719_416-kg_info\""
+      ]
+    }
+  ]
+}
+``` <cite, id=0>Output port for kg_info</cite> <cite, id=1>Generation</cite> <cite, id=2>Execution</cite> <cite, id=3>extracts</cite> <cite, id=4>extracts</cite> <cite, id=5>extracts</cite>

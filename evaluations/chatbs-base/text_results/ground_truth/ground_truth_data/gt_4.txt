@@ -1,0 +1,6 @@
+Answer
+We utilize the following input instructions to generate the function responsible for sparql query post processing.
+
+    Funtion | Instruction for function generation
+http://testwebsite/testProgram#query_result_post_processor | Concat all the rows into single row at each column by '|' concatenation marker.@en^^<xsd:string>
+http://testwebsite/testProgram#query_result_post_processor | If there are duplicate ingredients then select row with most information on `sugarG` and `ingredientCat` columns. Fill all the missing values with '0' in `sugarG` column and with '-' in 'ingredientCat` column.@en^^<xsd:string>

@@ -1,0 +1,2 @@
+Answer
+There are 13 experiment executions in the provenance graph. <cite, id=0>system prompt execution 1 1</cite> <cite, id=1>llm chat 1 1</cite> <cite, id=2>information extraction 1 1</cite> <cite, id=3>sparql query 1 1 2</cite> <cite, id=4>sparql query 1 1 1</cite> <cite, id=5>sparql query 1 1 3</cite>

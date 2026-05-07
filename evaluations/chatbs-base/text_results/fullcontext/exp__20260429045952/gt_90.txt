@@ -1,0 +1,2 @@
+Answer
+The execution produced 11 extracted‑entity outputs. <cite, id=0>extracts</cite>

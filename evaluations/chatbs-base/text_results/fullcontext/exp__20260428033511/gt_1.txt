@@ -1,0 +1,36 @@
+Answer
+**Answer:**  
+Artificial‑intelligence functions are used in the following components of the workflow:
+1. The **System Prompt Template Generator** (a generative task that calls an LLM to build a prompt).  
+2. The **LLM Chat** program, which uses an LLM to generate the answer text from the system and user prompts.  
+3. The **Information Extractor** program, which employs an LLM to pull key entities out of the chat output.  
+4. The **Query Result Post‑Processor** program, which also invokes an LLM to clean up and merge the extracted data.
+
+These are the only places in the graph where a `workflow:Generative_Task` (i.e., an AI component) is executed.
+
+**Relevant entities**
+```json
+[
+  "ChatBS-NexGen:system_prompt_generator",
+  "ChatBS-NexGen:llm_chat",
+  "ChatBS-NexGen:information_extractor",
+  "ChatBS-NexGen:query_result_post_processor"
+]
+```
+
+**Evidence (triple snippets)**
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| ChatBS‑NexGen:system_prompt_generator | rdf:type | provone:Program |
+| ChatBS‑NexGen:llm_chat | rdf:type | provone:Program |
+| ChatBS‑NexGen:information_extractor | rdf:type | provone:Program |
+| ChatBS‑NexGen:query_result_post_processor | rdf:type | provone:Program |
+| ChatBS‑NexGen:system_prompt_generator | dc:description | "Generates a system prompt based on the provided dataset structure and user input." |
+| ChatBS‑NexGen:llm_chat | dc:description | "Chat with the LLM." |
+| ChatBS‑NexGen:information_extractor | dc:description | "Extracts entities or relevant information from the generated text using specified instructions." |
+| ChatBS‑NexGen:query_result_post_processor | dc:description | "Post‑processes the query results from the knowledge graph." |
+| ChatBS‑NexGen:system_prompt_generator | prov:used | ChatBS‑NexGen:LLM-system_prompt_generator |
+| ChatBS‑NexGen:llm_chat | prov:used | ChatBS‑NexGen:LLM-id_20260420105659_302 (LLM that generates the system prompt) |
+| ChatBS‑NexGen:information_extractor | prov:used | ChatBS‑NexGen:LLM-information_extractor |
+| ChatBS‑NexGen:query_result_post_processor | prov:used | ChatBS‑NexGen:LLM-query_result_post_processor | <cite, id=0>System Prompt Template Generator</cite> <cite, id=1>Query Result Post-Processor</cite> <cite, id=2>Information Extractor</cite> <cite, id=3>Generative Task</cite> <cite, id=4>system prompt</cite> <cite, id=5>system prompt</cite>

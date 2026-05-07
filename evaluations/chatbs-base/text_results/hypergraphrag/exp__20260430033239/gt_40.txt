@@ -1,0 +1,4 @@
+Answer
+**Answer**
+
+No – none of the individual SPARQL query executions (e.g., `sparql_query_1_1_10`, `sparql_query_1_1_6`, etc.) contain a Generative Task component *within* their own execution graph. Each of those executions is **informed by** the post‑processing activity (`post_processing_1_1`), which in turn uses the Query Result Post‑Processor function generator (a workflow:Generative_Task). In other words, the generative task is a downstream dependency that feeds into the post‑processing step, but it is not embedded as part of the SPARQL query execution itself.

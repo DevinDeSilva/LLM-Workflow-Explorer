@@ -1,0 +1,2 @@
+Answer
+Insufficient information <cite, id=0>Output port for kg info</cite> <cite, id=1>Output port for kg knowledge</cite> <cite, id=2>Output port for kg knowledge</cite> <cite, id=3>Post processing input port: kg knowledge</cite> <cite, id=4>Post processed output port: post processed output</cite>

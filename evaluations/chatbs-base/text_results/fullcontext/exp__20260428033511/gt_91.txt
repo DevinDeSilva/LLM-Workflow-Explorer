@@ -1,0 +1,2 @@
+Answer
+The execution id_20260420105705_598 produces two outputs through the 'Output port for kg_info'. <cite, id=0>sparql query 1 1 2</cite> <cite, id=1>Output port for kg_info</cite> <cite, id=2>row 1</cite> <cite, id=3>row 0</cite>

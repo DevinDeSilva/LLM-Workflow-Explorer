@@ -1,0 +1,2 @@
+Answer
+The SPARQL Query Builder execution (sparql query 1 1 6) ran with inputs extracts, row 0, row 1 and produced extracts, kg info, row 0, row 1. <cite, id=0>sparql query 1 1 6</cite> <cite, id=1>SPARQL Query Builder</cite> <cite, id=2>extracts</cite> <cite, id=3>row 1</cite> <cite, id=4>row 0</cite> <cite, id=5>kg info</cite>

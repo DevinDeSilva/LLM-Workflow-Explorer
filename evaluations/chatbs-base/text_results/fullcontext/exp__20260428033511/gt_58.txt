@@ -1,0 +1,19 @@
+Answer
+**Answer**  
+The data used by execution `http://testwebsite/testProgram#id_20260420105711_662` were produced by the **Information Extractor function generator** (`workflow:Generative_Task` `ChatBS‑NexGen:information_extractor`).  
+
+**Relevant entities**  
+- `ChatBS-NexGen:information_extractor` (Information Extractor)  
+- `ChatBS-NexGen:Generation-id_20260420105703_814-extracts` (generation of the extracted entities)  
+
+**Evidence**  
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS‑NexGen:id_20260420105711_662` | `prov:used` | `ChatBS‑NexGen:Data-id_20260420105703_198-extracts` |
+| `ChatBS‑NexGen:Data-id_20260420105703_198-extracts` | `prov:wasGeneratedBy` | `ChatBS‑NexGen:Generation-id_20260420105703_814-extracts` |
+| `ChatBS‑NexGen:Generation-id_20260420105703_814-extracts` | `prov:qualifiedGeneration` | `ChatBS‑NexGen:Generation-id_20260420105703_814-extracts` |
+| `ChatBS‑NexGen:Generation-id_20260420105703_814-extracts` | `prov:wasGeneratedBy` | `ChatBS‑NexGen:Information_extractor` |
+| `ChatBS‑NexGen:Information_extractor` | `rdf:type` | `workflow:Generative_Task` |
+
+These triples show that the extracted data (`Data-id_20260420105703_198-extracts`) used by the execution were created by the Information Extractor generative task. <cite, id=0>Information Extractor function generator</cite> <cite, id=1>Information Extractor function generator</cite> <cite, id=2>Information Extractor</cite> <cite, id=3>Extracted Entities</cite> <cite, id=4>Generative Task</cite> <cite, id=5>Generation</cite>

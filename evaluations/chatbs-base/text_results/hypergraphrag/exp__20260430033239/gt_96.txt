@@ -1,0 +1,16 @@
+Answer
+**Answer**
+
+The execution identified by `http://testwebsite/testProgram#id_20260420105711_772` produces **one output** on the *Output port for kg_info*.
+
+---
+
+### How we arrived at this
+
+| Step | Evidence |
+|------|----------|
+| 1. Locate the relevant generation | The SPARQL query activity `id_20260420105711_772` is linked to a *Generation* that has an `provone:hadOutPort` pointing to `ChatBS-NexGen:sparql_query_extractor-kg_info`. |
+| 2. Check the port definition | In the source data, `ChatBS-NexGen:sparql_query_extractor-kg_info` is defined as a single output port (`provone:Port`) with no multiplicity or list of outputs. |
+| 3. Infer the number of outputs | Since the port is singular and each generation instance emits one value through it, the execution yields **1** output on that port. |
+
+Thus, for the specified execution, the *Output port for kg_info* produces a single result.

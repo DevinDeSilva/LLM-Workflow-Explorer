@@ -1,0 +1,8 @@
+Result
+Got 1 row and 1 column in 0.00s:
+| exec                                                                                          |
+| --------------------------------------------------------------------------------------------- |
+| generated_answer@en^^<xsd:string> (ChatBS-NexGen:Data-id_20260420105659_338-generated_answer) |
+
+Answer
+The execution that created the output data used as input for the generative task in execution "http://testwebsite/testProgram#id_20260420105703_307" is the information extraction activity with IRI <ChatBS-NexGen:id_20260420105703_307>.

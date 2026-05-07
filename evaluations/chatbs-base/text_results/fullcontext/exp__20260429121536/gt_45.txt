@@ -1,0 +1,2 @@
+Answer
+No. The executions of the SPARQL query builder (sparql_query_extractor) are ordinary provone:Execution instances that do not involve a workflow:Generative_Task as part of their execution chain, and the program itself is not produced by any Generative_Task. <cite, id=0>SPARQL Query Builder</cite> <cite, id=1>sparql query 1 1 2</cite> <cite, id=2>sparql query 1 1 1</cite>

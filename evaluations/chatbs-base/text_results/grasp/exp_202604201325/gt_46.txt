@@ -1,0 +1,5 @@
+Result
+Got no rows and 1 columns in 0.00s
+
+Answer
+<|channel|>final <|constrain|>answer<|message|>{"kg":"chatbs","sparql":"PREFIX ChatBS-NexGen:<http://testwebsite/testProgram#>\nPREFIX provone:<http://purl.dataone.org/provone/2015/01/15/ontology#>\nPREFIX workflow:<http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/>\n\n# Check if any Execution of llm_chat has a component that is a Generative Task\nSELECT DISTINCT ?exec WHERE {\n  ?exec a provone:Execution ; cwfo:hasFunction ?func .\n  ?func a workflow:Generative_Task .\n}\nUNION\n# Check if the llm_chat function itself is produced by a Generative Task\nSELECT DISTINCT ?exec WHERE {\n  ?exec a provone:Execution ; cwfo:hasOutPort ?port .\n  ?port provone:isOutputOf <http://testwebsite/testProgram#llm_chat> .\n}\n","answer":"No executions of the llm_chat function are linked to a Generative Task component, and the llm_chat function itself is not produced by a Generative Task."}

@@ -1,0 +1,66 @@
+Answer
+```json
+{
+  "answer": "The workflow employs AI (large language models) at four distinct stages: generating the system prompt, chatting with the user, extracting entities from the LLM’s answer, and post‑processing the extracted data. These steps are implemented by dedicated programs that invoke a GPT‑4o model.",
+  "relevant_entities": [
+    "<http://testwebsite/testProgram#system_prompt_generator>",
+    "<http://testwebsite/testProgram#llm_chat>",
+    "<http://testwebsite/testProgram#information_extractor>",
+    "<http://testwebsite/testProgram#query_result_post_processor>"
+  ],
+  "evidence": [
+    {
+      "subject": "<http://testwebsite/testProgram#Generation-id_20260420105652_907-system_prompt>",
+      "predicate": "<http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity>",
+      "object": "<http://testwebsite/testProgram#Data-id_20260420105652_456-system_prompt>"
+    },
+    {
+      "subject": "<http://testwebsite/testProgram#Generation-id_20260420105652_907-system_prompt>",
+      "predicate": "<http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort>",
+      "object": "<http://testwebsite/testProgram#system_prompt_generator-system_prompt>"
+    },
+    {
+      "subject": "<http://testwebsite/testProgram#Generation-id_20260420105659_282-generated_answer>",
+      "predicate": "<http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity>",
+      "object": "<http://testwebsite/testProgram#Data-id_20260420105659_338-generated_answer>"
+    },
+    {
+      "subject": "<http://testwebsite/testProgram#Generation-id_20260420105659_282-generated_answer>",
+      "predicate": "<http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort>",
+      "object": "<http://testwebsite/testProgram#llm_chat-generated_answer>"
+    },
+    {
+      "subject": "<http://testwebsite/testProgram#Generation-id_20260420105703_814-extracts>",
+      "predicate": "<http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity>",
+      "object": [
+        "<http://testwebsite/testProgram#Data-id_20260420105703_198-extracts>",
+        "<http://testwebsite/testProgram#Data-id_20260420105703_218-extracts>",
+        "<http://testwebsite/testProgram#Data-id_20260420105703_51-extracts>",
+        "<http://testwebsite/testProgram#Data-id_20260420105703_661-extracts>",
+        "<http://testwebsite/testProgram#Data-id_20260420105703_678-extracts>",
+        "<http://testwebsite/testProgram#Data-id_20260420105703_693-extracts>",
+        "<http://testwebsite/testProgram#Data-id_20260420105703_757-extracts>",
+        "<http://testwebsite/testProgram#Data-id_20260420105703_886-extracts>",
+        "<http://testwebsite/testProgram#Data-id_20260420105703_891-extracts>",
+        "<http://testwebsite/testProgram#Data-id_20260420105704_531-extracts>",
+        "<http://testwebsite/testProgram#Data-id_20260420105704_782-extracts>"
+      ]
+    },
+    {
+      "subject": "<http://testwebsite/testProgram#Generation-id_20260420105703_814-extracts>",
+      "predicate": "<http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort>",
+      "object": "<http://testwebsite/testProgram#information_extractor-extracts>"
+    },
+    {
+      "subject": "<http://testwebsite/testProgram#Generation-id_20260420105727_328-post_processed_output>",
+      "predicate": "<http://purl.dataone.org/provone/2015/01/15/ontology#hadEntity>",
+      "object": "<http://testwebsite/testProgram#Data-id_20260420105727_858-post_processed_output>"
+    },
+    {
+      "subject": "<http://testwebsite/testProgram#Generation-id_20260420105727_328-post_processed_output>",
+      "predicate": "<http://purl.dataone.org/provone/2015/01/15/ontology#hadOutPort>",
+      "object": "<http://testwebsite/testProgram#query_result_post_processor-post_processed_output>"
+    }
+  ]
+}
+``` <cite, id=0>Query Result Post-Processor</cite> <cite, id=1>Large Language Models</cite> <cite, id=2>post processed output</cite> <cite, id=3>Information Extractor</cite> <cite, id=4>post processed output</cite> <cite, id=5>generated answer</cite>

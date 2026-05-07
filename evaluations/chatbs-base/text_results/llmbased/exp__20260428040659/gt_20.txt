@@ -1,0 +1,2 @@
+Answer
+The closest grounded workflow step is SPARQL Query Builder (sparql query 1 1 6); used extracts, row 0, row 1; generated extracts, kg info, row 0, row 1. <cite, id=0>sparql query 1 1 6</cite> <cite, id=1>SPARQL Query Builder</cite> <cite, id=2>extracts</cite> <cite, id=3>row 1</cite> <cite, id=4>row 0</cite> <cite, id=5>kg info</cite>

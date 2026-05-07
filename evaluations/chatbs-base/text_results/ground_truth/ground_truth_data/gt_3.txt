@@ -1,0 +1,7 @@
+Answer
+The ingredients have missing values for `sugarG` and `ingredientCat` columns such below as they are 
+not available in the KG
+1. Chicken
+2. Cheese
+3. Tuna
+4. Turkey

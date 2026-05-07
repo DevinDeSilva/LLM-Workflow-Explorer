@@ -1,0 +1,2 @@
+Answer
+The closest grounded entity is Extracted Entities. <cite, id=0>Extracted Entities</cite>

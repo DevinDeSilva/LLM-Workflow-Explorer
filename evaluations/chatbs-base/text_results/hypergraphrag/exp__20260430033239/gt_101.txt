@@ -1,0 +1,2 @@
+Answer
+I’m sorry, but the provided provenance records do not contain any information linking the **“Output port for kg_info”** to an execution with the identifier `http://testwebsite/testProgram#id_20260420105727_300`. Consequently, I cannot determine how many outputs were produced by that port in that specific execution.

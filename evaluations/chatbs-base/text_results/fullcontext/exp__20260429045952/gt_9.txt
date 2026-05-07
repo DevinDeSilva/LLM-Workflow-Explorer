@@ -1,0 +1,2 @@
+Answer
+The Information Extraction program takes the LLM‑generated answer text (Data‑id_20260420105659_338-generated_answer) as its input. <cite, id=0>Information Extractor</cite> <cite, id=1>Input port for text</cite> <cite, id=2>Channel for the generated answer</cite> <cite, id=3>generated answer</cite>

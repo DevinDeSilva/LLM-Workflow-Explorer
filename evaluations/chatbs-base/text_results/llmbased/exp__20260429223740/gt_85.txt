@@ -1,0 +1,2 @@
+Answer
+The closest grounded entity is Input port for entity. <cite, id=0>Input port for entity</cite>

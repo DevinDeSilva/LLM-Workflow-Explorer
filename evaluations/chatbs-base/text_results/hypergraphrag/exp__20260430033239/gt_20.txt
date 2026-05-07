@@ -1,0 +1,4 @@
+Answer
+**Answer**
+
+The *KG query extraction input port: query function* is linked only to the **Batch SPARQL Query Extractor** program through its input‑port connection. No other program is connected via that specific port parameter in the provided provenance data.

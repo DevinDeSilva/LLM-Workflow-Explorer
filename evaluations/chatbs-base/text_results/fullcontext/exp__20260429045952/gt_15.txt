@@ -1,0 +1,25 @@
+Answer
+**Answer**  
+The SPARQL query function (`s.sparql_query_extractor`) exposes two parameters:  
+
+1. **Input port:** `ChatBS-NexGen:sparql_query_extractor-entity` – the entity for which information is requested.  
+2. **Output port:** `ChatBS-NexGen:sparql_query_extractor-kg_info` – the data returned by the query (knowledge‑graph rows).  
+
+**Relevant entities**  
+```json
+[
+  "ChatBS-NexGen:sparql_query_extractor-entity",
+  "ChatBS-NexGen:sparql_query_extractor-kg_info"
+]
+```
+
+**Evidence**  
+
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS-NexGen:sparql_query_extractor` | `provone:hasInPort` | `ChatBS-NexGen:sparql_query_extractor-entity` |
+| `ChatBS-NexGen:sparql_query_extractor` | `provone:hasOutPort` | `ChatBS-NexGen:sparql_query_extractor-kg_info` |
+| `ChatBS-NexGen:sparql_query_extractor-entity` | `rdf:type` | `provone:Port` |
+| `ChatBS-NexGen:sparql_query_extractor-kg_info` | `rdf:type` | `provone:Port` |
+
+These triples show that the function takes an entity as input and produces KG‑information rows as output. <cite, id=0>kg info</cite> <cite, id=1>kg info</cite> <cite, id=2>kg info</cite> <cite, id=3>kg info</cite> <cite, id=4>kg info</cite> <cite, id=5>kg info</cite>

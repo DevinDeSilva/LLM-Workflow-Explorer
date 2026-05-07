@@ -1,0 +1,2 @@
+Answer
+The information‑extractor’s output port "Extracted Entities" is connected (via a channel) to the SPARQL query extractor program. <cite, id=0>Input port for text</cite> <cite, id=1>Information Extractor</cite> <cite, id=2>KG query extraction input port: query function</cite> <cite, id=3>Output port for kg info</cite> <cite, id=4>Extracted Entities</cite>

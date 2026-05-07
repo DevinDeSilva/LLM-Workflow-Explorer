@@ -1,0 +1,2 @@
+Answer
+No, the system prompt supplied to the LLM chat was not produced by a Generative Task. <cite, id=0>system prompt</cite> <cite, id=1>system prompt</cite> <cite, id=2>llm chat 1 1</cite>

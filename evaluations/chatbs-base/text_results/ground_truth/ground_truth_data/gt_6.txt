@@ -1,0 +1,6 @@
+Answer
+We utilize the following input instructions to generate the function responsible for information extraction.
+
+    Funtion | Instruction for function generation
+http://testwebsite/testProgram#information_extractor | gpt-4o@en^^<xsd:string>
+http://testwebsite/testProgram#information_extractor | Extract all the main ingredients without any subsidiary; return in singular noun form and First letter capital. Extract mean and dairy product in its' base form. (e.g., from 'egg white' extract 'Egg')@en^^<xsd:string>

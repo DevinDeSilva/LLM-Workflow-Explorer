@@ -1,0 +1,2 @@
+Answer
+The execution **`http://testwebsite/testProgram#id_20260420105652_650`** generates exactly one *System Prompt*—the `Generation-id_20260420105652_907-system_prompt` entity, which produces the single system prompt data item (`ChatBS-NexGen:Data-id_20260420105652_456-system_prompt`).

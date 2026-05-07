@@ -1,0 +1,2 @@
+Answer
+The function used in the system‑prompt template step outputs a single parameter called **system_prompt**. <cite, id=0>System Prompt</cite>

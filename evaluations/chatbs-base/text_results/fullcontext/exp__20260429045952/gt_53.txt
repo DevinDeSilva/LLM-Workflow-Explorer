@@ -1,0 +1,17 @@
+Answer
+**Answer**  
+The execution `http://testwebsite/testProgram#id_20260420105703_307` used the *generated‑answer* data, which was produced by the Generative Task **`LLM Generates an text for system prompt: You are a health care assistant … user prompt: I need suggestions …`** (identifier `http://testwebsite/testProgram#id_20260420105659_302`).  
+
+**Relevant entities**  
+- `ChatBS-NexGen:id_20260420105703_307` (execution)  
+- `ChatBS-NexGen:id_20260420105659_302` (LLM‑generative task that produced the answer)
+
+**Evidence**  
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS-NexGen:id_20260420105703_307` | `prov:qualifiedUsage` | `ChatBS-NexGen:Usage-id_20260420105703_331-text` |
+| `ChatBS-NexGen:Usage-id_20260420105703_331-text` | `provone:hadEntity` | `ChatBS-NexGen:Data-id_20260420105659_338-generated_answer` |
+| `ChatBS-NexGen:Data-id_20260420105659_338-generated_answer` | `prov:wasGeneratedBy` | `ChatBS-NexGen:id_20260420105659_282-generated_answer` |
+| `ChatBS-NexGen:id_20260420105659_282-generated_answer` | `prov:hadOutPort` | `ChatBS-NexGen:llm_chat-generated_answer` |
+| `ChatBS-NexGen:llm_chat-generated_answer` | `prov:wasGeneratedBy` | `ChatBS-NexGen:id_20260420105659_302` |
+| `ChatBS-NexGen:id_20260420105659_302` | `rdf:type` | `workflow:Generative_Task` | <cite, id=0>generated answer</cite> <cite, id=1>generated answer</cite> <cite, id=2>Generative Task</cite> <cite, id=3>system prompt</cite> <cite, id=4>system prompt</cite> <cite, id=5>System Prompt</cite>

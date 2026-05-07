@@ -1,0 +1,27 @@
+Answer
+**Answer:**  
+The pipeline has a single execution for the information‑extraction step, identified as `ChatBS-NexGen:id_20260420105703_307`. This execution was performed by user `ChatBS-NexGen:test_user`, started at "2026‑04‑20 10:56:59", ended at "2026‑04‑20 10:57:03", and used the generated answer (`Data-id_20260420105659_338-generated_answer`) as input. It produced seven extracted entity outputs (`Data-id_*-extracts`) that were gathered by the Information Extractor program.
+
+**Relevant entities**
+```json
+[
+  "ChatBS-NexGen:id_20260420105703_307",
+  "ChatBS-NexGen:information_extractor",
+  "ChatBS-NexGen:Data-id_20260420105659_338-generated_answer",
+  "ChatBS-NexGen:test_user"
+]
+```
+
+**Evidence (supporting triples)**  
+| subject | predicate | object |
+|---------|-----------|--------|
+| `ChatBS-NexGen:id_20260420105703_307` | rdf:type | `provone:Execution` |
+| `ChatBS-NexGen:id_20260420105703_307` | prov:startedAt | `"2026-04-20 10:56:59"` |
+| `ChatBS-NexGen:id_20260420105703_307` | prov:endedAt | `"2026-04-20 10:57:03"` |
+| `ChatBS-NexGen:id_20260420105703_307` | prov:qualifiedAssociation | `ChatBS-NexGen:information_extractor-Association-id_20260420105703_307` |
+| `ChatBS-NexGen:id_20260420105703_307` | prov:qualifiedGeneration | `ChatBS-NexGen:Generation-id_20260420105703_814-extracts` |
+| `ChatBS-NexGen:id_20260420105703_307` | prov:qualifiedUsage | `ChatBS-NexGen:Usage-id_20260420105703_331-text` |
+| `ChatBS-NexGen:id_20260420105703_307` | prov:used | `ChatBS-NexGen:Data-id_20260420105659_338-generated_answer` |
+| `ChatBS-NexGen:id_20260420105703_307` | prov:wasAssociatedWith | `ChatBS-NexGen:test_user` |
+
+These triples confirm that the only information‑extraction execution in the graph is `id_20260420105703_307`. <cite, id=0>information extractor Association</cite> <cite, id=1>Information Extractor</cite> <cite, id=2>generated answer</cite> <cite, id=3>generated answer</cite> <cite, id=4>Association</cite> <cite, id=5>Generation</cite>

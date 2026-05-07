@@ -1,0 +1,4 @@
+Answer
+The executions of the  sparql query function function are.
+
+    Agents

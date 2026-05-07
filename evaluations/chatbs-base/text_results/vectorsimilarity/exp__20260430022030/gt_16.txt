@@ -1,0 +1,2 @@
+Answer
+The function used in the LLM chat step outputs a "Query Result Post‑Processor" object (ChatBS‑NexGen:query_result_post_processor), which represents the processed query result. <cite, id=0>LLM Output query result post processor</cite> <cite, id=1>LLM Output information extractor</cite> <cite, id=2>Query Result Post Processor function generator</cite> <cite, id=3>LLM Output system prompt generator</cite> <cite, id=4>Information Extractor function generator</cite>

@@ -1,0 +1,43 @@
+Answer
+{
+  "answer": "The only execution of the System Prompt Template step in this workflow is the execution with identifier *system_prompt_execution_1_1*, which corresponds to the instance `<http://testwebsite/testProgram#id_20260420105652_650>`.",
+  "relevant_entities": [
+    "<http://testwebsite/testProgram#id_20260420105652_650>"
+  ],
+  "evidence": [
+    {
+      "subject": "<http://testwebsite/testProgram#id_20260420105652_650>",
+      "predicate": "<http://www.w3.org/ns/prov#qualifiedAssociation>",
+      "object": "<http://testwebsite/testProgram#ChatBS-NexGen:system_prompt_generator-Association-id_20260420105652_650>"
+    },
+    {
+      "subject": "<http://testwebsite/testProgram#id_20260420105652_650>",
+      "predicate": "<http://www.w3.org/ns/prov#qualifiedGeneration>",
+      "object": "<http://testwebsite/testProgram#Generation-id_20260420105652_907-system_prompt>"
+    },
+    {
+      "subject": "<http://testwebsite/testProgram#id_20260420105652_650>",
+      "predicate": "<http://www.w3.org/ns/prov#startedAt>",
+      "object": "\"2026-04-20 10:56:51@en^^<xsd:string>\""
+    },
+    {
+      "subject": "<http://testwebsite/testProgram#id_20260420105652_650>",
+      "predicate": "<http://www.w3.org/ns/prov#endedAt>",
+      "object": "\"2026-04-20 10:56:51@en^^<xsd:string>\""
+    },
+    {
+      "subject": "<http://testwebsite/testProgram#id_20260420105652_650>",
+      "predicate": "<http://www.w3.org/ns/prov#used>",
+      "object": [
+        "<http://testwebsite/testProgram#Data-id_20260420105652_112-foodPreferences>",
+        "<http://testwebsite/testProgram#Data-id_20260420105652_420-weight>",
+        "<http://testwebsite/testProgram#Data-id_20260420105652_470-bodyMassIndex>",
+        "<http://testwebsite/testProgram#Data-id_20260420105652_604-allergies>",
+        "<http://testwebsite/testProgram#Data-id_20260420105652_753-diagnosis>",
+        "<http://testwebsite/testProgram#Data-id_20260420105652_79-age>",
+        "<http://testwebsite/testProgram#Data-id_20260420105652_838-height>",
+        "<http://testwebsite/testProgram#Data-id_20260420105652_904-gender>"
+      ]
+    }
+  ]
+} <cite, id=0>system prompt generator Association</cite> <cite, id=1>system prompt execution 1 1</cite> <cite, id=2>foodPreferences</cite> <cite, id=3>system prompt</cite> <cite, id=4>system prompt</cite> <cite, id=5>bodyMassIndex</cite>

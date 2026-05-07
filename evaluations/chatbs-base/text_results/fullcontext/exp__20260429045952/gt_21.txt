@@ -1,0 +1,4 @@
+Answer
+The LLM chat function is directly linked to two other programs through its input and output ports:
+1. **System Prompt Generator** – supplies the system prompt that feeds into the LLM chat.
+2. **Information Extractor** – receives the generated answer from the LLM chat for entity extraction. <cite, id=0>System Prompt Template Generator</cite> <cite, id=1>Information Extractor</cite>

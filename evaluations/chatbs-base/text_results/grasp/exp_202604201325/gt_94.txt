@@ -1,0 +1,8 @@
+Result
+Got 1 row and 1 column in 0.00s:
+| count           |
+| --------------- |
+| 0 (xsd:integer) |
+
+Answer
+<|channel|>final to=functions.answer<|constrain|>json<|message|>{"kg":"chatbs","sparql":"SELECT (COUNT(?out) AS ?count) WHERE { <ChatBS-NexGen:Generation-id_20260420105711_508-kg_info> provone:hadOutPort ?out . }","answer":"0"}

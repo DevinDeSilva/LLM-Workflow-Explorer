@@ -1,0 +1,8 @@
+Answer
+**Output Parameters of the “SPARQL Query Function” Step**
+
+| Step | Component | Output Parameter(s) |
+|------|-----------|---------------------|
+| **SPARQL Query Function (KG query extraction input port: query function)** | `ChatBS-NexGen:batch_sparql_query_extractor-query_function` | The step feeds the *SPARQL Query Builder* (`ChatBS-NexGen:sparql_query_extractor`) with a query string. The builder then emits **kg_info** through its output port `ChatBS-NexGen:sparql_query_extractor-kg_info`. This `kg_info` is a structured representation (typically a set of triples or a data frame) containing the extracted knowledge‑graph information for each entity processed in batch mode. |
+
+In short, the function invoked by the “SPARQL Query Function” step produces **kg_info** as its output, which downstream components such as the Data Frame Combiner and the Batch SPARQL Query Extractor consume to assemble the final knowledge‑graph results.

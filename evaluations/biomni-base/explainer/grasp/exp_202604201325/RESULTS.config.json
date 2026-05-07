@@ -15,7 +15,7 @@
   "notes_file": null,
   "knowledge_graphs": [
     {
-      "kg": "chatbs",
+      "kg": "biomni",
       "endpoint": "http://localhost:3030/biomni/sparql",
       "entities_type": "fuzzy",
       "properties_type": "embedding",

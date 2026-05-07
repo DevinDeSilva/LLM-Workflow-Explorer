@@ -1,0 +1,9 @@
+Answer
+The retrieved entities from the knowledge graph includes the following ingredients,
+
+1. Chicken
+2. Tuna
+3. Yogurt
+4. Cheese
+5. Turkey
+6. Avocado

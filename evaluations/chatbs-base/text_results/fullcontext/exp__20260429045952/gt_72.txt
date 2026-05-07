@@ -1,0 +1,2 @@
+Answer
+No – the height value was supplied directly in the system‑prompt execution and was not produced by any generative task. <cite, id=0>system prompt execution 1 1</cite> <cite, id=1>height</cite> <cite, id=2>height</cite>

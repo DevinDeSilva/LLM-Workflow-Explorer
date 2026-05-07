@@ -1,0 +1,6 @@
+Answer
+The connected functions to llm chat function function.
+
+    Funtion URI | Function name
+http://testwebsite/testProgram#system_prompt_generator | System Prompt Template Generator@en^^<xsd:string>
+http://testwebsite/testProgram#information_extractor | Information Extractor@en^^<xsd:string>

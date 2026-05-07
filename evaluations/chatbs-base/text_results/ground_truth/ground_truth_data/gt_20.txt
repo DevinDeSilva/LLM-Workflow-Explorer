@@ -1,0 +1,4 @@
+Answer
+The connected functions to sparql query function function.
+
+    Funtion URI | Function name

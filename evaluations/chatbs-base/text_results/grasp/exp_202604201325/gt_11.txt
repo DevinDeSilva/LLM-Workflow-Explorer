@@ -1,0 +1,11 @@
+Result
+Got 2 rows and 2 columns in 0.00s:
+| port                                                                                       | label                                               |
+| ------------------------------------------------------------------------------------------ | --------------------------------------------------- |
+| LLM Chat input port: system_prompt@en^^<xsd:string> (ChatBS-NexGen:llm_chat-system_prompt) | LLM Chat input port: system_prompt@en^^<xsd:string> |
+| LLM Chat input port: user_prompt@en^^<xsd:string> (ChatBS-NexGen:llm_chat-user_prompt)     | LLM Chat input port: user_prompt@en^^<xsd:string>   |
+
+Answer
+The input parameters of the function used in the llm chat step are:
+- system_prompt
+- user_prompt

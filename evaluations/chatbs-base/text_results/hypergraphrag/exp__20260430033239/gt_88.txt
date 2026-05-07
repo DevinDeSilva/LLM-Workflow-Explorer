@@ -1,0 +1,16 @@
+Answer
+**Answer**
+
+The execution identified by `http://testwebsite/testProgram#id_20260420105727_835` produced **one** output on the *Post‑processed output port: post_processed_output*.
+
+---
+
+### How we know
+
+| Step | Evidence |
+|------|----------|
+| 1. Identify the port | The port is defined as `ChatBS-NexGen:query_result_post_processor-post_processed_output` with label “Post‑processed output port: post_processed_output”. |
+| 2. Link to execution | The execution `id_20260420105727_835` (label *post_processing_1_1*) has a qualified generation that references the **Generation post processed output** (`ChatBS-NexGen:Generation-id_20260420105727_328-post_processed_output`). |
+| 3. Count outputs | The Generation object lists only one `provone:hadOutPort` pointing to the aforementioned port, indicating a single output was produced during that execution. |
+
+Thus, the number of outputs for that port in this particular execution is **1**.

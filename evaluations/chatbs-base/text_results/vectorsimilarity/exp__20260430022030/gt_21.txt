@@ -1,0 +1,2 @@
+Answer
+The retrieved descriptions do not provide any information about additional programs connected to the LLM Chat function through its port parameters. <cite, id=0>LLM Chat</cite> <cite, id=1>LLM Chat input port: system prompt</cite> <cite, id=2>LLM Chat output port: generated answer</cite> <cite, id=3>LLM Chat input port: user prompt</cite> <cite, id=4>Post processing input port: kg knowledge</cite>

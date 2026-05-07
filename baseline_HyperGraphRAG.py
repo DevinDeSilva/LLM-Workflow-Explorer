@@ -158,11 +158,11 @@ class OpenAIChatUsageTracker:
         if self.max_tokens is not None:
             request_kwargs["max_tokens"] = self.max_tokens
 
-        client = AsyncOpenAI(
+        async with AsyncOpenAI(
             base_url=self.base_url,
             api_key=os.environ.get("OPENAI_API_KEY") or self.api_key,
-        )
-        response = await client.chat.completions.create(**request_kwargs)
+        ) as client:
+            response = await client.chat.completions.create(**request_kwargs)
         content = response.choices[0].message.content or ""
         usage = response.usage
         usage_dict = {
@@ -228,15 +228,15 @@ def _make_embedding_func(
     async def _embed(texts: list[str]) -> np.ndarray:
         from openai import AsyncOpenAI
 
-        client = AsyncOpenAI(
+        async with AsyncOpenAI(
             base_url=base_url,
             api_key=os.environ.get("OPENAI_API_KEY") or "sk-",
-        )
-        response = await client.embeddings.create(
-            model=model,
-            input=texts,
-            encoding_format="float",
-        )
+        ) as client:
+            response = await client.embeddings.create(
+                model=model,
+                input=texts,
+                encoding_format="float",
+            )
         return np.array([item.embedding for item in response.data])
 
     return EmbeddingFunc(
@@ -608,4 +608,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

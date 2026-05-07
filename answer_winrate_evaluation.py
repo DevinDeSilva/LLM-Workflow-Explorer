@@ -18,6 +18,13 @@ from IPython.display import display
 from tqdm import tqdm
 
 from src.config.experiment import FullContextExperimentConfig
+from src.evaluation.recompute import (
+    RecomputeConfig,
+    build_recompute_config,
+    qtypes_match,
+    selected_ground_truth_ids,
+    validate_selected_methods,
+)
 from src.evaluation.report_builders import augment_ours_record_with_reports
 from src.experiment.ground_truth import GTInfo
 from src.llm import LLM
@@ -28,7 +35,7 @@ REPO_ROOT = Path.cwd()
 load_dotenv(REPO_ROOT / ".env")
 
 _winrate_judge_llm: Any | None = None
-ANSWER_REPORT = "original"
+
 
 class PairwiseAnswerWinrateSignature(dspy.Signature):
     """
@@ -101,9 +108,46 @@ SAVE_DIR = resolve_repo_path(
     )
 )
 WINRATE_CONFIG = EVALUATION_SETTINGS.get("winrate", {})
+ANSWER_REPORT = WINRATE_CONFIG.get("answer_report", "original")
 WINRATE_JUDGE_LLM = WINRATE_CONFIG.get("judge_llm") or JUDGE_LLM
 WINRATE_TIE_SCORE = WINRATE_CONFIG.get("tie_score", 0.5)
 WINRATE_SAVE_DIR = SAVE_DIR / f"answer_winrate-{ANSWER_REPORT}"
+AVAILABLE_PREDICTION_METHODS = list(
+    dict.fromkeys([*PREDICTION_DIRS, *CONFIGURED_PREDICTION_FILES])
+)
+WINRATE_METHODS = WINRATE_CONFIG.get("methods") or AVAILABLE_PREDICTION_METHODS
+validate_selected_methods(
+    set(WINRATE_METHODS),
+    set(AVAILABLE_PREDICTION_METHODS),
+    "winrate configured",
+)
+WINRATE_RECOMPUTE_CONFIG = build_recompute_config(
+    EVALUATION_SETTINGS.get("recompute", {}),
+    WINRATE_CONFIG.get("recompute", {}),
+    WINRATE_SAVE_DIR,
+    resolve_repo_path,
+)
+validate_selected_methods(
+    WINRATE_RECOMPUTE_CONFIG.methods,
+    set(WINRATE_METHODS),
+    "winrate",
+)
+
+
+def winrate_prediction_methods_to_resolve(
+    methods: list[str],
+    selected_methods: set[str] | None,
+) -> set[str] | None:
+    if selected_methods is None:
+        return set(methods)
+    selected_available_methods = selected_methods & set(methods)
+    if not selected_available_methods:
+        return set()
+    if "ours" in selected_available_methods:
+        return set(methods)
+    if "ours" in methods:
+        return selected_available_methods | {"ours"}
+    return selected_available_methods
 
 
 def latest_prediction_file(
@@ -135,15 +179,18 @@ def resolve_prediction_files(
     prediction_dirs: Mapping[str, str | Path],
     prediction_files: Mapping[str, str | Path],
     prediction_filename: str = "RESULTS.jsonl",
+    selected_methods: set[str] | None = None,
 ) -> dict[str, Path]:
     resolved = {
         codename: latest_prediction_file(experiments_dir, prediction_filename)
         for codename, experiments_dir in prediction_dirs.items()
+        if selected_methods is None or codename in selected_methods
     }
     resolved.update(
         {
             codename: resolve_repo_path(file_path)
             for codename, file_path in prediction_files.items()
+            if selected_methods is None or codename in selected_methods
         }
     )
     return resolved
@@ -153,8 +200,11 @@ PREDICTION_FILES = resolve_prediction_files(
     PREDICTION_DIRS,
     CONFIGURED_PREDICTION_FILES,
     PREDICTION_FILENAME,
+    winrate_prediction_methods_to_resolve(
+        WINRATE_METHODS,
+        WINRATE_RECOMPUTE_CONFIG.methods,
+    ),
 )
-WINRATE_METHODS = WINRATE_CONFIG.get("methods") or list(PREDICTION_FILES.keys())
 WINRATE_METHOD_LABELS = {
     "ours": "LWE",
     "our": "LWE",
@@ -248,6 +298,12 @@ print(f"Ground-truth examples: {len(GT_BUNDLE['records'])}")
 
 display(
     pd.DataFrame(GT_BUNDLE["records"])[["id", "question", "qtype"]].head()
+)
+
+
+WINRATE_RECOMPUTE_GROUND_TRUTH_IDS = selected_ground_truth_ids(
+    GT_BUNDLE["records"],
+    WINRATE_RECOMPUTE_CONFIG,
 )
 
 
@@ -360,6 +416,12 @@ def load_prediction_runs(
     runs: dict[str, list[dict[str, Any]]] = {}
     for codename, file_path in prediction_files.items():
         records = read_jsonl(file_path)
+        if WINRATE_RECOMPUTE_GROUND_TRUTH_IDS is not None:
+            records = [
+                record
+                for record in records
+                if str(record.get("id") or "") in WINRATE_RECOMPUTE_GROUND_TRUTH_IDS
+            ]
         if MAX_EXAMPLES_PER_RUN is not None:
             records = records[:MAX_EXAMPLES_PER_RUN]
 
@@ -370,8 +432,42 @@ def load_prediction_runs(
     return runs
 
 
+def winrate_recompute_pairs(
+    methods: list[str],
+    recompute_config: RecomputeConfig,
+) -> list[tuple[str, str]]:
+    pairs: list[tuple[str, str]] = []
+    for method_a, method_b in combinations(methods, 2):
+        if (method_b != "ours") and (method_a != "ours"):
+            continue
+        if recompute_config.methods is not None and not (
+            method_a in recompute_config.methods or method_b in recompute_config.methods
+        ):
+            continue
+        pairs.append((method_a, method_b))
+    return pairs
+
+
+def prediction_files_for_winrate_recompute(
+    prediction_files: Mapping[str, Path],
+    methods: list[str],
+    recompute_config: RecomputeConfig,
+) -> dict[str, Path]:
+    pairs = winrate_recompute_pairs(methods, recompute_config)
+    needed_methods = {method for pair in pairs for method in pair}
+    return {
+        method: prediction_files[method]
+        for method in methods
+        if method in needed_methods and method in prediction_files
+    }
+
+
 PREDICTION_RUNS = load_prediction_runs(
-    PREDICTION_FILES,
+    prediction_files_for_winrate_recompute(
+        PREDICTION_FILES,
+        WINRATE_METHODS,
+        WINRATE_RECOMPUTE_CONFIG,
+    ),
     INPUT_AUGMENTATION_MAP,
 )
 
@@ -468,7 +564,8 @@ def run_pairwise_answer_winrate(
     prediction_runs: Mapping[str, list[dict[str, Any]]],
 ) -> pd.DataFrame:
     methods = [method for method in WINRATE_METHODS if method in prediction_runs]
-    if len(methods) < 2:
+    pairs = winrate_recompute_pairs(methods, WINRATE_RECOMPUTE_CONFIG)
+    if not pairs:
         return pd.DataFrame()
 
     prediction_index, ground_truth_index = build_prediction_index_by_ground_truth(
@@ -477,14 +574,26 @@ def run_pairwise_answer_winrate(
     judge = dspy.Predict(PairwiseAnswerWinrateSignature)
     rows: list[dict[str, Any]] = []
 
-    for method_a, method_b in combinations(methods, 2):
-        if (method_b != "ours") and (method_a != "ours"):
-            continue
-
+    for method_a, method_b in pairs:
         shared_ground_truth_ids = sorted(
             set(prediction_index.get(method_a, {}))
             & set(prediction_index.get(method_b, {}))
         )
+        if WINRATE_RECOMPUTE_CONFIG.question_ids is not None:
+            shared_ground_truth_ids = [
+                ground_truth_id
+                for ground_truth_id in shared_ground_truth_ids
+                if ground_truth_id in WINRATE_RECOMPUTE_CONFIG.question_ids
+            ]
+        if WINRATE_RECOMPUTE_CONFIG.qtypes is not None:
+            shared_ground_truth_ids = [
+                ground_truth_id
+                for ground_truth_id in shared_ground_truth_ids
+                if qtypes_match(
+                    ground_truth_index[ground_truth_id].get("qtype", []),
+                    WINRATE_RECOMPUTE_CONFIG.qtypes,
+                )
+            ]
         if MAX_EXAMPLES_PER_RUN is not None:
             shared_ground_truth_ids = shared_ground_truth_ids[:MAX_EXAMPLES_PER_RUN]
 
@@ -594,8 +703,68 @@ def build_answer_winrate_summary(pairwise_df: pd.DataFrame) -> pd.DataFrame:
     return summary_df
 
 
+def cached_pairwise_row_matches_recompute(row: pd.Series) -> bool:
+    method_a = str(row.get("method_a_key") or row.get("method_a") or "")
+    method_b = str(row.get("method_b_key") or row.get("method_b") or "")
+    if WINRATE_RECOMPUTE_CONFIG.methods is not None and not (
+        method_a in WINRATE_RECOMPUTE_CONFIG.methods
+        or method_b in WINRATE_RECOMPUTE_CONFIG.methods
+    ):
+        return False
+
+    if WINRATE_RECOMPUTE_CONFIG.question_ids is not None:
+        ground_truth_id = str(row.get("ground_truth_id") or "")
+        if ground_truth_id not in WINRATE_RECOMPUTE_CONFIG.question_ids:
+            return False
+
+    if WINRATE_RECOMPUTE_CONFIG.qtypes is not None and not qtypes_match(
+        row.get("ground_truth_qtype"),
+        WINRATE_RECOMPUTE_CONFIG.qtypes,
+    ):
+        return False
+
+    return True
+
+
+def load_cached_pairwise_winrate() -> pd.DataFrame:
+    cached_path = WINRATE_RECOMPUTE_CONFIG.existing_results_dir / "pairwise_answer_winrate.csv"
+    if not cached_path.exists():
+        if WINRATE_RECOMPUTE_CONFIG.reuse_existing:
+            print(f"No cached winrate rows found at {cached_path}")
+        return pd.DataFrame()
+    return pd.read_csv(cached_path)
+
+
+def merge_cached_pairwise_winrate(new_pairwise_df: pd.DataFrame) -> pd.DataFrame:
+    if not WINRATE_RECOMPUTE_CONFIG.reuse_existing:
+        return new_pairwise_df
+
+    cached_df = load_cached_pairwise_winrate()
+    if cached_df.empty:
+        return new_pairwise_df
+
+    keep_cached_df = cached_df[
+        ~cached_df.apply(cached_pairwise_row_matches_recompute, axis=1)
+    ]
+    combined_df = pd.concat([keep_cached_df, new_pairwise_df], ignore_index=True)
+    dedupe_columns = [
+        column
+        for column in ("method_a_key", "method_b_key", "ground_truth_id")
+        if column in combined_df.columns
+    ]
+    if len(dedupe_columns) == 3:
+        combined_df = combined_df.drop_duplicates(subset=dedupe_columns, keep="last")
+    if {"method_a_key", "method_b_key", "ground_truth_id"} <= set(combined_df.columns):
+        combined_df = combined_df.sort_values(
+            ["method_a_key", "method_b_key", "ground_truth_id"]
+        ).reset_index(drop=True)
+    return combined_df
+
+
 def main() -> None:
-    answer_winrate_df = run_pairwise_answer_winrate(PREDICTION_RUNS)
+    answer_winrate_df = merge_cached_pairwise_winrate(
+        run_pairwise_answer_winrate(PREDICTION_RUNS)
+    )
     answer_winrate_summary_df = build_answer_winrate_summary(answer_winrate_df)
 
     display(answer_winrate_df.head())

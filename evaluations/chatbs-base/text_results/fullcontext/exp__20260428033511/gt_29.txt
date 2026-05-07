@@ -1,0 +1,2 @@
+Answer
+The only agent that executed the information‑extraction step was the user "test_user". <cite, id=0>test user</cite>
