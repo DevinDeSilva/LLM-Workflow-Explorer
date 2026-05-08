@@ -1,0 +1,2 @@
+dataset,classes_traversed,raw_paths,raw_sqs,sqs_after_filtering,avg_path_length,max_path_length
+ChatBS-NexGen,14,385,314,252,4.03,5

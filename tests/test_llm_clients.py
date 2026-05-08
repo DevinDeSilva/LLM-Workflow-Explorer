@@ -20,6 +20,11 @@ class FlexibleMarkerSignature(dspy.Signature):
     entitys: List[str] = dspy.OutputField()
 
 
+class QuestionInformationSignature(dspy.Signature):
+    question: str = dspy.OutputField()
+    information: str = dspy.OutputField()
+
+
 class FakeChatOpenAI:
     def __init__(self, **kwargs):
         self.kwargs = kwargs
@@ -99,6 +104,40 @@ def test_lmstudio_flexible_chat_adapter_parses_compact_field_markers():
     assert parsed == {
         "candidate_classes": ["provone:Program"],
         "entitys": ["ChatBS-NexGen:query_result_post_processor"],
+    }
+
+
+def test_lmstudio_flexible_chat_adapter_parses_marker_after_preamble():
+    adapter = lmstudio_module.FlexibleChatAdapter(use_json_adapter_fallback=False)
+
+    parsed = adapter.parse(
+        QuestionInformationSignature,
+        "Let's produce final.[[ ## question ## ]]\n"
+        "What executions are components of a given generative AI task?\n\n"
+        "[[ ## information ## ]]\n"
+        "The query returns all linked execution traces.\n\n"
+        "[[ ## completed ## ]]",
+    )
+
+    assert parsed == {
+        "question": "What executions are components of a given generative AI task?",
+        "information": "The query returns all linked execution traces.",
+    }
+
+
+def test_lmstudio_flexible_chat_adapter_parses_wrapped_json_response():
+    adapter = lmstudio_module.FlexibleChatAdapter(use_json_adapter_fallback=False)
+
+    parsed = adapter.parse(
+        QuestionInformationSignature,
+        '<|channel|>commentary to=developer <|constrain|>json<|message|>'
+        '{"question":"What entities were used during the execution?",'
+        '"information":"The query retrieves all prov:Entity instances used by the task."}',
+    )
+
+    assert parsed == {
+        "question": "What entities were used during the execution?",
+        "information": "The query retrieves all prov:Entity instances used by the task.",
     }
 
 

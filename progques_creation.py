@@ -358,10 +358,91 @@ def _(
 
 
 @app.cell
-def _(config, exp_list, os, pd):
-    exp_df = pd.DataFrame.from_records(exp_list)
+def _(config, exp_list, explorations, os, pd):
+    import json as _json
+    from pathlib import Path as _Path
+
+    def _path_class_length(path):
+        return (len(path) + 1) // 2
+
+    def _load_explorer_metadata():
+        metadata_path = (
+            _Path(config.explorer_config.exeprog_save_loc).parent
+            / "generation_metadata.json"
+        )
+        if not metadata_path.exists():
+            return {}, None
+
+        with metadata_path.open("r", encoding="utf-8") as handle:
+            return _json.load(handle), str(metadata_path)
+
+    def _save_generation_metadata(metadata, output_dir):
+        metadata_columns = [
+            "dataset",
+            "classes_traversed",
+            "raw_paths",
+            "raw_sqs",
+            "sqs_after_filtering",
+            "avg_path_length",
+            "max_path_length",
+        ]
+
+        json_path = output_dir / "generation_metadata.json"
+        csv_path = output_dir / "generation_metadata.csv"
+
+        with json_path.open("w", encoding="utf-8") as handle:
+            _json.dump(metadata, handle, indent=2, sort_keys=True)
+            handle.write("\n")
+
+        pd.DataFrame([
+            {column: metadata.get(column) for column in metadata_columns}
+        ]).to_csv(csv_path, index=False)
+
+    _exp_df = pd.DataFrame.from_records(exp_list)
     os.makedirs(os.path.dirname(config.question_creation_config.save_questions), exist_ok=True)
-    exp_df.to_csv(config.question_creation_config.save_questions, index=False)
+    _exp_df.to_csv(config.question_creation_config.save_questions, index=False)
+
+    _explorer_metadata, _explorer_metadata_path = _load_explorer_metadata()
+    _path_records = []
+    for _exp in explorations:
+        if "path-level" not in _exp.tags:
+            continue
+        _path = _exp.metadata.get("path")
+        if _path:
+            _path_records.append(tuple(_path))
+
+    _path_lengths = [_path_class_length(_path) for _path in set(_path_records)]
+    _fallback_classes = {_path[0] for _path in _path_records if _path}
+
+    _metadata = dict(_explorer_metadata)
+    _metadata.update({
+        "dataset": config.explorer_config.kg_name,
+        "stage": "question_creation",
+        "classes_traversed": _metadata.get(
+            "classes_traversed",
+            len(_fallback_classes),
+        ),
+        "raw_paths": _metadata.get("raw_paths", len(set(_path_records))),
+        "raw_sqs": len(explorations),
+        "sqs_after_filtering": len(exp_list),
+        "avg_path_length": _metadata.get(
+            "avg_path_length",
+            round(sum(_path_lengths) / len(_path_lengths), 2) if _path_lengths else 0,
+        ),
+        "max_path_length": _metadata.get(
+            "max_path_length",
+            max(_path_lengths) if _path_lengths else 0,
+        ),
+        "filtered_out_sqs": len(explorations) - len(exp_list),
+        "synthetic_questions_path": config.question_creation_config.save_questions,
+        "source_explorer_metadata": _explorer_metadata_path,
+        "path_length_definition": "number of class nodes in the schema path",
+    })
+
+    _save_generation_metadata(
+        _metadata,
+        _Path(config.question_creation_config.save_questions).parent,
+    )
     return
 
 

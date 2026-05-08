@@ -10,6 +10,7 @@ import os
 import pickle
 import random
 import logging
+from pathlib import Path
 from icecream import ic
 from typing import DefaultDict, List, Dict, Any, Optional, Set, Tuple
 from tqdm import tqdm
@@ -19,6 +20,43 @@ import dycomutils as common_utils
 
 logger = logging.getLogger(__name__)
 ic.configureOutput(outputFunction=logger.info)
+
+GENERATION_METADATA_COLUMNS = [
+    "dataset",
+    "classes_traversed",
+    "raw_paths",
+    "raw_sqs",
+    "sqs_after_filtering",
+    "avg_path_length",
+    "max_path_length",
+]
+
+
+def _path_class_length(path: List[str]) -> int:
+    return (len(path) + 1) // 2
+
+
+def _metadata_summary(metadata: Dict[str, Any]) -> Dict[str, Any]:
+    return {column: metadata.get(column) for column in GENERATION_METADATA_COLUMNS}
+
+
+def _save_generation_metadata(
+    metadata: Dict[str, Any],
+    output_dir: str,
+    filename_stem: str = "generation_metadata",
+) -> Dict[str, str]:
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
+
+    json_path = output_path / f"{filename_stem}.json"
+    csv_path = output_path / f"{filename_stem}.csv"
+
+    with json_path.open("w", encoding="utf-8") as handle:
+        json.dump(metadata, handle, indent=2, sort_keys=True)
+        handle.write("\n")
+
+    pd.DataFrame([_metadata_summary(metadata)]).to_csv(csv_path, index=False)
+    return {"json": str(json_path), "csv": str(csv_path)}
 
 # Get all objects of a class
 SPARQL_OBJ_OF_CLASS_TEMPLATE = """SELECT DISTINCT ?value WHERE {
@@ -416,6 +454,7 @@ class BFSExplorer:
         self.literals_by_cls_rel: DefaultDict[Tuple[str, str], set] = defaultdict(set)
         
         self.all_program_Obj = []
+        self.exploration_metadata: Dict[str, Any] = {}
         if not os.path.exists(self.temp_folder):
             os.makedirs(self.temp_folder)
 
@@ -748,23 +787,46 @@ class BFSExplorer:
         return programs
 
     def explore_workflow_graph(self, save_loc:str):
+        save_dir = os.path.dirname(save_loc)
+        if save_dir:
+            os.makedirs(save_dir, exist_ok=True)
 
         # All object of class
-        self.all_program_Obj.extend(self.explore_object_of_class())
+        class_programs = self.explore_object_of_class()
+        self.all_program_Obj.extend(class_programs)
         logger.info(f"Total programs after object of class: {len(self.all_program_Obj)}")
 
         # Explore class methods
-        self.all_program_Obj.extend(self.explore_literal_paths())
+        literal_programs = self.explore_literal_paths()
+        self.all_program_Obj.extend(literal_programs)
         logger.info(f"Total programs after literal paths: {len(self.all_program_Obj)}")
         
         # Methods to object
-        self.all_program_Obj.extend(self.generate_queries_from_paths())
+        path_programs = self.generate_queries_from_paths()
+        self.all_program_Obj.extend(path_programs)
         logger.info(f"Total programs after generating queries from paths: {len(self.all_program_Obj)}")
+
+        self.exploration_metadata.update({
+            "dataset": self.kg_name,
+            "stage": "exeprog_creation",
+            "raw_sqs": len(self.all_program_Obj),
+            "sqs_after_filtering": None,
+            "class_level_programs": len(class_programs),
+            "literal_programs": len(literal_programs),
+            "path_level_programs": len([program for program in path_programs if program]),
+            "exeprog_save_loc": save_loc,
+        })
         
         common_utils.serialization.save_pickle(
             self.all_program_Obj,
             save_loc
         )
+
+        metadata_paths = _save_generation_metadata(
+            self.exploration_metadata,
+            save_dir or ".",
+        )
+        logger.info(f"Saved exploration metadata to {metadata_paths}")
     
     @time_wrapper
     def breadth_first_search(self, start_class: str, entity_length: int = 7) -> List[List[str]]:
@@ -822,16 +884,26 @@ class BFSExplorer:
         Generates a graph query for every simple path found via BFS from each class.
         """
             
-        collected_graphs = {}           
+        collected_graphs = {}
+        classes_traversed = set()
+        classes_with_paths = set()
+        raw_paths = []
+
         for c in self.classes:
             if not self.graph_manager.legal_class(c):
                 continue
+
+            classes_traversed.add(self.graph_manager.reverse_curie(c))
             
             # We can start BFS from the class URI itself to find paths in the schema
             paths = self.breadth_first_search(
                 c,
                 entity_length=self.entity_length
                 )
+            raw_paths.extend(paths)
+
+            if paths:
+                classes_with_paths.add(self.graph_manager.reverse_curie(c))
             
             params = {k:[v, self.graph_manager, self.temp_folder] for k,v in enumerate(paths)}
             
@@ -860,5 +932,28 @@ class BFSExplorer:
 
         logger.info(f"Generated {len(collected_graphs)} query graphs from all class paths.")
         all_progs = [item for sublist in collected_graphs.values() for item in sublist if item]
+
+        path_lengths = [_path_class_length(path) for path in raw_paths]
+        unique_classes_in_paths = {
+            class_name
+            for path in raw_paths
+            for class_name in path[::2]
+        }
+        self.exploration_metadata.update({
+            "dataset": self.kg_name,
+            "stage": "exeprog_creation",
+            "classes_traversed": len(classes_traversed),
+            "classes_with_paths": len(classes_with_paths),
+            "unique_classes_in_paths": len(unique_classes_in_paths),
+            "raw_paths": len(raw_paths),
+            "unique_raw_paths": len({"->".join(path) for path in raw_paths}),
+            "avg_path_length": round(
+                sum(path_lengths) / len(path_lengths), 2
+            ) if path_lengths else 0,
+            "max_path_length": max(path_lengths) if path_lengths else 0,
+            "entity_length_limit": self.entity_length,
+            "path_length_definition": "number of class nodes in the schema path",
+            "raw_path_level_sqs": len(all_progs),
+        })
         return all_progs
     

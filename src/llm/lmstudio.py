@@ -2,6 +2,7 @@ from src.llm.base import BaseLLM
 from src.config.llm.lmstudio import LMStudioConfig
 from icecream import ic
 import dspy
+import json
 import re
 from dspy.utils.exceptions import AdapterParseError
 
@@ -13,18 +14,55 @@ except ModuleNotFoundError:
 
 
 class FlexibleChatAdapter(dspy.ChatAdapter):
+    def _extract_json_fields(self, signature, completion: str):
+        output_field_names = list(signature.output_fields.keys())
+        decoder = json.JSONDecoder()
+
+        for match in re.finditer(r"\{", completion):
+            try:
+                value, _ = decoder.raw_decode(completion[match.start():])
+            except json.JSONDecodeError:
+                continue
+
+            if not isinstance(value, dict):
+                continue
+
+            if all(field_name in value for field_name in output_field_names):
+                return {
+                    field_name: value[field_name]
+                    for field_name in output_field_names
+                }
+
+        return None
+
+    def _normalize_completion(self, completion: str) -> str:
+        normalized_completion = re.sub(
+            r"\[\[\s*##\s*(\w+)\s*##\s*\]\]",
+            r"[[ ## \1 ## ]]",
+            completion,
+        )
+        return re.sub(
+            r"(?<!^)(?<!\n)(\[\[ ## \w+ ## \]\])",
+            r"\n\1",
+            normalized_completion,
+        )
+
     def parse(self, signature, completion):
         try:
             return super().parse(signature, completion)
-        except AdapterParseError:
-            normalized_completion = re.sub(
-                r"\[\[\s*##\s*(\w+)\s*##\s*\]\]",
-                r"[[ ## \1 ## ]]",
-                completion,
-            )
-            if normalized_completion == completion:
-                raise
-            return super().parse(signature, normalized_completion)
+        except AdapterParseError as original_error:
+            normalized_completion = self._normalize_completion(completion)
+            if normalized_completion != completion:
+                try:
+                    return super().parse(signature, normalized_completion)
+                except AdapterParseError:
+                    pass
+
+            json_fields = self._extract_json_fields(signature, completion)
+            if json_fields is not None:
+                return json_fields
+
+            raise original_error
 
 
 class LMStudio(BaseLLM):

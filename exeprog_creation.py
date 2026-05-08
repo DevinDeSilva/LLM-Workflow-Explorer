@@ -92,7 +92,7 @@ def _(graph_manager):
 @app.cell
 def _(BFSExplorer, config, graph_manager, ontology_triples_df):
     workflow_explorer = BFSExplorer(
-        kg_name="workflow", 
+        kg_name=config.explorer_config.kg_name, 
         graph_manager=graph_manager,
         ontology_info_triples=ontology_triples_df,
         parallel_execution=config.explorer_config.parallel,

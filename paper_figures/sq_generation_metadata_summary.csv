@@ -1,0 +1,3 @@
+Dataset,Classes traversed,Raw paths,Raw SQs,SQs after filtering,Avg. path length,Max path length
+ChatBS-NexGen,14,385,314,252,4.03,5
+Biomni,14,385,270,208,4.03,5

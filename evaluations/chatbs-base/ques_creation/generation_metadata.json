@@ -1,0 +1,23 @@
+{
+  "avg_path_length": 4.03,
+  "class_level_programs": 2,
+  "classes_traversed": 14,
+  "classes_with_paths": 10,
+  "dataset": "ChatBS-NexGen",
+  "entity_length_limit": 5,
+  "exeprog_save_loc": "evaluations/chatbs-base/exeprog_creation/exeplored_programs.pkl",
+  "filtered_out_sqs": 62,
+  "literal_programs": 27,
+  "max_path_length": 5,
+  "path_length_definition": "number of class nodes in the schema path",
+  "path_level_programs": 285,
+  "raw_path_level_sqs": 285,
+  "raw_paths": 385,
+  "raw_sqs": 314,
+  "source_explorer_metadata": "evaluations/chatbs-base/exeprog_creation/generation_metadata.json",
+  "sqs_after_filtering": 252,
+  "stage": "question_creation",
+  "synthetic_questions_path": "evaluations/chatbs-base/ques_creation/SyntheticQuestionKG.csv",
+  "unique_classes_in_paths": 12,
+  "unique_raw_paths": 204
+}

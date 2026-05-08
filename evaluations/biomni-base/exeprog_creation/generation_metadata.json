@@ -1,0 +1,20 @@
+{
+  "avg_path_length": 4.03,
+  "class_level_programs": 2,
+  "classes_traversed": 14,
+  "classes_with_paths": 10,
+  "dataset": "Biomni-Task3",
+  "entity_length_limit": 5,
+  "exeprog_save_loc": "evaluations/biomni-base/exeprog_creation/exeplored_programs.pkl",
+  "literal_programs": 0,
+  "max_path_length": 5,
+  "path_length_definition": "number of class nodes in the schema path",
+  "path_level_programs": 268,
+  "raw_path_level_sqs": 268,
+  "raw_paths": 385,
+  "raw_sqs": 270,
+  "sqs_after_filtering": null,
+  "stage": "exeprog_creation",
+  "unique_classes_in_paths": 12,
+  "unique_raw_paths": 204
+}
