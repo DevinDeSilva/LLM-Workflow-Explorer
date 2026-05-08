@@ -775,12 +775,19 @@ def entity_aliases(value: Any) -> set[str]:
         return set()
 
     aliases = {normalize_text(text)}
-    compact_text = text.replace("http://testwebsite/testProgram#", "ChatBS-NexGen:")
-    aliases.add(normalize_text(compact_text))
+    compact_texts = {text}
+    if "http://testwebsite/testProgram#" in text:
+        compact_texts.update(
+            text.replace("http://testwebsite/testProgram#", prefix)
+            for prefix in ("Biomni:", "ChatBS-NexGen:")
+        )
 
-    for delimiter in ("#", "/", ":"):
-        if delimiter in compact_text:
-            aliases.add(normalize_text(compact_text.rsplit(delimiter, 1)[-1]))
+    for compact_text in compact_texts:
+        aliases.add(normalize_text(compact_text))
+
+        for delimiter in ("#", "/", ":"):
+            if delimiter in compact_text:
+                aliases.add(normalize_text(compact_text.rsplit(delimiter, 1)[-1]))
 
     return {alias for alias in aliases if alias}
 

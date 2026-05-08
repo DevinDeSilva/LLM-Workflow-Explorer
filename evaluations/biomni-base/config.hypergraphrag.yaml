@@ -28,8 +28,8 @@ explainer_config:
     base_url: "http://localhost:1234/v1"
 
   object_search_config:
-    hypergraphrag_working_dir: "evaluations/biomni-base/explainer/hypergraphrag/index"
-    force_index_from_scratch: "false"
+    hypergraphrag_working_dir: "evaluations/biomni-base/explainer/hypergraphrag/biomni_index"
+    force_index_from_scratch: "true"
     embedding_dim: 1024
     embedding_max_token_size: 8192
     embedding_batch_num: 16
@@ -90,5 +90,4 @@ ttl:
           uri: "http://www.semanticweb.org/acer/ontologies/2026/1/WorkFlow/",
         },
     ]
-
 

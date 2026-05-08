@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import ast
 import asyncio
 import csv
 import io
@@ -344,8 +345,8 @@ async def _ainject_hypergraph_kg(rag: Any, hypergraph_kg: HyperGraphKG) -> None:
 
 
 def _extract_csv_section(context: str, section: str) -> list[dict[str, str]]:
-    pattern = rf"-----{re.escape(section)}-----\s*```csv\s*(.*?)```"
-    match = re.search(pattern, context, flags=re.DOTALL)
+    pattern = rf"-----\s*{re.escape(section)}\s*-----\s*```csv\s*(.*?)```"
+    match = re.search(pattern, str(context or ""), flags=re.DOTALL | re.IGNORECASE)
     if not match:
         return []
     body = match.group(1).strip()
@@ -355,8 +356,60 @@ def _extract_csv_section(context: str, section: str) -> list[dict[str, str]]:
     return [dict(row) for row in rows]
 
 
+def _clean_context_value(value: Any) -> str:
+    return str(value or "").strip().strip('"').strip("'").strip()
+
+
+def _parse_related_entities(value: Any) -> list[str]:
+    text = _clean_context_value(value)
+    if not text:
+        return []
+
+    try:
+        parsed = ast.literal_eval(text)
+    except (SyntaxError, ValueError):
+        parsed = None
+
+    if isinstance(parsed, (list, tuple, set)):
+        return [
+            cleaned
+            for cleaned in (_clean_context_value(item) for item in parsed)
+            if cleaned
+        ]
+    if isinstance(parsed, str):
+        text = parsed
+
+    if text.startswith("[") and text.endswith("]"):
+        text = text[1:-1]
+        parts = text.split(",")
+    else:
+        parts = re.split(r"\s*(?:<SEP>|\|+|;)\s*", text)
+
+    return [
+        cleaned
+        for cleaned in (_clean_context_value(part) for part in parts)
+        if cleaned
+    ]
+
+
 def _clean_entity_label(entity_name: str) -> str:
     return str(entity_name).strip().strip('"').title()
+
+
+def _context_parse_status(
+    context: str,
+    entity_rows: list[dict[str, str]],
+    relationship_rows: list[dict[str, str]],
+    source_rows: list[dict[str, str]],
+) -> str:
+    stripped_context = str(context or "").strip()
+    if stripped_context == "Sorry, I'm not able to provide an answer to that question.":
+        return "fail_response"
+    if entity_rows or relationship_rows or source_rows:
+        return "parsed"
+    if "-----" in stripped_context and "```csv" in stripped_context:
+        return "empty_sections"
+    return "missing_sections"
 
 
 def _prediction_from_context(
@@ -370,6 +423,12 @@ def _prediction_from_context(
     entity_rows = _extract_csv_section(context, "Entities")
     relationship_rows = _extract_csv_section(context, "Relationships")
     source_rows = _extract_csv_section(context, "Sources")
+    parse_status = _context_parse_status(
+        context,
+        entity_rows,
+        relationship_rows,
+        source_rows,
+    )
 
     relevant_entities = [
         {
@@ -381,21 +440,31 @@ def _prediction_from_context(
         for row in entity_rows
         if row.get("entity")
     ]
-    evidence = [
-        {
-            "subject_id": row.get("hyperedge", ""),
-            "subject_label": row.get("hyperedge", ""),
-            "predicate_id": "hyperedge",
-            "predicate_label": "hyperedge",
-            "object_id": row.get("related_entities", ""),
-            "object_label": row.get("related_entities", ""),
-            "object_is_literal": False,
-            "direction": "hyperedge",
-            "score": 0.0,
-        }
-        for row in relationship_rows
-        if row.get("hyperedge")
-    ]
+    evidence: list[dict[str, Any]] = []
+    for row in relationship_rows:
+        hyperedge = row.get("hyperedge", "")
+        if not hyperedge:
+            continue
+
+        related_entities = _parse_related_entities(row.get("related_entities"))
+        if not related_entities:
+            related_entities = [""]
+
+        for related_entity in related_entities:
+            evidence.append(
+                {
+                    "subject_id": hyperedge,
+                    "subject_label": hyperedge,
+                    "predicate_id": "hyperedge",
+                    "predicate_label": "hyperedge",
+                    "object_id": related_entity,
+                    "object_label": related_entity,
+                    "object_is_literal": False,
+                    "direction": "hyperedge",
+                    "score": 0.0,
+                }
+            )
+
     retrieved_docs = [
         {
             "text": row.get("content", ""),
@@ -415,6 +484,11 @@ def _prediction_from_context(
         "relevant_entities": relevant_entities,
         "evidence": evidence,
         "retrieved_docs": retrieved_docs,
+        "hypergraphrag_context": context,
+        "hypergraphrag_context_parse_status": parse_status,
+        "hypergraphrag_context_entity_rows": len(entity_rows),
+        "hypergraphrag_context_relationship_rows": len(relationship_rows),
+        "hypergraphrag_context_source_rows": len(source_rows),
         "token_usage": token_usage,
         "question": qinfo.question,
         "id": qinfo.id,
@@ -438,8 +512,20 @@ def _paths(
             or Path(config.explainer_config.save_answer_loc) / "index"
         )
     )
-    custom_kg_path = working_dir / "chatbs_hypergraph_kg.json"
+    custom_kg_path = working_dir / f"{_kg_artifact_stem(config)}_hypergraph_kg.json"
     return working_dir, custom_kg_path
+
+
+def _kg_artifact_stem(config: FullContextExperimentConfig) -> str:
+    program_uri = "http://testwebsite/testProgram#"
+    for prefix in config.ttl.prefixes:
+        if prefix.get("uri") == program_uri and prefix.get("name"):
+            return re.sub(r"[^a-z0-9]+", "_", prefix["name"].lower()).strip("_")
+    return re.sub(
+        r"[^a-z0-9]+",
+        "_",
+        Path(config.file_paths.execution_kg_loc).stem.lower(),
+    ).strip("_")
 
 
 def main() -> None:
@@ -463,6 +549,13 @@ def main() -> None:
     )
 
     working_dir, custom_kg_path = _paths(config, object_config)
+    force_index = args.force_index or _as_bool(
+        object_config.get("force_index_from_scratch"),
+        False,
+    )
+    if not args.prepare_only and force_index and working_dir.exists():
+        shutil.rmtree(working_dir)
+
     hypergraph_kg = build_hypergraph_kg(
         kg_path=config.file_paths.execution_kg_loc,
         ontology_path=config.file_paths.ontology_path,
@@ -482,14 +575,6 @@ def main() -> None:
 
     if args.prepare_only:
         return
-
-    force_index = args.force_index or _as_bool(
-        object_config.get("force_index_from_scratch"),
-        False,
-    )
-    if force_index and working_dir.exists():
-        shutil.rmtree(working_dir)
-        working_dir.mkdir(parents=True, exist_ok=True)
 
     if str(HYPERGRAPH_ROOT) not in sys.path:
         sys.path.insert(0, str(HYPERGRAPH_ROOT))
@@ -543,26 +628,25 @@ def main() -> None:
     run_dir.mkdir(parents=True, exist_ok=True)
     results_path = run_dir / "RESULTS.jsonl"
 
-    query_param = QueryParam(
-        mode="hybrid",
-        only_need_context=True,
-        response_type=str(object_config.get("response_type", "Single Paragraph")),
-        top_k=_as_int(object_config.get("top_k"), 20),
-        max_token_for_text_unit=_as_int(
-            object_config.get("max_token_for_text_unit"),
-            4000,
-        ),
-        max_token_for_global_context=_as_int(
-            object_config.get("max_token_for_global_context"),
-            4000,
-        ),
-        max_token_for_local_context=_as_int(
-            object_config.get("max_token_for_local_context"),
-            4000,
-        ),
-    )
-
     for qinfo in tqdm(questions):
+        query_param = QueryParam(
+            mode="hybrid",
+            only_need_context=True,
+            response_type=str(object_config.get("response_type", "Single Paragraph")),
+            top_k=_as_int(object_config.get("top_k"), 20),
+            max_token_for_text_unit=_as_int(
+                object_config.get("max_token_for_text_unit"),
+                4000,
+            ),
+            max_token_for_global_context=_as_int(
+                object_config.get("max_token_for_global_context"),
+                4000,
+            ),
+            max_token_for_local_context=_as_int(
+                object_config.get("max_token_for_local_context"),
+                4000,
+            ),
+        )
         start_time = time.perf_counter()
         llm_tracker.reset()
         context = rag.query(qinfo.question, query_param)

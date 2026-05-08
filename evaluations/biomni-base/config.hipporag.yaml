@@ -26,9 +26,9 @@ explainer_config:
     base_url: "http://localhost:1234/v1"
 
   object_search_config:
-    hipporag_save_dir: "evaluations/biomni-base/explainer/hipporag/index"
+    hipporag_save_dir: "evaluations/biomni-base/explainer/hipporag/biomni_index"
     inject_kg_openie: "true"
-    force_index_from_scratch: "false"
+    force_index_from_scratch: "true"
     force_openie_from_scratch: "false"
     retrieval_top_k: 50
     linking_top_k: 5

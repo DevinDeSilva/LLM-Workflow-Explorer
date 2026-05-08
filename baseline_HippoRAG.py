@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import logging
 import os
+import re
 import sys
 import time
 from pathlib import Path
@@ -273,9 +274,21 @@ def _hipporag_paths(
             or Path(config.explainer_config.save_answer_loc) / "index"
         )
     )
-    corpus_path = save_dir / "chatbs_kg_corpus.json"
+    corpus_path = save_dir / f"{_kg_artifact_stem(config)}_kg_corpus.json"
     openie_path = save_dir / f"openie_results_ner_{llm_model.replace('/', '_')}.json"
     return save_dir, corpus_path, openie_path
+
+
+def _kg_artifact_stem(config: FullContextExperimentConfig) -> str:
+    program_uri = "http://testwebsite/testProgram#"
+    for prefix in config.ttl.prefixes:
+        if prefix.get("uri") == program_uri and prefix.get("name"):
+            return re.sub(r"[^a-z0-9]+", "_", prefix["name"].lower()).strip("_")
+    return re.sub(
+        r"[^a-z0-9]+",
+        "_",
+        Path(config.file_paths.execution_kg_loc).stem.lower(),
+    ).strip("_")
 
 
 def _write_injected_inputs(
