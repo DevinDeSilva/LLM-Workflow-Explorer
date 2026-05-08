@@ -1,0 +1,151 @@
+% Appendix snippet for the baseline adaptation details.
+% Requires booktabs. The wide tables are intended for an appendix table* environment.
+
+\subsection{Baseline adaptation details}\label{app:baseline-adaptation}
+
+All baseline methods were evaluated on the same held-out workflow questions as
+our method: 103 ChatBS questions and 106 Biomni questions. The underlying
+execution graphs were the same Turtle knowledge graphs used by our explainer:
+the ChatBS graph contains 895 RDF triples over 177 URI subjects, and the Biomni
+graph contains 2,022 RDF triples over 230 URI subjects. Unless otherwise noted,
+labels were taken from \texttt{rdfs:label} and \texttt{skos:prefLabel};
+descriptions were taken from \texttt{dc:description}, \texttt{rdfs:comment},
+\texttt{skos:definition}, and \texttt{prov:definition}; identifiers were taken
+from \texttt{dcterms:identifier}. Ontology information came from
+\texttt{schema/WorkFlow.ttl}, \texttt{schema/schemaV2.json}, and
+\texttt{schema/extracted\_ontology\_triples.csv} when the baseline interface
+could consume it.
+
+We did not make the prompts byte-for-byte identical across baselines because
+the systems have different native input contracts: GRASP expects a
+tool-using SPARQL generation prompt, HippoRAG expects passages and OpenIE
+facts, HyperGRAG expects chunks, entities, and hyperedges, and the vector
+baseline expects retrieved text segments. For fairness, each method received
+the same natural-language question, no external corpus, and only evidence
+derived from the same workflow graph. All local LLM answer generation used
+\texttt{openai/gpt-oss-20b} through the LM Studio/OpenAI-compatible endpoint
+\texttt{http://localhost:1234/v1}; vector-based methods used
+\texttt{text-embedding-bge-large-en-v1.5} unless a native baseline required its
+own embedding index.
+
+\paragraph{Mechanical graph conversions.}
+For the text and graph-RAG baselines, conversion starts by enumerating every URI
+subject in the workflow KG\@. The adapter assigns each subject a CURIE, chooses a
+human-readable label from labels or identifiers, records its \texttt{rdf:type}
+values, and writes each non-type outgoing triple as a property line containing
+the predicate CURIE, predicate label, object CURIE when applicable, and object
+label or literal. The vector baseline embeds these per-subject object
+descriptions directly. HippoRAG receives the same object descriptions as corpus
+passages and an injected OpenIE file whose \texttt{extracted\_entities} and
+\texttt{extracted\_triples} are produced from the RDF triples rather than from a
+separate LLM extraction pass. HyperGRAG receives the same object descriptions as
+chunks; each non-type RDF triple becomes a hyperedge named from the predicate
+and subject-object pair, while URI objects and literal values become entity
+nodes. GRASP is not given a flattened corpus: it queries the same graph through
+SPARQL and, where an index scaffold exists, indexes entities by label/alias and
+properties by label, comments, domain/range, observed usage, and example values.
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\caption{Native representation and graph access used by each baseline. ``Same triples'' indicates whether the baseline was given all facts from the execution KG, although retrieval-time answer context may still be a subset.}\label{tab:baseline-native-representations}
+\begin{tabular}{@{}p{0.13\textwidth}p{0.24\textwidth}p{0.18\textwidth}p{0.18\textwidth}p{0.22\textwidth}@{}}
+\toprule
+Method & Native input representation & Same triples as ours? & Labels/descriptions & Ontology/schema access \\
+\midrule
+FullContext &
+Raw Turtle execution KG included directly in the LLM prompt with namespace prefixes, application description, and a schema summary. &
+Yes. The full TTL graph is serialized into the prompt. &
+Yes. Labels and readable identifiers remain in the TTL and entity/evidence resolver. &
+Yes. Uses the ontology-derived schema summary and \texttt{schemaV2.json}. \\
+\addlinespace
+GroundedWorkflow (symbolic/LLM rewrite) &
+An in-memory \texttt{rdflib} graph converted into entity, predicate, triple, and execution records. The LLM only rewrites an already-grounded symbolic draft. &
+Yes. The symbolic indices are built from the full graph. &
+Yes. Entity labels, aliases, descriptions, identifiers, predicate labels, and literal values are indexed. &
+Yes. Uses \texttt{WorkFlow.ttl} and \texttt{schemaV2.json} to name predicates and classes. \\
+\addlinespace
+VectorSimilarity &
+One text segment per URI subject. Each segment lists the object CURIE, label, RDF types, and outgoing properties with object labels or literals. &
+Yes at index construction time. Every triple is represented in the subject segment; \texttt{rdf:type} triples become type lines. The answer prompt only sees the top retrieved segments. &
+Yes. Subject and object labels are included; ontology labels are used for predicates. &
+Partial. Ontology is used to label predicates, but RDF domain/range semantics are not reasoned over after flattening. \\
+\addlinespace
+GRASP &
+The workflow graph is exposed as a SPARQL endpoint\@. GRASP searches entity/property indices and iteratively generates and executes SPARQL\@. &
+Yes, through the SPARQL endpoint loaded with the same workflow graph. &
+Yes when available through the endpoint and GRASP index queries. ChatBS has a visible custom index scaffold under \texttt{baselines/grasp/kg\_index/chatbs}; the Biomni run uses \texttt{kg: biomni} and the Biomni endpoint, with no Biomni-specific index scaffold present in this checkout. &
+Partial. GRASP receives prefixes and whatever labels, comments, domain/range, and type information are queryable from the endpoint/index. It does not receive our generated executable query library. \\
+\addlinespace
+HippoRAG &
+The KG is converted to one passage per URI subject plus an injected OpenIE file. ChatBS produces 177 passages and Biomni produces 230 passages. The injected OpenIE contains 895 ChatBS triples and 2,022 Biomni triples. &
+Yes, mechanically flattened into passage text and injected OpenIE triples. RDF semantics such as types and predicates become natural-language fact strings. &
+Yes. Passages include CURIEs, labels, types, predicate labels, and literal values, truncated to 800 characters per literal. &
+Partial. Ontology is used during conversion for predicate labels, but HippoRAG receives passages/OpenIE facts rather than the formal ontology schema. \\
+\addlinespace
+HyperGRAG &
+The same per-subject KG passages are converted into HyperGraphRAG chunks, entities, and hyperedges. ChatBS yields 177 chunks, 345 entities, and 718 hyperedges; Biomni yields 230 chunks, 1,169 entities, and 1,792 hyperedges. &
+Mostly. Non-\texttt{rdf:type} outgoing triples become hyperedges; type triples become entity type metadata and remain in chunk text. &
+Yes. Entity names combine labels and CURIEs; hyperedge descriptions contain predicate labels and object labels/literals. &
+Partial. Ontology is used for labeling during conversion, but HyperGRAG receives a flattened hypergraph rather than RDF/OWL semantics. \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\caption{Retrieval and generation settings used in the baseline runs.}\label{tab:baseline-config-details}
+\begin{tabular}{@{}p{0.13\textwidth}p{0.24\textwidth}p{0.22\textwidth}p{0.16\textwidth}p{0.20\textwidth}@{}}
+\toprule
+Method & Retrieval settings & Token/context budget & Iterations allowed & LLM configuration \\
+\midrule
+FullContext &
+No retrieval top-\(k\); the entire graph is placed in the prompt. Returns at most 6 cited entities and 8 evidence triples. &
+No explicit input truncation in the baseline; LM Studio default generation cap is 8,196 tokens. &
+One answer-generation call per question. &
+\texttt{openai/gpt-oss-20b}; default temperature 0.7 and top-\(p\) 0.9. \\
+\addlinespace
+GroundedWorkflow &
+Symbolic entity/execution matching over the full graph; returns at most 6 cited entities and 8 evidence triples. &
+The LLM rewrite prompt contains only the grounded draft, selected entities, and evidence; generation cap is 8,196 tokens. &
+One symbolic answer pass plus at most one LLM rewrite. &
+\texttt{openai/gpt-oss-20b}; default temperature 0.7 and top-\(p\) 0.9. \\
+\addlinespace
+VectorSimilarity &
+Cosine retrieval over embedded object segments with \texttt{search\_limit=5}; returns at most 12 evidence triples. &
+The answer prompt contains the top-5 object descriptions; generation cap is 8,196 tokens. &
+One vector retrieval pass plus one LLM answer call. &
+\texttt{openai/gpt-oss-20b}; embeddings use \texttt{text-embedding-bge-large-en-v1.5}. \\
+\addlinespace
+GRASP &
+\texttt{search\_top\_k=10}, \texttt{list\_k=10}, \texttt{result\_max\_rows=10}, and \texttt{result\_max\_columns=10}. Entity search is fuzzy; property search is embedding-based where an index is available. &
+\texttt{max\_completion\_tokens=8192}; SPARQL connection/query/read timeouts are 6/30/10 seconds. &
+\texttt{max\_steps=100}, \texttt{num\_examples=3}, and two retries. &
+\texttt{openai/gpt-oss-20b} through the OpenAI-compatible endpoint; temperature 1.0 and top-\(p\) 1.0. GRASP's property index reports \texttt{Qwen/Qwen3-Embedding-0.6B}. \\
+\addlinespace
+HippoRAG &
+\texttt{retrieval\_top\_k=50}, \texttt{linking\_top\_k=5}, \texttt{qa\_top\_k=5}; KG OpenIE injection enabled; \texttt{embedding\_batch\_size=8}. &
+\texttt{max\_new\_tokens=800}; literals truncated to 800 characters in KG passages. &
+\texttt{max\_qa\_steps=1}. &
+\texttt{openai/gpt-oss-20b}; embeddings use \texttt{text-embedding-bge-large-en-v1.5}; graph type \texttt{facts\_and\_sim\_passage\_node\_unidirectional}. \\
+\addlinespace
+HyperGRAG &
+Hybrid query mode with \texttt{top\_k=20}; embedding dimension 1,024; embedding batch 16; async limits 4 for embeddings and LLM calls. &
+Answer generation cap is 800 tokens. Context caps are 4,000 tokens each for text-unit, global, and local context; LLM maximum token size is 32,768. &
+One hybrid context query plus one LLM answer call. &
+\texttt{openai/gpt-oss-20b}; temperature 0; embeddings use \texttt{text-embedding-bge-large-en-v1.5}. \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+These adaptations make the comparison transparent rather than claiming that all
+baselines receive an identical computational interface. GRASP can be
+disadvantaged when entity linking must recover generated workflow URIs or when
+a dataset lacks a custom index scaffold. HippoRAG and HyperGRAG can be
+disadvantaged when RDF typing, directionality, and ontology constraints are
+flattened into passages or hyperedges. We nevertheless consider the comparison
+fair because the conversions are deterministic, no method receives facts
+outside the workflow graph, all available labels/descriptions are exposed to
+the baseline when its native format supports them, and answer generation uses
+the same local LLM family across methods.

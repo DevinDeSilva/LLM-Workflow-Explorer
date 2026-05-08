@@ -1,0 +1,11 @@
+dataset,method,n_examples,prediction_file
+ChatBS,VSB,103,evaluations/chatbs-base/explainer/vectorsimilarity/exp__20260430022030/RESULTS.jsonl
+ChatBS,GRASP,103,evaluations/chatbs-base/explainer/grasp/exp_202604201325/RESULTS.jsonl
+ChatBS,HippoRAG,103,evaluations/chatbs-base/explainer/hipporag/exp__20260430032427/RESULTS.jsonl
+ChatBS,HyperGRAG,103,evaluations/chatbs-base/explainer/hypergraphrag/exp__20260430033239/RESULTS.jsonl
+ChatBS,Ours,103,evaluations/chatbs-base/explainer/results/exp__20260428044829/RESULTS.jsonl
+Biomni,VSB,106,evaluations/biomni-base/explainer/vectorsimilarity/exp__20260506185445/RESULTS.jsonl
+Biomni,GRASP,106,evaluations/biomni-base/explainer/grasp/exp_202604201325/RESULTS.jsonl
+Biomni,HippoRAG,106,evaluations/biomni-base/explainer/hipporag/exp__20260506191300/RESULTS.jsonl
+Biomni,HyperGRAG,106,evaluations/biomni-base/explainer/hypergraphrag/exp__20260507162750/RESULTS.jsonl
+Biomni,Ours,106,evaluations/biomni-base/explainer/results/exp__20260505150135/RESULTS.jsonl

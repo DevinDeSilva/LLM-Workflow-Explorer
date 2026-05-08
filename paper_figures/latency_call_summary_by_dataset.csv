@@ -1,0 +1,6 @@
+Method,ChatBS avg. latency (s),Biomni avg. latency (s),ChatBS avg. LLM calls,Biomni avg. LLM calls,ChatBS avg. SPARQL calls,Biomni avg. SPARQL calls
+VSB,2.94,3.18,1.0,1.0,0.0,0.0
+GRASP,15.49,10.57,7.79,5.06,5.79,1.63
+HippoRAG,4.59,4.83,1.0,1.0,0.0,0.0
+HyperGRAG,12.67,14.11,1.74,1.91,0.0,0.0
+Ours,39.98,146.06,6.95,9.32,2.59,2.74

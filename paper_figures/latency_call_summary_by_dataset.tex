@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Dataset-specific latency and call counts for each baseline and Ours. SPARQL calls follow the same logging definition as Table~\ref{tab:latency-call-summary}.}
+\label{tab:latency-call-summary-by-dataset}
+\scriptsize
+\begin{tabular}{lrrrrrr}
+\toprule
+Method & ChatBS avg. latency (s) & Biomni avg. latency (s) & ChatBS avg. LLM calls & Biomni avg. LLM calls & ChatBS avg. SPARQL calls & Biomni avg. SPARQL calls \\
+\midrule
+VSB & 2.94 & 3.18 & 1.00 & 1.00 & 0.00 & 0.00 \\
+GRASP & 15.49 & 10.57 & 7.79 & 5.06 & 5.79 & 1.63 \\
+HippoRAG & 4.59 & 4.83 & 1.00 & 1.00 & 0.00 & 0.00 \\
+HyperGRAG & 12.67 & 14.11 & 1.74 & 1.91 & 0.00 & 0.00 \\
+Ours & 39.98 & 146.06 & 6.95 & 9.32 & 2.59 & 2.74 \\
+\bottomrule
+\end{tabular}
+\end{table}
