@@ -1,9 +1,7 @@
 # LLM Workflow Explorer: Explainable AI through Provenance Tagging
 
 ## Abstract
-```text
 As artificial intelligence (AI) systems evolve into complex, multi-stage workflows orchestrating large language models (LLMs) and dynamic code execution, their inherent non-determinism and opacity pose significant barriers to trust, transparency, and accountability. Current monitoring tools are often framework-dependent and primarily focus on tracing individual agent actions rather than providing a holistic view of interactions across multiple components. To address this challenge, we present a novel hybrid framework for generating traceable, on-demand explanations for AI systems. Our approach leverages the ProvONE and Explanation Ontologies to capture execution traces as a knowledge graph, which is then used to generate natural-language explanations for user questions through a KG-based retrieval mechanism. Departing from traditional open-ended retrieval, we leverage the ontology to systematically generate a set of SPARQL queries that act as retrieval functions. Given a user question, the system iteratively selects and executes appropriate queries over the KG, using retrieved information to refine subsequent steps until a satisfactory answer is obtained. The final results are aggregated as a structured chain of evidence to produce context-aware, verifiable explanations. We evaluate the efficacy of our approach through its implementation in ChatBS-NexGen, a dynamic LLM unit-testing system, and Biomni, a general-purpose biomedical AI agent. Our results on ChatBS-NexGen and Biomni show that this approach outperforms all baselines, achieving the highest semantic and grounding metrics and over 90% win rates in pairwise explanation comparisons.
-```
 
 <p align="center">
   <img src="docs/images/chatbs-prov-workflowV3.png" alt="AI workflow example" width="850"/>
