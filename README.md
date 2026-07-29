@@ -26,6 +26,23 @@ At a high level, the pipeline:
 4. Answers benchmark questions by selecting and executing SQs.
 5. Evaluates generated explanations against ground truth and baselines.
 
+## Example explanation
+
+An example explanation is provided in [docs/report_example.md](docs/report_example.md). Further  a stepwise execution example is provided in [docs/example_stepwise_execution.md](docs/example_stepwise_execution.md). A snippet of the turtle file is provided at [docs/turtle_example.md](docs/turtle_example.md) which highlight the important entities (the full turtle files available in the [usecase folder](usecases)
+
+
+## Additional Information about baselines we used,
+
+Please read the [docs/baseline_adaptation_details.md](docs/baseline_adaptation_details.md) which provide more information and how we adapted them to our usecase.
+
+## SQ Information.
+
+More information about the SQ functions we create and use during the inference process is provided in [docs/sq_information.md](docs/sq_information.md) where we provide an example, metadata we utilize in the pipeline for the creation and the difference between the SQ library and the created benchmark 
+
+## latency and developer workload analysis.
+
+One of the weaknesses in the methodology is the added latency compared to the baselines and the added developer workload in annotating the AI System to record the intermediary artifacts. we analyse this in [docs/latency_and_developer_workload.md](docs/latency_and_developer_workload.md)
+
 ## Repository Contents
 
 ```text
@@ -208,6 +225,30 @@ Metric summaries:
 uv run python evaluation_results.py --evaluation chatbs-base
 uv run python evaluation_results.py --evaluation biomni-base
 ```
+
+To evaluate with one LLM judge at a time, select exactly one judge config:
+
+```bash
+uv run python evaluation_results.py --evaluation chatbs-base --config config.evaluation.qwen.yaml
+uv run python evaluation_results.py --evaluation chatbs-base --config config.evaluation.gemma.yaml
+
+uv run python evaluation_results.py --evaluation biomni-base --config config.evaluation.qwen.yaml
+uv run python evaluation_results.py --evaluation biomni-base --config config.evaluation.gemma.yaml
+```
+
+Run these sequentially. Each config owns an explicit output directory:
+
+```text
+evaluations/<dataset>/analysis/judges/qwen3.6-35b-a3b/
+evaluations/<dataset>/analysis/judges/gemma4-31b-qat/
+```
+
+The same `--config` option is supported by `answer_winrate_evaluation.py`.
+For downstream analysis, set `EVALUATION_CONFIG` in the analysis notebook to
+either `config.evaluation.qwen.yaml` or `config.evaluation.gemma.yaml`. The
+notebook reads the judge's input directory from that config. Paper table and
+figure exports are also separated under `paper_tables/judges/<judge-id>/` and
+`paper_figures/judges/<judge-id>/`.
 
 Pairwise answer win rates:
 
