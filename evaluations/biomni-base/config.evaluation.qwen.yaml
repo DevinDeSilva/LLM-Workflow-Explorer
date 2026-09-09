@@ -1,0 +1,74 @@
+evaluation:
+  name: "biomni-base"
+  judge_id: "qwen3.6-35b-a3b"
+  source_config: "config.fullcontext.yaml"
+  save_dir: "evaluations/biomni-base/analysis/judges/qwen3.6-35b-a3b"
+  max_examples_per_run:
+
+  recompute:
+    reuse_existing: true
+    methods:
+    question_ids:
+    qtypes:
+    existing_results_dir:
+
+  prediction_filename: "RESULTS.jsonl"
+  prediction_dirs:
+    fullcontext: "evaluations/biomni-base/explainer/fullcontext"
+    llmbased: "evaluations/biomni-base/explainer/llmbased"
+    vectorsimilarity: "evaluations/biomni-base/explainer/vectorsimilarity"
+    hipporag: "evaluations/biomni-base/explainer/hipporag"
+    hypergraphrag: "evaluations/biomni-base/explainer/hypergraphrag"
+    grasp: "evaluations/biomni-base/explainer/grasp"
+    ours: "evaluations/biomni-base/explainer/results"
+  sq_loc: "evaluations/biomni-base/ques_creation/SyntheticQuestionKG.csv"
+
+  judge_llm:
+    llm_type: "lmstudio"
+    llm_library: "dspy"
+    llm_config:
+      model: "qwen/qwen3.6-35b-a3b"
+      base_url: "http://localhost:1234/v1"
+      temperature: 0
+
+  nli:
+    model_name: "cross-encoder/nli-distilroberta-base"
+    entailment_fallback_index: 1
+
+  metrics:
+    answer_report: "original"
+    enabled_by_qtype:
+      entity:
+        - "answer_token_overlap"
+        - "ground_truth_entity_coverage"
+        - "bert_score"
+        - "llm_answer_quality"
+        - "nli_entailment"
+        - "entity_retrieval"
+      bool:
+        - "answer_token_overlap"
+        - "ground_truth_entity_coverage"
+        - "bert_score"
+        - "llm_answer_quality"
+        - "nli_entailment"
+        - "bool_accuracy"
+      numeric:
+        - "answer_token_overlap"
+        - "ground_truth_entity_coverage"
+        - "bert_score"
+        - "llm_answer_quality"
+        - "nli_entailment"
+        - "numeric_accuracy"
+
+  winrate:
+    answer_report: "original"
+    judge_llm:
+      llm_type: "lmstudio"
+      llm_library: "dspy"
+      llm_config:
+        model: "qwen/qwen3.6-35b-a3b"
+        base_url: "http://localhost:1234/v1"
+        temperature: 0
+        max_tokens: 2048
+    methods:
+    tie_score: 0.5

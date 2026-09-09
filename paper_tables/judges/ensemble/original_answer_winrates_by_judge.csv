@@ -1,0 +1,26 @@
+dataset_id,dataset,judge_id,judge,opponent,comparisons,ours_wins,opponent_wins,ties,ours_winrate,opponent_label,ours_winrate_pct
+chatbs-base,ChatBS,old-llama-70b,Llama 3.3 70B,llmbased,103,94,9,0,0.912621359223301,GWB,91.2621359223301
+chatbs-base,ChatBS,old-llama-70b,Llama 3.3 70B,vectorsimilarity,103,90,11,2,0.883495145631068,VSB,88.3495145631068
+chatbs-base,ChatBS,old-llama-70b,Llama 3.3 70B,grasp,103,91,12,0,0.883495145631068,GRASP,88.3495145631068
+chatbs-base,ChatBS,old-llama-70b,Llama 3.3 70B,hipporag,103,98,5,0,0.9514563106796117,HippoRAG,95.14563106796116
+chatbs-base,ChatBS,old-llama-70b,Llama 3.3 70B,hypergraphrag,103,64,39,0,0.6213592233009708,HyperGRAG,62.13592233009708
+chatbs-base,ChatBS,gpt-5.4-mini,GPT-5.4 mini,llmbased,103,87,16,0,0.8446601941747572,GWB,84.46601941747572
+chatbs-base,ChatBS,gpt-5.4-mini,GPT-5.4 mini,vectorsimilarity,103,81,21,1,0.7912621359223301,VSB,79.12621359223301
+chatbs-base,ChatBS,gpt-5.4-mini,GPT-5.4 mini,grasp,103,83,19,1,0.8106796116504854,GRASP,81.06796116504854
+chatbs-base,ChatBS,gpt-5.4-mini,GPT-5.4 mini,hipporag,103,83,18,2,0.8155339805825242,HippoRAG,81.55339805825243
+chatbs-base,ChatBS,gpt-5.4-mini,GPT-5.4 mini,hypergraphrag,103,73,24,6,0.7378640776699029,HyperGRAG,73.7864077669903
+chatbs-base,ChatBS,qwen3.6-35b-a3b,Qwen 3.6 35B,llmbased,103,98,5,0,0.9514563106796117,GWB,95.14563106796116
+chatbs-base,ChatBS,qwen3.6-35b-a3b,Qwen 3.6 35B,vectorsimilarity,103,85,18,0,0.8252427184466019,VSB,82.52427184466019
+chatbs-base,ChatBS,qwen3.6-35b-a3b,Qwen 3.6 35B,grasp,103,91,11,1,0.8883495145631068,GRASP,88.83495145631069
+chatbs-base,ChatBS,qwen3.6-35b-a3b,Qwen 3.6 35B,hipporag,103,92,10,1,0.8980582524271845,HippoRAG,89.80582524271846
+chatbs-base,ChatBS,qwen3.6-35b-a3b,Qwen 3.6 35B,hypergraphrag,103,61,41,1,0.5970873786407767,HyperGRAG,59.70873786407766
+biomni-base,Biomni,old-llama-70b,Llama 3.3 70B,llmbased,106,104,2,0,0.9811320754716981,GWB,98.11320754716981
+biomni-base,Biomni,old-llama-70b,Llama 3.3 70B,vectorsimilarity,106,101,5,0,0.9528301886792453,VSB,95.28301886792453
+biomni-base,Biomni,old-llama-70b,Llama 3.3 70B,grasp,106,103,3,0,0.9716981132075472,GRASP,97.16981132075472
+biomni-base,Biomni,old-llama-70b,Llama 3.3 70B,hipporag,106,96,10,0,0.9056603773584906,HippoRAG,90.56603773584906
+biomni-base,Biomni,old-llama-70b,Llama 3.3 70B,hypergraphrag,106,57,49,0,0.5377358490566038,HyperGRAG,53.77358490566038
+biomni-base,Biomni,gpt-5.4-mini,GPT-5.4 mini,llmbased,106,90,16,0,0.8490566037735849,GWB,84.90566037735849
+biomni-base,Biomni,gpt-5.4-mini,GPT-5.4 mini,vectorsimilarity,106,79,27,0,0.7452830188679245,VSB,74.52830188679245
+biomni-base,Biomni,gpt-5.4-mini,GPT-5.4 mini,grasp,106,86,19,1,0.8160377358490566,GRASP,81.60377358490565
+biomni-base,Biomni,gpt-5.4-mini,GPT-5.4 mini,hipporag,106,87,18,1,0.8254716981132075,HippoRAG,82.54716981132076
+biomni-base,Biomni,gpt-5.4-mini,GPT-5.4 mini,hypergraphrag,106,74,26,6,0.7264150943396226,HyperGRAG,72.64150943396226

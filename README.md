@@ -230,22 +230,22 @@ To evaluate with one LLM judge at a time, select exactly one judge config:
 
 ```bash
 uv run python evaluation_results.py --evaluation chatbs-base --config config.evaluation.qwen.yaml
-uv run python evaluation_results.py --evaluation chatbs-base --config config.evaluation.gemma.yaml
+uv run python evaluation_results.py --evaluation chatbs-base --config config.evaluation.chatgpt.yaml
 
 uv run python evaluation_results.py --evaluation biomni-base --config config.evaluation.qwen.yaml
-uv run python evaluation_results.py --evaluation biomni-base --config config.evaluation.gemma.yaml
+uv run python evaluation_results.py --evaluation biomni-base --config config.evaluation.chatgpt.yaml
 ```
 
 Run these sequentially. Each config owns an explicit output directory:
 
 ```text
 evaluations/<dataset>/analysis/judges/qwen3.6-35b-a3b/
-evaluations/<dataset>/analysis/judges/gemma4-31b-qat/
+evaluations/<dataset>/analysis/judges/gpt-5.4-mini/
 ```
 
 The same `--config` option is supported by `answer_winrate_evaluation.py`.
 For downstream analysis, set `EVALUATION_CONFIG` in the analysis notebook to
-either `config.evaluation.qwen.yaml` or `config.evaluation.gemma.yaml`. The
+either `config.evaluation.qwen.yaml` or `config.evaluation.chatgpt.yaml`. The
 notebook reads the judge's input directory from that config. Paper table and
 figure exports are also separated under `paper_tables/judges/<judge-id>/` and
 `paper_figures/judges/<judge-id>/`.

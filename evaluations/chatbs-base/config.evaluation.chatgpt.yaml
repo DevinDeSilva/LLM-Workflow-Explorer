@@ -1,0 +1,72 @@
+evaluation:
+  name: "chatbs-base"
+  judge_id: "gpt-5.4-mini"
+  source_config: "config.fullcontext.yaml"
+  save_dir: "evaluations/chatbs-base/analysis/judges/gpt-5.4-mini"
+  max_examples_per_run:
+
+  recompute:
+    reuse_existing: true
+    methods:
+    question_ids:
+    qtypes:
+    existing_results_dir:
+
+  prediction_filename: "RESULTS.jsonl"
+  prediction_dirs:
+    fullcontext: "evaluations/chatbs-base/explainer/fullcontext"
+    llmbased: "evaluations/chatbs-base/explainer/llmbased"
+    vectorsimilarity: "evaluations/chatbs-base/explainer/vectorsimilarity"
+    hipporag: "evaluations/chatbs-base/explainer/hipporag"
+    hypergraphrag: "evaluations/chatbs-base/explainer/hypergraphrag"
+    grasp: "evaluations/chatbs-base/explainer/grasp"
+    ours: "evaluations/chatbs-base/explainer/results"
+  sq_loc: "evaluations/chatbs-base/ques_creation/SyntheticQuestionKG.csv"
+
+  judge_llm:
+    llm_type: "openai"
+    llm_library: "dspy"
+    llm_config:
+      model: "gpt-5.4-mini"
+      temperature: 0
+
+  nli:
+    model_name: "cross-encoder/nli-distilroberta-base"
+    entailment_fallback_index: 1
+
+  metrics:
+    answer_report: "original"
+    enabled_by_qtype:
+      entity:
+        - "answer_token_overlap"
+        - "ground_truth_entity_coverage"
+        - "bert_score"
+        - "llm_answer_quality"
+        - "nli_entailment"
+        - "entity_retrieval"
+      bool:
+        - "answer_token_overlap"
+        - "ground_truth_entity_coverage"
+        - "bert_score"
+        - "llm_answer_quality"
+        - "nli_entailment"
+        - "bool_accuracy"
+      numeric:
+        - "answer_token_overlap"
+        - "ground_truth_entity_coverage"
+        - "bert_score"
+        - "llm_answer_quality"
+        - "nli_entailment"
+        - "numeric_accuracy"
+
+  winrate:
+    answer_report: "original"
+    judge_llm:
+      llm_type: "openai"
+      llm_library: "dspy"
+      llm_config:
+        model: "gpt-5.4-mini"
+        temperature: 0
+        max_tokens: 300
+    methods:
+    tie_score: 0.5

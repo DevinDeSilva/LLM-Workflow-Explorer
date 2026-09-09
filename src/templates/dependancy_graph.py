@@ -400,9 +400,6 @@ class SyntheticQuestionNextStepSignature(dspy.Signature):
     step_context: str = dspy.InputField(
         desc="Accumulated traversal context from previous rounds."
     )
-    latest_step_results: str = dspy.InputField(
-        desc="Natural-language summary of the latest executed step."
-    )
     partial_answer: str = dspy.InputField(
         desc="The current best grounded answer after the latest step."
     )

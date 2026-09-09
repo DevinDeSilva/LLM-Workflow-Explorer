@@ -1,0 +1,25 @@
+dataset_id,dataset,scope,scope_label,judge_a,judge_a_label,judge_b,judge_b_label,common_items,raw_agreement,raw_agreement_pct,cohen_kappa
+chatbs-base,ChatBS,all,All plotted baselines,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,515,0.8038834951456311,80.3883495145631,0.3489824526270994
+chatbs-base,ChatBS,llmbased,GWB,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,103,0.8543689320388349,85.43689320388349,0.32444250109313494
+chatbs-base,ChatBS,vectorsimilarity,VSB,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,103,0.8155339805825242,81.55339805825243,0.3658457550226831
+chatbs-base,ChatBS,grasp,GRASP,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,103,0.8446601941747572,84.46601941747572,0.4172560113154171
+chatbs-base,ChatBS,hipporag,HippoRAG,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,103,0.8155339805825242,81.55339805825243,0.17945492662473772
+chatbs-base,ChatBS,hypergraphrag,HyperGRAG,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,103,0.6893203883495146,68.93203883495146,0.3409318136372726
+chatbs-base,ChatBS,all,All plotted baselines,old-llama-70b,Llama 3.3 70B,qwen3.6-35b-a3b,Qwen 3.6 35B,515,0.8815533980582524,88.15533980582524,0.5646480044345896
+chatbs-base,ChatBS,llmbased,GWB,old-llama-70b,Llama 3.3 70B,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.9029126213592233,90.29126213592234,0.2381656804733722
+chatbs-base,ChatBS,vectorsimilarity,VSB,old-llama-70b,Llama 3.3 70B,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.883495145631068,88.3495145631068,0.5523361101050348
+chatbs-base,ChatBS,grasp,GRASP,old-llama-70b,Llama 3.3 70B,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.9029126213592233,90.29126213592234,0.5309653916211293
+chatbs-base,ChatBS,hipporag,HippoRAG,old-llama-70b,Llama 3.3 70B,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.9029126213592233,90.29126213592234,0.33246921581335076
+chatbs-base,ChatBS,hypergraphrag,HyperGRAG,old-llama-70b,Llama 3.3 70B,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.8155339805825242,81.55339805825243,0.6167254210732471
+chatbs-base,ChatBS,all,All plotted baselines,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,515,0.8155339805825242,81.55339805825243,0.41108141942317844
+chatbs-base,ChatBS,llmbased,GWB,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.8543689320388349,85.43689320388349,0.22865701447828213
+chatbs-base,ChatBS,vectorsimilarity,VSB,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.8446601941747572,84.46601941747572,0.5074716078900179
+chatbs-base,ChatBS,grasp,GRASP,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.8349514563106796,83.49514563106796,0.3847505270555162
+chatbs-base,ChatBS,hipporag,HippoRAG,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.8640776699029126,86.40776699029125,0.4833393049086346
+chatbs-base,ChatBS,hypergraphrag,HyperGRAG,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.6796116504854369,67.96116504854369,0.3420441347270616
+biomni-base,Biomni,all,All plotted baselines,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,530,0.7924528301886793,79.24528301886792,0.2873731817626207
+biomni-base,Biomni,llmbased,GWB,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,106,0.8490566037735849,84.90566037735849,0.08026030368763541
+biomni-base,Biomni,vectorsimilarity,VSB,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,106,0.7735849056603774,77.35849056603774,0.18513773222293456
+biomni-base,Biomni,grasp,GRASP,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,106,0.8207547169811321,82.0754716981132,0.13227057302886697
+biomni-base,Biomni,hipporag,HippoRAG,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,106,0.8773584905660378,87.73584905660378,0.49038461538461553
+biomni-base,Biomni,hypergraphrag,HyperGRAG,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,106,0.6415094339622641,64.15094339622641,0.29874651810584957

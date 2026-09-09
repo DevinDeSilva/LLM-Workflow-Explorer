@@ -29,6 +29,12 @@ from src.evaluation.recompute import (
     selected_ground_truth_ids,
     validate_selected_methods,
 )
+from src.evaluation.layout import (
+    evaluation_judge_id,
+    resolve_configured_analysis_dir,
+    resolve_evaluation_config_path,
+    write_evaluation_manifest,
+)
 from src.evaluation.report_builders import (
     augment_ours_record_with_reports,
     build_eo_trace_report,
@@ -38,7 +44,7 @@ from src.experiment.ground_truth import GTInfo, GT
 from src.llm import LLM
 from src.utils.utils import load_config
 
-REPO_ROOT = Path.cwd()
+REPO_ROOT = Path(__file__).resolve().parent
 load_dotenv(REPO_ROOT / ".env")
 
 MetricFn = Callable[[dict[str, Any], dict[str, Any]], dict[str, Any]]
@@ -326,9 +332,23 @@ def _parse_config_path() -> str:
         default="chatbs-base",
         help="Evaluation folder under evaluations/ to load config from.",
     )
+    parser.add_argument(
+        "--config",
+        default=None,
+        help=(
+            "Evaluation config path. A filename is resolved inside the selected "
+            "evaluation folder; paths with directories are resolved from the repo root."
+        ),
+    )
     args, remaining = parser.parse_known_args()
     sys.argv = [sys.argv[0], *remaining]
-    return str(Path("evaluations") / args.evaluation / "config.evaluation.yaml")
+    return str(
+        resolve_evaluation_config_path(
+            REPO_ROOT,
+            args.evaluation,
+            args.config,
+        )
+    )
 
 
 CONFIG_PATH = _parse_config_path()
@@ -376,12 +396,15 @@ ANSWER_REPORT = METRICS_CONFIG.get(
     EVALUATION_SETTINGS.get("answer_report", "original"),
 )
 MAX_EXAMPLES_PER_RUN = EVALUATION_SETTINGS.get("max_examples_per_run")
-SAVE_DIR = resolve_repo_path(
-    EVALUATION_SETTINGS.get(
-        "save_dir",
-        str(Path("evaluations") / EVALUATION_NAME / "analysis"),
-    )
+JUDGE_ID = evaluation_judge_id(EVALUATION_SETTINGS)
+SAVE_DIR = resolve_configured_analysis_dir(
+    REPO_ROOT,
+    EVALUATION_SETTINGS,
+    EVALUATION_NAME,
 )
+print(f"Evaluation config: {CONFIG_PATH}")
+print(f"Judge: {JUDGE_ID or JUDGE_LLM.get('llm_config', {}).get('model', 'legacy')}")
+print(f"Output directory: {SAVE_DIR}")
 METRICS_RECOMPUTE_CONFIG = build_recompute_config(
     EVALUATION_SETTINGS.get("recompute", {}),
     METRICS_CONFIG.get("recompute", {}),
@@ -1056,6 +1079,8 @@ def evaluate_run(
             continue
         row: dict[str, Any] = {
             "run": run_name,
+            "evaluation_judge_id": JUDGE_ID or "legacy",
+            "evaluation_config_path": CONFIG_PATH,
             "prediction_path": pred.get("_prediction_path"),
             "prediction_line": pred.get("_line_number"),
             "prediction_id": pred.get("id"),
@@ -1195,6 +1220,18 @@ def build_run_summary(results_df: pd.DataFrame) -> pd.DataFrame:
     return counts_df.merge(summary_df, on="run", how="left")
 
 categories_to_write = sorted(set(ENABLED_METRICS) | set(evaluation_rows))
+write_evaluation_manifest(
+    SAVE_DIR,
+    {
+        "evaluation_name": EVALUATION_NAME,
+        "judge_id": JUDGE_ID or "legacy",
+        "config_path": CONFIG_PATH,
+        "metrics": {
+            "answer_report": ANSWER_REPORT,
+            "judge_model": JUDGE_LLM.get("llm_config", {}).get("model"),
+        },
+    },
+)
 for cat in categories_to_write:
     eval_rows = evaluation_rows.get(cat, [])
     print(cat)

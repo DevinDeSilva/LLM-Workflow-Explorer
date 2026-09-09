@@ -25,13 +25,19 @@ from src.evaluation.recompute import (
     selected_ground_truth_ids,
     validate_selected_methods,
 )
+from src.evaluation.layout import (
+    evaluation_judge_id,
+    resolve_configured_analysis_dir,
+    resolve_evaluation_config_path,
+    write_evaluation_manifest,
+)
 from src.evaluation.report_builders import augment_ours_record_with_reports
 from src.experiment.ground_truth import GTInfo
 from src.llm import LLM
 from src.synthetic_questions import SQRetriver
 from src.utils.utils import load_config
 
-REPO_ROOT = Path.cwd()
+REPO_ROOT = Path(__file__).resolve().parent
 load_dotenv(REPO_ROOT / ".env")
 
 _winrate_judge_llm: Any | None = None
@@ -85,9 +91,23 @@ def _parse_config_path() -> str:
         default="chatbs-base",
         help="Evaluation folder under evaluations/ to load config from.",
     )
+    parser.add_argument(
+        "--config",
+        default=None,
+        help=(
+            "Evaluation config path. A filename is resolved inside the selected "
+            "evaluation folder; paths with directories are resolved from the repo root."
+        ),
+    )
     args, remaining = parser.parse_known_args()
     sys.argv = [sys.argv[0], *remaining]
-    return str(Path("evaluations") / args.evaluation / "config.evaluation.yaml")
+    return str(
+        resolve_evaluation_config_path(
+            REPO_ROOT,
+            args.evaluation,
+            args.config,
+        )
+    )
 
 
 CONFIG_PATH = _parse_config_path()
@@ -101,12 +121,15 @@ PREDICTION_DIRS = dict(EVALUATION_SETTINGS.get("prediction_dirs", {}))
 CONFIGURED_PREDICTION_FILES = dict(EVALUATION_SETTINGS.get("prediction_files", {}))
 JUDGE_LLM = dict(EVALUATION_SETTINGS.get("judge_llm", {}))
 MAX_EXAMPLES_PER_RUN = EVALUATION_SETTINGS.get("max_examples_per_run")
-SAVE_DIR = resolve_repo_path(
-    EVALUATION_SETTINGS.get(
-        "save_dir",
-        str(Path("evaluations") / EVALUATION_NAME / "analysis"),
-    )
+JUDGE_ID = evaluation_judge_id(EVALUATION_SETTINGS)
+SAVE_DIR = resolve_configured_analysis_dir(
+    REPO_ROOT,
+    EVALUATION_SETTINGS,
+    EVALUATION_NAME,
 )
+print(f"Evaluation config: {CONFIG_PATH}")
+print(f"Judge: {JUDGE_ID or JUDGE_LLM.get('llm_config', {}).get('model', 'legacy')}")
+print(f"Output directory: {SAVE_DIR}")
 WINRATE_CONFIG = EVALUATION_SETTINGS.get("winrate", {})
 ANSWER_REPORT = WINRATE_CONFIG.get("answer_report", "original")
 WINRATE_JUDGE_LLM = WINRATE_CONFIG.get("judge_llm") or JUDGE_LLM
@@ -608,6 +631,8 @@ def run_pairwise_answer_winrate(
             answer_b = strip_citations(pred_b.get("answer", ""))
 
             row: dict[str, Any] = {
+                "evaluation_judge_id": JUDGE_ID or "legacy",
+                "evaluation_config_path": CONFIG_PATH,
                 "ground_truth_id": ground_truth_id,
                 "ground_truth_qtype": json.dumps(actual.get("qtype", []), ensure_ascii=True),
                 "question": actual.get("question", ""),
@@ -770,6 +795,18 @@ def main() -> None:
     display(answer_winrate_df.head())
     display(answer_winrate_summary_df)
 
+    write_evaluation_manifest(
+        SAVE_DIR,
+        {
+            "evaluation_name": EVALUATION_NAME,
+            "judge_id": JUDGE_ID or "legacy",
+            "config_path": CONFIG_PATH,
+            "winrate": {
+                "answer_report": ANSWER_REPORT,
+                "judge_model": WINRATE_JUDGE_LLM.get("llm_config", {}).get("model"),
+            },
+        },
+    )
     os.makedirs(WINRATE_SAVE_DIR, exist_ok=True)
     answer_winrate_df.to_csv(
         WINRATE_SAVE_DIR / "pairwise_answer_winrate.csv",

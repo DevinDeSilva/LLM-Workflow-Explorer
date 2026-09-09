@@ -1,0 +1,13 @@
+dataset_id,dataset,scope,scope_label,judge_count,judges,items_used,ratings_used,min_ratings_per_item,max_ratings_per_item,unanimous_items_pct,observed_disagreement,expected_disagreement,krippendorff_alpha
+chatbs-base,ChatBS,all,All plotted baselines,3,"old-llama-70b, gpt-5.4-mini, qwen3.6-35b-a3b",515,1545,3,3,75.33980582524272,0.1663430420711974,0.2952353404765498,0.43657476167081755
+chatbs-base,ChatBS,llmbased,GWB,3,"old-llama-70b, gpt-5.4-mini, qwen3.6-35b-a3b",103,309,3,3,80.58252427184466,0.12944983818770225,0.1758920690959526,0.2640382317801673
+chatbs-base,ChatBS,vectorsimilarity,VSB,3,"old-llama-70b, gpt-5.4-mini, qwen3.6-35b-a3b",103,309,3,3,77.66990291262135,0.15210355987055016,0.28827806497709413,0.4723720658988191
+chatbs-base,ChatBS,grasp,GRASP,3,"old-llama-70b, gpt-5.4-mini, qwen3.6-35b-a3b",103,309,3,3,79.6116504854369,0.13915857605177995,0.2467952759214895,0.43613760217983644
+chatbs-base,ChatBS,hipporag,HippoRAG,3,"old-llama-70b, gpt-5.4-mini, qwen3.6-35b-a3b",103,309,3,3,79.6116504854369,0.13915857605177995,0.2086117765729416,0.33293039186058215
+chatbs-base,ChatBS,hypergraphrag,HyperGRAG,3,"old-llama-70b, gpt-5.4-mini, qwen3.6-35b-a3b",103,309,3,3,59.22330097087378,0.27184466019417475,0.4771571470600597,0.4302827446489915
+biomni-base,Biomni,all,All plotted baselines,3,"old-llama-70b, gpt-5.4-mini, qwen3.6-35b-a3b",530,1060,2,2,79.24528301886792,0.20754716981132076,0.2884369376592371,0.2804417787276625
+biomni-base,Biomni,llmbased,GWB,3,"old-llama-70b, gpt-5.4-mini, qwen3.6-35b-a3b",106,212,2,2,84.90566037735849,0.1509433962264151,0.15612983993561655,0.03321878579610538
+biomni-base,Biomni,vectorsimilarity,VSB,3,"old-llama-70b, gpt-5.4-mini, qwen3.6-35b-a3b",106,212,2,2,77.35849056603774,0.22641509433962265,0.25753375659483146,0.12083333333333335
+biomni-base,Biomni,grasp,GRASP,3,"old-llama-70b, gpt-5.4-mini, qwen3.6-35b-a3b",106,212,2,2,82.0754716981132,0.1792452830188679,0.1953411428060449,0.08239871824216072
+biomni-base,Biomni,hipporag,HippoRAG,3,"old-llama-70b, gpt-5.4-mini, qwen3.6-35b-a3b",106,212,2,2,87.73584905660378,0.12264150943396226,0.23853169990163642,0.48584817244611056
+biomni-base,Biomni,hypergraphrag,HyperGRAG,3,"old-llama-70b, gpt-5.4-mini, qwen3.6-35b-a3b",106,212,2,2,64.15094339622641,0.3584905660377358,0.49454529196101227,0.27511074948015557
