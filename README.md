@@ -231,9 +231,11 @@ To evaluate with one LLM judge at a time, select exactly one judge config:
 ```bash
 uv run python evaluation_results.py --evaluation chatbs-base --config config.evaluation.qwen.yaml
 uv run python evaluation_results.py --evaluation chatbs-base --config config.evaluation.chatgpt.yaml
+uv run python evaluation_results.py --evaluation chatbs-base --config config.evaluation.gemma4.yaml
 
 uv run python evaluation_results.py --evaluation biomni-base --config config.evaluation.qwen.yaml
 uv run python evaluation_results.py --evaluation biomni-base --config config.evaluation.chatgpt.yaml
+uv run python evaluation_results.py --evaluation biomni-base --config config.evaluation.gemma4.yaml
 ```
 
 Run these sequentially. Each config owns an explicit output directory:
@@ -241,11 +243,23 @@ Run these sequentially. Each config owns an explicit output directory:
 ```text
 evaluations/<dataset>/analysis/judges/qwen3.6-35b-a3b/
 evaluations/<dataset>/analysis/judges/gpt-5.4-mini/
+evaluations/<dataset>/analysis/judges/gemma-4-31b/
 ```
+
+Gemma uses the LM Studio provider at `http://localhost:1234/v1` with model
+`google/gemma-4-31b`. The two `paper_summary_tables.ipynb` notebooks select GPT,
+Qwen, and Gemma and exclude Llama. LLM metrics pool valid ratings across all
+question types within each judge; recall uses entity questions only. Ensemble
+means weight the available judge means equally, and SD is the sample standard
+deviation across those means. Missing or failed ratings are excluded, with
+per-attribute judge counts shown explicitly. `Result Sources` counts result
+sets, while `LLM Judges` counts sources containing quality ratings. The final
+notebook section computes attribute Krippendorff's alpha using valid ratings.
 
 The same `--config` option is supported by `answer_winrate_evaluation.py`.
 For downstream analysis, set `EVALUATION_CONFIG` in the analysis notebook to
-either `config.evaluation.qwen.yaml` or `config.evaluation.chatgpt.yaml`. The
+`config.evaluation.qwen.yaml`, `config.evaluation.chatgpt.yaml`, or
+`config.evaluation.gemma4.yaml`. The
 notebook reads the judge's input directory from that config. Paper table and
 figure exports are also separated under `paper_tables/judges/<judge-id>/` and
 `paper_figures/judges/<judge-id>/`.

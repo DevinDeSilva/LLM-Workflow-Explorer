@@ -1,25 +1,37 @@
 dataset_id,dataset,scope,scope_label,judge_a,judge_a_label,judge_b,judge_b_label,common_items,raw_agreement,raw_agreement_pct,cohen_kappa
-chatbs-base,ChatBS,all,All plotted baselines,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,515,0.8038834951456311,80.3883495145631,0.3489824526270994
-chatbs-base,ChatBS,llmbased,GWB,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,103,0.8543689320388349,85.43689320388349,0.32444250109313494
-chatbs-base,ChatBS,vectorsimilarity,VSB,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,103,0.8155339805825242,81.55339805825243,0.3658457550226831
-chatbs-base,ChatBS,grasp,GRASP,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,103,0.8446601941747572,84.46601941747572,0.4172560113154171
-chatbs-base,ChatBS,hipporag,HippoRAG,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,103,0.8155339805825242,81.55339805825243,0.17945492662473772
-chatbs-base,ChatBS,hypergraphrag,HyperGRAG,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,103,0.6893203883495146,68.93203883495146,0.3409318136372726
-chatbs-base,ChatBS,all,All plotted baselines,old-llama-70b,Llama 3.3 70B,qwen3.6-35b-a3b,Qwen 3.6 35B,515,0.8815533980582524,88.15533980582524,0.5646480044345896
-chatbs-base,ChatBS,llmbased,GWB,old-llama-70b,Llama 3.3 70B,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.9029126213592233,90.29126213592234,0.2381656804733722
-chatbs-base,ChatBS,vectorsimilarity,VSB,old-llama-70b,Llama 3.3 70B,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.883495145631068,88.3495145631068,0.5523361101050348
-chatbs-base,ChatBS,grasp,GRASP,old-llama-70b,Llama 3.3 70B,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.9029126213592233,90.29126213592234,0.5309653916211293
-chatbs-base,ChatBS,hipporag,HippoRAG,old-llama-70b,Llama 3.3 70B,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.9029126213592233,90.29126213592234,0.33246921581335076
-chatbs-base,ChatBS,hypergraphrag,HyperGRAG,old-llama-70b,Llama 3.3 70B,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.8155339805825242,81.55339805825243,0.6167254210732471
+chatbs-base,ChatBS,all,All plotted baselines,gemma-4-31b,Gemma 4 31B,gpt-5.4-mini,GPT-5.4 mini,404,0.8366336633663366,83.66336633663366,0.44029051827284366
+chatbs-base,ChatBS,llmbased,GWB,gemma-4-31b,Gemma 4 31B,gpt-5.4-mini,GPT-5.4 mini,78,0.9102564102564102,91.02564102564102,0.20408163265306098
+chatbs-base,ChatBS,vectorsimilarity,VSB,gemma-4-31b,Gemma 4 31B,gpt-5.4-mini,GPT-5.4 mini,82,0.8536585365853658,85.36585365853658,0.5109343936381707
+chatbs-base,ChatBS,grasp,GRASP,gemma-4-31b,Gemma 4 31B,gpt-5.4-mini,GPT-5.4 mini,79,0.8987341772151899,89.87341772151899,0.5077881619937697
+chatbs-base,ChatBS,hipporag,HippoRAG,gemma-4-31b,Gemma 4 31B,gpt-5.4-mini,GPT-5.4 mini,82,0.8780487804878049,87.8048780487805,0.5454545454545455
+chatbs-base,ChatBS,hypergraphrag,HyperGRAG,gemma-4-31b,Gemma 4 31B,gpt-5.4-mini,GPT-5.4 mini,83,0.6506024096385542,65.06024096385542,0.2951683748169839
+chatbs-base,ChatBS,all,All plotted baselines,gemma-4-31b,Gemma 4 31B,qwen3.6-35b-a3b,Qwen 3.6 35B,404,0.9282178217821783,92.82178217821783,0.7449050688033445
+chatbs-base,ChatBS,llmbased,GWB,gemma-4-31b,Gemma 4 31B,qwen3.6-35b-a3b,Qwen 3.6 35B,78,1.0,100.0,1.0
+chatbs-base,ChatBS,vectorsimilarity,VSB,gemma-4-31b,Gemma 4 31B,qwen3.6-35b-a3b,Qwen 3.6 35B,82,0.9390243902439024,93.90243902439023,0.7910295616717633
+chatbs-base,ChatBS,grasp,GRASP,gemma-4-31b,Gemma 4 31B,qwen3.6-35b-a3b,Qwen 3.6 35B,79,0.9493670886075949,94.9367088607595,0.7237762237762235
+chatbs-base,ChatBS,hipporag,HippoRAG,gemma-4-31b,Gemma 4 31B,qwen3.6-35b-a3b,Qwen 3.6 35B,82,0.9024390243902439,90.2439024390244,0.5945611866501855
+chatbs-base,ChatBS,hypergraphrag,HyperGRAG,gemma-4-31b,Gemma 4 31B,qwen3.6-35b-a3b,Qwen 3.6 35B,83,0.8554216867469879,85.54216867469879,0.713216239562338
 chatbs-base,ChatBS,all,All plotted baselines,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,515,0.8155339805825242,81.55339805825243,0.41108141942317844
 chatbs-base,ChatBS,llmbased,GWB,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.8543689320388349,85.43689320388349,0.22865701447828213
 chatbs-base,ChatBS,vectorsimilarity,VSB,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.8446601941747572,84.46601941747572,0.5074716078900179
 chatbs-base,ChatBS,grasp,GRASP,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.8349514563106796,83.49514563106796,0.3847505270555162
 chatbs-base,ChatBS,hipporag,HippoRAG,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.8640776699029126,86.40776699029125,0.4833393049086346
 chatbs-base,ChatBS,hypergraphrag,HyperGRAG,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,103,0.6796116504854369,67.96116504854369,0.3420441347270616
-biomni-base,Biomni,all,All plotted baselines,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,530,0.7924528301886793,79.24528301886792,0.2873731817626207
-biomni-base,Biomni,llmbased,GWB,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,106,0.8490566037735849,84.90566037735849,0.08026030368763541
-biomni-base,Biomni,vectorsimilarity,VSB,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,106,0.7735849056603774,77.35849056603774,0.18513773222293456
-biomni-base,Biomni,grasp,GRASP,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,106,0.8207547169811321,82.0754716981132,0.13227057302886697
-biomni-base,Biomni,hipporag,HippoRAG,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,106,0.8773584905660378,87.73584905660378,0.49038461538461553
-biomni-base,Biomni,hypergraphrag,HyperGRAG,old-llama-70b,Llama 3.3 70B,gpt-5.4-mini,GPT-5.4 mini,106,0.6415094339622641,64.15094339622641,0.29874651810584957
+biomni-base,Biomni,all,All plotted baselines,gemma-4-31b,Gemma 4 31B,gpt-5.4-mini,GPT-5.4 mini,477,0.7987421383647799,79.87421383647799,0.4121317157712306
+biomni-base,Biomni,llmbased,GWB,gemma-4-31b,Gemma 4 31B,gpt-5.4-mini,GPT-5.4 mini,92,0.8913043478260869,89.13043478260869,0.3720136518771331
+biomni-base,Biomni,vectorsimilarity,VSB,gemma-4-31b,Gemma 4 31B,gpt-5.4-mini,GPT-5.4 mini,100,0.76,76.0,0.36891927425716536
+biomni-base,Biomni,grasp,GRASP,gemma-4-31b,Gemma 4 31B,gpt-5.4-mini,GPT-5.4 mini,95,0.8421052631578947,84.21052631578947,0.3782722513089003
+biomni-base,Biomni,hipporag,HippoRAG,gemma-4-31b,Gemma 4 31B,gpt-5.4-mini,GPT-5.4 mini,98,0.8163265306122449,81.63265306122449,0.41356382978723416
+biomni-base,Biomni,hypergraphrag,HyperGRAG,gemma-4-31b,Gemma 4 31B,gpt-5.4-mini,GPT-5.4 mini,92,0.6847826086956522,68.47826086956522,0.39950483907269874
+biomni-base,Biomni,all,All plotted baselines,gemma-4-31b,Gemma 4 31B,qwen3.6-35b-a3b,Qwen 3.6 35B,475,0.8357894736842105,83.57894736842105,0.4864580156904057
+biomni-base,Biomni,llmbased,GWB,gemma-4-31b,Gemma 4 31B,qwen3.6-35b-a3b,Qwen 3.6 35B,92,0.9239130434782609,92.3913043478261,0.3924528301886793
+biomni-base,Biomni,vectorsimilarity,VSB,gemma-4-31b,Gemma 4 31B,qwen3.6-35b-a3b,Qwen 3.6 35B,99,0.7777777777777778,77.77777777777779,0.3227611940298507
+biomni-base,Biomni,grasp,GRASP,gemma-4-31b,Gemma 4 31B,qwen3.6-35b-a3b,Qwen 3.6 35B,95,0.8421052631578947,84.21052631578947,0.3353544776119403
+biomni-base,Biomni,hipporag,HippoRAG,gemma-4-31b,Gemma 4 31B,qwen3.6-35b-a3b,Qwen 3.6 35B,98,0.8469387755102041,84.6938775510204,0.3244485294117649
+biomni-base,Biomni,hypergraphrag,HyperGRAG,gemma-4-31b,Gemma 4 31B,qwen3.6-35b-a3b,Qwen 3.6 35B,91,0.7912087912087912,79.12087912087912,0.6124187401927818
+biomni-base,Biomni,all,All plotted baselines,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,528,0.7992424242424242,79.92424242424242,0.3511708787386968
+biomni-base,Biomni,llmbased,GWB,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,106,0.8679245283018868,86.79245283018868,0.30654205607476603
+biomni-base,Biomni,vectorsimilarity,VSB,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,105,0.7904761904761904,79.04761904761905,0.3583333333333333
+biomni-base,Biomni,grasp,GRASP,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,106,0.8113207547169812,81.13207547169812,0.2912069541959213
+biomni-base,Biomni,hipporag,HippoRAG,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,106,0.839622641509434,83.9622641509434,0.2977396726422446
+biomni-base,Biomni,hypergraphrag,HyperGRAG,gpt-5.4-mini,GPT-5.4 mini,qwen3.6-35b-a3b,Qwen 3.6 35B,105,0.6857142857142857,68.57142857142857,0.3552288797915892

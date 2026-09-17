@@ -7,6 +7,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 EXPECTED_MODELS = {
     "qwen": ("qwen3.6-35b-a3b", "lmstudio", "qwen/qwen3.6-35b-a3b"),
     "chatgpt": ("gpt-5.4-mini", "openai", "gpt-5.4-mini"),
+    "gemma4": ("gemma-4-31b", "lmstudio", "google/gemma-4-31b"),
 }
 
 

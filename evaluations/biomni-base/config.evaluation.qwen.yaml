@@ -69,6 +69,6 @@ evaluation:
         model: "qwen/qwen3.6-35b-a3b"
         base_url: "http://localhost:1234/v1"
         temperature: 0
-        max_tokens: 2048
+        max_tokens: 4096
     methods:
     tie_score: 0.5
