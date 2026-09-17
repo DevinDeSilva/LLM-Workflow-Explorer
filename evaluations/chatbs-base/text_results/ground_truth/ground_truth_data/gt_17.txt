@@ -1,5 +1,0 @@
-Answer
-The connected functions to sparql query post processing function.
-
-    Funtion URI | Function name
-http://testwebsite/testProgram#batch_sparql_query_extractor | Batch SPARQL Query Extractor@en^^<xsd:string>

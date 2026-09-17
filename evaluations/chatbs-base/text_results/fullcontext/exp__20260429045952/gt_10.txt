@@ -1,2 +1,0 @@
-Answer
-The SPARQL‑query builder function receives the extracted ingredient entity as its input parameter. <cite, id=0>SPARQL Query Builder</cite> <cite, id=1>Input port for entity</cite>

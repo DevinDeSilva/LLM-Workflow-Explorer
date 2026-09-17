@@ -1,2 +1,0 @@
-Answer
-The gpt-4o model. <cite, id=0>gpt-4o model</cite>

@@ -1,4 +1,0 @@
-Answer
-The executions of the  sparql query post processing function are.
-
-    Agents

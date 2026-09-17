@@ -1,2 +1,0 @@
-Answer
-There are **no** entities labeled or described as “experiment execution” within the provided data tables and relationships.
