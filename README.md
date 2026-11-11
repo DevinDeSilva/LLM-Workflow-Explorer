@@ -363,7 +363,21 @@ Baselines include:
 Publication metadata is still pending.
 
 ```bibtex
-TBA
+@inproceedings{deSilva2026provenance,
+  author    = {De Silva, Devin and Santos, Henrique and
+               Erickson, John S. and McGuinness, Deborah L.},
+  title     = {Explainability and Traceability of AI Systems
+               through Provenance Tagging},
+  booktitle = {Proceedings of the 2nd International Workshop on
+               eXplainable AI and Knowledge Graphs (XAI-KG 2026)},
+  editor    = {Barile, Roberto and Confalonieri, Roberto and
+               d'Amato, Claudia and Jiménez-Ruiz, Ernesto},
+  series    = {CEUR Workshop Proceedings},
+  volume    = {4318},
+  publisher = {CEUR-WS.org},
+  year      = {2026},
+  url       = {https://ceur-ws.org/Vol-4318/paper7.pdf}
+}
 ```
 
 ## License
